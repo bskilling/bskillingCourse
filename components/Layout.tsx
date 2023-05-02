@@ -40,12 +40,18 @@ const Layout = ({ children, pageTitle = "Bskilling" }: Props) => {
 
               <p> 9845348601</p>
             </div>
-            <button className="flex  bg-buttonBlue md:mt-0 mt-4 px-4 py-2 rounded-md text-white gap-1">
-              <p>Login</p>
-              <span className="mt-[7px]">
-                <FiLogIn />
-              </span>
-            </button>
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://bskilling.melimu.com/login/index.php"
+            >
+              <button className="flex  bg-buttonBlue md:mt-0 mt-4 px-4 py-2 rounded-md text-white gap-1">
+                <p>Login</p>
+                <span className="mt-[7px]">
+                  <FiLogIn />
+                </span>{" "}
+              </button>
+            </a>
           </div>
         </div>
       </nav>

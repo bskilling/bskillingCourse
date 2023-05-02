@@ -52,7 +52,7 @@ const ContactPopUp = () => {
     }
   });
   const [message, setMessage] = useState(false);
-  const [contactVisible, setContactVisible] = useState(false);
+  const [contactVisible, setContactVisible] = useState(true);
   const contactDetailsVisible = () => {
     setContactVisible((prev) => !prev);
   };
@@ -81,11 +81,8 @@ const ContactPopUp = () => {
           <div>
             <img src="/icon/phone.png" alt="" />
           </div>
-          <div className="">
-            <p className="font-medium">+0000000000</p>
-            <p className="text-xs">
-              AvAilable 24x7 for <br /> your queries
-            </p>
+          <div className="flex items-center">
+            <p className="font-medium">+9845348601</p>
           </div>
         </div>
         <div>

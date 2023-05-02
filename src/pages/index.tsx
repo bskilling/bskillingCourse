@@ -56,7 +56,7 @@ const Home: NextPage<NextPage> = ({}) => {
         <ListOfCourses />
       </section>
       <section className="">
-        <Testimonials/>
+        <Testimonials />
       </section>
     </>
   );

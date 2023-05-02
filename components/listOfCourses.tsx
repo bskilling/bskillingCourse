@@ -29,6 +29,7 @@ const ListOfCourses: NextPage<{}> = () => {
   const [inputValue, SetInputValue] = useState("");
   const [tabVisible, setTabVisible] = useState(true);
   const [loadingVisible, setLoadingVisible] = useState(false);
+  const [ClickOnSearch, setClickOnSearch] = useState(false);
   const [] = useState();
   const handleClick = (CourseName: string) => {
     SetDropSearchData([]);
@@ -48,11 +49,24 @@ const ListOfCourses: NextPage<{}> = () => {
       SetDropSearchData(filteredData);
     }
   };
-
+  function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
+    if (event.key === "Enter") {
+      setLoadingVisible(true);
+      setTimeout(() => {
+        const filteredData = fetchSearchData.filter((course) =>
+          course.CourseName.toLowerCase().includes(inputValue.toLowerCase())
+        );
+        setTabVisible(false);
+        SetSearchData(filteredData);
+        setLoadingVisible(false);
+      }, 1000);
+    }
+  }
   const handleSearchClick = () => {
     if (tabVisible === false) {
     }
     if (inputValue === "") {
+      setClickOnSearch(false);
     } else {
       setLoadingVisible(true);
       setTimeout(() => {
@@ -61,6 +75,7 @@ const ListOfCourses: NextPage<{}> = () => {
         );
         setTabVisible(false);
         SetSearchData(filteredData);
+        setClickOnSearch(true);
         setLoadingVisible(false);
       }, 1000);
     }
@@ -75,7 +90,7 @@ const ListOfCourses: NextPage<{}> = () => {
 
   const ClearButtonClick = () => {
     console.log(searchData);
-    if (searchData.length !== 0) {
+    if (ClickOnSearch) {
       setLoadingVisible(true);
       setTimeout(() => {
         SetDropSearchData([]);
@@ -100,13 +115,14 @@ const ListOfCourses: NextPage<{}> = () => {
             <input
               type="text"
               className=" w-full rounded-lg border-2 py-2  px-10   focus:border-buttonBlue focus:ring-buttonBlue "
-              placeholder="Search By Names"
+              placeholder="Enter Course Name"
               required
               value={inputValue}
               onChange={handleSearch}
+              onKeyDown={handleKeyDown}
             />
 
-            {dropSearchData.length > 0 && (
+            {/* {dropSearchData.length > 0 && (
               <div className="absolute w-full bg-white rounded-lg shadow-lg mt-2">
                 {dropSearchData.map((course) => (
                   <div
@@ -118,7 +134,7 @@ const ListOfCourses: NextPage<{}> = () => {
                   </div>
                 ))}
               </div>
-            )}
+            )} */}
           </div>
           <div className="flex flex-col justify-center">
             <button
@@ -132,7 +148,7 @@ const ListOfCourses: NextPage<{}> = () => {
           <div className="flex flex-col justify-center">
             <button
               onClick={ClearButtonClick}
-              className="text-white  transition duration-500 hover:scale-105 ease-out  bg-buttonBlue hover:bg-buttonBlue py-2 focus:ring-1 focus:outline-none focus:ring-buttonBlue font-medium rounded-lg text-sm px-4    "
+              className="text-buttonBlue  transition duration-500 hover:scale-105 ease-out border-2 border-buttonBlue py-2 focus:ring-1 focus:outline-none focus:ring-buttonBlue font-medium rounded-lg text-sm px-4    "
             >
               Clear
             </button>
@@ -141,15 +157,23 @@ const ListOfCourses: NextPage<{}> = () => {
       </div>
 
       <section className={tabVisible ? "py-0" : "py-10"}>
-        <div className="grid grid-cols-1  md:grid-cols-4 gap-4 w-full">
-          {searchData.map((data) => {
-            return (
-              <>
-                <CourseCard data={data} />
-              </>
-            );
-          })}
-        </div>
+        {searchData.length > 0 && !tabVisible ? (
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 w-full">
+            {searchData.map((data) => {
+              return (
+                <div key={data.id}>
+                  <CourseCard data={data} />
+                </div>
+              );
+            })}
+          </div>
+        ) : searchData.length === 0 && !tabVisible ? (
+          <div className="">
+            <p className="text-center text-buttonBlue">
+              Your search did not match any courses.
+            </p>
+          </div>
+        ) : null}
       </section>
       {/* UI SECTION  */}
       {loadingVisible === true ? (
