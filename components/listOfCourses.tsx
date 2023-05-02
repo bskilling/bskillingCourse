@@ -57,12 +57,14 @@ const ListOfCourses: NextPage<{}> = () => {
           course.CourseName.toLowerCase().includes(inputValue.toLowerCase())
         );
         setTabVisible(false);
+        setClickOnSearch(true);
         SetSearchData(filteredData);
         setLoadingVisible(false);
       }, 1000);
     }
   }
   const handleSearchClick = () => {
+    console.log(searchData);
     if (tabVisible === false) {
     }
     if (inputValue === "") {
@@ -89,14 +91,15 @@ const ListOfCourses: NextPage<{}> = () => {
   };
 
   const ClearButtonClick = () => {
-    console.log(searchData);
-    if (ClickOnSearch) {
+    if (ClickOnSearch === false) {
+    } else {
       setLoadingVisible(true);
       setTimeout(() => {
         SetDropSearchData([]);
         SetInputValue("");
         SetSearchData([]);
         setTabVisible(true);
+        setClickOnSearch(false);
         setLoadingVisible(false);
       }, 1000);
     }
