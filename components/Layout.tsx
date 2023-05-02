@@ -11,12 +11,12 @@ type Props = {
   pageTitle?: string;
 };
 
-const Layout = ({ children, pageTitle = "Bskilling" }: Props) => {
+const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
   return (
     <>
       <Head>
         <title>{pageTitle}</title>
-        <meta name="Bskilling" content="Bskilling" />
+        <meta name="bSkilling" content="bSkilling" />
         <link rel="icon" href="/logo.png" />
       </Head>
 

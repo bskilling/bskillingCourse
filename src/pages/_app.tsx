@@ -6,8 +6,8 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Layout>
       <Head>
-        <title>Bskilling</title>
-        <meta name="Bskilling" content="Bskilling" />
+        <title>bSkilling</title>
+        <meta name="bSkilling" content="bSkilling" />
         <link rel="icon" href="/favicon.png" />
       </Head>
       <Component {...pageProps} />
