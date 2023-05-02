@@ -37,7 +37,7 @@ export default function Testimonials() {
   return (
     <section className="p-4 md:pt-12  bg-white relative">
       <h1 className="md:container mx-auto  text-xl text-center font-semibold tracking-wide text-buttonBlue">
-        What Our Students Says
+        What Our Students Say
       </h1>
 
       <Swiper
@@ -51,7 +51,7 @@ export default function Testimonials() {
           <SwiperSlide key={id}>
             <div className="w-full relative flex flex-col justify-center items-center">
               <div className="md:container mx-auto md:px-24 py-10 flex  justify-center items-center ">
-                <p className="md:max-w-prose md:text-lg  md:leading-10 text-center ">
+                <p className="md:max-w-prose md:text-lg   text-center ">
                   &ldquo; {text} &rdquo;
                 </p>
               </div>

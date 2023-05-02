@@ -60,8 +60,8 @@ const ContactPopUp = () => {
   return (
     <>
       <div
-        className={`fixed bottom-0 right-0 transition-transform ease-in-out duration-1000 z-[1000] rounded-xl shadow-lg min-h-[400px] min-w-[300px] bg-white transform ${
-          contactVisible ? "translate-y-0" : " translate-y-[365px]"
+        className={`fixed bottom-0 right-0 transition-transform ease-in-out duration-1000 z-[1000] rounded-xl shadow-lg min-h-[300px] min-w-[300px] bg-white transform ${
+          contactVisible ? "translate-y-0" : " translate-y-[269px]"
         }`}
       >
         <div className="min-h-[50px] p-1 flex gap-12  justify-around rounded-sm bg-buttonBlue">
@@ -77,20 +77,20 @@ const ContactPopUp = () => {
           </div>
         </div>
 
-        <div className="flex gap-6 py-3 justify-center">
+        {/* <div className="flex gap-6 py-3 justify-center">
           <div>
             <img src="/icon/phone.png" alt="" />
           </div>
           <div className="flex items-center">
             <p className="font-medium">+9845348601</p>
           </div>
-        </div>
+        </div> */}
         <div>
           <div className="flex   px-5  mt-4 flex-col">
             <input
               type="number"
-              className=" block  w-full lg:h-[35px] rounded-sm px-2 border border-green  placeholder-smaller focus:border-green focus:ring focus:ring-green focus:ring-opacity-50"
-              placeholder="Mobile Number*"
+              className=" block  w-full lg:h-[35px] rounded-lg px-2 border border-buttonBlue   placeholder-smaller focus:border-green focus:ring focus:ring-green focus:ring-opacity-50"
+              placeholder="Your mobile number*"
               {...register("phone", {
                 required: true,
                 minLength: 10,
@@ -111,8 +111,8 @@ const ContactPopUp = () => {
             {/* <span className="text-black">Email</span> */}
             <input
               type="text"
-              className="block  w-full lg:h-[35px] rounded-sm px-2 border border-green placeholder-smaller focus:border-green focus:ring focus:ring-green focus:ring-opacity-50"
-              placeholder="Email*"
+              className="block  w-full lg:h-[35px] rounded-lg px-2 border-buttonBlue  border border-green placeholder-smaller focus:border-green focus:ring focus:ring-green focus:ring-opacity-50"
+              placeholder="Your email*"
               {...register("email", {
                 required: true,
                 pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
@@ -130,8 +130,8 @@ const ContactPopUp = () => {
           <div className="flex   px-5  flex-col">
             <input
               type="text"
-              className="block  w-full lg:h-[50px] rounded-sm px-2 border border-green placeholder-smaller focus:border-green focus:ring focus:ring-green focus:ring-opacity-50"
-              placeholder="Message*"
+              className="block  w-full lg:h-[50px] rounded-lg px-2 border border-buttonBlue placeholder-smaller focus:border-green focus:ring focus:ring-green focus:ring-opacity-50"
+              placeholder="Type your query here*"
               {...register("message", {
                 required: true,
               })}
