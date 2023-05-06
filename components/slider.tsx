@@ -14,28 +14,24 @@ interface slider {
 const Slider = () => {
   const slides = [
     {
-      text1: "Bringing agility and scale with the right strategy",
+      text1: "Enrol with us today and take your career to the next level",
 
-      image: "/carosel/strategy.jpg",
+      image: "/carosel/ban4.png",
       id: "slide1",
     },
     {
-      text1: "Nurturing and empowering a future-ready workforce",
+      text1:
+        "Get certified by globally recognized bodies and deepen your expertise",
 
-      image: "/carosel/nurture.jpg",
+      image: "/carosel/ban5.png",
       id: "slide2",
     },
     {
-      text1: "Mobilizing the right talent for your business needs",
+      text1:
+        "Upskill yourself with trending technologies and become future-ready",
 
-      image: "/carosel/mobilize.jpg",
+      image: "/carosel/ban6.png",
       id: "slide3",
-    },
-    {
-      text1: "A thought leader and trusted partner for over a decade",
-
-      image: "/carosel/thought.jpg",
-      id: "slide4",
     },
   ];
   return (
@@ -46,17 +42,17 @@ const Slider = () => {
           <Swiper
             modules={[Navigation, Autoplay]}
             slidesPerView={1}
-            navigation={false}
+            navigation={true}
             autoplay={true}
             loop={true}
             speed={1300}
-
+            pagination={true}
             // onSlideChange={() => console.log('slide change')}
             // onSwiper={(swiper) => console.log(swiper)}
           >
             {slides.map(({ text1, image, id }) => (
               <SwiperSlide key={id}>
-                <div className="h-[65vh] w-full relative flex justify-center items-center">
+                <div className="h-[48vh] w-full relative flex justify-center items-center">
                   <Image
                     className="object-cover w-full h-full"
                     layout="fill"
@@ -65,7 +61,7 @@ const Slider = () => {
                   />
                   <div className="absolute inset-0 bg-green opacity-20"></div>
                   <div className="px-4 md:container text-center z-50">
-                    <h1 className="text-4xl md:text-5xl  text-white drop-shadow-md py-4">
+                    <h1 className="text-4xl md:text-3xl  text-white drop-shadow-md py-4">
                       {text1}
                     </h1>
                   </div>
