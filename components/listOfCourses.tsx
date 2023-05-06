@@ -132,7 +132,7 @@ const ListOfCourses: NextPage<{}> = () => {
     setAllCourseButtonIndex(0);
     setTimeout(() => {
       setLoadingVisible(false);
-      router.push("/allCourses");
+      window.open("/allCourses", "_blank");
     }, 1000);
   };
   console.log(searchData, "search data");
@@ -181,7 +181,7 @@ const ListOfCourses: NextPage<{}> = () => {
                     {CourseDetails.slice(8).map(({ categoryName }, index) => (
                       <button
                         key={categoryName}
-                        className="text-gray-700 block w-full px-4 py-2 text-sm hover:bg-gray-100 hover:bg-[#eae7fe] hover:text-black"
+                        className="text-gray-700 block w-full px-6 py-2 hover:bg-buttonBlue text-right text-sm hover:bg-gray-100  hover:text-white"
                         onClick={() => TabButtonClick(index + 8)}
                       >
                         {categoryName}
