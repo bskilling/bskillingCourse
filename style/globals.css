@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700;900&display=swap');
 @import "./base.css";
 @import "tailwindcss/base";
 @import "tailwindcss/components";
@@ -59,4 +60,9 @@ img {
 }
 .placeholder-smaller::placeholder {
     font-size: 14px;
+  }
+  .slide-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease-in, transform 0.3s ease-in;
   }
