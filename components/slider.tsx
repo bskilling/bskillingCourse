@@ -53,9 +53,8 @@ const Slider = () => {
             {slides.map(({ text1, image, id }) => (
               <SwiperSlide key={id}>
                 <div className="h-[48vh] w-full relative flex justify-center items-center">
-                  <Image
-                    className="object-cover w-full h-full"
-                    layout="fill"
+                  <img
+                    className="object-fill absolute w-full  h-full"
                     src={image}
                     alt=""
                   />

@@ -211,13 +211,13 @@ export default function Testimonials() {
                     >
                       <div>
                         <div className=" w-full transition duration-150 ease-out hover:ease-in hover:opacity-50">
-                          <Image
+                          <img
                             className=" flex-shrink-0 object-cover xl:w-[100%] xl:h-[rem]"
                             src={"/sap.png"}
                             width={400}
                             height={300}
                             alt=""
-                          ></Image>
+                          />
                         </div>
 
                         <h1 className="title-font px-3 sm:text-2xl text-xl text-left font-medium text-gray-900 mb-3">
@@ -255,13 +255,13 @@ export default function Testimonials() {
                     >
                       <div>
                         <div className=" w-full transition duration-150 ease-out hover:ease-in hover:opacity-50">
-                          <Image
+                          <img
                             className=" flex-shrink-0 object-cover xl:w-[100%] xl:h-[rem]"
                             src={"/sap.png"}
                             width={400}
                             height={300}
                             alt=""
-                          ></Image>
+                          />
                         </div>
 
                         <h1 className="title-font px-3 sm:text-2xl text-xl text-left font-medium text-gray-900 mb-3">
@@ -299,13 +299,13 @@ export default function Testimonials() {
                     >
                       <div>
                         <div className=" w-full transition duration-150 ease-out hover:ease-in hover:opacity-50">
-                          <Image
+                          <img
                             className=" flex-shrink-0 object-cover xl:w-[100%] xl:h-[rem]"
                             src={"/sap.png"}
                             width={400}
                             height={300}
                             alt=""
-                          ></Image>
+                          />
                         </div>
 
                         <h1 className="title-font px-3 sm:text-2xl text-xl text-left font-medium text-gray-900 mb-3">
