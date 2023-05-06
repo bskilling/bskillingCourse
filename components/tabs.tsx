@@ -116,12 +116,12 @@ const Tabs = () => {
                     <AiOutlineMenu />
                   </button>
                   {isDropdownOpen && (
-                    <div className="origin-top-right absolute  z-[6000] left-[px] right-0 mt-5  w-24 rounded-md shadow-lg bg-white ring-1     ">
+                    <div className="origin-top-right absolute  z-[6000] left-[px] right-0 mt-5  w- rounded-md shadow-lg bg-white ring-1     ">
                       {BrowseAllCourse.slice(12).map(
                         ({ categoryName }, index) => (
                           <button
                             key={categoryName}
-                            className="text-black hover:text-white text-right  block px-4 border-0 w-full hover:bg-buttonBlue   cursor-pointer py-2 text-sm  hover:text-gray-900"
+                            className="text-black hover:text-white text-right   block px-6 border-0 w-full hover:bg-buttonBlue   cursor-pointer py-2 text-sm  hover:text-gray-900"
                             onClick={() => TabButtonClick(index + 12)}
                           >
                             {categoryName}
@@ -167,14 +167,13 @@ const Tabs = () => {
         >
           <div className="flex-col">
             <div className="w-24 h-24 ">
-            <div className="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-[#3d3c3d] opacity-75 flex flex-col items-center justify-center">
+              <div className="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-[#3d3c3d] opacity-75 flex flex-col items-center justify-center">
                 <div className="loader ease-linear rounded-full border-8 border-t-4 border-buttonBlue h-16 w-16 mb-4"></div>
                 <h2 className="text-center text-white text-xl font-semibold">
                   Loading...
                 </h2>
               </div>
             </div>
-            
           </div>
         </div>
       ) : (
