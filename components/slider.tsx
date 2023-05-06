@@ -42,7 +42,6 @@ const Slider = () => {
           <Swiper
             modules={[Navigation, Autoplay]}
             slidesPerView={1}
-            navigation={true}
             autoplay={true}
             loop={true}
             speed={1300}

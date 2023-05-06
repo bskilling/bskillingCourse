@@ -43,24 +43,24 @@ const CourseCard: React.FC<CourseCardProps> = ({ data }) => {
 
             <div className="text-subText flex flex-col mt-2  ">
               <div className="flex mt-1 gap-5">
-                <div className="mt-[2px]  bg-[#eae7fe] flex flex-col items-center justify-center w-[30px] h-[30px] rounded-full">
-                  <FaTrophy color="#300ffa" />
+                <div className="mt-[2px]   bg-buttonBlue flex flex-col items-center justify-center w-[30px] h-[30px] rounded-full">
+                  <FaTrophy color="white" />
                 </div>
                 <div>
                   <p>{data.certificate}</p>
                 </div>
               </div>
               <div className="flex mt-1 gap-5">
-                <div className="mt-[2px] bg-[#eae7fe] flex flex-col items-center justify-center w-[30px] h-[30px] rounded-full">
-                  <BiTimeFive color="#300ffa" />
+                <div className="mt-[2px] bg-buttonBlue flex flex-col items-center justify-center w-[30px] h-[30px] rounded-full">
+                  <BiTimeFive color="white" />
                 </div>
                 <div>
                   <p> {data.timePeriod}</p>
                 </div>
               </div>
               <div className="flex mt-1 gap-5">
-                <div className="mt-[2px] bg-[#eae7fe] flex flex-col items-center justify-center w-[30px] h-[30px] rounded-full">
-                  <FaChalkboardTeacher color="#300ffa" />
+                <div className="mt-[2px]  bg-buttonBlue flex flex-col items-center justify-center w-[30px] h-[30px] rounded-full">
+                  <FaChalkboardTeacher color="white" />
                 </div>
                 <div>
                   <p> {data.classType}</p>
@@ -68,7 +68,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ data }) => {
               </div>
             </div>
 
-            <div className="rounded-md bg-[#eae7fe] mt-3 px-1 py-2">
+            <div className="rounded-md  mt-3 px-1 py-2">
               <p className="text-buttonBlue ">
                 Classes starting on{" "}
                 <span className="font-semibold">{data.StartDate}</span>
@@ -85,7 +85,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ data }) => {
               </div>
               <div>
                 <a target="_blank" rel="noreferrer" href={data.CourseLink}>
-                  <button className="px-2 py-2 text-white bg-buttonBlue rounded-lg  hover:bg-buttonBlue focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm  dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                  <button className="px-2 py-2 text-white bg-buttonBlue rounded-lg  hover:bg-buttonBlue focus:ring-4 focus:outline-none focus:ring-buttonBlue font-medium rounded-lg text-sm  dark:bg-buttonBlue dark:hover:bg-buttonBlue dark:focus:ring-buttonBlue">
                     View Course
                   </button>
                 </a>
