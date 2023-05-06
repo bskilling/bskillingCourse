@@ -35,9 +35,9 @@ export default function Testimonials() {
   ];
 
   return (
-    <section className="p-4 md:pt-12  bg-white relative">
-      <h1 className="md:container mx-auto  text-xl text-center font-semibold tracking-wide text-buttonBlue">
-        What Our Students Say
+    <section className="p-4 md:pt-12  bg-Buttoncolor text-white relative">
+      <h1 className="md:container mx-auto   text-center font-bold font-SourceSans text-xl text-center tracking-wide text-white">
+        Alumni Speak
       </h1>
 
       <Swiper
@@ -55,7 +55,7 @@ export default function Testimonials() {
                   &ldquo; {text} &rdquo;
                 </p>
               </div>
-              <p className="text-lg pt-6 text-zinc-500 font-semibold">{name}</p>
+              <p className="text-lg pt-6 text-white font-semibold">{name}</p>
             </div>
           </SwiperSlide>
         ))}

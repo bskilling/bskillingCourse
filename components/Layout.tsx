@@ -1,17 +1,110 @@
-import { ReactNode, useState } from "react";
+import { ReactNode, useContext, useState, useEffect } from "react";
 import Head from "next/head";
 import { FiLogIn } from "react-icons/fi";
 import { HiOutlineMail } from "react-icons/hi";
-import { BsTelephone } from "react-icons/bs";
+import { BiSearchAlt } from "react-icons/bi";
 
 import Link from "next/link";
+import { MyContext } from "context/PageContext";
+import courseSearchData from "data/courseSearchData";
 
 type Props = {
   children: ReactNode;
   pageTitle?: string;
 };
+interface searchCourseArray {
+  id: string;
+  CourseName: string;
+  certificate: string;
+  imageSrc: string;
+  timePeriod: string;
+  StartDate: string;
+  classType: string;
+  price: string;
+  CourseLink: string;
+}
 
 const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
+  useEffect(() => {
+    setFetchSearchData(courseSearchData);
+  }, []);
+  const [selectedCourse, setSelectedCourse] = useState<searchCourseArray>();
+  const {
+    setButtonIndex,
+    buttonIndex,
+    clickOnSearch,
+    setClickOnSearch,
+    currentTab,
+    setCurrentTab,
+    dropSearchData,
+    setDropSearchData,
+    inputValue,
+    setInputValue,
+    loadingVisible,
+    setLoadingVisible,
+    searchData,
+    setSearchData,
+    setTabVisible,
+    tabVisible,
+    fetchSearchData,
+    setFetchSearchData,
+  } = useContext(MyContext);
+  const handleClick = (Course: searchCourseArray) => {
+    setDropSearchData([]);
+    setSelectedCourse(Course);
+    setInputValue("");
+    window.open(Course.CourseLink, "_blank");
+  };
+
+  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target;
+    setInputValue(value);
+    if (value === "") {
+      setDropSearchData([]);
+    } else {
+      const filteredData = fetchSearchData.filter((course) =>
+        course.CourseName.toLowerCase().includes(value.toLowerCase())
+      );
+
+      setDropSearchData(filteredData);
+    }
+  };
+  // function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
+  //   if (event.key === "Enter") {
+  //     setLoadingVisible(true);
+  //     setTimeout(() => {
+  //       const filteredData = fetchSearchData.filter((course) =>
+  //         course.CourseName.toLowerCase().includes(inputValue.toLowerCase())
+  //       );
+  //       setTabVisible(false);
+  //       setClickOnSearch(true);
+  //       setSearchData(filteredData);
+  //       setLoadingVisible(false);
+  //     }, 1000);
+  //   }
+  // }
+  const handleSearchClick = () => {
+    if (selectedCourse?.CourseLink) {
+      window.open(selectedCourse.CourseLink, "_blank");
+    }
+  };
+
+  const clickbackground = () => {
+    setDropSearchData([]);
+  };
+
+  const ClearButtonClick = () => {
+    setLoadingVisible(true);
+    setTimeout(() => {
+      setDropSearchData([]);
+      setInputValue("");
+      setSearchData([]);
+      setTabVisible(true);
+      setClickOnSearch(false);
+      setLoadingVisible(false);
+    }, 1000);
+  };
+  console.log(dropSearchData);
   return (
     <>
       <Head>
@@ -20,44 +113,93 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
         <link rel="icon" href="/logo.png" />
       </Head>
 
-      <nav className="md:py-4 border-b p-5 md:p-0 bg-[#f4f3ff]  w-full flex justify-center shadow-">
-        <div className="flex flex-row md:gap-0 gap-14 justify-between w-full">
-          <div className="flex items-center justify-center md:ml-10 ">
-            <img src="/logo.png" className="w-[200px] h-fit" alt="" />
-          </div>
-          <div className="flex flex-col md:w-full hover:cursor-pointer w-[50%] md:flex-row justify-end items-center md:mr-10">
-            <div className="hidden md:flex gap-2  px-4 py-2 rounded-md text-black ">
-              <span className="mt-[7px]">
-                <HiOutlineMail color="blue" />
-              </span>
+      <nav className="md:py-4 border-b  md:p-0 bg-white border flex  md:flex-row flex-col md:gap-36 md:justify-between w-full  shadow-">
+        <div className="flex gap-5  md:flex-row flex-col items-center justify-center md:ml-10 ">
+          <img
+            src="/logo.png"
+            className="w-[200px] md:my-0 my-5 h-fit"
+            alt=""
+          />
+          <div className="flex md:flex-row flex-col gap-2">
+            <div className="relative flex justify-end md:w-[500px]">
+              <input
+                type="text"
+                className=" md:w-[400px] rounded-lg border-[1px] bg- border-Buttoncolor lg:py-1 lg:mt-[3px] px-5   focus:border-Buttoncolor focus:ring-buttonBlue "
+                placeholder="Enter Course Name"
+                required
+                value={inputValue}
+                onChange={handleSearch}
+                // onKeyDown={handleKeyDown}
+              />
+              <div className="absolute mt-2 md:mt-3 mr-2">
+                <BiSearchAlt />
+              </div>
+              {dropSearchData.length > 0 && (
+                <div className="absolute z-[6000] w-full  bg-white rounded-lg px-5 shadow-lg  -mr-14 mt-10">
+                  {dropSearchData.map((course) => (
+                    <div
+                      key={course.id}
+                      className="p-2 hover:bg-[#eae7fe] cursor-pointer"
+                      onClick={() => handleClick(course)}
+                    >
+                      {course.CourseName}
+                    </div>
+                  ))}
+                </div>
+              )}
 
-              <p> support@bskilling.com</p>
+              {/* {dropSearchData.length > 0 && (
+              <div className="absolute w-full bg-white rounded-lg shadow-lg mt-2">
+                {dropSearchData.map((course) => (
+                  <div
+                    key={course.id}
+                    className="p-2 hover:bg-[#eae7fe] cursor-pointer"
+                    onClick={() => handleClick(course.CourseName)}
+                  >
+                    {course.CourseName}
+                  </div>
+                ))}
+              </div>
+            )} */}
             </div>
-            <div className="hidden md:flex gap-2  px-4 py-2 rounded-md text-black ">
-              <span className="mt-[7px]">
-                <BsTelephone color="blue" />
-              </span>
-
-              <p> 9845348601</p>
-            </div>
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href="https://bskilling.melimu.com/login/index.php"
-            >
-              <button className="flex  bg-buttonBlue md:mt-0 mt-4 px-4 py-2 rounded-md text-white gap-1">
-                <p>Login</p>
-                <span className="mt-[7px]">
-                  <FiLogIn />
-                </span>{" "}
+            {/* <div className="flex flex-col justify-center">
+              <button
+                onClick={handleSearchClick}
+                className="text-white transition duration-500 hover:scale-105 ease-out  bg-Buttoncolor hover:bg-buttonBlue py-[10px] focus:ring-1 focus:outline-none focus:ring-buttonBlue font-medium rounded-lg text-sm px-4   "
+              >
+                Search
               </button>
-            </a>
+            </div>
+
+            <div className="flex flex-col  justify-center">
+              <button
+                onClick={ClearButtonClick}
+                className="text-balck border hover:text-white border-buttonBlue transition duration-500 hover:scale-105 ease-out  bg-white hover:bg-buttonBlue py-2 focus:ring-1 focus:outline-none focus:ring-buttonBlue font-medium rounded-lg text-sm px-4  "
+              >
+                Clear
+              </button>
+            </div> */}
           </div>
+        </div>
+
+        <div className="md:mr-6 flex justify-center md:my-0 my-5">
+          <a
+            target="_blank"
+            rel="noreferrer"
+            className="underline-0"
+            href="https://bskilling.melimu.com/login/index.php"
+          >
+            <button className="flex gap-1 text-white mt-2 border hover:text-white border-buttonBlue transition duration-500 hover:scale-105 ease-out  bg-buttonBlue hover:bg-buttonBlue py-[8px] focus:ring-1 focus:outline-none focus:ring-buttonBlue font-medium rounded-lg text-sm px-4 ">
+              <p>Login</p>
+            </button>
+          </a>
         </div>
       </nav>
 
-      <main className="bg-[#f4f3ff]">{children}</main>
-      <footer className="border-zinc-100 bg-[#f4f3ff] border-t px-10 py-6 md:py-12">
+      <main className="bg-[#f4f3ff] font-SourceSans font-normal">
+        {children}
+      </main>
+      <footer className="border-slate-400 bg-white border-t px-10 py-6 md:py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 md:flex md:flex-row justify-between items-start">
           <div className="col-span-2 pb-4 md:pb-0 ">
             <a className="flex justify-start items-center pl-6 md:pl-0">
@@ -67,15 +209,17 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
             </a>
           </div>
           <div className="text-sm p-4 md:p-0 ">
-            <p className="font-semibold">Address</p>
-            <p className="">Email:support@bskilling.com</p>
-            <p className="">phone: 9845348601</p>
+            <p className="font-semibold">INDIA - HEAD OFFICE</p>
+            <p className="">Uma Sree Dream World, Unit -2,</p>
+            <p className="">B-Block, 4th Floor, Kudlu Gate,</p>
+            <p className="">Hosur Main Road,</p>
+            <p className="">Bangalore – 560068. Karnataka, INDIA</p>
           </div>
 
           <div className="text-sm p-4 md:p-0 ">
             <p className="font-semibold">Contact</p>
-            <p className="">Email:support@bskilling.com</p>
-            <p className="">phone: 9845348601</p>
+            <p className="">Email : support@bskilling.com</p>
+            <p className="">Phone : 9845348601</p>
           </div>
 
           <div className="col-span-2 p-4 md:p-0 pl-6 ">
