@@ -18,7 +18,9 @@ const Home: NextPage<NextPage> = ({}) => {
  
   return (
     <>
+      <section className="bg-buttonBlue text-white">
       <Tabs />
+      </section>
       <ContactPopUp />
       <section>
         <Slider />

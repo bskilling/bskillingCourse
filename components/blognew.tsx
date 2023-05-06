@@ -172,7 +172,7 @@ export default function Testimonials() {
             spaceBetween={20}
             slidesPerGroup={1}
             autoplay={true}
-            pagination={{ clickable: true }}
+            // pagination={{ clickable: true }}
             loop={true}
             speed={1600}
             // breakpoints={{
@@ -200,10 +200,10 @@ export default function Testimonials() {
           >
             <SwiperSlide>
               <p className="   capitalize  font-bold font-SourceSans text-xl text-center  mb-10 ">
-                Blogs
+                Latest Blog Posts
               </p>
               <div className="flex  flex-wrap gap-8 mb-4 ">
-                {blog2.map(({ name, logo, id, desc, link, sorc, auth }) => {
+                {blog.map(({ name, logo, id, desc, link, sorc, auth }) => {
                   return (
                     <div
                       key={id}
@@ -220,7 +220,7 @@ export default function Testimonials() {
                           />
                         </div>
 
-                        <h1 className="title-font px-3 sm:text-2xl text-xl text-left font-medium text-gray-900 mb-3">
+                        <h1 className="title-font px-3 stext-lg text-left font-bold text-gray-900 mb-3">
                           {name}
                         </h1>
                         <p className="text-left px-3 ">Source : {sorc}</p>
@@ -244,7 +244,7 @@ export default function Testimonials() {
 
             <SwiperSlide>
               <p className="   capitalize  font-bold font-SourceSans text-xl text-center  mb-10 ">
-                Blogs
+                Latest Blog Posts
               </p>
               <div className="flex  flex-wrap gap-8 ">
                 {blog.map(({ name, logo, id, desc, link, auth, sorc }) => {
@@ -264,7 +264,7 @@ export default function Testimonials() {
                           />
                         </div>
 
-                        <h1 className="title-font px-3 sm:text-2xl text-xl text-left font-medium text-gray-900 mb-3">
+                        <h1 className="title-font px-3 text-lg text-left font-bold  text-gray-900 mb-3">
                           {name}
                         </h1>
                         <p className="text-left px-3 ">Source : {sorc}</p>
@@ -288,10 +288,10 @@ export default function Testimonials() {
 
             <SwiperSlide>
               <p className="   capitalize  font-bold font-SourceSans text-xl text-center  mb-10 ">
-                Blogs
+                Latest Blog Posts
               </p>
               <div className="flex  flex-wrap gap-8 ">
-                {blog1.map(({ name, logo, id, desc, link, auth, sorc }) => {
+                {blog.map(({ name, logo, id, desc, link, auth, sorc }) => {
                   return (
                     <div
                       key={id}
@@ -308,7 +308,7 @@ export default function Testimonials() {
                           />
                         </div>
 
-                        <h1 className="title-font px-3 sm:text-2xl text-xl text-left font-medium text-gray-900 mb-3">
+                        <h1 className="title-font px-3 text-lg text-left font-bold  text-gray-900 mb-3">
                           {name}
                         </h1>
                         <p className="text-left px-3 ">Source : {sorc}</p>

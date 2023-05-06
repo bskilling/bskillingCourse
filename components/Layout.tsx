@@ -113,7 +113,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
         <link rel="icon" href="/logo.png" />
       </Head>
 
-      <nav className="md:py-4 border-b  md:p-0 bg-white border flex  md:flex-row flex-col md:gap-36 md:justify-between w-full  shadow-">
+      <nav className="md:py-4   md:p-0 bg-white flex  md:flex-row flex-col md:gap-36 md:justify-between w-full  shadow-">
         <div className="flex gap-5  md:flex-row flex-col items-center justify-center md:ml-10 ">
           <img
             src="/logo.png"
@@ -124,7 +124,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
             <div className="relative flex justify-end md:w-[500px]">
               <input
                 type="text"
-                className=" md:w-[400px] rounded-lg border-[1px] bg- border-Buttoncolor lg:py-1 lg:mt-[3px] px-5   focus:border-Buttoncolor focus:ring-buttonBlue "
+                className=" md:w-[400px] rounded-lg border-[1px] bg- border-buttonBlue lg:py-1 lg:mt-[3px] px-5   focus:border-Buttoncolor focus:ring-buttonBlue "
                 placeholder="Enter Course Name"
                 required
                 value={inputValue}
@@ -135,11 +135,11 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
                 <BiSearchAlt />
               </div>
               {dropSearchData.length > 0 && (
-                <div className="absolute z-[6000] w-full  bg-white rounded-lg px-5 shadow-lg  -mr-14 mt-10">
+                <div className="absolute z-[6000] w-full  bg-white rounded-lg  shadow-lg  -mr-14 mt-10">
                   {dropSearchData.map((course) => (
                     <div
                       key={course.id}
-                      className="p-2 hover:bg-[#eae7fe] cursor-pointer"
+                      className="p-2 hover:bg-buttonBlue px-5 hover:text-white cursor-pointer"
                       onClick={() => handleClick(course)}
                     >
                       {course.CourseName}
@@ -182,7 +182,17 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
           </div>
         </div>
 
-        <div className="md:mr-6 flex justify-center md:my-0 my-5">
+        <div className="md:mr-6 flex justify-center gap-5 md:my-0 my-5">
+          <div className="mt-3 text-buttonBlue hover:cursor-pointer font-semibold">
+            <p>Corporate Training</p>
+          </div>
+          <div className="mt-3 text-buttonBlue hover:cursor-pointer font-semibold">
+            <p>Blogs</p>
+          </div>
+          <div className="flex items-center">
+            {" "}
+            <div className="w-[1px] bg-buttonBlue  h-[50px]"></div>
+          </div>
           <a
             target="_blank"
             rel="noreferrer"
@@ -196,10 +206,8 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
         </div>
       </nav>
 
-      <main className="bg-[#f4f3ff] font-SourceSans font-normal">
-        {children}
-      </main>
-      <footer className="border-slate-400 bg-white border-t px-10 py-6 md:py-12">
+      <main className=" font-SourceSans font-normal">{children}</main>
+      <footer className=" bg-white  px-10 py-6 md:py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 md:flex md:flex-row justify-between items-start">
           <div className="col-span-2 pb-4 md:pb-0 ">
             <a className="flex justify-start items-center pl-6 md:pl-0">

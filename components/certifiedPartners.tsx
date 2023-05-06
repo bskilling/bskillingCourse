@@ -26,8 +26,8 @@ const CertifiedPartners = () => {
       <div className="relative bg-white w-auto">
         {/* <div className="w-full h-[60vh] flex overflow-x-auto snap-mandatory snap-x scrollbar-hide"> */}
 
-        <div className="w-full md:container flex justify-center sm:flex-wrap md:gap-4 mx-auto">
-          <h1 className="text-base font-semibold pt-12 text-black  text-center">
+        <div className="w-full md:container flex justify-center sm:flex-wrap md:gap-6 mx-auto">
+          <h1 className="text-base  font-semibold pt-12 text-black  text-left">
             Certified Learning <br /> Partner
           </h1>
           {logos.map((x, index) => (

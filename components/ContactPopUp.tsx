@@ -61,7 +61,7 @@ const ContactPopUp = () => {
     <>
       <div
         className={`fixed bottom-0 right-0 transition-transform ease-in-out duration-1000 z-[1000] rounded-xl shadow-lg min-h-[300px] min-w-[300px] bg-white transform ${
-          contactVisible ? "translate-y-0" : " translate-y-[269px]"
+          contactVisible ? "translate-y-0" : " translate-y-[395px]"
         }`}
       >
         <div className="min-h-[50px] p-1 flex gap-12  justify-around rounded-sm bg-buttonBlue">
@@ -88,9 +88,28 @@ const ContactPopUp = () => {
         <div>
           <div className="flex   px-5  mt-4 flex-col">
             <input
+              type="text"
+              className=" block  w-full lg:h-[35px] rounded-lg px-2 border border-buttonBlue   placeholder-smaller focus:border-green focus:ring focus:ring-green focus:ring-opacity-50"
+              placeholder="Your Name*"
+              {...register("name", {
+                required: true,
+              })}
+            />
+            <label
+              className={`text-red-600   text-xs py-1 ${
+                errors.phone ? "visible" : "invisible"
+              }`}
+            >
+              {errors.phone?.type == "required"
+                ? "This field required"
+                : "Please enter a valid phone number"}
+            </label>
+          </div>
+          <div className="flex   px-5   flex-col">
+            <input
               type="number"
               className=" block  w-full lg:h-[35px] rounded-lg px-2 border border-buttonBlue   placeholder-smaller focus:border-green focus:ring focus:ring-green focus:ring-opacity-50"
-              placeholder="Your mobile number*"
+              placeholder="Your Mobile Number*"
               {...register("phone", {
                 required: true,
                 minLength: 10,
@@ -112,10 +131,29 @@ const ContactPopUp = () => {
             <input
               type="text"
               className="block  w-full lg:h-[35px] rounded-lg px-2 border-buttonBlue  border border-green placeholder-smaller focus:border-green focus:ring focus:ring-green focus:ring-opacity-50"
-              placeholder="Your email*"
+              placeholder="Your Email*"
               {...register("email", {
                 required: true,
                 pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+              })}
+            />
+
+            <label
+              className={`text-red-600   text-xs py-1 ${
+                errors.email ? "visible" : "invisible"
+              }`}
+            >
+              This field is required
+            </label>
+          </div>
+          <div className="flex px-5 flex-col">
+            {/* <span className="text-black">Email</span> */}
+            <input
+              type="text"
+              className="block  w-full lg:h-[35px] rounded-lg px-2 border-buttonBlue  border border-green placeholder-smaller focus:border-green focus:ring focus:ring-green focus:ring-opacity-50"
+              placeholder="Your Location*"
+              {...register("location", {
+                required: true,
               })}
             />
 
@@ -131,7 +169,7 @@ const ContactPopUp = () => {
             <input
               type="text"
               className="block  w-full lg:h-[50px] rounded-lg px-2 border border-buttonBlue placeholder-smaller focus:border-green focus:ring focus:ring-green focus:ring-opacity-50"
-              placeholder="Type your query here*"
+              placeholder="Type Your Query Here*"
               {...register("message", {
                 required: true,
               })}
