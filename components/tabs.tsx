@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import { ReactNode, useContext, useState, useEffect } from "react";
 import { AiFillCaretDown, AiOutlineMenu } from "react-icons/ai";
 import { FaBeer } from "react-icons/fa";
+import { useMediaQuery } from "react-responsive";
 const Tabs = () => {
   const router = useRouter();
   const {
@@ -28,17 +29,21 @@ const Tabs = () => {
     setFetchSearchData,
     AllCourseButtonIndex,
     setAllCourseButtonIndex,
+    categoryVisible,
+    setCategoryVisible,
+    isDropdownOpen,
+    setIsDropdownOpen,
   } = useContext(MyContext);
-  const [categoryVisible, setCategoryVisible] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
   const TabButtonClick = (x: number) => {
-    console.log(buttonIndex);
     setLoadingVisible(true);
+    setIsDropdownOpen(false);
     setAllCourseButtonIndex(x);
+    const url = "/allCourses?buttonIndexs=" + x;
     setTimeout(() => {
       setLoadingVisible(false);
       // router.push("/allCourses")
-      window.open("/allCourses", "_blank");
+      window.open(url, "_blank");
     }, 1000);
   };
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -46,20 +51,36 @@ const Tabs = () => {
     setButtonIndex(x);
     setTabVisible(false);
   };
-  const clickOnCategory = () => {
-    setCategoryVisible((pre) => !pre);
+  const clickOnCategory = (x: number) => {
+    setLoadingVisible(true);
+    setIsDropdownOpen(false);
+    setAllCourseButtonIndex(x);
+    const url = "/allCourses?buttonIndexs=" + x;
+    setTimeout(() => {
+      setLoadingVisible(false);
+      setCategoryVisible(false);
+      // router.push("/allCourses")
+      window.open(url, "_blank");
+    }, 1000);
   };
+  const isSmallScreen = useMediaQuery({ maxWidth: 1020 });
   console.log(AllCourseButtonIndex, "button index");
   return (
     <div className="flex  w-full">
-      <div className="flex gap-14  w-full">
-        <div className="flex ml-20">
-          <div className="flex items-end mb-2 gap-">
-            <button className="text-left " onClick={clickOnCategory}>
-              <p className="text-sm">Browse</p>
+      <div className="flex md:gap-4 w-full">
+        <div className="flex md:justify-start w-full md:w-fit justify-center  ml-8 md:ml-20">
+          <div className="flex  items-end mb-5 md:mb-2 gap-">
+            <button
+              className="text-left md:gap-0 md:mt-0 mt-4 md:block flex "
+              onClick={() => setCategoryVisible((pre) => !pre)}
+            >
+              <p className="md:text-sm">Browse</p>
               <p>Categories</p>
             </button>
-            <div onClick={clickOnCategory} className="mb-1">
+            <div
+              onClick={() => setCategoryVisible((pre) => !pre)}
+              className="mb-1"
+            >
               <AiFillCaretDown />
             </div>
           </div>
@@ -69,7 +90,7 @@ const Tabs = () => {
                 <div
                   key={categoryName}
                   className="px-5 py-2 hover:bg-buttonBlue text-black hover:text-white  cursor-pointer"
-                  onClick={() => setButtonIndex(index)}
+                  onClick={() => clickOnCategory(index)}
                 >
                   {categoryName}
                 </div>
@@ -80,86 +101,67 @@ const Tabs = () => {
           )}
         </div>
 
-        <div className=" hidden md:block pt-5  mb-5 w-full   ">
-          <div
-            className="-mb-0.5 flex justify-start sm:block"
-            aria-label="Tabs"
-          >
-            <ul className="flex md:flex-row flex-col items-center md:justify-start space-x-5">
-              {BrowseAllCourse.slice(0, 12).map(({ categoryName }, index) => (
-                <li
-                  key={categoryName}
-                  className={`${
-                    index === AllCourseButtonIndex
-                      ? ""
-                      : "text-white hover:text-white "
-                  }`}
-                >
-                  <button
-                    type="button"
-                    className="px-4 pb-1 "
-                    onClick={() => TabButtonClick(index)}
+        {isSmallScreen ? (
+          ""
+        ) : (
+          <div className=" hidden md:block pt-5  mb-5 w-full   ">
+            <div
+              className="-mb-0.5 flex justify-start sm:block"
+              aria-label="Tabs"
+            >
+              <ul className="flex md:flex-row flex-col items-center md:justify-start space-x-5">
+                {BrowseAllCourse.slice(0, 13).map(({ categoryName }, index) => (
+                  <li
+                    key={categoryName}
+                    className={`${
+                      index === AllCourseButtonIndex
+                        ? ""
+                        : "text-white hover:text-white "
+                    }`}
                   >
-                    {categoryName}
-                  </button>
-                </li>
-              ))}
-              {BrowseAllCourse.length > 12 && (
-                <li className="relative">
-                  <button
-                    type="button"
-                    className="px-4 pb-1 font-semibold"
-                    onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                    aria-haspopup="true"
-                    aria-expanded={isDropdownOpen}
-                  >
-                    <AiOutlineMenu />
-                  </button>
-                  {isDropdownOpen && (
-                    <div className="origin-top-right absolute  z-[6000] left-[px] right-0 mt-5  w- rounded-md shadow-lg bg-white ring-1     ">
-                      {BrowseAllCourse.slice(12).map(
-                        ({ categoryName }, index) => (
-                          <button
-                            key={categoryName}
-                            className="text-black hover:text-white text-right   block px-6 border-0 w-full hover:bg-buttonBlue   cursor-pointer py-2 text-sm  hover:text-gray-900"
-                            onClick={() => TabButtonClick(index + 12)}
-                          >
-                            {categoryName}
-                          </button>
-                        )
-                      )}
-                    </div>
-                  )}
-                </li>
-              )}
-            </ul>
+                    <button
+                      type="button"
+                      className="px-4 pb-1 "
+                      onClick={() => TabButtonClick(index)}
+                    >
+                      {categoryName}
+                    </button>
+                  </li>
+                ))}
+                {BrowseAllCourse.length > 13 && (
+                  <li className="relative">
+                    <button
+                      type="button"
+                      className="px-4 pb-1 font-semibold"
+                      onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                      aria-haspopup="true"
+                      aria-expanded={isDropdownOpen}
+                    >
+                      <AiOutlineMenu />
+                    </button>
+                    {isDropdownOpen && (
+                      <div className="origin-top-right absolute  z-[6000] left-[px] right-0 mt-5  w- rounded-md shadow-lg bg-white ring-1     ">
+                        {BrowseAllCourse.slice(13).map(
+                          ({ categoryName }, index) => (
+                            <button
+                              key={categoryName}
+                              className="text-black hover:text-white text-right   block px-9 border-0 w-full hover:bg-buttonBlue   cursor-pointer py-2 text-sm  hover:text-gray-900"
+                              onClick={() => TabButtonClick(index + 13)}
+                            >
+                              {categoryName}
+                            </button>
+                          )
+                        )}
+                      </div>
+                    )}
+                  </li>
+                )}
+              </ul>
+            </div>
           </div>
-        </div>
+        )}
       </div>
 
-      {tabVisible === true ? (
-        <div className="block p-5 md:hidden">
-          <div className="mx-auto md:pt-5 w-full max-w-5xl">
-            <label htmlFor="tabs" className="sr-only">
-              Courses
-            </label>
-            <select
-              id="tabs"
-              className="block w-full py-2 pl-5 pr-10 text-base leading-6 text-black hover:text-black bg-white border-[1px] border-buttonBlue rounded-md focus:border-buttonBlue focus:ring-buttonBlue sm:text-sm sm:leading-5"
-              value={buttonIndex}
-              onChange={(event) => TabButtonClick(parseInt(event.target.value))}
-            >
-              {CourseDetails.map(({ categoryName }, index) => (
-                <option key={categoryName} value={index}>
-                  {categoryName}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
-      ) : (
-        ""
-      )}
       {loadingVisible === true ? (
         <div
           className="inset-0 bg-[#3d3c3d] opacity-75 fixed  flex w-full h-full items-center justify-center duration-300 transition-opacity"

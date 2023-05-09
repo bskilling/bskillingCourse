@@ -12,7 +12,14 @@ module.exports = {
     container: {
       padding: "4rem",
     },
-
+    screens: {
+      sm: "640px",
+      md: "768px",
+      mycustombreakpoint: "960px",
+      lg: "1024px",
+      xl: "1280px",
+      "2xl": "1536px",
+    },
     extend: {
       colors: {
         gray: "#e9e9e9",
