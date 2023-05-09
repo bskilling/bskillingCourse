@@ -53,7 +53,7 @@ const Slider = () => {
               <SwiperSlide key={id}>
                 <div className="h-[48vh] w-full relative flex justify-center items-center">
                   <img
-                    className="object-cover absolute w-full  h-full"
+                    className="object-cover object-center md:object-top absolute w-full  h-full"
                     src={image}
                     alt=""
                   />

@@ -33,6 +33,12 @@ type MyContextType = {
   setFetchSearchData: React.Dispatch<React.SetStateAction<SearchCourseArray[]>>;
   AllCourseButtonIndex: number;
   setAllCourseButtonIndex: React.Dispatch<React.SetStateAction<number>>;
+  setCategoryVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  categoryVisible: boolean;
+  setIsDropdownOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  isDropdownOpen: boolean;
+  setIsDropdownOpenInListCrs: React.Dispatch<React.SetStateAction<boolean>>;
+  isDropdownOpenInListCrs: boolean;
 };
 
 export const MyContext = createContext<MyContextType>({
@@ -56,6 +62,12 @@ export const MyContext = createContext<MyContextType>({
   setFetchSearchData: () => {},
   AllCourseButtonIndex: 0,
   setAllCourseButtonIndex: () => {},
+  categoryVisible: false,
+  setCategoryVisible: () => {},
+  isDropdownOpen: false,
+  setIsDropdownOpen: () => {},
+  isDropdownOpenInListCrs: false,
+  setIsDropdownOpenInListCrs: () => {},
 });
 type MyProviderProps = {
   children: React.ReactNode;
@@ -74,7 +86,9 @@ export const MyProvider: React.FC<MyProviderProps> = ({ children }) => {
     []
   );
   const [AllCourseButtonIndex, setAllCourseButtonIndex] = useState(0);
-
+  const [categoryVisible, setCategoryVisible] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isDropdownOpenInListCrs, setIsDropdownOpenInListCrs] = useState(false);
   const value: MyContextType = {
     searchData,
     setSearchData,
@@ -96,6 +110,12 @@ export const MyProvider: React.FC<MyProviderProps> = ({ children }) => {
     setFetchSearchData,
     AllCourseButtonIndex,
     setAllCourseButtonIndex,
+    categoryVisible,
+    setCategoryVisible,
+    isDropdownOpen,
+    setIsDropdownOpen,
+    isDropdownOpenInListCrs,
+    setIsDropdownOpenInListCrs,
   };
 
   return <MyContext.Provider value={value}>{children}</MyContext.Provider>;

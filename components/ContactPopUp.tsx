@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 interface SubmitData {
@@ -19,7 +19,6 @@ const ContactPopUp = () => {
   const isButtonVisble = watch("message") && watch("email") && watch("phone");
 
   const submit = handleSubmit(async (data) => {
-    console.log(data);
     const { email, phone, message } = data;
     try {
       const response = await fetch(
@@ -51,8 +50,18 @@ const ContactPopUp = () => {
       alert("Some thing went wrong");
     }
   });
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setContactVisible(true);
+    }, 4000);
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, []);
   const [message, setMessage] = useState(false);
-  const [contactVisible, setContactVisible] = useState(true);
+  const [contactVisible, setContactVisible] = useState(false);
+
   const contactDetailsVisible = () => {
     setContactVisible((prev) => !prev);
   };
@@ -61,7 +70,9 @@ const ContactPopUp = () => {
     <>
       <div
         className={`fixed bottom-0 right-0 transition-transform ease-in-out duration-1000 z-[1000] rounded-xl shadow-lg min-h-[300px] min-w-[300px] bg-white transform ${
-          contactVisible ? "translate-y-0" : " translate-y-[395px]"
+          contactVisible
+            ? "translate-y-0"
+            : "translate-y-[360px] md:translate-y-[395px]"
         }`}
       >
         <div className="min-h-[50px] p-1 flex gap-12  justify-around rounded-sm bg-buttonBlue">
@@ -193,7 +204,7 @@ const ContactPopUp = () => {
               <button
                 onClick={submit}
                 disabled={!isButtonVisble}
-                className={`text-white  transition duration-500 hover:scale-105 ease-out  bg-buttonBlue hover:bg-buttonBlue py-2 focus:ring-1 focus:outline-none focus:ring-buttonBlue font-medium rounded-lg text-sm px-4   ${
+                className={`text-white  transition duration-500 hover:scale-105 ease-out  bg-buttonBlue hover:bg-buttonBlue py-2 focus:ring-1 focus:outline-none focus:ring-buttonBlue font-medium  text-sm px-4   ${
                   isButtonVisble ? "opacity-100" : "opacity-50 "
                 }`}
               >

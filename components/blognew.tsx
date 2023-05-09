@@ -165,7 +165,7 @@ export default function Testimonials() {
   return (
     <>
       <section className="text-black md:container  mx-auto  body-font md:pt-14 md:pb-10 ">
-        <div className="">
+        <div className="p-5">
           <Swiper
             modules={[Pagination, Autoplay]}
             slidesPerView={1}
@@ -220,13 +220,15 @@ export default function Testimonials() {
                           />
                         </div>
 
-                        <h1 className="title-font px-3 stext-lg text-left font-bold text-gray-900 mb-3">
+                        <h1 className="title-font px-3 mt-2 text-lg text-left font-bold text-gray-900 mb-3">
                           {name}
                         </h1>
                         <p className="text-left px-3 ">Source : {sorc}</p>
                         <p className="text-left px-3 ">Author : {auth}</p>
-                        <p className="leading-relaxed px-3  mt-2 text-left ">
-                          {desc}
+                        <p className="leading-relaxed px-3 mb-5 mt-2 text-left">
+                          {desc.length > 100
+                            ? desc.substring(0, 100) + "..."
+                            : desc}
                         </p>
                       </div>
                       {/* <div className="flex justify-center mt-6 ">
@@ -264,13 +266,15 @@ export default function Testimonials() {
                           />
                         </div>
 
-                        <h1 className="title-font px-3 text-lg text-left font-bold  text-gray-900 mb-3">
+                        <h1 className="title-font px-3 mt-2 text-lg text-left font-bold  text-gray-900 mb-3">
                           {name}
                         </h1>
-                        <p className="text-left px-3 ">Source : {sorc}</p>
+                        <p className="text-left  px-3 ">Source : {sorc}</p>
                         <p className="text-left px-3 ">Author : {auth}</p>
-                        <p className="leading-relaxed px-3  mt-2 text-left ">
-                          {desc}
+                        <p className="leading-relaxed px-3 mb-5 mt-2 text-left">
+                          {desc.length > 100
+                            ? desc.substring(0, 100) + "..."
+                            : desc}
                         </p>
                       </div>
                       {/* <div className="flex justify-center mt-6 ">
@@ -308,13 +312,15 @@ export default function Testimonials() {
                           />
                         </div>
 
-                        <h1 className="title-font px-3 text-lg text-left font-bold  text-gray-900 mb-3">
+                        <h1 className="title-font px-3 mt-2 text-lg text-left font-bold  text-gray-900 mb-3">
                           {name}
                         </h1>
                         <p className="text-left px-3 ">Source : {sorc}</p>
                         <p className="text-left px-3 ">Author : {auth}</p>
-                        <p className="leading-relaxed px-3  mt-2 text-left ">
-                          {desc}
+                        <p className="leading-relaxed px-3 mb-5 mt-2 text-left">
+                          {desc.length > 100
+                            ? desc.substring(0, 100) + "..."
+                            : desc}
                         </p>
                       </div>
                       {/* <div className="flex justify-center mt-6 ">
