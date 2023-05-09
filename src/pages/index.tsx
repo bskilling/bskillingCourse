@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useContext, useEffect, useState } from "react";
 import { api } from "common/util/auth";
 import { MdAdd } from "react-icons/md";
 import { NextPage } from "next";
@@ -13,36 +13,59 @@ import Testimonials from "components/testimonials";
 import CertifiedPartners from "components/certifiedPartners";
 import Tabs from "components/tabs";
 import Blogs from "components/blognew";
+import { MyContext } from "context/PageContext";
 
 const Home: NextPage<NextPage> = ({}) => {
- 
+  const {
+    setButtonIndex,
+    buttonIndex,
+    clickOnSearch,
+    setClickOnSearch,
+    currentTab,
+    setCurrentTab,
+    dropSearchData,
+    setDropSearchData,
+    inputValue,
+    setInputValue,
+    loadingVisible,
+    setLoadingVisible,
+    searchData,
+    setSearchData,
+    setTabVisible,
+    tabVisible,
+    fetchSearchData,
+    setFetchSearchData,
+    isDropdownOpen,
+    setIsDropdownOpen,
+    setCategoryVisible,
+  } = useContext(MyContext);
+  const clickOnMain = () => {
+    setIsDropdownOpen(false);
+    setCategoryVisible(false);
+  };
   return (
     <>
       <section className="bg-buttonBlue text-white">
-      <Tabs />
+        <Tabs />
       </section>
-      <ContactPopUp />
-      <section>
-        <Slider />
-      </section>
+      <section onClick={clickOnMain}>
+        <ContactPopUp />
+        <section>
+          <Slider />
+        </section>
 
-      {/* <section>
-        <Become />
-      </section> */}
-      {/* <section>
-        <img src="/firstimage.png" alt="" />
-      </section> */}
-      <section className="bg-gray">
-        <ListOfCourses />
-      </section>
-      <section>
-        <CertifiedPartners />
-      </section>
-      <section className="">
-        <Testimonials />
-      </section>
-      <section className="bg-gray">
-        <Blogs />
+        <section className="bg-gray">
+          <ListOfCourses />
+        </section>
+        <section>
+          <CertifiedPartners />
+        </section>
+        <section className="">
+          <Testimonials />
+        </section>
+        <section className="bg-gray">
+          <Blogs />
+        </section>
       </section>
     </>
   );

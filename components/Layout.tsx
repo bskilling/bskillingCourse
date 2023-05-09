@@ -48,6 +48,9 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
     tabVisible,
     fetchSearchData,
     setFetchSearchData,
+    isDropdownOpen,
+    setIsDropdownOpen,
+    setCategoryVisible,
   } = useContext(MyContext);
   const handleClick = (Course: searchCourseArray) => {
     setDropSearchData([]);
@@ -69,20 +72,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
       setDropSearchData(filteredData);
     }
   };
-  // function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
-  //   if (event.key === "Enter") {
-  //     setLoadingVisible(true);
-  //     setTimeout(() => {
-  //       const filteredData = fetchSearchData.filter((course) =>
-  //         course.CourseName.toLowerCase().includes(inputValue.toLowerCase())
-  //       );
-  //       setTabVisible(false);
-  //       setClickOnSearch(true);
-  //       setSearchData(filteredData);
-  //       setLoadingVisible(false);
-  //     }, 1000);
-  //   }
-  // }
+
   const handleSearchClick = () => {
     if (selectedCourse?.CourseLink) {
       window.open(selectedCourse.CourseLink, "_blank");
@@ -104,7 +94,10 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
       setLoadingVisible(false);
     }, 1000);
   };
-  console.log(dropSearchData);
+  const clickOnMain = () => {
+    setIsDropdownOpen(false);
+    setCategoryVisible(false);
+  };
   return (
     <>
       <Head>
@@ -115,12 +108,15 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
 
       <nav className="md:py-4   md:p-0 bg-white flex  md:flex-row flex-col md:gap-36 md:justify-between w-full  shadow-">
         <div className="flex gap-5  md:flex-row flex-col items-center justify-center md:ml-10 ">
-          <img
-            src="/logo.png"
-            className="w-[200px] md:my-0 my-5 h-fit"
-            alt=""
-          />
-          <div className="flex md:flex-row flex-col gap-2">
+          <Link href={"/"}>
+            <img
+              src="/logo.png"
+              className="w-[200px] md:my-0 my-5 md:h-fit"
+              alt=""
+            />
+          </Link>
+
+          <div className="flex lg:flex-row flex-col gap-2">
             <div className="relative flex justify-end md:w-[500px]">
               <input
                 type="text"
@@ -135,7 +131,10 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
                 <BiSearchAlt />
               </div>
               {dropSearchData.length > 0 && (
-                <div className="absolute z-[6000] w-full  bg-white rounded-lg  shadow-lg  -mr-14 mt-10">
+                <div
+                  style={{ maxHeight: "500px", overflowY: "auto" }}
+                  className="absolute z-[6000] w-full  bg-white rounded-lg  shadow-lg  md:-mr-14 mt-10"
+                >
                   {dropSearchData.map((course) => (
                     <div
                       key={course.id}
@@ -147,38 +146,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
                   ))}
                 </div>
               )}
-
-              {/* {dropSearchData.length > 0 && (
-              <div className="absolute w-full bg-white rounded-lg shadow-lg mt-2">
-                {dropSearchData.map((course) => (
-                  <div
-                    key={course.id}
-                    className="p-2 hover:bg-[#eae7fe] cursor-pointer"
-                    onClick={() => handleClick(course.CourseName)}
-                  >
-                    {course.CourseName}
-                  </div>
-                ))}
-              </div>
-            )} */}
             </div>
-            {/* <div className="flex flex-col justify-center">
-              <button
-                onClick={handleSearchClick}
-                className="text-white transition duration-500 hover:scale-105 ease-out  bg-Buttoncolor hover:bg-buttonBlue py-[10px] focus:ring-1 focus:outline-none focus:ring-buttonBlue font-medium rounded-lg text-sm px-4   "
-              >
-                Search
-              </button>
-            </div>
-
-            <div className="flex flex-col  justify-center">
-              <button
-                onClick={ClearButtonClick}
-                className="text-balck border hover:text-white border-buttonBlue transition duration-500 hover:scale-105 ease-out  bg-white hover:bg-buttonBlue py-2 focus:ring-1 focus:outline-none focus:ring-buttonBlue font-medium rounded-lg text-sm px-4  "
-              >
-                Clear
-              </button>
-            </div> */}
           </div>
         </div>
 
@@ -199,7 +167,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
             className="underline-0"
             href="https://bskilling.melimu.com/login/index.php"
           >
-            <button className="flex gap-1 text-white mt-2 border hover:text-white border-buttonBlue transition duration-500 hover:scale-105 ease-out  bg-buttonBlue hover:bg-buttonBlue py-[8px] focus:ring-1 focus:outline-none focus:ring-buttonBlue font-medium rounded-lg text-sm px-4 ">
+            <button className="flex gap-1 text-white mt-2 border hover:text-white border-buttonBlue transition duration-500 hover:scale-105 ease-out  bg-buttonBlue hover:bg-buttonBlue py-[8px] focus:ring-1 focus:outline-none focus:ring-buttonBlue font-medium  text-sm px-4 ">
               <p>Login</p>
             </button>
           </a>
@@ -216,7 +184,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
               </div>
             </a>
           </div>
-          <div className="text-sm p-4 md:p-0 ">
+          <div className="text-sm col-span-2 p-4 md:p-0 ">
             <p className="font-semibold">INDIA - HEAD OFFICE</p>
             <p className="">Uma Sree Dream World, Unit -2,</p>
             <p className="">B-Block, 4th Floor, Kudlu Gate,</p>
@@ -234,60 +202,10 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
             <p className="font-semibold text-sm pb-2 text-zinc-500">
               Find us on
             </p>
-            <div className="grid-cols-5 gap-2 inline-grid ">
+            <div className="grid-cols-2  gap-2 inline-grid ">
               <a
                 className="hover:scale-105 transition-all"
-                href=""
-                target="_blank"
-                rel="noreferrer"
-              >
-                <svg
-                  className="w-8 h-8 facebook"
-                  width="100"
-                  height="100"
-                  viewBox="0 0 187 187"
-                >
-                  <rect
-                    width="187"
-                    height="187"
-                    fill="#3b5998"
-                    rx="18"
-                    ry="18"
-                  />
-                  <path
-                    fill="#fefefe"
-                    d="M131 79l0 -12c0,-6 4,-7 6,-7 3,0 18,0 18,0l0 -27 -24 0c-27,0 -33,20 -33,32l0 14 -15 0 0 19 0 12 16 0c0,35 0,77 0,77l30 0c0,0 0,-42 0,-77l23 0 1 -12 2 -19 -24 0z"
-                  />
-                </svg>
-              </a>
-              <a
-                className="hover:scale-105 transition-all"
-                href=""
-                target="_blank"
-                rel="noreferrer"
-              >
-                <svg
-                  className="w-8 h-8 twitter"
-                  width="100"
-                  height="100"
-                  viewBox="0 0 384 384"
-                >
-                  <rect
-                    width="384"
-                    height="384"
-                    fill="#1DA1F2"
-                    rx="37"
-                    ry="37"
-                  />
-                  <path
-                    fill="#fefefe"
-                    d="M313 118c-9,4 -19,6 -29,8 11,-7 19,-16 22,-28 -9,6 -20,10 -31,12 -9,-9 -22,-15 -37,-15 -27,0 -49,22 -49,49 0,4 0,7 1,11 -41,-2 -78,-22 -102,-51 -5,7 -7,15 -7,24 0,17 9,32 22,41 -8,0 -16,-2 -23,-6 0,0 0,0 0,1 0,6 2,12 4,17 6,16 20,27 36,31 -4,1 -8,1 -13,1 -3,0 -6,0 -9,-1 6,20 25,34 46,34 -17,14 -38,21 -61,21 -5,0 -8,0 -12,0 22,14 48,22 76,22 78,0 125,-54 138,-110 2,-10 3,-20 3,-30 0,-2 0,-4 0,-6 10,-7 18,-15 25,-25z"
-                  />
-                </svg>
-              </a>
-              <a
-                className="hover:scale-105 transition-all"
-                href=""
+                href="https://www.linkedin.com/company/sfj-business-solutions-pvt-ltd-/"
                 target="_blank"
                 rel="noreferrer"
               >
@@ -316,7 +234,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
               </a>
               <a
                 className="hover:scale-105 transition-all"
-                href=""
+                href="https://www.instagram.com/sfjbs_bangalore/"
                 target="_blank"
                 rel="noreferrer"
               >
@@ -342,31 +260,6 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
                     d="M192 123c19,0 36,7 48,20 12,12 20,29 20,48 0,19 -8,35 -20,48 -12,12 -29,20 -48,20 -19,0 -36,-8 -48,-20 -13,-13 -20,-29 -20,-48 0,-19 7,-36 20,-48 12,-13 29,-20 48,-20zm32 35c-8,-8 -20,-13 -32,-13 -13,0 -24,5 -33,13 -8,9 -13,20 -13,33 0,12 5,24 13,32 9,8 20,13 33,13 12,0 24,-5 32,-13 8,-8 14,-20 14,-32 0,-13 -6,-24 -14,-33z"
                   />
                   <circle cx="265" cy="119" r="16" fill="#fff" />
-                </svg>
-              </a>
-              <a
-                className="hover:scale-105 transition-all"
-                href=""
-                target="_blank"
-                rel="noreferrer"
-              >
-                <svg
-                  className="w-8 h-8 youtube"
-                  width="100"
-                  height="100"
-                  viewBox="0 0 5067 5067"
-                >
-                  <rect
-                    width="5067"
-                    height="5067"
-                    fill="#c4302b"
-                    rx="489"
-                    ry="489"
-                  />
-                  <path
-                    fill="#fefefe"
-                    d="M3110 2497l-933 504 0 -776 0 -236 421 229 512 279zm1116 -684c0,0 -33,-248 -137,-357 -131,-144 -278,-145 -346,-153 -483,-36 -1208,-36 -1208,-36l-2 0c0,0 -725,0 -1209,36 -67,8 -214,9 -346,153 -103,109 -137,357 -137,357 0,0 -35,292 -35,583l0 36 0 238c0,291 35,583 35,583 0,0 34,248 137,357 132,144 304,139 381,154 277,28 1175,36 1175,36 0,0 726,-1 1209,-37 68,-9 215,-9 346,-153 104,-109 137,-357 137,-357 0,0 35,-292 35,-583l0 -223 0 -51c0,-291 -35,-583 -35,-583z"
-                  />
                 </svg>
               </a>
             </div>
