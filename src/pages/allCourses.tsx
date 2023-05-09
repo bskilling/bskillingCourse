@@ -74,10 +74,10 @@ const AllCourses = () => {
       <section className="bg-gray">
         <div className="flex pt-5 w-full">
           <div className="flex md:gap-4 w-full">
-            <div className="flex md:justify-start w-full md:w-fit justify-center  ml-8 md:ml-20">
+            <div className="flex justify-start w-full md:w-fit   ml-8 md:ml-20">
               <div className="flex  items-end mt-3 mb-3 md:mb-2 gap-">
                 <button
-                  className="text-left md:gap-0 gap-1 md:mt-0 mt-4 md:block flex "
+                  className="text-left md:gap-0 gap-1 md:mt-0 mt-4 block  "
                   onClick={() => setCategoryVisible((pre) => !pre)}
                 >
                   <p className="md:text-sm">Browse</p>
@@ -91,7 +91,7 @@ const AllCourses = () => {
                 </div>
               </div>
               {categoryVisible ? (
-                <div className="absolute ml- mt-[75px] z-[1000] w-[]  bg-white  rounded-lg shadow-lg ">
+                <div className="absolute mt-[100px] md:mt-[75px] z-[1000] w-[]  bg-white  rounded-lg shadow-lg ">
                   {CourseDetails.map(({ categoryName }, index) => (
                     <div
                       key={categoryName}
