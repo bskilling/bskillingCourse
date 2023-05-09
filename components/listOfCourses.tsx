@@ -85,7 +85,6 @@ const ListOfCourses: NextPage<{}> = () => {
     }
   }
   const handleSearchClick = () => {
-  
     if (tabVisible === false) {
     }
     if (inputValue === "") {
@@ -245,7 +244,7 @@ const ListOfCourses: NextPage<{}> = () => {
           onClick={() => setIsDropdownOpenInListCrs(false)}
           className="py-10 md:container  md:mx-auto "
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4   gap-4 w-full">
+          <div className="grid grid-cols-1 md:p-0 p-5 md:grid-cols-2 lg:grid-cols-4   gap-4 w-full">
             {CourseDetails[buttonIndex].ListOfCourse.map((data) => {
               return (
                 <>
