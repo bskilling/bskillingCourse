@@ -16,13 +16,19 @@ const ContactPopUp = () => {
   } = useForm({
     mode: "onChange",
   });
-  const isButtonVisble = watch("message") && watch("email") && watch("phone");
+  const isButtonVisble =
+    watch("message") &&
+    watch("email") &&
+    watch("phone") &&
+    watch("location") &&
+    watch("name");
 
   const submit = handleSubmit(async (data) => {
-    const { email, phone, message } = data;
+    const { email, phone, message, location, name } = data;
+    console.log(data)
     try {
       const response = await fetch(
-        "",
+        "https://ld3djjvftm4yzco5q6bhsvydfy0qvhyn.lambda-url.ap-south-1.on.aws/",
 
         {
           method: "POST",
@@ -32,14 +38,18 @@ const ContactPopUp = () => {
             message,
             email,
             phone,
+            location,
+            name,
           }),
         }
       );
-      if (true) {
+      if (response.status === 200) {
         reset({
           message: "",
           phone: "",
           email: "",
+          location: "",
+          name: "",
         });
 
         setMessage(true);
@@ -88,14 +98,6 @@ const ContactPopUp = () => {
           </div>
         </div>
 
-        {/* <div className="flex gap-6 py-3 justify-center">
-          <div>
-            <img src="/icon/phone.png" alt="" />
-          </div>
-          <div className="flex items-center">
-            <p className="font-medium">+9845348601</p>
-          </div>
-        </div> */}
         <div>
           <div className="flex   px-5  mt-4 flex-col">
             <input
@@ -170,7 +172,7 @@ const ContactPopUp = () => {
 
             <label
               className={`text-red-600   text-xs py-1 ${
-                errors.email ? "visible" : "invisible"
+                errors.location ? "visible" : "invisible"
               }`}
             >
               This field is required
