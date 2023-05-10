@@ -213,7 +213,7 @@ export default function Testimonials() {
                         <div className=" w-full transition duration-150 ease-out hover:ease-in hover:opacity-50">
                           <img
                             className=" flex-shrink-0 object-cover xl:w-[100%] xl:h-[rem]"
-                            src={"/sap.png"}
+                            src={"/common.jpg"}
                             width={400}
                             height={300}
                             alt=""
@@ -263,7 +263,7 @@ export default function Testimonials() {
                         <div className=" w-full transition duration-150 ease-out hover:ease-in hover:opacity-50">
                           <img
                             className=" flex-shrink-0 object-cover xl:w-[100%] xl:h-[rem]"
-                            src={"/sap.png"}
+                            src={"/common.jpg"}
                             width={400}
                             height={300}
                             alt=""
@@ -313,7 +313,7 @@ export default function Testimonials() {
                         <div className=" w-full transition duration-150 ease-out hover:ease-in hover:opacity-50">
                           <img
                             className=" flex-shrink-0 object-cover xl:w-[100%] xl:h-[rem]"
-                            src={"/sap.png"}
+                            src={"/common.jpg"}
                             width={400}
                             height={300}
                             alt=""
