@@ -25,7 +25,7 @@ const ContactPopUp = () => {
 
   const submit = handleSubmit(async (data) => {
     const { email, phone, message, location, name } = data;
-    console.log(data)
+    console.log(data);
     try {
       const response = await fetch(
         "https://ld3djjvftm4yzco5q6bhsvydfy0qvhyn.lambda-url.ap-south-1.on.aws/",
@@ -110,12 +110,12 @@ const ContactPopUp = () => {
             />
             <label
               className={`text-red-600   text-xs py-1 ${
-                errors.phone ? "visible" : "invisible"
+                errors.name ? "visible" : "invisible"
               }`}
             >
               {errors.phone?.type == "required"
                 ? "This field required"
-                : "Please enter a valid phone number"}
+                : "This field required"}
             </label>
           </div>
           <div className="flex   px-5   flex-col">
@@ -126,6 +126,7 @@ const ContactPopUp = () => {
               {...register("phone", {
                 required: true,
                 minLength: 10,
+                maxLength: 10,
               })}
             />
             <label
@@ -156,7 +157,7 @@ const ContactPopUp = () => {
                 errors.email ? "visible" : "invisible"
               }`}
             >
-              This field is required
+              Please enter a valid email address
             </label>
           </div>
           <div className="flex px-5 flex-col">
