@@ -100,7 +100,7 @@ const ContactPopUp = () => {
           <div className="flex   px-5  mt-4 flex-col">
             <input
               type="text"
-              className=" block  w-full lg:h-[35px] rounded-lg px-2 border border-buttonBlue   placeholder-smaller focus:border-green focus:ring focus:ring-green focus:ring-opacity-50"
+              className=" block text-base  w-full lg:h-[35px] placeholder:text-sm  px-2 border border-buttonBlue    focus:border-green focus:ring focus:ring-green focus:ring-opacity-50"
               placeholder="Your Name*"
               {...register("name", {
                 required: true,
@@ -119,7 +119,7 @@ const ContactPopUp = () => {
           <div className="flex   px-5   flex-col">
             <input
               type="number"
-              className=" block  w-full lg:h-[35px] rounded-lg px-2 border border-buttonBlue   placeholder-smaller focus:border-green focus:ring focus:ring-green focus:ring-opacity-50"
+              className=" block  w-full lg:h-[35px] placeholder:text-sm  px-2 border border-buttonBlue    focus:border-green focus:ring focus:ring-green focus:ring-opacity-50"
               placeholder="Your Mobile Number*"
               {...register("phone", {
                 required: true,
@@ -141,7 +141,7 @@ const ContactPopUp = () => {
             {/* <span className="text-black">Email</span> */}
             <input
               type="text"
-              className="block  w-full lg:h-[35px] rounded-lg px-2 border-buttonBlue  border border-green placeholder-smaller focus:border-green focus:ring focus:ring-green focus:ring-opacity-50"
+              className="block  w-full lg:h-[35px] placeholder:text-sm  px-2 border-buttonBlue  border border-green  focus:border-green focus:ring focus:ring-green focus:ring-opacity-50"
               placeholder="Your Email*"
               {...register("email", {
                 required: true,
@@ -161,7 +161,7 @@ const ContactPopUp = () => {
             {/* <span className="text-black">Email</span> */}
             <input
               type="text"
-              className="block  w-full lg:h-[35px] rounded-lg px-2 border-buttonBlue  border border-green placeholder-smaller focus:border-green focus:ring focus:ring-green focus:ring-opacity-50"
+              className="block  w-full lg:h-[35px] placeholder:text-sm  px-2 border-buttonBlue  border border-green  focus:border-green focus:ring focus:ring-green focus:ring-opacity-50"
               placeholder="Your Location*"
               {...register("location", {
                 required: true,
@@ -179,7 +179,7 @@ const ContactPopUp = () => {
           <div className="flex   px-5  flex-col">
             <input
               type="text"
-              className="block  w-full lg:h-[50px] rounded-lg px-2 border border-buttonBlue placeholder-smaller focus:border-green focus:ring focus:ring-green focus:ring-opacity-50"
+              className="block  w-full lg:h-[50px] placeholder:text-sm  px-2 border border-buttonBlue  focus:border-green focus:ring focus:ring-green focus:ring-opacity-50"
               placeholder="Type Your Query Here*"
               {...register("message", {
                 required: true,
@@ -204,7 +204,7 @@ const ContactPopUp = () => {
               <button
                 onClick={submit}
                 disabled={!isButtonVisble}
-                className={`text-white  transition duration-500 hover:scale-105 ease-out  bg-buttonBlue hover:bg-buttonBlue py-2 focus:ring-1 focus:outline-none focus:ring-buttonBlue font-medium  text-sm px-4   ${
+                className={`text-white  transition duration-500 hover:scale-105 ease-out  placeholder:text-sm bg-buttonBlue hover:bg-buttonBlue py-2 focus:ring-1 focus:outline-none focus:ring-buttonBlue font-medium  text-sm px-4   ${
                   isButtonVisble ? "opacity-100" : "opacity-50 "
                 }`}
               >
