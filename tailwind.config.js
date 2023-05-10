@@ -21,6 +21,7 @@ module.exports = {
       "2xl": "1536px",
     },
     extend: {
+      
       colors: {
         gray: "#e9e9e9",
         navyBlue: "#010b37",

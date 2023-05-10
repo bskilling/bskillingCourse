@@ -223,9 +223,13 @@ export default function Testimonials() {
                         <h1 className="title-font px-3 mt-2 text-lg text-left font-bold text-gray-900 mb-3">
                           {name}
                         </h1>
-                        <p className="text-left px-3 ">Source : {sorc}</p>
-                        <p className="text-left px-3 ">Author : {auth}</p>
-                        <p className="leading-relaxed px-3 mb-5 mt-2 text-left">
+                        <p className="text-left  text-sm px-3 ">
+                          Source : {sorc}
+                        </p>
+                        <p className="text-left text-sm  px-3 ">
+                          Author : {auth}
+                        </p>
+                        <p className="leading-relaxed px-3 mb-5 mt-2 text-sm  text-left">
                           {desc.length > 100
                             ? desc.substring(0, 100) + "..."
                             : desc}
@@ -269,9 +273,13 @@ export default function Testimonials() {
                         <h1 className="title-font px-3 mt-2 text-lg text-left font-bold  text-gray-900 mb-3">
                           {name}
                         </h1>
-                        <p className="text-left  px-3 ">Source : {sorc}</p>
-                        <p className="text-left px-3 ">Author : {auth}</p>
-                        <p className="leading-relaxed px-3 mb-5 mt-2 text-left">
+                        <p className="text-left text-sm  px-3 ">
+                          Source : {sorc}
+                        </p>
+                        <p className="text-left text-sm  px-3 ">
+                          Author : {auth}
+                        </p>
+                        <p className="leading-relaxed text-sm  px-3 mb-5 mt-2 text-left">
                           {desc.length > 100
                             ? desc.substring(0, 100) + "..."
                             : desc}
@@ -315,9 +323,13 @@ export default function Testimonials() {
                         <h1 className="title-font px-3 mt-2 text-lg text-left font-bold  text-gray-900 mb-3">
                           {name}
                         </h1>
-                        <p className="text-left px-3 ">Source : {sorc}</p>
-                        <p className="text-left px-3 ">Author : {auth}</p>
-                        <p className="leading-relaxed px-3 mb-5 mt-2 text-left">
+                        <p className="text-left px-3 text-sm ">
+                          Source : {sorc}
+                        </p>
+                        <p className="text-left px-3 text-sm ">
+                          Author : {auth}
+                        </p>
+                        <p className="leading-relaxed text-sm  px-3 mb-5 mt-2 text-left">
                           {desc.length > 100
                             ? desc.substring(0, 100) + "..."
                             : desc}
