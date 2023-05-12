@@ -28,7 +28,7 @@ const ContactPopUp = () => {
     console.log(data);
     try {
       const response = await fetch(
-        "https://ld3djjvftm4yzco5q6bhsvydfy0qvhyn.lambda-url.ap-south-1.on.aws/",
+        "https://54txkspp2molgb6p7mgzad2scu0niflz.lambda-url.ap-south-1.on.aws/",
 
         {
           method: "POST",
