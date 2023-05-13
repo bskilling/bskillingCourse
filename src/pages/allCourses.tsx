@@ -137,7 +137,7 @@ const AllCourses = () => {
                   aria-label="Tabs"
                 >
                   <ul className="flex md:flex-row flex-col items-center md:justify-start space-x-5">
-                    {BrowseAllCourse.slice(0, 12).map(
+                    {BrowseAllCourse.slice(0, 11).map(
                       ({ categoryName }, index) => (
                         <li
                           key={categoryName}
@@ -157,7 +157,7 @@ const AllCourses = () => {
                         </li>
                       )
                     )}
-                    {BrowseAllCourse.length > 12 && (
+                    {BrowseAllCourse.length > 11 && (
                       <li className="relative">
                         <button
                           type="button"
@@ -170,12 +170,12 @@ const AllCourses = () => {
                         </button>
                         {isDropdownOpen && (
                           <div className="origin-top-right absolute  z-[6000] left-[px] right-0 mt-5  rounded-md shadow-lg bg-white ring-1     ">
-                            {BrowseAllCourse.slice(12).map(
+                            {BrowseAllCourse.slice(11).map(
                               ({ categoryName }, index) => (
                                 <button
                                   key={categoryName}
                                   className="text-black hover:text-white text-right  block px-8 border-0 w-full hover:bg-buttonBlue   cursor-pointer py-2 text-sm  "
-                                  onClick={() => TabButtonClick(index + 12)}
+                                  onClick={() => TabButtonClick(index + 11)}
                                 >
                                   {categoryName}
                                 </button>
