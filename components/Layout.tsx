@@ -107,46 +107,43 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
       </Head>
 
       <nav className="md:py-4   md:p-0 bg-white flex  md:flex-row flex-col md:gap-36 md:justify-between w-full  shadow-">
-        <div className="flex gap-5  md:flex-row flex-col items-center justify-center md:ml-10 ">
+        <div className="flex md:gap-5  md:flex-row flex-col items-center justify-center md:ml-10 ">
           <Link href={"/"}>
             <img
               src="/logo.png"
-              className="w-[200px] md:my-0 my-5 md:h-fit"
+              className="object-contain lg:w-[200px] md:my-0 my-5 h-[70px]"
               alt=""
             />
           </Link>
 
-          <div className="flex lg:flex-row flex-col gap-2">
-            <div className="relative flex justify-end md:w-[500px]">
-              <input
-                type="text"
-                className=" md:w-[400px] rounded-lg border-[1px] bg- border-buttonBlue lg:py-1 lg:mt-[3px] px-5   focus:border-Buttoncolor focus:ring-buttonBlue "
-                placeholder="Enter Course Name"
-                required
-                value={inputValue}
-                onChange={handleSearch}
-                // onKeyDown={handleKeyDown}
-              />
-              <div className="absolute mt-2 md:mt-3 mr-2">
-                <BiSearchAlt />
-              </div>
-              {dropSearchData.length > 0 && (
-                <div
-                  style={{ maxHeight: "500px", overflowY: "auto" }}
-                  className="absolute z-[6000] w-full  bg-white rounded-lg  shadow-lg  md:-mr-14 mt-10"
-                >
-                  {dropSearchData.map((course) => (
-                    <div
-                      key={course.id}
-                      className="p-2 hover:bg-buttonBlue px-5 hover:text-white cursor-pointer"
-                      onClick={() => handleClick(course)}
-                    >
-                      {course.CourseName}
-                    </div>
-                  ))}
-                </div>
-              )}
+          <div className="relative flex justify-end md:w-[500px]">
+            <input
+              type="text"
+              className="md:w-[400px] rounded-lg border-[1px] bg- border-buttonBlue lg:py-1 lg:mt-[3px] px-5   focus:border-Buttoncolor focus:ring-buttonBlue"
+              placeholder="Enter Course Name"
+              required
+              value={inputValue}
+              onChange={handleSearch}
+            />
+            <div className="absolute right-2 top-2 md:top-3">
+              <BiSearchAlt />
             </div>
+            {dropSearchData.length > 0 && (
+              <div
+                style={{ maxHeight: "500px", overflowY: "auto" }}
+                className="absolute z-50 w-full bg-white rounded-lg shadow-lg md:right-0 md:mt-10"
+              >
+                {dropSearchData.map((course) => (
+                  <div
+                    key={course.id}
+                    className="p-2 hover:bg-buttonBlue px-5 hover:text-white cursor-pointer"
+                    onClick={() => handleClick(course)}
+                  >
+                    {course.CourseName}
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
 
