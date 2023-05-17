@@ -7,6 +7,7 @@ import { ReactNode, useContext, useState, useEffect } from "react";
 import { AiFillCaretDown, AiOutlineMenu } from "react-icons/ai";
 import LoaderSvg from "../pages/../../public/loading .svg";
 import { useMediaQuery } from "react-responsive";
+import ContactPopUp from "components/ContactPopUp";
 
 const AllCourses = () => {
   const router = useRouter();
@@ -72,6 +73,7 @@ const AllCourses = () => {
   return (
     <>
       <section className="bg-gray">
+        <ContactPopUp/>
         <div className="flex pt-5 w-full">
           <div className="flex md:gap-4 w-full">
             <div className="flex justify-start w-full md:w-fit   ml-8 md:ml-20">
