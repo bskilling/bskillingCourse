@@ -9,7 +9,7 @@ const CourseDetails = [
         certificate: "bSkilling ",
         imageSrc: "/sap.png",
         timePeriod: " 80 hrs ",
-        StartDate: "17 May, 2023",
+        StartDate: "5th June 2023",
         classType: "Virtual Class",
         price: "45,000/-",
         CourseLink: "https://bskilling.melimu.com/course/info.php?id=41",
