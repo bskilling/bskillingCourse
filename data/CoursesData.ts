@@ -5,7 +5,7 @@ const CourseDetails = [
     ListOfCourse: [
       {
         id: "1",
-        CourseName: "SAP Business Technology Platform Foundation (SAP)",
+        CourseName: "SAP BTP- Extension Developer",
         certificate: "bSkilling ",
         imageSrc: "/sap.png",
         timePeriod: " 80 hrs ",
