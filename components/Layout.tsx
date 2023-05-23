@@ -264,9 +264,9 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
         </div>
 
         <div className="mx-auto text-left md:text-center text-sm text-zinc-400 pt-4 md:pt-8 md:p-0 p-4 pl-6">
-          <p>Bskilling</p>
+          <p>bSkilling PVT LTD</p>
           <p>
-            Copyright © 2022. All Rights Reserved. Designed by Deedbee Social
+            Copyright © 2023. All Rights Reserved. Designed by Deedbee Social
             Ventures.
           </p>
         </div>
