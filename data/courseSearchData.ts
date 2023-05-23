@@ -7,7 +7,7 @@ const courseSearchData = [
     timePeriod: " 80 hrs ",
     StartDate: "5th June 2023",
     classType: "Virtual Class",
-    price: "45,000/-",
+    price: "75,000/-",
     CourseLink: "https://bskilling.melimu.com/course/info.php?id=41",
   },
   {
