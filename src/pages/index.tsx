@@ -14,6 +14,7 @@ import CertifiedPartners from "components/certifiedPartners";
 import Tabs from "components/tabs";
 import Blogs from "components/blognew";
 import { MyContext } from "context/PageContext";
+import FloatWindow from "modules/leadChat/components/FloatWindow";
 
 const Home: NextPage<NextPage> = ({}) => {
   const {
@@ -50,6 +51,7 @@ const Home: NextPage<NextPage> = ({}) => {
       </section>
       <section onClick={clickOnMain}>
         <ContactPopUp />
+        <FloatWindow />
         <section>
           <Slider />
         </section>
