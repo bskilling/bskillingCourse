@@ -16,6 +16,8 @@ interface IState {
   messages: IMessage[];
   pushMessages: (messages: IMessage) => void;
   sendMessage: (sendMessagesPayLoad: ISendMessagesActionPayload) => void;
+  instanceState: IInstanceState;
+  closeChat: () => void;
 }
 
 export default IState;
