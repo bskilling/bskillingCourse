@@ -48,7 +48,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ data }) => {
                 ) : (
                   <span className="font-bold text-white">₹ {data.price}</span>
                 )} */}
-                <span className="font-bold text-white">₹ {data.price}</span>
+                <span className="font-bold text-white">₹ {data.discount}</span>
               </div>
             </div>
             <div className="flex flex-col  px-4 mt-2">
