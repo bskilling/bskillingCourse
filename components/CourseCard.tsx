@@ -84,6 +84,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ data }) => {
                     <div className="mt-[2px]  bg-buttonBlue flex flex-col items-center justify-center w-[25px] h-[25px] rounded-full">
                       <FaChalkboardTeacher size={15} color="white" />
                     </div>
+                    
                     <div className="mt-1">
                       <p className="text-sm"> {data.classType}</p>
                     </div>
