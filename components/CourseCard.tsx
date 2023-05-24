@@ -14,10 +14,10 @@ interface CourseCardProps {
     classType: string;
     price: string;
     CourseLink: string;
+    discount: string;
   };
 }
 const CourseCard: React.FC<CourseCardProps> = ({ data }) => {
- 
   return (
     <>
       <a
@@ -37,8 +37,17 @@ const CourseCard: React.FC<CourseCardProps> = ({ data }) => {
                 src={data.imageSrc}
                 alt=""
               />
-              <div className="absolute bottom-0 rounded-t-md right-0 bg-[#33cc33]  px-5">
-                <span className="font-bold text-white">₹ {data.price}</span>
+              <div className="absolute bottom-0 flex gap-1 rounded-t-md right-0 bg-[#33cc33] px-5">
+                {data.discount ? (
+                  <>
+                    <span className="font-bold text- line-through text-buttonBlue">
+                      ₹ {data.discount}
+                    </span>
+                    <span className="font-bold text-white">₹ {data.price}</span>
+                  </>
+                ) : (
+                  <span className="font-bold text-white">₹ {data.price}</span>
+                )}
               </div>
             </div>
             <div className="flex flex-col  px-4 mt-2">
