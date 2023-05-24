@@ -11,7 +11,7 @@ const CourseDetails = [
         timePeriod: " 80 hrs ",
         StartDate: "17 May, 2023",
         classType: "Virtual Class",
-        price: "60,499/-",
+        price: "75,000/-",
         discount: "75,000/-",
         CourseLink: "https://bskilling.melimu.com/course/info.php?id=41",
       },
@@ -373,7 +373,6 @@ const CourseDetails = [
         discount: "30,799/-",
         CourseLink: "https://bskilling.melimu.com/course/edit.php?id=115",
       },
-     
     ],
   },
   {
@@ -607,7 +606,7 @@ const CourseDetails = [
         price: "31,399/-",
         discount: "31,099/-",
         CourseLink: "https://bskilling.melimu.com/course/edit.php?id=61",
-      },  
+      },
     ],
   },
 
