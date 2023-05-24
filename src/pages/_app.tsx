@@ -3,6 +3,7 @@ import { AppProps } from "next/app";
 import "../../style/globals.css";
 import Head from "next/head";
 import { MyProvider } from "context/PageContext";
+import FloatWindow from "modules/leadChat/components/FloatWindow";
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <MyProvider>
@@ -13,6 +14,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           <link rel="icon" href="/favicon.png" />
         </Head>
         <Component {...pageProps} />
+        <FloatWindow />
       </Layout>
     </MyProvider>
   );

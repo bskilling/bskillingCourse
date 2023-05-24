@@ -73,7 +73,6 @@ const AllCourses = () => {
   return (
     <>
       <section className="bg-gray">
-        <ContactPopUp/>
         <div className="flex pt-5 w-full">
           <div className="flex md:gap-4 w-full">
             <div className="flex justify-start w-full md:w-fit   ml-8 md:ml-20">
