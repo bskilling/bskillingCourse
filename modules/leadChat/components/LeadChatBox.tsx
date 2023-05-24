@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 
 const LeadChatBox = () => {
   const listRef = useRef<HTMLDivElement>(null);
-  const { messages, socket, leadInfo, isInitiateButtonVisible, initiateChat } = useChat();
+  const { messages, setupSocket, isInitiateButtonVisible, initiateChat, instanceState } = useChat();
 
   useEffect(() => {
     const list = listRef.current;
@@ -12,6 +12,10 @@ const LeadChatBox = () => {
       list.scrollTop = list.scrollHeight;
     }
   }, [messages]);
+
+  useEffect(() => {
+    setupSocket();
+  }, []);
 
   return (
     <>
@@ -24,6 +28,9 @@ const LeadChatBox = () => {
             <div
               className={`flex ${message.isOwn ? "justify-end" : "justify-start"}`}
               key={message.id}
+              style={{
+                opacity: instanceState === "closed" ? "0.5" : "1"
+              }}
             >
               <div
                 className="flex flex-col border border-buttonBlue p-[10px] space-y-2 rounded-md max-w-[80%]"
@@ -42,10 +49,14 @@ const LeadChatBox = () => {
             </div>
           ))
         }
+
+        {
+          instanceState === "closed" && <p className="text-sm text-center py-2">Chat instance closed.</p>
+        }
       </div>
 
       {
-        isInitiateButtonVisible && (
+       isInitiateButtonVisible && (
           <button
             className="bg-buttonBlue text-white text-sm absolute left-[50%] bottom-[60px] translate-x-[-50%] px-4 py-2"
             onClick={initiateChat}

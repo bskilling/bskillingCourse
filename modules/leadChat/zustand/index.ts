@@ -5,11 +5,13 @@ import setupSocketAction from "./actions/setupSocket.action";
 import sendMessagesAction from "./actions/sendMessage.action";
 
 const useChat = create<IState>((set, get) => ({
-  floatWindowMode: "starter",
-  socket: null, 
+  floatWindowMode: "none",
+  socket: null,
   isInitiateButtonVisible: true,
   isChatFormVisible: false,
-  leadInfo: null, 
+  leadInfo: null,
+  messages: [],
+  instanceState: "starter",
   initiateChat: initiateChatAction(set, get),
   setupSocket: setupSocketAction(set, get),
   setFloatWindowMode(floatWindowMode) {
@@ -17,13 +19,31 @@ const useChat = create<IState>((set, get) => ({
       floatWindowMode,
     }));
   },
-  messages: [],
   pushMessages(messages) {
     set((state) => ({
       messages: [...state.messages, messages],
     }))
   },
   sendMessage: sendMessagesAction(set, get),
+  closeChat() {
+    set((state) => {
+      if (state.instanceState === "closed") {
+        return {
+          floatWindowMode: "none",
+          socket: null,
+          isInitiateButtonVisible: true,
+          isChatFormVisible: false,
+          leadInfo: null,
+          messages: [],
+          instanceState: "starter",
+        };
+      } else {
+        return {
+          floatWindowMode: "none",
+        };
+      }
+    })
+  }
 }));
 
 export default useChat;

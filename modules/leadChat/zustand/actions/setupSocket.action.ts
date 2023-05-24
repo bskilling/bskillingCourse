@@ -26,16 +26,9 @@ const setupSocketAction: ICreateAction = (set, get) => () => {
       });
 
       newSocket.on("instanceClosed", () => {
-        pushMessages({
-          id: "10000",
-          text: "Chat instance closed",
-          createdById: "1",
-          createdAt: new Date(),
-          createdBy: "Admin",
-          isOwn: false,
-        });
         set({
           isChatFormVisible: false,
+          instanceState: "closed",
         });
       });
     });

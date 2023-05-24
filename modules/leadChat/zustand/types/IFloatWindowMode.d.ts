@@ -1,3 +1,3 @@
-type IFloatWindowMode = "starter" | "chat" | "drop-a-query";
+type IFloatWindowMode = "none" | "chat" | "drop-a-query";
 
 export default IFloatWindowMode;
