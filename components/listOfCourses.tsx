@@ -18,6 +18,7 @@ interface searchCourseArray {
   classType: string;
   price: string;
   CourseLink: string;
+  discount?: string;
 }
 
 const ListOfCourses: NextPage<{}> = () => {

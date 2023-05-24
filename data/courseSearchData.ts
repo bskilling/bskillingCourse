@@ -8,6 +8,7 @@ const courseSearchData = [
     StartDate: "5th June 2023",
     classType: "Virtual Class",
     price: "75,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/info.php?id=41",
   },
   {
@@ -19,6 +20,7 @@ const courseSearchData = [
     StartDate: "17 May, 2023",
     classType: "Virtual Class",
     price: "45,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/info.php?id=39",
   },
   {
@@ -30,6 +32,7 @@ const courseSearchData = [
     StartDate: "17 May, 2023",
     classType: "Virtual Class",
     price: "60,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/info.php?id=144",
   },
   {
@@ -41,6 +44,7 @@ const courseSearchData = [
     StartDate: "17 May, 2023",
     classType: "Virtual Class",
     price: "37,200/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/info.php?id=145",
   },
   {
@@ -52,6 +56,7 @@ const courseSearchData = [
     StartDate: "19 Jun'2023",
     classType: "Virtual Class",
     price: "52,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=7",
   },
   {
@@ -63,6 +68,7 @@ const courseSearchData = [
     StartDate: " 17 July, 2023",
     classType: "Virtual Class",
     price: "45,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/info.php?id=33",
   },
   {
@@ -74,6 +80,7 @@ const courseSearchData = [
     StartDate: "17 July, 2023",
     classType: "Virtual Class",
     price: "45,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/info.php?id=29",
   },
   {
@@ -85,6 +92,7 @@ const courseSearchData = [
     StartDate: "17 July, 2023",
     classType: "Virtual Class",
     price: "45,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/info.php?id=26",
   },
   {
@@ -96,6 +104,7 @@ const courseSearchData = [
     StartDate: "17 July, 2023",
     classType: "Virtual Class",
     price: "45,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/info.php?id=43",
   },
   {
@@ -108,6 +117,7 @@ const courseSearchData = [
     StartDate: "05 Jun'2023",
     classType: "Virtual Class",
     price: "42,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=54",
   },
   {
@@ -119,6 +129,7 @@ const courseSearchData = [
     StartDate: "05 Jun'2023",
     classType: "Virtual Class",
     price: "42,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=98",
   },
   {
@@ -130,6 +141,7 @@ const courseSearchData = [
     StartDate: "19 Jun'2023",
     classType: "Virtual Class",
     price: "42,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=101",
   },
   {
@@ -141,6 +153,7 @@ const courseSearchData = [
     StartDate: "19 Jun'2023",
     classType: "Virtual Class",
     price: "42,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=100",
   },
   {
@@ -153,6 +166,7 @@ const courseSearchData = [
     StartDate: "26 Jun'2023",
     classType: "Virtual Class",
     price: "42,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=103",
   },
   {
@@ -164,6 +178,7 @@ const courseSearchData = [
     StartDate: "26 Jun'2023",
     classType: "Virtual Class",
     price: "42,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=102",
   },
   {
@@ -175,6 +190,7 @@ const courseSearchData = [
     StartDate: "03 Jul'2023",
     classType: "Virtual Class",
     price: "42,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=92",
   },
   {
@@ -186,6 +202,7 @@ const courseSearchData = [
     StartDate: "03 Jul'2023",
     classType: "Virtual Class",
     price: "42,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=94",
   },
   {
@@ -197,6 +214,7 @@ const courseSearchData = [
     StartDate: "10 Jul'2023",
     classType: "Virtual Class",
     price: "42,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=53",
   },
   {
@@ -208,6 +226,7 @@ const courseSearchData = [
     StartDate: "11 Sept'2023",
     classType: "Virtual Class",
     price: "60,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=91",
   },
   {
@@ -220,6 +239,7 @@ const courseSearchData = [
     StartDate: "04 Sept'2023",
     classType: "Virtual Class",
     price: "62,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=87",
   },
   {
@@ -231,6 +251,7 @@ const courseSearchData = [
     StartDate: " 17 Sept, 2023",
     classType: "Virtual Class",
     price: "45,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/info.php?id=44",
   },
   {
@@ -242,6 +263,7 @@ const courseSearchData = [
     StartDate: " 17 Sept, 2023",
     classType: "Virtual Class",
     price: "45,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/info.php?id=11",
   },
   {
@@ -253,6 +275,7 @@ const courseSearchData = [
     StartDate: " 17 Sept, 2023",
     classType: "Virtual Class",
     price: "45,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/info.php?id=45",
   },
   {
@@ -264,6 +287,7 @@ const courseSearchData = [
     StartDate: " 17 Sept, 2023",
     classType: "Virtual Class",
     price: "45,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/info.php?id=5",
   },
   {
@@ -275,6 +299,7 @@ const courseSearchData = [
     StartDate: "17 Dec, 2023",
     classType: "Virtual Class",
     price: "45,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/info.php?id=",
   },
   {
@@ -286,6 +311,7 @@ const courseSearchData = [
     StartDate: "17 Dec, 2023",
     classType: "Virtual Class",
     price: "45,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/info.php?id=",
   },
   {
@@ -297,6 +323,7 @@ const courseSearchData = [
     StartDate: "17 Dec, 2023",
     classType: "Virtual Class",
     price: "45,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/info.php?id=",
   },
   {
@@ -308,6 +335,7 @@ const courseSearchData = [
     StartDate: "17 Dec, 2023",
     classType: "Virtual Class",
     price: "45,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/info.php?id=",
   },
   {
@@ -330,6 +358,7 @@ const courseSearchData = [
     StartDate: "05 Jun'2023",
     classType: "Virtual Class",
     price: "56,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=40",
   },
   {
@@ -352,6 +381,7 @@ const courseSearchData = [
     StartDate: "26 Jun'2023",
     classType: "Virtual Class",
     price: "60,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=28",
   },
   {
@@ -374,6 +404,7 @@ const courseSearchData = [
     StartDate: "03 Jul'2023",
     classType: "Virtual Class",
     price: "62,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=58",
   },
   {
@@ -385,6 +416,7 @@ const courseSearchData = [
     StartDate: "03 Jul'2023",
     classType: "Virtual Class",
     price: "65,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=16",
   },
   {
@@ -396,6 +428,7 @@ const courseSearchData = [
     StartDate: "10 Jul'2023",
     classType: "Virtual Class",
     price: "65,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=20",
   },
   {
@@ -406,7 +439,8 @@ const courseSearchData = [
     timePeriod: " 56 hrs ",
     StartDate: "10 Jul'2023",
     classType: "Virtual Class",
-    price: "45,000/-",
+    price: "45,000/-", 
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=42",
   },
   {
@@ -418,6 +452,7 @@ const courseSearchData = [
     StartDate: "17 Jul'2023",
     classType: "Virtual Class",
     price: "45,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=48",
   },
   {
@@ -430,6 +465,7 @@ const courseSearchData = [
     StartDate: "17 Jul'2023",
     classType: "Virtual Class",
     price: "48,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=56",
   },
   {
@@ -441,6 +477,7 @@ const courseSearchData = [
     StartDate: "24 Jul'2023",
     classType: "Virtual Class",
     price: "48,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=",
   },
   {
@@ -452,6 +489,7 @@ const courseSearchData = [
     StartDate: "24 Jul'2023",
     classType: "Virtual Class",
     price: "42,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=77",
   },
   {
@@ -463,6 +501,7 @@ const courseSearchData = [
     StartDate: "07 Aug'2023",
     classType: "Virtual Class",
     price: "42,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/view.php?id=68",
   },
   {
@@ -474,6 +513,7 @@ const courseSearchData = [
     StartDate: "07 Aug'2023",
     classType: "Virtual Class",
     price: "42,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/view.php?id=23",
   },
   {
@@ -485,6 +525,7 @@ const courseSearchData = [
     StartDate: "14 Aug'2023 ",
     classType: "Virtual Class",
     price: "52,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=18",
   },
   {
@@ -496,6 +537,7 @@ const courseSearchData = [
     StartDate: "14 Aug'2023",
     classType: "Virtual Class",
     price: "52,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=67",
   },
   {
@@ -507,6 +549,7 @@ const courseSearchData = [
     StartDate: "21 Aug'2023",
     classType: "Virtual Class",
     price: "52,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/view.php?id=25",
   },
   {
@@ -518,6 +561,7 @@ const courseSearchData = [
     StartDate: "21 Aug'2023",
     classType: "Virtual Class",
     price: "52,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=75",
   },
   {
@@ -529,6 +573,7 @@ const courseSearchData = [
     StartDate: "28 Aug'2023",
     classType: "Virtual Class",
     price: "56,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/view.php?id=69",
   },
 
@@ -541,6 +586,7 @@ const courseSearchData = [
     StartDate: "28 Aug'2023",
     classType: "Virtual Class",
     price: "56,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=70",
   },
   {
@@ -552,6 +598,7 @@ const courseSearchData = [
     StartDate: "04 Sept'2023",
     classType: "Virtual Class",
     price: "56,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=88",
   },
   {
@@ -563,6 +610,7 @@ const courseSearchData = [
     StartDate: "04 Sept'2023",
     classType: "Virtual Class",
     price: "56,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=76",
   },
   {
@@ -574,6 +622,7 @@ const courseSearchData = [
     StartDate: "11 Sept'2023",
     classType: "Virtual Class",
     price: "56,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=73",
   },
   {
@@ -585,6 +634,7 @@ const courseSearchData = [
     StartDate: "11 Sept'2023",
     classType: "Virtual Class",
     price: "56,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=26",
   },
   {
@@ -596,6 +646,7 @@ const courseSearchData = [
     StartDate: "18 Sept'2023",
     classType: "Virtual Class",
     price: "56,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=33",
   },
   {
@@ -607,6 +658,7 @@ const courseSearchData = [
     StartDate: "18 Sept'2023",
     classType: "Virtual Class",
     price: "42,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/view.php?id=52",
   },
   {
@@ -618,6 +670,7 @@ const courseSearchData = [
     StartDate: "25 Sept'20233",
     classType: "Virtual Class",
     price: "42,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/view.php?id=31",
   },
   {
@@ -629,6 +682,7 @@ const courseSearchData = [
     StartDate: "25 Sept'2023",
     classType: "Virtual Class",
     price: "42,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/view.php?id=19",
   },
   {
@@ -640,6 +694,7 @@ const courseSearchData = [
     StartDate: "02 Oct'2023",
     classType: "Virtual Class",
     price: "42,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/view.php?id=86",
   },
   {
@@ -651,6 +706,7 @@ const courseSearchData = [
     StartDate: "02 Oct'2023",
     classType: "Virtual Class",
     price: "42,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=84",
   },
   {
@@ -662,6 +718,7 @@ const courseSearchData = [
     StartDate: "09 Oct'2023",
     classType: "Virtual Class",
     price: "42,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=24",
   },
   {
@@ -673,6 +730,7 @@ const courseSearchData = [
     StartDate: "09 Oct'2023",
     classType: "Virtual Class",
     price: "42,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/view.php?id=15",
   },
   {
@@ -684,6 +742,7 @@ const courseSearchData = [
     StartDate: "09 Oct'2023",
     classType: "Virtual Class",
     price: "42,000/-",
+    discount: "",
     CourseLink: "",
   },
   {
@@ -695,6 +754,7 @@ const courseSearchData = [
     StartDate: "16 Oct'2023",
     classType: "Virtual Class",
     price: "42,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=27",
   },
   {
@@ -706,6 +766,7 @@ const courseSearchData = [
     StartDate: "16 Oct'2023",
     classType: "Virtual Class",
     price: "42,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=78",
   },
   {
@@ -717,6 +778,7 @@ const courseSearchData = [
     StartDate: "23 Oct'2023",
     classType: "Virtual Class",
     price: "46,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=82",
   },
   {
@@ -728,6 +790,7 @@ const courseSearchData = [
     StartDate: "23 Oct'2023",
     classType: "Virtual Class",
     price: "46,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=55",
   },
   {
@@ -739,6 +802,7 @@ const courseSearchData = [
     StartDate: "30 Oct'2023",
     classType: "Virtual Class",
     price: "52,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/view.php?id=85",
   },
   {
@@ -750,6 +814,7 @@ const courseSearchData = [
     StartDate: "30 Oct'2023",
     classType: "Virtual Class",
     price: "52,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=90",
   },
   {
@@ -761,6 +826,7 @@ const courseSearchData = [
     StartDate: "06 Nov'2023",
     classType: "Virtual Class",
     price: "52,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=89",
   },
   {
@@ -772,6 +838,7 @@ const courseSearchData = [
     StartDate: "06 Nov'2023",
     classType: "Virtual Class",
     price: "52,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=72",
   },
   {
@@ -783,6 +850,8 @@ const courseSearchData = [
     StartDate: "16 Oct'2023",
     classType: "Virtual Class",
     price: "52,000/-",
+    discount: "",
+
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=93",
   },
   {
@@ -794,6 +863,8 @@ const courseSearchData = [
     StartDate: "16 Oct'2023",
     classType: "Virtual Class",
     price: "52,000/-",
+    discount: "",
+
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=57",
   },
   {
@@ -805,6 +876,7 @@ const courseSearchData = [
     StartDate: "09 Oct'2023",
     classType: "Virtual Class",
     price: "62,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=50",
   },
   {
@@ -816,6 +888,7 @@ const courseSearchData = [
     StartDate: "09 Oct'2023",
     classType: "Virtual Class",
     price: "62,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/view.php?id=66",
   },
   {
@@ -827,6 +900,7 @@ const courseSearchData = [
     StartDate: "02 Oct'2023",
     classType: "Virtual Class",
     price: "65,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/view.php?id=63",
   },
   {
@@ -838,6 +912,7 @@ const courseSearchData = [
     StartDate: "02 Oct'2023",
     classType: "Virtual Class",
     price: "65,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=51",
   },
   {
@@ -849,6 +924,7 @@ const courseSearchData = [
     StartDate: "25 Sept'2023",
     classType: "Virtual Class",
     price: "45,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php",
   },
   {
@@ -860,6 +936,7 @@ const courseSearchData = [
     StartDate: "25 Sept'2023",
     classType: "Virtual Class",
     price: "45,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=60",
   },
   {
@@ -871,6 +948,7 @@ const courseSearchData = [
     StartDate: "11 Sept'2023",
     classType: "Virtual Class",
     price: "48,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=84",
   },
   {
@@ -882,6 +960,7 @@ const courseSearchData = [
     StartDate: "11 Sept'2023",
     classType: "Virtual Class",
     price: "48,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=49",
   },
   {
@@ -893,6 +972,7 @@ const courseSearchData = [
     StartDate: "04 Sept'2023",
     classType: "Virtual Class",
     price: "42,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/view.php?id=38",
   },
   {
@@ -904,6 +984,7 @@ const courseSearchData = [
     StartDate: "04 Sept'2023",
     classType: "Virtual Class",
     price: "42,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=74",
   },
   {
@@ -915,6 +996,7 @@ const courseSearchData = [
     StartDate: "04 Sept'2023",
     classType: "Virtual Class",
     price: "62,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=65",
   },
   {
@@ -926,6 +1008,7 @@ const courseSearchData = [
     StartDate: "  17 Dec, 2023",
     classType: "Virtual Class",
     price: "45,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/info.php?id=59",
   },
   {
@@ -937,6 +1020,7 @@ const courseSearchData = [
     StartDate: " 17 Dec, 2023",
     classType: "Virtual Class",
     price: "45,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/info.php?id=",
   },
   {
@@ -948,6 +1032,7 @@ const courseSearchData = [
     StartDate: " 17 Dec, 2023",
     classType: "Virtual Class",
     price: "45,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/info.php?id=",
   },
   {
@@ -959,6 +1044,7 @@ const courseSearchData = [
     StartDate: " 17 Dec, 2023",
     classType: "Virtual Class",
     price: "45,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/info.php?id=",
   },
   {
@@ -970,6 +1056,7 @@ const courseSearchData = [
     StartDate: " 05 Jun'2023",
     classType: "Virtual Class",
     price: "46,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=47",
   },
   {
@@ -981,6 +1068,7 @@ const courseSearchData = [
     StartDate: " 05 Jun'2023",
     classType: "Virtual Class",
     price: "46,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=59",
   },
   {
@@ -992,6 +1080,7 @@ const courseSearchData = [
     StartDate: " 19 Jun'2023",
     classType: "Virtual Class",
     price: "52,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=104",
   },
   {
@@ -1003,6 +1092,7 @@ const courseSearchData = [
     StartDate: " 19 Jun'2023",
     classType: "Virtual Class",
     price: "52,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=108",
   },
   {
@@ -1014,6 +1104,7 @@ const courseSearchData = [
     StartDate: "26 Jun'2023",
     classType: "Virtual Class",
     price: "52,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=110",
   },
   {
@@ -1025,6 +1116,7 @@ const courseSearchData = [
     StartDate: "26 Jun'2023",
     classType: "Virtual Class",
     price: "52,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/view.php?id=105",
   },
   {
@@ -1036,6 +1128,7 @@ const courseSearchData = [
     StartDate: "03 Jul'2023",
     classType: "Virtual Class",
     price: "52,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=107",
   },
   {
@@ -1047,6 +1140,7 @@ const courseSearchData = [
     StartDate: "03 Jul'2023",
     classType: "Virtual Class",
     price: "52,000/-",
+     discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=106",
   },
   {
@@ -1058,6 +1152,7 @@ const courseSearchData = [
     StartDate: "10 Jul'2023",
     classType: "Virtual Class",
     price: "52,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=109",
   },
   {
@@ -1069,6 +1164,7 @@ const courseSearchData = [
     StartDate: "05 Jun'2023",
     classType: "Virtual Class",
     price: "46,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=111",
   },
   {
@@ -1080,6 +1176,7 @@ const courseSearchData = [
     StartDate: "05 Jun'2023",
     classType: "Virtual Class",
     price: "46,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=120",
   },
   {
@@ -1091,6 +1188,7 @@ const courseSearchData = [
     StartDate: "19 Jun'2023",
     classType: "Virtual Class",
     price: "46,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=112",
   },
   {
@@ -1102,6 +1200,7 @@ const courseSearchData = [
     StartDate: "19 Jun'2023",
     classType: "Virtual Class",
     price: "46,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=115",
   },
   {
@@ -1113,6 +1212,7 @@ const courseSearchData = [
     StartDate: "26 Jun'2023",
     classType: "Virtual Class",
     price: "46,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=117",
   },
   {
@@ -1124,6 +1224,7 @@ const courseSearchData = [
     StartDate: "26 Jun'2023",
     classType: "Virtual Class",
     price: "46,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=118",
   },
   {
@@ -1135,6 +1236,7 @@ const courseSearchData = [
     StartDate: "03 Jul'2023",
     classType: "Virtual Class",
     price: "46,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=113",
   },
   {
@@ -1146,6 +1248,7 @@ const courseSearchData = [
     StartDate: "03 Jul'2023",
     classType: "Virtual Class",
     price: "46,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=119",
   },
   {
@@ -1157,6 +1260,7 @@ const courseSearchData = [
     StartDate: "10 Jul'2023",
     classType: "Virtual Class",
     price: "46,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=114",
   },
   {
@@ -1168,6 +1272,7 @@ const courseSearchData = [
     StartDate: "26 Jun'2023",
     classType: "Virtual Class",
     price: "56,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=46",
   },
   {
@@ -1179,6 +1284,7 @@ const courseSearchData = [
     StartDate: "03 Jul'2023",
     classType: "Virtual Class",
     price: "56,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=22",
   },
   {
@@ -1190,6 +1296,7 @@ const courseSearchData = [
     StartDate: "07 Aug'2023",
     classType: "Virtual Class",
     price: "62,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/view.php?id=62",
   },
   {
@@ -1201,6 +1308,7 @@ const courseSearchData = [
     StartDate: "02 Oct'2023",
     classType: "Virtual Class",
     price: "42,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=141",
   },
   {
@@ -1212,6 +1320,7 @@ const courseSearchData = [
     StartDate: "25 Sept'2023",
     classType: "Virtual Class",
     price: "42,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=136",
   },
   {
@@ -1223,6 +1332,7 @@ const courseSearchData = [
     StartDate: "25 Sept'2023",
     classType: "Virtual Class",
     price: "42,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=137",
   },
   {
@@ -1234,6 +1344,7 @@ const courseSearchData = [
     StartDate: "18 Sept'2023",
     classType: "Virtual Class",
     price: "56,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=138",
   },
   {
@@ -1245,6 +1356,7 @@ const courseSearchData = [
     StartDate: "18 Sept'2023",
     classType: "Virtual Class",
     price: "56,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=139",
   },
   {
@@ -1256,6 +1368,7 @@ const courseSearchData = [
     StartDate: "11 Sept'2023",
     classType: "Virtual Class",
     price: "60,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=140",
   },
   {
@@ -1267,6 +1380,7 @@ const courseSearchData = [
     StartDate: "10 Jul'2023",
     classType: "Virtual Class",
     price: "56,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=30",
   },
   {
@@ -1278,6 +1392,7 @@ const courseSearchData = [
     StartDate: "14 Aug'2023",
     classType: "Virtual Class",
     price: "62,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=135",
   },
   {
@@ -1289,6 +1404,7 @@ const courseSearchData = [
     StartDate: "14 Aug'2023",
     classType: "Virtual Class",
     price: "65,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=123",
   },
   {
@@ -1300,6 +1416,7 @@ const courseSearchData = [
     StartDate: "21 Aug'2023",
     classType: "Virtual Class",
     price: "65,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=124",
   },
   {
@@ -1311,6 +1428,7 @@ const courseSearchData = [
     StartDate: "21 Aug'2023",
     classType: "Virtual Class",
     price: "45,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=122",
   },
   {
@@ -1322,6 +1440,7 @@ const courseSearchData = [
     StartDate: "28 Aug'2023",
     classType: "Virtual Class",
     price: "45,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=125",
   },
   {
@@ -1333,6 +1452,7 @@ const courseSearchData = [
     StartDate: "28 Aug'2023",
     classType: "Virtual Class",
     price: "48,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=126",
   },
   {
@@ -1344,6 +1464,7 @@ const courseSearchData = [
     StartDate: " 04 Sept'2023",
     classType: "Virtual Class",
     price: "48,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=127",
   },
   {
@@ -1355,6 +1476,7 @@ const courseSearchData = [
     StartDate: " 04 Sept'2023",
     classType: "Virtual Class",
     price: "42,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=128",
   },
   {
@@ -1366,6 +1488,7 @@ const courseSearchData = [
     StartDate: "18 Sept'2023",
     classType: "Virtual Class",
     price: "42,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=129",
   },
   {
@@ -1377,6 +1500,7 @@ const courseSearchData = [
     StartDate: "18 Sept'2023",
     classType: "Virtual Class",
     price: "42,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=130",
   },
   {
@@ -1388,6 +1512,7 @@ const courseSearchData = [
     StartDate: " 16 Oct'2023    ",
     classType: "Virtual Class",
     price: "42,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=131",
   },
   {
@@ -1399,6 +1524,7 @@ const courseSearchData = [
     StartDate: "09 Oct'2023",
     classType: "Virtual Class",
     price: "42,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=132",
   },
   {
@@ -1410,6 +1536,8 @@ const courseSearchData = [
     StartDate: "09 Oct'2023",
     classType: "Virtual Class",
     price: "42,000/-",
+    discount: "",
+
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=133",
   },
   {
@@ -1421,6 +1549,7 @@ const courseSearchData = [
     StartDate: " 02 Oct'2023",
     classType: "Virtual Class",
     price: "42,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=134",
   },
   {
@@ -1432,6 +1561,7 @@ const courseSearchData = [
     StartDate: "  17 Oct, 2023",
     classType: "Virtual Class",
     price: "45,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/info.php?id=71",
   },
   {
@@ -1443,6 +1573,7 @@ const courseSearchData = [
     StartDate: " 17 Sept, 2023",
     classType: "Virtual Class",
     price: "45,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/info.php?id=",
   },
   {
@@ -1454,6 +1585,7 @@ const courseSearchData = [
     StartDate: " 17 Sept, 2023",
     classType: "Virtual Class",
     price: "45,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/info.php?id=",
   },
   {
@@ -1465,6 +1597,7 @@ const courseSearchData = [
     StartDate: " 17 Sept, 2023",
     classType: "Virtual Class",
     price: "45,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/info.php?id= ",
   },
   {
@@ -1476,6 +1609,7 @@ const courseSearchData = [
     StartDate: "03 Jul'2023",
     classType: "Virtual Class",
     price: "56,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=61",
   },
   {
@@ -1487,6 +1621,7 @@ const courseSearchData = [
     StartDate: "  17 June, 2023",
     classType: "Virtual Class",
     price: "45,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/info.php?id=",
   },
   {
@@ -1498,6 +1633,7 @@ const courseSearchData = [
     StartDate: "17 June, 2023",
     classType: "Virtual Class",
     price: "45,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/info.php?id=",
   },
   {
@@ -1509,6 +1645,7 @@ const courseSearchData = [
     StartDate: "17 June, 2023",
     classType: "Virtual Class",
     price: "45,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/info.php?id=62",
   },
   {
@@ -1520,6 +1657,7 @@ const courseSearchData = [
     StartDate: "17 June, 2023",
     classType: "Virtual Class",
     price: "45,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/info.php?id=",
   },
   {
@@ -1531,6 +1669,7 @@ const courseSearchData = [
     StartDate: " 10 Jul'2023",
     classType: "Virtual Class",
     price: "56,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=80",
   },
   {
@@ -1542,6 +1681,7 @@ const courseSearchData = [
     StartDate: "17 Jul'2023",
     classType: "Virtual Class",
     price: "56,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/view.php?id=37 ",
   },
   {
@@ -1553,6 +1693,7 @@ const courseSearchData = [
     StartDate: "17 Jul'2023",
     classType: "Virtual Class",
     price: "56,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/edit.php?id=99",
   },
   {
@@ -1564,6 +1705,7 @@ const courseSearchData = [
     StartDate: "24 Jul'2023",
     classType: "Virtual Class",
     price: "56,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/view.php?id=2",
   },
   {
@@ -1575,6 +1717,7 @@ const courseSearchData = [
     StartDate: " 24 Jul'2023",
     classType: "Virtual Class",
     price: "60,000/-",
+    discount: "",
     CourseLink: "https://bskilling.melimu.com/course/view.php?id=6",
   },
 ];
