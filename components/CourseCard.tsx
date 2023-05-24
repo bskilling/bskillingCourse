@@ -48,7 +48,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ data }) => {
                 ) : (
                   <span className="font-bold text-white">₹ {data.price}</span>
                 )} */}
-                <span className="font-bold text-white">₹ {data.price}</span>
+                <span className="font-bold text-white">₹ {data.discount}</span>
               </div>
             </div>
             <div className="flex flex-col  px-4 mt-2">
@@ -84,6 +84,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ data }) => {
                     <div className="mt-[2px]  bg-buttonBlue flex flex-col items-center justify-center w-[25px] h-[25px] rounded-full">
                       <FaChalkboardTeacher size={15} color="white" />
                     </div>
+                    
                     <div className="mt-1">
                       <p className="text-sm"> {data.classType}</p>
                     </div>
