@@ -10,7 +10,7 @@ import FloatWindow from "modules/leadChat/components/FloatWindow";
 import { NextPage } from "next";
 import { useContext } from "react";
 
-const Home: NextPage<NextPage> = ({ }) => {
+const Home: NextPage<NextPage> = ({}) => {
   const {
     setButtonIndex,
     buttonIndex,
@@ -39,15 +39,14 @@ const Home: NextPage<NextPage> = ({ }) => {
     setCategoryVisible(false);
   };
 
-
   return (
     <>
       <section className="bg-buttonBlue text-white">
         <Tabs />
       </section>
       <section onClick={clickOnMain}>
-        <ContactPopUp />
-
+        {/* <ContactPopUp /> */}
+        <FloatWindow />
         <section>
           <Slider />
         </section>

@@ -149,6 +149,11 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
 
         <div className="md:mr-6 flex justify-center gap-5 md:my-0 my-5">
           <div className="mt-3 text-buttonBlue hover:cursor-pointer font-semibold">
+            <Link style={{ textDecoration: "none" }} href={"/about"}>
+              <p className="text-buttonBlue  no-underline"> About</p>
+            </Link>
+          </div>
+          <div className="mt-3 text-buttonBlue hover:cursor-pointer font-semibold">
             <p>Corporate Training</p>
           </div>
           <div className="mt-3 text-buttonBlue hover:cursor-pointer font-semibold">
@@ -187,6 +192,42 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
             <p className="">B-Block, 4th Floor, Kudlu Gate,</p>
             <p className="">Hosur Main Road,</p>
             <p className="">Bangalore – 560068. Karnataka, INDIA</p>
+          </div>
+          <div className="text-sm cursor-pointer p-4 md:p-0 ">
+            <Link style={{ textDecoration: "none" }} href={"/about"}>
+              <p className="text-black  no-underline"> About</p>
+            </Link>
+            <p className="">Corporate Training</p>
+            <p className="">Blogs</p>
+          </div>
+          <div className="text-sm cursor-pointer p-4 md:p-0 ">
+            <div className=" text-black">
+              <Link
+                style={{ textDecoration: "none" }}
+                className="no-underline text-black"
+                href={"/Termsofuse"}
+              >
+                Terms of use
+              </Link>
+            </div>
+            <div className="text-black">
+              <Link
+                style={{ textDecoration: "none" }}
+                className="no-underline text-black"
+                href={"/privacy"}
+              >
+                Privacy Policy
+              </Link>
+            </div>
+            <div className="text-black">
+              <Link
+                style={{ textDecoration: "none" }}
+                className="no-underline text-black"
+                href={"/Refundpolicy"}
+              >
+                Refund policy
+              </Link>
+            </div>
           </div>
 
           <div className="text-sm p-4 md:p-0 ">

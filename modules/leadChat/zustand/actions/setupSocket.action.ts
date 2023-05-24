@@ -21,7 +21,7 @@ const setupSocketAction: ICreateAction = (set, get) => () => {
           createdById: data.createdById,
           createdAt: data.createdAt,
           createdBy: data.createdBy,
-          isOwn: data.isOwn
+          isOwn: data.isOwn,
         });
       });
 
@@ -33,6 +33,6 @@ const setupSocketAction: ICreateAction = (set, get) => () => {
       });
     });
   }
-}
+};
 
 export default setupSocketAction;

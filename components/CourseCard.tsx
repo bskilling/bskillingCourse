@@ -37,7 +37,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ data }) => {
                 src={data.imageSrc}
                 alt=""
               />
-              <div className="absolute bottom-0 flex gap-1 rounded-t-md right-0 bg-[#33cc33] px-5">
+              <div className="absolute bottom-0 flex gap-1 rounded-t-md right-0 bg-buttonBlue px-5">
                 {/* {data.discount ? (
                   <>
                     <span className="font-bold text- line-through text-buttonBlue">
