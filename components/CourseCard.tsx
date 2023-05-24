@@ -14,7 +14,7 @@ interface CourseCardProps {
     classType: string;
     price: string;
     CourseLink: string;
-    discount: string;
+    discount?: string;
   };
 }
 const CourseCard: React.FC<CourseCardProps> = ({ data }) => {

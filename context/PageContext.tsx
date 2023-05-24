@@ -10,6 +10,7 @@ type SearchCourseArray = {
   classType: string;
   price: string;
   CourseLink: string;
+  discount?: string;
 };
 
 type MyContextType = {
