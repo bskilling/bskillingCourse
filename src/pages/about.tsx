@@ -107,22 +107,20 @@ const About = () => {
               <div className="h-full rounded-lg ">
                 <div className="h-60 w-full flex justify-center relative">
                   <div className="w-[300px] h-full relative ">
-                    <Image
+                    <img
                       className="absolute inset-0 object-cover"
-                      layout="fill"
-                      objectFit="cover"
                       alt=""
                       src="/aboutus/passion.jpg"
                     />
                   </div>
                   <div className="absolute inset-0 "></div>
-                  <div className="absolute inset-0 text-white p-8 flex items-center justify-center">
+                  <div className="absolute inset-0 text-white  flex items-center justify-center">
                     <p className=" text-3xl font-semibold text-white">
                       Passion
                     </p>
                   </div>
                 </div>
-                <div className="mt-5 text-center ">
+                <div className=" text-center ">
                   <p className="leading-relaxed  md:px-5 mb-3">
                     A driving force behind our continuous innovation and value
                     creation
@@ -135,10 +133,8 @@ const About = () => {
               <div className="h-full flex flex-col md:flex-col-reverse rounded-lg ">
                 <div className="h-60 w-full flex justify-center relative">
                   <div className="w-[300px] h-full relative">
-                    <Image
-                      className="absolute inset-0 object-cover"
-                      layout="fill"
-                      objectFit="cover"
+                    <img
+                      className="absolute  inset-0 object-cover"
                       alt=""
                       src="/aboutus/expertise.jpg"
                     />
@@ -163,10 +159,8 @@ const About = () => {
               <div className="h-full rounded-lg ">
                 <div className="h-60 w-full flex justify-center relative">
                   <div className="w-[300px] h-full relative">
-                    <Image
+                    <img
                       className="absolute inset-0 object-cover"
-                      layout="fill"
-                      objectFit="cover"
                       alt=""
                       src="/aboutus/empathy.jpg"
                     />

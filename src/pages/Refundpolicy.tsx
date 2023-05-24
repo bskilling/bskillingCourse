@@ -6,7 +6,19 @@ export default function RefundPolicy() {
   return (
     <>
       <section className="md:container h-fit  mx-auto">
-        <div className="w-full h-80 object-cover relative ">
+        <div className="w-full h-72  relative ">
+          <img
+            className="brightness-50 w-full h-72 object-cover"
+            alt="ser"
+            src="/carosel/ban5.png"
+          />
+          <div className="absolute   h-72 inset-0">
+            <p className="text-3xl w-full h-full mt-28 font-semibold   text-white    text-center font-SourceSans ">
+              Cancellation &amp; Refund Policy
+            </p>
+          </div>
+        </div>
+        {/* <div className="w-full h-80 object-cover relative ">
           <Image
             layout="fill"
             className="brightness-50"
@@ -21,12 +33,11 @@ export default function RefundPolicy() {
                 Cancellation &amp; Refund Policy
               </p>
 
-              {/* <p className="text-center">
-                How to get started with Yoga and grow with your practice
-              </p> */}
+             
             </div>
           </div>
-        </div>
+        </div> */}
+
         <div className="mb-5 md:p-0 p-8 mt-8">
           <div>
             <p className="text-xl font-semibold">For Self-Placed Learning:</p>
