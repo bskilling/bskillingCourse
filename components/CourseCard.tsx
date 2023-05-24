@@ -38,7 +38,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ data }) => {
                 alt=""
               />
               <div className="absolute bottom-0 flex gap-1 rounded-t-md right-0 bg-[#33cc33] px-5">
-                {data.discount ? (
+                {/* {data.discount ? (
                   <>
                     <span className="font-bold text- line-through text-buttonBlue">
                       ₹ {data.discount}
@@ -47,7 +47,8 @@ const CourseCard: React.FC<CourseCardProps> = ({ data }) => {
                   </>
                 ) : (
                   <span className="font-bold text-white">₹ {data.price}</span>
-                )}
+                )} */}
+                <span className="font-bold text-white">₹ {data.price}</span>
               </div>
             </div>
             <div className="flex flex-col  px-4 mt-2">
