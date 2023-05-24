@@ -4,8 +4,8 @@ import Link from "next/link";
 
 export default function RefundPolicy() {
   return (
-    <>
-      <section className="md:container h-fit  mx-auto">
+    <section className="bg-gray">
+      <section className="md:container pt-10 h-fit  mx-auto">
         <div className="w-full h-72  relative ">
           <img
             className="brightness-50 w-full h-72 object-cover"
@@ -136,7 +136,7 @@ export default function RefundPolicy() {
             </p>
           </div>
 
-          <div className="mt-4">
+          <div className="mt-4 pb-8">
             <p className="text-xl font-semibold">Refunds: Duplicate payment</p>
             <p className="mt-2">
               Refund of the duplicate payment made by the delegate will be
@@ -148,6 +148,6 @@ export default function RefundPolicy() {
           </div>
         </div>
       </section>
-    </>
+    </section>
   );
 }

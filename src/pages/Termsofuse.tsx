@@ -4,8 +4,8 @@ import Link from "next/link";
 
 export default function TermOfUse() {
   return (
-    <>
-      <section className="md:container h-fit  mx-auto">
+    <section className="bg-gray">
+      <section className="md:container pt-10 h-fit  mx-auto">
         <div className="w-full h-72  relative ">
           <img
             className="brightness-50 w-full h-72 object-cover"
@@ -303,7 +303,7 @@ export default function TermOfUse() {
             </p>
           </div>
 
-          <div className="mt-4 mb-12">
+          <div className="mt-4 mb-12 pb-8">
             <p className="text-xl font-semibold">15. Query Redressal</p>
             <p className="mt-2">
               In case you have any concerns or queries, please reach out to our
@@ -314,6 +314,6 @@ export default function TermOfUse() {
           </div>
         </div>
       </section>
-    </>
+    </section>
   );
 }
