@@ -1,21 +1,16 @@
-import { ReactNode, useContext, useEffect, useState } from "react";
-import { api } from "common/util/auth";
-import { MdAdd } from "react-icons/md";
-import { NextPage } from "next";
-import { useForm } from "react-hook-form";
-import axios, { AxiosResponse } from "axios";
-import Slider from "components/slider";
-import Become from "components/become";
-import ListOfCourses from "components/listOfCourses";
-import CourseDetails from "data/CoursesData";
 import ContactPopUp from "components/ContactPopUp";
-import Testimonials from "components/testimonials";
-import CertifiedPartners from "components/certifiedPartners";
-import Tabs from "components/tabs";
 import Blogs from "components/blognew";
+import CertifiedPartners from "components/certifiedPartners";
+import ListOfCourses from "components/listOfCourses";
+import Slider from "components/slider";
+import Tabs from "components/tabs";
+import Testimonials from "components/testimonials";
 import { MyContext } from "context/PageContext";
+import FloatWindow from "modules/leadChat/components/FloatWindow";
+import { NextPage } from "next";
+import { useContext } from "react";
 
-const Home: NextPage<NextPage> = ({}) => {
+const Home: NextPage<NextPage> = ({ }) => {
   const {
     setButtonIndex,
     buttonIndex,
@@ -43,6 +38,8 @@ const Home: NextPage<NextPage> = ({}) => {
     setIsDropdownOpen(false);
     setCategoryVisible(false);
   };
+
+
   return (
     <>
       <section className="bg-buttonBlue text-white">
@@ -50,6 +47,7 @@ const Home: NextPage<NextPage> = ({}) => {
       </section>
       <section onClick={clickOnMain}>
         <ContactPopUp />
+
         <section>
           <Slider />
         </section>
