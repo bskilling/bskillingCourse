@@ -6,25 +6,16 @@ export default function TermOfUse() {
   return (
     <>
       <section className="md:container h-fit  mx-auto">
-        <div className="w-full h-80 object-cover relative ">
-          <Image
-            layout="fill"
-            className="brightness-50"
+        <div className="w-full h-72  relative ">
+          <img
+            className="brightness-50 w-full h-72 object-cover"
             alt="ser"
             src="/carosel/ban5.png"
-            objectFit="cover "
-            unoptimized={true}
           />
-          <div className="w-full    h-full  flex  justify-center">
-            <div className="text-white relative    h-full flex flex-col justify-center items-center">
-              <p className="text-3xl font-semibold mt-5   text-center font-SourceSans ">
-                Terms Of Use
-              </p>
-
-              {/* <p className="text-center">
-                How to get started with Yoga and grow with your practice
-              </p> */}
-            </div>
+          <div className="absolute   h-72 inset-0">
+            <p className="text-3xl w-full h-full mt-28 font-semibold   text-white    text-center font-SourceSans ">
+              Terms Of Use
+            </p>
           </div>
         </div>
         <div className="mb-5 md:p-0 p-8 mt-8">
