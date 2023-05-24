@@ -79,7 +79,7 @@ const CourseDetails = [
         StartDate: "17 July, 2023",
         classType: "Virtual Class",
         price: "45,000/-",
-        discount: "",
+        discount: "35,310/-",
         CourseLink: "https://bskilling.melimu.com/course/info.php?id=29",
       },
       {
