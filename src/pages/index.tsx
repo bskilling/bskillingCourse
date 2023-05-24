@@ -46,7 +46,7 @@ const Home: NextPage<NextPage> = ({}) => {
       </section>
       <section onClick={clickOnMain}>
         {/* <ContactPopUp /> */}
-        <FloatWindow />
+       
         <section>
           <Slider />
         </section>

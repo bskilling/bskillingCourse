@@ -207,7 +207,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
                 className="no-underline text-black"
                 href={"/Termsofuse"}
               >
-                Terms of use
+                Terms of Use
               </Link>
             </div>
             <div className="text-black">
@@ -225,7 +225,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
                 className="no-underline text-black"
                 href={"/Refundpolicy"}
               >
-                Refund policy
+                Refund Policy
               </Link>
             </div>
           </div>
