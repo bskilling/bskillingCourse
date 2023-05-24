@@ -4,8 +4,8 @@ import Link from "next/link";
 
 export default function Privacy() {
   return (
-    <>
-      <section className="md:container h-fit  md:mx-auto">
+    <section className="bg-gray">
+      <section className="md:container h-fit pt-10 md:mx-auto">
         <div className="w-full h-72  relative ">
           <img
             className="brightness-50 w-full h-72 object-cover"
@@ -452,7 +452,7 @@ export default function Privacy() {
             </p>
           </div>
 
-          <div className="mt-4">
+          <div className="mt-4 pb-8">
             <p className="text-xl font-semibold">15. Grievance Redressal</p>
             <p className="">
               In case you have any concerns or queries, please reach out to our
@@ -464,6 +464,6 @@ export default function Privacy() {
           </div>
         </div>
       </section>
-    </>
+    </section>
   );
 }
