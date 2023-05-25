@@ -216,11 +216,104 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
       <footer className=" bg-white  px-10 py-6 md:py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 md:flex md:flex-row justify-between items-start">
           <div className="col-span-2 pb-4 md:pb-0 ">
-            <a className="flex justify-start items-center pl-6 md:pl-0">
+            {/* <a className="flex justify-start items-center pl-6 md:pl-0">
               <div className="">
                 <img src="/logo.png" alt="logo" width={200} height={200} />
               </div>
-            </a>
+            </a> */}
+            <div className=" p-4 md:p-0 pl-6 ">
+              <p className="font-semibold text-lg pb-2 text-center ">
+                Find us on
+              </p>
+              <div className="grid grid-cols-3   gap- i ">
+                <div>
+                  <a
+                    target="_blank"
+                    rel="noreferrer"
+                    href="https://www.instagram.com/bskillingindia/"
+                  >
+                    {" "}
+                    <img
+                      src="/icon/insta.svg"
+                      className="w-[48px] h-[48px]"
+                      alt=""
+                    />
+                  </a>
+                </div>
+                <div>
+                  <a
+                    target="_blank"
+                    rel="noreferrer"
+                    href="https://www.facebook.com/bskillingindia/"
+                  >
+                    {" "}
+                    <img
+                      src="/icon/facebook.svg"
+                      className="w-[48px] h-[48px]"
+                      alt=""
+                    />
+                  </a>
+                </div>
+
+                <div>
+                  <a
+                    target="_blank"
+                    rel="noreferrer"
+                    href="https://www.linkedin.com/company/bskillingindia/"
+                  >
+                    {" "}
+                    <img
+                      src="/icon/link.svg"
+                      className="w-[48px] h-[48px]"
+                      alt=""
+                    />
+                  </a>
+                </div>
+                <div>
+                  <a
+                    target="_blank"
+                    rel="noreferrer"
+                    href="https://twitter.com/bskillingindia"
+                  >
+                    {" "}
+                    <img
+                      src="/icon/twitter.svg"
+                      className="w-[48px] h-[48px]"
+                      alt=""
+                    />
+                  </a>
+                </div>
+                <div>
+                  <a
+                    target="_blank"
+                    rel="noreferrer"
+                    href="https://www.pinterest.com/bskillingdigital/"
+                  >
+                    {" "}
+                    <img
+                      src="/icon/pin.svg"
+                      className="w-[48px] h-[48px]"
+                      alt=""
+                    />
+                  </a>
+                </div>
+
+                <div>
+                  <a
+                    target="_blank"
+                    rel="noreferrer"
+                    href="https://www.youtube.com/@BSkillingIndia"
+                  >
+                    {" "}
+                    <img
+                      src="/icon/yt.svg"
+                      className="w-[48px] h-[48px]"
+                      alt=""
+                    />
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
           <div className="text-sm col-span-2 p-4 md:p-0 ">
             <p className="font-semibold text-lg">BSKILLING PRIVATE LIMITED</p>
@@ -277,100 +370,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
             <p className="text-base">Email : support@bskilling.com</p>
             <p className="text-base">Phone : 9845348601</p>
           </div>
-
-          <div className="col-span-2 p-4 md:p-0 pl-6 ">
-            <p className="font-semibold text-lg pb-2 text-center ">
-              Find us on
-            </p>
-            <div className="grid grid-cols-2   gap- i ">
-              <div>
-                <a
-                  target="_blank"
-                  rel="noreferrer"
-                  href="https://www.instagram.com/bskillingindia/"
-                >
-                  {" "}
-                  <img
-                    src="/icon/insta.svg"
-                    className="w-[48px] h-[48px]"
-                    alt=""
-                  />
-                </a>
-              </div>
-              <div>
-                <a
-                  target="_blank"
-                  rel="noreferrer"
-                  href="https://www.facebook.com/bskillingindia/"
-                >
-                  {" "}
-                  <img
-                    src="/icon/facebook.svg"
-                    className="w-[48px] h-[48px]"
-                    alt=""
-                  />
-                </a>
-              </div>
-
-              <div>
-                <a
-                  target="_blank"
-                  rel="noreferrer"
-                  href="https://www.linkedin.com/company/bskillingindia/"
-                >
-                  {" "}
-                  <img
-                    src="/icon/link.svg"
-                    className="w-[48px] h-[48px]"
-                    alt=""
-                  />
-                </a>
-              </div>
-              <div>
-                <a
-                  target="_blank"
-                  rel="noreferrer"
-                  href="https://twitter.com/bskillingindia"
-                >
-                  {" "}
-                  <img
-                    src="/icon/twitter.svg"
-                    className="w-[48px] h-[48px]"
-                    alt=""
-                  />
-                </a>
-              </div>
-              <div>
-                <a
-                  target="_blank"
-                  rel="noreferrer"
-                  href="https://www.pinterest.com/bskillingdigital/"
-                >
-                  {" "}
-                  <img
-                    src="/icon/pin.svg"
-                    className="w-[48px] h-[48px]"
-                    alt=""
-                  />
-                </a>
-              </div>
-
-              <div>
-                <a
-                  target="_blank"
-                  rel="noreferrer"
-                  href="https://www.youtube.com/@BSkillingIndia"
-                >
-                  {" "}
-                  <img
-                    src="/icon/yt.svg"
-                    className="w-[48px] h-[48px]"
-                    alt=""
-                  />
-                </a>
-              </div>
-            </div>
-          </div>
+          <div className=" w-[20px] md:block hidden  h-[20px]"></div>
         </div>
 
         <div className="mx-auto text-left md:text-center text-sm text-zinc-400 pt-4 md:pt-8 md:p-0 p-4 pl-6">
