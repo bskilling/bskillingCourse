@@ -208,7 +208,7 @@ const ListOfCourses: NextPage<{}> = () => {
                       {CourseDetails.slice(12).map(
                         ({ categoryName }, index) => (
                           <button
-                            key={categoryName}
+                            key={index}
                             className="text-gray-700 block w-full px-6 py-2 hover:bg-buttonBlue text-right text-sm hover:bg-gray-100  hover:text-white"
                             onClick={() => TabButtonClick(index + 12)}
                           >
@@ -257,6 +257,15 @@ const ListOfCourses: NextPage<{}> = () => {
         </section>
       </section>
 
+      {/* <div>
+        <div className="flex  pb-8 justify-center">
+          <Link href={"/allCourses"}>
+            <button className=" text-white bg-Buttoncolor transition duration-500 hover:scale-105 ease-out   py-2 focus:ring-1 focus:outline-none focus:ring-buttonBlue font-medium  text-sm px-4  ">
+              Browse All Courses
+            </button>
+          </Link>
+        </div>
+      </div> */}
       <div>
         <div className="flex  pb-8 justify-center">
           <button

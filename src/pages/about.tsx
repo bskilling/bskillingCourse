@@ -8,13 +8,13 @@ const About = () => {
           className="md:container  py-8 md:mx-auto
             "
         >
-          <div className="text-white ">
+          <div className="text-white px-5 md:px-0">
             <div>
               <p className=" text-4xl tracking-wide mb-10 text-center ">
                 Who We Are
               </p>
             </div>
-            <div className="my-2">
+            <div className="my-2 text-base leading-relaxed ">
               <p>
                 bSkilling is a pioneer in technology training and we focus on
                 offering top-notch IT and fintech education and skill
@@ -34,7 +34,7 @@ const About = () => {
               </p>
             </div>
 
-            <div className="my-5">
+            <div className="my-5 text-base">
               <p>
                 <span className="font-semibold">
                   {" "}
@@ -47,7 +47,7 @@ const About = () => {
               </p>
             </div>
 
-            <div className="my-5">
+            <div className="my-5 text-base leading-relaxed ">
               <p>
                 <span className="font-semibold">
                   {" "}
@@ -60,7 +60,7 @@ const About = () => {
               </p>
             </div>
 
-            <div className="my-5 leading-relaxed ">
+            <div className="my-5 leading-relaxed text-base">
               <p>
                 <span className="font-semibold">
                   {" "}
@@ -72,7 +72,7 @@ const About = () => {
                 background.
               </p>
             </div>
-            <div className="my-5 leading-relaxed">
+            <div className="my-5 leading-relaxed text-base">
               <p>
                 <span className="font-semibold">
                   {" "}
@@ -83,7 +83,7 @@ const About = () => {
                 makes education more convenient and accessible for students.
               </p>
             </div>
-            <div className="my-5 leading-relaxed">
+            <div className="my-5 leading-relaxed text-base">
               <p>
                 bSkilling is making a big impact on the EdTech industry. The
                 company is committed to providing high-quality education at an
@@ -102,10 +102,10 @@ const About = () => {
         </h1>
 
         <div className="lg:container mb-10  mx-auto">
-          <div className="flex tablet:flex-row  flex-row gap-5 justify-center  items-center">
+          <div className="flex flex-col  md:flex-row gap-5 justify-center  items-center">
             <div className="p-4 lg:w-[400px] ">
               <div className="h-full rounded-lg ">
-                <div className="h-60 w-full flex justify-center relative">
+                <div className="h-52 w-full flex justify-center relative">
                   <div className="w-[300px] h-full relative ">
                     <img
                       className="absolute inset-0 object-cover"
@@ -131,7 +131,7 @@ const About = () => {
 
             <div className="p-4 lg:w-[400px] ">
               <div className="h-full flex flex-col md:flex-col-reverse rounded-lg ">
-                <div className="h-60 w-full flex justify-center relative">
+                <div className="h-52 w-full flex justify-center relative">
                   <div className="w-[300px] h-full relative">
                     <img
                       className="absolute  inset-0 object-cover"
@@ -157,7 +157,7 @@ const About = () => {
 
             <div className="p-4 lg:w-[400px] ">
               <div className="h-full rounded-lg ">
-                <div className="h-60 w-full flex justify-center relative">
+                <div className="h-44 w-full flex justify-center relative">
                   <div className="w-[300px] h-full relative">
                     <img
                       className="absolute inset-0 object-cover"
@@ -166,7 +166,7 @@ const About = () => {
                     />
                   </div>
                   <div className="absolute inset-0 "></div>
-                  <div className="absolute inset-0  p-8 flex items-center justify-center">
+                  <div className="absolute inset-0   flex items-center justify-center">
                     <p className=" text-3xl font-semibold  text-white">
                       Empathy
                     </p>
