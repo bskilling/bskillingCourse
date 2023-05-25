@@ -18,11 +18,7 @@ const FloatWindow = () => {
       currentHour >= 10 &&
       currentHour < 18
     ) {
-      const timeout = setTimeout(() => {
-        setChatIconVisible(true);
-      }, 4000);
-
-      return () => clearTimeout(timeout);
+      setChatIconVisible(true);
     } else {
       setChatIconVisible(false);
     }
