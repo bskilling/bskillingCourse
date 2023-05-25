@@ -140,15 +140,15 @@ const Tabs = () => {
                       <AiOutlineMenu />
                     </button>
                     {isDropdownOpen && (
-                      <div className="origin-top-right absolute  z-[6000] left-[px] right-0 mt-5  w- rounded-md shadow-lg bg-white ring-1     ">
+                      <div className="origin-top-right absolute  z-[6000]  right-0 mt-6  min-w-[200px]   rounded-md shadow-lg bg-white ring-1     ">
                         {BrowseAllCourse.slice(11).map(
                           ({ categoryName }, index) => (
                             <button
                               key={categoryName}
-                              className="text-black hover:text-white text-right   block px-9 border-0 w-full hover:bg-buttonBlue   cursor-pointer py-2 text-sm  hover:text-gray-900"
+                              className="text-black hover:text-white text-right py-3   block px- border-0 min-w-[200px] pr-5 w-full hover:bg-buttonBlue   cursor-pointer  text-sm  hover:text-gray-900"
                               onClick={() => TabButtonClick(index + 11)}
                             >
-                              {categoryName}
+                              <p> {categoryName}</p>
                             </button>
                           )
                         )}
