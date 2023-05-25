@@ -6,6 +6,27 @@ import DropAQueryForm from "./DropAQueryForm";
 import LeadChatBox from "./LeadChatBox";
 
 const FloatWindow = () => {
+  const [chatIconVisible, setChatIconVisible] = useState(false);
+  useEffect(() => {
+    const currentTime = new Date();
+    const currentHour = currentTime.getHours();
+    const currentDay = currentTime.getDay(); // Sunday: 0, Monday: 1, ..., Saturday: 6
+
+    if (
+      currentDay >= 1 && // Monday
+      currentDay <= 5 && // Friday
+      currentHour >= 10 &&
+      currentHour < 18
+    ) {
+      const timeout = setTimeout(() => {
+        setChatIconVisible(true);
+      }, 4000);
+
+      return () => clearTimeout(timeout);
+    } else {
+      setChatIconVisible(false);
+    }
+  }, []);
   const {
     floatWindowMode,
     isChatFormVisible,
@@ -47,22 +68,25 @@ const FloatWindow = () => {
         </div>
       )}
 
-      {floatWindowMode !== "chat" ? (
-        <button
-          className="flex items-center justify-center z-[6000] bg-buttonBlue shadow-md text-white text-3xl fixed bottom-[105px] right-2 w-[75px] h-[75px] rounded-full"
-          onClick={() => setFloatWindowMode("chat")}
-        >
-          <FaComment />
-        </button>
+      {chatIconVisible === true ? (
+        floatWindowMode !== "chat" ? (
+          <button
+            className="flex items-center justify-center z-[6000] bg-buttonBlue shadow-md text-white text-3xl fixed bottom-[105px] right-2 w-[75px] h-[75px] rounded-full"
+            onClick={() => setFloatWindowMode("chat")}
+          >
+            <FaComment />
+          </button>
+        ) : (
+          <button
+            className="flex items-center justify-center z-[6000] bg-buttonBlue shadow-md text-white text-3xl fixed bottom-[105px] right-2 w-[75px] h-[75px] rounded-full"
+            onClick={closeChat}
+          >
+            <FaTimes />
+          </button>
+        )
       ) : (
-        <button
-          className="flex items-center justify-center z-[6000] bg-buttonBlue shadow-md text-white text-3xl fixed bottom-[105px] right-2 w-[75px] h-[75px] rounded-full"
-          onClick={closeChat}
-        >
-          <FaTimes />
-        </button>
+        ""
       )}
-
       {floatWindowMode !== "drop-a-query" ? (
         <button
           className="flex items-center justify-center bg-buttonBlue z-[6000] shadow-md text-white text-3xl fixed bottom-[15px] right-2 w-[75px] h-[75px] rounded-full"

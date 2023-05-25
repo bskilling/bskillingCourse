@@ -7,6 +7,7 @@ import { BiSearchAlt } from "react-icons/bi";
 import Link from "next/link";
 import { MyContext } from "context/PageContext";
 import courseSearchData from "data/courseSearchData";
+import { useRouter } from "next/router";
 
 type Props = {
   children: ReactNode;
@@ -25,6 +26,15 @@ interface searchCourseArray {
 }
 
 const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
+  const route = useRouter();
+  const [aboutUnderline, setAboutUnderline] = useState(false);
+  useEffect(() => {
+    if (route.pathname === "/about") {
+      setAboutUnderline(true);
+    } else {
+      setAboutUnderline(false);
+    }
+  }, [route.pathname]);
   useEffect(() => {
     setFetchSearchData(courseSearchData);
   }, []);
@@ -147,32 +157,58 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
           </div>
         </div>
 
-        <div className="md:mr-6 flex justify-center gap-5 md:my-0 my-5">
-          <div className="mt-3 text-buttonBlue hover:cursor-pointer font-semibold">
-            <Link style={{ textDecoration: "none" }} href={"/about"}>
-              <p className="text-buttonBlue  no-underline"> About</p>
-            </Link>
-          </div>
-          <div className="mt-3 text-buttonBlue hover:cursor-pointer font-semibold">
-            <p>Corporate Training</p>
-          </div>
-          <div className="mt-3 text-buttonBlue hover:cursor-pointer font-semibold">
-            <p>Blogs</p>
-          </div>
-          <div className="flex items-center">
-            {" "}
-            <div className="w-[1px] bg-buttonBlue  h-[50px]"></div>
+        <div className="md:mr-6 flex   justify-center gap-3 md:gap-5 md:my-0 my-5">
+          <div className="flex gap-4 md:gap-5">
+            <div className="mt-3 text-buttonBlue hover:cursor-pointer font-semibold">
+              <Link style={{ textDecoration: "none" }} href={"/about"}>
+                <p
+                  className={`${
+                    aboutUnderline === true
+                      ? "text-buttonBlue border-b-2 underline-offset-2"
+                      : "text-buttonBlue  no-underline"
+                  }`}
+                >
+                  {" "}
+                  About
+                </p>
+              </Link>
+            </div>
+            <div className="mt-3 text-buttonBlue text-center hover:cursor-pointer font-semibold">
+              <p>Corporate Training</p>
+            </div>
+            <div className="mt-3 text-buttonBlue hover:cursor-pointer font-semibold">
+              <p>Blogs</p>
+            </div>
+            <div className=" md:flex hidden items-center">
+              {" "}
+              <div className="w-[1px] bg-buttonBlue  h-[50px]"></div>
+            </div>
           </div>
           <a
             target="_blank"
             rel="noreferrer"
-            className="underline-0"
+            className="underline-0 md:block hidden"
             href="https://bskilling.melimu.com/login/index.php"
           >
             <button className="flex gap-1 text-white mt-2 border hover:text-white border-buttonBlue transition duration-500 hover:scale-105 ease-out  bg-buttonBlue hover:bg-buttonBlue py-[8px] focus:ring-1 focus:outline-none focus:ring-buttonBlue font-medium  text-sm px-4 ">
               <p>Login</p>
             </button>
           </a>
+        </div>
+        <div className="mb-4 flex md:hidden justify-center">
+          <div>
+            {" "}
+            <a
+              target="_blank"
+              rel="noreferrer"
+              className="underline-0"
+              href="https://bskilling.melimu.com/login/index.php"
+            >
+              <button className="flex gap-1 text-white mt-2 border hover:text-white border-buttonBlue transition duration-500 hover:scale-105 ease-out  bg-buttonBlue hover:bg-buttonBlue py-[8px] focus:ring-1 focus:outline-none focus:ring-buttonBlue font-medium  text-sm px-4 ">
+                <p>Login</p>
+              </button>
+            </a>
+          </div>
         </div>
       </nav>
 
@@ -187,21 +223,27 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
             </a>
           </div>
           <div className="text-sm col-span-2 p-4 md:p-0 ">
-            <p className="font-semibold">INDIA - HEAD OFFICE</p>
-            <p className="">Uma Sree Dream World, Unit -2,</p>
-            <p className="">B-Block, 4th Floor, Kudlu Gate,</p>
-            <p className="">Hosur Main Road,</p>
-            <p className="">Bangalore – 560068. Karnataka, INDIA</p>
+            <p className="font-semibold text-lg">BSKILLING PRIVATE LIMITED</p>
+            <p className="text-base">Uma Sree Dream World, Unit -2,</p>
+            <p className="text-base">B-Block, 4th Floor, Kudlu Gate,</p>
+            <p className="text-base">Hosur Main Road,</p>
+            <p className="text-base">Bangalore – 560068. Karnataka, INDIA</p>
           </div>
           <div className="text-sm cursor-pointer p-4 md:p-0 ">
+            <div>
+              <p className="font-semibold text-lg">Company</p>
+            </div>
             <Link style={{ textDecoration: "none" }} href={"/about"}>
-              <p className="text-black  no-underline"> About</p>
+              <p className="text-black text-base  no-underline"> About</p>
             </Link>
-            <p className="">Corporate Training</p>
-            <p className="">Blogs</p>
+            <p className="text-base">Corporate Training</p>
+            <p className="text-base ">Blogs</p>
           </div>
-          <div className="text-sm cursor-pointer p-4 md:p-0 ">
-            <div className=" text-black">
+          <div className="text-sm cursor-pointer  p-4 md:p-0 ">
+            <div>
+              <p className="font-semibold text-lg">Company</p>
+            </div>
+            <div className=" text-black text-base">
               <Link
                 style={{ textDecoration: "none" }}
                 className="no-underline text-black"
@@ -210,7 +252,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
                 Terms of Use
               </Link>
             </div>
-            <div className="text-black">
+            <div className="text-black text-base">
               <Link
                 style={{ textDecoration: "none" }}
                 className="no-underline text-black"
@@ -219,7 +261,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
                 Privacy Policy
               </Link>
             </div>
-            <div className="text-black">
+            <div className="text-black text-base">
               <Link
                 style={{ textDecoration: "none" }}
                 className="no-underline text-black"
@@ -231,81 +273,108 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
           </div>
 
           <div className="text-sm p-4 md:p-0 ">
-            <p className="font-semibold">Contact</p>
-            <p className="">Email : support@bskilling.com</p>
-            <p className="">Phone : 9845348601</p>
+            <p className="font-semibold  text-lg">Contact</p>
+            <p className="text-base">Email : support@bskilling.com</p>
+            <p className="text-base">Phone : 9845348601</p>
           </div>
 
           <div className="col-span-2 p-4 md:p-0 pl-6 ">
-            <p className="font-semibold text-sm pb-2 text-zinc-500">
+            <p className="font-semibold text-lg pb-2 text-center ">
               Find us on
             </p>
-            <div className="grid-cols-2  gap-2 inline-grid ">
-              <a
-                className="hover:scale-105 transition-all"
-                href="https://www.linkedin.com/company/sfj-business-solutions-pvt-ltd-/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <svg
-                  className="w-8 h-8 linkedin"
-                  width="100"
-                  height="100"
-                  viewBox="0 0 201 201"
+            <div className="grid grid-cols-2   gap- i ">
+              <div>
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href="https://www.instagram.com/bskillingindia/"
                 >
-                  <rect
-                    width="201"
-                    height="201"
-                    fill="#0072b1"
-                    rx="19"
-                    ry="19"
+                  {" "}
+                  <img
+                    src="/icon/insta.svg"
+                    className="w-[48px] h-[48px]"
+                    alt=""
                   />
-                  <polygon
-                    fill="#fefefe"
-                    points="39 102 39 162 68 162 68 97 68 80 39 80"
-                  />
-                  <path
-                    fill="#fefefe"
-                    d="M54 39c-8 0-15 7-15 15 0 7 7 14 15 14 7 0 14-7 14-14 0-8-7-15-14-15zM161 105c-2-15-9-25-30-25-12 0-20 5-24 11l0 0 0-11-23 0 0 16 0 66 24 0 0-41c0-10 2-21 15-21 13 0 14 13 14 22l0 40 25 0 0-45 0 0c0-4 0-8-1-12z"
-                  />
-                </svg>
-              </a>
-              <a
-                className="hover:scale-105 transition-all"
-                href="https://www.instagram.com/sfjbs_bangalore/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <svg
-                  className="w-8 h-8 instragram"
-                  width="100"
-                  height="100"
-                  viewBox="0 0 384 384"
+                </a>
+              </div>
+              <div>
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href="https://www.facebook.com/bskillingindia/"
                 >
-                  <rect
-                    width="384"
-                    height="384"
-                    fill="#fbad50"
-                    rx="37"
-                    ry="37"
+                  {" "}
+                  <img
+                    src="/icon/facebook.svg"
+                    className="w-[48px] h-[48px]"
+                    alt=""
                   />
-                  <path
-                    fill="#fff"
-                    d="M142 59l100 0c22,0 42,9 56,24 14,14 23,34 23,56l0 106c0,22 -9,41 -23,56 -14,14 -34,23 -56,23l-100 0c-22,0 -42,-9 -56,-23 -15,-15 -24,-34 -24,-56l0 -106c0,-22 9,-42 24,-56 14,-15 34,-24 56,-24zm100 23l-100 0c-16,0 -30,6 -41,16 -10,11 -17,25 -17,41l0 106c0,15 7,30 17,40 11,11 25,17 41,17l100 0c16,0 30,-6 40,-17 11,-10 17,-25 17,-40l0 -106c0,-16 -6,-30 -17,-41 -10,-10 -24,-16 -40,-16z"
+                </a>
+              </div>
+
+              <div>
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href="https://www.linkedin.com/company/bskillingindia/"
+                >
+                  {" "}
+                  <img
+                    src="/icon/link.svg"
+                    className="w-[48px] h-[48px]"
+                    alt=""
                   />
-                  <path
-                    fill="#fff"
-                    d="M192 123c19,0 36,7 48,20 12,12 20,29 20,48 0,19 -8,35 -20,48 -12,12 -29,20 -48,20 -19,0 -36,-8 -48,-20 -13,-13 -20,-29 -20,-48 0,-19 7,-36 20,-48 12,-13 29,-20 48,-20zm32 35c-8,-8 -20,-13 -32,-13 -13,0 -24,5 -33,13 -8,9 -13,20 -13,33 0,12 5,24 13,32 9,8 20,13 33,13 12,0 24,-5 32,-13 8,-8 14,-20 14,-32 0,-13 -6,-24 -14,-33z"
+                </a>
+              </div>
+              <div>
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href="https://twitter.com/bskillingindia"
+                >
+                  {" "}
+                  <img
+                    src="/icon/twitter.svg"
+                    className="w-[48px] h-[48px]"
+                    alt=""
                   />
-                  <circle cx="265" cy="119" r="16" fill="#fff" />
-                </svg>
-              </a>
+                </a>
+              </div>
+              <div>
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href="https://www.pinterest.com/bskillingdigital/"
+                >
+                  {" "}
+                  <img
+                    src="/icon/pin.svg"
+                    className="w-[48px] h-[48px]"
+                    alt=""
+                  />
+                </a>
+              </div>
+
+              <div>
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href="https://www.youtube.com/@BSkillingIndia"
+                >
+                  {" "}
+                  <img
+                    src="/icon/yt.svg"
+                    className="w-[48px] h-[48px]"
+                    alt=""
+                  />
+                </a>
+              </div>
             </div>
           </div>
         </div>
 
         <div className="mx-auto text-left md:text-center text-sm text-zinc-400 pt-4 md:pt-8 md:p-0 p-4 pl-6">
-          <p>bSkilling PVT LTD</p>
+          <p>bSkilling Pvt. Ltd.</p>
           <p>
             Copyright © 2023. All Rights Reserved. Designed by Deedbee Social
             Ventures.
