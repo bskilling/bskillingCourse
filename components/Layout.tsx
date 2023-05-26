@@ -334,7 +334,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
           </div>
           <div className="text-sm cursor-pointer  p-4 md:p-0 ">
             <div>
-              <p className="font-semibold text-lg">Company</p>
+              <p className="font-semibold text-lg">Policies </p>
             </div>
             <div className=" text-black text-base">
               <Link
