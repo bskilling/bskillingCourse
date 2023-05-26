@@ -20,27 +20,44 @@ const CertifiedPartners = () => {
     "/edu&car/3.png",
     "/edu&car/4.png",
     "/edu&car/5.png",
+    "/edu&car/AWS.png",
+    "/edu&car/6.png",
   ];
   return (
     <>
       <div className="relative bg-white w-auto">
         {/* <div className="w-full h-[60vh] flex overflow-x-auto snap-mandatory snap-x scrollbar-hide"> */}
-
+        <div className="mt-8 font-bold font-SourceSans text-xl text-center ">
+          Certified Learning Partner
+        </div>
         <div className="w-full md:container md:flex-row flex- flex justify-center flex-wrap  gap-6 mx-auto">
-          <h1 className="text-base  font-semibold pt-12 text-black  md:text-left">
-            Certified Learning <br /> Partner
-          </h1>
-          {logos.map((x, index) => (
-            <div key={index}>
-              <div className="h-36   flex justify-center   relative cursor-pointer">
-                <img
-                  className="w-[150px] object-contain mt-1 "
-                  src={x}
-                  alt=""
-                />
-              </div>
-            </div>
-          ))}
+          {logos.map((x, index) => {
+            if (index === 7 || index === 8) {
+              return (
+                <div key={index}>
+                  <div className="h-36   flex justify-center   relative cursor-pointer">
+                    <img
+                      className="w-[80px] object-contain mt-1 "
+                      src={x}
+                      alt=""
+                    />
+                  </div>
+                </div>
+              );
+            } else {
+              return (
+                <div key={index}>
+                  <div className="h-36   flex justify-center   relative cursor-pointer">
+                    <img
+                      className="w-[120px] object-contain mt-1 "
+                      src={x}
+                      alt=""
+                    />
+                  </div>
+                </div>
+              );
+            }
+          })}
         </div>
       </div>
     </>
