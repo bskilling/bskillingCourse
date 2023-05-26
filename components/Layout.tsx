@@ -367,8 +367,13 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
 
           <div className="text-sm p-4 md:p-0 ">
             <p className="font-semibold  text-lg">Contact</p>
-            <p className="text-base">Email : support@bskilling.com</p>
-            <p className="text-base">Phone : 9845348601</p>
+            <p className="text-base">
+              Sales Inquiries : <br /> support@bskilling.com / +91-9845348601
+            </p>
+            <p className="text-base">
+              Grievances : <br /> grievanceofficer@bskilling.com /
+              +91-9740808405
+            </p>
           </div>
           <div className=" w-[20px] md:block hidden  h-[20px]"></div>
         </div>
