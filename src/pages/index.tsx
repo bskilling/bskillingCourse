@@ -2,6 +2,7 @@ import ContactPopUp from "components/ContactPopUp";
 import Blogs from "components/blognew";
 import CertifiedPartners from "components/certifiedPartners";
 import ListOfCourses from "components/listOfCourses";
+import Playstore from "components/playstoreapp";
 import Slider from "components/slider";
 import Tabs from "components/tabs";
 import Testimonials from "components/testimonials";
@@ -46,11 +47,10 @@ const Home: NextPage<NextPage> = ({}) => {
       </section>
       <section onClick={clickOnMain}>
         {/* <ContactPopUp /> */}
-       
+
         <section>
           <Slider />
         </section>
-
         <section className="bg-gray">
           <ListOfCourses />
         </section>
@@ -60,6 +60,9 @@ const Home: NextPage<NextPage> = ({}) => {
         <section className="">
           <Testimonials />
         </section>
+        {/* <section>
+          <Playstore />
+        </section> */}
         <section className="bg-gray">
           <Blogs />
         </section>
