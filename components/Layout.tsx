@@ -28,11 +28,17 @@ interface searchCourseArray {
 const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
   const route = useRouter();
   const [aboutUnderline, setAboutUnderline] = useState(false);
+  const [blogUnderline, setBlogUnderline] = useState(false);
   useEffect(() => {
     if (route.pathname === "/about") {
       setAboutUnderline(true);
+      setBlogUnderline(false);
+    } else if (route.pathname === "/blogs") {
+      setBlogUnderline(true);
+      setAboutUnderline(false);
     } else {
       setAboutUnderline(false);
+      setBlogUnderline(false);
     }
   }, [route.pathname]);
   useEffect(() => {
@@ -177,7 +183,17 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
               <p>Corporate Training</p>
             </div>
             <div className="mt-3 text-buttonBlue hover:cursor-pointer font-semibold">
-              <p>Blogs</p>
+              <Link style={{ textDecoration: "none" }} href={"/blogs"}>
+                <p
+                  className={`${
+                    blogUnderline === true
+                      ? "text-buttonBlue border-b-2 underline-offset-2"
+                      : "text-buttonBlue  no-underline"
+                  }`}
+                >
+                  Blogs
+                </p>
+              </Link>
             </div>
             <div className=" md:flex hidden items-center">
               {" "}
@@ -330,7 +346,9 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
               <p className="text-black text-base  no-underline"> About</p>
             </Link>
             <p className="text-base">Corporate Training</p>
-            <p className="text-base ">Blogs</p>
+            <Link style={{ textDecoration: "none" }}  href={"/blogs"}>
+              <p className="text-base text-black">Blogs</p>
+            </Link>
           </div>
           <div className="text-sm cursor-pointer  p-4 md:p-0 ">
             <div>
@@ -379,7 +397,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
         </div>
 
         <div className="mx-auto text-left md:text-center text-sm text-zinc-400 pt-4 md:pt-8 md:p-0 p-4 pl-6">
-          <p>bSkilling Pvt. Ltd.</p>
+          <p>BSKILLING PRIVATE LIMITED.</p>
           <p>
             Copyright © 2023. All Rights Reserved. Designed by Deedbee Social
             Ventures.
