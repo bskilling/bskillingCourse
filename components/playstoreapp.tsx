@@ -2,22 +2,14 @@ const Playstore = () => {
   return (
     <>
       <section
-        style={{
-          backgroundImage: `url(${"/qebg.png"})`,
-          backgroundSize: "cover",
-          objectFit: "contain",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          width: "100%",
-        }}
+        className="bg-cover bg-center bg-no-repeat flex justify-center items-center"
+        style={{ backgroundImage: `url(${"/qebg.png"})` }}
       >
-        <div className="flex justify-center">
-          <div className="w-full">
-            <img src="/play.png " className="w-[50%] h-[50%]" alt="" />
-          </div>
-          <div>
-            <img src="/apple.png" className="w-[50%] h-[50%]" alt="" />
-          </div>
+        <div className="flex justify-end items-center">
+          <img src="/play.png" className="w-[50%] h-auto" alt="" />
+        </div>
+        <div className="flex justify-start items-center">
+          <img src="/apple.png" className="w-[50%] h-auto" alt="" />
         </div>
       </section>
     </>
