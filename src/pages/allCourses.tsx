@@ -59,6 +59,7 @@ const AllCourses = () => {
     setAllCourseButtonIndex(x);
     setTimeout(() => {
       setLoadingVisible(false);
+      setIsDropdownOpen(false);
     }, 400);
   };
   const clickOnCategory = (x: number) => {
@@ -66,6 +67,7 @@ const AllCourses = () => {
     setLoadingVisible(true);
     setTimeout(() => {
       setLoadingVisible(false);
+      setCategoryVisible(false);
       setAllCourseButtonIndex(x), setCategoryVisible(false);
     }, 700);
   };
@@ -93,11 +95,11 @@ const AllCourses = () => {
               </div>
               {categoryVisible ? (
                 <div className="absolute mt-[100px] md:mt-[75px] z-[1000] w-[]  bg-white  rounded-lg shadow-lg ">
-                  {CourseDetails.map(({ categoryName }, index) => (
+                  {BrowseAllCourse.map(({ categoryName }, index) => (
                     <div
                       key={categoryName}
                       className="px-5 py-2 hover:bg-buttonBlue text-black hover:text-white  cursor-pointer"
-                      onClick={() => clickOnCategory(index + 1)}
+                      onClick={() => clickOnCategory(index)}
                     >
                       {categoryName}
                     </div>

@@ -161,7 +161,7 @@ const Home: NextPage<NextPage> = ({}) => {
               />
             </div>
           </div>
-          <div></div>
+          
         </section>
       </section>
     </>
