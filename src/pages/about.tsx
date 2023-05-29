@@ -96,7 +96,7 @@ const About = () => {
         </div>
       </section>
 
-      <section className="  pt-12 bg-gray  text-black">
+      <section className="  pt-12   text-black">
         <h1 className="text-4xl tracking-wide mb-10 text-center  ">
           Core Values
         </h1>
@@ -180,6 +180,40 @@ const About = () => {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+      <section className="bg-gray py-10">
+        <h2 className="text-4xl tracking-wide mb-10 text-center">Leadership</h2>
+        <div className="flex md:container md:mx-auto items-center">
+          {/* <div className="w-[50%]">
+            <img src="/common.jpg" alt="CEO Image" className=" mr-8" />
+          </div> */}
+          <div className="flex-1 px-3">
+            <p className="mt-1">
+              Meet the visionary leader behind our company—our CEO, Mr
+              Sivasarathy! With 25 years of experience in the EdTech industry,
+              Siva has seen it all. From the early days of online education to
+              the latest advancements in artificial intelligence, he has been at
+              the forefront of it all. Before establishing SFJ Business
+              Solutions in 2007, Mr Sivasarathy served as an SAP consultant for
+              TCS, where he gained invaluable business and technological
+              experience. This experience has played a significant role in the
+              development and success of our business.
+            </p>
+            <p className="mt-2">
+              With a deep understanding of the IT industry, Mr Sivasarthy has a
+              unique perspective on the challenges and opportunities facing
+              EdTech companies today. With this knowledge, he has guided SFJ
+              Business Solutions to develop cutting-edge solutions that are
+              transforming the way people learn. His enthusiasm for technology
+              and education inspires our team to explore new directions in
+              EdTech. Our business has expanded to become a market leader with a
+              reputation for innovation and excellence under his leadership.
+              Join us on our mission to revolutionize education and experience
+              the difference that comes with having a CEO who truly understands
+              the industry.
+            </p>
           </div>
         </div>
       </section>

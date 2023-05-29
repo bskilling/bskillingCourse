@@ -1,6 +1,7 @@
 import { MyContext } from "context/PageContext";
 import CourseDetails from "data/CoursesData";
 import BrowseAllCourse from "data/browseAllCourse";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { ReactNode, useContext, useState, useEffect } from "react";
 import { AiFillCaretDown, AiOutlineMenu } from "react-icons/ai";
@@ -39,11 +40,22 @@ const Tabs = () => {
     setLoadingVisible(true);
     setIsDropdownOpen(false);
     setAllCourseButtonIndex(x);
-    const url = "/allCourses?buttonIndexs=" + x;
+    // const url = "/allCourses?buttonIndexs=" + x;
     setTimeout(() => {
       setLoadingVisible(false);
       // router.push("/allCourses")
-      window.open(url, "_blank");
+      // window.open(url, "_blank");
+    }, 1000);
+  };
+  const TabButtonClickfromDrop = (x: number) => {
+    setLoadingVisible(true);
+    setIsDropdownOpen(false);
+    setAllCourseButtonIndex(x);
+    // const url = "/allCourses?buttonIndexs=" + x;
+    setTimeout(() => {
+      setLoadingVisible(false);
+      router.push("/allCourses");
+      // window.open(url, "_blank");
     }, 1000);
   };
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -55,12 +67,13 @@ const Tabs = () => {
     setLoadingVisible(true);
     setIsDropdownOpen(false);
     setAllCourseButtonIndex(x);
-    const url = "/allCourses?buttonIndexs=" + x;
+
+    // const url = "/allCourses?buttonIndexs=" + x;
     setTimeout(() => {
       setLoadingVisible(false);
       setCategoryVisible(false);
-      // router.push("/allCourses")
-      window.open(url, "_blank");
+      router.push("/allCourses");
+      // window.open(url, "_blank");
     }, 1000);
   };
   const isSmallScreen = useMediaQuery({ maxWidth: 1020 });
@@ -86,14 +99,20 @@ const Tabs = () => {
           </div>
           {categoryVisible ? (
             <div className="absolute mt-[100px] md:mt-[75px] z-[1000] w-[] bg-white  rounded-lg shadow-lg ">
-              {CourseDetails.map(({ categoryName }, index) => (
-                <div
+              {BrowseAllCourse.map(({ categoryName }, index) => (
+                <Link
+                  style={{ textDecoration: "none" }}
                   key={categoryName}
-                  className="px-5 py-2 hover:bg-buttonBlue text-black hover:text-white  cursor-pointer"
-                  onClick={() => clickOnCategory(index)}
+                  href={"/allCourses"}
                 >
-                  {categoryName}
-                </div>
+                  <div
+                    key={categoryName}
+                    className="px-5 py-2 hover:bg-buttonBlue text-black hover:text-white  cursor-pointer"
+                    onClick={() => clickOnCategory(index)}
+                  >
+                    {categoryName}
+                  </div>
+                </Link>
               ))}
             </div>
           ) : (
@@ -119,13 +138,18 @@ const Tabs = () => {
                         : "text-white hover:text-white "
                     }`}
                   >
-                    <button
-                      type="button"
-                      className="px-4 pb-1 "
-                      onClick={() => TabButtonClick(index)}
+                    <Link
+                      style={{ textDecoration: "none" }}
+                      href={"/allCourses"}
                     >
-                      {categoryName}
-                    </button>
+                      <button
+                        type="button"
+                        className="px-4 text-white pb-1 "
+                        onClick={() => TabButtonClick(index)}
+                      >
+                        {categoryName}
+                      </button>
+                    </Link>
                   </li>
                 ))}
                 {BrowseAllCourse.length > 11 && (
@@ -146,7 +170,7 @@ const Tabs = () => {
                             <button
                               key={categoryName}
                               className="text-black hover:text-white text-right py-3   block px- border-0 min-w-[200px] pr-5 w-full hover:bg-buttonBlue   cursor-pointer  text-sm  hover:text-gray-900"
-                              onClick={() => TabButtonClick(index + 11)}
+                              onClick={() => TabButtonClickfromDrop(index + 11)}
                             >
                               <p> {categoryName}</p>
                             </button>
