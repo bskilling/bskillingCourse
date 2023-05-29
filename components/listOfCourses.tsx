@@ -257,7 +257,7 @@ const ListOfCourses: NextPage<{}> = () => {
         </section>
       </section>
 
-      {/* <div>
+      <div>
         <div className="flex  pb-8 justify-center">
           <Link href={"/allCourses"}>
             <button className=" text-white bg-Buttoncolor transition duration-500 hover:scale-105 ease-out   py-2 focus:ring-1 focus:outline-none focus:ring-buttonBlue font-medium  text-sm px-4  ">
@@ -265,8 +265,8 @@ const ListOfCourses: NextPage<{}> = () => {
             </button>
           </Link>
         </div>
-      </div> */}
-      <div>
+      </div>
+      {/* <div>
         <div className="flex  pb-8 justify-center">
           <button
             onClick={ClickOnBrowseAllCourses}
@@ -275,7 +275,7 @@ const ListOfCourses: NextPage<{}> = () => {
             Browse All Courses
           </button>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
