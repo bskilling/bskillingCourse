@@ -25,7 +25,7 @@ const ContactPopUp = () => {
 
   const submit = handleSubmit(async (data) => {
     const { email, phone, message, location, name } = data;
-    console.log(data);
+   
     try {
       const response = await fetch(
         "https://54txkspp2molgb6p7mgzad2scu0niflz.lambda-url.ap-south-1.on.aws/",
