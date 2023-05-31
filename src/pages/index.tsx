@@ -45,6 +45,7 @@ const Home: NextPage<NextPage> = ({}) => {
       <section className="bg-buttonBlue text-white">
         <Tabs />
       </section>
+  
       <section onClick={clickOnMain}>
         {/* <ContactPopUp /> */}
 
@@ -161,7 +162,6 @@ const Home: NextPage<NextPage> = ({}) => {
               />
             </div>
           </div>
-          
         </section>
       </section>
     </>
