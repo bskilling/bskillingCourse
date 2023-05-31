@@ -77,7 +77,7 @@ const Tabs = () => {
     }, 1000);
   };
   const isSmallScreen = useMediaQuery({ maxWidth: 1020 });
-  console.log(AllCourseButtonIndex, "button index");
+ 
   return (
     <div className="flex  w-full">
       <div className="flex md:gap-4 w-full">
