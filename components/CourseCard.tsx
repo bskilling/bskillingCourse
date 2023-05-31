@@ -15,6 +15,7 @@ interface CourseCardProps {
     price: string;
     CourseLink: string;
     discount?: string;
+    upcoming?: string;
   };
 }
 const CourseCard: React.FC<CourseCardProps> = ({ data }) => {
@@ -84,7 +85,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ data }) => {
                     <div className="mt-[2px]  bg-buttonBlue flex flex-col items-center justify-center w-[25px] h-[25px] rounded-full">
                       <FaChalkboardTeacher size={15} color="white" />
                     </div>
-                    
+
                     <div className="mt-1">
                       <p className="text-sm"> {data.classType}</p>
                     </div>
@@ -99,6 +100,39 @@ const CourseCard: React.FC<CourseCardProps> = ({ data }) => {
                   </div>
                 </div>
               </div>
+              <div className={`${data.upcoming ? "" : "py-3"}`}></div>
+              <div className="relative flex overflow-x-hidden">
+                {data.upcoming && (
+                  <div className="animate-marquee whitespace-nowrap">
+                    <span className="ml-5 text-sm">
+                      Upcoming batches | {data.upcoming}
+                    </span>
+                  </div>
+                )}
+
+                {data.upcoming && (
+                  <div className="absolute top-0 animate-marquee2 whitespace-nowrap">
+                    <span className="ml-5 text-sm ">
+                      Upcoming batches | {data.upcoming}
+                    </span>
+                  </div>
+                )}
+              </div>
+              {/* <div className="relative flex overflow-x-hidden">
+                <div className=" animate-marquee whitespace-nowrap">
+                  <span className="ml-5">
+                    Upcoming batches: 8th-16th July (9 am-2 pm), 8th-16th July
+                    (9 am-2 pm), 8th-16th July (9 am-2 pm)
+                  </span>
+                </div>
+
+                <div className="absolute top-0 animate-marquee2 whitespace-nowrap">
+                  <span className="ml-5">
+                    Upcoming batches: 8th-16th July (9 am-2 pm), 8th-16th July
+                    (9 am-2 pm), 8th-16th July (9 am-2 pm)1
+                  </span>
+                </div>
+              </div> */}
 
               {/* <div className="rounded-md  mt-3 px-1 py-2">
               <p className="text-buttonBlue ">
