@@ -336,6 +336,8 @@ const CourseDetails = [
         price: "30,000/-",
         discount: "32,099/-",
         CourseLink: "https://bskilling.melimu.com/course/edit.php?id=111",
+        upcoming:
+          "10th June - 18th June (9am - 2pm) | 21st June - 26th June (9am - 2pm) | 8th July - 16th July (9am - 2pm)",
       },
       {
         id: "2liti",
@@ -661,6 +663,73 @@ const CourseDetails = [
         price: "35,599/-",
         discount: "35299/-",
         CourseLink: "https://bskilling.melimu.com/course/edit.php?id=122",
+      },
+    ],
+  },
+  {
+    categoryName: "GenZ",
+    id: "14",
+    ListOfCourse: [
+      {
+        id: "Others1",
+        CourseName: "How to build a canvas app",
+        certificate: "Bskilling ",
+        imageSrc: "/common.jpg",
+        timePeriod: "48 hrs ",
+        StartDate: " 10 Jul, 2023 ",
+        classType: "Virtual Class",
+        price: "31,099/-",
+        discount: "30,799/-",
+        CourseLink: "https://bskilling.melimu.com/course/view.php?id=146",
+      },
+    ],
+  },
+  {
+    categoryName: "Peoplecert",
+    id: "16",
+    ListOfCourse: [
+      {
+        id: "people1",
+        CourseName: "Prince2 Foundation 6th edition",
+        certificate: "Peoplecert Scrum ",
+        imageSrc: "/common.jpg",
+        timePeriod: "24 hrs ",
+        StartDate: " 17 Jun, 2023 ",
+        classType: "Virtual Class",
+        price: "42,000/-",
+        discount: "38,000/-",
+        CourseLink: "https://bskilling.melimu.com/course/view.php?id=170",
+        upcoming:
+          "17th June - 2nd July (9am - 2pm) | 5th July- 12th July (9am - 2pm) | 22nd July - 6th August (9am - 2pm)",
+      },
+
+      {
+        id: "people2",
+        CourseName: "People Cert Scrum Master-1",
+        certificate: "Peoplecert Scrum ",
+        imageSrc: "/common.jpg",
+        timePeriod: "16 hrs ",
+        StartDate: " 24 Jun, 2023 ",
+        classType: "Virtual Class",
+        price: "28,000/-",
+        discount: "25,000/-",
+        CourseLink: "https://bskilling.melimu.com/course/view.php?id=175",
+        upcoming:
+          "24th June - 2nd July (9am - 2pm) | 19th July- 24th July (9am - 2pm) | 5th August - 13th August (9am - 2pm)",
+      },
+      {
+        id: "people3",
+        CourseName: "People Cert Devops Fundamentals",
+        certificate: "Peoplecert Scrum ",
+        imageSrc: "/common.jpg",
+        timePeriod: "32 hrs ",
+        StartDate: " 1 Jul, 2023 ",
+        classType: "Virtual Class",
+        price: "27,899/-",
+        discount: "27,000/-",
+        CourseLink: "https://bskilling.melimu.com/course/view.php?id=172",
+        upcoming:
+          "1st July - 23rd July (9am - 2pm) | 26th July- 4th August (9am - 2pm) | 12th August - 3rd September (9am - 2pm)",
       },
     ],
   },
