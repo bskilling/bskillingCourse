@@ -13,15 +13,15 @@ interface slider {
 }
 const CertifiedPartners = () => {
   const logos = [
-    "/edu&car/micro.png",
+    "/edu&car/AWS.png",
     "/edu&car/company.png",
     "/edu&car/1.png",
-    "/edu&car/2.jpg",
+    "/edu&car/micro.png",
+    "/edu&car/6.png",
+    "/edu&car/5.png",
     "/edu&car/3.png",
     "/edu&car/4.png",
-    "/edu&car/5.png",
-    "/edu&car/AWS.png",
-    "/edu&car/6.png",
+    "/edu&car/2.jpg",
   ];
   return (
     <>
@@ -32,7 +32,7 @@ const CertifiedPartners = () => {
         </div>
         <div className="w-full md:container md:flex-row flex- flex justify-center flex-wrap  gap-6 mx-auto">
           {logos.map((x, index) => {
-            if (index === 7 || index === 8) {
+            if (index === 0 || index === 4) {
               return (
                 <div key={index}>
                   <div className="h-36   flex justify-center   relative cursor-pointer">

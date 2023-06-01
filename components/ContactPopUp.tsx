@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
+import "react-phone-number-input/style.css";
+import PhoneInput from "react-phone-number-input";
 interface SubmitData {
   phone: number;
   email: string;
@@ -25,7 +27,7 @@ const ContactPopUp = () => {
 
   const submit = handleSubmit(async (data) => {
     const { email, phone, message, location, name } = data;
-   
+
     try {
       const response = await fetch(
         "https://54txkspp2molgb6p7mgzad2scu0niflz.lambda-url.ap-south-1.on.aws/",
@@ -72,6 +74,7 @@ const ContactPopUp = () => {
   const [message, setMessage] = useState(false);
   const [contactVisible, setContactVisible] = useState(false);
   const [chatandQMenuVisible, setChatandQMenuVisible] = useState(false);
+  const [value, setValue] = useState<any>();
   const contactDetailsVisible = () => {
     setContactVisible((prev) => !prev);
   };
@@ -171,6 +174,17 @@ const ContactPopUp = () => {
                   ? "This field required"
                   : "This field required"}
               </label>
+            </div>
+
+            <div className="flex   px-5   flex-col">
+              <PhoneInput
+                international
+                countryCallingCodeEditable={false}
+                defaultCountry="RU"
+                placeholder="Enter phone number"
+                value={value}
+                onChange={setValue}
+              />
             </div>
             <div className="flex   px-5   flex-col">
               <input
