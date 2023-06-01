@@ -15,13 +15,14 @@ const CertifiedPartners = () => {
   const logos = [
     "/edu&car/AWS.png",
     "/edu&car/company.png",
-    "/edu&car/1.png",
+
+    "/edu&car/5.png",
+    "/edu&car/2.jpg",
     "/edu&car/micro.png",
     "/edu&car/6.png",
-    "/edu&car/5.png",
-    "/edu&car/3.png",
+    "/edu&car/1.png",
     "/edu&car/4.png",
-    "/edu&car/2.jpg",
+    "/edu&car/3.png",
   ];
   return (
     <>
