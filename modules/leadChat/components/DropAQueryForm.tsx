@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-
+import "react-phone-number-input/style.css";
+import PhoneInput from "react-phone-number-input";
 const DropAQueryForm = () => {
   const [messageSent, setMessage] = useState(false);
+  const [CountryCodeValue, setCountryCodeValue] = useState<any>("+91");
   const {
     register,
     handleSubmit,
@@ -18,10 +20,10 @@ const DropAQueryForm = () => {
     watch("email") &&
     watch("phone") &&
     watch("location") &&
-    watch("name");
-
+    watch("name") &&
+    CountryCodeValue;
+  console.log(CountryCodeValue);
   const submit = handleSubmit(async (data) => {
-  
     try {
       const response = await fetch(
         "https://54txkspp2molgb6p7mgzad2scu0niflz.lambda-url.ap-south-1.on.aws/",
@@ -35,6 +37,7 @@ const DropAQueryForm = () => {
             phone: data.phone,
             location: data.location,
             name: data.name,
+            countryCode: CountryCodeValue,
           }),
         }
       );
@@ -69,7 +72,9 @@ const DropAQueryForm = () => {
           })}
         />
         <label
-          className={`text-red-600   text-xs py-1 ${errors.name ? "visible" : "invisible"}`}
+          className={`text-red-600   text-xs py-1 ${
+            errors.name ? "visible" : "invisible"
+          }`}
         >
           {errors.phone?.type == "required"
             ? "This field required"
@@ -78,7 +83,30 @@ const DropAQueryForm = () => {
       </div>
 
       <div className="flex px-5 flex-col">
-        <input
+        <div className="flex gap-4">
+          <PhoneInput
+            international
+            countryCallingCodeEditable={false}
+            defaultCountry="IN"
+            // countrySelectProps={{ unicodeFlags: true }}
+            placeholder="Enter phone number"
+            value={CountryCodeValue}
+            onChange={setCountryCodeValue}
+            className="w-[32%] pl-2 px-2 border flex gap-2 border-buttonBlue"
+          />
+          <input
+            type="number"
+            className=" block  w-full lg:h-[35px] placeholder:text-sm  px-2 border border-buttonBlue    focus:border-green focus:ring focus:ring-green focus:ring-opacity-50"
+            placeholder="Your Mobile Number*"
+            {...register("phone", {
+              required: true,
+              minLength: 10,
+              maxLength: 10,
+            })}
+          />
+        </div>
+
+        {/* <input
           type="number"
           className=" block  w-full lg:h-[35px] placeholder:text-sm  px-2 border border-buttonBlue    focus:border-green focus:ring focus:ring-green focus:ring-opacity-50"
           placeholder="Your Mobile Number*"
@@ -87,13 +115,14 @@ const DropAQueryForm = () => {
             minLength: 10,
             maxLength: 10,
           })}
-        />
+        /> */}
         <label
-          className={`text-red-600   text-xs py-1 ${errors.phone ? "visible" : "invisible"
-            }`}
+          className={`text-red-600   text-xs py-1 ${
+            errors.phone ? "visible" : "invisible"
+          }`}
         >
           {errors.phone?.type == "required"
-            ? "This field required"
+            ? "Phone Number is required"
             : "Please enter a valid phone number"}
         </label>
       </div>
@@ -110,7 +139,9 @@ const DropAQueryForm = () => {
         />
 
         <label
-          className={`text-red-600   text-xs py-1 ${errors.email ? "visible" : "invisible"}`}
+          className={`text-red-600   text-xs py-1 ${
+            errors.email ? "visible" : "invisible"
+          }`}
         >
           Please enter a valid email address
         </label>
@@ -126,8 +157,9 @@ const DropAQueryForm = () => {
         />
 
         <label
-          className={`text-red-600   text-xs py-1 ${errors.location ? "visible" : "invisible"
-            }`}
+          className={`text-red-600   text-xs py-1 ${
+            errors.location ? "visible" : "invisible"
+          }`}
         >
           This field is required
         </label>
@@ -144,8 +176,9 @@ const DropAQueryForm = () => {
         />
 
         <label
-          className={`text-red-600   text-xs py-1 ${errors.message ? "visible" : "invisible"
-            }`}
+          className={`text-red-600   text-xs py-1 ${
+            errors.message ? "visible" : "invisible"
+          }`}
         >
           This field is required
         </label>
@@ -160,8 +193,9 @@ const DropAQueryForm = () => {
           <button
             onClick={submit}
             disabled={!isButtonVisble}
-            className={`text-white  transition duration-500 hover:scale-105 ease-out  placeholder:text-sm bg-buttonBlue hover:bg-buttonBlue py-2 focus:ring-1 focus:outline-none focus:ring-buttonBlue font-medium  text-sm px-4   ${isButtonVisble ? "opacity-100" : "opacity-50 "
-              }`}
+            className={`text-white  transition duration-500 hover:scale-105 ease-out  placeholder:text-sm bg-buttonBlue hover:bg-buttonBlue py-2 focus:ring-1 focus:outline-none focus:ring-buttonBlue font-medium  text-sm px-4   ${
+              isButtonVisble ? "opacity-100" : "opacity-50 "
+            }`}
           >
             Submit Query
           </button>
@@ -169,6 +203,6 @@ const DropAQueryForm = () => {
       </div>
     </div>
   );
-}
+};
 
 export default DropAQueryForm;
