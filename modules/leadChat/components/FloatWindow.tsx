@@ -43,7 +43,7 @@ const FloatWindow = () => {
     <>
       {floatWindowMode !== "none" && (
         <div
-          className={`flex flex-col bg-white w-[400px]  h-[500px] fixed right-[105px] bottom-2 z-[1000] transition-transform duration-700 shadow-md`}
+          className={`flex flex-col bg-white w-[400px]   h-[500px] fixed  md:right-[105px] bottom-24 md:bottom-2 z-[1000] transition-transform duration-700 shadow-md`}
         >
           <div
             className="flex items-center text-white bg-buttonBlue p-3 h-[60px] cursor-pointer"
