@@ -179,9 +179,9 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
                 </p>
               </Link>
             </div>
-            <div className="mt-3 text-buttonBlue text-center hover:cursor-pointer font-semibold">
+            {/* <div className="mt-3 text-buttonBlue text-center hover:cursor-pointer font-semibold">
               <p>Corporate Training</p>
-            </div>
+            </div> */}
             <div className="mt-3 text-buttonBlue hover:cursor-pointer font-semibold">
               <Link style={{ textDecoration: "none" }} href={"/blogs"}>
                 <p
