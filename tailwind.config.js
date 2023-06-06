@@ -24,7 +24,7 @@ module.exports = {
     extend: {
       backgroundColor: {
         glass: "rgba(255, 255, 255, 0.0)",
-        glass2: "rgba(255, 255, 255, 0.5)",
+        glass2: "rgba(255, 255, 255, 0.2)",
       },
       animation: {
         marquee: "marquee 12s linear infinite",
