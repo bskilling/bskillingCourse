@@ -22,6 +22,10 @@ module.exports = {
       "2xl": "1536px",
     },
     extend: {
+      backgroundColor: {
+        glass: "rgba(255, 255, 255, 0.0)",
+        glass2: "rgba(255, 255, 255, 0.5)",
+      },
       animation: {
         marquee: "marquee 12s linear infinite",
         marquee2: "marquee2 12s linear infinite",
