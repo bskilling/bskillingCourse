@@ -33,9 +33,32 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Layout>
         <Head>
           <title>bSkilling</title>
-          <meta name="bSkilling" content="bSkilling" />
+          <meta
+            name="bSkilling"
+            content="bSkilling is a pioneer in technology training and we focus on
+                offering top-notch IT and fintech education and skill
+                development programs. We work hard to help people and
+                organizations with the information and skills necessary to
+                prosper in the quickly changing digital landscape. We aim and
+                deliver excellence in all fields."
+          />
           <link rel="icon" href="/favicon.png" />
+          <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-3PVZC9K8BH"
+          ></script>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-3PVZC9K8BH');
+            `,
+            }}
+          />
         </Head>
+
         <Component {...pageProps} />
         <FloatWindow />
       </Layout>
