@@ -9,6 +9,7 @@ import Testimonials from "components/testimonials";
 import { MyContext } from "context/PageContext";
 import FloatWindow from "modules/leadChat/components/FloatWindow";
 import { NextPage } from "next";
+import Head from "next/head";
 import { useContext } from "react";
 
 const Home: NextPage<NextPage> = ({}) => {
@@ -42,6 +43,29 @@ const Home: NextPage<NextPage> = ({}) => {
 
   return (
     <>
+      <Head>
+        <title>bSkilling </title>
+        <meta
+          name="bSkilling"
+          content="Unlock Your Potential with the Trending Online Courses of Today | Expand Your Knowledge and Skills"
+        />
+
+        <link rel="icon" href="/favicon.png" />
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-3PVZC9K8BH"
+        ></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-3PVZC9K8BH');
+            `,
+          }}
+        />
+      </Head>
       <section className="bg-buttonBlue text-white">
         <Tabs />
       </section>

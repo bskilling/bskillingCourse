@@ -91,10 +91,26 @@ export default function Blogs() {
   return (
     <>
       <Head>
-        <title>bSkilling | Blogs</title>
+        <title>bSkilling Blogs</title>
         <meta
-          name="description"
-          content="SFJ Business Solutions Blogs-Where you can explore more about our ideas"
+          name="bSkilling"
+          content="Stay Updated with Our Blog | Read Informative Articles on the Latest Trends in Online Learning"
+        />
+
+        <link rel="icon" href="/favicon.png" />
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-3PVZC9K8BH"
+        ></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-3PVZC9K8BH');
+            `,
+          }}
         />
       </Head>
 
