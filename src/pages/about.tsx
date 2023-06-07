@@ -1,8 +1,37 @@
+import Head from "next/head";
 import Image from "next/image";
 
 const About = () => {
   return (
     <>
+      <Head>
+        <title>bSkilling About</title>
+        <meta
+          name="bSkilling"
+          content="bSkilling is a pioneer in technology training and we focus on
+                offering top-notch IT and fintech education and skill
+                development programs. We work hard to help people and
+                organizations with the information and skills necessary to
+                prosper in the quickly changing digital landscape. We aim and
+                deliver excellence in all fields."
+        />
+
+        <link rel="icon" href="/favicon.png" />
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-3PVZC9K8BH"
+        ></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-3PVZC9K8BH');
+            `,
+          }}
+        />
+      </Head>
       <section className=" bg-buttonBlue">
         <div
           className="md:container  py-8 md:mx-auto
@@ -188,11 +217,9 @@ const About = () => {
         <div className="flex md:flex-row flex-col md:container gap-5 md:mx-auto items-center">
           <div className="w-full flex-col md:p-0 p-5 md:w-[30%]">
             <img src="/CEO.jpg" alt="CEO Image" className=" mr-8" />
-           
-            
           </div>
           <div className="flex-1 px-3">
-          <div className=" flex ">
+            <div className=" flex ">
               <p className="text-xl font-semibold mt-4">Mr Sivasarathy - CEO</p>
             </div>
             <p className="mt-1">
