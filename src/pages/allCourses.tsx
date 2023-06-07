@@ -8,6 +8,7 @@ import { AiFillCaretDown, AiOutlineMenu } from "react-icons/ai";
 import LoaderSvg from "../pages/../../public/loading .svg";
 import { useMediaQuery } from "react-responsive";
 import ContactPopUp from "components/ContactPopUp";
+import Head from "next/head";
 
 const AllCourses = () => {
   const router = useRouter();
@@ -74,6 +75,29 @@ const AllCourses = () => {
 
   return (
     <>
+      <Head>
+        <title>bSkilling</title>
+        <meta
+          name="bSkilling"
+          content="Unlock Your Potential with the Trending Online Courses of Today | Expand Your Knowledge and Skills"
+        />
+
+        <link rel="icon" href="/favicon.png" />
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-3PVZC9K8BH"
+        ></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-3PVZC9K8BH');
+            `,
+          }}
+        />
+      </Head>
       <section className="bg-gray">
         <div className="flex pt-5 w-full">
           <div className="flex md:gap-4 w-full">

@@ -62,3 +62,51 @@ another loading
             This may take a few seconds, please don't close this page.
           </p>
         </div>
+
+
+
+
+        <div className="flex gap-2 ">
+                  <div className="mt-1">
+                    <BsPeople color="gray" />
+                  </div>
+                  <p className="text-slate-500 min-w-[150px] font-semibold">
+                    146 Learners
+                  </p>
+                </div>
+
+                <div className="flex gap-2 ">
+                  <div className="mt-1">
+                    <GiPriceTag color="gray" />
+                  </div>
+                  <p className="text-slate-500 min-w-[150px] font-semibold">
+                    21,545/-
+                  </p>
+                </div>
+
+                <div className="flex gap-2 ">
+                  <div className="mt-1">
+                    <BiTime color="gray" />
+                  </div>
+                  <p className="text-slate-500 min-w-[150px] font-semibold">
+                    3 weeks
+                  </p>
+                </div>
+
+                <div className="flex gap-2 ">
+                  <div className="mt-1">
+                    <FaCalendarTimes color="gray" />
+                  </div>
+                  <p className="text-slate-500 min-w-[150px] font-semibold">
+                    3-4 hours per week
+                  </p>
+                </div>
+
+                <div className="flex gap-2 ">
+                  <div className="mt-1">
+                    <FaMedal color="gray" />
+                  </div>
+                  <p className="text-slate-500 min-w-[150px] font-semibold">
+                    Intermediate
+                  </p>
+                </div>
