@@ -110,3 +110,175 @@ another loading
                     Intermediate
                   </p>
                 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                 {
+                  <div>
+                    <p className="ml-4 pt-8">
+                      SAP BTP is a cutting-edge cloud-based platform that
+                      empowers businesses to build, deploy, and manage
+                      intelligent applications. With its diverse range of
+                      services, including data and analytics, artificial
+                      intelligence, application development, automation, and
+                      integration, SAP BTP provides the essential tools and
+                      capabilities to propel your organization forward.
+                    </p>
+                    <p className="pt-8 pb-4 text-xl font-semibold">
+                      Eligibility
+                    </p>
+                    <p className="ml-4 ">
+                      Are you an SAP BTP consultant eager to expand your
+                      knowledge and master the art of building and deploying
+                      intelligent applications? Look no further than our
+                      specialized course tailored for existing SAP BTP
+                      consultants. This course is ideal for developers, IT
+                      professionals, and business users seeking to unlock the
+                      full potential of SAP BTP.
+                    </p>
+
+                    <p className="pt-8 pb-4 text-xl font-semibold">
+                      Prerequisites
+                    </p>
+                    <p className=" ">
+                      To make the most of this course, we recommend having the
+                      following prerequisites:
+                    </p>
+
+                    <div className="flex ml-4 gap-1 ">
+                      <span>•</span>Basic understanding of cloud computing
+                      concepts.
+                    </div>
+
+                    <div className="flex ml-4  gap-1 ">
+                      <span>•</span>Familiarity with programming languages such
+                      as Java, Python, or C++.
+                    </div>
+                    <div className="flex ml-4 gap-1 ">
+                      <span>•</span> Experience in deploying applications to SAP
+                      BTP.
+                    </div>
+
+                    <p className="pt-8 pb-4 text-xl font-semibold">
+                      Benefits of the Course
+                    </p>
+                    <p className=" ">
+                      Enroll in our course and reap the following benefits:
+                    </p>
+                    <div className="flex ml-4 gap-1 ">
+                      <span>•</span>Acquire the necessary skills to develop and
+                      deploy intelligent applications.
+                    </div>
+
+                    <div className="flex ml-4  gap-1 ">
+                      <span>•</span>Gain practical, hands-on experience
+                      utilizing the diverse range of SAP BTP services.
+                    </div>
+                    <div className="flex ml-4 gap-1 ">
+                      <span>•</span>Learn how to seamlessly deploy your
+                      applications to SAP BTP.
+                    </div>
+
+                    <p className="pt-8  text-xl pb-4 font-semibold">
+                      Abundant Resources
+                    </p>
+                    <p className=" ">
+                      When you join our course, you'll have access to an array
+                      of valuable resources, including:
+                    </p>
+                    <div className="flex ml-4 gap-1 ">
+                      <span>•</span>Engaging lectures presented by seasoned
+                      experts.
+                    </div>
+                    <div className="flex ml-4 gap-1 ">
+                      <span>•</span>Engaging lectures presented by seasoned
+                      experts.
+                    </div>
+                    <div className="flex ml-4 gap-1 ">
+                      <span>•</span>Interactive quizzes to test your
+                      understanding and reinforce key concepts.
+                    </div>
+                    <div className="flex ml-4 gap-1 ">
+                      <span>•</span>Practical exercises to apply your knowledge
+                      in real-world scenarios.
+                    </div>
+                    <div className="flex ml-4 gap-1 ">
+                      <span>•</span>An opportunity to showcase your skills
+                      through a final project.
+                    </div>
+
+                    <div className="flex ml-4 gap-1 ">
+                      <span>•</span> A dedicated forum where you can seek
+                      guidance from the instructor and collaborate with fellow
+                      students.
+                    </div>
+
+                    <p className="pt-8 pb-4 text-xl font-semibold">
+                      Assessment Method
+                    </p>
+                    <div className="flex ml-4 gap-1 ">
+                      To ensure your progress and understanding, the course will
+                      be assessed through a combination of quizzes, exercises,
+                      and a final project. This multifaceted approach guarantees
+                      a comprehensive evaluation of your newfound knowledge and
+                      skills.
+                    </div>
+
+                    <p className="font-normal mt-4">
+                      Don't miss out on this opportunity to enhance your
+                      expertise in SAP BTP. Enroll today and embark on a
+                      transformative learning journey that will elevate your
+                      career to new heights.
+                    </p>
+                  </div>
+                }

@@ -1,10 +1,11 @@
 import { BsPeople, BsBookmarkCheck, BsFillPeopleFill } from "react-icons/bs";
 import { BiTime } from "react-icons/bi";
 import { FaCalendarTimes, FaMedal } from "react-icons/fa";
-import { motion, spring } from "framer-motion";
+import { AnimatePresence, motion, spring } from "framer-motion";
 import { GiPriceTag } from "react-icons/gi";
 import Accordion from "components/accordion";
 import Head from "next/head";
+import { useState } from "react";
 interface accord {
   question: string;
   answer: string;
@@ -12,6 +13,137 @@ interface accord {
 const SapBtp = () => {
   const transition = { type: "spring", duration: 3 };
   const transition2 = { type: "spring", duration: 1 };
+
+  const tabs = [
+    {
+      icon: "OverView",
+      label: (
+        <div>
+          <p className="ml-4 pt-8">
+            SAP BTP is a cutting-edge cloud-based platform that empowers
+            businesses to build, deploy, and manage intelligent applications.
+            With its diverse range of services, including data and analytics,
+            artificial intelligence, application development, automation, and
+            integration, SAP BTP provides the essential tools and capabilities
+            to propel your organization forward.
+          </p>
+          <p className="pt-8 pb-4 text-xl font-semibold">Eligibility</p>
+          <p className="ml-4 ">
+            Are you an SAP BTP consultant eager to expand your knowledge and
+            master the art of building and deploying intelligent applications?
+            Look no further than our specialized course tailored for existing
+            SAP BTP consultants. This course is ideal for developers, IT
+            professionals, and business users seeking to unlock the full
+            potential of SAP BTP.
+          </p>
+
+          <p className="pt-8 pb-4 text-xl font-semibold">Prerequisites</p>
+          <p className=" ">
+            To make the most of this course, we recommend having the following
+            prerequisites:
+          </p>
+
+          <div className="flex ml-4 gap-1 ">
+            <span>•</span>Basic understanding of cloud computing concepts.
+          </div>
+
+          <div className="flex ml-4  gap-1 ">
+            <span>•</span>Familiarity with programming languages such as Java,
+            Python, or C++.
+          </div>
+          <div className="flex ml-4 gap-1 ">
+            <span>•</span> Experience in deploying applications to SAP BTP.
+          </div>
+
+          <p className="pt-8 pb-4 text-xl font-semibold">
+            Benefits of the Course
+          </p>
+          <p className=" ">
+            Enroll in our course and reap the following benefits:
+          </p>
+          <div className="flex ml-4 gap-1 ">
+            <span>•</span>Acquire the necessary skills to develop and deploy
+            intelligent applications.
+          </div>
+
+          <div className="flex ml-4  gap-1 ">
+            <span>•</span>Gain practical, hands-on experience utilizing the
+            diverse range of SAP BTP services.
+          </div>
+          <div className="flex ml-4 gap-1 ">
+            <span>•</span>Learn how to seamlessly deploy your applications to
+            SAP BTP.
+          </div>
+
+          <p className="pt-8  text-xl pb-4 font-semibold">Abundant Resources</p>
+          <p className=" ">
+            When you join our course, you'll have access to an array of valuable
+            resources, including:
+          </p>
+          <div className="flex ml-4 gap-1 ">
+            <span>•</span>Engaging lectures presented by seasoned experts.
+          </div>
+          <div className="flex ml-4 gap-1 ">
+            <span>•</span>Engaging lectures presented by seasoned experts.
+          </div>
+          <div className="flex ml-4 gap-1 ">
+            <span>•</span>Interactive quizzes to test your understanding and
+            reinforce key concepts.
+          </div>
+          <div className="flex ml-4 gap-1 ">
+            <span>•</span>Practical exercises to apply your knowledge in
+            real-world scenarios.
+          </div>
+          <div className="flex ml-4 gap-1 ">
+            <span>•</span>An opportunity to showcase your skills through a final
+            project.
+          </div>
+
+          <div className="flex ml-4 gap-1 ">
+            <span>•</span> A dedicated forum where you can seek guidance from
+            the instructor and collaborate with fellow students.
+          </div>
+
+          <p className="pt-8 pb-4 text-xl font-semibold">Assessment Method</p>
+          <div className="flex ml-4 gap-1 ">
+            To ensure your progress and understanding, the course will be
+            assessed through a combination of quizzes, exercises, and a final
+            project. This multifaceted approach guarantees a comprehensive
+            evaluation of your newfound knowledge and skills.
+          </div>
+
+          <p className="font-normal mt-4">
+            Don't miss out on this opportunity to enhance your expertise in SAP
+            BTP. Enroll today and embark on a transformative learning journey
+            that will elevate your career to new heights.
+          </p>
+        </div>
+      ),
+      id: 0,
+    },
+    {
+      icon: "Curriculum",
+      label: (
+        <div className="bg-white px-12 w-full   pb-8  rounded-xl">
+          <div className="pt-8 text-xl font-semibold">Course Content</div>
+          <div>
+            <Accordion question="Lesson 1" answer="Your answer goes here" />
+          </div>
+          <div>
+            <Accordion question="Lesson 2" answer="Your answer goes here" />
+          </div>
+          <div>
+            <Accordion question="Lesson 3" answer="Your answer goes here" />
+          </div>
+        </div>
+      ),
+      id: 1,
+    },
+    { icon: "Faq", label: <div className="text-4xl">Faq</div>, id: 2 },
+  ];
+  const clickOnTabs = () => {};
+  const [selectedTab, setSelectedTab] = useState(tabs[0]);
+  const [selectedTabIndex, setSelectedTabIndex] = useState(0);
   return (
     <>
       <Head>
@@ -65,9 +197,9 @@ const SapBtp = () => {
                   transition={{ ease: "easeOut", duration: 2 }}
                   className="bg-glass text-2xl font-semibold"
                 >
-                  Learn the skills you need to build and deploy intelligent{" "}
+                  Unlock the Power of SAP Business Technology Platform (SAP BTP)
                   <br />
-                  applications on SAP Business Technology Platform
+                  for Successful Digital Transformations
                 </motion.div>
 
                 <motion.div
@@ -150,22 +282,18 @@ const SapBtp = () => {
                 </motion.div>
 
                 <div className="mt-2  w-[100%]">
-                  SAP Business Technology Platform (SAP BTP) is a cloud-based
-                  platform that enables businesses to build, deploy, and manage
-                  intelligent applications. SAP BTP provides a wide range of
-                  services, including data and analytics, artificial
-                  intelligence, application development, automation, and
-                  integration.
+                  Are you ready to navigate the complex landscape of digital
+                  transformations with confidence? Introducing our comprehensive
+                  course on SAP Business Technology Platform (SAP BTP), designed
+                  to equip students like you with the knowledge and skills to
+                  drive successful business transformations in the digital age.{" "}
                   <br />
-                  Business transformations can be challenging, but digital
-                  transformations are even more difficult. According to
-                  McKinsey, less than 20% of companies embarking on a digital
-                  transformation journey achieve success. One of the primary
-                  reasons for this is the risk associated with data in digital
-                  transformation projects. Many of these initiatives fail to
-                  meet their expected outcomes because the data involved is not
-                  suitable for the intended purpose. Understand the different
-                  services that SAP BTP offers.
+                  Gain a competitive edge and increase your chances of digital
+                  transformation success with our comprehensive course on SAP
+                  BTP. Developed by industry experts, this program will
+                  demystify the complexities of digital transformations and
+                  equip you with the essential knowledge and skills to harness
+                  the full potential of SAP BTP.
                 </div>
               </div>
 
@@ -178,16 +306,30 @@ const SapBtp = () => {
                 viewport={{ once: true }}
                 className="md:w-[20%] h-min-[50%]   relative  mt-28"
               >
+                <p className="pt-8 pb-5 text-3xl font-semibold">
+                  SAP Business Technology Platform
+                </p>
                 <div className="w-full bg-white h-fit rounded-md flex flex-col   items-center absolute">
                   <div className="mt-8">
                     <p className="text-center  text-black font-semibold">
                       {" "}
-                      Actual Price :{" "}
-                      <span className="font-semibold">23,456/-</span>
+                      <span className="text-xs font-bold  text-red-500 -top-[10px] -right-0 relative">
+                        $
+                      </span>{" "}
+                      <span className="font-bold text-start text-red-500 text-3xl">
+                        600
+                      </span>
                     </p>
-                    <p className="text-center text-black font-semibold">
-                      Discount Price :{" "}
-                      <span className="font-semibold">23,456/-</span>
+                    <p className="text-center flex  text-black font-semibold">
+                      <span className=" stroke-slate-900 text-2xl">
+                        <span className="text-xs font-bold  -top-[10px] -right-0 relative">
+                          $
+                        </span>{" "}
+                        <span className="line-through "> 700</span>
+                      </span>
+                      <span className=" text-red-500 ml-2 text-2xl">
+                        70% Off
+                      </span>
                     </p>
                   </div>
                   <div>
@@ -216,109 +358,86 @@ const SapBtp = () => {
             {/* main text content here */}
             <div className="flex flex-col gap-3 h-fit    w-[120%]">
               <div className="bg-white px-12 w-full  pb-8  rounded-xl">
-                <p className="pt-8 pb- text-3xl font-semibold">
-                  SAP Business Technology Platform
-                </p>
-                <p className="pt-8 pb-4 text-xl font-semibold">Eligibility</p>
-                <p className="ml-4 ">
-                  This course is designed for an already existing SAP BTP
-                  consultant who wants to learn about SAP BTP and how to use it
-                  to build and deploy intelligent applications. The course is
-                  suitable for developers, IT professionals, and business users.
-                </p>
+                {/* tabsssssssssssssssssssssssssssssssssssssssss */}
 
-                <p className="pt-8 pb-4 text-xl font-semibold">Prerequisites</p>
-                <div className="flex ml-4 gap-1 ">
-                  <span>•</span>Basic knowledge of cloud computing
-                </div>
+                <nav>
+                  <ul className="flex w-full justify-center mt-10  flex-row">
+                    {tabs.map((item) => (
+                      <li
+                        key={item.icon}
+                        className={
+                          item.id === selectedTabIndex
+                            ? " bg-[#eee] py-8  text-center rounded-sm "
+                            : "relative  py-8  text-center "
+                        }
+                        onClick={() => {
+                          setSelectedTab(item);
+                          setSelectedTabIndex(item.id);
+                        }}
+                      >
+                        <p className="w-full  text-center"> {`${item.icon}`}</p>
+                        {item.id === selectedTabIndex ? (
+                          <motion.div
+                            className="absolute bottom-[-1px] left-0 right-0 w-full h-[1px] bg-blue-500"
+                            layoutId="underline"
+                          />
+                        ) : null}
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
 
-                <div className="flex ml-4  gap-1 ">
-                  <span>•</span>Basic knowledge of programming languages such as
-                  Java, Python, or C++
-                </div>
-                <div className="flex ml-4 gap-1 ">
-                  <span>•</span>Deploy your application to SAP BTP
-                </div>
-
-                <div className="flex ml-4 gap-1 ">
-                  <span>•</span>Deploy your application to SAP BTP
-                </div>
-
-                <p className="pt-8 pb-4 text-xl font-semibold">Benefits</p>
-                <div className="flex ml-4 gap-1 ">
-                  <span>•</span>Learn the skills you need to build and deploy
-                  intelligent applications
-                </div>
-
-                <div className="flex ml-4  gap-1 ">
-                  <span>•</span>Gain hands-on experience using SAP BTP services
-                </div>
-                <div className="flex ml-4 gap-1 ">
-                  <span>•</span>Deploy your application to SAP BTP
-                </div>
-
-                <p className="pt-8  text-xl pb-4 font-semibold">Resources</p>
-                <p className="flex  gap-1 ">
-                  The course will provide access to a variety of resources,
-                  including Lectures , Quizzes , Exercises and A final project.
-                  A forum where you can ask questions and get help from the
-                  instructor and other students
-                </p>
-
-                <p className="pt-8 pb-4 text-xl font-semibold">Assessment</p>
-                <div className="flex ml-4 gap-1 ">
-                  <span>•</span>The course will be assessed through a
-                  combination of quizzes, exercises, and a final project.
-                </div>
-
-                <p className="font-normal mt-4">
-                  Enrol in this course today and start building your skills in
-                  SAP BTP!
-                </p>
+                <main>
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={selectedTab ? selectedTab.icon : "empty"}
+                      initial={{ y: 10, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      exit={{ y: -10, opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      {selectedTab ? selectedTab.label : ""}
+                    </motion.div>
+                  </AnimatePresence>
+                </main>
               </div>
               {/* first sections second card */}
-              <div className="bg-white px-12 w-full   pb-8  rounded-xl">
-                <div className="pt-8 text-xl font-semibold">Course Content</div>
-                <div>
-                  <Accordion
-                    question="Lesson 1"
-                    answer="Your answer goes here"
-                  />
-                </div>
-                <div>
-                  <Accordion
-                    question="Lesson 2"
-                    answer="Your answer goes here"
-                  />
-                </div>
-                <div>
-                  <Accordion
-                    question="Lesson 3"
-                    answer="Your answer goes here"
-                  />
-                </div>
-              </div>
             </div>
 
             {/* side tab content here */}
-            <div className="w-[39%]  flex justify-center">
+            <div className="w-[40%]  flex justify-center">
               <div className="w-[100%] flex gap-8 flex-col items-center ">
                 <div className="flex  shadow-md w-full bg-white pb-12 pt-5  rounded-xl flex-col justify-center items-center gap-5">
-                  <div className="px-5">
+                  <div className="px-5 text-jus">
                     <p className="pt-3 pb-4  text-center text-xl font-semibold">
                       Learning Outcomes
                     </p>
 
-                    <div className="flex ml-4  gap-1 ">
-                      <span>•</span>Understand the different services that SAP
-                      BTP offers
+                    <div className="flex  gap-1 ">
+                      <span>•</span>Dive into the core features and
+                      functionalities of SAP BTP and explore how it can
+                      revolutionize your organization's digital capabilities.
                     </div>
-                    <div className="flex ml-4 gap-1 ">
-                      <span>•</span>Use the SAP BTP services to build a
-                      real-world application
+                    <div className="flex  gap-1 ">
+                      <span>•</span>Discover how to leverage the power of data
+                      and analytics within SAP BTP to make informed business
+                      decisions and drive growth.
                     </div>
-                    <div className="flex ml-4 gap-1 ">
-                      <span>•</span> Deploy your application to SAP BTP
+                    <div className="flex  gap-1 ">
+                      <span>•</span> Harness the potential of AI technologies
+                      integrated into SAP BTP to automate processes, enhance
+                      customer experiences, and unlock new opportunities.
+                    </div>
+                    <div className="flex  gap-1 ">
+                      <span>•</span> Learn how to develop intelligent
+                      applications using SAP BTP's robust application
+                      development tools, enabling you to create tailored
+                      solutions for your organization's unique needs.
+                    </div>
+                    <div className="flex  gap-1 ">
+                      <span>•</span> Explore the automation and integration
+                      capabilities of SAP BTP and learn how to streamline your
+                      business processes for increased efficiency and agility.
                     </div>
                   </div>
                 </div>
