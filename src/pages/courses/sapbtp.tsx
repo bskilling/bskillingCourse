@@ -19,7 +19,7 @@ const SapBtp = () => {
       icon: "OverView",
       label: (
         <div>
-          <p className="ml-4 pt-8">
+          <p className=" pt-8">
             SAP BTP is a cutting-edge cloud-based platform that empowers
             businesses to build, deploy, and manage intelligent applications.
             With its diverse range of services, including data and analytics,
@@ -125,7 +125,6 @@ const SapBtp = () => {
       icon: "Curriculum",
       label: (
         <div className="bg-white px-12 w-full   pb-8  rounded-xl">
-          <div className="pt-8 text-xl font-semibold">Course Content</div>
           <div>
             <Accordion question="Lesson 1" answer="Your answer goes here" />
           </div>
@@ -139,7 +138,26 @@ const SapBtp = () => {
       ),
       id: 1,
     },
-    { icon: "Faq", label: <div className="text-4xl">Faq</div>, id: 2 },
+    {
+      icon: "Faqs",
+      label: (
+        <div className="bg-white px-12 w-full   pb-8  rounded-xl">
+          <div>
+            <Accordion question="Question One" answer="Your answer goes here" />
+          </div>
+          <div>
+            <Accordion question="Question Two" answer="Your answer goes here" />
+          </div>
+          <div>
+            <Accordion
+              question="Question Three"
+              answer="Your answer goes here"
+            />
+          </div>
+        </div>
+      ),
+      id: 2,
+    },
   ];
   const clickOnTabs = () => {};
   const [selectedTab, setSelectedTab] = useState(tabs[0]);
@@ -187,14 +205,14 @@ const SapBtp = () => {
             >
               {/* <img className="absolute  h-auto w-fit" src="/bgcrs.jpg" alt="" /> */}
             </div>
-            <div className="absolute   w-full md:px-14 md:gap-14  flex flex-col md:flex-row justify-center top-0 text-white">
-              <div className="md:w-[60%] mt-28">
+            <div className="absolute   w-full    flex flex-col md:flex-row justify-center top-0 text-white">
+              <div className="md:w-[55%] mt-28 mr-16 ">
                 <motion.div
-                  initial={{ y: "200px" }}
-                  whileInView={{ y: "0px" }}
-                  animate={{ y: 10 }}
-                  viewport={{ once: true }}
-                  transition={{ ease: "easeOut", duration: 2 }}
+                  // initial={{ y: "200px" }}
+                  // whileInView={{ y: "0px" }}
+                  // animate={{ y: 10 }}
+                  // viewport={{ once: true }}
+                  // transition={{ ease: "easeOut", duration: 2 }}
                   className="bg-glass text-2xl font-semibold"
                 >
                   Unlock the Power of SAP Business Technology Platform (SAP BTP)
@@ -203,11 +221,11 @@ const SapBtp = () => {
                 </motion.div>
 
                 <motion.div
-                  initial={{ right: "300px" }}
-                  whileInView={{ right: "0px" }}
-                  animate={{ x: 2 }}
-                  viewport={{ once: true }}
-                  transition={{ ease: "easeOut", duration: 2 }}
+                  // initial={{ right: "300px" }}
+                  // whileInView={{ right: "0px" }}
+                  // animate={{ x: 2 }}
+                  // viewport={{ once: true }}
+                  // transition={{ ease: "easeOut", duration: 2 }}
                   className=" flex flex-col md:flex-row pt-7 pb-7 md:gap-6 items-center"
                 >
                   <div className="flex">
@@ -266,13 +284,14 @@ const SapBtp = () => {
                     </div>
                     <div className="ml-2">(12) reviews</div>
                   </div>
-
+                  <p>49523 Learners</p>
                   <div className="flex gap-2">
                     <div className="flex items-center ">
                       <BsFillPeopleFill />
                     </div>
                     Instructor-led Training
                   </div>
+
                   <div className="flex gap-2">
                     <div className="flex items-center ">
                       <BiTime />
@@ -281,7 +300,7 @@ const SapBtp = () => {
                   </div>
                 </motion.div>
 
-                <div className="mt-2  w-[100%]">
+                <div className="mt-2 font-base  w-[100%]">
                   Are you ready to navigate the complex landscape of digital
                   transformations with confidence? Introducing our comprehensive
                   course on SAP Business Technology Platform (SAP BTP), designed
@@ -300,34 +319,34 @@ const SapBtp = () => {
               {/* //////////////////////////////////////rating and course name section //////////////////////////////////////////////////////////*/}
 
               <motion.div
-                initial={{ left: "360px" }}
-                whileInView={{ left: "8px" }}
-                transition={{ ...transition, type: "tween" }}
-                viewport={{ once: true }}
-                className="md:w-[20%] h-min-[50%]   relative  mt-28"
+                // initial={{ left: "360px" }}
+                // whileInView={{ left: "8px" }}
+                // transition={{ ...transition, type: "tween" }}
+                // viewport={{ once: true }}
+                className="md:w-[20%] h-min-[50%] mr-16  relative  mt-28"
               >
-                <p className="pt-8 pb-5 text-3xl font-semibold">
+                <p className=" pb-5 text-3xl font-semibold">
                   SAP Business Technology Platform
                 </p>
                 <div className="w-full bg-white h-fit rounded-md flex flex-col   items-center absolute">
                   <div className="mt-8">
                     <p className="text-center  text-black font-semibold">
                       {" "}
-                      <span className="text-xs font-bold  text-red-500 -top-[10px] -right-0 relative">
-                        $
+                      <span className="text-xs font-bold text-blue-600 -top-[10px] -right-1 relative">
+                        ₹
                       </span>{" "}
-                      <span className="font-bold text-start text-red-500 text-3xl">
+                      <span className="font-bold text-start text-blue-600 text-3xl">
                         600
                       </span>
                     </p>
-                    <p className="text-center flex  text-black font-semibold">
+                    <p className="text-center flex  text-slate-500 font-semibold">
                       <span className=" stroke-slate-900 text-2xl">
-                        <span className="text-xs font-bold  -top-[10px] -right-0 relative">
-                          $
+                        <span className="text-xs font-bold  -top-[5px] -right-1  relative">
+                          ₹
                         </span>{" "}
-                        <span className="line-through "> 700</span>
+                        <span className="line-through text-xl"> 700</span>
                       </span>
-                      <span className=" text-red-500 ml-2 text-2xl">
+                      <span className=" text-slate-500 ml-2 mt-1 text-xl">
                         70% Off
                       </span>
                     </p>
@@ -345,7 +364,7 @@ const SapBtp = () => {
 
           {/* section with banner comes here above */}
         </section>
-        <section className="flex justify-center px-44 pb-4 relative md:-top-16  lg:-top-24 ">
+        <section className="flex justify-center px-32 pb-4 relative md:-top-16  lg:-top-24 ">
           <motion.div
             initial={{ y: "200px" }}
             whileInView={{ y: "0px" }}
@@ -367,7 +386,7 @@ const SapBtp = () => {
                         key={item.icon}
                         className={
                           item.id === selectedTabIndex
-                            ? " bg-[#eee] py-8  text-center rounded-sm "
+                            ? "  py-8  text-center text-buttonBlue font-bold rounded-sm "
                             : "relative  py-8  text-center "
                         }
                         onClick={() => {
@@ -378,7 +397,7 @@ const SapBtp = () => {
                         <p className="w-full  text-center"> {`${item.icon}`}</p>
                         {item.id === selectedTabIndex ? (
                           <motion.div
-                            className="absolute bottom-[-1px] left-0 right-0 w-full h-[1px] bg-blue-500"
+                            className="absolute bottom-[-1px] left-0 right-0 w-full h-[3px] rounded-lg bg-blue-500"
                             layoutId="underline"
                           />
                         ) : null}
@@ -405,7 +424,7 @@ const SapBtp = () => {
             </div>
 
             {/* side tab content here */}
-            <div className="w-[40%]  flex justify-center">
+            <div className="w-[60%]  flex justify-center">
               <div className="w-[100%] flex gap-8 flex-col items-center ">
                 <div className="flex  shadow-md w-full bg-white pb-12 pt-5  rounded-xl flex-col justify-center items-center gap-5">
                   <div className="px-5 text-jus">
@@ -413,31 +432,31 @@ const SapBtp = () => {
                       Learning Outcomes
                     </p>
 
-                    <div className="flex  gap-1 ">
-                      <span>•</span>Dive into the core features and
-                      functionalities of SAP BTP and explore how it can
-                      revolutionize your organization's digital capabilities.
+                    <div className="flex  gap-1text-blue-600 text-blue-600 ">
+                      Dive into the core features and functionalities of SAP BTP
+                      and explore how it can revolutionize your organization's
+                      digital capabilities.
                     </div>
-                    <div className="flex  gap-1 ">
-                      <span>•</span>Discover how to leverage the power of data
-                      and analytics within SAP BTP to make informed business
-                      decisions and drive growth.
+                    <div className="flex pt-4 gap-1  text-blue-600">
+                      Discover how to leverage the power of data and analytics
+                      within SAP BTP to make informed business decisions and
+                      drive growth.
                     </div>
-                    <div className="flex  gap-1 ">
-                      <span>•</span> Harness the potential of AI technologies
-                      integrated into SAP BTP to automate processes, enhance
-                      customer experiences, and unlock new opportunities.
+                    <div className="flex pt-4 gap-1  text-blue-600">
+                      Harness the potential of AI technologies integrated into
+                      SAP BTP to automate processes, enhance customer
+                      experiences, and unlock new opportunities.
                     </div>
-                    <div className="flex  gap-1 ">
-                      <span>•</span> Learn how to develop intelligent
-                      applications using SAP BTP's robust application
-                      development tools, enabling you to create tailored
-                      solutions for your organization's unique needs.
+                    <div className="flex pt-4 gap-1 text-blue-600 ">
+                      Learn how to develop intelligent applications using SAP
+                      BTP's robust application development tools, enabling you
+                      to create tailored solutions for your organization's
+                      unique needs.
                     </div>
-                    <div className="flex  gap-1 ">
-                      <span>•</span> Explore the automation and integration
-                      capabilities of SAP BTP and learn how to streamline your
-                      business processes for increased efficiency and agility.
+                    <div className="flex pt-4 gap-1 text-blue-600">
+                      Explore the automation and integration capabilities of SAP
+                      BTP and learn how to streamline your business processes
+                      for increased efficiency and agility.
                     </div>
                   </div>
                 </div>
@@ -447,13 +466,13 @@ const SapBtp = () => {
                       Upcoming Batches
                     </p>
 
-                    <div className="flex ml-4 text-buttonBlue gap-1 ">
-                      17th June - 2nd July (9am - 2pm) | 5th July - 12th July
-                      (9am - 2pm) | 22nd July - 6th August (9am - 2pm)
+                    <div className="flex m text-buttonBlue gap-1 ">
+                      17th Jun - 2nd Jul (9am - 2pm) | 5th Jul - 12th Jul (9am -
+                      2pm) | 22nd Jul - 6th Aug (9am - 2pm)
                     </div>
-                    <div className="flex ml-4 mt-4 gap-1 text-buttonBlue ">
-                      17th June - 2nd July (9am - 2pm) | 5th July - 12th July
-                      (9am - 2pm) | 22nd July - 6th August (9am - 2pm)
+                    <div className="flex  mt-4 gap-1 text-buttonBlue ">
+                      17th Jun - 2nd Jul (9am - 2pm) | 5th Jul - 12th Jul (9am -
+                      2pm) | 22nd Jul - 6th Aug (9am - 2pm)
                     </div>
                   </div>
                 </div>
