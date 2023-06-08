@@ -8,10 +8,7 @@ export default function Privacy() {
     <>
       <Head>
         <title>bSkilling Privacy Policy</title>
-        <meta
-          name="bSkilling"
-          content=" Privacy Policy"
-        />
+        <meta name="bSkilling" content=" Privacy Policy" />
 
         <link rel="icon" href="/favicon.png" />
         <script
