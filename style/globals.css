@@ -27,7 +27,7 @@ a {
   text-decoration: none;
 }
 @layer components {
-  /* li {
+  .list {
     border-radius: 5px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
@@ -53,24 +53,11 @@ a {
     height: 3px;
     background: var(--accent);
   }
-  li.selected {
+  list.selected {
     background: #eee;
-  }
+    
 
-  li button {
-    width: 20px;
-    height: 20px;
-    border: 0;
-    background: #fff;
-    border-radius: 3px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    stroke: #000;
-    margin-left: 10px;
-    cursor: pointer;
-    flex-shrink: 0;
-  } */
+  }
 }
 
 a:hover {

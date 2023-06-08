@@ -384,11 +384,13 @@ const SapBtp = () => {
                     {tabs.map((item) => (
                       <li
                         key={item.icon}
-                        className={
-                          item.id === selectedTabIndex
-                            ? "  py-8  text-center text-buttonBlue font-bold rounded-sm "
-                            : "relative  py-8  text-center "
-                        }
+                        className={`list 
+                         ${
+                           item.id === selectedTabIndex
+                             ? "  py-8  text-center text-buttonBlue font-bold rounded-sm "
+                             : "relative  py-8  text-center "
+                         }
+                      `}
                         onClick={() => {
                           setSelectedTab(item);
                           setSelectedTabIndex(item.id);
