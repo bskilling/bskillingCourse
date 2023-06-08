@@ -124,7 +124,7 @@ const SapBtp = () => {
     {
       icon: "Curriculum",
       label: (
-        <div className="bg-white px-12 w-full   pb-8  rounded-xl">
+        <div className="bg-white md:px-12 w-full   pb-8  rounded-xl">
           <div>
             <Accordion question="Lesson 1" answer="Your answer goes here" />
           </div>
@@ -141,7 +141,7 @@ const SapBtp = () => {
     {
       icon: "Faqs",
       label: (
-        <div className="bg-white px-12 w-full   pb-8  rounded-xl">
+        <div className="bg-white md:px-12 w-full   pb-8  rounded-xl">
           <div>
             <Accordion question="Question One" answer="Your answer goes here" />
           </div>
@@ -190,10 +190,11 @@ const SapBtp = () => {
       </Head>
 
       <section className="bg-gray font-SourceSans">
+        {/* mobile view  above*/}
         <section>
-          <div className="relative">
+          <div className="relative md:h-fit h-fit">
             <div
-              className="md:h-[650px] h-[1200px] brightness-50"
+              className="md:h-[650px] w-auto md:min-h-[650px] min-h-[1200px] brightness-50"
               style={{
                 backgroundImage: `url(${"/education.png"})`,
                 // backgroundImage: `url(${"/bgcrs.jpg"})`,
@@ -206,14 +207,14 @@ const SapBtp = () => {
               {/* <img className="absolute  h-auto w-fit" src="/bgcrs.jpg" alt="" /> */}
             </div>
             <div className="absolute   w-full    flex flex-col md:flex-row justify-center top-0 text-white">
-              <div className="md:w-[55%] mt-28 mr-16 ">
+              <div className="md:w-[55%] md:mt-28 md:mr-16 ">
                 <motion.div
                   // initial={{ y: "200px" }}
                   // whileInView={{ y: "0px" }}
                   // animate={{ y: 10 }}
                   // viewport={{ once: true }}
                   // transition={{ ease: "easeOut", duration: 2 }}
-                  className="bg-glass text-2xl font-semibold"
+                  className="bg-glass text-xl text-center md:text-left md:pt-0 pt-6 md:text-2xl font-semibold"
                 >
                   Unlock the Power of SAP Business Technology Platform (SAP BTP)
                   <br />
@@ -300,7 +301,7 @@ const SapBtp = () => {
                   </div>
                 </motion.div>
 
-                <div className="mt-2 font-base  w-[100%]">
+                <div className="mt-2 font-base md:p-0 p-4 md:text-left text-justify md:w-[100%]">
                   Are you ready to navigate the complex landscape of digital
                   transformations with confidence? Introducing our comprehensive
                   course on SAP Business Technology Platform (SAP BTP), designed
@@ -323,12 +324,12 @@ const SapBtp = () => {
                 // whileInView={{ left: "8px" }}
                 // transition={{ ...transition, type: "tween" }}
                 // viewport={{ once: true }}
-                className="md:w-[20%] h-min-[50%] mr-16  relative  mt-28"
+                className="md:w-[20%] md:h-min-[50%] md:mr-16   relative  md:mt-28"
               >
-                <p className=" pb-5 text-3xl font-semibold">
+                <p className=" pb-5 text-3xl md:text-left text-center font-semibold">
                   SAP Business Technology Platform
                 </p>
-                <div className="w-full bg-white h-fit rounded-md flex flex-col   items-center absolute">
+                <div className="w-full  bg-white h-fit rounded-md flex flex-col   items-center absolute">
                   <div className="mt-8">
                     <p className="text-center  text-black font-semibold">
                       {" "}
@@ -364,19 +365,18 @@ const SapBtp = () => {
 
           {/* section with banner comes here above */}
         </section>
-        <section className="flex justify-center px-32 pb-4 relative md:-top-16  lg:-top-24 ">
+        <section className="flex  justify-center md:px-32 pb-4 md:relative md:-top-16  lg:-top-24 ">
           <motion.div
             initial={{ y: "200px" }}
             whileInView={{ y: "0px" }}
             animate={{ y: 10 }}
             viewport={{ once: true }}
-            transition={{ ...transition2, type: "tween" }}
             id="parent"
-            className="flex  justify-center pt-8 gap-10"
+            className=" flex flex-col md:flex-row justify-center md:pt-8 gap-10"
           >
             {/* main text content here */}
-            <div className="flex flex-col gap-3 h-fit    w-[120%]">
-              <div className="bg-white px-12 w-full  pb-8  rounded-xl">
+            <div className="flex flex-col gap-3 h-fit    md:w-[120%]">
+              <div className="bg-white px-3 md:px-12 w-full  pb-8  rounded-xl">
                 {/* tabsssssssssssssssssssssssssssssssssssssssss */}
 
                 <nav>
@@ -424,7 +424,7 @@ const SapBtp = () => {
             </div>
 
             {/* side tab content here */}
-            <div className="w-[60%]  flex justify-center">
+            <div className="md:w-[60%]  flex justify-center">
               <div className="w-[100%] flex gap-8 flex-col items-center ">
                 <div className="flex  shadow-md w-full bg-white pb-12 pt-5  rounded-xl flex-col justify-center items-center gap-5">
                   <div className="px-5 text-jus">
@@ -477,7 +477,7 @@ const SapBtp = () => {
                   </div>
                 </div>
 
-                <div className="flex w-full flex-col  gap-5">
+                <div className="flex w-full flex-col md:p-0 p-5 gap-5">
                   <div className="text-xl  w-full text-left font-semibold ">
                     Related Courses
                   </div>
