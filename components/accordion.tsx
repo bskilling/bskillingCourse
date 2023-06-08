@@ -47,11 +47,11 @@ const Accordion = ({
           >
             <div className="flex gap-2 ml-4 w-full">
               <p className="w-1 h-1 mt-3 bg-blue-600 rounded-full"></p>
-              <p>Lormm ipsum</p>
+              <p className="text-base">Lormm ipsum</p>
             </div>
             <div className="flex gap-2 ml-4 w-full">
-              <p className="w-1 h-1 mt-3 bg-blue-600 rounded-full"></p>
-              <p>Lormm ipsum</p>
+              <p className="w-1 h-1 mt-3 bg-blue-600  rounded-full"></p>
+              <p className="text-base">Lormm ipsum</p>
             </div>
           </motion.div>
         )}

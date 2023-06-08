@@ -122,7 +122,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
         <link rel="icon" href="/logo.png" />
       </Head>
 
-      <nav className="md:py-4   md:p-0 bg-white flex  md:flex-row flex-col md:gap-36 md:justify-between w-full  shadow-">
+      <nav className="md:py-4 font-SourceSans  md:p-0 bg-white flex  md:flex-row flex-col md:gap-36 md:justify-between w-full  shadow-">
         <div className="flex md:gap-5  md:flex-row flex-col items-center justify-center md:ml-10 ">
           <Link href={"/"}>
             <img
@@ -132,7 +132,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
             />
           </Link>
 
-          <div className="relative flex justify-end md:w-[500px]">
+          <div className="relative font-SourceSans   flex justify-end md:w-[500px]">
             <input
               type="text"
               className="md:w-[400px] rounded-lg border-[1px] bg- border-buttonBlue lg:py-1 lg:mt-[3px] px-5   focus:border-Buttoncolor focus:ring-buttonBlue"
@@ -163,7 +163,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
           </div>
         </div>
 
-        <div className="md:mr-6 flex   justify-center gap-3 md:gap-5 md:my-0 my-5">
+        <div className="md:mr-6 flex font-SourceSans  justify-center gap-3 md:gap-5 md:my-0 my-5">
           <div className="flex gap-4 md:gap-5">
             <div className="mt-3 text-buttonBlue hover:cursor-pointer font-semibold">
               <Link style={{ textDecoration: "none" }} href={"/about"}>
@@ -182,7 +182,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
             {/* <div className="mt-3 text-buttonBlue text-center hover:cursor-pointer font-semibold">
               <p>Corporate Training</p>
             </div> */}
-            <div className="mt-3 text-buttonBlue hover:cursor-pointer font-semibold">
+            <div className="mt-3 text-buttonBlue font-SourceSans hover:cursor-pointer font-semibold">
               <Link style={{ textDecoration: "none" }} href={"/blogs"}>
                 <p
                   className={`${
@@ -229,7 +229,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
       </nav>
 
       <main className=" font-SourceSans font-normal">{children}</main>
-      <footer className=" bg-white  px-10 py-6 md:py-12">
+      <footer className=" bg-white font-SourceSans  px-10 py-6 md:py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 md:flex md:flex-row justify-between items-start">
           <div className="col-span-2 pb-4 md:pb-0 ">
             {/* <a className="flex justify-start items-center pl-6 md:pl-0">
@@ -331,7 +331,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
               </div>
             </div>
           </div>
-          <div className="text-sm col-span-2 p-4 md:p-0 ">
+          <div className="text-sm col-span-2  p-4 md:p-0 ">
             <p className="font-semibold text-lg">BSKILLING PRIVATE LIMITED</p>
             <p className="text-base">Uma Sree Dream World, Unit -2,</p>
             <p className="text-base">B-Block, 4th Floor, Kudlu Gate,</p>
@@ -345,8 +345,8 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
             <Link style={{ textDecoration: "none" }} href={"/about"}>
               <p className="text-black text-base  no-underline"> About</p>
             </Link>
-            <p className="text-base">Corporate Training</p>
-            <Link style={{ textDecoration: "none" }}  href={"/blogs"}>
+
+            <Link style={{ textDecoration: "none" }} href={"/blogs"}>
               <p className="text-base text-black">Blogs</p>
             </Link>
           </div>
