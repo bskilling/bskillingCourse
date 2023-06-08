@@ -126,32 +126,38 @@ const SapBtp = () => {
       label: (
         <div className="bg-white md:px-12 w-full   pb-8  rounded-xl">
           <div>
-            <Accordion question="Lesson 1" answer="Your answer goes here" />
+            <Accordion question="Lesson 1" answer="Chapter " />
           </div>
           <div>
-            <Accordion question="Lesson 2" answer="Your answer goes here" />
+            <Accordion question="Lesson 2" answer="Chapter " />
           </div>
           <div>
-            <Accordion question="Lesson 3" answer="Your answer goes here" />
+            <Accordion question="Lesson 3" answer="Chapter " />
           </div>
         </div>
       ),
       id: 1,
     },
     {
-      icon: "Faqs",
+      icon: "FAQs",
       label: (
         <div className="bg-white md:px-12 w-full   pb-8  rounded-xl">
           <div>
-            <Accordion question="Question One" answer="Your answer goes here" />
-          </div>
-          <div>
-            <Accordion question="Question Two" answer="Your answer goes here" />
+            <Accordion
+              question="Question 1"
+              answer="Lorum ipsum asd dkaf asdlkk asdiwid asmdnadad"
+            />
           </div>
           <div>
             <Accordion
-              question="Question Three"
-              answer="Your answer goes here"
+              question="Question 2"
+              answer="Lorum ipsum asd dkaf asdlkk asdiwid asmdnadad"
+            />
+          </div>
+          <div>
+            <Accordion
+              question="Question 3"
+              answer="Lorum ipsum asd dkaf asdlkk asdiwid asmdnadad"
             />
           </div>
         </div>
@@ -194,7 +200,7 @@ const SapBtp = () => {
         <section>
           <div className="relative md:h-fit h-fit">
             <div
-              className="md:h-[650px] w-auto md:min-h-[650px] min-h-[1200px] brightness-50"
+              className="md:h-[650px] w-auto md:min-h-[650px] min-h-[1125px] brightness-50"
               style={{
                 backgroundImage: `url(${"/education.png"})`,
                 // backgroundImage: `url(${"/bgcrs.jpg"})`,
@@ -207,14 +213,17 @@ const SapBtp = () => {
               {/* <img className="absolute  h-auto w-fit" src="/bgcrs.jpg" alt="" /> */}
             </div>
             <div className="absolute   w-full    flex flex-col md:flex-row justify-center top-0 text-white">
-              <div className="md:w-[55%] md:mt-28 md:mr-16 ">
+              <div className="md:w-[100%] md:px-36 md:mt-28 mt-12  ">
+                <p className=" pb-2 text-3xl md:text-left text-center font-semibold">
+                  SAP Business Technology Platform
+                </p>
                 <motion.div
                   // initial={{ y: "200px" }}
                   // whileInView={{ y: "0px" }}
                   // animate={{ y: 10 }}
                   // viewport={{ once: true }}
                   // transition={{ ease: "easeOut", duration: 2 }}
-                  className="bg-glass text-xl text-center md:text-left md:pt-0 pt-6 md:text-2xl font-semibold"
+                  className="bg-glass text-xl text-center md:text-left md:pt-0 pt-3 md:text-2xl font-semibold"
                 >
                   Unlock the Power of SAP Business Technology Platform (SAP BTP)
                   <br />
@@ -318,48 +327,6 @@ const SapBtp = () => {
               </div>
 
               {/* //////////////////////////////////////rating and course name section //////////////////////////////////////////////////////////*/}
-
-              <motion.div
-                // initial={{ left: "360px" }}
-                // whileInView={{ left: "8px" }}
-                // transition={{ ...transition, type: "tween" }}
-                // viewport={{ once: true }}
-                className="md:w-[20%] md:h-min-[50%] md:mr-16   relative  md:mt-28"
-              >
-                <p className=" pb-5 text-3xl md:text-left text-center font-semibold">
-                  SAP Business Technology Platform
-                </p>
-                <div className="w-full  bg-white h-fit rounded-md flex flex-col   items-center absolute">
-                  <div className="mt-8">
-                    <p className="text-center  text-black font-semibold">
-                      {" "}
-                      <span className="text-xs font-bold text-blue-600 -top-[10px] -right-1 relative">
-                        ₹
-                      </span>{" "}
-                      <span className="font-bold text-start text-blue-600 text-3xl">
-                        600
-                      </span>
-                    </p>
-                    <p className="text-center flex  text-slate-500 font-semibold">
-                      <span className=" stroke-slate-900 text-2xl">
-                        <span className="text-xs font-bold  -top-[5px] -right-1  relative">
-                          ₹
-                        </span>{" "}
-                        <span className="line-through text-xl"> 700</span>
-                      </span>
-                      <span className=" text-slate-500 ml-2 mt-1 text-xl">
-                        70% Off
-                      </span>
-                    </p>
-                  </div>
-                  <div>
-                    <button className="bg-buttonBlue px-9 py-2 font-semibold text-xl mt-4">
-                      <span>Enroll Me</span>
-                    </button>
-                  </div>
-                  <div className="text-center mt-4 pb-8"></div>
-                </div>
-              </motion.div>
             </div>
           </div>
 
@@ -380,7 +347,7 @@ const SapBtp = () => {
                 {/* tabsssssssssssssssssssssssssssssssssssssssss */}
 
                 <nav>
-                  <ul className="flex w-full justify-center mt-10  flex-row">
+                  <ul className="flex w-full justify-center mt-5  flex-row">
                     {tabs.map((item) => (
                       <li
                         key={item.icon}
@@ -388,7 +355,7 @@ const SapBtp = () => {
                          ${
                            item.id === selectedTabIndex
                              ? "  py-8  text-center text-buttonBlue font-bold rounded-sm "
-                             : "relative  py-8  text-center "
+                             : "relative py-8  pb-8  text-center "
                          }
                       `}
                         onClick={() => {
@@ -399,7 +366,7 @@ const SapBtp = () => {
                         <p className="w-full  text-center"> {`${item.icon}`}</p>
                         {item.id === selectedTabIndex ? (
                           <motion.div
-                            className="absolute bottom-[-1px] left-0 right-0 w-full h-[3px] rounded-lg bg-blue-500"
+                            className="absolute bottom-[-1px] left-0 right-0 w-full h-[3px] rounded-lg bg-buttonBlue"
                             layoutId="underline"
                           />
                         ) : null}
@@ -428,53 +395,85 @@ const SapBtp = () => {
             {/* side tab content here */}
             <div className="md:w-[60%]  flex justify-center">
               <div className="w-[100%] flex gap-8 flex-col items-center ">
+                <div className="w-full  bg-white h-fit rounded-md flex flex-col   items-center ">
+                  <div className="mt-8">
+                    <p className="text-center  text-black font-semibold">
+                      {" "}
+                      <span className=" font-bold text-xl text-blue-600 -top-[10px] -right-1 relative">
+                        ₹
+                      </span>{" "}
+                      <span className="font-bold text-start text-blue-600 text-3xl">
+                        600
+                      </span>
+                    </p>
+                    <p className="text-center flex  text-slate-500 font-semibold">
+                      <span className=" stroke-slate-900 text-2xl">
+                        <span className="text-xl font-bold  -top-[5px] -right-1  relative">
+                          ₹
+                        </span>{" "}
+                        <span className="line-through text-xl"> 700</span>
+                      </span>
+                      <span className=" text-slate-500 ml-2 mt-1 text-xl">
+                        70% Off
+                      </span>
+                    </p>
+                  </div>
+                  <div>
+                    <button className="bg-buttonBlue text-white px-9 py-2 font-semibold text-xl mt-4">
+                      <span>Enroll Me</span>
+                    </button>
+                  </div>
+                  <div className="text-center mt-4 pb-8"></div>
+                </div>
+
                 <div className="flex  shadow-md w-full bg-white pb-12 pt-5  rounded-xl flex-col justify-center items-center gap-5">
                   <div className="px-5 text-jus">
-                    <p className="pt-3 pb-4  text-center text-xl font-semibold">
+                    <p className="pt-3 pb-4  text-left text-xl font-semibold">
                       Learning Outcomes
                     </p>
 
-                    <div className="flex  gap-1text-blue-600 text-blue-600 ">
+                    <div className="flex  gap-1text-blue-600  ">
                       Dive into the core features and functionalities of SAP BTP
                       and explore how it can revolutionize your organization's
                       digital capabilities.
                     </div>
-                    <div className="flex pt-4 gap-1  text-blue-600">
+                    <div className="flex pt-4 gap-1  ">
                       Discover how to leverage the power of data and analytics
                       within SAP BTP to make informed business decisions and
                       drive growth.
                     </div>
-                    <div className="flex pt-4 gap-1  text-blue-600">
+                    <div className="flex pt-4 gap-1  ">
                       Harness the potential of AI technologies integrated into
                       SAP BTP to automate processes, enhance customer
                       experiences, and unlock new opportunities.
                     </div>
-                    <div className="flex pt-4 gap-1 text-blue-600 ">
+                    <div className="flex pt-4 gap-1  ">
                       Learn how to develop intelligent applications using SAP
                       BTP's robust application development tools, enabling you
                       to create tailored solutions for your organization's
                       unique needs.
                     </div>
-                    <div className="flex pt-4 gap-1 text-blue-600">
+                    <div className="flex pt-4 gap-1 ">
                       Explore the automation and integration capabilities of SAP
                       BTP and learn how to streamline your business processes
                       for increased efficiency and agility.
                     </div>
                   </div>
                 </div>
-                <div className="flex  shadow-md w-full bg-white pb-12 pt-8 rounded-xl flex-col justify-center items-center gap-5">
+                <div className="flex  shadow-md w-full bg-white pb-12 pt-8 rounded-xl flex-col  gap-5">
                   <div className="px-5">
-                    <p className="pt-3 pb-4 text-xl text-center text-xl font-semibold">
+                    <p className="pt-3 pb-4 text-xl text-left text-xl font-semibold">
                       Upcoming Batches
                     </p>
 
-                    <div className="flex m text-buttonBlue gap-1 ">
-                      17th Jun - 2nd Jul (9am - 2pm) | 5th Jul - 12th Jul (9am -
-                      2pm) | 22nd Jul - 6th Aug (9am - 2pm)
+                    <div className="flex m text-blue-600  text-left gap-1 ">
+                      17th Jun - 2nd Jul (9am - 2pm)
                     </div>
-                    <div className="flex  mt-4 gap-1 text-buttonBlue ">
-                      17th Jun - 2nd Jul (9am - 2pm) | 5th Jul - 12th Jul (9am -
-                      2pm) | 22nd Jul - 6th Aug (9am - 2pm)
+                    <div className="flex m text-blue-600   text-left gap-1 ">
+                      5th Jul - 12th Jul (9am - 2pm)
+                    </div>
+                    <div className="flex m text-blue-600  text-left gap-1 ">
+                      22nd Jul - 6th Aug (9am - 2pm)
                     </div>
                   </div>
                 </div>
