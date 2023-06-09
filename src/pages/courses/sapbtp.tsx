@@ -16,7 +16,7 @@ const SapBtp = () => {
 
   const tabs = [
     {
-      icon: "OverView",
+      icon: "Overview",
       label: (
         <div>
           <p className=" pt-8">
@@ -28,7 +28,7 @@ const SapBtp = () => {
             to propel your organization forward.
           </p>
           <p className="pt-8 pb-4 text-xl font-semibold">Eligibility</p>
-          <p className="ml-4 ">
+          <p className=" ">
             Are you an SAP BTP consultant eager to expand your knowledge and
             master the art of building and deploying intelligent applications?
             Look no further than our specialized course tailored for existing
@@ -105,7 +105,7 @@ const SapBtp = () => {
           </div>
 
           <p className="pt-8 pb-4 text-xl font-semibold">Assessment Method</p>
-          <div className="flex ml-4 gap-1 ">
+          <div className="flex  gap-1 ">
             To ensure your progress and understanding, the course will be
             assessed through a combination of quizzes, exercises, and a final
             project. This multifaceted approach guarantees a comprehensive
@@ -214,7 +214,7 @@ const SapBtp = () => {
             </div>
             <div className="absolute   w-full    flex flex-col md:flex-row justify-center top-0 text-white">
               <div className="md:w-[100%] md:px-36 md:mt-28 mt-12  ">
-                <p className=" pb-2 text-3xl md:text-left text-center font-semibold">
+                <p className=" pb-2 text-3xl mb-5 md:text-left text-center font-semibold">
                   SAP Business Technology Platform
                 </p>
                 <motion.div
@@ -395,7 +395,7 @@ const SapBtp = () => {
             {/* side tab content here */}
             <div className="md:w-[60%]  flex justify-center">
               <div className="w-[100%] flex gap-8 flex-col items-center ">
-                <div className="w-full  bg-white h-fit rounded-md flex flex-col   items-center ">
+                <div className="w-full  bg-white h-fit rounded-xl flex flex-col   items-center ">
                   <div className="mt-8">
                     <p className="text-center  text-black font-semibold">
                       {" "}
