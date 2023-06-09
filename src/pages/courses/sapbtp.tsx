@@ -83,9 +83,7 @@ const SapBtp = () => {
           <div className="flex ml-4 gap-1 ">
             <span>•</span>Engaging lectures presented by seasoned experts.
           </div>
-          <div className="flex ml-4 gap-1 ">
-            <span>•</span>Engaging lectures presented by seasoned experts.
-          </div>
+          
           <div className="flex ml-4 gap-1 ">
             <span>•</span>Interactive quizzes to test your understanding and
             reinforce key concepts.
@@ -420,7 +418,7 @@ const SapBtp = () => {
                   </div>
                   <div>
                     <button className="bg-buttonBlue text-white px-9 py-2 font-semibold text-xl mt-4">
-                      <span>Enroll Me</span>
+                      <span>Enrol Me</span>
                     </button>
                   </div>
                   <div className="text-center mt-4 pb-8"></div>
