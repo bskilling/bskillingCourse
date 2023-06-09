@@ -49,7 +49,7 @@ const FloatWindow = () => {
             className="flex items-center text-white bg-buttonBlue p-3 h-[60px] cursor-pointer"
             onClick={() => setIsExpanded((prev) => !prev)}
           >
-            <p className="font-medium flex-1">Welcome to bSkilling!</p>
+            <p className="font-medium flex-1">Drop Us A Query</p>
             <span
               className={`transition-transform`}
               style={{
