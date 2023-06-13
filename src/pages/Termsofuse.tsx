@@ -9,7 +9,10 @@ export default function TermOfUse() {
       <Head>
         <title>bSkilling Terms Of Use</title>
         <meta name="bSkilling" content=" Terms Of Use" />
-
+        <meta
+          name="p:domain_verify"
+          content="7bb84546e514612864b5b9d71d1649e4"
+        />
         <link rel="icon" href="/favicon.png" />
         <script
           async
