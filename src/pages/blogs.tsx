@@ -93,8 +93,12 @@ export default function Blogs() {
       <Head>
         <title>bSkilling Blogs</title>
         <meta
-          name="bSkilling"
+          name="bSkilling Blogs"
           content="Stay Updated with Our Blog | Read Informative Articles on the Latest Trends in Online Learning"
+        />
+         <meta
+          name="p:domain_verify"
+          content="7bb84546e514612864b5b9d71d1649e4"
         />
 
         <link rel="icon" href="/favicon.png" />
