@@ -46,11 +46,11 @@ const Accordion = ({
             className="p-2 text-lg text-gray-700 border-gray-300"
           >
             <div className="flex gap-2 ml-4 w-full">
-              <span className="text-blue-600">✔️</span>
+              <span className="text-blue-600 text-xs">✔️</span>
               <p className=" text-sm ">{answer}</p>
             </div>
             <div className="flex gap-2 ml-4 w-full">
-              <span className="text-blue-600">✔️</span>
+              <span className="text-blue-600 text-xs">✔️</span>
               <p className=" text-sm ">{answer}</p>
             </div>
           </motion.div>
