@@ -7,7 +7,7 @@ const About = () => {
       <Head>
         <title>bSkilling About</title>
         <meta
-          name="bSkilling"
+          name="bSkilling About"
           content="bSkilling is a pioneer in technology training and we focus on
                 offering top-notch IT and fintech education and skill
                 development programs. We work hard to help people and
@@ -16,6 +16,10 @@ const About = () => {
                 deliver excellence in all fields."
         />
 
+        <meta
+          name="p:domain_verify"
+          content="7bb84546e514612864b5b9d71d1649e4"
+        />
         <link rel="icon" href="/favicon.png" />
         <script
           async
