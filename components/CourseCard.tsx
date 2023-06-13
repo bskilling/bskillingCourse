@@ -118,43 +118,6 @@ const CourseCard: React.FC<CourseCardProps> = ({ data }) => {
                   </div>
                 )}
               </div>
-              {/* <div className="relative flex overflow-x-hidden">
-                <div className=" animate-marquee whitespace-nowrap">
-                  <span className="ml-5">
-                    Upcoming batches: 8th-16th July (9 am-2 pm), 8th-16th July
-                    (9 am-2 pm), 8th-16th July (9 am-2 pm)
-                  </span>
-                </div>
-
-                <div className="absolute top-0 animate-marquee2 whitespace-nowrap">
-                  <span className="ml-5">
-                    Upcoming batches: 8th-16th July (9 am-2 pm), 8th-16th July
-                    (9 am-2 pm), 8th-16th July (9 am-2 pm)1
-                  </span>
-                </div>
-              </div> */}
-
-              {/* <div className="rounded-md  mt-3 px-1 py-2">
-              <p className="text-buttonBlue ">
-                Classes starting on{" "}
-                <span className="font-semibold">{data.StartDate}</span>
-              </p>
-            </div> */}
-              {/* <div className="flex mt-5 py-2 justify-center gap-5">
-                <div>
-                  <p className="">
-                    Price:{" "}
-                    <span className="font-bold text-GreenText">
-                      ₹ {data.price}
-                    </span>
-                  </p>
-                </div>
-                <div>
-                  <button className="px-2 py-2 text-white bg-buttonBlue  hover:bg-buttonBlue focus:ring-4 focus:outline-none focus:ring-buttonBlue font-medium   text-sm  dark:bg-buttonBlue dark:hover:bg-buttonBlue dark:focus:ring-buttonBlue">
-                    View Course
-                  </button>
-                </div>
-              </div> */}
             </div>
           </div>
         </section>

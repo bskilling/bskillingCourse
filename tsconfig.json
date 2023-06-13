@@ -24,6 +24,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "modules/leadChat/zustand/types/IInitiateChatError"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "modules/leadChat/zustand/types/IInitiateChatError", "components/courseSlider.jsx"],
   "exclude": ["node_modules"]
 }
