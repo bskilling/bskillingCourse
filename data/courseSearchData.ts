@@ -15,7 +15,7 @@ const courseSearchData = [
     id: "Others1",
     CourseName: "Meme Creator",
     certificate: "Bskilling ",
-    imageSrc: "/common.jpg",
+    imageSrc: "/crsImg/meme.jpg",
     timePeriod: "25 hrs ",
     StartDate: "05 Sep, 2023 ",
     classType: "Virtual Class",
