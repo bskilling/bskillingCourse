@@ -398,7 +398,7 @@ const SapBtp = () => {
               {/* <img className="absolute  h-auto w-fit" src="/bgcrs.jpg" alt="" /> */}
             </div>
             <div className="  w-full z-[1000] relative  flex  justify-center  text-white">
-              <div className="md:w-[100%] md:basis-[90%] md:mt-28 mt-12  ">
+              <div className="md:w-[100%] md:basis-[90%] md:mt-10 mt-12  ">
                 <div className=" flex flex-col md:flex-row justify-between">
                   <div className="flex items-center">
                     <p className=" pb-2 text-3xl mb-5 md:text-left text-center font-semibold">
