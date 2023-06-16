@@ -30,7 +30,7 @@ interface accord {
   answer6?: string;
   answer7?: string;
 }
-const SapBtp = () => {
+const SapBtps = () => {
   const [showVideo, setShowVideo] = useState(false);
 
   const handleClick = () => {
@@ -169,7 +169,7 @@ const SapBtp = () => {
                   // animate={{ y: 10 }}
                   // viewport={{ once: true }}
                   // transition={{ ease: "easeOut", duration: 2 }}
-                  className="bg-glass text-xl text-center md:text-left md:pt-0 pt-3 md:px-0 px-2 md:text-2xl font-semibold"
+                  className="bg-glass text-xl text-center md:text-left md:pt-0 pt-3 md:text-2xl font-semibold"
                 >
                   Learn the skills you need to build and deploy intelligent
                   <br />
@@ -210,6 +210,26 @@ const SapBtp = () => {
                         <svg
                           aria-hidden="true"
                           className="w-5 h-5 text-yellow-400"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <title>Third star</title>
+                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                        </svg>
+                        <svg
+                          aria-hidden="true"
+                          className="w-5 h-5 text-white"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <title>Third star</title>
+                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                        </svg>
+                        <svg
+                          aria-hidden="true"
+                          className="w-5 h-5 text-white"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                           xmlns="http://www.w3.org/2000/svg"
@@ -327,7 +347,7 @@ const SapBtp = () => {
                           business operations
                         </div>
                       </div>
-                      <div className="md:w-[400px] justify-center  pt-8 items-center  flex flex-row gap-2  md:gap-10">
+                      <div className="md:w-[400px] justify-center  pt-8 items-center  flex flex-row  md:gap-10">
                         <div>
                           <a className="play-btn" onClick={handleClick}></a>
                         </div>
@@ -361,7 +381,7 @@ const SapBtp = () => {
                             </div>
                           </div>
                         )}
-                        <div className="font-semibold md:mt-8 text-blue-600">
+                        <div className="font-semibold md:mt- text-blue-600">
                           Watch <br /> Intro Video
                         </div>
                       </div>
@@ -841,4 +861,4 @@ const SapBtp = () => {
     </>
   );
 };
-export default SapBtp;
+export default SapBtps;
