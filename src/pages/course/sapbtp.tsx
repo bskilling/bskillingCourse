@@ -30,7 +30,7 @@ interface accord {
   answer6?: string;
   answer7?: string;
 }
-const SapBtp = () => {
+const SapBtpPage = () => {
   const [showVideo, setShowVideo] = useState(false);
 
   const handleClick = () => {
@@ -861,4 +861,4 @@ const SapBtp = () => {
     </>
   );
 };
-export default SapBtp;
+export default SapBtpPage;
