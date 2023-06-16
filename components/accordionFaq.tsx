@@ -59,45 +59,45 @@ const AccordionFaq = ({
           >
             <div className="flex gap-2 md:ml-4 mt-4 w-full">
               <span className="text-blue-600 text-xs"></span>
-              <p className=" text-sm ">{answer}</p>
+              <p className="  ">{answer}</p>
             </div>
             {answer2 && (
               <div className="flex gap-2 md:ml-4 mt-2 w-full">
                 <span className="text-blue-600 text-xs"></span>
-                <p className="text-sm">{answer2}</p>
+                <p className="">{answer2}</p>
               </div>
             )}
             {answer3 && (
               <div className="flex gap-2 md:ml-4 mt-2 w-full">
                 <span className="text-blue-600 text-xs"></span>
-                <p className="text-sm">{answer3}</p>
+                <p className="">{answer3}</p>
               </div>
             )}
 
             {answer4 && (
               <div className="flex gap-2 md:ml-4 mt-2 w-full">
                 <span className="text-blue-600 text-xs"></span>
-                <p className="text-sm">{answer4}</p>
+                <p className="">{answer4}</p>
               </div>
             )}
             {answer5 && (
               <div className="flex gap-2 md:ml-4 mt-2 w-full">
                 <span className="text-blue-600 text-xs"></span>
-                <p className="text-sm">{answer5}</p>
+                <p className="">{answer5}</p>
               </div>
             )}
 
             {answer6 && (
               <div className="flex gap-2 md:ml-4 mt-2 w-full">
                 <span className="text-blue-600 text-xs"></span>
-                <p className="text-sm">{answer6}</p>
+                <p className="">{answer6}</p>
               </div>
             )}
 
             {answer7 && (
               <div className="flex gap-2 md:ml-4 mt-2 w-full">
                 <span className="text-blue-600 text-xs"></span>
-                <p className="text-sm">{answer7}</p>
+                <p className="">{answer7}</p>
               </div>
             )}
           </motion.div>
