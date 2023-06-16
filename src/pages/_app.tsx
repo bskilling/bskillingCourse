@@ -42,10 +42,10 @@ function MyApp({ Component, pageProps }: AppProps) {
                 prosper in the quickly changing digital landscape. We aim and
                 deliver excellence in all fields."
           />
-           <meta
-          name="p:domain_verify"
-          content="7bb84546e514612864b5b9d71d1649e4"
-        />
+          <meta
+            name="p:domain_verify"
+            content="7bb84546e514612864b5b9d71d1649e4"
+          />
           <link rel="icon" href="/favicon.png" />
           <script
             async
