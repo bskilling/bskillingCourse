@@ -168,7 +168,7 @@ const DropAQueryForm = () => {
       <div className="flex px-5 flex-col">
         <input
           type="text"
-          className="block  w-full lg:h-[50px] placeholder:text-sm  px-2 border-2 border-gray   focus:border-green focus:ring focus:ring-green focus:ring-opacity-50"
+          className="block  w-full lg:h-[100px] placeholder:text-sm  px-2 border-2 border-gray   focus:border-green focus:ring focus:ring-green focus:ring-opacity-50"
           placeholder="Type Your Query Here*"
           {...register("message", {
             required: true,
