@@ -250,7 +250,7 @@ const ContactPopUp = () => {
             <div className="flex   px-5  flex-col">
               <input
                 type="text"
-                className="block  w-full lg:h-[50px] placeholder:text-sm  px-2 border border-buttonBlue  focus:border-green focus:ring focus:ring-green focus:ring-opacity-50"
+                className="block  w-full lg:h-[80px] placeholder:text-sm  px-2 border border-buttonBlue  focus:border-green focus:ring focus:ring-green focus:ring-opacity-50"
                 placeholder="Type Your Query Here*"
                 {...register("message", {
                   required: true,
