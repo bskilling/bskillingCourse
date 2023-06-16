@@ -61,10 +61,7 @@ a {
   .play-btn {
     width: 100px;
     height: 100px;
-    background: radial-gradient(
-      rgba(81, 0, 255, 0.8) 60%,
-      rgba(255, 255, 255, 1) 62%
-    );
+    background: #125582;
     border-radius: 50%;
     position: relative;
     display: block;

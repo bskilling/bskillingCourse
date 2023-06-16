@@ -24,7 +24,7 @@ const CourseSlider = () => {
   useEffect(() => {
     courseSearchData = shuffleArray(courseSearchData);
 
-    const randomEight = courseSearchData.slice(0, 5);
+    const randomEight = courseSearchData.slice(0, 8);
 
     setRandomEightElements(randomEight);
   }, []);
