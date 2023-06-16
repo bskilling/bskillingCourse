@@ -217,26 +217,6 @@ const SapBtp = () => {
                           <title>Third star</title>
                           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                         </svg>
-                        <svg
-                          aria-hidden="true"
-                          className="w-5 h-5 text-yellow-400"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <title>Fourth star</title>
-                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                        <svg
-                          aria-hidden="true"
-                          className="w-5 h-5 text-gray-300 dark:text-gray-500"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <title>Fifth star</title>
-                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
                       </div>
                       <div>275 Ratings</div>
                     </div>
@@ -245,7 +225,7 @@ const SapBtp = () => {
                     <div className="flex items-center ">
                       <BsFillPeopleFill />
                     </div>
-                    399 LEARNERS
+                    399 Learners
                   </div>
                   <div className="flex gap-2">
                     <div className="flex items-center ">
@@ -293,8 +273,8 @@ const SapBtp = () => {
             className=" flex  flex-col -violet-600 w-full 0   md:flex-row justify-center  gap-10"
           >
             {/* main text content here */}
-            <div className="  flex flex-col md:flex-row gap-4  md:basis-[90%] ">
-              <div className="flex flex-col md:flex-1  gap-3 h-fit    ">
+            <div className="  flex flex-col md:flex-row gap-5  md:basis-[90%] ">
+              <div className="flex flex-col md:flex-1  gap-5 h-fit    ">
                 <div className="bg-white px-5 md:px-6 w-full min-h-[1220px]  pb-8  rounded-xl">
                   <div>
                     <p className="mt-9 text-2xl font-bold   mb-4">Overview</p>
@@ -702,19 +682,39 @@ const SapBtp = () => {
                         question="What are the benefits of using SAP BTP?"
                         answer="SAP BTP offers a number of benefits, including:
 
-                        A unified platform: SAP BTP provides a single platform for all of your application development, data management, and business analytics needs. This can help to simplify your IT environment and reduce costs."
-                        answer2="A wide range of services:  SAP BTP offers a wide range of services, including "
-                        answer3="Application development services:  SAP BTP provides a variety of tools and services for developing and deploying applications.  "
-                        answer4="Data management services:  SAP BTP provides a variety of tools and services for managing data.  "
-                        answer5="Business analytics services:  SAP BTP provides a variety of tools and services for analyzing business data."
-                        answer6="A global reach:  SAP BTP is available in a variety of regions around the world, which can help you to reach a wider audience with your applications."
-                        answer7="A secure platform:  SAP BTP is a secure platform that meets the highest security standards. This can help you to protect your data and applications.
+                        A unified platform: SAP BTP provides a single platform for all of
+                        your application development, data management, and business
+                        analytics needs. This can help to simplify your IT environment
+                        and reduce costs."
+                        answer2="A wide range of services: SAP BTP offers a wide range of
+                        services, including: "
+                        answer3="Application development services: SAP BTP provides a variety of
+                        tools and services for developing and deploying applications.  "
+                        answer4="Data management services: SAP BTP provides a variety of tools
+                        and services for managing data.  "
+                        answer5="Business analytics services: SAP BTP provides a variety of tools
+                        and services for analyzing business data."
+                        answer6="A global reach: SAP BTP is available in a variety of regions
+                        around the world, which can help you to reach a wider audience
+                        with your applications."
+                        answer7="A secure platform: SAP BTP is a secure platform that meets the
+                        highest security standards. This can help you to protect your
+                        data and applications.
                         "
                       />
                     </div>
                     <div>
                       <AccordionFaq
-                        question="How do I get started with SAP BTP? "
+                        question="How do I get started with SAP BTP?"
+                        answer="To get started with SAP BTP, you will need to create an account
+                        and choose a subscription plan. Once you have created an
+                        account, you can start using the services that are included in
+                        your plan. "
+                      />
+                    </div>
+                    <div>
+                      <AccordionFaq
+                        question="Where can I learn more about SAP BTP?"
                         answer="You can learn more about SAP BTP by visiting the SAP website. The website includes a variety of resources, including: "
                         answer2="Documentation: The SAP website includes documentation for all of the services that are available on SAP BTP. "
                         answer3="Training: The SAP website offers a variety of training courses on SAP BTP. "

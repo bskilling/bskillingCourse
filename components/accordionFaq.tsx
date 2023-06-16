@@ -55,7 +55,7 @@ const AccordionFaq = ({
               staggerChildren: 0.1,
               collapse: { duration: 0.1 }, // Set the transition duration for the collapsed state
             }}
-            className="p-2 text-lg text-gray-700 border-gray-300"
+            className="p-2  text-gray-700 border-gray-300"
           >
             <div className="flex gap-2 md:ml-4 mt-4 w-full">
               <span className="text-blue-600 text-xs"></span>
