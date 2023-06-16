@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const Accordion = ({
+const AccordionFaq = ({
   question,
   answer,
   answer2,
   answer3,
   answer4,
   answer5,
+  answer6,
+  answer7,
 }: {
   question: string;
   answer: string;
@@ -15,6 +17,8 @@ const Accordion = ({
   answer3?: string;
   answer4?: string;
   answer5?: string;
+  answer6?: string;
+  answer7?: string;
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -54,32 +58,46 @@ const Accordion = ({
             className="p-2 text-lg text-gray-700 border-gray-300"
           >
             <div className="flex gap-2 md:ml-4 mt-4 w-full">
-              <span className="text-blue-600 text-xs">✔️</span>
+              <span className="text-blue-600 text-xs"></span>
               <p className=" text-sm ">{answer}</p>
             </div>
             {answer2 && (
-              <div className="flex gap-2  md:ml-4 mt-2 w-full">
-                <span className="text-blue-600 text-xs">✔️</span>
+              <div className="flex gap-2 md:ml-4 mt-2 w-full">
+                <span className="text-blue-600 text-xs"></span>
                 <p className="text-sm">{answer2}</p>
               </div>
             )}
             {answer3 && (
-              <div className="flex gap-2  md:ml-4 mt-2 w-full">
-                <span className="text-blue-600 text-xs">✔️</span>
+              <div className="flex gap-2 md:ml-4 mt-2 w-full">
+                <span className="text-blue-600 text-xs"></span>
                 <p className="text-sm">{answer3}</p>
               </div>
             )}
 
             {answer4 && (
-              <div className="flex gap-2  md:ml-4 mt-2 w-full">
-                <span className="text-blue-600 text-xs">✔️</span>
+              <div className="flex gap-2 md:ml-4 mt-2 w-full">
+                <span className="text-blue-600 text-xs"></span>
                 <p className="text-sm">{answer4}</p>
               </div>
             )}
             {answer5 && (
-              <div className="flex gap-2  md:ml-4 mt-2 w-full">
-                <span className="text-blue-600 text-xs">✔️</span>
+              <div className="flex gap-2 md:ml-4 mt-2 w-full">
+                <span className="text-blue-600 text-xs"></span>
                 <p className="text-sm">{answer5}</p>
+              </div>
+            )}
+
+            {answer6 && (
+              <div className="flex gap-2 md:ml-4 mt-2 w-full">
+                <span className="text-blue-600 text-xs"></span>
+                <p className="text-sm">{answer6}</p>
+              </div>
+            )}
+
+            {answer7 && (
+              <div className="flex gap-2 md:ml-4 mt-2 w-full">
+                <span className="text-blue-600 text-xs"></span>
+                <p className="text-sm">{answer7}</p>
               </div>
             )}
           </motion.div>
@@ -89,4 +107,4 @@ const Accordion = ({
   );
 };
 
-export default Accordion;
+export default AccordionFaq;
