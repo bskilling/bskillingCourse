@@ -356,3 +356,60 @@ another loading
                     </div>
                     <div className="ml-2">(12) reviews</div>
                   </div>
+
+
+
+                  navbar
+
+
+
+                    {/* <nav className="pb-2 w-full">
+                    <ul className="grid grid-cols-3 md:flex w-full justify-center mt-5  flex-row">
+                      {tabs.map((item) => (
+                        <li
+                          key={item.icon}
+                          className={`list  
+                         ${
+                           item.id === selectedTabIndex
+                             ? "  py-5  text-center text-buttonBlue font-bold rounded-sm "
+                             : "relative py-5  pb-8   text-center "
+                         }
+                      `}
+                          onClick={() => {
+                            setSelectedTab(item);
+                            setSelectedTabIndex(item.id);
+                          }}
+                        >
+                          <p className="w-full  text-center">
+                            {" "}
+                            {`${item.icon}`}
+                          </p>
+                          {item.id === selectedTabIndex ? (
+                            <motion.div
+                              className="absolute bottom-[-1px] left-0 right-0 w-full h-[3px] rounded-lg bg-buttonBlue"
+                              layoutId="underline"
+                            />
+                          ) : null}
+                        </li>
+                      ))}
+                    </ul>
+                  </nav> */}
+
+
+
+                  main content
+
+                   <main className="">
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={selectedTab ? selectedTab.icon : "empty"}
+                        initial={{ y: 10, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        exit={{ y: -10, opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                        className="w-[100%] px-4 "
+                      >
+                        {selectedTab ? selectedTab.label : ""}
+                      </motion.div>
+                    </AnimatePresence>
+                  </main>
