@@ -4,6 +4,7 @@ import {
   BsFillPeopleFill,
   BsTelephone,
 } from "react-icons/bs";
+import Link from "next/link";
 import { BiTime } from "react-icons/bi";
 import { FaCalendarTimes, FaMedal } from "react-icons/fa";
 import { AnimatePresence, motion, spring } from "framer-motion";
@@ -774,25 +775,17 @@ const SapBtps = () => {
                           99,999
                         </span>
                       </p>
-                      <p className="text-center flex  text-slate-500 font-semibold">
-                        <span className=" stroke-slate-900 text-2xl">
-                          <span className="text-xl font-bold  -top-[5px] -right-1  relative">
-                            ₹
-                          </span>{" "}
-                          <span className="line-through text-xl">
-                            {" "}
-                            1,24,998
-                          </span>
-                        </span>
-                        <span className=" text-slate-500 ml-2 mt-1 text-xl">
-                          25% Off
-                        </span>
-                      </p>
                     </div>
                     <div>
-                      <button className="bg-buttonBlue text-white px-9 py-2 font-semibold text-xl mt-4">
-                        <span>Enrol Me</span>
-                      </button>
+                      <Link
+                        href={
+                          "https://bskilling.melimu.com/course/info.php?id=41"
+                        }
+                      >
+                        <button className="bg-buttonBlue text-white px-9 py-2 font-semibold text-xl mt-4">
+                          <span>Enrol Me</span>
+                        </button>
+                      </Link>
                     </div>
                     <div className="text-center mt-4 pb-8"></div>
                   </div>

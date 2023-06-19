@@ -33,7 +33,7 @@ const courseSearchData = [
     classType: "Virtual Class",
     price: "75,000/-",
     discount: "",
-    CourseLink: "https://bskilling.melimu.com/course/info.php?id=41",
+    CourseLink: "/courses/sap/sapbtp",
   },
   {
     id: "2",
