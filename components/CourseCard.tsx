@@ -3,6 +3,7 @@ import { FaTrophy } from "react-icons/fa";
 import { BiTimeFive } from "react-icons/bi";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import { BsCalendarDate } from "react-icons/bs";
+import Link from "next/link";
 
 interface CourseCardProps {
   data: {
@@ -21,7 +22,7 @@ interface CourseCardProps {
 const CourseCard: React.FC<CourseCardProps> = ({ data }) => {
   return (
     <>
-      <a
+      <Link
         target="_blank"
         rel="noreferrer"
         className="no-underline md:hover:scale-105  transition duration-500  ease-in hover:no-underline hover:text-blue-500"
@@ -39,16 +40,6 @@ const CourseCard: React.FC<CourseCardProps> = ({ data }) => {
                 alt=""
               />
               <div className="absolute bottom-0 flex gap-1 rounded-t-md right-0 bg-buttonBlue px-5">
-                {/* {data.discount ? (
-                  <>
-                    <span className="font-bold text- line-through text-buttonBlue">
-                      ₹ {data.discount}
-                    </span>
-                    <span className="font-bold text-white">₹ {data.price}</span>
-                  </>
-                ) : (
-                  <span className="font-bold text-white">₹ {data.price}</span>
-                )} */}
                 <span className="font-bold text-white">₹ {data.price}</span>
               </div>
             </div>
@@ -121,7 +112,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ data }) => {
             </div>
           </div>
         </section>
-      </a>
+      </Link>
     </>
   );
 };

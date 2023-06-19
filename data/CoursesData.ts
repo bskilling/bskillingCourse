@@ -13,7 +13,7 @@ const CourseDetails = [
         classType: "Virtual Class",
         price: "99,999/-",
         discount: "75,000/-",
-        CourseLink: "https://bskilling.melimu.com/course/info.php?id=41",
+        CourseLink: "/courses/sap/sapbtp",
       },
 
       {
@@ -69,7 +69,7 @@ const CourseDetails = [
         classType: "Virtual Class",
         price: "99,999/-",
         discount: "75,000/-",
-        CourseLink: "https://bskilling.melimu.com/course/info.php?id=41",
+        CourseLink: "/courses/sap/sapbtp",
       },
       {
         id: "2",
