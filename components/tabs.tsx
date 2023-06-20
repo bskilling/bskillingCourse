@@ -1,11 +1,9 @@
 import { MyContext } from "context/PageContext";
-import CourseDetails from "data/CoursesData";
 import BrowseAllCourse from "data/browseAllCourse";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { ReactNode, useContext, useState, useEffect } from "react";
+import { useContext, useState } from "react";
 import { AiFillCaretDown, AiOutlineMenu } from "react-icons/ai";
-import { FaBeer } from "react-icons/fa";
 import { useMediaQuery } from "react-responsive";
 const Tabs = () => {
   const router = useRouter();
@@ -77,14 +75,14 @@ const Tabs = () => {
     }, 1000);
   };
   const isSmallScreen = useMediaQuery({ maxWidth: 1020 });
- 
+
   return (
-    <div className="flex  w-full">
-      <div className="flex md:gap-4 w-full">
-        <div className="flex justify-start w-full md:w-fit   ml-8 md:ml-20">
-          <div className="flex  items-end mb-5 md:mb-2 gap-">
+    <div className="flex w-full">
+      <div className="flex w-full md:gap-4">
+        <div className="flex justify-start w-full ml-8 md:w-fit md:ml-20">
+          <div className="flex items-end mb-5 md:mb-2 gap-">
             <button
-              className="text-left md:gap-0 md:mt-0 mt-4  "
+              className="mt-4 text-left md:gap-0 md:mt-0 "
               onClick={() => setCategoryVisible((pre) => !pre)}
             >
               <p className="md:text-sm">Browse</p>
@@ -107,7 +105,7 @@ const Tabs = () => {
                 >
                   <div
                     key={categoryName}
-                    className="px-5 py-2 hover:bg-buttonBlue text-black hover:text-white  cursor-pointer"
+                    className="px-5 py-2 text-black cursor-pointer hover:bg-buttonBlue hover:text-white"
                     onClick={() => clickOnCategory(index)}
                   >
                     {categoryName}
@@ -123,12 +121,12 @@ const Tabs = () => {
         {isSmallScreen ? (
           ""
         ) : (
-          <div className=" hidden md:block pt-5  mb-5 w-full   ">
+          <div className="hidden w-full pt-5 mb-5 md:block">
             <div
               className="-mb-0.5 flex justify-start sm:block"
               aria-label="Tabs"
             >
-              <ul className="flex md:flex-row flex-col items-center md:justify-start space-x-5">
+              <ul className="flex flex-col items-center space-x-5 md:flex-row md:justify-start">
                 {BrowseAllCourse.slice(0, 11).map(({ categoryName }, index) => (
                   <li
                     key={categoryName}
@@ -144,7 +142,7 @@ const Tabs = () => {
                     >
                       <button
                         type="button"
-                        className="px-4 text-white pb-1 "
+                        className="px-4 pb-1 text-white "
                         onClick={() => TabButtonClick(index)}
                       >
                         {categoryName}
@@ -194,8 +192,8 @@ const Tabs = () => {
           <div className="flex-col">
             <div className="w-24 h-24 ">
               <div className="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-[#3d3c3d] opacity-75 flex flex-col items-center justify-center">
-                <div className="loader ease-linear rounded-full border-8 border-t-4 border-buttonBlue h-16 w-16 mb-4"></div>
-                <h2 className="text-center text-white text-xl font-semibold">
+                <div className="w-16 h-16 mb-4 ease-linear border-8 border-t-4 rounded-full loader border-buttonBlue"></div>
+                <h2 className="text-xl font-semibold text-center text-white">
                   Loading...
                 </h2>
               </div>

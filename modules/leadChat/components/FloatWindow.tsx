@@ -1,27 +1,28 @@
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { FaAngleUp, FaComment, FaElementor, FaTimes } from "react-icons/fa";
+import { FaComment, FaElementor, FaTimes } from "react-icons/fa";
 import useChat from "../zustand";
 import ChatForm from "./ChatForm";
 import DropAQueryForm from "./DropAQueryForm";
 import LeadChatBox from "./LeadChatBox";
 
 const FloatWindow = () => {
+  const route = useRouter();
   const [chatIconVisible, setChatIconVisible] = useState(false);
   useEffect(() => {
-    const currentTime = new Date();
-    const currentHour = currentTime.getHours();
-    const currentDay = currentTime.getDay(); // Sunday: 0, Monday: 1, ..., Saturday: 6
-
-    if (
-      currentDay >= 1 && // Monday
-      currentDay <= 5 && // Friday
-      currentHour >= 10 &&
-      currentHour < 18
-    ) {
-      setChatIconVisible(true);
-    } else {
-      setChatIconVisible(false);
-    }
+    // const currentTime = new Date();
+    // const currentHour = currentTime.getHours();
+    // const currentDay = currentTime.getDay(); // Sunday: 0, Monday: 1, ..., Saturday: 6
+    // if (
+    //   currentDay >= 1 && // Monday
+    //   currentDay <= 5 && // Friday
+    //   currentHour >= 10 &&
+    //   currentHour < 18
+    // ) {
+    //   setChatIconVisible(true);
+    // } else {
+    //   setChatIconVisible(false);
+    // }
   }, []);
   const {
     floatWindowMode,
@@ -33,6 +34,13 @@ const FloatWindow = () => {
   } = useChat();
   const [isExpanded, setIsExpanded] = useState(false);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setFloatWindowMode("drop-a-query");
+    }, 4000);
+
+    return () => clearTimeout(timer);
+  }, [route.pathname]);
   useEffect(() => {
     if (isExpanded) {
       setupSocket();
@@ -46,10 +54,10 @@ const FloatWindow = () => {
           className={`flex flex-col bg-white w-[400px]   h-[500px] fixed  md:right-[105px] bottom-24 md:bottom-2 z-[1000] transition-transform duration-700 shadow-md`}
         >
           <div
-            className="flex items-center text-white bg-buttonBlue p-3 h-[60px] cursor-pointer"
+            className="p-3 flex items-center  bg-buttonBlue  h-[60px] cursor-pointer text-white"
             onClick={() => setIsExpanded((prev) => !prev)}
           >
-            <p className="font-medium flex-1">
+            <p className="flex-1 font-medium">
               {floatWindowMode === "drop-a-query"
                 ? "Drop Us A Query"
                 : "Chat With Us"}
@@ -68,24 +76,20 @@ const FloatWindow = () => {
         </div>
       )}
 
-      {chatIconVisible === true ? (
-        floatWindowMode !== "chat" ? (
-          <button
-            className="flex items-center justify-center z-[6000] bg-buttonBlue shadow-md text-white text-3xl fixed bottom-[105px] right-2 w-[75px] h-[75px] rounded-full"
-            onClick={() => setFloatWindowMode("chat")}
-          >
-            <FaComment />
-          </button>
-        ) : (
-          <button
-            className="flex items-center justify-center z-[6000] bg-buttonBlue shadow-md text-white text-3xl fixed bottom-[105px] right-2 w-[75px] h-[75px] rounded-full"
-            onClick={closeChat}
-          >
-            <FaTimes />
-          </button>
-        )
+      {floatWindowMode !== "chat" ? (
+        <button
+          className="flex items-center justify-center z-[6000] bg-buttonBlue shadow-md text-white text-3xl fixed bottom-[105px] right-2 w-[75px] h-[75px] rounded-full"
+          onClick={() => setFloatWindowMode("chat")}
+        >
+          <FaComment />
+        </button>
       ) : (
-        ""
+        <button
+          className="flex items-center justify-center z-[6000] bg-buttonBlue shadow-md text-white text-3xl fixed bottom-[105px] right-2 w-[75px] h-[75px] rounded-full"
+          onClick={closeChat}
+        >
+          <FaTimes />
+        </button>
       )}
       {floatWindowMode !== "drop-a-query" ? (
         <button
