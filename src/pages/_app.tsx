@@ -5,6 +5,7 @@ import "../../style/globals.css";
 import Head from "next/head";
 import { MyProvider } from "context/PageContext";
 import FloatWindow from "modules/leadChat/components/FloatWindow";
+import FixedFooterBar from "components/fixedFooterBar";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [chatIconVisible, setChatIconVisible] = useState(false);
@@ -64,7 +65,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         </Head>
 
         <Component {...pageProps} />
-        <FloatWindow />
+        {/* <FloatWindow /> */}
+
+        <FixedFooterBar />
       </Layout>
     </MyProvider>
   );
