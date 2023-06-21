@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 
-type SearchCourseArray = {
+export type SearchCourseArray = {
   id: string;
   CourseName: string;
   certificate: string;

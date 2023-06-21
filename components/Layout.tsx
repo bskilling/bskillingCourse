@@ -5,7 +5,7 @@ import { HiOutlineMail } from "react-icons/hi";
 import { BiSearchAlt } from "react-icons/bi";
 
 import Link from "next/link";
-import { MyContext } from "context/PageContext";
+import { MyContext, SearchCourseArray } from "context/PageContext";
 import courseSearchData from "data/courseSearchData";
 import { useRouter } from "next/router";
 
@@ -29,21 +29,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
   const route = useRouter();
   const [aboutUnderline, setAboutUnderline] = useState(false);
   const [blogUnderline, setBlogUnderline] = useState(false);
-  useEffect(() => {
-    if (route.pathname === "/about") {
-      setAboutUnderline(true);
-      setBlogUnderline(false);
-    } else if (route.pathname === "/blogs") {
-      setBlogUnderline(true);
-      setAboutUnderline(false);
-    } else {
-      setAboutUnderline(false);
-      setBlogUnderline(false);
-    }
-  }, [route.pathname]);
-  useEffect(() => {
-    setFetchSearchData(courseSearchData);
-  }, []);
+  const [dropSearchData, setDropSearchData] = useState<SearchCourseArray[]>([]);
   const [selectedCourse, setSelectedCourse] = useState<searchCourseArray>();
   const {
     setButtonIndex,
@@ -52,8 +38,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
     setClickOnSearch,
     currentTab,
     setCurrentTab,
-    dropSearchData,
-    setDropSearchData,
+
     inputValue,
     setInputValue,
     loadingVisible,
@@ -74,6 +59,22 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
     setInputValue("");
     window.open(Course.CourseLink, "_blank");
   };
+
+  useEffect(() => {
+    if (route.pathname === "/about") {
+      setAboutUnderline(true);
+      setBlogUnderline(false);
+    } else if (route.pathname === "/blogs") {
+      setBlogUnderline(true);
+      setAboutUnderline(false);
+    } else {
+      setAboutUnderline(false);
+      setBlogUnderline(false);
+    }
+  }, [route.pathname]);
+  useEffect(() => {
+    setFetchSearchData(courseSearchData);
+  }, []);
 
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
@@ -147,11 +148,11 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
             {dropSearchData.length > 0 && (
               <div
                 style={{ maxHeight: "500px", overflowY: "auto" }}
-                className="absolute z-50 w-full bg-white rounded-lg shadow-lg md:right-0 md:mt-10"
+                className="absolute z-50 w-full  bg-white rounded-lg shadow-lg md:right-0 md:mt-10"
               >
-                {dropSearchData.map((course) => (
+                {dropSearchData.map((course, index) => (
                   <div
-                    key={course.id}
+                    key={course.id + index}
                     className="p-2 hover:bg-buttonBlue px-5 hover:text-white cursor-pointer"
                     onClick={() => handleClick(course)}
                   >
@@ -229,7 +230,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
       </nav>
 
       <main className=" font-SourceSans font-normal">{children}</main>
-      <footer className=" bg-white font-SourceSans  px-10 py-6 md:py-12">
+      <footer className=" bg-white font-SourceSans  px-10 py-6 md:pt-12">
         <div className="grid grid-cols-1 md:grid-cols-2 md:flex md:flex-row justify-between items-start">
           <div className="col-span-2 pb-4 md:pb-0 ">
             {/* <a className="flex justify-start items-center pl-6 md:pl-0">
@@ -404,6 +405,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
           </p>
         </div>
       </footer>
+      <div className="h-[50px] w-full"></div>
     </>
   );
 };

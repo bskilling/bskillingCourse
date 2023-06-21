@@ -162,7 +162,7 @@ const ListOfCourses: NextPage<{}> = () => {
               onChange={(event) => TabButtonClick(parseInt(event.target.value))}
             >
               {CourseDetails.map(({ categoryName }, index) => (
-                <option key={categoryName} value={index}>
+                <option key={categoryName + index} value={index}>
                   {categoryName}
                 </option>
               ))}
@@ -175,7 +175,7 @@ const ListOfCourses: NextPage<{}> = () => {
             <ul className="flex md:flex-row flex-col  items-center md:justify-start space-x-5">
               {CourseDetails.slice(0, 12).map(({ categoryName }, index) => (
                 <li
-                  key={categoryName}
+                  key={categoryName + index}
                   className={` -4 ${
                     index === buttonIndex
                       ? "border-b-4 border-buttonBlue"
@@ -209,7 +209,7 @@ const ListOfCourses: NextPage<{}> = () => {
                       {CourseDetails.slice(12).map(
                         ({ categoryName }, index) => (
                           <button
-                            key={index}
+                            key={index+categoryName}
                             className="text-gray-700 block w-full px-6 py-2 hover:bg-buttonBlue text-right text-sm hover:bg-gray-100  hover:text-white"
                             onClick={() => TabButtonClick(index + 12)}
                           >
@@ -232,9 +232,9 @@ const ListOfCourses: NextPage<{}> = () => {
           className={"py-4 md:container  md:mx-auto"}
         >
           <div className="grid grid-cols-1 slide-in transition duration-1000  ease-in md:grid-cols-4 gap-4 w-full">
-            {searchData.map((data) => {
+            {searchData.map((data, index) => {
               return (
-                <div key={data.id}>
+                <div key={data.id + index}>
                   <CourseCard data={data} />
                 </div>
               );
@@ -247,10 +247,10 @@ const ListOfCourses: NextPage<{}> = () => {
           className="py-10 md:container  md:mx-auto "
         >
           <div className="grid grid-cols-1 md:p-0 p-5 md:grid-cols-2 lg:grid-cols-4   gap-4 w-full">
-            {CourseDetails[buttonIndex].ListOfCourse.map((data) => {
+            {CourseDetails[buttonIndex].ListOfCourse.map((data, index) => {
               return (
                 <>
-                  <CourseCard key={data.id} data={data} />
+                  <CourseCard key={data.id + index} data={data} />
                 </>
               );
             })}
