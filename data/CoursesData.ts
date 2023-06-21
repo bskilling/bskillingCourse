@@ -75,7 +75,7 @@ const CourseDetails = [
         id: "2",
         CourseName: "SAP ABAP Work Bench Fundamentals and Concepts",
         certificate: "bSkilling",
-        imageSrc: "/crsImg/sap-ababp.png",
+        imageSrc: "/crsImg/sapAbaps.png",
         timePeriod: " 48 hrs ",
         StartDate: "17 June,  2023",
         classType: "Virtual Class",
@@ -87,7 +87,7 @@ const CourseDetails = [
         id: "3",
         CourseName: "SAP PP",
         certificate: "bSkilling",
-        imageSrc: "/crsImg/sappp.jpg",
+        imageSrc: "/crsImg/sapppp.jpg",
         timePeriod: "48 hrs ",
         StartDate: "17 June,  2023",
         classType: "Virtual Class",
@@ -677,7 +677,7 @@ const CourseDetails = [
     id: "14",
     ListOfCourse: [
       {
-        id: "Others1",
+        id: "Others1cAN",
         CourseName: "How to build a canvas app",
         certificate: "Bskilling ",
         imageSrc: "/common.jpg",
@@ -689,7 +689,7 @@ const CourseDetails = [
         CourseLink: "https://bskilling.melimu.com/course/view.php?id=146",
       },
       {
-        id: "Others1",
+        id: "Others1meme",
         CourseName: "Meme Creator",
         certificate: "Bskilling ",
         imageSrc: "/crsImg/meme.jpg",

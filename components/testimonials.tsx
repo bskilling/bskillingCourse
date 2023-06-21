@@ -36,7 +36,7 @@ export default function Testimonials() {
 
   return (
     <section className="p-4 md:pt-12   bg-Buttoncolor text-white relative">
-      <h1 className="md:container mx-auto   text-center font-bold font-SourceSans text-xl text-center tracking-wide text-white">
+      <h1 className="md:container mx-auto   text-center font-bold font-SourceSans text-xl  tracking-wide text-white">
         Alumni Speak
       </h1>
 
@@ -47,9 +47,12 @@ export default function Testimonials() {
         loop={true}
         speed={1000}
       >
-        {stuff.map(({ text, name, position, company, logo, id }) => (
-          <SwiperSlide key={id}>
-            <div className="w-full relative flex pb-8 flex-col justify-center items-center">
+        {stuff.map(({ text, name, position, company, logo, id }, index) => (
+          <SwiperSlide key={id + index + name}>
+            <div
+              key={id + index + name}
+              className="w-full relative flex pb-8 flex-col justify-center items-center"
+            >
               <div className="md:container mx-auto md:px-24 py-10 flex  justify-center items-center ">
                 <p className="md:max-w-sm md:text-   text-center ">
                   &ldquo; {text} &rdquo;
