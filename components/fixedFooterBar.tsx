@@ -43,7 +43,7 @@ export default function FixedFooterBar() {
         <div className="flex h-full py-4 justify-center md:justify-between  md:px-12 items-center">
           <div className="md:flex justify-center items-center  w-[20%]  hidden">
             <div className="text-sm flex justify-center   w-full">
-              <p> Get The Mobile App</p>
+              <p className="text-sm"> Get The Mobile App</p>
             </div>
             <div className="flex  gap-4  items-center w-full">
               <a
@@ -77,11 +77,11 @@ export default function FixedFooterBar() {
             <div className="flex justify-center items-center ">
               <FiPhoneCall />
             </div>
-            <div>
-              <p>Call Us On</p>
+            <div className="flex justify-center items-center">
+              <p className="text-sm">Call Us On</p>
             </div>
-            <div>
-              <p>+91-9845348601</p>
+            <div className="flex justify-center items-center">
+              <p className="text-sm">+91-9845348601</p>
             </div>
           </div>
           <div className="flex text-black justify-between gap-8">
