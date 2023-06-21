@@ -28,6 +28,12 @@ a {
 }
 
 @layer components {
+  .fixednav {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: calc(0 + env(safe-area-inset-bottom));
+  }
   .list {
     border-radius: 5px;
     border-bottom-left-radius: 0;

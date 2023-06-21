@@ -6,7 +6,9 @@ const initiateChatAction: ICreateAction = (set, get) => () => {
   const { socket, sendMessage } = get();
 
   if (socket) {
-    socket.emit("initiateChatInstance", null,
+    socket.emit(
+      "initiateChatInstance",
+      null,
       (error: IInitiateChatError | null, leadInfo: ILeadInfo | null) => {
         if (error) {
           set({
@@ -22,8 +24,7 @@ const initiateChatAction: ICreateAction = (set, get) => () => {
               },
             ],
           });
-        }
-        else if (leadInfo) {
+        } else if (leadInfo) {
           set({
             isInitiateButtonVisible: false,
             isChatFormVisible: true,
@@ -53,13 +54,13 @@ const initiateChatAction: ICreateAction = (set, get) => () => {
                   createdById: "1",
                   isOwn: false,
                 },
-              ]
+              ],
             }));
           }, 1500);
         }
       }
     );
   }
-}
+};
 
 export default initiateChatAction;

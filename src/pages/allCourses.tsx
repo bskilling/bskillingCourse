@@ -81,7 +81,7 @@ const AllCourses = () => {
           name="bSkilling"
           content="Unlock Your Potential with the Trending Online Courses of Today | Expand Your Knowledge and Skills"
         />
-         <meta
+        <meta
           name="p:domain_verify"
           content="7bb84546e514612864b5b9d71d1649e4"
         />
@@ -125,7 +125,7 @@ const AllCourses = () => {
                 <div className="absolute mt-[100px] md:mt-[75px] z-[1000] w-[]  bg-white  rounded-lg shadow-lg ">
                   {BrowseAllCourse.map(({ categoryName }, index) => (
                     <div
-                      key={categoryName}
+                      key={categoryName + index}
                       className="px-5 py-2 hover:bg-buttonBlue text-black hover:text-white  cursor-pointer"
                       onClick={() => clickOnCategory(index)}
                     >
@@ -171,7 +171,7 @@ const AllCourses = () => {
                     {BrowseAllCourse.slice(0, 11).map(
                       ({ categoryName }, index) => (
                         <li
-                          key={categoryName}
+                          key={categoryName + index}
                           className={`font-semibold ${
                             index === AllCourseButtonIndex
                               ? "text-black border-b-4  border-buttonBlue "
@@ -204,7 +204,7 @@ const AllCourses = () => {
                             {BrowseAllCourse.slice(11).map(
                               ({ categoryName }, index) => (
                                 <button
-                                  key={categoryName}
+                                  key={categoryName + index}
                                   className="text-black hover:text-white text-right  block px-8 border-0 w-full hover:bg-buttonBlue   cursor-pointer py-2 text-sm  "
                                   onClick={() => TabButtonClick(index + 11)}
                                 >
@@ -232,12 +232,8 @@ const AllCourses = () => {
           <section className="py-5 md:container md:mx-auto md:py-10 ">
             <div className="grid grid-cols-1 md:p-0 p-5   md:grid-cols-4   gap-4 w-full">
               {BrowseAllCourse[AllCourseButtonIndex].ListOfCourse.map(
-                (data) => {
-                  return (
-                    <>
-                      <CourseCard key={data.id} data={data} />
-                    </>
-                  );
+                (data, index) => {
+                  return <CourseCard key={data.id + index} data={data} />;
                 }
               )}
             </div>

@@ -1,13 +1,36 @@
+import FixedFooterBar from "components/fixedFooterBar";
 import Layout from "components/Layout";
-import { useState, useEffect } from "react";
-import { AppProps } from "next/app";
-import "../../style/globals.css";
-import Head from "next/head";
 import { MyProvider } from "context/PageContext";
-import FloatWindow from "modules/leadChat/components/FloatWindow";
+import { motion } from "framer-motion";
+import { AppProps } from "next/app";
+import Head from "next/head";
+import { useEffect, useState } from "react";
+import "../../style/globals.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [chatIconVisible, setChatIconVisible] = useState(false);
+  const [showFixedFooter, setShowFixedFooter] = useState(false);
+
+  useEffect(() => {
+    function handleScroll() {
+      const scrollPosition = window.scrollY;
+      const halfScreenHeight = window.innerHeight / 4.9;
+
+      if (scrollPosition >= halfScreenHeight) {
+        setShowFixedFooter(true);
+      } else {
+        setShowFixedFooter(false);
+      }
+    }
+
+    // Add the event listener when the component mounts
+    window.addEventListener("scroll", handleScroll);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   useEffect(() => {
     const currentTime = new Date();
     const currentHour = currentTime.getHours();
@@ -64,7 +87,17 @@ function MyApp({ Component, pageProps }: AppProps) {
         </Head>
 
         <Component {...pageProps} />
-        <FloatWindow />
+        {/* <FloatWindow /> */}
+
+        {showFixedFooter && (
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.1, ease: "easeIn" }}
+          >
+            <FixedFooterBar />
+          </motion.div>
+        )}
       </Layout>
     </MyProvider>
   );
