@@ -32,10 +32,13 @@ export default function FixedFooterBar() {
   }, [isExpanded]);
   return (
     <>
-      <div className="bg-buttonBlue fixed inset-x-0 bottom-[env(safe-area-inset-bottom)] text-white w-full z-[1000] h-14 py-2">
-        <div className="flex h-full py-4 justify-between border px-4 items-center">
-          <div className="flex ">
-            <div className="flex justify-center items-center w-full">
+      <div className="fixednav bg-buttonBlue fixed inset-x-0 bottom-[env(safe-area-inset-bottom)] text-white  w-full z-[1000] h-14 py-2">
+        <div className="flex h-full py-4 justify-center md:justify-between  md:px-12 items-center">
+          <div className="md:flex justify-center items-center  w-[20%]  hidden">
+            <div className="text-sm flex justify-center   w-full">
+              <p> Get The Mobile App</p>
+            </div>
+            <div className="flex  gap-4  items-center w-full">
               <a
                 target="_blank"
                 rel="noreferrer"
@@ -43,14 +46,11 @@ export default function FixedFooterBar() {
                 href="https://play.google.com/store/apps/details?id=com.melimu.app.bskilling&hl=en_IN&gl=US"
               >
                 <img
-                  src="/gp.png"
-                  className="w-fit object-contain h-12"
+                  src="/gpmobile.png"
+                  className="w-fit object-contain h-10"
                   alt=""
                 />
               </a>
-            </div>
-
-            <div className="flex justify-center items-center w-full">
               <a
                 target="_blank"
                 rel="noreferrer"
@@ -58,14 +58,14 @@ export default function FixedFooterBar() {
                 href="https://apps.apple.com/eg/app/bskilling/id6445943298"
               >
                 <img
-                  src="/as.png"
-                  className="w-fit object-contain h-12"
+                  src="/appleMobile.png"
+                  className="w-fit object-contain h-10"
                   alt=""
                 />
               </a>
             </div>
           </div>
-          <div className="flex gap-2">
+          <div className=" md:flex gap-2 hidden ">
             {" "}
             <div className="flex justify-center items-center ">
               <FiPhoneCall />
@@ -77,10 +77,10 @@ export default function FixedFooterBar() {
               <p>+91-9845348601</p>
             </div>
           </div>
-          <div className="flex justify-between gap-8">
+          <div className="flex text-black justify-between gap-8">
             {floatWindowMode !== "none" && (
               <div
-                className={`flex flex-col border-4 border-violet-500  bg-white w-[400px]   h-[500px] fixed  md:right-[105px] bottom-24 md:bottom-20 z-[1000] transition-transform duration-700 shadow-md`}
+                className={`flex flex-col   bg-white w-[400px]   h-[500px] fixed right-0  md:right-0 bottom-16 md:bottom-16 z-[1000] transition-transform duration-700 shadow-md`}
               >
                 <div
                   className="p-3 flex items-center  bg-buttonBlue  h-[60px] cursor-pointer text-white"
@@ -115,7 +115,6 @@ export default function FixedFooterBar() {
                     }}
                   ></span>
                 </div>
-
                 {floatWindowMode === "drop-a-query" && <DropAQueryForm />}
                 {floatWindowMode === "chat" && <LeadChatBox />}
                 {isChatFormVisible && instanceState !== "closed" && (
@@ -128,7 +127,7 @@ export default function FixedFooterBar() {
               className=" items-center justify-center z-[6000] bg-buttonBlue gap-3 text-white text-3xl  flex h-[20px] rounded-full"
               onClick={() => setFloatWindowMode("chat")}
             >
-              <FaComment size={40} /> <p className="text-sm">Chat with us</p>
+              <FaComment size={30} /> <p className="text-sm">Chat with us</p>
             </button>
 
             <div>
@@ -136,7 +135,7 @@ export default function FixedFooterBar() {
                 className=" items-center justify-center bg-buttonBlue z-[6000]  text-white text-3xl  flex h-[20px] gap-3 rounded-full"
                 onClick={() => setFloatWindowMode("drop-a-query")}
               >
-                <FaElementor />
+                <FaElementor size={30} />
                 <p className="text-sm">Drop Us A Query </p>
               </button>
             </div>

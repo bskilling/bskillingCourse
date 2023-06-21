@@ -44,7 +44,7 @@ const BrowseAllCourse = [
         id: "2",
         CourseName: "SAP ABAP Work Bench Fundamentals and Concepts",
         certificate: "bSkilling",
-        imageSrc: "/crsImg/sap-ababp.png",
+        imageSrc: "/crsImg/sapAbaps.png",
         timePeriod: " 48 hrs ",
         StartDate: "17 June,  2023",
         classType: "Virtual Class",
@@ -56,7 +56,7 @@ const BrowseAllCourse = [
         id: "3",
         CourseName: "SAP PP",
         certificate: "bSkilling",
-        imageSrc: "/crsImg/sappp.jpg",
+        imageSrc: "/crsImg/sapppp.jpg",
         timePeriod: "48 hrs ",
         StartDate: "17 June,  2023",
         classType: "Virtual Class",
@@ -1740,7 +1740,7 @@ const BrowseAllCourse = [
           "1st July - 23rd July (9am - 2pm) | 26th July- 4th August (9am - 2pm) | 12th August - 3rd September (9am - 2pm)",
       },
       {
-        id: "Others1",
+        id: "Others1s",
         CourseName: "How to build a canvas app",
         certificate: "Bskilling ",
         imageSrc: "/common.jpg",
@@ -1824,7 +1824,7 @@ const BrowseAllCourse = [
         CourseLink: "https://bskilling.melimu.com/course/view.php?id=199",
       },
       {
-        id: "Others1",
+        id: "Others1ss",
         CourseName: "Meme Creator",
         certificate: "Bskilling ",
         imageSrc: "/crsImg/meme.jpg",
@@ -1950,7 +1950,7 @@ const BrowseAllCourse = [
         id: "2",
         CourseName: "SAP ABAP Work Bench Fundamentals and Concepts",
         certificate: "bSkilling",
-        imageSrc: "/crsImg/sap-ababp.png",
+        imageSrc: "/crsImg/sapAbaps.png",
         timePeriod: " 48 hrs ",
         StartDate: "17 June,  2023",
         classType: "Virtual Class",
@@ -1962,7 +1962,7 @@ const BrowseAllCourse = [
         id: "3",
         CourseName: "SAP PP",
         certificate: "bSkilling",
-        imageSrc: "/crsImg/sappp.jpg",
+        imageSrc: "/crsImg/sapppp.jpg",
         timePeriod: "48 hrs ",
         StartDate: "17 June,  2023",
         classType: "Virtual Class",
@@ -3660,7 +3660,7 @@ const BrowseAllCourse = [
     id: "13",
     ListOfCourse: [
       {
-        id: "Others1",
+        id: "Otherssss1",
         CourseName: "How to build a canvas app",
         certificate: "Bskilling ",
         imageSrc: "/common.jpg",
@@ -3672,7 +3672,7 @@ const BrowseAllCourse = [
         CourseLink: "https://bskilling.melimu.com/course/view.php?id=146",
       },
       {
-        id: "Others1",
+        id: "Others1sssas",
         CourseName: "Meme Creator",
         certificate: "Bskilling ",
         imageSrc: "/crsImg/meme.jpg",
@@ -3740,7 +3740,7 @@ const BrowseAllCourse = [
     id: "15",
     ListOfCourse: [
       {
-        id: "Others1",
+        id: "Others1q",
         CourseName: "How to build a canvas app",
         certificate: "Bskilling ",
         imageSrc: "/common.jpg",
