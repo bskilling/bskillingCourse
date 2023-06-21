@@ -17,6 +17,13 @@ export default function FixedFooterBar() {
     instanceState,
     closeChat,
   } = useChat();
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setFloatWindowMode("drop-a-query");
+    }, 4000);
+
+    return () => clearTimeout(timer);
+  }, [route.pathname]);
   const [isExpanded, setIsExpanded] = useState(false);
   //   useEffect(() => {
   //     const timer = setTimeout(() => {
