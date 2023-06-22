@@ -205,7 +205,8 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
             target="_blank"
             rel="noreferrer"
             className="underline-0 md:block hidden"
-            href="https://bskilling.melimu.com/login/index.php"
+            href="https://lms.bskilling.com/login/index.php"
+            style={{ textDecoration: "none" }}
           >
             <button className="flex gap-1 text-white mt-2 border hover:text-white border-buttonBlue transition duration-500 hover:scale-105 ease-out  bg-buttonBlue hover:bg-buttonBlue py-[8px] focus:ring-1 focus:outline-none focus:ring-buttonBlue font-medium  text-sm px-4 ">
               <p>Login</p>
@@ -219,7 +220,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
               target="_blank"
               rel="noreferrer"
               className="underline-0"
-              href="https://bskilling.melimu.com/login/index.php"
+              href="https://lms.bskilling.com/login/index.php"
             >
               <button className="flex gap-1 text-white mt-2 border hover:text-white border-buttonBlue transition duration-500 hover:scale-105 ease-out  bg-buttonBlue hover:bg-buttonBlue py-[8px] focus:ring-1 focus:outline-none focus:ring-buttonBlue font-medium  text-sm px-4 ">
                 <p>Login</p>
@@ -233,11 +234,6 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
       <footer className=" bg-white font-SourceSans  px-10 py-6 md:pt-12">
         <div className="grid grid-cols-1 md:grid-cols-2 md:flex md:flex-row justify-between items-start">
           <div className="col-span-2 pb-4 md:pb-0 ">
-            {/* <a className="flex justify-start items-center pl-6 md:pl-0">
-              <div className="">
-                <img src="/logo.png" alt="logo" width={200} height={200} />
-              </div>
-            </a> */}
             <div className=" p-4 md:p-0 pl-6 ">
               <p className="font-semibold text-lg pb-2 text-center ">
                 Find us on
