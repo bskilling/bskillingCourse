@@ -325,26 +325,36 @@ const SapBtps = () => {
                           Objectives
                         </p>
                         <div className="flex gap-1 pt-2    ">
-                          <span className="text-blue-600 ">✔️</span>
+                          <span className="text-blue-600 font-extrabold ">
+                            -
+                          </span>
                           Accelerate innovation on a modern cloud-based
                           technology platform
                         </div>
                         <div className="flex gap-1    ">
-                          <span className="text-blue-600 ">✔️</span>
+                          <span className="text-blue-600 font-extrabold ">
+                            -
+                          </span>
                           Digitalise the unique ways in which your company
                           operates
                         </div>
                         <div className="flex gap-1    ">
-                          <span className="text-blue-600 ">✔️</span>
+                          <span className="text-blue-600 font-extrabold ">
+                            -
+                          </span>
                           Integrate, extend, and enrich business processes
                         </div>
                         <div className="flex gap-1    ">
-                          <span className="text-blue-600 ">✔️</span>
+                          <span className="text-blue-600 font-extrabold ">
+                            -
+                          </span>
                           Empower your people to innovate with governance
                         </div>
                         <div className="flex gap-1    ">
-                          <span className="text-blue-600 ">✔️</span>Grow
-                          innovation agility without slowing down ongoing
+                          <span className="text-blue-600 font-extrabold ">
+                            -
+                          </span>
+                          Grow innovation agility without slowing down ongoing
                           business operations
                         </div>
                       </div>
@@ -401,18 +411,24 @@ const SapBtps = () => {
                         </p>
 
                         <div className="flex gap-1 pt-4   ">
-                          <span className="text-blue-600 ">✔️</span>Basic
-                          understanding of cloud computing concepts.
+                          <span className="text-blue-600 font-extrabold ">
+                            -
+                          </span>
+                          Basic understanding of cloud computing concepts.
                         </div>
 
                         <div className="flex  gap-1   ">
-                          <span className="text-blue-600 ">✔️</span>
+                          <span className="text-blue-600 font-extrabold ">
+                            -
+                          </span>
                           Familiarity with programming languages such as Java,
                           Python, or C++.
                         </div>
                         <div className="flex gap-1    ">
-                          <span className="text-blue-600 ">✔️</span> Experience
-                          in deploying applications to SAP BTP.
+                          <span className="text-blue-600 font-extrabold ">
+                            -
+                          </span>{" "}
+                          Experience in deploying applications to SAP BTP.
                         </div>
 
                         <p className="pt-8  text-xl  pb-4 font-semibold">
@@ -420,39 +436,55 @@ const SapBtps = () => {
                         </p>
 
                         <div className="flex  gap-1    ">
-                          <span className="text-blue-600 ">✔️</span>
+                          <span className="text-blue-600 font-extrabold ">
+                            -
+                          </span>
                           SAP Cloud Platform
                         </div>
 
                         <div className="flex  gap-1   ">
-                          <span className="text-blue-600te  ">✔️</span>
+                          <span className="text-blue-600 font-extrabold ">
+                            -
+                          </span>
                           Application Development
                         </div>
                         <div className="flex  gap-1   ">
-                          <span className="text-blue-600 ">✔️</span>
+                          <span className="text-blue-600 font-extrabold ">
+                            -
+                          </span>
                           Integration
                         </div>
                         <div className="flex  gap-1   ">
-                          <span className="text-blue-600 ">✔️</span>
+                          <span className="text-blue-600 font-extrabold ">
+                            -
+                          </span>
                           Database and Data Management
                         </div>
 
                         <div className="flex  gap-1   ">
-                          <span className="text-blue-600 ">✔️</span>
+                          <span className="text-blue-600 font-extrabold ">
+                            -
+                          </span>
                           Security and Identity Management
                         </div>
 
                         <div className="flex  gap-1   ">
-                          <span className="text-blue-600 ">✔️</span>
+                          <span className="text-blue-600 font-extrabold ">
+                            -
+                          </span>
                           Analytics and Reporting
                         </div>
                         <div className="flex  gap-1   ">
-                          <span className="text-blue-600 ">✔️</span>IoT and Big
-                          Data
+                          <span className="text-blue-600 font-extrabold ">
+                            -
+                          </span>
+                          IoT and Big Data
                         </div>
 
                         <div className="flex  gap-1   ">
-                          <span className="text-blue-600 ">✔️</span>
+                          <span className="text-blue-600 font-extrabold ">
+                            -
+                          </span>
                           DevOps and Continuous Integration/Deployment (CI/CD)
                         </div>
                       </div>
@@ -500,27 +532,37 @@ const SapBtps = () => {
                         </p>
 
                         <div className="flex  gap-1  ">
-                          <span className="text-blue-600   ">✔️</span>
+                          <span className="text-blue-600 font-extrabold ">
+                            -
+                          </span>
                           Accelerate innovation to withstand changing market
                           conditions
                         </div>
 
                         <div className="flex   gap-1   ">
-                          <span className="text-blue-600 ">✔️</span>
+                          <span className="text-blue-600 font-extrabold ">
+                            -
+                          </span>
                           Deliver innovation that works with your business
                           processes
                         </div>
                         <div className="flex  gap-1    ">
-                          <span className="text-blue-600 ">✔️</span>
+                          <span className="text-blue-600 font-extrabold ">
+                            -
+                          </span>
                           Rely on modern technology and proven best practices
                         </div>
 
                         <div className="flex  gap-1   ">
-                          <span className="text-blue-600 ">✔️</span>
+                          <span className="text-blue-600 font-extrabold ">
+                            -
+                          </span>
                           Leverage SAP data effectively
                         </div>
                         <div className="flex  gap-1   ">
-                          <span className="text-blue-600 ">✔️</span>
+                          <span className="text-blue-600 font-extrabold ">
+                            -
+                          </span>
                           Run confidently in the cloud with peace of mind
                         </div>
                       </div>
@@ -611,32 +653,32 @@ const SapBtps = () => {
                   <p className="mt-9 text-2xl font-bold   mb-4">OutComes</p>
                   <div className=" flex  w-full flex-col">
                     <div className="flex   gap-1   ">
-                      <span className="">✔️</span>
+                      <span className="text-blue-600 font-extrabold ">-</span>
                       Dive into the core features and functionalities of SAP BTP
                       and explore how it can revolutionize your organization's
                       digital capabilities.
                     </div>
                     <div className="flex  gap-1   ">
-                      <span className="text-blue-600 t">✔️</span>
+                      <span className="text-blue-600 font-extrabold ">-</span>
                       Discover how to leverage the power of data and analytics
                       within SAP BTP to make informed business decisions and
                       drive growth.
                     </div>
                     <div className="flex gap-1    ">
-                      <span className="text-blue-600 ">✔️</span>
+                      <span className="text-blue-600 font-extrabold ">-</span>
                       Harness the potential of AI technologies integrated into
                       SAP BTP to automate processes, enhance customer
                       experiences, and unlock new opportunities.
                     </div>
                     <div className="flex gap-1    ">
-                      <span className="text-blue-600 ">✔️</span>
+                      <span className="text-blue-600 font-extrabold ">-</span>
                       Learn how to develop intelligent applications using SAP
                       BTP's robust application development tools, enabling you
                       to create tailored solutions for your organization's
                       unique needs.
                     </div>
                     <div className="flex gap-1    ">
-                      <span className="text-blue-600 ">✔️</span>
+                      <span className="text-blue-600 font-extrabold ">-</span>
                       Explore the automation and integration capabilities of SAP
                       BTP and learn how to streamline your business processes
                       for increased efficiency and agility.
@@ -655,13 +697,17 @@ const SapBtps = () => {
                           Completion of course provides necessary knowledge:
                         </p>
                         <div className="flex pt-4 gap-1    ">
-                          <span className="text-blue-600 ">✔️</span>
+                          <span className="text-blue-600 font-extrabold ">
+                            -
+                          </span>
                           To become an SAP consultant to work with SAP Extension
                           Suite products and tools
                         </div>
 
                         <div className="flex pt-1 gap-1   ">
-                          <span className="text-blue-600 ">✔️</span>
+                          <span className="text-blue-600 font-extrabold ">
+                            -
+                          </span>
                           To attempt &quot;SAP Certified Development Associate –
                           SAP Extension Suite&quot; exam certification
                         </div>

@@ -54,31 +54,31 @@ const Accordion = ({
             className="p-2  text-gray-700 border-gray-300"
           >
             <div className="flex gap-2 md:ml-4 mt-4 w-full">
-              <span className="text-blue-600 ">✔️</span>
+              <span className="text-blue-600 font-extrabold ">-</span>
               <p className=" ">{answer}</p>
             </div>
             {answer2 && (
               <div className="flex gap-2  md:ml-4  w-full">
-                <span className="text-blue-600 ">✔️</span>
+                <span className="text-blue-600 font-extrabold ">-</span>
                 <p className="">{answer2}</p>
               </div>
             )}
             {answer3 && (
               <div className="flex gap-2  md:ml-4  w-full">
-                <span className="text-blue-600 ">✔️</span>
+                <span className="text-blue-600 font-extrabold ">-</span>
                 <p className="">{answer3}</p>
               </div>
             )}
 
             {answer4 && (
               <div className="flex gap-2  md:ml-4  w-full">
-                <span className="text-blue-600 ">✔️</span>
+                <span className="text-blue-600 font-extrabold ">-</span>
                 <p className="">{answer4}</p>
               </div>
             )}
             {answer5 && (
               <div className="flex gap-2  md:ml-4  w-full">
-                <span className="text-blue-600 ">✔️</span>
+                <span className="text-blue-600 font-extrabold ">-</span>
                 <p className="">{answer5}</p>
               </div>
             )}
