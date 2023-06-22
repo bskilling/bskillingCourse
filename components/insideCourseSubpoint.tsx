@@ -1,7 +1,7 @@
 const InsideCourse = () => {
   return (
     <>
-      <p className="pt-8 pb-3 text-xl md:text-left  text-center font-semibold">
+      <p className="_pt-8 pb-3 text-xl md:text-left  text-center font-semibold">
         Resources
       </p>
       <div className="flex justify-between md:flex-row flex-col gap-16 pt-4 ">
