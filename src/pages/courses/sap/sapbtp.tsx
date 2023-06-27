@@ -421,39 +421,83 @@ const SapBtps = () => {
                         )} */}
                       </div>
                     </div>
-                    <div id="Eligibility" className="h-12 "></div>
+                    <div id="Prerequisites" className="h-12 "></div>
                     <div className="flex w-full md:flex-row gap-20 flex-col  justify-center">
                       <div className="flex flex-col   md:w-[50%]">
-                        <p className="pt- pb-4 text-xl md:text-left font-semibold ">
-                          Eligibility
-                        </p>
-                        <p className="text-justify   ">
-                          This course is ideal for developers, IT professionals,
-                          and business users seeking to unlock the full
-                          potential of SAP BTP. To make the most of this course,
-                          we recommend having the following prerequisites:
-                          <br />
+                        <p className="pt- pb-3 text-xl md:text-left font-semibold ">
+                          Prerequisites
                         </p>
 
                         <div className="flex gap-1 pt-4   ">
                           <span className="text-blue-600 font-extrabold ">
                             -
                           </span>
-                          Basic understanding of cloud computing concepts.
+                          Basic understanding of cloud computing.
                         </div>
 
                         <div className="flex  gap-1   ">
                           <span className="text-blue-600 font-extrabold ">
                             -
                           </span>
-                          Familiarity with programming languages such as Java,
-                          Python, or C++.
+                          Basic understanding of application development.
                         </div>
                         <div className="flex gap-1    ">
                           <span className="text-blue-600 font-extrabold ">
                             -
                           </span>{" "}
-                          Experience in deploying applications to SAP BTP.
+                          Basic understanding of data management.
+                        </div>
+                        <div id="Audience" className="h-12 "></div>
+                        <p className="_pt-8  text-xl  pb-4 font-semibold">
+                          Audience
+                        </p>
+                        <div className="flex  gap-1    ">
+                          <span className="text-blue-600 font-extrabold ">
+                            -
+                          </span>
+                          Application Consultant
+                        </div>
+
+                        <div className="flex  gap-1    ">
+                          <span className="text-blue-600 font-extrabold ">
+                            -
+                          </span>
+                          Data Consultant / Manager
+                        </div>
+
+                        <div className="flex  gap-1    ">
+                          <span className="text-blue-600 font-extrabold ">
+                            -
+                          </span>
+                          Database Administrator
+                        </div>
+
+                        <div className="flex  gap-1    ">
+                          <span className="text-blue-600 font-extrabold ">
+                            -
+                          </span>
+                          Developer
+                        </div>
+
+                        <div className="flex  gap-1    ">
+                          <span className="text-blue-600 font-extrabold ">
+                            -
+                          </span>
+                          Development Consultant
+                        </div>
+
+                        <div className="flex  gap-1    ">
+                          <span className="text-blue-600 font-extrabold ">
+                            -
+                          </span>
+                          System Administrator
+                        </div>
+
+                        <div className="flex  gap-1    ">
+                          <span className="text-blue-600 font-extrabold ">
+                            -
+                          </span>
+                          Technology Consultant
                         </div>
                         <div id="KeyFeatures" className="h-12 "></div>
                         <p className="_pt-8  text-xl  pb-4 font-semibold">

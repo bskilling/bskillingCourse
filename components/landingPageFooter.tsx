@@ -12,8 +12,14 @@ export default function LandingPageFooter() {
     },
 
     {
-      namaOfSection: "Eligibility",
-      linkOfTheSection: "/courses/sap/sapbtp#Eligibility",
+      namaOfSection: "Prerequisites",
+      linkOfTheSection: "/courses/sap/sapbtp#Prerequisites",
+      id: 1,
+    },
+
+    {
+      namaOfSection: "Audience",
+      linkOfTheSection: "/courses/sap/sapbtp#Audience",
       id: 2,
     },
     {
@@ -30,23 +36,23 @@ export default function LandingPageFooter() {
     {
       namaOfSection: "Curriculum",
       linkOfTheSection: "/courses/sap/sapbtp#Curriculum",
-      id: 6,
+      id: 5,
     },
     {
       namaOfSection: "OutComes",
       linkOfTheSection: "/courses/sap/sapbtp#OutComes",
-      id: 7,
+      id: 6,
     },
 
     {
       namaOfSection: "Certification",
       linkOfTheSection: "/courses/sap/sapbtp#Certification",
-      id: 8,
+      id: 7,
     },
     {
       namaOfSection: "FAQs",
       linkOfTheSection: "/courses/sap/sapbtp#FAQs",
-      id: 9,
+      id: 8,
     },
   ];
   return (
