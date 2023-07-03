@@ -1,11 +1,11 @@
 const InsideCourse = () => {
   return (
     <>
-      <p className="_pt-8 pb-3 text-xl md:text-left  text-center font-semibold">
+      <p className="_pt-8 pb-3 text-xl md:text-right  text-left font-semibold">
         Resources
       </p>
-      <div className="flex justify-between md:flex-row flex-col gap-16 pt-4 ">
-        <div className="flex gap-3 justify-center items-center">
+      <div className="flex items-start md:justify-end flex-wrap md:flex-row flex-col gap-x-16 gap-y-6 pt-4 ">
+        <div className="flex gap-3  justify-center items-center">
           <div className="w-[60px] h-[60px]  flex justify-center items-center rounded-full bg-[#fefaf4] border border-orange-400">
             <img src="/icon/engaging.png" className="w-7 h-7" alt="" />
           </div>

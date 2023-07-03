@@ -148,7 +148,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
             {dropSearchData.length > 0 && (
               <div
                 style={{ maxHeight: "500px", overflowY: "auto" }}
-                className="absolute z-50 w-full  bg-white rounded-lg shadow-lg md:right-0 md:mt-10"
+                className="absolute z-[5000] w-full  bg-white rounded-lg shadow-lg md:right-0 md:mt-10"
               >
                 {dropSearchData.map((course, index) => (
                   <div
