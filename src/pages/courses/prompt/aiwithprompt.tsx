@@ -22,7 +22,7 @@ interface accord {
   answer6?: string;
   answer7?: string;
 }
-const SapBtps = () => {
+const AIwithPrompt = () => {
   const [showVideo, setShowVideo] = useState(false);
 
   const handleClick = () => {
@@ -147,7 +147,7 @@ const SapBtps = () => {
       <section className="bg-gray font-SourceSans">
         {/* mobile view  above*/}
         <section>
-          <div className="relative border  md:h-[750px] w-auto md:min-h-[650px] min-h-[1125px]  h-fit">
+          <div className="relative border  md:h-[750px] w-auto md:min-h-[650px] min-h-[655px]  h-fit">
             <div
               className="h-full absolute top-0 left-0 w-full   brightness-50"
               style={{
@@ -161,12 +161,12 @@ const SapBtps = () => {
             >
               {/* <img className="absolute  h-auto w-fit" src="/bgcrs.jpg" alt="" /> */}
             </div>
-            <div className="  w-full z-[1000] relative  flex  justify-center  text-white">
+            <div className="  w-full  z-[1000] relative  flex  justify-center  text-white">
               <div className="md:w-[100%] md:basis-[90%] md:mt-10 mt-12  ">
                 <div className=" flex flex-col md:flex-row justify-between">
                   <div className="flex items-center">
-                    <p className=" pb-2 text-3xl mb-5 text-left px-5 md:px-0 font-semibold">
-                      SAP Business Technology Platform
+                    <p className="w-full p-4 md:p-0 pb-2 text-3xl mb-5 text-left  font-semibold">
+                      Prompt Engineering
                     </p>
                   </div>
                   {/* <div className="flex justify-center">
@@ -183,11 +183,10 @@ const SapBtps = () => {
                   // animate={{ y: 10 }}
                   // viewport={{ once: true }}
                   // transition={{ ease: "easeOut", duration: 2 }}
-                  className="bg-glass text-xl text-left px-5 md:px-0 md:pt-0 pt-3 md:text-2xl font-semibold"
+                  className="bg-glass text-xl p-4 md:p-0 text-left md:pt-0 pt-3 md:text-2xl font-semibold"
                 >
-                  Learn the skills you need to build and deploy intelligent
+                  Learn the Future of AI with Prompt Engineering
                   <br />
-                  applications on SAP Business Technology Platform
                 </motion.div>
 
                 <motion.div
@@ -196,7 +195,7 @@ const SapBtps = () => {
                   // animate={{ x: 2 }}
                   // viewport={{ once: true }}
                   // transition={{ ease: "easeOut", duration: 2 }}
-                  className=" flex  flex-col md:flex-row pt-7 pb-7 md:gap-6 text-left px-5 md:px-0  md:items-center"
+                  className=" flex flex-col px-4 md:px-0 md:flex-row pt-7 pb-7 md:gap-6 md:items-center"
                 >
                   <div>
                     <div className="flex gap-2">
@@ -259,7 +258,7 @@ const SapBtps = () => {
                     <div className="flex items-center ">
                       <BsFillPeopleFill />
                     </div>
-                    399 Learners
+                    411 Learners
                   </div>
                   <div className="flex gap-2">
                     <div className="flex items-center ">
@@ -272,22 +271,26 @@ const SapBtps = () => {
                     <div className="flex items-center ">
                       <BiTime />
                     </div>{" "}
-                    80 hrs
+                    36 hrs
                   </div>
                 </motion.div>
 
-                <div className="mt-2 font-base md:p-0 p-4  md:text-left text-justify md:w-[100%]">
-                  Are you ready to navigate the complex landscape of digital
-                  transformations with confidence? Introducing our comprehensive
-                  course on SAP Business Technology Platform (SAP BTP), designed
-                  to equip students like you with the knowledge and skills to
-                  drive successful business transformations in the digital age.{" "}
-                  Gain a competitive edge and increase your chances of digital
-                  transformation success with our comprehensive course on SAP
-                  BTP. Developed by industry experts, this program will
-                  demystify the complexities of digital transformations and
-                  equip you with the essential knowledge and skills to harness
-                  the full potential of SAP BTP.
+                <div className="mt-2 font-base md:p-0 p-4  text-left md:text-justify md:w-[100%]">
+                  Prompt engineering is an emerging and rapidly expanding field
+                  that is reshaping human interactions with AI. By mastering the
+                  art of constructing effective prompts, one can unlock the full
+                  potential of large language models (LLMs) and create
+                  innovative applications. Generative AI tools like ChatGPT and
+                  Bard are already revolutionizing tasks automation, content
+                  creation, and code generation. Prompt engineering finds
+                  application across various industries. In the tech industry,
+                  prompt engineers develop AI-powered products such as chatbots,
+                  virtual assistants, and content generators. In education, they
+                  create interactive textbooks and virtual tutors. In marketing,
+                  they drive personalized campaigns and generate creative
+                  content. Even in the government sector, prompt engineers play
+                  a role in developing citizen interaction tools like chatbots
+                  and virtual assistants.
                 </div>
               </div>
 
@@ -297,7 +300,7 @@ const SapBtps = () => {
 
           {/* section with banner comes here above */}
         </section>
-        <section className="md:relative md:-top-14   lg:-top-28 ">
+        <section className="md:relative md:-top-14    lg:-top-32 ">
           <motion.div
             initial={{ y: "200px" }}
             whileInView={{ y: "0px" }}
@@ -314,24 +317,21 @@ const SapBtps = () => {
                   <div>
                     <p className="mt-2 text-2xl font-bold   mb-4">Overview</p>
                     <p className="   ">
-                      SAP Business Technology Platform (SAP BTP) is a
-                      cloud-based platform that enables businesses to build,
-                      deploy, and manage intelligent applications. SAP BTP
-                      provides a wide range of services, including data and
-                      analytics, artificial intelligence, application
-                      development, automation, and integration.
-                      Create personalized experiences across business processes,
-                      build applications, analytics, and integrations faster,
-                      and run mission-critical innovation confidently on major
-                      cloud providers&#39; infrastructure fully managed by SAP.{" "}
-                      <br /> <br /> Developers have what they need to connect,
-                      extend, and enrich mission-critical business processes
-                      quickly. Business users can automate tasks, create fast,
-                      flexible workflows, or personalize interfaces without
-                      coding. Collaborating on planning and sharing
-                      insights across the business becomes easier with
-                      instant access to business-context-rich information
-                      from your SAP and third-party systems.
+                      Prompt engineering is an increasingly important field that
+                      involves crafting precise instructions for generative AI
+                      models. With the advancement and sophistication of these
+                      models, the demand for skilled prompt engineers is growing
+                      rapidly. Their expertise lies in leveraging generative AI
+                      models to tackle a wide range of problems. For instance,
+                      prompt engineers can utilize these models to generate
+                      diverse and creative text formats, including poems, code,
+                      scripts, musical pieces, emails, letters, and more. They
+                      can also provide informative answers to complex and
+                      open-ended questions, as well as facilitate language
+                      translation. Additionally, prompt engineers excel in
+                      producing various forms of creative content, harnessing
+                      the power of generative AI models to generate compelling
+                      and engaging text in different formats.
                     </p>
                     <div id="Objectives" className="h-12 "></div>
                     <div className=" flex md:flex-row flex-col">
@@ -343,82 +343,44 @@ const SapBtps = () => {
                           <span className="text-blue-600 font-extrabold ">
                             -
                           </span>
-                          Accelerate innovation on a modern cloud-based
-                          technology platform
+                          Understand the basics of prompt engineering
                         </div>
                         <div className="flex gap-1    ">
                           <span className="text-blue-600 font-extrabold ">
                             -
                           </span>
-                          Digitalise the unique ways in which your company
-                          operates
+                          Learn how to write effective prompts
                         </div>
                         <div className="flex gap-1    ">
                           <span className="text-blue-600 font-extrabold ">
                             -
                           </span>
-                          Integrate, extend, and enrich business processes
+                          Be able to use prompts to generate different creative
+                          text formats
                         </div>
                         <div className="flex gap-1    ">
                           <span className="text-blue-600 font-extrabold ">
                             -
                           </span>
-                          Empower your people to innovate with governance
-                        </div>
-                        <div className="flex gap-1    ">
-                          <span className="text-blue-600 font-extrabold ">
-                            -
-                          </span>
-                          Grow innovation agility without slowing down ongoing
-                          business operations
+                          Be able to use prompts to solve real-world problems
                         </div>
                       </div>
-                      <div className="md:w-[500px] justify-end md:pt-0 pt-4   mr-2 _pt-8 items-end  flex flex-row gap-3">
+                      <div className="md:w-[500px] justify-end  mr-2 _pt-8 items-end  flex flex-row gap-3">
                         {/* <div>
                           <a className="play-btn" onClick={handleClick}></a>
                         </div> */}
-                        <div className="md:w-fit flex-3 w-full  md:pt-0 pt-4  h-[300px]  md:h-fit flex justify-center">
+                        <div className="md:w-fit md:pt-0 pt-4 flex-3 w-full  h-[300px]  md:h-fit flex justify-center">
                           <iframe
                             className="rounded-lg"
                             width="400"
                             height="230"
-                            src="https://www.youtube.com/embed/kWUcfALH1rk"
+                            src="https://www.youtube.com/embed/pLigr-CbKVI"
                             title="YouTube video player"
                             frameBorder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             allowFullScreen
                           ></iframe>
                         </div>
-
-                        {/* {showVideo && (
-                          <div
-                            className={`fixed flex justify-center items-center bg-opacity-80  z-[2000] top-0   left-0 w-screen h-screen bg-black`}
-                          >
-                            <div
-                              className={` "border w-full lg:w-fit lg:h-[90%]  h-full   flex flex-row lg:flex-col justify-center items-center bg-opacity-100"`}
-                            >
-                              <div className="lg:w-full bg-opacity-0 h-fit flex flex-col  overflow-auto w-full">
-                                <div
-                                  onClick={() => setShowVideo(false)}
-                                  className=" hover:cursor-pointer text-xl text-white text-end font-extrabold  animate-bounce  w-full"
-                                >
-                                  X
-                                </div>
-                                <div className="md:w-[1000px] flex-3 w-full  h-[600px]  md:h-[500px] flex justify-center">
-                                  <iframe
-                                    width="780"
-                                    height="315"
-                                    src="https://www.youtube.com/embed/kWUcfALH1rk"
-                                    title="YouTube video player"
-                                    frameBorder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                    allowFullScreen
-                                  ></iframe>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        )} */}
                       </div>
                     </div>
                     <div id="Prerequisites" className="h-12 "></div>
@@ -432,21 +394,17 @@ const SapBtps = () => {
                           <span className="text-blue-600 font-extrabold ">
                             -
                           </span>
-                          Basic understanding of cloud computing.
+                          Good communication
                         </div>
 
                         <div className="flex  gap-1   ">
                           <span className="text-blue-600 font-extrabold ">
                             -
                           </span>
-                          Basic understanding of application development.
+                          Basic understanding of AI tools such as Chat GPT,
+                          Bard.. etc
                         </div>
-                        <div className="flex gap-1    ">
-                          <span className="text-blue-600 font-extrabold ">
-                            -
-                          </span>{" "}
-                          Basic understanding of data management.
-                        </div>
+
                         <div id="Audience" className="h-12 "></div>
                         <p className="_pt-8  text-xl  pb-4 font-semibold">
                           Audience
@@ -455,50 +413,30 @@ const SapBtps = () => {
                           <span className="text-blue-600 font-extrabold ">
                             -
                           </span>
-                          Application Consultant
+                          AI researchers, engineers, and developers
                         </div>
 
                         <div className="flex  gap-1    ">
                           <span className="text-blue-600 font-extrabold ">
                             -
                           </span>
-                          Data Consultant / Manager
+                          Companies and organizations
                         </div>
 
                         <div className="flex  gap-1    ">
                           <span className="text-blue-600 font-extrabold ">
                             -
                           </span>
-                          Database Administrator
+                          Enthusiasts and hobbyists
                         </div>
 
                         <div className="flex  gap-1    ">
                           <span className="text-blue-600 font-extrabold ">
                             -
                           </span>
-                          Developer
+                          OpenAI partners or clients
                         </div>
 
-                        <div className="flex  gap-1    ">
-                          <span className="text-blue-600 font-extrabold ">
-                            -
-                          </span>
-                          Development Consultant
-                        </div>
-
-                        <div className="flex  gap-1    ">
-                          <span className="text-blue-600 font-extrabold ">
-                            -
-                          </span>
-                          System Administrator
-                        </div>
-
-                        <div className="flex  gap-1    ">
-                          <span className="text-blue-600 font-extrabold ">
-                            -
-                          </span>
-                          Technology Consultant
-                        </div>
                         <div id="KeyFeatures" className="h-12 "></div>
                         <p className="_pt-8  text-xl  pb-4 font-semibold">
                           Key Features
@@ -508,214 +446,184 @@ const SapBtps = () => {
                           <span className="text-blue-600 font-extrabold ">
                             -
                           </span>
-                          SAP Cloud Platform
+                          The anatomy of a prompt
                         </div>
 
                         <div className="flex  gap-1   ">
                           <span className="text-blue-600 font-extrabold ">
                             -
                           </span>
-                          Application Development
+                          Tips for writing effective prompts
                         </div>
                         <div className="flex  gap-1   ">
                           <span className="text-blue-600 font-extrabold ">
                             -
                           </span>
-                          Integration
+                          How to use AI in your workflow
                         </div>
                         <div className="flex  gap-1   ">
                           <span className="text-blue-600 font-extrabold ">
                             -
                           </span>
-                          Database and Data Management
-                        </div>
-
-                        <div className="flex  gap-1   ">
-                          <span className="text-blue-600 font-extrabold ">
-                            -
-                          </span>
-                          Security and Identity Management
+                          The skills you need to succeed in the field
                         </div>
 
                         <div className="flex  gap-1   ">
                           <span className="text-blue-600 font-extrabold ">
                             -
                           </span>
-                          Analytics and Reporting
-                        </div>
-                        <div className="flex  gap-1   ">
-                          <span className="text-blue-600 font-extrabold ">
-                            -
-                          </span>
-                          IoT and Big Data
+                          Less time consuming
                         </div>
 
                         <div className="flex  gap-1   ">
                           <span className="text-blue-600 font-extrabold ">
                             -
                           </span>
-                          DevOps and Continuous Integration/Deployment (CI/CD)
+                          Hands on practice
+                        </div>
+
+                        <div id="Benefits" className="h-12 "></div>
+                        <div className="flex w-full md:flex-row flex-col  gap-4 justify-center">
+                          <div className="flex flex-col  md:w-[50%]">
+                            <p className="_pt-8 pb-4 text-xl  font-semibold">
+                              Benefits
+                            </p>
+
+                            <div className="flex  gap-1  ">
+                              <span className="text-blue-600 font-extrabold ">
+                                -
+                              </span>
+                              Learn the fundamentals of prompt engineering
+                            </div>
+
+                            <div className="flex   gap-1   ">
+                              <span className="text-blue-600 font-extrabold ">
+                                -
+                              </span>
+                              Gain hands-on experience with prompt engineering
+                            </div>
+                            <div className="flex  gap-1    ">
+                              <span className="text-blue-600 font-extrabold ">
+                                -
+                              </span>
+                              Learn about the latest trends in prompt
+                              engineering
+                            </div>
+
+                            <div className="flex  gap-1   ">
+                              <span className="text-blue-600 font-extrabold ">
+                                -
+                              </span>
+                              Network with other prompt engineers
+                            </div>
+                          </div>
+                          <div className="flex flex-col  md:w-[50%]"></div>
                         </div>
                       </div>
 
-                      <div className="flex flex-col md:w-[50%]">
+                      <div className="flex flex-col  md:w-[50%]">
                         <div className=" rounded-md px-4 pb-4 ">
                           <p className="_pt-8 pb-4 text-xl text-left md:text-right font-semibold">
                             Skills Covered
                           </p>
                           <div className="flex md:flex flex-wrap justify-left md:justify-end items-end   gap-5">
                             <div className="border rounded-md w-fit border-buttonBlue text-center px-2 py-2 text-buttonBlue">
-                              API Management
+                              Understanding Chat GPT
                             </div>
                             <div className="border rounded-md border-buttonBlue text-center px-2 py-2 text-buttonBlue">
-                              Cloud Integration
-                            </div>
-
-                            <div className="border rounded-md border-buttonBlue text-center px-2 py-2 text-buttonBlue">
-                              Cloud Transport Management
+                              Prompt engineering techniques
                             </div>
 
                             <div className="border rounded-md border-buttonBlue text-center px-2 py-2 text-buttonBlue">
-                              Integration Advisor
+                              Model limitations and biases
                             </div>
 
                             <div className="border rounded-md border-buttonBlue text-center px-2 py-2 text-buttonBlue">
-                              Integration Assessment
+                              Customization and fine-tuning
                             </div>
 
                             <div className="border rounded-md border-buttonBlue text-center px-2 py-2 text-buttonBlue">
-                              SAP Integration Suite
+                              Context manipulation
+                            </div>
+
+                            <div className="border rounded-md border-buttonBlue text-center px-2 py-2 text-buttonBlue">
+                              Input/output filtering
                             </div>
                             <div className="border rounded-md border-buttonBlue text-center px-2 py-2 text-buttonBlue">
-                              Trading Partner Management
+                              Text tokenization
+                            </div>
+
+                            <div className="border rounded-md border-buttonBlue text-center px-2 py-2 text-buttonBlue">
+                              Integration and deployment
+                            </div>
+
+                            <div className="border rounded-md border-buttonBlue text-center px-2 py-2 text-buttonBlue">
+                              Monitoring and iteration
+                            </div>
+
+                            <div className="border rounded-md border-buttonBlue text-center px-2 py-2 text-buttonBlue">
+                              Ensuring compliance and ethical considerations
                             </div>
                           </div>
-                          <div>
+                          <div className="pt-8">
                             <div id="Resources" className="h-12 "></div>
                             <InsideCourse />
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div id="Benefits" className="h-12 "></div>
-                    <div className="flex w-full md:flex-row flex-col  gap-4 justify-center">
-                      <div className="flex flex-col  md:w-[50%]">
-                        <p className="_pt-8 pb-4 text-xl  font-semibold">
-                          Benefits
-                        </p>
-
-                        <div className="flex  gap-1  ">
-                          <span className="text-blue-600 font-extrabold ">
-                            -
-                          </span>
-                          Accelerate innovation to withstand changing market
-                          conditions
-                        </div>
-
-                        <div className="flex   gap-1   ">
-                          <span className="text-blue-600 font-extrabold ">
-                            -
-                          </span>
-                          Deliver innovation that works with your business
-                          processes
-                        </div>
-                        <div className="flex  gap-1    ">
-                          <span className="text-blue-600 font-extrabold ">
-                            -
-                          </span>
-                          Rely on modern technology and proven best practices
-                        </div>
-
-                        <div className="flex  gap-1   ">
-                          <span className="text-blue-600 font-extrabold ">
-                            -
-                          </span>
-                          Leverage SAP data effectively
-                        </div>
-                        <div className="flex  gap-1   ">
-                          <span className="text-blue-600 font-extrabold ">
-                            -
-                          </span>
-                          Run confidently in the cloud with peace of mind
-                        </div>
-                      </div>
-                      <div className="flex flex-col  md:w-[50%]"></div>
-                    </div>
                   </div>
 
                   {/* tabsssssssssssssssssssssssssssssssssssssssss */}
                 </div>
 
-                <div className="bg-white md:px-12 px-5  w-full   pb-8  rounded-xl">
+                <div className="bg-white px-5 md:px-12   w-full   pb-8  rounded-xl">
                   <div id="Curriculum" className="h-12 "></div>
                   <p className="_mt-9 text-2xl font-bold   mb-4">Curriculum</p>
                   <div className="bg-white flex-1  w-full   pb-8  rounded-xl">
                     {" "}
                     <div className="w-full ">
                       <Accordion
-                        question="SAP Business Technology Platform"
-                        answer="Describing cloud computing concepts, the need for cloud computing, and where SAP BTP fits in "
-                        answer2="Understanding the SAP BTP account model and commercial model"
-                        answer3="Recognizing the importance of the SAP BTP, Cloud Foundry environment, and its architecture and
-              components"
+                        question="Introduction"
+                        answer="Talking to the AI’s "
+                        answer2="Using the included handouts"
                       />
                     </div>
                     <div>
                       <Accordion
-                        question="Web Development Standards"
-                        answer="Understanding web development standards"
-                        answer2="Using APIs and the importance of REST and OData"
-                        answer3="Working with JSON and YAML data formats"
-                        answer4="Building a twelve-factor app"
+                        question="Prompt engineering"
+                        answer="What is prompt engineering?"
+                        answer2="Why is prompt engineering important?"
+                        answer3="The different types of prompts"
+                        answer4="Generative AI resolution"
                       />
                     </div>
                     <div>
                       <Accordion
-                        question="SAP Cloud Application Programming Model"
-                        answer="Understanding SAP Business Application Studio"
-                        answer2="Understanding the SAP Cloud Application Programming Model Building and deploying SAP Cloud
-              Application Programming Model applications using Cloud Foundry command-line tools"
-                      />
-                    </div>
-                    <div>
-                      {" "}
-                      <Accordion
-                        question="Connectivity"
-                        answer="Consuming external OData service in an SAP Cloud Application Programming Model application"
-                        answer2="Creating SAP BTP destination services"
-                        answer3="Understanding cloud connector"
-                        answer4="Recognizing the role of the SAP BTP connectivity service"
+                        question="How to write effective prompts"
+                        answer="The key elements of an effective prompt"
+                        answer2="How to choose the right words and phrases"
+                        answer3="How to structure a prompt"
                       />
                     </div>
                     <div>
                       {" "}
                       <Accordion
-                        question="SAP Fiori Elements"
-                        answer="Understanding SAPUI5, SAP Fiori, and SAP Fiori elements"
-                        answer2="Uncovering the inspiration for SAP Fiori elements"
-                        answer3="Recognizing various floorplans and their use cases within SAP Fiori elements"
-                        answer4="Using the draft functionality in SAP Cloud Application Programming Model applications"
-                        answer5="Creating SAP Fiori elements apps using SAP Business Application Studio Using annotations"
+                        question="Case studies of prompt engineering "
+                        answer="Examples of effective prompts"
+                        answer2="How these prompts were used to generate creative text formats"
+                        answer3="Prompt Engineering tips & tricks"
                       />
                     </div>
                     <div>
                       {" "}
                       <Accordion
-                        question="Authorization and Trust Management"
-                        answer="Understanding how to add authentication"
-                        answer2="Exploring authorization scopes, roles, and role collections"
-                        answer3="Using techniques to require authorizations"
-                        answer4="Working with AppRouter and understanding its role in authentication"
-                      />
-                    </div>
-                    <div>
-                      {" "}
-                      <Accordion
-                        question="Continuous Integration and Delivery"
-                        answer="Understanding the CI/CD process"
-                        answer2="Discovering various CI/CD tools"
-                        answer3="Configuring the CI/CD pipeline for your SAP Cloud Application Programming Model application in SAP
-              BTP"
+                        question="Advanced prompt engineering techniques"
+                        answer="How to use prompts to generate different creative text formats"
+                        answer2="How to use prompts to solve real-world problems"
+                        answer3="A hands-on exercise in prompt engineering"
+                        answer4="Participants will have the opportunity to write their own prompts and
+                        generate creative text formats"
                       />
                     </div>
                   </div>
@@ -727,34 +635,20 @@ const SapBtps = () => {
                   <div className=" flex  w-full flex-col">
                     <div className="flex   gap-1   ">
                       <span className="text-blue-600 font-extrabold ">-</span>
-                      Dive into the core features and functionalities of SAP BTP
-                      and explore how it can revolutionize your organization's
-                      digital capabilities.
+                      Understand the basics of prompt engineering
                     </div>
                     <div className="flex  gap-1   ">
                       <span className="text-blue-600 font-extrabold ">-</span>
-                      Discover how to leverage the power of data and analytics
-                      within SAP BTP to make informed business decisions and
-                      drive growth.
+                      Learn how to write effective prompts
                     </div>
                     <div className="flex gap-1    ">
                       <span className="text-blue-600 font-extrabold ">-</span>
-                      Harness the potential of AI technologies integrated into
-                      SAP BTP to automate processes, enhance customer
-                      experiences, and unlock new opportunities.
+                      Be able to use prompts to generate different creative text
+                      formats
                     </div>
                     <div className="flex gap-1    ">
                       <span className="text-blue-600 font-extrabold ">-</span>
-                      Learn how to develop intelligent applications using SAP
-                      BTP's robust application development tools, enabling you
-                      to create tailored solutions for your organization's
-                      unique needs.
-                    </div>
-                    <div className="flex gap-1    ">
-                      <span className="text-blue-600 font-extrabold ">-</span>
-                      Explore the automation and integration capabilities of SAP
-                      BTP and learn how to streamline your business processes
-                      for increased efficiency and agility.
+                      Be able to use prompts to solve real-world problems
                     </div>
                   </div>
                 </div>
@@ -770,24 +664,9 @@ const SapBtps = () => {
                         <p className="">
                           Completion of course provides necessary knowledge:
                         </p>
-                        <div className="flex pt-4 gap-1    ">
-                          <span className="text-blue-600 font-extrabold ">
-                            -
-                          </span>
-                          To become an SAP consultant to work with SAP Extension
-                          Suite products and tools
-                        </div>
-
-                        <div className="flex pt-1 gap-1   ">
-                          <span className="text-blue-600 font-extrabold ">
-                            -
-                          </span>
-                          To attempt &quot;SAP Certified Development Associate –
-                          SAP Extension Suite&quot; exam certification
-                        </div>
 
                         <p className="pt-4 ">
-                          Once you successfully complete the SAP BTP Extension
+                          Once you successfully complete the Prompt Engineering
                           course, bSkilling will provide you with an industry-
                           recognized course completion certificate which will
                           have a lifelong validity.
@@ -811,70 +690,33 @@ const SapBtps = () => {
                   <div className="bg-white  w-full pt-2  pb-8  rounded-xl">
                     <div>
                       <AccordionFaq
-                        question="What is SAP BTP?"
-                        answer="SAP BTP is a unified, cloud-based platform that provides a wide
-                        range of services for application development, data
-                        management, and business analytics. It is a subscription-based
-                        service that can be used to build and deploy applications,
-                        manage data, and analyze business data."
+                        question="What is prompt engineering?"
+                        answer="Prompt engineering is the process of writing instructions to generative AI models. It is a rapidly
+                        growing field, as generative AI models become more powerful and sophisticated."
                       />
                     </div>
                     <div>
                       <AccordionFaq
-                        question="What are the benefits of using SAP BTP?"
-                        answer="SAP BTP offers a number of benefits, including:
-
-                        A unified platform: SAP BTP provides a single platform for all of
-                        your application development, data management, and business
-                        analytics needs. This can help to simplify your IT environment
-                        and reduce costs."
-                        answer2="A wide range of services: SAP BTP offers a wide range of
-                        services, including: "
-                        answer3="Application development services: SAP BTP provides a variety of
-                        tools and services for developing and deploying applications.  "
-                        answer4="Data management services: SAP BTP provides a variety of tools
-                        and services for managing data.  "
-                        answer5="Business analytics services: SAP BTP provides a variety of tools
-                        and services for analyzing business data."
-                        answer6="A global reach: SAP BTP is available in a variety of regions
-                        around the world, which can help you to reach a wider audience
-                        with your applications."
-                        answer7="A secure platform: SAP BTP is a secure platform that meets the
-                        highest security standards. This can help you to protect your
-                        data and applications.
-                        "
+                        question="What are the benefits of prompt engineering?"
+                        answer="Prompt engineering can help to improve the performance, capabilities, and accessibility of
+                        generative AI models. It can also help to expand the range of tasks that generative AI models
+                        can perform."
                       />
                     </div>
                     <div>
                       <AccordionFaq
-                        question="How do I get started with SAP BTP?"
-                        answer="To get started with SAP BTP, you will need to create an account
-                        and choose a subscription plan. Once you have created an
-                        account, you can start using the services that are included in
-                        your plan. "
+                        question="What are the challenges of prompt engineering?"
+                        answer="One of the challenges of prompt engineering is that it can be difficult to write prompts that are
+                        clear, concise, and effective. Another challenge is that the performance of generative AI models
+                        can vary depending on the prompt that is used."
                       />
                     </div>
                     <div>
                       <AccordionFaq
-                        question="Where can I learn more about SAP BTP?"
-                        answer="You can learn more about SAP BTP by visiting the SAP website. The website includes a variety of resources, including: "
-                        answer2="Documentation: The SAP website includes documentation for all of the services that are available on SAP BTP. "
-                        answer3="Training: The SAP website offers a variety of training courses on SAP BTP. "
-                        answer4="Support: The SAP website includes a variety of support resources, including: "
-                        answer5="1. Online support: The SAP website includes a knowledge base and a forum where you can ask questions and get help from SAP experts."
-                        answer6="2. Phone support: SAP offers phone support for SAP BTP customers"
-                      />
-                    </div>
-
-                    <div>
-                      <AccordionFaq
-                        question="What are the requirements to learn SAP BTP?"
-                        answer="The prerequisites for SAP BTP vary depending on the services you want to use. However, some common prerequisites include:"
-                        answer2="A computer with a recent operating system: SAP BTP can be accessed from a variety of devices, including computers, tablets, and smartphones. However, you will need to have a computer with a recent operating system, such as Windows 10 or macOS Catalina "
-                        answer3="An internet connection: SAP BTP is a cloud-based platform, so you will need an internet connection to access it."
-                        answer4="A web browser: SAP BTP can be accessed from a variety of web browsers, such as Chrome, Firefox, and Edge.                        "
-                        answer5="A text editor: You may need to use a text editor to edit files on SAP BTP. "
-                        answer6="A programming language: If you want to develop applications on SAP BTP, you will need to know a programming language, such as Java, Python, or Node.js."
+                        question="What are the future trends in prompt engineering?"
+                        answer="One of the future trends in prompt engineering is the development of new techniques for
+                        writing prompts. Another trend is the use of prompt engineering to create new AI-powered
+                        products and services."
                       />
                     </div>
                   </div>
@@ -893,14 +735,14 @@ const SapBtps = () => {
                           ₹
                         </span>{" "}
                         <span className="font-bold text-start text-blue-600 text-3xl">
-                          99,999
+                          29,999
                         </span>
                       </p>
                     </div>
                     <div>
                       <Link
                         href={
-                          "https://bskilling.melimu.com/course/info.php?id=41"
+                          "https://bskilling.melimu.com/course/view.php?id=197"
                         }
                       >
                         <button className="bg-buttonBlue text-white px-9 py-2 font-semibold text-xl mt-4">
@@ -917,7 +759,7 @@ const SapBtps = () => {
                       </p>
 
                       <div className="flex m text-blue-600  text-left gap-1 ">
-                        08th July- 9th Oct (9am - 1pm)
+                        03th July- 9th Oct (9am - 1pm)
                       </div>
                     </div>
                   </div>
@@ -969,4 +811,4 @@ const SapBtps = () => {
     </>
   );
 };
-export default SapBtps;
+export default AIwithPrompt;
