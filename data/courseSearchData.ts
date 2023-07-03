@@ -21,7 +21,7 @@ const courseSearchData = [
     classType: "Virtual Class",
     price: "29,999/-",
     discount: "75,000/-",
-    CourseLink: "https://bskilling.melimu.com/course/view.php?id=197",
+    CourseLink: "/courses/prompt/aiwithprompt",
   },
   {
     id: "5late",
