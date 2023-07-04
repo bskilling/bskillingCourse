@@ -22,7 +22,7 @@ const CourseDetails = [
         certificate: "bSkilling ",
         imageSrc: "/crsImg/Prom.png",
         timePeriod: " 36 hrs ",
-        StartDate: "03 July,  2023",
+        StartDate: "29 July,  2023",
         classType: "Virtual Class",
         price: "29,999/-",
         discount: "75,000/-",
