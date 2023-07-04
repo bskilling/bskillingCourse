@@ -759,7 +759,7 @@ const AIwithPrompt = () => {
                       </p>
 
                       <div className="flex m text-blue-600  text-left gap-1 ">
-                        03th July- 9th Oct (9am - 1pm)
+                        29 - 30th July (9am - 1pm)
                       </div>
                     </div>
                   </div>
