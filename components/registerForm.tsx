@@ -58,12 +58,12 @@ const RegisterForm = () => {
   });
 
   return (
-    <div>
-      <div className="flex   px-5  mt-4 flex-col">
+    <div className="pb-4">
+      <div className="flex w-full    mt-4 flex-col">
+        <span className="">Your Name</span>
         <input
           type="text"
           className=" block text-base  w-full lg:h-[35px] placeholder:text-sm  px-2 border-2 border-gray    focus:border-green focus:ring focus:ring-green focus:ring-opacity-50"
-          placeholder="Your Name*"
           {...register("name", {
             required: true,
           })}
@@ -79,46 +79,11 @@ const RegisterForm = () => {
         </label>
       </div>
 
-      <div className="flex px-5 flex-col">
-        <div className="flex gap-4">
-          <PhoneInput
-            international
-            countryCallingCodeEditable={false}
-            defaultCountry="IN"
-            // countrySelectProps={{ unicodeFlags: true }}
-            placeholder="Enter phone number"
-            value={CountryCodeValue}
-            onChange={setCountryCodeValue}
-            className="w-[32%] pl-2 px-2 border-2 border-gray   flex gap-2 "
-          />
-          <input
-            type="number"
-            className=" block  w-full lg:h-[35px] placeholder:text-sm  placeholder:font-medium  px-2 border-2 border-gray     focus:border-green focus:ring focus:ring-green focus:ring-opacity-50"
-            placeholder="Your Mobile Number*"
-            {...register("phone", {
-              required: true,
-              minLength: 10,
-              maxLength: 10,
-            })}
-          />
-        </div>
-
-        <label
-          className={`text-red-600   text-xs py-1 ${
-            errors.phone ? "visible" : "invisible"
-          }`}
-        >
-          {errors.phone?.type == "required"
-            ? "Phone Number is required"
-            : "Please enter a valid phone number"}
-        </label>
-      </div>
-
-      <div className="flex px-5 flex-col">
+      <div className="flex  flex-col">
+        <span className="">Your Email</span>
         <input
           type="text"
           className="block  w-full lg:h-[35px] placeholder:text-sm  px-2 border-2 border-gray   border-green  focus:border-green focus:ring focus:ring-green focus:ring-opacity-50"
-          placeholder="Your Email*"
           {...register("email", {
             required: true,
             pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
@@ -133,11 +98,11 @@ const RegisterForm = () => {
           Please enter a valid email address
         </label>
       </div>
-      <div className="flex px-5 flex-col">
+      <div className="flex  flex-col">
+        <span className="">Your Location</span>
         <input
           type="text"
           className="block  w-full lg:h-[35px] placeholder:text-sm  px-2 border-2 border-gray   border-green  focus:border-green focus:ring focus:ring-green focus:ring-opacity-50"
-          placeholder="Your Location*"
           {...register("location", {
             required: true,
           })}
@@ -152,22 +117,28 @@ const RegisterForm = () => {
         </label>
       </div>
 
-      <div className="flex px-5 flex-col">
-        <input
-          type="text"
-          className="block  w-full lg:h-[100px] placeholder:text-sm  px-2 border-2 border-gray   focus:border-green focus:ring focus:ring-green focus:ring-opacity-50"
-          placeholder="Type Your Query Here*"
-          {...register("message", {
-            required: true,
-          })}
-        />
+      <div>
+        <label className="block">
+          <span className="">Batch Details</span>
+          <select
+            {...register("interest", {
+              required: true,
+            })}
+            className=" block  w-full lg:h-[35px] placeholder:text-sm  px-2 border-2 border-gray   border-green  focus:border-green focus:ring focus:ring-green focus:ring-opacity-50"
+          >
+            <option>June 13-18</option>
+            <option>June 11-18</option>
+            <option>June 12-18</option>
 
-        <label
-          className={`text-red-600   text-xs py-1 ${
-            errors.message ? "visible" : "invisible"
-          }`}
-        >
-          This field is required
+            <option>Others</option>
+          </select>
+          <label
+            className={`text-red-600   text-xs py-1 ${
+              errors.interest ? "visible" : "invisible"
+            }`}
+          >
+            This field is required
+          </label>
         </label>
       </div>
 
@@ -184,7 +155,7 @@ const RegisterForm = () => {
               isButtonVisble ? "opacity-100" : "opacity-50 "
             }`}
           >
-            Submit Query
+            Register
           </button>
         )}
       </div>

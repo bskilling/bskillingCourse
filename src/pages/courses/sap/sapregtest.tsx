@@ -913,8 +913,8 @@ const Sapregtest = () => {
                       </button>
                     </div>
                     <motion.div
+                    className="w-full px-5"
                       animate={registerVisible ? "open" : "closed"}
-                      
                       variants={variants}
                     >
                       {registerVisible && <RegisterForm />}
