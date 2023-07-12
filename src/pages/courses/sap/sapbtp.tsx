@@ -917,7 +917,7 @@ const SapBtps = () => {
                       </p>
 
                       <div className="flex m text-blue-600  text-left gap-1 ">
-                        08th July- 10th Sept (9am - 1pm)
+                        29 th Jul - 1st Oct (9am - 1pm)
                       </div>
                     </div>
                   </div>
