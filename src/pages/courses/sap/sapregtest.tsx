@@ -907,13 +907,17 @@ const Sapregtest = () => {
                         </span>
                       </p>
                     </div>
-                    <div className="pb-7" onClick={() => clickOnRegister()}>
-                      <button className="bg-buttonBlue text-white px-9 py-2 font-semibold text-xl mt-4">
-                        <span>Enrol Me</span>
-                      </button>
-                    </div>
+                    {registerVisible ? (
+                      ""
+                    ) : (
+                      <div className="pb-7" onClick={() => clickOnRegister()}>
+                        <button className="bg-buttonBlue text-white px-9 py-2 font-semibold text-xl mt-4">
+                          <span>Enrol Me</span>
+                        </button>
+                      </div>
+                    )}
                     <motion.div
-                    className="w-full px-5"
+                      className="w-full px-5"
                       animate={registerVisible ? "open" : "closed"}
                       variants={variants}
                     >
