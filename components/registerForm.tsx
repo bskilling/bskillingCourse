@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import "react-phone-number-input/style.css";
-import PhoneInput from "react-phone-number-input";
+import bcrypt from "bcrypt";
+import { encrypt } from "util/ccavenue.utils";
 const RegisterForm = () => {
   const [messageSent, setMessage] = useState(false);
   const [CountryCodeValue, setCountryCodeValue] = useState<any>("+91");
@@ -22,40 +23,78 @@ const RegisterForm = () => {
     watch("location") &&
     watch("name") &&
     CountryCodeValue;
-  console.log(CountryCodeValue);
-  const submit = handleSubmit(async (data) => {
-    try {
-      const response = await fetch("", {
-        method: "POST",
-        headers: {},
-        body: JSON.stringify({
-          type: "contact",
-          message: data.message,
-          email: data.email,
-          phone: data.phone,
-          location: data.location,
-          name: data.name,
-          countryCode: CountryCodeValue,
-        }),
-      });
 
-      if (response.status === 200) {
-        reset({
-          message: "",
-          phone: "",
-          email: "",
-          location: "",
-          name: "",
-        });
+  function submit() {
+    const workingKey = "D03D30108FE95111F91985FA74ABED25";
+    const data = {
+      merchant_id: "2492757",
+      access_code: "AVHG70KE18CC51GHCC",
+      currency: "INR",
+      amount: "1000",
+    };
 
-        setMessage(true);
-      } else {
-        throw Error("Error while sending message");
-      }
-    } catch (error) {
-      alert("Some thing went wrong");
-    }
-  });
+    const encRequst = document.createElement("input");
+    encRequst.type = "hidden";
+    encRequst.name = "encRequest";
+    encRequst.id = "encRequest";
+    encRequst.value = encrypt(JSON.stringify(data), workingKey); //body key
+    const form = document.createElement("form");
+    form.action =
+      "https://test.ccavenue.com/transaction/transaction.do?command=initiateTransaction";
+    form.method = "post";
+
+    const accessKey = document.createElement("input");
+    accessKey.type = "hidden";
+    accessKey.name = "access_code";
+    accessKey.id = "access_code";
+    accessKey.value = "AVHG70KE18CC51GHCC";
+
+    const Merchentid = document.createElement("input");
+    Merchentid.type = "hidden";
+    Merchentid.name = "merchant_id";
+    Merchentid.id = "merchant_id";
+    Merchentid.value = "2492757";
+
+    const currency = document.createElement("input");
+    currency.type = "hidden";
+    currency.name = "currency";
+    currency.value = "INR";
+
+    const amount = document.createElement("input");
+    amount.type = "hidden";
+    amount.name = "amount";
+    amount.value = "1000";
+
+    form.appendChild(encRequst);
+    form.appendChild(Merchentid);
+    form.appendChild(accessKey);
+    form.appendChild(amount);
+    form.appendChild(currency);
+    document.body.appendChild(form);
+
+    form.submit();
+    alert("clicked");
+    // var merchant_id = "2492757";
+    // var url = "http://www.bskilling.com";
+    // var access_code = "AVHG70KE18CC51GHCC";
+    // var working_key = "D03D30108FE95111F91985FA74ABED25";
+
+    // axios({
+    //   method: "POST",
+    //   url: `https://secure.ccavenue.com/transaction/transaction.do?command=initiateTransaction&merchant_id=${merchant_id}&amount=${amount}&currency=${currensy}`,
+    //   headers: {
+    //     "Content-Type": "application/x-www-form-urlencoded",
+    //   },
+    //   data: new URLSearchParams({
+    //     merchant_id: merchant_id,
+    //     url: url,
+    //     access_code: access_code,
+    //     working_key: working_key,
+    //   }),
+    // })
+    //   .then((res) => console.log(res.data))
+    //   .catch((err) => console.error(err, "click the api"));
+  }
 
   return (
     <div className="pb-4">
@@ -99,7 +138,7 @@ const RegisterForm = () => {
         </label>
       </div>
       <div className="flex  flex-col">
-        <span className="">Your Location</span>
+        <span className="">Your Phone</span>
         <input
           type="text"
           className="block  w-full lg:h-[35px] placeholder:text-sm  px-2 border-2 border-gray   border-green  focus:border-green focus:ring focus:ring-green focus:ring-opacity-50"
@@ -150,10 +189,7 @@ const RegisterForm = () => {
         ) : (
           <button
             onClick={submit}
-            disabled={!isButtonVisble}
-            className={`text-white  transition duration-500 hover:scale-105 ease-out  placeholder:text-sm bg-buttonBlue hover:bg-buttonBlue py-2 focus:ring-1 focus:outline-none focus:ring-buttonBlue font-medium  text-sm px-4   ${
-              isButtonVisble ? "opacity-100" : "opacity-50 "
-            }`}
+            className={`text-white  transition duration-500 hover:scale-105 ease-out  placeholder:text-sm bg-buttonBlue hover:bg-buttonBlue py-2 focus:ring-1 focus:outline-none focus:ring-buttonBlue font-medium  text-sm px-4   `}
           >
             Register
           </button>
