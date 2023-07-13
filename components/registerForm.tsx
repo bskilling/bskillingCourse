@@ -29,7 +29,7 @@ const RegisterForm = () => {
     const workingKey = process.env.NEXT_PUBLIC_ANALYTICS_ID_WORKING_KEY;
     const data = new URLSearchParams({
       merchant_id: process.env.NEXT_PUBLIC_ANALYTICS_ID_MERCHANT_ID ?? "",
-      order_Id: "145155",
+      order_id: "145155",
       currency: "INR",
       access_code: process.env.NEXT_PUBLIC_ANALYTICS_ID_ACCESS_CODE ?? "",
       amount: "1000",
@@ -37,7 +37,7 @@ const RegisterForm = () => {
       redirect_url: "https://www.bskilling.com/courses/sap/sapbtp",
       cancel_url: "https://www.bskilling.com/courses/sap/sapbtp",
     });
-    console.log(workingKey);
+   
     const encRequst = document.createElement("input");
     encRequst.type = "hidden";
     encRequst.name = "encRequest";
