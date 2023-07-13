@@ -176,7 +176,7 @@ const Sapregtest = () => {
                 <div className=" flex flex-col md:flex-row justify-between">
                   <div className="flex items-center">
                     <p className=" pb-2 text-3xl mb-5 text-left px-5 md:px-0 font-semibold">
-                      SAP Business Technology Platformsssssssssss
+                      SAP Business Technology Platformss
                     </p>
                   </div>
                   {/* <div className="flex justify-center">
