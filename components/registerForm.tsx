@@ -27,22 +27,22 @@ const RegisterForm = () => {
 
   function submit() {
     const workingKey = process.env.NEXT_PUBLIC_ANALYTICS_ID_WORKING_KEY;
-    const data = {
-      merchant_id: process.env.NEXT_PUBLIC_ANALYTICS_ID_MERCHANT_ID,
-      access_code: process.env.NEXT_PUBLIC_ANALYTICS_ID_ACCESS_CODE,
+    const data = new URLSearchParams({
+      merchant_id: process.env.NEXT_PUBLIC_ANALYTICS_ID_MERCHANT_ID ?? "",
       order_Id: "145155",
       currency: "INR",
+      access_code: process.env.NEXT_PUBLIC_ANALYTICS_ID_ACCESS_CODE ?? "",
       amount: "1000",
       language: "EN",
       redirect_url: "https://www.bskilling.com/courses/sap/sapbtp",
       cancel_url: "https://www.bskilling.com/courses/sap/sapbtp",
-    };
+    });
     console.log(workingKey);
     const encRequst = document.createElement("input");
     encRequst.type = "hidden";
     encRequst.name = "encRequest";
     encRequst.id = "encRequest";
-    encRequst.value = encrypt(JSON.stringify(data), workingKey ?? ""); //body key
+    encRequst.value = encrypt(data.toString(), workingKey ?? ""); //body key
     const form = document.createElement("form");
     form.action =
       "https://test.ccavenue.com/transaction/transaction.do?command=initiateTransaction";
@@ -52,37 +52,13 @@ const RegisterForm = () => {
     accessKey.type = "hidden";
     accessKey.name = "access_code";
     accessKey.id = "access_code";
-    accessKey.value = data.access_code ?? "";
+    accessKey.value = data.get("access_code") ?? "";
 
     form.appendChild(encRequst);
     form.appendChild(accessKey);
     document.body.appendChild(form);
     form.submit();
-
-    alert("clicked");
-
-    // var merchant_id = "2492757";
-    // var url = "http://www.bskilling.com";
-    // var access_code = "AVHG70KE18CC51GHCC";
-    // var working_key = "D03D30108FE95111F91985FA74ABED25";
-
-    // axios({
-    //   method: "POST",
-    //   url: `https://secure.ccavenue.com/transaction/transaction.do?command=initiateTransaction&merchant_id=${merchant_id}&amount=${amount}&currency=${currensy}`,
-    //   headers: {
-    //     "Content-Type": "application/x-www-form-urlencoded",
-    //   },
-    //   data: new URLSearchParams({
-    //     merchant_id: merchant_id,
-    //     url: url,
-    //     access_code: access_code,
-    //     working_key: working_key,
-    //   }),
-    // })
-    //   .then((res) => console.log(res.data))
-    //   .catch((err) => console.error(err, "click the api"));
   }
-
   return (
     <div className="pb-4">
       <div className="flex w-full    mt-4 flex-col">
