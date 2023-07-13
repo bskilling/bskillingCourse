@@ -37,7 +37,7 @@ const RegisterForm = () => {
       redirect_url: "https://www.bskilling.com/courses/sap/sapbtp",
       cancel_url: "https://www.bskilling.com/",
     });
-   
+
     const encRequst = document.createElement("input");
     encRequst.type = "hidden";
     encRequst.name = "encRequest";
@@ -45,7 +45,7 @@ const RegisterForm = () => {
     encRequst.value = encrypt(data.toString(), workingKey ?? ""); //body key
     const form = document.createElement("form");
     form.action =
-      "https://test.ccavenue.com/transaction/transaction.do?command=initiateTransaction";
+      "https://secure.ccavenue.com/transaction/transaction.do?command=initiateTransaction";
     form.method = "post";
 
     const accessKey = document.createElement("input");
