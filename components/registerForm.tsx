@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import "react-phone-number-input/style.css";
 import bcrypt from "bcrypt";
 import { encrypt } from "util/ccavenue.utils";
+
 const RegisterForm = () => {
   const [messageSent, setMessage] = useState(false);
   const [CountryCodeValue, setCountryCodeValue] = useState<any>("+91");
@@ -25,19 +26,23 @@ const RegisterForm = () => {
     CountryCodeValue;
 
   function submit() {
-    const workingKey = "D03D30108FE95111F91985FA74ABED25";
+    const workingKey = process.env.NEXT_PUBLIC_ANALYTICS_ID_WORKING_KEY;
     const data = {
-      merchant_id: "2492757",
-      access_code: "AVHG70KE18CC51GHCC",
+      merchant_id: process.env.NEXT_PUBLIC_ANALYTICS_ID_MERCHANT_ID,
+      access_code: process.env.NEXT_PUBLIC_ANALYTICS_ID_ACCESS_CODE,
+      order_Id: "145155",
       currency: "INR",
       amount: "1000",
+      language: "EN",
+      redirect_url: "https://www.bskilling.com/courses/sap/sapbtp",
+      cancel_url: "https://www.bskilling.com/courses/sap/sapbtp",
     };
-
+    console.log(workingKey);
     const encRequst = document.createElement("input");
     encRequst.type = "hidden";
     encRequst.name = "encRequest";
     encRequst.id = "encRequest";
-    encRequst.value = encrypt(JSON.stringify(data), workingKey); //body key
+    encRequst.value = encrypt(JSON.stringify(data), workingKey ?? ""); //body key
     const form = document.createElement("form");
     form.action =
       "https://test.ccavenue.com/transaction/transaction.do?command=initiateTransaction";
@@ -47,33 +52,15 @@ const RegisterForm = () => {
     accessKey.type = "hidden";
     accessKey.name = "access_code";
     accessKey.id = "access_code";
-    accessKey.value = "AVHG70KE18CC51GHCC";
-
-    const Merchentid = document.createElement("input");
-    Merchentid.type = "hidden";
-    Merchentid.name = "merchant_id";
-    Merchentid.id = "merchant_id";
-    Merchentid.value = "2492757";
-
-    const currency = document.createElement("input");
-    currency.type = "hidden";
-    currency.name = "currency";
-    currency.value = "INR";
-
-    const amount = document.createElement("input");
-    amount.type = "hidden";
-    amount.name = "amount";
-    amount.value = "1000";
+    accessKey.value = data.access_code ?? "";
 
     form.appendChild(encRequst);
-    form.appendChild(Merchentid);
     form.appendChild(accessKey);
-    form.appendChild(amount);
-    form.appendChild(currency);
     document.body.appendChild(form);
-
     form.submit();
+
     alert("clicked");
+
     // var merchant_id = "2492757";
     // var url = "http://www.bskilling.com";
     // var access_code = "AVHG70KE18CC51GHCC";
