@@ -34,7 +34,7 @@ const RegisterForm = () => {
       access_code: process.env.NEXT_PUBLIC_ANALYTICS_ID_ACCESS_CODE ?? "",
       amount: "1000",
       language: "EN",
-      redirect_url: "https://www.bskilling.com/courses/sap/sapbtp",
+      redirect_url: "https://www.bskilling.com/dummy",
       cancel_url: "https://www.bskilling.com/",
     });
 
@@ -45,7 +45,7 @@ const RegisterForm = () => {
     encRequst.value = encrypt(data.toString(), workingKey ?? ""); //body key
     const form = document.createElement("form");
     form.action =
-      "https://secure.ccavenue.com/transaction/transaction.do?command=initiateTransaction";
+      "https://test.ccavenue.com/transaction/transaction.do?command=initiateTransaction";
     form.method = "post";
 
     const accessKey = document.createElement("input");
