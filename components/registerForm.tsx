@@ -35,7 +35,7 @@ const RegisterForm = () => {
       amount: "1000",
       language: "EN",
       redirect_url: "https://www.bskilling.com/courses/sap/sapbtp",
-      cancel_url: "https://www.bskilling.com/courses/sap/sapbtp",
+      cancel_url: "https://www.bskilling.com/",
     });
    
     const encRequst = document.createElement("input");
