@@ -34,7 +34,8 @@ const RegisterForm = () => {
       access_code: process.env.NEXT_PUBLIC_ANALYTICS_ID_ACCESS_CODE ?? "",
       amount: "1000",
       language: "EN",
-      redirect_url: "https://www.bskilling.com/dummy",
+      redirect_url:
+        "https://m7udj5lahdtbhzs37iwbjycq4u0jorsx.lambda-url.ap-south-1.on.aws/",
       cancel_url: "https://www.bskilling.com/",
     });
 
