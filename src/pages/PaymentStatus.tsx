@@ -90,7 +90,7 @@ const PaymentStatus = () => {
             {" "}
             <div className="w-full h-[1px] px- bg-slate-400"></div>
           </div>
-          <div className="flex justify-center w-full gapp-8 items-center  py-7">
+          <div className="flex justify-center w-full gap-8 items-center  py-7">
             <div className="flex flex-col">
               <div className="flex gap-3">
                 <div className="font-semibold  min-w-[200px] text-start ">
