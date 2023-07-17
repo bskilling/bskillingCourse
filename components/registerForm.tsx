@@ -35,7 +35,7 @@ const RegisterForm = () => {
       amount: "1000",
       language: "EN",
       redirect_url:
-        "https://m7udj5lahdtbhzs37iwbjycq4u0jorsx.lambda-url.ap-south-1.on.aws/",
+        "https://h3yr3i2abo46tzkj7zvcydu67y0hmvss.lambda-url.ap-south-1.on.aws/",
       cancel_url: "https://www.bskilling.com/",
     });
 
