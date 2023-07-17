@@ -1,9 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { BsCheckLg } from "react-icons/bs";
 import { IoCloseSharp } from "react-icons/io5";
 
 const PaymentStatus = () => {
+  const [paymentStatus, setPaymentStatus] = useState<string | null>(null);
+  const [amount, setAmount] = useState<string | null>(null);
+  const [orderId, setOrderId] = useState<string | null>(null);
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const status = urlParams.get("payment_status");
+    const amount = urlParams.get("amount");
+    const orderId = urlParams.get("order_id");
+    setPaymentStatus(status);
+    console.log(paymentStatus);
+    setAmount(amount);
+    setOrderId(orderId);
+  }, []);
+
   return (
     <div className="w-full md:py-0 py-8 flex items-center justify-center  md:h-screen md:border-0 border-t border-b font-SourceSans">
       <div className="flex  md:w-[50%] py-8 rounded-lg shadow-xl justify-center items-center flex-col">
@@ -13,21 +27,44 @@ const PaymentStatus = () => {
         <div className="flex justify-center mt-8 md:px-0 px-5 flex-col items-center">
           <div className="flex  md:flex-row flex-col-reverse justify-center w-full mb-4 g ">
             <div className="md:w-[10%]  w-[50%]">
-              <BsCheckLg size={50} color={"green"} />{" "}
-              <IoCloseSharp size={50} color={"#FF0000"} />
+              {paymentStatus === "error" ? (
+                <IoCloseSharp size={50} color={"#FF0000"} />
+              ) : (
+                <BsCheckLg size={50} color={"green"} />
+              )}
             </div>
             <div className="flex justify-center items-center">
-              <p className="font-semibold text-green-600 text-center text-2xl">
-                Your payment is successful. Happy learning !
+              <p
+                className={`font-semibold text-green-600 text-center text-2xl ${
+                  paymentStatus === "error" ? " text-red-500" : "text-green-600"
+                }`}
+              >
+                {paymentStatus === "error"
+                  ? "Your payment has failed!"
+                  : "Your payment is successful. Happy learning !"}
               </p>
             </div>
           </div>
-          <p className="mb-4 text-center">
-            Happy learning ! An automated payment receipt has been sent to your
-            registered email address. <br /> Please keep this transaction ID for
-            reference. For further assistance, please reach out to
-            support@bskilling.com.
-          </p>
+          <div className="mb-4 px-4 text-center">
+            {paymentStatus === "error" ? (
+              <p>
+                We could not process your transaction due to some network error.
+                If the amount is debited from your bank account, it will be
+                refunded back to your account within 5-7 business days. Please
+                keep this transaction ID for reference.
+                <br /> For further assistance, reach out to
+                support@bskilling.com
+              </p>
+            ) : (
+              <p>
+                {" "}
+                Happy learning ! An automated payment receipt has been sent to
+                you registered email address. <br /> Please keep this
+                transaction ID for reference. For further assistance, please
+                reach out to support@bskilling.com.{" "}
+              </p>
+            )}
+          </div>
           <div className="w-full px-8 h-1">
             {" "}
             <div className="w-full h-[1px] px- bg-slate-400"></div>
@@ -37,12 +74,12 @@ const PaymentStatus = () => {
               <div className="font-semibold  min-w-[200px] text-start ">
                 AMOUNT{" "}
               </div>{" "}
-              <p className="font-semibold">2000</p>
+              <p className="font-semibold">{amount}</p>
             </div>
 
             <div className="flex gap-3 ">
               <p className="  min-w-[200px]">OrderId </p>{" "}
-              <p className="">5478</p>
+              <p className="">{orderId}</p>
             </div>
 
             <div className="flex gap-3">

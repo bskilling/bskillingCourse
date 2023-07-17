@@ -32,7 +32,7 @@ const RegisterForm = () => {
       order_id: "145155",
       currency: "INR",
       access_code: process.env.NEXT_PUBLIC_ANALYTICS_ID_ACCESS_CODE ?? "",
-      amount: "1000",
+      amount: "10",
       language: "EN",
       redirect_url:
         "https://h3yr3i2abo46tzkj7zvcydu67y0hmvss.lambda-url.ap-south-1.on.aws/",
