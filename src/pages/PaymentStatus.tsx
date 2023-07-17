@@ -43,7 +43,7 @@ const PaymentStatus = () => {
     <div className="w-full md:py-0 py-8 flex items-center justify-center  md:h-screen md:border-0 border-t border-b font-SourceSans">
       <div className="flex  md:w-[50%] py-8 rounded-lg shadow-xl justify-center items-center flex-col">
         <div className="flex justify-center">
-          <img src="/logo.png" className="md:w-[50%] h-auto" alt="" />
+          <img src="/logo.png" className="md:w-[40%] h-auto" alt="" />
         </div>
         <div className="flex justify-center mt-8 md:px-0 px-5 flex-col items-center">
           <div className="flex  md:flex-row flex-col-reverse justify-center w-full mb-4 g ">
@@ -90,7 +90,7 @@ const PaymentStatus = () => {
             {" "}
             <div className="w-full h-[1px] px- bg-slate-400"></div>
           </div>
-          <div className="flex justify-center w-full  items-center  py-7">
+          <div className="flex justify-center w-full gapp-8 items-center  py-7">
             <div className="flex flex-col">
               <div className="flex gap-3">
                 <div className="font-semibold  min-w-[200px] text-start ">
@@ -99,38 +99,38 @@ const PaymentStatus = () => {
                 <p className="font-semibold">{amount}</p>
               </div>
               <div className="flex gap-3">
-                <p className="min-w-[200px]">Card Name</p>{" "}
+                <p className="font-semibold min-w-[200px]">Card Name</p>{" "}
                 <p className="">{cardName}</p>
               </div>
               <div className="flex gap-3 ">
-                <p className="  min-w-[200px]">Order Id </p>{" "}
+                <p className=" font-semibold min-w-[200px]">Order Id </p>{" "}
                 <p className="">{orderId}</p>
               </div>
 
               <div className="flex gap-3">
-                <p className=" min-w-[200px] ">Payment Type </p>{" "}
+                <p className="font-semibold min-w-[200px] ">Payment Type </p>{" "}
                 <p className="">{paymentMode}</p>
               </div>
             </div>
 
             <div>
               <div className="flex gap-3">
-                <p className="min-w-[200px]">Currency</p>{" "}
+                <p className="font-semibold min-w-[200px]">Currency</p>{" "}
                 <p className="">{currency}</p>
               </div>
 
               <div className="flex gap-3">
-                <p className="min-w-[200px]">Tracking Id</p>{" "}
+                <p className="font-semibold min-w-[200px]">Tracking Id</p>{" "}
                 <p className="">{trackingId}</p>
               </div>
 
               <div className="flex gap-3">
-                <p className="min-w-[200px]">Bank Ref No</p>{" "}
+                <p className="font-semibold min-w-[200px]">Bank Ref No</p>{" "}
                 <p className="">{bankRefNo}</p>
               </div>
 
               <div className="flex gap-3">
-                <p className="min-w-[200px]">Transaction Time</p>{" "}
+                <p className=" font-semibold min-w-[200px]">Transaction Time</p>{" "}
                 <p className="">{transDate}</p>
               </div>
             </div>
@@ -145,26 +145,6 @@ const PaymentStatus = () => {
           </div>
         </div>
       </div>
-      {/* ////////////////// */}
-      {/* <div className="flex justify-center items-center flex-col">
-        <div className="flex justify-center">
-          <img src="/logo.png" className="md:w-[50%] h-auto" alt="" />
-        </div>
-        <div className="flex justify-center md:px-0 px-5 flex-col items-center">
-          <p className="font-semibold text-center mt-4 text-2xl mb-4">
-            Your Payment Is Successfull
-          </p>
-          <p className="mb-4 text-center">
-            Thank you for your payment. An automated payment receipt will be
-            sent to your registered email.
-          </p>
-          <div>
-            <button className="flex gap-1 text-white mt-2 border hover:text-white border-buttonBlue transition duration-500 hover:scale-105 ease-out  bg-buttonBlue hover:bg-buttonBlue py-[8px] focus:ring-1 focus:outline-none focus:ring-buttonBlue font-medium  text-sm px-4 ">
-              Back to Home
-            </button>
-          </div>
-        </div>
-      </div> */}
     </div>
   );
 };
