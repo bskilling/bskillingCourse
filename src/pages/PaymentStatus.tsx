@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 import { BsCheckLg } from "react-icons/bs";
@@ -7,7 +8,6 @@ const PaymentStatus = () => {
   const [paymentStatus, setPaymentStatus] = useState<string | null>(null);
   const [amount, setAmount] = useState<string | null>(null);
   const [orderId, setOrderId] = useState<string | null>(null);
-  const [card, setCard] = useState<string | null>(null);
   const [trackingId, setTrackingId] = useState<string | null>(null);
   const [bankRefNo, setBankRefNo] = useState<string | null>(null);
   const [transDate, setTransDate] = useState<string | null>(null);
@@ -21,11 +21,22 @@ const PaymentStatus = () => {
     const amount = urlParams.get("amount");
     const orderId = urlParams.get("order_id");
     const card = urlParams.get("card_name");
+    const trackingid = urlParams.get("tracking_id");
+    const bankrefno = urlParams.get("bank_ref_no");
+    const TransDate = urlParams.get("trans_date");
+    const PaymentMode = urlParams.get("payment_mode");
+    const Currency = urlParams.get("currency");
+
     setPaymentStatus(status);
     console.log(paymentStatus);
     setAmount(amount);
     setOrderId(orderId);
-    setCard(card);
+    setCardName(card);
+    setTrackingId(trackingid);
+    setBankRefNo(bankrefno);
+    setTransDate(TransDate);
+    setPaymentMode(PaymentMode);
+    setCurrency(Currency);
   }, []);
 
   return (
@@ -79,56 +90,58 @@ const PaymentStatus = () => {
             {" "}
             <div className="w-full h-[1px] px- bg-slate-400"></div>
           </div>
-          <div className="flex flex-col py-7">
-            <div className="flex gap-3">
-              <div className="font-semibold  min-w-[200px] text-start ">
-                AMOUNT{" "}
-              </div>{" "}
-              <p className="font-semibold">{amount}</p>
-            </div>
-            <div className="flex gap-3">
-              <p className="min-w-[200px]">Currency</p>{" "}
-              <p className="">{currency}</p>
-            </div>
-            <div className="flex gap-3 ">
-              <p className="  min-w-[200px]">OrderId </p>{" "}
-              <p className="">{orderId}</p>
+          <div className="flex justify-center w-full  items-center  py-7">
+            <div className="flex flex-col">
+              <div className="flex gap-3">
+                <div className="font-semibold  min-w-[200px] text-start ">
+                  AMOUNT{" "}
+                </div>{" "}
+                <p className="font-semibold">{amount}</p>
+              </div>
+              <div className="flex gap-3">
+                <p className="min-w-[200px]">Card Name</p>{" "}
+                <p className="">{cardName}</p>
+              </div>
+              <div className="flex gap-3 ">
+                <p className="  min-w-[200px]">Order Id </p>{" "}
+                <p className="">{orderId}</p>
+              </div>
+
+              <div className="flex gap-3">
+                <p className=" min-w-[200px] ">Payment Type </p>{" "}
+                <p className="">{paymentMode}</p>
+              </div>
             </div>
 
-            <div className="flex gap-3">
-              <p className=" min-w-[200px] ">Payment Type </p>{" "}
-              <p className="">{paymentMode}</p>
-            </div>
-            <div className="flex gap-3">
-              <p className="min-w-[200px]">Card Name</p>{" "}
-              <p className="">{card}</p>
-            </div>
+            <div>
+              <div className="flex gap-3">
+                <p className="min-w-[200px]">Currency</p>{" "}
+                <p className="">{currency}</p>
+              </div>
 
-            <div className="flex gap-3">
-              <p className="min-w-[200px]">tracking Id</p>{" "}
-              <p className="">{trackingId}</p>
-            </div>
+              <div className="flex gap-3">
+                <p className="min-w-[200px]">Tracking Id</p>{" "}
+                <p className="">{trackingId}</p>
+              </div>
 
-            <div className="flex gap-3">
-              <p className="min-w-[200px]"></p>card Name{" "}
-              <p className="">{cardName}</p>
-            </div>
+              <div className="flex gap-3">
+                <p className="min-w-[200px]">Bank Ref No</p>{" "}
+                <p className="">{bankRefNo}</p>
+              </div>
 
-            <div className="flex gap-3">
-              <p className="min-w-[200px]">Bank Ref No</p>{" "}
-              <p className="">{bankRefNo}</p>
-            </div>
-
-            <div className="flex gap-3">
-              <p className="min-w-[200px]">Transaction Time</p>{" "}
-              <p className="">{transDate}</p>
+              <div className="flex gap-3">
+                <p className="min-w-[200px]">Transaction Time</p>{" "}
+                <p className="">{transDate}</p>
+              </div>
             </div>
           </div>
 
           <div>
-            <button className="flex gap-1 text-white mt-2 border hover:text-white border-buttonBlue transition duration-500 hover:scale-105 ease-out  bg-buttonBlue hover:bg-buttonBlue py-[8px] focus:ring-1 focus:outline-none focus:ring-buttonBlue font-medium  text-sm px-4 ">
-              Back to Home
-            </button>
+            <Link style={{ textDecoration: "none" }} href="/">
+              <button className="flex gap-1 text-white mt-2 border hover:text-white border-buttonBlue transition duration-500 hover:scale-105 ease-out  bg-buttonBlue hover:bg-buttonBlue py-[8px] focus:ring-1 focus:outline-none focus:ring-buttonBlue font-medium  text-sm px-4 ">
+                Back to Home
+              </button>
+            </Link>
           </div>
         </div>
       </div>
