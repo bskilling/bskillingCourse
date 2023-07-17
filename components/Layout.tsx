@@ -31,6 +31,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
   const [blogUnderline, setBlogUnderline] = useState(false);
   const [dropSearchData, setDropSearchData] = useState<SearchCourseArray[]>([]);
   const [selectedCourse, setSelectedCourse] = useState<searchCourseArray>();
+  const [navHide, setNavHide] = useState(false);
   const {
     setButtonIndex,
     buttonIndex,
@@ -64,10 +65,13 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
     if (route.pathname === "/about") {
       setAboutUnderline(true);
       setBlogUnderline(false);
+    } else if (route.pathname === "/PaymentStatus") {
+      setNavHide(false);
     } else if (route.pathname === "/blogs") {
       setBlogUnderline(true);
       setAboutUnderline(false);
     } else {
+      setNavHide(true);
       setAboutUnderline(false);
       setBlogUnderline(false);
     }
@@ -123,112 +127,114 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
         <link rel="icon" href="/logo.png" />
       </Head>
 
-      <nav className="md:py-4 font-SourceSans  md:p-0 bg-white flex  md:flex-row flex-col md:gap-36 md:justify-between w-full  shadow-">
-        <div className="flex md:gap-5  md:flex-row flex-col items-center justify-center md:ml-10 ">
-          <Link href={"/"}>
-            <img
-              src="/logo.png"
-              className="object-contain lg:w-[200px] md:my-0 my-5 h-[70px]"
-              alt=""
-            />
-          </Link>
+      {navHide && (
+        <nav className="md:py-4 font-SourceSans  md:p-0 bg-white flex  md:flex-row flex-col md:gap-36 md:justify-between w-full  shadow-">
+          <div className="flex md:gap-5  md:flex-row flex-col items-center justify-center md:ml-10 ">
+            <Link href={"/"}>
+              <img
+                src="/logo.png"
+                className="object-contain lg:w-[200px] md:my-0 my-5 h-[70px]"
+                alt=""
+              />
+            </Link>
 
-          <div className="relative font-SourceSans   flex justify-end md:w-[500px]">
-            <input
-              type="text"
-              className="md:w-[400px] rounded-lg border-[1px] bg- border-buttonBlue lg:py-1 lg:mt-[3px] px-5   focus:border-Buttoncolor focus:ring-buttonBlue"
-              placeholder="Enter Course Name"
-              required
-              value={inputValue}
-              onChange={handleSearch}
-            />
-            <div className="absolute right-2 top-2 md:top-3">
-              <BiSearchAlt />
-            </div>
-            {dropSearchData.length > 0 && (
-              <div
-                style={{ maxHeight: "500px", overflowY: "auto" }}
-                className="absolute z-[5000] w-full  bg-white rounded-lg shadow-lg md:right-0 md:mt-10"
-              >
-                {dropSearchData.map((course, index) => (
-                  <div
-                    key={course.id + index}
-                    className="p-2 hover:bg-buttonBlue px-5 hover:text-white cursor-pointer"
-                    onClick={() => handleClick(course)}
-                  >
-                    {course.CourseName}
-                  </div>
-                ))}
+            <div className="relative font-SourceSans   flex justify-end md:w-[500px]">
+              <input
+                type="text"
+                className="md:w-[400px] rounded-lg border-[1px] bg- border-buttonBlue lg:py-1 lg:mt-[3px] px-5   focus:border-Buttoncolor focus:ring-buttonBlue"
+                placeholder="Enter Course Name"
+                required
+                value={inputValue}
+                onChange={handleSearch}
+              />
+              <div className="absolute right-2 top-2 md:top-3">
+                <BiSearchAlt />
               </div>
-            )}
-          </div>
-        </div>
-
-        <div className="md:mr-6 flex font-SourceSans  justify-center gap-3 md:gap-5 md:my-0 my-5">
-          <div className="flex gap-4 md:gap-5">
-            <div className="mt-3 text-buttonBlue hover:cursor-pointer font-semibold">
-              <Link style={{ textDecoration: "none" }} href={"/about"}>
-                <p
-                  className={`${
-                    aboutUnderline === true
-                      ? "text-buttonBlue border-b-2 underline-offset-2"
-                      : "text-buttonBlue  no-underline"
-                  }`}
+              {dropSearchData.length > 0 && (
+                <div
+                  style={{ maxHeight: "500px", overflowY: "auto" }}
+                  className="absolute z-[5000] w-full  bg-white rounded-lg shadow-lg md:right-0 md:mt-10"
                 >
-                  {" "}
-                  About
-                </p>
-              </Link>
+                  {dropSearchData.map((course, index) => (
+                    <div
+                      key={course.id + index}
+                      className="p-2 hover:bg-buttonBlue px-5 hover:text-white cursor-pointer"
+                      onClick={() => handleClick(course)}
+                    >
+                      {course.CourseName}
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
-            {/* <div className="mt-3 text-buttonBlue text-center hover:cursor-pointer font-semibold">
+          </div>
+
+          <div className="md:mr-6 flex font-SourceSans  justify-center gap-3 md:gap-5 md:my-0 my-5">
+            <div className="flex gap-4 md:gap-5">
+              <div className="mt-3 text-buttonBlue hover:cursor-pointer font-semibold">
+                <Link style={{ textDecoration: "none" }} href={"/about"}>
+                  <p
+                    className={`${
+                      aboutUnderline === true
+                        ? "text-buttonBlue border-b-2 underline-offset-2"
+                        : "text-buttonBlue  no-underline"
+                    }`}
+                  >
+                    {" "}
+                    About
+                  </p>
+                </Link>
+              </div>
+              {/* <div className="mt-3 text-buttonBlue text-center hover:cursor-pointer font-semibold">
               <p>Corporate Training</p>
             </div> */}
-            <div className="mt-3 text-buttonBlue font-SourceSans hover:cursor-pointer font-semibold">
-              <Link style={{ textDecoration: "none" }} href={"/blogs"}>
-                <p
-                  className={`${
-                    blogUnderline === true
-                      ? "text-buttonBlue border-b-2 underline-offset-2"
-                      : "text-buttonBlue  no-underline"
-                  }`}
-                >
-                  Blogs
-                </p>
-              </Link>
+              <div className="mt-3 text-buttonBlue font-SourceSans hover:cursor-pointer font-semibold">
+                <Link style={{ textDecoration: "none" }} href={"/blogs"}>
+                  <p
+                    className={`${
+                      blogUnderline === true
+                        ? "text-buttonBlue border-b-2 underline-offset-2"
+                        : "text-buttonBlue  no-underline"
+                    }`}
+                  >
+                    Blogs
+                  </p>
+                </Link>
+              </div>
+              <div className=" md:flex hidden items-center">
+                {" "}
+                <div className="w-[1px] bg-buttonBlue  h-[50px]"></div>
+              </div>
             </div>
-            <div className=" md:flex hidden items-center">
-              {" "}
-              <div className="w-[1px] bg-buttonBlue  h-[50px]"></div>
-            </div>
-          </div>
-          <a
-            target="_blank"
-            rel="noreferrer"
-            className="underline-0 md:block hidden"
-            href="https://lms.bskilling.com/login/index.php"
-            style={{ textDecoration: "none" }}
-          >
-            <button className="flex gap-1 text-white mt-2 border hover:text-white border-buttonBlue transition duration-500 hover:scale-105 ease-out  bg-buttonBlue hover:bg-buttonBlue py-[8px] focus:ring-1 focus:outline-none focus:ring-buttonBlue font-medium  text-sm px-4 ">
-              <p>Login</p>
-            </button>
-          </a>
-        </div>
-        <div className="mb-4 flex md:hidden justify-center">
-          <div>
-            {" "}
             <a
               target="_blank"
               rel="noreferrer"
-              className="underline-0"
+              className="underline-0 md:block hidden"
               href="https://lms.bskilling.com/login/index.php"
+              style={{ textDecoration: "none" }}
             >
               <button className="flex gap-1 text-white mt-2 border hover:text-white border-buttonBlue transition duration-500 hover:scale-105 ease-out  bg-buttonBlue hover:bg-buttonBlue py-[8px] focus:ring-1 focus:outline-none focus:ring-buttonBlue font-medium  text-sm px-4 ">
                 <p>Login</p>
               </button>
             </a>
           </div>
-        </div>
-      </nav>
+          <div className="mb-4 flex md:hidden justify-center">
+            <div>
+              {" "}
+              <a
+                target="_blank"
+                rel="noreferrer"
+                className="underline-0"
+                href="https://lms.bskilling.com/login/index.php"
+              >
+                <button className="flex gap-1 text-white mt-2 border hover:text-white border-buttonBlue transition duration-500 hover:scale-105 ease-out  bg-buttonBlue hover:bg-buttonBlue py-[8px] focus:ring-1 focus:outline-none focus:ring-buttonBlue font-medium  text-sm px-4 ">
+                  <p>Login</p>
+                </button>
+              </a>
+            </div>
+          </div>
+        </nav>
+      )}
 
       <main className=" font-SourceSans font-normal">{children}</main>
       <footer className=" bg-white font-SourceSans  px-10 py-6 md:pt-12">
