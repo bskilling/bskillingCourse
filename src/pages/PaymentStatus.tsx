@@ -7,15 +7,25 @@ const PaymentStatus = () => {
   const [paymentStatus, setPaymentStatus] = useState<string | null>(null);
   const [amount, setAmount] = useState<string | null>(null);
   const [orderId, setOrderId] = useState<string | null>(null);
+  const [card, setCard] = useState<string | null>(null);
+  const [trackingId, setTrackingId] = useState<string | null>(null);
+  const [bankRefNo, setBankRefNo] = useState<string | null>(null);
+  const [transDate, setTransDate] = useState<string | null>(null);
+  const [paymentMode, setPaymentMode] = useState<string | null>(null);
+  const [cardName, setCardName] = useState<string | null>(null);
+  const [currency, setCurrency] = useState<string | null>(null);
+
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const status = urlParams.get("payment_status");
     const amount = urlParams.get("amount");
     const orderId = urlParams.get("order_id");
+    const card = urlParams.get("card_name");
     setPaymentStatus(status);
     console.log(paymentStatus);
     setAmount(amount);
     setOrderId(orderId);
+    setCard(card);
   }, []);
 
   return (
@@ -76,7 +86,10 @@ const PaymentStatus = () => {
               </div>{" "}
               <p className="font-semibold">{amount}</p>
             </div>
-
+            <div className="flex gap-3">
+              <p className="min-w-[200px]">Currency</p>{" "}
+              <p className="">{currency}</p>
+            </div>
             <div className="flex gap-3 ">
               <p className="  min-w-[200px]">OrderId </p>{" "}
               <p className="">{orderId}</p>
@@ -84,12 +97,31 @@ const PaymentStatus = () => {
 
             <div className="flex gap-3">
               <p className=" min-w-[200px] ">Payment Type </p>{" "}
-              <p className="">Net Banking</p>
+              <p className="">{paymentMode}</p>
+            </div>
+            <div className="flex gap-3">
+              <p className="min-w-[200px]">Card Name</p>{" "}
+              <p className="">{card}</p>
+            </div>
+
+            <div className="flex gap-3">
+              <p className="min-w-[200px]">tracking Id</p>{" "}
+              <p className="">{trackingId}</p>
+            </div>
+
+            <div className="flex gap-3">
+              <p className="min-w-[200px]"></p>card Name{" "}
+              <p className="">{cardName}</p>
+            </div>
+
+            <div className="flex gap-3">
+              <p className="min-w-[200px]">Bank Ref No</p>{" "}
+              <p className="">{bankRefNo}</p>
             </div>
 
             <div className="flex gap-3">
               <p className="min-w-[200px]">Transaction Time</p>{" "}
-              <p className="">11-28-87</p>
+              <p className="">{transDate}</p>
             </div>
           </div>
 
