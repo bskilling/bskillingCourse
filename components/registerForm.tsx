@@ -3,7 +3,12 @@ import { useForm } from "react-hook-form";
 import "react-phone-number-input/style.css";
 import bcrypt from "bcrypt";
 import { encrypt } from "util/ccavenue.utils";
-
+interface FormValues {
+  name: string;
+  email: string;
+  phone: string;
+  batch: string;
+}
 const RegisterForm = () => {
   const [messageSent, setMessage] = useState(false);
   const [CountryCodeValue, setCountryCodeValue] = useState<any>("+91");
@@ -13,19 +18,29 @@ const RegisterForm = () => {
     formState: { errors },
     reset,
     watch,
+    trigger,
+    getValues,
   } = useForm({
     mode: "onChange",
   });
 
   const isButtonVisble =
-    watch("message") &&
     watch("email") &&
     watch("phone") &&
-    watch("location") &&
+    watch("batch") &&
     watch("name") &&
     CountryCodeValue;
-
-  function submit() {
+  function handleManualSubmit() {
+    // Manually trigger validation using the trigger function
+    trigger().then((isValid) => {
+      if (isValid) {
+        // If the form is valid, call your submit function
+        const formData = getValues() as FormValues; // Cast to FormValues type
+        submit(formData);
+      }
+    });
+  }
+  function submit(formData: FormValues) {
     const workingKey = process.env.NEXT_PUBLIC_ANALYTICS_ID_WORKING_KEY;
     const data = new URLSearchParams({
       merchant_id: process.env.NEXT_PUBLIC_ANALYTICS_ID_MERCHANT_ID ?? "",
@@ -34,6 +49,9 @@ const RegisterForm = () => {
       access_code: process.env.NEXT_PUBLIC_ANALYTICS_ID_ACCESS_CODE ?? "",
       amount: "10",
       language: "EN",
+      billing_email: formData.email,
+      billing_name: formData.name,
+      billing_tel: formData.phone,
       redirect_url:
         "https://h3yr3i2abo46tzkj7zvcydu67y0hmvss.lambda-url.ap-south-1.on.aws/",
       cancel_url: "https://www.bskilling.com/",
@@ -46,7 +64,7 @@ const RegisterForm = () => {
     encRequst.value = encrypt(data.toString(), workingKey ?? ""); //body key
     const form = document.createElement("form");
     form.action =
-      "https://test.ccavenue.com/transaction/transaction.do?command=initiateTransaction";
+      "https://secure.ccavenue.com/transaction/transaction.do?command=initiateTransaction";
     form.method = "post";
 
     const accessKey = document.createElement("input");
@@ -106,14 +124,14 @@ const RegisterForm = () => {
         <input
           type="text"
           className="block  w-full lg:h-[35px] placeholder:text-sm  px-2 border-2 border-gray   border-green  focus:border-green focus:ring focus:ring-green focus:ring-opacity-50"
-          {...register("location", {
+          {...register("phone", {
             required: true,
           })}
         />
 
         <label
           className={`text-red-600   text-xs py-1 ${
-            errors.location ? "visible" : "invisible"
+            errors.phone ? "visible" : "invisible"
           }`}
         >
           This field is required
@@ -124,7 +142,7 @@ const RegisterForm = () => {
         <label className="block">
           <span className="">Batch Details</span>
           <select
-            {...register("interest", {
+            {...register("batch", {
               required: true,
             })}
             className=" block  w-full lg:h-[35px] placeholder:text-sm  px-2 border-2 border-gray   border-green  focus:border-green focus:ring focus:ring-green focus:ring-opacity-50"
@@ -137,7 +155,7 @@ const RegisterForm = () => {
           </select>
           <label
             className={`text-red-600   text-xs py-1 ${
-              errors.interest ? "visible" : "invisible"
+              errors.batch ? "visible" : "invisible"
             }`}
           >
             This field is required
@@ -152,10 +170,13 @@ const RegisterForm = () => {
           </p>
         ) : (
           <button
-            onClick={submit}
-            className={`text-white  transition duration-500 hover:scale-105 ease-out  placeholder:text-sm bg-buttonBlue hover:bg-buttonBlue py-2 focus:ring-1 focus:outline-none focus:ring-buttonBlue font-medium  text-sm px-4   `}
+            disabled={!isButtonVisble}
+            onClick={handleManualSubmit}
+            className={`text-white  transition duration-500 hover:scale-105 ease-out  placeholder:text-sm bg-buttonBlue hover:bg-buttonBlue py-2 focus:ring-1 focus:outline-none focus:ring-buttonBlue font-medium  text-sm px-4 ${
+              isButtonVisble ? "opacity-100" : "opacity-50 "
+            }  `}
           >
-            Register
+            Submit
           </button>
         )}
       </div>
