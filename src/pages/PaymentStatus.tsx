@@ -66,7 +66,7 @@ const PaymentStatus = () => {
               </p>
             </div>
           </div>
-          <div className="mb-4 px-4 text-center">
+          <div className="mb-4 px-6 text-center">
             {paymentStatus === "error" ? (
               <p>
                 We could not process your transaction due to some network error.
@@ -79,10 +79,10 @@ const PaymentStatus = () => {
             ) : (
               <p>
                 {" "}
-                Happy learning ! An automated payment receipt has been sent to
-                you registered email address. <br /> Please keep this
-                transaction ID for reference. For further assistance, please
-                reach out to support@bskilling.com.{" "}
+                An automated payment receipt has been sent to you registered
+                email address. <br /> Please keep this transaction ID for
+                reference. For further assistance, please reach out to
+                support@bskilling.com.{" "}
               </p>
             )}
           </div>
@@ -98,13 +98,14 @@ const PaymentStatus = () => {
                 </div>{" "}
                 <p className="font-semibold">{amount}</p>
               </div>
-              <div className="flex gap-3">
-                <p className="font-semibold min-w-[200px]">Card Name</p>{" "}
-                <p className="">{cardName}</p>
-              </div>
+
               <div className="flex gap-3 ">
                 <p className=" font-semibold min-w-[200px]">Order Id </p>{" "}
                 <p className="">{orderId}</p>
+              </div>
+              <div className="flex gap-3">
+                <p className="font-semibold min-w-[200px]">Bank Ref No</p>{" "}
+                <p className="">{bankRefNo}</p>
               </div>
 
               <div className="flex gap-3">
@@ -123,10 +124,9 @@ const PaymentStatus = () => {
                 <p className="font-semibold min-w-[200px]">Tracking Id</p>{" "}
                 <p className="">{trackingId}</p>
               </div>
-
               <div className="flex gap-3">
-                <p className="font-semibold min-w-[200px]">Bank Ref No</p>{" "}
-                <p className="">{bankRefNo}</p>
+                <p className="font-semibold min-w-[200px]">Card Name</p>{" "}
+                <p className="">{cardName}</p>
               </div>
 
               <div className="flex gap-3">
@@ -139,7 +139,7 @@ const PaymentStatus = () => {
           <div>
             <Link style={{ textDecoration: "none" }} href="/">
               <button className="flex gap-1 text-white mt-2 border hover:text-white border-buttonBlue transition duration-500 hover:scale-105 ease-out  bg-buttonBlue hover:bg-buttonBlue py-[8px] focus:ring-1 focus:outline-none focus:ring-buttonBlue font-medium  text-sm px-4 ">
-                Back to Home
+                Explore More Courses
               </button>
             </Link>
           </div>
