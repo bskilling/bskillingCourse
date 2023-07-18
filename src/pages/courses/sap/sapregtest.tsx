@@ -168,9 +168,7 @@ const Sapregtest = () => {
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
               }}
-            >
-              {/* <img className="absolute  h-auto w-fit" src="/bgcrs.jpg" alt="" /> */}
-            </div>
+            ></div>
             <div className="  w-full z-[1000] relative  flex  justify-center  text-white">
               <div className="md:w-[100%] md:basis-[90%] md:mt-10 mt-12  ">
                 <div className=" flex flex-col md:flex-row justify-between">
@@ -179,35 +177,14 @@ const Sapregtest = () => {
                       SAP Business Technology Platformss
                     </p>
                   </div>
-                  {/* <div className="flex justify-center">
-                    <img
-                      src="/crsInside/saplogo.png"
-                      className="w-[200px] h-[200px]"
-                      alt=""
-                    />
-                  </div> */}
                 </div>
-                <motion.div
-                  // initial={{ y: "200px" }}
-                  // whileInView={{ y: "0px" }}
-                  // animate={{ y: 10 }}
-                  // viewport={{ once: true }}
-                  // transition={{ ease: "easeOut", duration: 2 }}
-                  className="bg-glass text-xl text-left px-5 md:px-0 md:pt-0 pt-3 md:text-2xl font-semibold"
-                >
+                <motion.div className="bg-glass text-xl text-left px-5 md:px-0 md:pt-0 pt-3 md:text-2xl font-semibold">
                   Learn the skills you need to build and deploy intelligent
                   <br />
                   applications on SAP Business Technology Platform
                 </motion.div>
 
-                <motion.div
-                  // initial={{ right: "300px" }}
-                  // whileInView={{ right: "0px" }}
-                  // animate={{ x: 2 }}
-                  // viewport={{ once: true }}
-                  // transition={{ ease: "easeOut", duration: 2 }}
-                  className=" flex  flex-col md:flex-row pt-7 pb-7 md:gap-6 text-left px-5 md:px-0  md:items-center"
-                >
+                <motion.div className=" flex  flex-col md:flex-row pt-7 pb-7 md:gap-6 text-left px-5 md:px-0  md:items-center">
                   <div>
                     <div className="flex gap-2">
                       <div className="flex items-center">
@@ -900,10 +877,10 @@ const Sapregtest = () => {
                       <p className="text-center  text-black font-semibold">
                         {" "}
                         <span className=" font-bold text-xl text-blue-600 -top-[10px] -right-1 relative">
-                          ₹
+                          {registerVisible ? "" : "₹"}
                         </span>{" "}
                         <span className="font-bold text-start text-blue-600 text-3xl">
-                          99,999
+                          {registerVisible ? "Enroll Now" : "99,999"}
                         </span>
                       </p>
                     </div>
