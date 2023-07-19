@@ -53,9 +53,9 @@ const PaymentStatus = () => {
             <div className="md:w-[10%]  ">
               {paymentStatus === "error" ? (
                 <IoCloseSharp size={50} color={"#FF0000"} />
-              ) : (
+              ) : paymentStatus !== null ? (
                 <BsCheckLg size={50} color={"green"} />
-              )}
+              ) : null}
             </div>
             <div className="flex justify-center items-center">
               <p
@@ -65,7 +65,9 @@ const PaymentStatus = () => {
               >
                 {paymentStatus === "error"
                   ? "Your payment has failed!"
-                  : "Your payment is successful. Happy learning !"}
+                  : paymentStatus !== null
+                  ? "Your payment is successful. Happy learning !"
+                  : null}
               </p>
             </div>
           </div>
@@ -79,15 +81,14 @@ const PaymentStatus = () => {
                 <br /> For further assistance, reach out to
                 support@bskilling.com
               </p>
-            ) : (
+            ) : paymentStatus !== null ? (
               <p>
-                {" "}
-                An automated payment receipt has been sent to you registered
+                An automated payment receipt has been sent to your registered
                 email address. <br /> Please keep this transaction ID for
                 reference. For further assistance, please reach out to
                 support@bskilling.com.{" "}
               </p>
-            )}
+            ) : null}
           </div>
           <div className="w-full px-8 h-1">
             {" "}
