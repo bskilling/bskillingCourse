@@ -1,5 +1,10 @@
 import { createContext, useState } from "react";
-
+export interface FormValues {
+  name: string;
+  email: string;
+  phone: string;
+  batch: string;
+}
 export type SearchCourseArray = {
   id: string;
   CourseName: string;
@@ -40,6 +45,8 @@ type MyContextType = {
   isDropdownOpen: boolean;
   setIsDropdownOpenInListCrs: React.Dispatch<React.SetStateAction<boolean>>;
   isDropdownOpenInListCrs: boolean;
+  formData: FormValues | null;
+  setFormData: React.Dispatch<React.SetStateAction<FormValues | null>>;
 };
 
 export const MyContext = createContext<MyContextType>({
@@ -69,6 +76,8 @@ export const MyContext = createContext<MyContextType>({
   setIsDropdownOpen: () => {},
   isDropdownOpenInListCrs: false,
   setIsDropdownOpenInListCrs: () => {},
+  formData: null,
+  setFormData: () => {},
 });
 type MyProviderProps = {
   children: React.ReactNode;
@@ -90,6 +99,7 @@ export const MyProvider: React.FC<MyProviderProps> = ({ children }) => {
   const [categoryVisible, setCategoryVisible] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isDropdownOpenInListCrs, setIsDropdownOpenInListCrs] = useState(false);
+  const [formData, setFormData] = useState<FormValues | null>(null);
   const value: MyContextType = {
     searchData,
     setSearchData,
@@ -117,6 +127,8 @@ export const MyProvider: React.FC<MyProviderProps> = ({ children }) => {
     setIsDropdownOpen,
     isDropdownOpenInListCrs,
     setIsDropdownOpenInListCrs,
+    formData,
+    setFormData,
   };
 
   return <MyContext.Provider value={value}>{children}</MyContext.Provider>;
