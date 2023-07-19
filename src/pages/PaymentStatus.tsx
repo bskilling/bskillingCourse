@@ -1,10 +1,11 @@
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
-
+import React, { useEffect, useState, useContext } from "react";
+import { MyContext } from "context/PageContext";
 import { BsCheckLg } from "react-icons/bs";
 import { IoCloseSharp } from "react-icons/io5";
 
 const PaymentStatus = () => {
+  const { formData, setFormData } = useContext(MyContext);
   const [paymentStatus, setPaymentStatus] = useState<string | null>(null);
   const [amount, setAmount] = useState<string | null>(null);
   const [orderId, setOrderId] = useState<string | null>(null);
@@ -26,9 +27,11 @@ const PaymentStatus = () => {
     const TransDate = urlParams.get("trans_date");
     const PaymentMode = urlParams.get("payment_mode");
     const Currency = urlParams.get("currency");
-
+    const userEmail = urlParams.get("billing_email");
+    const userName = urlParams.get("billing_name");
+    const BatchDet = urlParams.get("merchant_param1");
+    const phonno = urlParams.get("billing_tel");
     setPaymentStatus(status);
-    console.log(paymentStatus);
     setAmount(amount);
     setOrderId(orderId);
     setCardName(card);
@@ -40,14 +43,14 @@ const PaymentStatus = () => {
   }, []);
 
   return (
-    <div className="w-full md:py-0 py-8 flex items-center justify-center  md:h-screen md:border-0 border-t border-b font-SourceSans">
-      <div className="flex  md:w-[50%] py-8 rounded-lg shadow-xl justify-center items-center flex-col">
+    <div className="w-full md:py-0 py-8 flex items-center justify-center  md:h-screen p-2 md:p-0 font-SourceSans">
+      <div className="flex sm:w-[100%] md:w-[80%] lg:w-[50%] py-8 rounded-lg shadow-2xl md:shadow-xl justify-center items-center flex-col">
         <div className="flex justify-center">
-          <img src="/logo.png" className="md:w-[40%] h-auto" alt="" />
+          <img src="/logo.png" className="w-[30%] h-auto" alt="" />
         </div>
-        <div className="flex justify-center mt-8 md:px-0 px-5 flex-col items-center">
-          <div className="flex  md:flex-row flex-col-reverse justify-center w-full mb-4 g ">
-            <div className="md:w-[10%]  w-[50%]">
+        <div className="flex justify-center mt-8 md:px-0 _px-5 flex-col items-center">
+          <div className="flex  md:flex-row flex-col-reverse justify-center items-center w-full mb-4 g ">
+            <div className="md:w-[10%]  ">
               {paymentStatus === "error" ? (
                 <IoCloseSharp size={50} color={"#FF0000"} />
               ) : (
@@ -56,7 +59,7 @@ const PaymentStatus = () => {
             </div>
             <div className="flex justify-center items-center">
               <p
-                className={`font-semibold text-green-600 text-center text-2xl ${
+                className={`font-semibold text-green-600 text-center text-xl ${
                   paymentStatus === "error" ? " text-red-500" : "text-green-600"
                 }`}
               >
@@ -66,7 +69,7 @@ const PaymentStatus = () => {
               </p>
             </div>
           </div>
-          <div className="mb-4 px-6 text-center">
+          <div className="mb-4 px-6 text-sm text-center">
             {paymentStatus === "error" ? (
               <p>
                 We could not process your transaction due to some network error.
@@ -90,17 +93,19 @@ const PaymentStatus = () => {
             {" "}
             <div className="w-full h-[1px] px- bg-slate-400"></div>
           </div>
-          <div className="flex justify-center w-full gap-8 items-center  py-7">
-            <div className="flex flex-col">
-              <div className="flex gap-3">
+          <div className="flex md:flex-row px-4 md:px-0 flex-col justify-center w-full md:gap-8 text-sm items-center  py-7">
+            <div className="flex w-full flex-col">
+              <div className="flex  md:gap-3">
                 <div className="font-semibold  min-w-[200px] text-start ">
                   AMOUNT{" "}
                 </div>{" "}
                 <p className="font-semibold">{amount}</p>
               </div>
 
-              <div className="flex gap-3 ">
-                <p className=" font-semibold min-w-[200px]">Order Id </p>{" "}
+              <div className="flex gap-3 text-sm">
+                <p className=" font-semibold text-sm min-w-[200px]">
+                  Order Id{" "}
+                </p>{" "}
                 <p className="">{orderId}</p>
               </div>
               <div className="flex gap-3">
@@ -114,7 +119,7 @@ const PaymentStatus = () => {
               </div>
             </div>
 
-            <div>
+            <div className="w-full ">
               <div className="flex gap-3">
                 <p className="font-semibold min-w-[200px]">Currency</p>{" "}
                 <p className="">{currency}</p>

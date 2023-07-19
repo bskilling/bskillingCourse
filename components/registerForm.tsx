@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useForm } from "react-hook-form";
 import "react-phone-number-input/style.css";
 import bcrypt from "bcrypt";
 import { encrypt } from "util/ccavenue.utils";
+const { v4: uuidv4 } = require("uuid");
+import { MyContext } from "context/PageContext";
 interface FormValues {
   name: string;
   email: string;
@@ -10,6 +12,7 @@ interface FormValues {
   batch: string;
 }
 const RegisterForm = () => {
+  const { formData, setFormData } = useContext(MyContext);
   const [messageSent, setMessage] = useState(false);
   const [CountryCodeValue, setCountryCodeValue] = useState<any>("+91");
   const {
@@ -42,13 +45,16 @@ const RegisterForm = () => {
   }
   function submit(formData: FormValues) {
     const workingKey = process.env.NEXT_PUBLIC_ANALYTICS_ID_WORKING_KEY;
+    setFormData(formData);
+    const orderId = uuidv4().split("-")[0].substr(0, 8); // Generate a UUID, split and take the first part, and then get the first 8 characters
     const data = new URLSearchParams({
       merchant_id: process.env.NEXT_PUBLIC_ANALYTICS_ID_MERCHANT_ID ?? "",
-      order_id: "145155",
+      order_id: orderId,
       currency: "INR",
       access_code: process.env.NEXT_PUBLIC_ANALYTICS_ID_ACCESS_CODE ?? "",
       amount: "10",
       language: "EN",
+      merchant_param2: formData.batch,
       billing_email: formData.email,
       billing_name: formData.name,
       billing_tel: formData.phone,
