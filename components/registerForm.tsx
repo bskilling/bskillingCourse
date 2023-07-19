@@ -54,6 +54,7 @@ const RegisterForm = () => {
       access_code: process.env.NEXT_PUBLIC_ANALYTICS_ID_ACCESS_CODE ?? "",
       amount: "10",
       language: "EN",
+      merchant_param1: "sap",
       merchant_param2: formData.batch,
       billing_email: formData.email,
       billing_name: formData.name,
