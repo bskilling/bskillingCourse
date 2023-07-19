@@ -93,7 +93,7 @@ const PaymentStatus = () => {
             {" "}
             <div className="w-full h-[1px] px- bg-slate-400"></div>
           </div>
-          <div className="flex md:flex-row px-4 md:px-0 flex-col justify-center w-full md:gap-8 text-sm items-center  py-7">
+          <div className="flex md:flex-row px-4 md:px-5 flex-col justify-center w-full md:gap-8 text-sm items-center  py-7">
             <div className="flex w-full flex-col">
               <div className="flex  md:gap-3">
                 <div className="font-semibold  min-w-[200px] text-start ">
