@@ -1,7 +1,10 @@
 import { io } from "socket.io-client";
 import ICreateAction from "../types/ICreateAction";
 import IMessage from "../types/IMessage";
-
+const notificationSound = () => {
+  const audio = new Audio("/ping.mp3");
+  audio.play();
+};
 const setupSocketAction: ICreateAction = (set, get) => () => {
   const { socket, pushMessages } = get();
 
@@ -15,6 +18,7 @@ const setupSocketAction: ICreateAction = (set, get) => () => {
       }));
 
       newSocket.on("newMessage", (data: IMessage) => {
+        notificationSound();
         pushMessages({
           id: data.id,
           text: data.text,
