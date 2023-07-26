@@ -44,7 +44,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ data }) => {
       <Link
         // target="_blank"
         // rel="noreferrer"
-        className="no-underline md:hover:scale-105  transition duration-500  ease-in hover:no-underline hover:text-blue-500"
+        className="no-underline md:hover:scale-105  h-full transition duration-500  ease-in hover:no-underline hover:text-blue-500"
         href={`/courses/${encodeURIComponent(
           data.category
         )}/${encodeURIComponent(data.id)}?id=${encodeURIComponent(
@@ -75,8 +75,8 @@ const CourseCard: React.FC<CourseCardProps> = ({ data }) => {
                 </p>
               </div>
 
-              <div className="text-subText flex  justify-center item gap-2  flex-col mt-2  ">
-                <div className="flex justify-between px-4">
+              <div className="text-subText flex  justify-left   item gap-2  flex-col mt-2  ">
+                <div className="flex gap-8">
                   <div className="flex mt-1 gap-2">
                     <div className="mt-[2px]   bg-buttonBlue flex flex-col items-center justify-center w-[25px] h-[25px] rounded-full">
                       <FaTrophy size={15} color="white" />
@@ -94,7 +94,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ data }) => {
                     </div>
                   </div>
                 </div>
-                <div className="flex justify-between px-4">
+                <div className="flex gap-8">
                   <div className="flex mt-1 gap-2">
                     <div className="mt-[2px]  bg-buttonBlue flex flex-col items-center justify-center w-[25px] h-[25px] rounded-full">
                       <FaChalkboardTeacher size={15} color="white" />
@@ -114,25 +114,26 @@ const CourseCard: React.FC<CourseCardProps> = ({ data }) => {
                   </div>
                 </div>
               </div>
-              <div className={`${"" ? "" : "py-3"}`}></div>
-              <div className="relative flex overflow-x-hidden">
-                {data.batches.length > 0 && (
-                  <div className=" whitespace-nowrap">
-                    {data.batches.map((item, index) => (
-                      <span className="ml-5 text-sm ">
-                        <Marquee speed={80}>
-                          {" "}
-                          {item.name} &nbsp; | &nbsp;{" "}
-                          {moment(item.startDate).format("YYYY-MM-DD HH:mm")}{" "}
-                          &nbsp;-&nbsp;
-                          {moment(item.endDate).format("YYYY-MM-DD HH:mm")}
-                        </Marquee>
-                      </span>
-                    ))}
-                  </div>
-                )}
+              <div className={`${data.batches.length > 0 ? "" : "h-12"}`}>
+                {" "}
+                <div className="relative flex overflow-x-hidden">
+                  {data.batches.length > 0 && (
+                    <div className=" whitespace-nowrap">
+                      {data.batches.map((item, index) => (
+                        <span className="ml-5 text-sm ">
+                          <Marquee speed={80}>
+                            {" "}
+                            {item.name} &nbsp; | &nbsp;{" "}
+                            {moment(item.startDate).format("YYYY-MM-DD HH:mm")}{" "}
+                            &nbsp;-&nbsp;
+                            {moment(item.endDate).format("YYYY-MM-DD HH:mm")}
+                          </Marquee>
+                        </span>
+                      ))}
+                    </div>
+                  )}
 
-                {/* {data.batches.length > 0 && (
+                  {/* {data.batches.length > 0 && (
                   <div className="absolute top-0 animate-marquee2 whitespace-nowrap">
                     {data.batches.map((item, index) => (
                       <span className="ml-5 text-sm ">
@@ -141,6 +142,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ data }) => {
                     ))}
                   </div>
                 )} */}
+                </div>
               </div>
             </div>
           </div>
