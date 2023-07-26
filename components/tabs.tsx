@@ -10,6 +10,7 @@ interface TabProps {
 }
 
 const Tabs: React.FC<TabProps> = ({ data }) => {
+  data.sort((a, b) => b.localeCompare(a));
   const router = useRouter();
   const {
     setButtonIndex,
