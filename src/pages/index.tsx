@@ -1,41 +1,73 @@
-import ContactPopUp from "components/ContactPopUp";
 import Blogs from "components/blognew";
 import CertifiedPartners from "components/certifiedPartners";
 import ListOfCourses from "components/listOfCourses";
-import Playstore from "components/playstoreapp";
 import Slider from "components/slider";
 import Tabs from "components/tabs";
 import Testimonials from "components/testimonials";
 import { MyContext } from "context/PageContext";
-import FloatWindow from "modules/leadChat/components/FloatWindow";
 import { NextPage } from "next";
 import Head from "next/head";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 
+import axios from "axios";
+interface UpcomingBatch {
+  capacity: string;
+  description: string;
+  endDate: string;
+  endRegistrationDate: string;
+  id: string;
+  isPaid: string;
+  name: string;
+  startDate: string;
+  status: string;
+}
+interface ListOfCoursesDataType {
+  batches: UpcomingBatch[];
+  category: string;
+  currency: string;
+  description: string;
+  discount: string;
+  duration: string;
+  endorsedBy: string;
+  id: string;
+  language: string;
+  level: string;
+  name: string;
+  ownedBy: string;
+  price: number;
+  thumbnail: string;
+  trainingTye: string;
+}
+type NestedArrayOfPeople = Array<Array<ListOfCoursesDataType>>;
 const Home: NextPage<NextPage> = ({}) => {
-  const {
-    setButtonIndex,
-    buttonIndex,
-    clickOnSearch,
-    setClickOnSearch,
-    currentTab,
-    setCurrentTab,
-    dropSearchData,
-    setDropSearchData,
-    inputValue,
-    setInputValue,
-    loadingVisible,
-    setLoadingVisible,
-    searchData,
-    setSearchData,
-    setTabVisible,
-    tabVisible,
-    fetchSearchData,
-    setFetchSearchData,
-    isDropdownOpen,
-    setIsDropdownOpen,
-    setCategoryVisible,
-  } = useContext(MyContext);
+  const [datas, setDatas] = useState<string[]>([]);
+  const [eachCourceList, SetEachCourceList] = useState<
+    ListOfCoursesDataType[][]
+  >([]);
+  const fetchApiData = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_TRAINING_BASE_URL}/api/outsource/trainingList?tenant=2`
+      );
+      const jsonData = response.data;
+
+      const catagoryList = Object.keys(jsonData.trainings);
+      const ListOfCourcesData = Object.values(jsonData.trainings);
+    
+
+      setDatas(catagoryList);
+
+      SetEachCourceList(ListOfCourcesData as ListOfCoursesDataType[][]);
+    } catch (error) {
+      console.error("Error fetching API:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchApiData();
+  }, []);
+
+  const { setIsDropdownOpen, setCategoryVisible } = useContext(MyContext);
   const clickOnMain = () => {
     setIsDropdownOpen(false);
     setCategoryVisible(false);
@@ -71,7 +103,7 @@ const Home: NextPage<NextPage> = ({}) => {
         />
       </Head>
       <section className="bg-buttonBlue text-white">
-        <Tabs />
+        <Tabs data={datas} />
       </section>
       <section onClick={clickOnMain}>
         {/* <ContactPopUp /> */}
@@ -80,7 +112,7 @@ const Home: NextPage<NextPage> = ({}) => {
           <Slider />
         </section>
         <section className="bg-gray">
-          <ListOfCourses />
+          <ListOfCourses data={datas} CoursesCategoryData={eachCourceList} />
         </section>
         <section>
           <CertifiedPartners />
@@ -107,18 +139,6 @@ const Home: NextPage<NextPage> = ({}) => {
 
               <div className="flex flex-col hover:cursor-pointer py-14 px-1 gap-2 justify-center">
                 <div className="flex p-2 gap-1 text-white px-2 py-1  rounded-md">
-                  {/* <div className="flex items-center">
-                    <img
-                      src="/icon/playstore.svg"
-                      className="w-[40px] h-[40px]"
-                      alt=""
-                    />
-                  </div>
-
-                  <div>
-                    <p className="text-sm">Get It </p>
-                    <p> On Google Play</p>
-                  </div> */}
                   <div className="flex justify-center items-center w-full">
                     <a
                       target="_blank"
@@ -135,18 +155,6 @@ const Home: NextPage<NextPage> = ({}) => {
                   </div>
                 </div>
                 <div className="flex flex-row gap-1 text-white px-2 py-1  rounded-md">
-                  {/* <div className="flex items-center">
-                    <img
-                      src="/icon/appstore.svg"
-                      className="w-[50px] h-[50px]"
-                      alt=""
-                    />
-                  </div>
-
-                  <div>
-                    <p className="text-sm">Get It </p>
-                    <p> On Google Play</p>
-                  </div> */}
                   <div className="flex justify-center items-center w-full">
                     <a
                       target="_blank"

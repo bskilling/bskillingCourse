@@ -22,7 +22,7 @@ const DropAQueryForm = () => {
     watch("location") &&
     watch("name") &&
     CountryCodeValue;
-  console.log(CountryCodeValue);
+ 
   const submit = handleSubmit(async (data) => {
     try {
       const response = await fetch(

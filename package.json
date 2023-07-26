@@ -27,6 +27,7 @@
     "react-dom": "18.2.0",
     "react-hook-form": "^7.43.9",
     "react-icons": "^4.8.0",
+    "react-locomotive-scroll": "^0.2.2",
     "react-phone-number-input": "^3.2.23",
     "react-responsive": "^9.0.2",
     "socket.io-client": "^4.6.1",
