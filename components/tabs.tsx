@@ -1,31 +1,21 @@
 import { MyContext } from "context/PageContext";
-import BrowseAllCourse from "data/browseAllCourse";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useContext, useState } from "react";
 import { AiFillCaretDown, AiOutlineMenu } from "react-icons/ai";
 import { useMediaQuery } from "react-responsive";
-const Tabs = () => {
+
+interface TabProps {
+  data: string[];
+}
+
+const Tabs: React.FC<TabProps> = ({ data }) => {
   const router = useRouter();
   const {
     setButtonIndex,
-    buttonIndex,
-    clickOnSearch,
-    setClickOnSearch,
-    currentTab,
-    setCurrentTab,
-    dropSearchData,
-    setDropSearchData,
-    inputValue,
-    setInputValue,
     loadingVisible,
     setLoadingVisible,
-    searchData,
-    setSearchData,
     setTabVisible,
-    tabVisible,
-    fetchSearchData,
-    setFetchSearchData,
     AllCourseButtonIndex,
     setAllCourseButtonIndex,
     categoryVisible,
@@ -66,7 +56,6 @@ const Tabs = () => {
     setIsDropdownOpen(false);
     setAllCourseButtonIndex(x);
 
-    // const url = "/allCourses?buttonIndexs=" + x;
     setTimeout(() => {
       setLoadingVisible(false);
       setCategoryVisible(false);
@@ -97,18 +86,18 @@ const Tabs = () => {
           </div>
           {categoryVisible ? (
             <div className="absolute mt-[100px] md:mt-[75px] z-[1000] w-[] bg-white  rounded-lg shadow-lg ">
-              {BrowseAllCourse.map(({ categoryName }, index) => (
+              {data.map((categoryKey, index) => (
                 <Link
                   style={{ textDecoration: "none" }}
-                  key={categoryName}
+                  key={categoryKey}
                   href={"/allCourses"}
                 >
                   <div
-                    key={categoryName}
+                    key={categoryKey}
                     className="px-5 py-2 text-black cursor-pointer hover:bg-buttonBlue hover:text-white"
                     onClick={() => clickOnCategory(index)}
                   >
-                    {categoryName}
+                    {categoryKey}
                   </div>
                 </Link>
               ))}
@@ -127,9 +116,9 @@ const Tabs = () => {
               aria-label="Tabs"
             >
               <ul className="flex flex-col items-center space-x-5 md:flex-row md:justify-start">
-                {BrowseAllCourse.slice(0, 11).map(({ categoryName }, index) => (
+                {data.map((categoryKey, index) => (
                   <li
-                    key={categoryName}
+                    key={index}
                     className={`${
                       index === AllCourseButtonIndex
                         ? ""
@@ -145,12 +134,12 @@ const Tabs = () => {
                         className="px-4 pb-1 text-white "
                         onClick={() => TabButtonClick(index)}
                       >
-                        {categoryName}
+                        {categoryKey}
                       </button>
                     </Link>
                   </li>
                 ))}
-                {BrowseAllCourse.length > 11 && (
+                {Object.keys(data).length > 11 && (
                   <li className="relative">
                     <button
                       type="button"
@@ -163,8 +152,9 @@ const Tabs = () => {
                     </button>
                     {isDropdownOpen && (
                       <div className="origin-top-right absolute  z-[6000]  right-0 mt-6  min-w-[200px]   rounded-md shadow-lg bg-white ring-1     ">
-                        {BrowseAllCourse.slice(11).map(
-                          ({ categoryName }, index) => (
+                        {Object.keys(data)
+                          .slice(11)
+                          .map((categoryName, index) => (
                             <button
                               key={categoryName}
                               className="text-black hover:text-white text-right py-3   block px- border-0 min-w-[200px] pr-5 w-full hover:bg-buttonBlue   cursor-pointer  text-sm  hover:text-gray-900"
@@ -172,8 +162,7 @@ const Tabs = () => {
                             >
                               <p> {categoryName}</p>
                             </button>
-                          )
-                        )}
+                          ))}
                       </div>
                     )}
                   </li>

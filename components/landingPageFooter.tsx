@@ -7,51 +7,51 @@ export default function LandingPageFooter() {
   const pagePath = [
     {
       namaOfSection: "Overview",
-      linkOfTheSection: "/courses/sap/sapbtp#Overview",
+      linkOfTheSection: "#Overview",
       id: 0,
     },
 
     {
       namaOfSection: "Prerequisites",
-      linkOfTheSection: "/courses/sap/sapbtp#Prerequisites",
+      linkOfTheSection: "#Prerequisites",
       id: 1,
     },
 
     {
       namaOfSection: "Audience",
-      linkOfTheSection: "/courses/sap/sapbtp#Audience",
+      linkOfTheSection: "#Audience",
       id: 2,
     },
     {
       namaOfSection: "Key Features",
-      linkOfTheSection: "/courses/sap/sapbtp#KeyFeatures",
+      linkOfTheSection: "#KeyFeatures",
       id: 3,
     },
     {
       namaOfSection: "Benefits",
-      linkOfTheSection: "/courses/sap/sapbtp#Benefits",
+      linkOfTheSection: "#Benefits",
       id: 4,
     },
 
     {
       namaOfSection: "Curriculum",
-      linkOfTheSection: "/courses/sap/sapbtp#Curriculum",
+      linkOfTheSection: "#Curriculum",
       id: 5,
     },
     {
       namaOfSection: "OutComes",
-      linkOfTheSection: "/courses/sap/sapbtp#OutComes",
+      linkOfTheSection: "#OutComes",
       id: 6,
     },
 
     {
       namaOfSection: "Certification",
-      linkOfTheSection: "/courses/sap/sapbtp#Certification",
+      linkOfTheSection: "#Certification",
       id: 7,
     },
     {
       namaOfSection: "FAQs",
-      linkOfTheSection: "/courses/sap/sapbtp#FAQs",
+      linkOfTheSection: "#FAQs",
       id: 8,
     },
   ];

@@ -1,37 +1,85 @@
-import { ReactNode, useContext, useState, useEffect } from "react";
 import Head from "next/head";
-import { FiLogIn } from "react-icons/fi";
-import { HiOutlineMail } from "react-icons/hi";
+import { ReactNode, useContext, useEffect, useState } from "react";
 import { BiSearchAlt } from "react-icons/bi";
 
-import Link from "next/link";
-import { MyContext, SearchCourseArray } from "context/PageContext";
+import { MyContext } from "context/PageContext";
 import courseSearchData from "data/courseSearchData";
+import Link from "next/link";
 import { useRouter } from "next/router";
+import axios from "axios";
 
 type Props = {
   children: ReactNode;
   pageTitle?: string;
 };
-interface searchCourseArray {
+interface SearchCourseArray {
+  category: string;
+  currency: string;
+  description: string;
+  discount: string;
+  duration: string;
+  endorsedBy: string;
   id: string;
-  CourseName: string;
-  certificate: string;
-  imageSrc: string;
-  timePeriod: string;
-  StartDate: string;
-  classType: string;
-  price: string;
-  CourseLink: string;
+  language: string;
+  level: string;
+  ownedBy: string;
+  price: number;
+  thumbnail: string;
+  trainingTye: string;
+}
+
+interface ListOfCoursesDataType {
+  category: string;
+  currency: string;
+  description: string;
+  discount: string;
+  duration: string;
+  endorsedBy: string;
+  id: string;
+  language: string;
+  level: string;
+  name: string;
+  ownedBy: string;
+  price: number;
+  thumbnail: string;
+  trainingTye: string;
 }
 
 const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
   const route = useRouter();
   const [aboutUnderline, setAboutUnderline] = useState(false);
   const [blogUnderline, setBlogUnderline] = useState(false);
-  const [dropSearchData, setDropSearchData] = useState<SearchCourseArray[]>([]);
-  const [selectedCourse, setSelectedCourse] = useState<searchCourseArray>();
   const [navHide, setNavHide] = useState(false);
+  const [dropSearchData, setDropSearchData] = useState<ListOfCoursesDataType[]>(
+    []
+  );
+  const [selectedCourse, setSelectedCourse] = useState<SearchCourseArray>();
+
+  const [SearchElementsData, setSearchElementsData] = useState<
+    ListOfCoursesDataType[]
+  >([]);
+  const fetchApiData = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_TRAINING_BASE_URL}/api/outsource/trainingList?tenant=2`
+      );
+      const jsonData = response.data;
+
+      const catagoryList = Object.keys(jsonData.trainings);
+      const ListOfCourcesData = Object.values(jsonData.trainings);
+
+      const flattenedData = ListOfCourcesData.flatMap(
+        (innerArray) => innerArray
+      );
+    
+      setSearchElementsData(flattenedData as []);
+    } catch (error) {
+      console.error("Error fetching API:", error);
+    }
+  };
+  useEffect(() => {
+    fetchApiData();
+  }, []);
   const {
     setButtonIndex,
     buttonIndex,
@@ -54,11 +102,17 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
     setIsDropdownOpen,
     setCategoryVisible,
   } = useContext(MyContext);
-  const handleClick = (Course: searchCourseArray) => {
+  const handleClick = (Course: ListOfCoursesDataType) => {
     setDropSearchData([]);
     setSelectedCourse(Course);
     setInputValue("");
-    window.open(Course.CourseLink, "_blank");
+    const url = `/courses/${encodeURIComponent(
+      Course.category
+    )}/${encodeURIComponent(Course.name)}?id=${encodeURIComponent(
+      Course.id
+    )}&category=${encodeURIComponent(Course.category)}`;
+   
+    route.push(url);
   };
 
   useEffect(() => {
@@ -86,18 +140,18 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
     if (value === "") {
       setDropSearchData([]);
     } else {
-      const filteredData = fetchSearchData.filter((course) =>
-        course.CourseName.toLowerCase().includes(value.toLowerCase())
+      const filteredData = SearchElementsData.filter((course) =>
+        course.name.toLowerCase().includes(value.toLowerCase())
       );
-
-      setDropSearchData(filteredData);
+      setDropSearchData(filteredData as []);
+  
     }
   };
 
   const handleSearchClick = () => {
-    if (selectedCourse?.CourseLink) {
-      window.open(selectedCourse.CourseLink, "_blank");
-    }
+    // if (selectedCourse?.CourseLink) {
+    //   window.open(selectedCourse.CourseLink, "_blank");
+    // }
   };
 
   const clickbackground = () => {
@@ -153,15 +207,15 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
               {dropSearchData.length > 0 && (
                 <div
                   style={{ maxHeight: "500px", overflowY: "auto" }}
-                  className="absolute z-[5000] w-full  bg-white rounded-lg shadow-lg md:right-0 md:mt-10"
+                  className="absolute z-[5000] w-full  bg-white rounded-lg shadow-lg md:right-[-50px] mt-10"
                 >
                   {dropSearchData.map((course, index) => (
                     <div
                       key={course.id + index}
-                      className="p-2 hover:bg-buttonBlue px-5 hover:text-white cursor-pointer"
+                      className="p-2 hover:bg-buttonBlue  px-5 hover:text-white cursor-pointer"
                       onClick={() => handleClick(course)}
                     >
-                      {course.CourseName}
+                      {course.name}
                     </div>
                   ))}
                 </div>

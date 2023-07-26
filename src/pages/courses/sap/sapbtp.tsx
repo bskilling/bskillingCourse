@@ -15,6 +15,7 @@ import "react-phone-number-input/style.css";
 interface accord {
   question: string;
   answer: string;
+  answer1: string;
   answer2?: string;
   answer3?: string;
   answer4?: string;
@@ -72,7 +73,7 @@ const SapBtps = () => {
     watch("location") &&
     watch("name") &&
     CountryCodeValue;
-  console.log(CountryCodeValue);
+ 
   const submit = handleSubmit(async (data) => {
     try {
       const response = await fetch(
@@ -652,7 +653,7 @@ const SapBtps = () => {
                   <div className="bg-white flex-1  w-full   pb-8  rounded-xl">
                     {" "}
                     <div className="w-full ">
-                      <Accordion
+                      {/* <Accordion
                         question="SAP Business Technology Platform"
                         answer="Describing cloud computing concepts, the need for cloud computing, and where SAP BTP fits in "
                         answer2="Understanding the SAP BTP account model and commercial model"
@@ -716,7 +717,7 @@ const SapBtps = () => {
                         answer2="Discovering various CI/CD tools"
                         answer3="Configuring the CI/CD pipeline for your SAP Cloud Application Programming Model application in SAP
               BTP"
-                      />
+                      /> */}
                     </div>
                   </div>
                 </div>
