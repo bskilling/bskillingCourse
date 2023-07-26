@@ -1,13 +1,12 @@
-import { NextPage } from "next";
-import { useContext, useEffect, useState } from "react";
+import { MyContext } from "context/PageContext";
 import CourseDetails from "data/CoursesData";
-import CourseCard from "./CourseCard";
 import courseSearchData from "data/courseSearchData";
-import { MyContext, MyProvider } from "context/PageContext";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useContext, useEffect, useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import { useMediaQuery } from "react-responsive";
+import CourseCard from "./CourseCard";
 interface searchCourseArray {
   id: string;
   CourseName: string;
@@ -21,21 +20,50 @@ interface searchCourseArray {
   discount?: string;
   upcoming?: string;
 }
+interface TabProps {
+  data: string[];
+  CoursesCategoryData: ListOfCoursesDataType[][];
+}
 
-const ListOfCourses: NextPage<{}> = () => {
+interface UpcomingBatch {
+  capacity: string;
+  description: string;
+  endDate: string;
+  endRegistrationDate: string;
+  id: string;
+  isPaid: string;
+  name: string;
+  startDate: string;
+  status: string;
+}
+interface ListOfCoursesDataType {
+  batches: UpcomingBatch[];
+  category: string;
+  currency: string;
+  description: string;
+  discount: string;
+  duration: string;
+  endorsedBy: string;
+  id: string;
+  language: string;
+  level: string;
+  name: string;
+  ownedBy: string;
+  price: number;
+  thumbnail: string;
+  trainingTye: string;
+}
+const ListOfCourses: React.FC<TabProps> = ({ data, CoursesCategoryData }) => {
   const router = useRouter();
   const {
     setButtonIndex,
     buttonIndex,
     clickOnSearch,
     setClickOnSearch,
-    currentTab,
     setCurrentTab,
-    dropSearchData,
     setDropSearchData,
     inputValue,
     setInputValue,
-    loadingVisible,
     setLoadingVisible,
     searchData,
     setSearchData,
@@ -173,9 +201,9 @@ const ListOfCourses: NextPage<{}> = () => {
         <div className=" md:container    md:mx-auto flex flex-wrap md:flex-auto justify-center pt-5  mb-5 w-full   ">
           <nav className="-mb-0.5 flex justify-center " aria-label="Tabs">
             <ul className="flex md:flex-row flex-col  items-center md:justify-start space-x-5">
-              {CourseDetails.slice(0, 12).map(({ categoryName }, index) => (
+              {data.slice(0, 12).map((categoryKey, index) => (
                 <li
-                  key={categoryName + index}
+                  key={categoryKey + index}
                   className={` -4 ${
                     index === buttonIndex
                       ? "border-b-4 border-buttonBlue"
@@ -187,11 +215,11 @@ const ListOfCourses: NextPage<{}> = () => {
                     className="px-4 pb-1 font-semibold"
                     onClick={() => TabButtonClick(index)}
                   >
-                    {categoryName}
+                    {categoryKey}
                   </button>
                 </li>
               ))}
-              {CourseDetails.length > 12 && (
+              {data.length > 12 && (
                 <li className="relative">
                   <button
                     type="button"
@@ -206,17 +234,15 @@ const ListOfCourses: NextPage<{}> = () => {
                   </button>
                   {isDropdownOpenInListCrs && (
                     <div className="origin-top-right z-[1000] absolute right-0 mt-2 w-40 rounded-md  shadow-lg bg-white ring-1 ring-black ring-opacity-5 ">
-                      {CourseDetails.slice(12).map(
-                        ({ categoryName }, index) => (
-                          <button
-                            key={index+categoryName}
-                            className="text-gray-700 block w-full px-6 py-2 hover:bg-buttonBlue text-right text-sm hover:bg-gray-100  hover:text-white"
-                            onClick={() => TabButtonClick(index + 12)}
-                          >
-                            {categoryName}
-                          </button>
-                        )
-                      )}
+                      {data.slice(12).map((categoryKey, index) => (
+                        <button
+                          key={index + categoryKey}
+                          className="text-gray-700 block w-full px-6 py-2 hover:bg-buttonBlue text-right text-sm hover:bg-gray-100  hover:text-white"
+                          onClick={() => TabButtonClick(index + 12)}
+                        >
+                          {categoryKey}
+                        </button>
+                      ))}
                     </div>
                   )}
                 </li>
@@ -231,29 +257,31 @@ const ListOfCourses: NextPage<{}> = () => {
           onClick={() => setIsDropdownOpenInListCrs(false)}
           className={"py-4 md:container  md:mx-auto"}
         >
-          <div className="grid grid-cols-1 slide-in transition duration-1000  ease-in md:grid-cols-4 gap-4 w-full">
+          {/* <div className="grid grid-cols-1 slide-in transition duration-1000  ease-in md:grid-cols-4 gap-4 w-full">
             {searchData.map((data, index) => {
               return (
                 <div key={data.id + index}>
-                  <CourseCard data={data} />
+                  <CourseCard data={CoursesCategoryData} />
                 </div>
               );
             })}
-          </div>
+          </div> */}
         </section>
 
         <section
           onClick={() => setIsDropdownOpenInListCrs(false)}
           className="py-10 md:container  md:mx-auto "
         >
-          <div className="grid grid-cols-1 md:p-0 p-5 md:grid-cols-2 lg:grid-cols-4   gap-4 w-full">
-            {CourseDetails[buttonIndex].ListOfCourse.map((data, index) => {
-              return (
-                <>
-                  <CourseCard key={data.id + index} data={data} />
-                </>
-              );
-            })}
+          <div className="grid grid-cols-1  md:p-0 p-5 md:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4   gap-4 w-full">
+            {CoursesCategoryData[buttonIndex]
+              ?.slice(0, 4)
+              .map((data, index) => {
+                return (
+                  <>
+                    <CourseCard key={index} data={data} />
+                  </>
+                );
+              })}
           </div>
         </section>
       </section>

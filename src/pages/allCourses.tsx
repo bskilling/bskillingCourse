@@ -1,16 +1,44 @@
+import axios from "axios";
 import CourseCard from "components/CourseCard";
 import { MyContext } from "context/PageContext";
-import CourseDetails from "data/CoursesData";
-import BrowseAllCourse from "data/browseAllCourse";
-import { useRouter } from "next/router";
-import { ReactNode, useContext, useState, useEffect } from "react";
-import { AiFillCaretDown, AiOutlineMenu } from "react-icons/ai";
-import LoaderSvg from "../pages/../../public/loading .svg";
-import { useMediaQuery } from "react-responsive";
-import ContactPopUp from "components/ContactPopUp";
 import Head from "next/head";
-
+import { useRouter } from "next/router";
+import { useContext, useEffect, useState } from "react";
+import { AiFillCaretDown, AiOutlineMenu } from "react-icons/ai";
+import { useMediaQuery } from "react-responsive";
+interface UpcomingBatch {
+  capacity: string;
+  description: string;
+  endDate: string;
+  endRegistrationDate: string;
+  id: string;
+  isPaid: string;
+  name: string;
+  startDate: string;
+  status: string;
+}
+interface ListOfCoursesDataType {
+  batches: UpcomingBatch[];
+  category: string;
+  currency: string;
+  description: string;
+  discount: string;
+  duration: string;
+  endorsedBy: string;
+  id: string;
+  language: string;
+  level: string;
+  name: string;
+  ownedBy: string;
+  price: number;
+  thumbnail: string;
+  trainingTye: string;
+}
 const AllCourses = () => {
+  const [datas, setDatas] = useState<string[]>([]);
+  const [eachCourceList, SetEachCourceList] = useState<
+    ListOfCoursesDataType[][]
+  >([]);
   const router = useRouter();
   useEffect(() => {
     const { buttonIndexs } = router.query;
@@ -21,26 +49,32 @@ const AllCourses = () => {
     }
   }, [router.query]);
 
+  const fetchApiData = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_TRAINING_BASE_URL}/api/outsource/trainingList?tenant=2`
+      );
+      const jsonData = response.data;
+
+      const catagoryList = Object.keys(jsonData.trainings);
+      setDatas(catagoryList);
+      const ListOfCourcesData = Object.values(jsonData.trainings);
+     
+      setDatas(catagoryList);
+      SetEachCourceList(ListOfCourcesData as ListOfCoursesDataType[][]);
+    } catch (error) {
+      console.error("Error fetching API:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchApiData();
+  }, []);
+
   const isSmallScreen = useMediaQuery({ maxWidth: 1020 });
   const {
-    setButtonIndex,
-    buttonIndex,
-    clickOnSearch,
-    setClickOnSearch,
-    currentTab,
-    setCurrentTab,
-    dropSearchData,
-    setDropSearchData,
-    inputValue,
-    setInputValue,
     loadingVisible,
     setLoadingVisible,
-    searchData,
-    setSearchData,
-    setTabVisible,
-    tabVisible,
-    fetchSearchData,
-    setFetchSearchData,
     AllCourseButtonIndex,
     setAllCourseButtonIndex,
   } = useContext(MyContext);
@@ -123,7 +157,7 @@ const AllCourses = () => {
               </div>
               {categoryVisible ? (
                 <div className="absolute mt-[100px] md:mt-[75px] z-[1000] w-[]  bg-white  rounded-lg shadow-lg ">
-                  {BrowseAllCourse.map(({ categoryName }, index) => (
+                  {datas.map((categoryName, index) => (
                     <div
                       key={categoryName + index}
                       className="px-5 py-2 hover:bg-buttonBlue text-black hover:text-white  cursor-pointer"
@@ -141,54 +175,31 @@ const AllCourses = () => {
             {isSmallScreen ? (
               ""
             ) : (
-              // <div className="block p-5 w-full">
-              //   <div className="mx-auto md:pt-5 w-full max-w-5xl">
-              //     <label htmlFor="tabs" className="sr-only">
-              //       Courses
-              //     </label>
-              //     <select
-              //       id="tabs"
-              //       className="block w-full py-2 pl-5 pr-10 text-base leading-6 text-black hover:text-black bg-white border-[1px] border-buttonBlue rounded-md focus:border-buttonBlue focus:ring-buttonBlue sm:text-sm sm:leading-5"
-              //       value={buttonIndex}
-              //       onChange={(event) =>
-              //         TabButtonClick(parseInt(event.target.value))
-              //       }
-              //     >
-              //       {CourseDetails.map(({ categoryName }, index) => (
-              //         <option key={categoryName} value={index}>
-              //           {categoryName}
-              //         </option>
-              //       ))}
-              //     </select>
-              //   </div>
-              // </div>
               <div className="hidden md:block pt-5  mb-5 w-full">
                 <div
                   className="-mb-0.5 flex justify-start sm:block"
                   aria-label="Tabs"
                 >
                   <ul className="flex md:flex-row flex-col items-center md:justify-start space-x-5">
-                    {BrowseAllCourse.slice(0, 11).map(
-                      ({ categoryName }, index) => (
-                        <li
-                          key={categoryName + index}
-                          className={`font-semibold ${
-                            index === AllCourseButtonIndex
-                              ? "text-black border-b-4  border-buttonBlue "
-                              : "text-black hover:text-black "
-                          }`}
+                    {datas.slice(0, 11).map((categoryName, index) => (
+                      <li
+                        key={categoryName + index}
+                        className={`font-semibold ${
+                          index === AllCourseButtonIndex
+                            ? "text-black border-b-4  border-buttonBlue "
+                            : "text-black hover:text-black "
+                        }`}
+                      >
+                        <button
+                          type="button"
+                          className="px-4 pb-1 "
+                          onClick={() => TabButtonClick(index)}
                         >
-                          <button
-                            type="button"
-                            className="px-4 pb-1 "
-                            onClick={() => TabButtonClick(index)}
-                          >
-                            {categoryName}
-                          </button>
-                        </li>
-                      )
-                    )}
-                    {BrowseAllCourse.length > 11 && (
+                          {categoryName}
+                        </button>
+                      </li>
+                    ))}
+                    {datas.length > 11 && (
                       <li className="relative">
                         <button
                           type="button"
@@ -201,17 +212,15 @@ const AllCourses = () => {
                         </button>
                         {isDropdownOpen && (
                           <div className="origin-top-right absolute  z-[6000] left-[px] right-0 mt-5  rounded-md shadow-lg bg-white ring-1     ">
-                            {BrowseAllCourse.slice(11).map(
-                              ({ categoryName }, index) => (
-                                <button
-                                  key={categoryName + index}
-                                  className="text-black hover:text-white text-right  block px-8 border-0 w-full hover:bg-buttonBlue   cursor-pointer py-2 text-sm  "
-                                  onClick={() => TabButtonClick(index + 11)}
-                                >
-                                  {categoryName}
-                                </button>
-                              )
-                            )}
+                            {datas.slice(11).map((categoryName, index) => (
+                              <button
+                                key={categoryName + index}
+                                className="text-black hover:text-white text-right  block px-8 border-0 w-full hover:bg-buttonBlue   cursor-pointer py-2 text-sm  "
+                                onClick={() => TabButtonClick(index + 11)}
+                              >
+                                {categoryName}
+                              </button>
+                            ))}
                           </div>
                         )}
                       </li>
@@ -231,11 +240,9 @@ const AllCourses = () => {
         >
           <section className="py-5 md:container md:mx-auto md:py-10 ">
             <div className="grid grid-cols-1 md:p-0 p-5   md:grid-cols-4   gap-4 w-full">
-              {BrowseAllCourse[AllCourseButtonIndex].ListOfCourse.map(
-                (data, index) => {
-                  return <CourseCard key={data.id + index} data={data} />;
-                }
-              )}
+              {eachCourceList[AllCourseButtonIndex]?.map((data, index) => {
+                return <CourseCard key={data.id + index} data={data} />;
+              })}
             </div>
           </section>
         </div>

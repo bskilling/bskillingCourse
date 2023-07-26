@@ -82,7 +82,7 @@ const Sapregtest = () => {
     watch("location") &&
     watch("name") &&
     CountryCodeValue;
-  console.log(CountryCodeValue);
+
   const submit = handleSubmit(async (data) => {
     try {
       const response = await fetch(
@@ -639,7 +639,7 @@ const Sapregtest = () => {
                   <div className="bg-white flex-1  w-full   pb-8  rounded-xl">
                     {" "}
                     <div className="w-full ">
-                      <Accordion
+                      {/* <Accordion
                         question="SAP Business Technology Platform"
                         answer="Describing cloud computing concepts, the need for cloud computing, and where SAP BTP fits in "
                         answer2="Understanding the SAP BTP account model and commercial model"
@@ -703,7 +703,7 @@ const Sapregtest = () => {
                         answer2="Discovering various CI/CD tools"
                         answer3="Configuring the CI/CD pipeline for your SAP Cloud Application Programming Model application in SAP
               BTP"
-                      />
+                      /> */}
                     </div>
                   </div>
                 </div>

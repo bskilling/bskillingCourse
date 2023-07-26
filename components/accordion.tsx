@@ -4,17 +4,9 @@ import { motion, AnimatePresence } from "framer-motion";
 const Accordion = ({
   question,
   answer,
-  answer2,
-  answer3,
-  answer4,
-  answer5,
 }: {
   question: string;
-  answer: string;
-  answer2?: string;
-  answer3?: string;
-  answer4?: string;
-  answer5?: string;
+  answer: string[];
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -51,37 +43,14 @@ const Accordion = ({
               staggerChildren: 0.1,
               collapse: { duration: 0.1 }, // Set the transition duration for the collapsed state
             }}
-            className="p-2  text-gray-700 border-gray-300"
+            className="p-2 mb-4 text-gray-700 border-gray-300"
           >
-            <div className="flex gap-2 md:ml-4 mt-4 w-full">
-              <span className="text-blue-600 font-extrabold ">-</span>
-              <p className=" ">{answer}</p>
-            </div>
-            {answer2 && (
-              <div className="flex gap-2  md:ml-4  w-full">
+            {answer.map((item, index) => (
+              <div key={index} className="flex gap-2 md:ml-4  w-full">
                 <span className="text-blue-600 font-extrabold ">-</span>
-                <p className="">{answer2}</p>
+                <p className=" ">{item}</p>
               </div>
-            )}
-            {answer3 && (
-              <div className="flex gap-2  md:ml-4  w-full">
-                <span className="text-blue-600 font-extrabold ">-</span>
-                <p className="">{answer3}</p>
-              </div>
-            )}
-
-            {answer4 && (
-              <div className="flex gap-2  md:ml-4  w-full">
-                <span className="text-blue-600 font-extrabold ">-</span>
-                <p className="">{answer4}</p>
-              </div>
-            )}
-            {answer5 && (
-              <div className="flex gap-2  md:ml-4  w-full">
-                <span className="text-blue-600 font-extrabold ">-</span>
-                <p className="">{answer5}</p>
-              </div>
-            )}
+            ))}
           </motion.div>
         )}
       </AnimatePresence>
