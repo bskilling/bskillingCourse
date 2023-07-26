@@ -6,10 +6,12 @@ import InsideCourse from "components/insideCourseSubpoint";
 import LandingPageFooter from "components/landingPageFooter";
 import { motion } from "framer-motion";
 import DropAQueryForm from "modules/leadChat/components/DropAQueryForm";
+import moment from "moment";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import Marquee from "react-fast-marquee";
 import { useForm } from "react-hook-form";
 import { BiTime } from "react-icons/bi";
 import { BsFillPeopleFill, BsTelephone } from "react-icons/bs";
@@ -22,7 +24,19 @@ interface CurriculumItem {
   chapter: string;
   lessons: string[];
 }
+interface UpcomingBatch {
+  capacity: string;
+  description: string;
+  endDate: string;
+  endRegistrationDate: string;
+  id: string;
+  isPaid: string;
+  name: string;
+  startDate: string;
+  status: string;
+}
 interface CourseData {
+  batches: UpcomingBatch[];
   name: string;
   duration: string;
   thumbnail: string;
@@ -44,12 +58,15 @@ interface CourseData {
   previewVideo: string;
   resources: string[];
   skillsCovered: string[];
+  trainingType: string;
 }
 const SapBtps = () => {
   const router = useRouter();
   const { category, name, id } = router.query;
   const [showVideo, setShowVideo] = useState(false);
+
   const [dataFromResponse, setDataFromResponse] = useState<CourseData>({
+    batches: [],
     name: "",
     duration: "",
     thumbnail: "",
@@ -71,6 +88,7 @@ const SapBtps = () => {
     previewVideo: "",
     resources: [],
     skillsCovered: [],
+    trainingType: "",
   });
 
   const handleClick = () => {
@@ -82,22 +100,23 @@ const SapBtps = () => {
   const [messageSent, setMessage] = useState(false);
   const [CountryCodeValue, setCountryCodeValue] = useState<any>("+91");
   const [showFixedLandingFooter, setShowFixedLandingFooter] = useState(false);
+  const { coursename } = router.query;
   const fetchApiData = async () => {
-    const { category, name, id } = router.query;
     try {
       const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_TRAINING_BASE_URL}/api/outsource/trainingMetadataDetails?tenant=2&trainingId=${id}`
+        `${process.env.NEXT_PUBLIC_TRAINING_BASE_URL}/api/outsource/trainingMetadataDetails?tenant=2&trainingId=${coursename}`
       );
       const jsonData = response.data;
-   
+
       setDataFromResponse(jsonData);
+      console.log(jsonData, "from landing page");
     } catch (error) {
       console.error("Error fetching API:", error);
     }
   };
   useEffect(() => {
     fetchApiData();
-  }, [id]);
+  }, [coursename]);
 
   const youtubeLink = dataFromResponse.previewVideo;
   const formattedPrice = dataFromResponse.price.toLocaleString(undefined, {
@@ -243,7 +262,7 @@ const SapBtps = () => {
                     </p>
                   </div>
                 </div>
-                <motion.div className="bg-glass text-xl text-left px-5 md:px-0 md:pt-0 pt-3 md:text-2xl font-semibold">
+                <motion.div className="bg-glass text-xl text-left px-5 md:px-0 md:pt-0 pt-3 md:text-xl font-semibold">
                   {dataFromResponse.headLine}
                 </motion.div>
 
@@ -315,7 +334,7 @@ const SapBtps = () => {
                     <div className="flex items-center ">
                       <BsFillPeopleFill />
                     </div>
-                    Instructor-led Training
+                    {dataFromResponse.trainingType}
                   </div>
 
                   <div className="flex gap-2">
@@ -591,7 +610,11 @@ const SapBtps = () => {
                       </p>
                     </div>
                     <div>
-                      <Link href={"https://lms.bskilling.com/login/index.php"}>
+                      <Link
+                        target="_blank"
+                        rel="noreferrer"
+                        href={"https://lms.bskilling.com/login/index.php"}
+                      >
                         <button className="bg-buttonBlue text-white px-9 py-2 font-semibold text-xl mt-4">
                           <span>Enrol Me</span>
                         </button>
@@ -601,12 +624,25 @@ const SapBtps = () => {
                   </div>
                   <div className="flex  shadow-md w-full bg-white pb-12 pt-8 rounded-xl flex-col items-center  gap-5">
                     <div className="px-5">
-                      <p className="pt-3 pb-4 text-xl text-left  font-semibold">
+                      <p className="pt-3 pb-4 text-xl  text-center  font-semibold">
                         Upcoming Batches
                       </p>
 
-                      <div className="flex m text-blue-600  text-left gap-1 ">
-                        29 th Jul - 1st Oct (9am - 1pm)
+                      <div className="flex m text-blue-600  text-center gap-1 ">
+                        {dataFromResponse.batches.map((item, index) => (
+                          <div className="ml-5 text-sm ">
+                            {" "}
+                            {item.name}{" "}
+                            <div>
+                              {moment(item.startDate).format(
+                                "YYYY-MM-DD HH:mm"
+                              )}{" "}
+                              -{" "}
+                              {moment(item.endDate).format("YYYY-MM-DD HH:mm")}
+                            </div>
+                            <div></div>
+                          </div>
+                        ))}
                       </div>
                     </div>
                   </div>
@@ -643,7 +679,7 @@ const SapBtps = () => {
                       <p className="  pt-3 pb-4 text-xl t  font-semibold text-center">
                         Related Courses
                       </p>
-                      <div className="w-fit">
+                      <div className="w-fit px-2">
                         {" "}
                         <CourseSlider />
                       </div>

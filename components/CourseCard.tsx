@@ -4,7 +4,8 @@ import { BiTimeFive } from "react-icons/bi";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import { BsCalendarDate, BsFillPeopleFill } from "react-icons/bs";
 import Link from "next/link";
-
+import Marquee from "react-fast-marquee";
+import moment from "moment";
 interface CourseCardProps {
   data: ListOfCoursesDataType;
 }
@@ -37,6 +38,7 @@ interface ListOfCoursesDataType {
   trainingTye: string;
 }
 const CourseCard: React.FC<CourseCardProps> = ({ data }) => {
+  console.log(data);
   return (
     <>
       <Link
@@ -45,7 +47,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ data }) => {
         className="no-underline md:hover:scale-105  transition duration-500  ease-in hover:no-underline hover:text-blue-500"
         href={`/courses/${encodeURIComponent(
           data.category
-        )}/${encodeURIComponent(data.name)}?id=${encodeURIComponent(
+        )}/${encodeURIComponent(data.id)}?id=${encodeURIComponent(
           data.id
         )}&category=${encodeURIComponent(data.category)}`}
       >
@@ -115,24 +117,30 @@ const CourseCard: React.FC<CourseCardProps> = ({ data }) => {
               <div className={`${"" ? "" : "py-3"}`}></div>
               <div className="relative flex overflow-x-hidden">
                 {data.batches.length > 0 && (
-                  <div className="animate-marquee whitespace-nowrap">
+                  <div className=" whitespace-nowrap">
                     {data.batches.map((item, index) => (
                       <span className="ml-5 text-sm ">
-                        Upcoming batches | {item.startDate}
+                        <Marquee speed={80}>
+                          {" "}
+                          {item.name} &nbsp; | &nbsp;{" "}
+                          {moment(item.startDate).format("YYYY-MM-DD HH:mm")}{" "}
+                          &nbsp;-&nbsp;
+                          {moment(item.endDate).format("YYYY-MM-DD HH:mm")}
+                        </Marquee>
                       </span>
                     ))}
                   </div>
                 )}
 
-                {data.batches.length > 0 && (
+                {/* {data.batches.length > 0 && (
                   <div className="absolute top-0 animate-marquee2 whitespace-nowrap">
                     {data.batches.map((item, index) => (
                       <span className="ml-5 text-sm ">
-                        Registration ends | {item.endRegistrationDate}
+                        Registration ends | {item.endDate}
                       </span>
                     ))}
                   </div>
-                )}
+                )} */}
               </div>
             </div>
           </div>

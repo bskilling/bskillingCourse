@@ -253,7 +253,7 @@ const AllCourses = () => {
             </div>
 
             {apiEro === true ? (
-              <div className="text-center md:h-screen mt-12 text-xl font-semibold">
+              <div className="text-center md:h-screen mt-12 text-lg font-semibold">
                 {errorMessage}
               </div>
             ) : (
@@ -262,13 +262,7 @@ const AllCourses = () => {
           </section>
         </div>
       </section>
-      {apiEro === true ? (
-        <div className="text-center md:h-screen mt-12 text-xl font-semibold">
-          {errorMessage}
-        </div>
-      ) : (
-        ""
-      )}
+
       {loadingVisible === true ? (
         <div
           className="inset-0 bg-[#3d3c3d] opacity-75 fixed  flex w-full h-full items-center justify-center duration-300 transition-opacity"

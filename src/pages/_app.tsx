@@ -2,12 +2,23 @@ import FixedFooterBar from "components/fixedFooterBar";
 import Layout from "components/Layout";
 import { MyProvider } from "context/PageContext";
 import { motion } from "framer-motion";
+import useChat from "modules/leadChat/zustand";
 import { AppProps } from "next/app";
 import Head from "next/head";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import "../../style/globals.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const route = useRouter();
+  const {
+    floatWindowMode,
+    isChatFormVisible,
+    setFloatWindowMode,
+    setupSocket,
+    instanceState,
+    closeChat,
+  } = useChat();
   const [chatIconVisible, setChatIconVisible] = useState(false);
   const [showFixedFooter, setShowFixedFooter] = useState(false);
 
@@ -51,6 +62,14 @@ function MyApp({ Component, pageProps }: AppProps) {
       setChatIconVisible(false);
     }
   }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setFloatWindowMode("drop-a-query");
+    }, 4000);
+
+    return () => clearTimeout(timer);
+  }, [route.pathname]);
   return (
     <MyProvider>
       <Layout>
