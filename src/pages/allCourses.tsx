@@ -246,7 +246,7 @@ const AllCourses = () => {
           className="  mb-10 "
         >
           <section className="py-5 md:container md:mx-auto md:py-10 ">
-            <div className="grid grid-cols-1 md:p-0 p-5   md:grid-cols-4   gap-4 w-full">
+            <div className="grid grid-cols-1  md:p-0 p-5 md:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4   gap-4 w-full">
               {eachCourceList[AllCourseButtonIndex]?.map((data, index) => {
                 return <CourseCard key={data.id + index} data={data} />;
               })}

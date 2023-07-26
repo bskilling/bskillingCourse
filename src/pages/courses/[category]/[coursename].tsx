@@ -125,13 +125,13 @@ const SapBtps = () => {
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
   });
-  const formattedData = dataFromResponse.curriculum.map(
+  const formattedData = dataFromResponse.curriculum?.map(
     (item: CurriculumItem) => ({
       question: item.chapter,
       answer: item.lessons,
     })
   );
-  const videoId = youtubeLink.split("/").pop();
+  const videoId = youtubeLink?.split("/").pop();
 
   useEffect(() => {
     function handleScroll() {
