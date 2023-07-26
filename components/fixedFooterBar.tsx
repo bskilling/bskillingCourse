@@ -17,21 +17,15 @@ export default function FixedFooterBar() {
     instanceState,
     closeChat,
   } = useChat();
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setFloatWindowMode("drop-a-query");
-    }, 4000);
 
-    return () => clearTimeout(timer);
-  }, [route.pathname]);
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     setFloatWindowMode("drop-a-query");
+  //   }, 4000);
+
+  //   return () => clearTimeout(timer);
+  // }, [route.pathname]);
   const [isExpanded, setIsExpanded] = useState(false);
-  //   useEffect(() => {
-  //     const timer = setTimeout(() => {
-  //       setFloatWindowMode("drop-a-query");
-  //     }, 4000);
-
-  //     return () => clearTimeout(timer);
-  //   }, [route.pathname]);
   useEffect(() => {
     if (isExpanded) {
       setupSocket();
@@ -84,7 +78,7 @@ export default function FixedFooterBar() {
               <p className="text-sm">+91-9845348601</p>
             </div>
           </div>
-          <div className="flex text-black justify-between gap-8">
+          <div className="flex  text-black justify-between gap-8">
             {floatWindowMode !== "none" && (
               <div
                 className={`flex flex-col   bg-white w-[400px]   h-[500px] fixed right-0  md:right-0 bottom-16 md:bottom-16 z-[1000] transition-transform duration-700 shadow-md`}

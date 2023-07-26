@@ -184,7 +184,7 @@ const ListOfCourses: React.FC<TabProps> = ({ data, CoursesCategoryData }) => {
         </p>
       </div>
       {apiEro === true ? (
-        <div className="text-center mt-12 text-xl font-semibold">
+        <div className="text-center mt-12 text-lg font-semibold">
           {errorMessage}
         </div>
       ) : (
@@ -202,7 +202,7 @@ const ListOfCourses: React.FC<TabProps> = ({ data, CoursesCategoryData }) => {
               value={buttonIndex}
               onChange={(event) => TabButtonClick(parseInt(event.target.value))}
             >
-              {CourseDetails.map(({ categoryName }, index) => (
+              {data.map((categoryName, index) => (
                 <option key={categoryName + index} value={index}>
                   {categoryName}
                 </option>
