@@ -59,14 +59,21 @@ const AllCourses = () => {
       const catagoryList = Object.keys(jsonData.trainings);
       setDatas(catagoryList);
       const ListOfCourcesData = Object.values(jsonData.trainings);
-     
       setDatas(catagoryList);
       SetEachCourceList(ListOfCourcesData as ListOfCoursesDataType[][]);
+
+      setApierror(false);
     } catch (error) {
+      setApierror(true);
       console.error("Error fetching API:", error);
     }
   };
 
+  useEffect(() => {}, []);
+  const [apiEro, setApierror] = useState(false);
+  const [errorMessage, setErrormessage] = useState(
+    "We are in the process of updating our course offerings. Please check in some time."
+  );
   useEffect(() => {
     fetchApiData();
   }, []);
@@ -244,9 +251,24 @@ const AllCourses = () => {
                 return <CourseCard key={data.id + index} data={data} />;
               })}
             </div>
+
+            {apiEro === true ? (
+              <div className="text-center md:h-screen mt-12 text-xl font-semibold">
+                {errorMessage}
+              </div>
+            ) : (
+              ""
+            )}
           </section>
         </div>
       </section>
+      {apiEro === true ? (
+        <div className="text-center md:h-screen mt-12 text-xl font-semibold">
+          {errorMessage}
+        </div>
+      ) : (
+        ""
+      )}
       {loadingVisible === true ? (
         <div
           className="inset-0 bg-[#3d3c3d] opacity-75 fixed  flex w-full h-full items-center justify-center duration-300 transition-opacity"

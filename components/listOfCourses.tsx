@@ -78,10 +78,17 @@ const ListOfCourses: React.FC<TabProps> = ({ data, CoursesCategoryData }) => {
   } = useContext(MyContext);
 
   useEffect(() => {
+    if (CoursesCategoryData.length === 0) {
+      setApierror(true);
+    } else {
+      setApierror(false);
+    }
     setFetchSearchData(courseSearchData);
-  }, []);
-
-  const [] = useState();
+  }, [CoursesCategoryData]);
+  const [apiEro, setApierror] = useState(false);
+  const [errorMessage, setErrormessage] = useState(
+    "We are in the process of updating our course offerings. Please check in some time."
+  );
   const handleClick = (CourseName: string) => {
     setDropSearchData([]);
     setInputValue(CourseName);
@@ -176,7 +183,13 @@ const ListOfCourses: React.FC<TabProps> = ({ data, CoursesCategoryData }) => {
           Trending Courses
         </p>
       </div>
-
+      {apiEro === true ? (
+        <div className="text-center mt-12 text-xl font-semibold">
+          {errorMessage}
+        </div>
+      ) : (
+        ""
+      )}
       {isSmallScreen ? (
         <div className="block p-5 ">
           <div className="mx-auto md:pt-5 w-full max-w-5xl">
