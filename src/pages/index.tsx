@@ -53,7 +53,6 @@ const Home: NextPage<NextPage> = ({}) => {
 
       const catagoryList = Object.keys(jsonData.trainings);
       const ListOfCourcesData = Object.values(jsonData.trainings);
-    
 
       setDatas(catagoryList);
 
