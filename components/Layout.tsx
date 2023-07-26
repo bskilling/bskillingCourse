@@ -108,7 +108,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
     setInputValue("");
     const url = `/courses/${encodeURIComponent(
       Course.category
-    )}/${encodeURIComponent(Course.name)}?id=${encodeURIComponent(
+    )}/${encodeURIComponent(Course.id)}?id=${encodeURIComponent(
       Course.id
     )}&category=${encodeURIComponent(Course.category)}`;
 
