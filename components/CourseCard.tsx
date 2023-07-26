@@ -27,7 +27,7 @@ interface ListOfCoursesDataType {
   discount: string;
   duration: string;
   endorsedBy: string;
-  id?: string;
+  id: string;
   language: string;
   level: string;
   name: string;
@@ -37,7 +37,6 @@ interface ListOfCoursesDataType {
   trainingTye: string;
 }
 const CourseCard: React.FC<CourseCardProps> = ({ data }) => {
-
   return (
     <>
       <Link
@@ -46,9 +45,9 @@ const CourseCard: React.FC<CourseCardProps> = ({ data }) => {
         className="no-underline md:hover:scale-105  transition duration-500  ease-in hover:no-underline hover:text-blue-500"
         href={`/courses/${encodeURIComponent(
           data.category
-        )}/${encodeURIComponent(data.name)}?id=${
+        )}/${encodeURIComponent(data.name)}?id=${encodeURIComponent(
           data.id
-        }&category=${encodeURIComponent(data.category)}`}
+        )}&category=${encodeURIComponent(data.category)}`}
       >
         <section className="">
           <div
