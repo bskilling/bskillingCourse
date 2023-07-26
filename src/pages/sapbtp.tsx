@@ -58,7 +58,7 @@ const SapBtpPage = () => {
     watch("location") &&
     watch("name") &&
     CountryCodeValue;
-  console.log(CountryCodeValue);
+
   const submit = handleSubmit(async (data) => {
     try {
       const response = await fetch(
@@ -536,73 +536,6 @@ const SapBtpPage = () => {
                   <p className="mt-9 text-2xl font-bold   mb-4">Curriculum</p>
                   <div className="bg-white flex-1  w-full   pb-8  rounded-xl">
                     {" "}
-                    <div className="w-full ">
-                      <Accordion
-                        question="SAP Business Technology Platform"
-                        answer="Describing cloud computing concepts, the need for cloud computing, and where SAP BTP fits in "
-                        answer2="Understanding the SAP BTP account model and commercial model"
-                        answer3="Recognizing the importance of the SAP BTP, Cloud Foundry environment, and its architecture and
-              components"
-                      />
-                    </div>
-                    <div>
-                      <Accordion
-                        question="Web Development Standards"
-                        answer="Understanding web development standards"
-                        answer2="Using APIs and the importance of REST and OData"
-                        answer3="Working with JSON and YAML data formats"
-                        answer4="Building a twelve-factor app"
-                      />
-                    </div>
-                    <div>
-                      <Accordion
-                        question="SAP Cloud Application Programming Model"
-                        answer="Understanding SAP Business Application Studio"
-                        answer2="Understanding the SAP Cloud Application Programming Model Building and deploying SAP Cloud
-              Application Programming Model applications using Cloud Foundry command-line tools"
-                      />
-                    </div>
-                    <div>
-                      {" "}
-                      <Accordion
-                        question="Connectivity"
-                        answer="Consuming external OData service in an SAP Cloud Application Programming Model application"
-                        answer2="Creating SAP BTP destination services"
-                        answer3="Understanding cloud connector"
-                        answer4="Recognizing the role of the SAP BTP connectivity service"
-                      />
-                    </div>
-                    <div>
-                      {" "}
-                      <Accordion
-                        question="SAP Fiori Elements"
-                        answer="Understanding SAPUI5, SAP Fiori, and SAP Fiori elements"
-                        answer2="Uncovering the inspiration for SAP Fiori elements"
-                        answer3="Recognizing various floorplans and their use cases within SAP Fiori elements"
-                        answer4="Using the draft functionality in SAP Cloud Application Programming Model applications"
-                        answer5="Creating SAP Fiori elements apps using SAP Business Application Studio Using annotations"
-                      />
-                    </div>
-                    <div>
-                      {" "}
-                      <Accordion
-                        question="Authorization and Trust Management"
-                        answer="Understanding how to add authentication"
-                        answer2="Exploring authorization scopes, roles, and role collections"
-                        answer3="Using techniques to require authorizations"
-                        answer4="Working with AppRouter and understanding its role in authentication"
-                      />
-                    </div>
-                    <div>
-                      {" "}
-                      <Accordion
-                        question="Continuous Integration and Delivery"
-                        answer="Understanding the CI/CD process"
-                        answer2="Discovering various CI/CD tools"
-                        answer3="Configuring the CI/CD pipeline for your SAP Cloud Application Programming Model application in SAP
-              BTP"
-                      />
-                    </div>
                   </div>
                 </div>
                 <div className="bg-white px-5 md:px-6 w-full   pb-8  rounded-xl">

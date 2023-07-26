@@ -22,7 +22,7 @@ const useChat = create<IState>((set, get) => ({
   pushMessages(messages) {
     set((state) => ({
       messages: [...state.messages, messages],
-    }))
+    }));
   },
   sendMessage: sendMessagesAction(set, get),
   closeChat() {
@@ -42,8 +42,8 @@ const useChat = create<IState>((set, get) => ({
           floatWindowMode: "none",
         };
       }
-    })
-  }
+    });
+  },
 }));
 
 export default useChat;
