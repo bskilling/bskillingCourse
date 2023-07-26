@@ -40,8 +40,8 @@ const CourseCard: React.FC<CourseCardProps> = ({ data }) => {
   return (
     <>
       <Link
-        target="_blank"
-        rel="noreferrer"
+        // target="_blank"
+        // rel="noreferrer"
         className="no-underline md:hover:scale-105  transition duration-500  ease-in hover:no-underline hover:text-blue-500"
         href={`/courses/${encodeURIComponent(
           data.category
