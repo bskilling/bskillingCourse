@@ -2,7 +2,8 @@ import Link from "next/link";
 export default function Custom404() {
   return (
     <div className="w-full h-screen flex flex-col items-center justify-center">
-      <svg
+      <img src="/404.jpg" className="h-[60%]" alt="" />
+      {/* <svg
         className="w-1/2 md:1/3 lg:w-1/4 text-blue-600"
         xmlns="http://www.w3.org/2000/svg"
         data-name="Layer 1"
@@ -152,7 +153,7 @@ export default function Custom404() {
           transform="translate(-169.93432 -164.42601)"
           fill="#cacaca"
         ></path>
-      </svg>
+      </svg> */}
       <div className="flex flex-col items-center justify-center">
         <p className="text-3xl md:text-4xl lg:text-5xl text-gray-800 mt-12">
           Page Not Found
