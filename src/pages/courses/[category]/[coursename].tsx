@@ -62,6 +62,7 @@ interface CourseData {
 }
 const SapBtps = () => {
   const router = useRouter();
+  console.log(router.query);
   const { category, name, id } = router.query;
   const [showVideo, setShowVideo] = useState(false);
 
@@ -116,6 +117,7 @@ const SapBtps = () => {
   };
   useEffect(() => {
     fetchApiData();
+    console.log(coursename);
   }, [coursename]);
 
   const youtubeLink = dataFromResponse.previewVideo;
