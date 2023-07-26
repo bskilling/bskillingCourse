@@ -68,7 +68,7 @@ const AllCourses = () => {
       console.error("Error fetching API:", error);
     }
   };
-
+  datas.sort((a, b) => b.localeCompare(a));
   useEffect(() => {}, []);
   const [apiEro, setApierror] = useState(false);
   const [errorMessage, setErrormessage] = useState(
