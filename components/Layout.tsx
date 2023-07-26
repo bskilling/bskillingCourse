@@ -71,7 +71,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
       const flattenedData = ListOfCourcesData.flatMap(
         (innerArray) => innerArray
       );
-    
+
       setSearchElementsData(flattenedData as []);
     } catch (error) {
       console.error("Error fetching API:", error);
@@ -111,7 +111,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
     )}/${encodeURIComponent(Course.name)}?id=${encodeURIComponent(
       Course.id
     )}&category=${encodeURIComponent(Course.category)}`;
-   
+
     route.push(url);
   };
 
@@ -144,7 +144,6 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
         course.name.toLowerCase().includes(value.toLowerCase())
       );
       setDropSearchData(filteredData as []);
-  
     }
   };
 
