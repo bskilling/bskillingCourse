@@ -115,6 +115,7 @@ const CourseSlider = () => {
               )}/${encodeURIComponent(data.id)}?id=${encodeURIComponent(
                 data.id
               )}&category=${encodeURIComponent(data.category)}`}
+              key={index}
             >
               <section className="">
                 <div
@@ -186,7 +187,7 @@ const CourseSlider = () => {
                       {data.batches.length > 0 && (
                         <div className=" whitespace-nowrap overflow-hidden">
                           {data.batches.map((item, index) => (
-                            <span className="ml-5 text-sm ">
+                            <span className="ml-5 text-sm " key={index}>
                               <Marquee speed={80}>
                                 {" "}
                                 {item.name} &nbsp; | &nbsp;{" "}
