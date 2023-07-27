@@ -73,7 +73,7 @@ const SapBtps = () => {
     watch("location") &&
     watch("name") &&
     CountryCodeValue;
- 
+
   const submit = handleSubmit(async (data) => {
     try {
       const response = await fetch(
@@ -112,7 +112,7 @@ const SapBtps = () => {
   });
 
   const tabs = [,];
-  const clickOnTabs = () => {};
+  const clickOnTabs = () => { };
   const [selectedTab, setSelectedTab] = useState(tabs[0]);
   const [selectedTabIndex, setSelectedTabIndex] = useState(0);
   return (
@@ -728,9 +728,7 @@ const SapBtps = () => {
                   <div className=" flex  w-full flex-col">
                     <div className="flex   gap-1   ">
                       <span className="text-blue-600 font-extrabold ">-</span>
-                      Dive into the core features and functionalities of SAP BTP
-                      and explore how it can revolutionize your organization's
-                      digital capabilities.
+                      {"Dive into the core features and functionalities of SAP BTP and explore how it can revolutionize your organization's digital capabilities."}
                     </div>
                     <div className="flex  gap-1   ">
                       <span className="text-blue-600 font-extrabold ">-</span>
@@ -746,16 +744,11 @@ const SapBtps = () => {
                     </div>
                     <div className="flex gap-1    ">
                       <span className="text-blue-600 font-extrabold ">-</span>
-                      Learn how to develop intelligent applications using SAP
-                      BTP's robust application development tools, enabling you
-                      to create tailored solutions for your organization's
-                      unique needs.
+                      {"Learn how to develop intelligent applications using SAP BTP's robust application development tools, enabling you to create tailored solutions for your organization's unique needs."}
                     </div>
                     <div className="flex gap-1    ">
                       <span className="text-blue-600 font-extrabold ">-</span>
-                      Explore the automation and integration capabilities of SAP
-                      BTP and learn how to streamline your business processes
-                      for increased efficiency and agility.
+                      {"Explore the automation and integration capabilities of SAP BTP and learn how to streamline your business processes for increased efficiency and agility."}
                     </div>
                   </div>
                 </div>

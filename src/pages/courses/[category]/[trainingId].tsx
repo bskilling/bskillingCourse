@@ -535,7 +535,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
 
                           <div className="flex m text-blue-600  text-center gap-1 ">
                             {props.trainingMetadata.batches.map((item, index) => (
-                              <div className="ml-5 text-sm ">
+                              <div className="ml-5 text-sm " key={index}>
                                 {" "}
                                 {item.name}{" "}
                                 <div>
