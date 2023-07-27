@@ -55,7 +55,7 @@ const AllCourses = () => {
         `${process.env.NEXT_PUBLIC_TRAINING_BASE_URL}/api/outsource/trainingList?tenant=2`
       );
       const jsonData = response.data;
-
+      
       const catagoryList = Object.keys(jsonData.trainings);
       setDatas(catagoryList);
       const ListOfCourcesData = Object.values(jsonData.trainings);

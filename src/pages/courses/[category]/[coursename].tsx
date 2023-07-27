@@ -4,6 +4,7 @@ import AccordionFaq from "components/accordionFaq";
 import CourseSlider from "components/courseSlider";
 import InsideCourse from "components/insideCourseSubpoint";
 import LandingPageFooter from "components/landingPageFooter";
+import RegisterForm from "components/registerForm";
 import { motion } from "framer-motion";
 import DropAQueryForm from "modules/leadChat/components/DropAQueryForm";
 import moment from "moment";
@@ -65,7 +66,11 @@ const SapBtps = () => {
   console.log(router.query);
   const { category, name, id } = router.query;
   const [showVideo, setShowVideo] = useState(false);
-
+  const [registerVisible, setRegisterVisible] = useState(false);
+  const variants = {
+    open: { opacity: 1, x: 0 },
+    closed: { opacity: 0, y: "-100%" },
+  };
   const [dataFromResponse, setDataFromResponse] = useState<CourseData>({
     batches: [],
     name: "",
@@ -110,6 +115,7 @@ const SapBtps = () => {
       const jsonData = response.data;
 
       setDataFromResponse(jsonData);
+
       console.log(jsonData, "from landing page");
     } catch (error) {
       console.error("Error fetching API:", error);
@@ -119,7 +125,10 @@ const SapBtps = () => {
     fetchApiData();
     console.log(coursename);
   }, [coursename]);
-
+  const clickOnRegister = () => {
+    setRegisterVisible(true);
+  };
+  console.log(dataFromResponse.name);
   const youtubeLink = dataFromResponse.previewVideo;
   const formattedPrice = dataFromResponse.price.toLocaleString(undefined, {
     minimumFractionDigits: 0,
@@ -602,26 +611,37 @@ const SapBtps = () => {
                   <div className="w-full  bg-white  h-fit rounded-xl flex flex-col   items-center ">
                     <div className="mt-8">
                       <p className="text-center  text-black font-semibold">
-                        {" "}
                         <span className=" font-bold text-xl text-blue-600 -top-[10px] -right-1 relative">
-                          ₹
+                          {registerVisible ? "" : "₹"}
                         </span>{" "}
                         <span className="font-bold text-start text-blue-600 text-3xl">
-                          {formattedPrice}
+                          {registerVisible ? "Enroll Now" : formattedPrice}
                         </span>
                       </p>
                     </div>
-                    <div>
-                      <Link
-                        target="_blank"
-                        rel="noreferrer"
-                        href={"https://lms.bskilling.com/login/index.php"}
-                      >
+                    {registerVisible ? (
+                      ""
+                    ) : (
+                      <div className="pb-7" onClick={() => clickOnRegister()}>
                         <button className="bg-buttonBlue text-white px-9 py-2 font-semibold text-xl mt-4">
                           <span>Enrol Me</span>
                         </button>
-                      </Link>
-                    </div>
+                      </div>
+                    )}
+                    <motion.div
+                      className="w-full px-5"
+                      animate={registerVisible ? "open" : "closed"}
+                      variants={variants}
+                    >
+                      {registerVisible && (
+                        <RegisterForm
+                          email="jkdiadihsadsaio"
+                          BatchName={dataFromResponse.batches}
+                          price={dataFromResponse.price}
+                          course={`${category}`}
+                        />
+                      )}
+                    </motion.div>
                     <div className="text-center mt-4 pb-8"></div>
                   </div>
                   <div className="flex  shadow-md w-full bg-white pb-12 pt-8 rounded-xl flex-col items-center  gap-5">

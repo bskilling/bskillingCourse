@@ -898,7 +898,7 @@ const Sapregtest = () => {
                       animate={registerVisible ? "open" : "closed"}
                       variants={variants}
                     >
-                      {registerVisible && <RegisterForm />}
+                      {/* {registerVisible && <RegisterForm />} */}
                     </motion.div>
                   </div>
                   <div className="flex  shadow-md w-full bg-white pb-12 pt-8 rounded-xl flex-col items-center  gap-5">
