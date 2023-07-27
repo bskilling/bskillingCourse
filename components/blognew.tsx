@@ -171,9 +171,9 @@ export default function Testimonials() {
             speed={1200}
           >
             <div className="flex  flex-wrap gap-8 mb-4 ">
-              {blog.map(({ name, logo, id, desc, link, sorc, auth }) => {
+              {blog.map(({ name, logo, id, desc, link, sorc, auth }, index) => {
                 return (
-                  <SwiperSlide>
+                  <SwiperSlide key={index}>
                     <div
                       key={id}
                       className="w-fit flex bg-white flex-col lg:flex-1 min-h-[400px] justify-between bg-opacity-75   rounded-lg overflow-hidden text-center relative"

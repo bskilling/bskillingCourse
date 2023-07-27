@@ -50,7 +50,7 @@ const Home: NextPage<NextPage> = ({}) => {
         `${process.env.NEXT_PUBLIC_TRAINING_BASE_URL}/api/outsource/trainingList?tenant=2`
       );
       const jsonData = response.data;
-
+      console.log(jsonData);
       const catagoryList = Object.keys(jsonData.trainings);
       const ListOfCourcesData = Object.values(jsonData.trainings);
 

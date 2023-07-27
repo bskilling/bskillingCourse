@@ -5,13 +5,36 @@ import bcrypt from "bcrypt";
 import { encrypt } from "util/ccavenue.utils";
 const { v4: uuidv4 } = require("uuid");
 import { MyContext } from "context/PageContext";
+import moment from "moment";
 interface FormValues {
   name: string;
   email: string;
   phone: string;
   batch: string;
 }
-const RegisterForm = () => {
+interface UpcomingBatch {
+  capacity: string;
+  description: string;
+  endDate: string;
+  endRegistrationDate: string;
+  id: string;
+  isPaid: string;
+  name: string;
+  startDate: string;
+  status: string;
+}
+interface RegisterFormProps {
+  price: number;
+  email: string;
+  BatchName: UpcomingBatch[];
+  course: string;
+}
+const RegisterForm: React.FC<RegisterFormProps> = ({
+  price,
+  email,
+  BatchName,
+  course,
+}) => {
   const { formData, setFormData } = useContext(MyContext);
   const [messageSent, setMessage] = useState(false);
   const [CountryCodeValue, setCountryCodeValue] = useState<any>("+91");
@@ -52,7 +75,7 @@ const RegisterForm = () => {
       order_id: orderId,
       currency: "INR",
       access_code: process.env.NEXT_PUBLIC_ANALYTICS_ID_ACCESS_CODE ?? "",
-      amount: "10",
+      amount: `${price}`,
       language: "EN",
       merchant_param1: "sap",
       merchant_param2: formData.batch,
@@ -154,11 +177,11 @@ const RegisterForm = () => {
             })}
             className=" block  w-full lg:h-[35px] placeholder:text-sm  px-2 border-2 border-gray   border-green  focus:border-green focus:ring focus:ring-green focus:ring-opacity-50"
           >
-            <option>June 13-18</option>
-            <option>June 11-18</option>
-            <option>June 12-18</option>
-
-            <option>Others</option>
+            {BatchName.map((item, index) => (
+              <option key={index}>
+                {moment(item.startDate).format("YYYY-MM-DD HH:mm")}{" "}
+              </option>
+            ))}
           </select>
           <label
             className={`text-red-600   text-xs py-1 ${

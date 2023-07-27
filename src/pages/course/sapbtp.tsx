@@ -544,9 +544,7 @@ const SapBtpPage = () => {
                   <div className=" flex  w-full flex-col">
                     <div className="flex   gap-1   ">
                       <span className="">✔️</span>
-                      Dive into the core features and functionalities of SAP BTP
-                      and explore how it can revolutionize your organization's
-                      digital capabilities.
+                      {"Dive into the core features and functionalities of SAP BTP and explore how it can revolutionize your organization's digital capabilities."}
                     </div>
                     <div className="flex  gap-1   ">
                       <span className="text-blue-600 t">✔️</span>
@@ -562,16 +560,11 @@ const SapBtpPage = () => {
                     </div>
                     <div className="flex gap-1    ">
                       <span className="text-blue-600 ">✔️</span>
-                      Learn how to develop intelligent applications using SAP
-                      BTP's robust application development tools, enabling you
-                      to create tailored solutions for your organization's
-                      unique needs.
+                      {"Learn how to develop intelligent applications using SAP BTP's robust application development tools, enabling you to create tailored solutions for your organization's unique needs."}
                     </div>
                     <div className="flex gap-1    ">
                       <span className="text-blue-600 ">✔️</span>
-                      Explore the automation and integration capabilities of SAP
-                      BTP and learn how to streamline your business processes
-                      for increased efficiency and agility.
+                      {"Explore the automation and integration capabilities of SAP BTP and learn how to streamline your business processes for increased efficiency and agility."}
                     </div>
                   </div>
                 </div>
