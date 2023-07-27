@@ -111,7 +111,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
   return (
     <div className="pb-4">
       <div className="flex w-full    mt-4 flex-col">
-        <span className="">Your Name</span>
+        <span className="text-sm mb-1">Enter Your Name</span>
         <input
           type="text"
           className=" block text-base  w-full lg:h-[35px] placeholder:text-sm  px-2 border-2 border-gray    focus:border-green focus:ring focus:ring-green focus:ring-opacity-50"
@@ -131,7 +131,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
       </div>
 
       <div className="flex  flex-col">
-        <span className="">Your Email</span>
+        <span className="text-sm mb-1">Enter Your Email</span>
         <input
           type="text"
           className="block  w-full lg:h-[35px] placeholder:text-sm  px-2 border-2 border-gray   border-green  focus:border-green focus:ring focus:ring-green focus:ring-opacity-50"
@@ -150,7 +150,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
         </label>
       </div>
       <div className="flex  flex-col">
-        <span className="">Your Phone</span>
+        <span className="text-sm mb-1">Enter Your Phone</span>
         <input
           type="text"
           className="block  w-full lg:h-[35px] placeholder:text-sm  px-2 border-2 border-gray   border-green  focus:border-green focus:ring focus:ring-green focus:ring-opacity-50"
@@ -170,7 +170,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
 
       <div>
         <label className="block">
-          <span className="">Batch Details</span>
+          <span className="text-sm mb-1">Select Batch</span>
           <select
             {...register("batch", {
               required: true,
@@ -179,7 +179,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
           >
             {BatchName.map((item, index) => (
               <option key={index}>
-                {moment(item.startDate).format("YYYY-MM-DD HH:mm")}{" "}
+                {item.name}
               </option>
             ))}
           </select>

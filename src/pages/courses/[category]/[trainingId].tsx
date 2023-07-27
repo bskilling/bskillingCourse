@@ -13,6 +13,7 @@ import Head from "next/head";
 import { useEffect, useState } from "react";
 import { BiTime } from "react-icons/bi";
 import { BsFillPeopleFill, BsTelephone } from "react-icons/bs";
+import { FaTimes } from "react-icons/fa";
 
 type Batch = {
   id: string;
@@ -79,21 +80,21 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
     })
   ) || [];
 
-  
+
   const formattedPrice = props.trainingMetadata?.price.toLocaleString(undefined, {
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
   });
-  
+
   const variants = {
     open: { opacity: 1, x: 0 },
     closed: { opacity: 0, y: "-100%" },
   };
-  
+
   const clickOnRegister = () => {
     setRegisterVisible(true);
   };
-  
+
   useEffect(() => {
     console.log(props.trainingMetadata);
   }, [props.trainingMetadata]);
@@ -492,14 +493,24 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                   <div className="md:w-[350px]  md:min-h-[1240px]  flex justify-center">
                     <div className="w-[100%] flex gap-5 flex-col items-center ">
                       <div className="w-full  bg-white  h-fit rounded-xl flex flex-col   items-center ">
-                        <div className="mt-8">
+                        <div className="mt-8 w-full px-4">
                           <p className="text-center  text-black font-semibold">
                             <span className=" font-bold text-xl text-blue-600 -top-[10px] -right-1 relative">
                               {registerVisible ? "" : "₹"}
                             </span>{" "}
-                            <span className="font-bold text-start text-blue-600 text-3xl">
-                              {registerVisible ? "Enroll Now" : formattedPrice}
-                            </span>
+                            <div className="flex gap-2 items-center justify-center w-full relative mb-2">
+                              <span className="font-bold text-blue-600 text-2xl">
+                                {registerVisible ? "Enroll Now" : formattedPrice}
+                              </span>
+                              {
+                                registerVisible && (
+                                  <button className="absolute right-0 text-2xl text-[#888888]" onClick={() => setRegisterVisible(false)}>
+                                    <FaTimes />
+                                  </button>
+                                )
+                              }
+
+                            </div>
                           </p>
                         </div>
                         {registerVisible ? (
