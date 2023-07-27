@@ -714,9 +714,9 @@ const Sapregtest = () => {
                   <div className=" flex  w-full flex-col">
                     <div className="flex   gap-1   ">
                       <span className="text-blue-600 font-extrabold ">-</span>
-                      Dive into the core features and functionalities of SAP BTP
+                      {`Dive into the core features and functionalities of SAP BTP
                       and explore how it can revolutionize your organization's
-                      digital capabilities.
+                      digital capabilities.`}
                     </div>
                     <div className="flex  gap-1   ">
                       <span className="text-blue-600 font-extrabold ">-</span>
@@ -732,12 +732,9 @@ const Sapregtest = () => {
                     </div>
                     <div className="flex gap-1    ">
                       <span className="text-blue-600 font-extrabold ">-</span>
-                      Learn how to develop intelligent applications using SAP
-                      BTP's robust application development tools, enabling you
-                      to create tailored solutions for your organization's
-                      unique needs.
+                      {"Learn how to develop intelligent applications using SAP BTP's robust application development tools, enabling you to create tailored solutions for your organization's unique needs."}
                     </div>
-                    <div className="flex gap-1    ">
+                    <div className="flex gap-1">
                       <span className="text-blue-600 font-extrabold ">-</span>
                       Explore the automation and integration capabilities of SAP
                       BTP and learn how to streamline your business processes
@@ -898,7 +895,7 @@ const Sapregtest = () => {
                       animate={registerVisible ? "open" : "closed"}
                       variants={variants}
                     >
-                      {registerVisible && <RegisterForm />}
+                      {/* {registerVisible && <RegisterForm />} */}
                     </motion.div>
                   </div>
                   <div className="flex  shadow-md w-full bg-white pb-12 pt-8 rounded-xl flex-col items-center  gap-5">
