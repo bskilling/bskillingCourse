@@ -121,7 +121,7 @@ const Sapregtest = () => {
   });
 
   const tabs = [,];
-  const clickOnTabs = () => {};
+  const clickOnTabs = () => { };
   const [selectedTab, setSelectedTab] = useState(tabs[0]);
   const [selectedTabIndex, setSelectedTabIndex] = useState(0);
   return (
@@ -877,7 +877,7 @@ const Sapregtest = () => {
                           {registerVisible ? "" : "₹"}
                         </span>{" "}
                         <span className="font-bold text-start text-blue-600 text-3xl">
-                          {registerVisible ? "Enroll Now" : "99,999"}
+                          {registerVisible ? "Enroll Now" : "10"}
                         </span>
                       </p>
                     </div>
@@ -895,7 +895,26 @@ const Sapregtest = () => {
                       animate={registerVisible ? "open" : "closed"}
                       variants={variants}
                     >
-                      {/* {registerVisible && <RegisterForm />} */}
+                      {registerVisible && (
+                        <RegisterForm
+                          email="jkdiadihsadsaio"
+                          BatchName={[
+                            {
+                              id: "1",
+                              name: "test-batch",
+                              capacity: "",
+                              description: "",
+                              endDate: "",
+                              endRegistrationDate: "",
+                              isPaid: "",
+                              startDate: "",
+                              status: "",
+                            }
+                          ]}
+                          price={10}
+                          course="SapReg Test"
+                        />
+                      )}
                     </motion.div>
                   </div>
                   <div className="flex  shadow-md w-full bg-white pb-12 pt-8 rounded-xl flex-col items-center  gap-5">
