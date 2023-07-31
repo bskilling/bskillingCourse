@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import "react-phone-number-input/style.css";
 import bcrypt from "bcrypt";
@@ -28,12 +28,14 @@ interface RegisterFormProps {
   email: string;
   BatchName: UpcomingBatch[];
   course: string;
+  courseName: string;
 }
 const RegisterForm: React.FC<RegisterFormProps> = ({
   price,
   email,
   BatchName,
   course,
+  courseName,
 }) => {
   const { formData, setFormData } = useContext(MyContext);
   const [messageSent, setMessage] = useState(false);
@@ -66,48 +68,96 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
       }
     });
   }
-  function submit(formData: FormValues) {
-    const workingKey = process.env.NEXT_PUBLIC_ANALYTICS_ID_WORKING_KEY;
-    setFormData(formData);
-    const orderId = uuidv4().split("-")[0].substr(0, 8); // Generate a UUID, split and take the first part, and then get the first 8 characters
-    const data = new URLSearchParams({
-      merchant_id: process.env.NEXT_PUBLIC_ANALYTICS_ID_MERCHANT_ID ?? "",
-      order_id: orderId,
-      currency: "INR",
-      access_code: process.env.NEXT_PUBLIC_ANALYTICS_ID_ACCESS_CODE ?? "",
-      amount: `${price}`,
-      language: "EN",
-      merchant_param1: "sap",
-      merchant_param2: formData.batch,
-      billing_email: formData.email,
-      billing_name: formData.name,
-      billing_tel: formData.phone,
-      redirect_url:
-        "https://h3yr3i2abo46tzkj7zvcydu67y0hmvss.lambda-url.ap-south-1.on.aws/",
-      cancel_url: "https://www.bskilling.com/",
-    });
+  async function submit(formData: FormValues) {
+    const priceToString = `${price}`;
+    if (priceToString === "Free") {
+      try {
+        const response = await fetch(
+          "https://oxljorvivslpaxucdwyobaaumm0gzlvh.lambda-url.ap-south-1.on.aws/",
+          {
+            method: "POST",
+            headers: {},
+            body: JSON.stringify({
+              type: "contact",
+              email: formData.email,
+              phone: formData.phone,
+              name: formData.name,
+              BatchName: formData.batch,
+              countryCode: CountryCodeValue,
+              Course: course,
+              courseName: courseName,
+            }),
+          }
+        );
 
-    const encRequst = document.createElement("input");
-    encRequst.type = "hidden";
-    encRequst.name = "encRequest";
-    encRequst.id = "encRequest";
-    encRequst.value = encrypt(data.toString(), workingKey ?? ""); //body key
-    const form = document.createElement("form");
-    form.action =
-      "https://secure.ccavenue.com/transaction/transaction.do?command=initiateTransaction";
-    form.method = "post";
+        if (response.status === 200) {
+          reset({
+            BatchName: "",
+            phone: "",
+            email: "",
+            location: "",
+            name: "",
+          });
 
-    const accessKey = document.createElement("input");
-    accessKey.type = "hidden";
-    accessKey.name = "access_code";
-    accessKey.id = "access_code";
-    accessKey.value = data.get("access_code") ?? "";
+          setMessage(true);
+        } else {
+          throw Error("Error while sending message");
+        }
+      } catch (error) {
+        alert("Some thing went wrong");
+      }
+    } else {
+      const workingKey = process.env.NEXT_PUBLIC_ANALYTICS_ID_WORKING_KEY;
+      setFormData(formData);
+      const orderId = uuidv4().split("-")[0].substr(0, 8); // Generate a UUID, split and take the first part, and then get the first 8 characters
+      const data = new URLSearchParams({
+        merchant_id: process.env.NEXT_PUBLIC_ANALYTICS_ID_MERCHANT_ID ?? "",
+        order_id: orderId,
+        currency: "INR",
+        access_code: process.env.NEXT_PUBLIC_ANALYTICS_ID_ACCESS_CODE ?? "",
+        amount: `${price}`,
+        language: "EN",
+        merchant_param1: "sap",
+        merchant_param2: formData.batch,
+        billing_email: formData.email,
+        billing_name: formData.name,
+        billing_tel: formData.phone,
+        redirect_url:
+          "https://h3yr3i2abo46tzkj7zvcydu67y0hmvss.lambda-url.ap-south-1.on.aws/",
+        cancel_url: "https://www.bskilling.com/",
+      });
 
-    form.appendChild(encRequst);
-    form.appendChild(accessKey);
-    document.body.appendChild(form);
-    form.submit();
+      const encRequst = document.createElement("input");
+      encRequst.type = "hidden";
+      encRequst.name = "encRequest";
+      encRequst.id = "encRequest";
+      encRequst.value = encrypt(data.toString(), workingKey ?? ""); //body key
+      const form = document.createElement("form");
+      form.action =
+        "https://secure.ccavenue.com/transaction/transaction.do?command=initiateTransaction";
+      form.method = "post";
+
+      const accessKey = document.createElement("input");
+      accessKey.type = "hidden";
+      accessKey.name = "access_code";
+      accessKey.id = "access_code";
+      accessKey.value = data.get("access_code") ?? "";
+
+      form.appendChild(encRequst);
+      form.appendChild(accessKey);
+      document.body.appendChild(form);
+      form.submit();
+    }
   }
+  useEffect(() => {
+    if (messageSent) {
+      const timer = setTimeout(() => {
+        setMessage(false);
+      }, 5000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [messageSent]);
   return (
     <div className="pb-4">
       <div className="flex w-full    mt-4 flex-col">
@@ -178,9 +228,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
             className=" block  w-full lg:h-[35px] placeholder:text-sm  px-2 border-2 border-gray   border-green  focus:border-green focus:ring focus:ring-green focus:ring-opacity-50"
           >
             {BatchName.map((item, index) => (
-              <option key={index}>
-                {item.name}
-              </option>
+              <option key={index}>{item.name}</option>
             ))}
           </select>
           <label
@@ -195,8 +243,8 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
 
       <div className="w-full flex justify-center  mb-3 items-center">
         {messageSent ? (
-          <p className="text-buttonBlue  text-md font-semibold mb-4 ">
-            {`Your message is sent.`}
+          <p className="text-buttonBlue text-center  text-md font-semibold mb-4 ">
+            {`Enrolment successful. We'll get back to you shortly.`}
           </p>
         ) : (
           <button

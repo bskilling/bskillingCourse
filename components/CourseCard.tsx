@@ -25,7 +25,7 @@ interface ListOfCoursesDataType {
   category: string;
   currency: string;
   description: string;
-  discount: string;
+  discount: number;
   duration: string;
   endorsedBy: string;
   id: string;
@@ -39,6 +39,16 @@ interface ListOfCoursesDataType {
 }
 const CourseCard: React.FC<CourseCardProps> = ({ data }) => {
   console.log(data);
+
+  const calculateDiscountedPrice = () => {
+    if (data.discount === 0) {
+      return data.price; // If the discount is 0, return the original price
+    } else {
+      // Calculate the discounted price using the formula: discountedPrice = price - (price * (discount / 100))
+      const discountedPrice = data.price - data.price * (data.discount / 100);
+      return Math.floor(discountedPrice); // Remove decimal and return the integer part
+    }
+  };
   return (
     <>
       <Link
@@ -62,8 +72,27 @@ const CourseCard: React.FC<CourseCardProps> = ({ data }) => {
                 src={data.thumbnail}
                 alt=""
               />
+              <div className="absolute bottom-0 flex gap-1 rounded-t-md left-0 bg-red-700 px-3">
+                {" "}
+                {data.discount === 0 ? (
+                  ""
+                ) : (
+                  <span className="font-bold  text-white">
+                    {" "}
+                    {data.discount}%&nbsp; OFF
+                  </span>
+                )}
+              </div>
               <div className="absolute bottom-0 flex gap-1 rounded-t-md right-0 bg-buttonBlue px-5">
-                <span className="font-bold text-white">₹ {data.price}</span>
+                {data.discount === 0 ? (
+                  <span className="font-bold text-white">₹ {data.price}</span>
+                ) : (
+                  <React.Fragment>
+                    <span className="font-bold text-white">
+                      ₹ {calculateDiscountedPrice()}
+                    </span>
+                  </React.Fragment>
+                )}
               </div>
             </div>
             <div className="flex flex-col  px-4 mt-2">
@@ -122,26 +151,16 @@ const CourseCard: React.FC<CourseCardProps> = ({ data }) => {
                       {data.batches.map((item, index) => (
                         <span className="ml-5 text-sm " key={index}>
                           <Marquee speed={80}>
-                            {" "}
+                            Upcoming Batches&nbsp; &nbsp;|&nbsp; &nbsp;
                             {item.name} &nbsp; | &nbsp;{" "}
-                            {moment(item.startDate).format("YYYY-MM-DD HH:mm")}{" "}
+                            {moment(item.startDate).format("YYYY-MM-DD ")}{" "}
                             &nbsp;-&nbsp;
-                            {moment(item.endDate).format("YYYY-MM-DD HH:mm")}
+                            {moment(item.endDate).format("YYYY-MM-DD ")}
                           </Marquee>
                         </span>
                       ))}
                     </div>
                   )}
-
-                  {/* {data.batches.length > 0 && (
-                  <div className="absolute top-0 animate-marquee2 whitespace-nowrap">
-                    {data.batches.map((item, index) => (
-                      <span className="ml-5 text-sm ">
-                        Registration ends | {item.endDate}
-                      </span>
-                    ))}
-                  </div>
-                )} */}
                 </div>
               </div>
             </div>
