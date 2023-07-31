@@ -1,11 +1,9 @@
-import { useState, useContext, useEffect } from "react";
+import { MyContext } from "context/PageContext";
+import { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import "react-phone-number-input/style.css";
-import bcrypt from "bcrypt";
 import { encrypt } from "util/ccavenue.utils";
 const { v4: uuidv4 } = require("uuid");
-import { MyContext } from "context/PageContext";
-import moment from "moment";
 interface FormValues {
   name: string;
   email: string;
@@ -117,7 +115,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
         access_code: process.env.NEXT_PUBLIC_ANALYTICS_ID_ACCESS_CODE ?? "",
         amount: `${price}`,
         language: "EN",
-        merchant_param1: "sap",
+        merchant_param1: course,
         merchant_param2: formData.batch,
         billing_email: formData.email,
         billing_name: formData.name,
