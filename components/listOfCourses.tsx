@@ -41,7 +41,7 @@ interface ListOfCoursesDataType {
   category: string;
   currency: string;
   description: string;
-  discount: string;
+  discount: number;
   duration: string;
   endorsedBy: string;
   id: string;
