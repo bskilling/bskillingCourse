@@ -36,9 +36,43 @@ const Slider = () => {
   ];
   return (
     <>
-      <div className="relative bg-gray w-auto">
+      <div className="relative w-auto">
         {/* <div className="w-full h-[60vh] flex overflow-x-auto snap-mandatory snap-x scrollbar-hide"> */}
         <div className="w-full">
+          <Swiper
+            modules={[Navigation, Pagination, Autoplay]}
+            slidesPerView={1}
+            navigation={false}
+            autoplay={true}
+            loop={true}
+            speed={500}
+            pagination={{ clickable: true }}
+
+            // onSlideChange={() => console.log('slide change')}
+            // onSwiper={(swiper) => console.log(swiper)}
+          >
+            {slides.map(({ text1, image, id }, index) => (
+              <SwiperSlide key={index}>
+                <div className="h-[60vh] w-full relative flex justify-center items-center">
+                  <img
+                    className="object-cover w-full h-full absolute"
+                    src={image}
+                    alt=""
+                  />
+                  <div className="absolute inset-0 bg-green opacity-20"></div>
+                  {/* <div className='px-4 md:container text-center z-50'>
+                  <h1 className="text-4xl md:text-5xl font-bold text-white drop-shadow-md py-4">{text1}</h1>  
+                  <h2 className="text-white leading-snug font-semibold text-2xl md:text-3xl drop-shadow-md">{text2}</h2>
+                </div> */}
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+      </div>
+      {/* <div className="relative bg-gray w-auto">
+        <div className="w-full h-[60vh] flex overflow-x-auto snap-mandatory snap-x scrollbar-hide">
+        <div className="w-full h-[90vh]">
           <Swiper
             modules={[Navigation, Autoplay]}
             slidesPerView={1}
@@ -58,17 +92,13 @@ const Slider = () => {
                     alt=""
                   />
                   <div className="absolute inset-0 bg-green opacity-20"></div>
-                  {/* <div className="px-4 md:container text-center z-50">
-                    <h1 className="text-4xl md:text-3xl  text-white drop-shadow-md py-4">
-                      {text1}
-                    </h1>
-                  </div> */}
+                 
                 </div>
               </SwiperSlide>
             ))}
           </Swiper>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };
