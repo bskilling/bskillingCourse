@@ -23,7 +23,7 @@ const Slider = () => {
       text1:
         "Get certified by globally recognized bodies and deepen your expertise",
 
-      image: "/carosel/ban5.png",
+      image: "/carosel/ban2.png",
       id: "slide2",
     },
     {
@@ -51,18 +51,18 @@ const Slider = () => {
           >
             {slides.map(({ text1, image, id }) => (
               <SwiperSlide key={id}>
-                <div className="h-[48vh] w-full relative flex justify-center items-center">
+                <div className="h-[55vh] w-full relative flex justify-center items-center">
                   <img
-                    className="object-cover object-center md:object-top absolute w-full  h-full"
+                    className="object- h-fit object-center md:object-top absolute w-full  h-full"
                     src={image}
                     alt=""
                   />
                   <div className="absolute inset-0 bg-green opacity-20"></div>
-                  <div className="px-4 md:container text-center z-50">
+                  {/* <div className="px-4 md:container text-center z-50">
                     <h1 className="text-4xl md:text-3xl  text-white drop-shadow-md py-4">
                       {text1}
                     </h1>
-                  </div>
+                  </div> */}
                 </div>
               </SwiperSlide>
             ))}
