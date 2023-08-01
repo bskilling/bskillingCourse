@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Navigation, Pagination, Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -6,6 +5,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
 import { EffectFade } from "swiper";
+import { useEffect, useRef } from "react";
 interface slider {
   text1: string;
   image: string;
@@ -34,6 +34,7 @@ const Slider = () => {
       id: "slide3",
     },
   ];
+
   return (
     <>
       <div className="relative w-auto">
@@ -53,18 +54,7 @@ const Slider = () => {
           >
             {slides.map(({ text1, image, id }, index) => (
               <SwiperSlide key={index}>
-                <div className="h-[60vh] w-full relative flex justify-center items-center">
-                  <img
-                    className="object-cover w-full h-full absolute"
-                    src={image}
-                    alt=""
-                  />
-                  <div className="absolute inset-0 bg-green opacity-20"></div>
-                  {/* <div className='px-4 md:container text-center z-50'>
-                  <h1 className="text-4xl md:text-5xl font-bold text-white drop-shadow-md py-4">{text1}</h1>  
-                  <h2 className="text-white leading-snug font-semibold text-2xl md:text-3xl drop-shadow-md">{text2}</h2>
-                </div> */}
-                </div>
+                <ImageSlider key={index} image={image} />
               </SwiperSlide>
             ))}
           </Swiper>
@@ -103,3 +93,39 @@ const Slider = () => {
   );
 };
 export default Slider;
+interface ImageSliderProps {
+  image: string;
+}
+const ImageSlider = (props: ImageSliderProps) => {
+  const divref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const img = new Image();
+    img.src = props.image;
+    const div = divref.current;
+
+    img.onload = () => {
+      const imgheight = window.innerWidth * (img.height / img.width);
+      if (div) {
+        div.style.height = `${imgheight}px`;
+      }
+    };
+  }, [props.image]);
+
+  return (
+    <>
+      <div
+        ref={divref}
+        className="h-[60vh]
+          w-full relative flex justify-center items-center"
+      >
+        <img
+          className="object-contain first-letter:    w-full h-full absolute"
+          src={props.image}
+          alt=""
+        />
+       
+      </div>
+    </>
+  );
+};
