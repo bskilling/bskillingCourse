@@ -36,7 +36,7 @@ const Slider = () => {
   ];
   return (
     <>
-      <div className="relative w-auto">
+      <div className="relative bg-gray w-auto">
         {/* <div className="w-full h-[60vh] flex overflow-x-auto snap-mandatory snap-x scrollbar-hide"> */}
         <div className="w-full">
           <Swiper
@@ -51,9 +51,9 @@ const Slider = () => {
           >
             {slides.map(({ text1, image, id }) => (
               <SwiperSlide key={id}>
-                <div className="h-[55vh] w-full relative flex justify-center items-center">
+                <div className="h-96 md:min-h-[60vh] w-full relative flex justify-center items-center">
                   <img
-                    className="object- h-fit object-center md:object-top absolute w-full  h-full"
+                    className="md:object-contain object-cover h-fit w-fill object-center md:object-top absolute w-full  h-full"
                     src={image}
                     alt=""
                   />
