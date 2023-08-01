@@ -117,6 +117,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
 
   useEffect(() => {
     if (route.pathname === "/about") {
+      setNavHide(true);
       setAboutUnderline(true);
       setBlogUnderline(false);
     } else if (route.pathname === "/PaymentStatus") {

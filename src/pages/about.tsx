@@ -219,9 +219,9 @@ const About = () => {
       <section className="bg-gray py-10">
         <h2 className="text-4xl tracking-wide mb-10 text-center">Leadership</h2>
         <div className="flex md:flex-row flex-col md:container gap-5 md:mx-auto items-center">
-          <div className="w-full flex-col md:p-0 p-5 md:w-[30%]">
+          {/* <div className="w-full flex-col md:p-0 p-5 md:w-[30%]">
             <img src="/CEO.jpg" alt="CEO Image" className=" mr-8" />
-          </div>
+          </div> */}
           <div className="flex-1 px-3">
             <div className=" flex ">
               <p className="text-xl font-semibold mt-4">Mr Sivasarathy - CEO</p>
