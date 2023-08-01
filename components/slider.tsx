@@ -120,11 +120,10 @@ const ImageSlider = (props: ImageSliderProps) => {
           w-full relative flex justify-center items-center"
       >
         <img
-          className="object-contain first-letter:    w-full h-full absolute"
+          className="object-cover first-letter:    w-full h-full absolute"
           src={props.image}
           alt=""
         />
-       
       </div>
     </>
   );
