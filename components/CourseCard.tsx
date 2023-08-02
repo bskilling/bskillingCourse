@@ -153,9 +153,9 @@ const CourseCard: React.FC<CourseCardProps> = ({ data }) => {
                           <Marquee speed={80}>
                             Upcoming Batches&nbsp; &nbsp;|&nbsp; &nbsp;
                             {item.name} &nbsp; | &nbsp;{" "}
-                            {moment(item.startDate).format("YYYY-MM-DD ")}{" "}
+                            {moment(item.startDate).format("YYYY-MMM-DD")}{" "}
                             &nbsp;-&nbsp;
-                            {moment(item.endDate).format("YYYY-MM-DD ")}
+                            {moment(item.endDate).format("YYYY-MMM-DD")}
                           </Marquee>
                         </span>
                       ))}
