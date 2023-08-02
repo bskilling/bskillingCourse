@@ -620,7 +620,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                               email="jkdiadihsadsaio"
                               BatchName={props.trainingMetadata.batches || []}
                               price={props.trainingMetadata.price}
-                              course={`${props.category}`}
+                              course={`${props.trainingMetadata.name}`}
                               courseName={props.trainingMetadata.name}
                             />
                           ))}
