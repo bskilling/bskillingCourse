@@ -63,7 +63,7 @@ const LeadChatBox = () => {
 
       {isInitiateButtonVisible && (
         <button
-          className="bg-buttonBlue text-white rounded-xl text-sm absolute left-[50%] bottom-[60px] translate-x-[-50%] px-4 py-2"
+          className="bg-buttonBlue text-white rounded-md text-sm absolute left-[50%] bottom-[60px] translate-x-[-50%] px-4 py-2"
           onClick={initiateChat}
         >
           Initiate Chat
