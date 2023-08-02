@@ -12,7 +12,7 @@ const ChatForm = () => {
   const { control, handleSubmit, setValue } = useForm<IChatFormValue>({
     defaultValues: {
       text: "",
-    }
+    },
   });
 
   const submitHandler = handleSubmit((data) => {
@@ -30,7 +30,7 @@ const ChatForm = () => {
     if (event.code === "Enter" || event.code === "NumpadEnter") {
       submitHandler();
     }
-  }
+  };
 
   return (
     <div className="flex space-x-2 px-4 py-4">
@@ -56,6 +56,6 @@ const ChatForm = () => {
       </button>
     </div>
   );
-}
+};
 
 export default ChatForm;
