@@ -81,10 +81,10 @@ export default function FixedFooterBar() {
           <div className="flex  text-black justify-between gap-8">
             {floatWindowMode !== "none" && (
               <div
-                className={`flex flex-col   bg-white w-[400px]  scale-[0.9] h-[500px] fixed right-0  md:-right-3 bottom-16 md:bottom-9 z-[1000] transition-transform duration-700 shadow-md`}
+                className={`flex flex-col   bg-white w-[400px]  scale-[0.9] rounded-xl h-[500px] fixed right-0  md:-right-3 bottom-16 md:bottom-9 z-[1000] transition-transform duration-700 shadow-md`}
               >
                 <div
-                  className="p-3 flex items-center  bg-buttonBlue  h-[60px] cursor-pointer text-white"
+                  className="p-3 flex items-center  bg-buttonBlue rounded-t-xl h-[60px] cursor-pointer text-white"
                   onClick={() => setIsExpanded((prev) => !prev)}
                 >
                   <p className="flex-1 font-medium">
@@ -95,7 +95,7 @@ export default function FixedFooterBar() {
                   <p>
                     {floatWindowMode === "drop-a-query" ? (
                       <button
-                        className="flex items-center justify-center bg-buttonBlue z-[6000] shadow-md text-white text-3xl   w-[20px] h-[20px] rounded-full"
+                        className="flex items-center justify-center  bg-buttonBlue z-[6000] shadow-md text-white text-3xl   w-[20px] h-[20px] rounded-full"
                         onClick={() => setFloatWindowMode("none")}
                       >
                         <FaTimes />

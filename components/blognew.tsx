@@ -212,7 +212,7 @@ export default function Testimonials() {
           <div>
             <div className="flex pt-8 pb-6 justify-center">
               <Link href={"/blogs"}>
-                <button className=" text-white bg-Buttoncolor transition duration-500 hover:scale-105 ease-out   py-2 focus:ring-1 focus:outline-none focus:ring-buttonBlue font-medium  text-sm px-4  ">
+                <button className=" text-white rounded-xl bg-Buttoncolor transition duration-500 hover:scale-105 ease-out   py-2 focus:ring-1 focus:outline-none focus:ring-buttonBlue font-medium  text-sm px-4  ">
                   Read More
                 </button>
               </Link>
