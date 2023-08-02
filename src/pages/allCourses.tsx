@@ -55,7 +55,7 @@ const AllCourses = () => {
         `${process.env.NEXT_PUBLIC_TRAINING_BASE_URL}/api/outsource/trainingList?tenant=2`
       );
       const jsonData = response.data;
-      
+
       const catagoryList = Object.keys(jsonData.trainings);
       setDatas(catagoryList);
       const ListOfCourcesData = Object.values(jsonData.trainings);
@@ -144,10 +144,10 @@ const AllCourses = () => {
         />
       </Head>
       <section className="bg-gray">
-        <div className="flex pt-5 w-full">
-          <div className="flex md:gap-4 w-full">
-            <div className="flex justify-start w-full md:w-fit   ml-8 md:ml-20">
-              <div className="flex  items-end mt-3 mb-3 md:mb-2 gap-">
+        <div className="flex pt-5 px-8 w-full">
+          <div className="flex w-full gap-8 ">
+            <div className="flex justify-  w-full  md:w-fit md:">
+              <div className="flex items-center  mb-5 md:mb-2 gap-">
                 <button
                   className="text-left md:gap-0 gap-1 md:mt-0 mt-4 block  "
                   onClick={() => setCategoryVisible((pre) => !pre)}
@@ -163,7 +163,7 @@ const AllCourses = () => {
                 </div>
               </div>
               {categoryVisible ? (
-                <div className="absolute mt-[100px] md:mt-[75px] z-[1000] w-[]  bg-white  rounded-lg shadow-lg ">
+                <div className="absolute mt-[100px] md:mt-[90px] z-[1000] w-[]  bg-white  rounded-lg shadow-lg ">
                   {datas.map((categoryName, index) => (
                     <div
                       key={categoryName + index}
