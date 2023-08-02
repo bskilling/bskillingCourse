@@ -68,9 +68,9 @@ const Tabs: React.FC<TabProps> = ({ data }) => {
 
   return (
     <div className="flex w-full">
-      <div className="flex w-full md:gap-4">
-        <div className="flex justify-start w-full ml-8 md:w-fit md:ml-20">
-          <div className="flex items-end mb-5 md:mb-2 gap-">
+      <div className="flex w-full gap-8 ">
+        <div className="flex justify-  w-full  md:w-fit md:">
+          <div className="flex items-center  mb-5 md:mb-2 gap-">
             <button
               className="mt-4 text-left md:gap-0 md:mt-0 "
               onClick={() => setCategoryVisible((pre) => !pre)}
