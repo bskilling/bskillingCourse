@@ -597,7 +597,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                         ""
                       ) : (
                         <div className="pb-7" onClick={() => clickOnRegister()}>
-                          <button className="bg-buttonBlue text-white px-9 py-2 font-semibold text-xl mt-4">
+                          <button className="bg-buttonBlue rounded-xl text-white px-9 py-2 font-semibold text-xl mt-4">
                             <span>Enrol Me</span>
                           </button>
                         </div>

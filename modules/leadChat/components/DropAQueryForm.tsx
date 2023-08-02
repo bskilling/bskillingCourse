@@ -193,7 +193,7 @@ const DropAQueryForm = () => {
           <button
             onClick={submit}
             disabled={!isButtonVisble}
-            className={`text-white  transition duration-500 hover:scale-105 ease-out  placeholder:text-sm bg-buttonBlue hover:bg-buttonBlue py-2 focus:ring-1 focus:outline-none focus:ring-buttonBlue font-medium  text-sm px-4   ${
+            className={`text-white  transition duration-500  rounded-xl hover:scale-105 ease-out  placeholder:text-sm bg-buttonBlue hover:bg-buttonBlue py-2 focus:ring-1 focus:outline-none focus:ring-buttonBlue font-medium  text-sm px-4   ${
               isButtonVisble ? "opacity-100" : "opacity-50 "
             }`}
           >
