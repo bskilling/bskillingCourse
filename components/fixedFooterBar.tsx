@@ -81,7 +81,7 @@ export default function FixedFooterBar() {
           <div className="flex  text-black justify-between gap-8">
             {floatWindowMode !== "none" && (
               <div
-                className={`flex flex-col   bg-white w-[400px]   h-[500px] fixed right-0  md:right-0 bottom-16 md:bottom-16 z-[1000] transition-transform duration-700 shadow-md`}
+                className={`flex flex-col   bg-white w-[400px]  scale-[0.9] h-[500px] fixed right-0  md:-right-3 bottom-16 md:bottom-9 z-[1000] transition-transform duration-700 shadow-md`}
               >
                 <div
                   className="p-3 flex items-center  bg-buttonBlue  h-[60px] cursor-pointer text-white"

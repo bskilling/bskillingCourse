@@ -640,11 +640,11 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                               {item.name}{" "}
                               <div>
                                 {moment(item.startDate).format(
-                                  "YYYY-MM-DD HH:mm"
+                                  "YYYY-MMM-DD HH:mm"
                                 )}{" "}
                                 -{" "}
                                 {moment(item.endDate).format(
-                                  "YYYY-MM-DD HH:mm"
+                                  "YYYY-MMM-DD HH:mm"
                                 )}
                               </div>
                               <div></div>
