@@ -85,8 +85,9 @@ const PaymentStatus = () => {
               <p>
                 An automated payment receipt has been sent to your registered
                 email address. <br /> Please keep this transaction ID for
-                reference. For further assistance, please reach out to
-                support@bskilling.com.{" "}
+                reference. You will receive the LMS access details via mail
+                within 3 working days. For further assistance, please reach out
+                to support@bskilling.com.{" "}
               </p>
             ) : null}
           </div>
