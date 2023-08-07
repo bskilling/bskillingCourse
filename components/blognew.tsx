@@ -176,7 +176,7 @@ export default function Testimonials() {
                   <SwiperSlide key={index}>
                     <div
                       key={id}
-                      className="w- flex bg-white flex-col  lg:flex-1 min-h-[400px] justify-between bg-opacity-75   rounded-lg overflow-hidden text-center relative"
+                      className="w- flex bg-white flex-col  lg:flex-1 min-h-[300px] justify-between bg-opacity-75   rounded-lg overflow-hidden text-center relative"
                     >
                       <div>
                         <div className=" w-full transition duration-150 ease-out hover:ease-in hover:opacity-50">
