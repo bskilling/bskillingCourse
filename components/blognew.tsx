@@ -160,7 +160,7 @@ export default function Testimonials() {
               },
               1024: {
                 slidesPerView: 4,
-                slidesPerGroup: 4,
+                slidesPerGroup: 5,
                 spaceBetween: 20,
               },
             }}
@@ -176,7 +176,7 @@ export default function Testimonials() {
                   <SwiperSlide key={index}>
                     <div
                       key={id}
-                      className="w-fit flex bg-white flex-col lg:flex-1 min-h-[400px] justify-between bg-opacity-75   rounded-lg overflow-hidden text-center relative"
+                      className="w- flex bg-white flex-col  lg:flex-1 min-h-[400px] justify-between bg-opacity-75   rounded-lg overflow-hidden text-center relative"
                     >
                       <div>
                         <div className=" w-full transition duration-150 ease-out hover:ease-in hover:opacity-50">
@@ -196,11 +196,11 @@ export default function Testimonials() {
                         <p className="text-left text-sm  px-3 ">
                           Author : {auth}
                         </p>
-                        <p className="leading-relaxed px-3 mb-5 mt-2 text-sm  text-left">
+                        {/* <p className="leading-relaxed px-3 mb-5 mt-2 text-sm  text-left">
                           {desc.length > 100
                             ? desc.substring(0, 100) + "..."
                             : desc}
-                        </p>
+                        </p> */}
                       </div>
                     </div>
                   </SwiperSlide>

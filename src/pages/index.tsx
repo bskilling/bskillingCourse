@@ -1,5 +1,5 @@
 import Blogs from "components/blognew";
-import CertifiedPartners from "components/certifiedPartners";
+import CertifiedPartners from "components/certfiedPratnersSilder";
 import ListOfCourses from "components/listOfCourses";
 import Slider from "components/slider";
 import Tabs from "components/tabs";
