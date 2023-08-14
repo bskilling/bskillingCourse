@@ -22,7 +22,7 @@ const DropAQueryForm = () => {
     watch("location") &&
     watch("name") &&
     CountryCodeValue;
- 
+
   const submit = handleSubmit(async (data) => {
     try {
       const response = await fetch(
@@ -100,22 +100,10 @@ const DropAQueryForm = () => {
             placeholder="Your Mobile Number*"
             {...register("phone", {
               required: true,
-              minLength: 10,
-              maxLength: 10,
             })}
           />
         </div>
 
-        {/* <input
-          type="number"
-          className=" block  w-full lg:h-[35px] placeholder:text-sm  px-2 border border-buttonBlue    focus:border-green focus:ring focus:ring-green focus:ring-opacity-50"
-          placeholder="Your Mobile Number*"
-          {...register("phone", {
-            required: true,
-            minLength: 10,
-            maxLength: 10,
-          })}
-        /> */}
         <label
           className={`text-red-600   text-xs py-1 ${
             errors.phone ? "visible" : "invisible"
