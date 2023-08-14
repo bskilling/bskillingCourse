@@ -174,24 +174,21 @@ const Home: NextPage<NextPage> = ({}) => {
             </div>
           </div>
           <div className="md:flex hidden">
-            <div className="relative">
-              <div className="absolute w-[100%] flex  ">
-                <div className="flex w-[100%] text-white mt-9 justify-center">
-                  <p className="font-bold font-SourceSans text-xl text-center py-2 ">
+            <div className="relative ">
+              <div className="absolute md:mt-16 w-[100%] flex  ">
+                <div className=" w-[50%]  pl-24 text-white md:mt-9 justify-center">
+                  <p className="font-bold font-SourceSans text- text-xl  py-2 ">
                     Learn On The App
                   </p>
-                </div>
-              </div>
-              <div className="absolute text-white  flex items-center  justify-center mt-16  w-[100%]">
-                <div>
                   <p className="text-lg pt-12 text-white text-opacity-100 font-semibold font-SourceSans  py-2 px-1">
-                    Download the lessons and learn anytime, anywhere from the
-                    courses available on our app.
+                    Download the lessons and learn anytime, <br /> anywhere from
+                    the courses available on our app.
                   </p>
                 </div>
               </div>
+
               <img
-                src="qebg.png"
+                src="qebg2.png"
                 alt="QR Code"
                 className="w-full  object-contain h-auto"
               />
