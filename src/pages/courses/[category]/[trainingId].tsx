@@ -1,9 +1,12 @@
+import PdfFile from "@/pages/Pdffile";
+import { PDFDownloadLink } from "@react-pdf/renderer";
 import axios from "axios";
 import Accordion from "components/accordion";
 import AccordionFaq from "components/accordionFaq";
 import CourseSlider from "components/courseSlider";
 import LandingPageFooter from "components/landingPageFooter";
 import RegisterForm from "components/registerForm";
+import { Console } from "console";
 import { motion } from "framer-motion";
 import DropAQueryForm from "modules/leadChat/components/DropAQueryForm";
 import moment from "moment";
@@ -70,6 +73,52 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
   const [showFixedLandingFooter, setShowFixedLandingFooter] = useState(false);
   const [registerVisible, setRegisterVisible] = useState(false);
 
+  const [pdfUrl, setPdfUrl] = useState<string | null>(null);
+  console.log(props.trainingMetadata, "meta data");
+  const generatePDF = async () => {
+    try {
+      const response = await axios.post(
+        "/api/generate-pdf",
+        {
+          title: props.trainingMetadata?.name,
+          bodyText: props.trainingMetadata?.body,
+          overview: props.trainingMetadata?.overview,
+          objectives: props.trainingMetadata?.objectives,
+          Prerequisites: props.trainingMetadata?.prerequisites,
+          skillsCovered: props.trainingMetadata?.skillsCovered,
+          audience: props.trainingMetadata?.audience,
+          KeyFeatures: props.trainingMetadata?.keyFeatures,
+          Resources: props.trainingMetadata?.resources,
+          benefites: props.trainingMetadata?.benefites,
+          curriculum: props.trainingMetadata?.curriculum,
+          outcomes: props.trainingMetadata?.outcomes,
+          certification: props.trainingMetadata?.certificationText,
+          certificationImage: props.trainingMetadata?.certificationImage,
+          faq: props.trainingMetadata?.faqs,
+
+          price: props.trainingMetadata?.price,
+          level: props.trainingMetadata?.level,
+          trainingType: props.trainingMetadata?.trainingType,
+          duration: props.trainingMetadata?.duration,
+          headLine: props.trainingMetadata?.headLine,
+        },
+        {
+          responseType: "blob", // To receive binary data (PDF)
+        }
+      );
+
+      // Create a blob URL for the PDF response
+      const blob = new Blob([response.data], { type: "application/pdf" });
+      const pdfUrl = URL.createObjectURL(blob);
+
+      setPdfUrl(pdfUrl);
+    } catch (error) {
+      console.error("Error generating PDF:", error);
+    }
+  };
+  useEffect(() => {
+    generatePDF();
+  }, []);
   useEffect(() => {
     function handleScroll() {
       const scrollPosition = window.scrollY;
@@ -104,7 +153,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
       maximumFractionDigits: 0,
     }
   );
-  console.log(props, "setpropskf");
+
   const calculateDiscountedPrice = () => {
     const formattedPrice = props.trainingMetadata?.price ?? "0";
     const priceAsNumber = parseFloat(String(formattedPrice));
@@ -128,9 +177,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
     setRegisterVisible(true);
   };
 
-  useEffect(() => {
-    console.log(props.trainingMetadata);
-  }, [props.trainingMetadata]);
+  useEffect(() => {}, [props.trainingMetadata]);
 
   return (
     <>
@@ -518,6 +565,11 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                     </div>
                   </div>
                   {/* first sections second card */}
+                  {pdfUrl && (
+                    <a href={pdfUrl} download>
+                      Download PDF
+                    </a>
+                  )}
                 </div>
 
                 {/* side tab content here */}
