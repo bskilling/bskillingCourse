@@ -8,7 +8,8 @@ import { MyContext } from "context/PageContext";
 import { NextPage } from "next";
 import Head from "next/head";
 import { useContext, useEffect, useState } from "react";
-
+import { PDFDownloadLink } from "@react-pdf/renderer";
+import PdfFile from "../pages/Pdffile";
 import axios from "axios";
 interface UpcomingBatch {
   capacity: string;
@@ -198,6 +199,9 @@ const Home: NextPage<NextPage> = ({}) => {
           </div>
         </section>
       </section>
+      {/* <PDFDownloadLink document={<PdfFile />}>
+        <button>Download</button>
+      </PDFDownloadLink> */}
     </>
   );
 };
