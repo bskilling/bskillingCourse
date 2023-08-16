@@ -343,7 +343,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                     {props.trainingMetadata.body}
                   </div>
 
-                  {pdfUrl && (
+                  {/* {pdfUrl && (
                     <a
                       style={{ textDecoration: "none" }}
                       className="md:hidden  underline-0 pt-14 flex justify-center "
@@ -360,7 +360,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                         <div className="flex text flex-col"></div>
                       </div>
                     </a>
-                  )}
+                  )} */}
                 </div>
 
                 {/* //////////////////////////////////////rating and course name section //////////////////////////////////////////////////////////*/}
