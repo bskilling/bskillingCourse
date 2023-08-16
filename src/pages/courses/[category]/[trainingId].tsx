@@ -1,9 +1,12 @@
+import PdfFile from "@/pages/Pdffile";
+import { PDFDownloadLink } from "@react-pdf/renderer";
 import axios from "axios";
 import Accordion from "components/accordion";
 import AccordionFaq from "components/accordionFaq";
 import CourseSlider from "components/courseSlider";
 import LandingPageFooter from "components/landingPageFooter";
 import RegisterForm from "components/registerForm";
+import { Console } from "console";
 import { motion } from "framer-motion";
 import DropAQueryForm from "modules/leadChat/components/DropAQueryForm";
 import moment from "moment";
@@ -13,7 +16,7 @@ import { useEffect, useState } from "react";
 import { BiTime } from "react-icons/bi";
 import { BsFillPeopleFill, BsTelephone } from "react-icons/bs";
 import { FaTimes } from "react-icons/fa";
-
+import { MdDownloadForOffline } from "react-icons/md";
 type Batch = {
   id: string;
   name: string;
@@ -70,6 +73,51 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
   const [showFixedLandingFooter, setShowFixedLandingFooter] = useState(false);
   const [registerVisible, setRegisterVisible] = useState(false);
 
+  const [pdfUrl, setPdfUrl] = useState<string | null>(null);
+
+  const generatePDF = async () => {
+    try {
+      const response = await axios.post(
+        "/api/generate-pdf",
+        {
+          title: props.trainingMetadata?.name,
+          bodyText: props.trainingMetadata?.body,
+          overview: props.trainingMetadata?.overview,
+          objectives: props.trainingMetadata?.objectives,
+          Prerequisites: props.trainingMetadata?.prerequisites,
+          skillsCovered: props.trainingMetadata?.skillsCovered,
+          audience: props.trainingMetadata?.audience,
+          KeyFeatures: props.trainingMetadata?.keyFeatures,
+          Resources: props.trainingMetadata?.resources,
+          benefites: props.trainingMetadata?.benefites,
+          curriculum: props.trainingMetadata?.curriculum,
+          outcomes: props.trainingMetadata?.outcomes,
+          certification: props.trainingMetadata?.certificationText,
+          certificationImage: props.trainingMetadata?.certificationImage,
+          faq: props.trainingMetadata?.faqs,
+
+          price: props.trainingMetadata?.price,
+          level: props.trainingMetadata?.level,
+          trainingType: props.trainingMetadata?.trainingType,
+          duration: props.trainingMetadata?.duration,
+          headLine: props.trainingMetadata?.headLine,
+        },
+        {
+          responseType: "blob", // To receive binary data (PDF)
+        }
+      );
+
+      // Create a blob URL for the PDF response
+      const blob = new Blob([response.data], { type: "application/pdf" });
+      const pdfUrl = URL.createObjectURL(blob);
+      setPdfUrl(pdfUrl);
+    } catch (error) {
+      console.error("Error generating PDF:", error);
+    }
+  };
+  useEffect(() => {
+    generatePDF();
+  }, []);
   useEffect(() => {
     function handleScroll() {
       const scrollPosition = window.scrollY;
@@ -104,7 +152,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
       maximumFractionDigits: 0,
     }
   );
-  console.log(props, "setpropskf");
+
   const calculateDiscountedPrice = () => {
     const formattedPrice = props.trainingMetadata?.price ?? "0";
     const priceAsNumber = parseFloat(String(formattedPrice));
@@ -128,9 +176,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
     setRegisterVisible(true);
   };
 
-  useEffect(() => {
-    console.log(props.trainingMetadata);
-  }, [props.trainingMetadata]);
+  useEffect(() => {}, [props.trainingMetadata]);
 
   return (
     <>
@@ -168,9 +214,9 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
           <section>
             <div className="relative border  md:h-[550px] w-auto md:min-h-[400px] min-h-[900px]  h-fit">
               <div
-                className="h-full absolute top-0 left-0 w-full   brightness-50"
+                className="h-full absolute top-0 left-0 w-full"
                 style={{
-                  backgroundImage: `url(${"/education.png"})`,
+                  backgroundImage: `url(${"/education2.png"})`,
                   // backgroundImage: `url(${"/bgcrs.jpg"})`,
                   backgroundSize: "cover",
                   objectFit: "contain",
@@ -189,9 +235,30 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                       </p>
                     </div>
                   </div>
-                  <motion.div className="bg-glass text-xl text-left px-5 md:px-0 md:pt-0 pt-3 md:text-xl font-semibold">
-                    {props.trainingMetadata.headLine}
-                  </motion.div>
+                  <div className="flex justify-between">
+                    <motion.div className="bg-glass text-xl text-left px-5 md:px-0 md:pt-0 pt-3 md:text-xl font-semibold">
+                      {props.trainingMetadata.headLine}
+                    </motion.div>
+
+                    {pdfUrl && (
+                      <a
+                        style={{ textDecoration: "none" }}
+                        className="md:block  underline-0 hidden mr-14"
+                        href={pdfUrl}
+                        download={`bSkilling_${props.trainingMetadata.name}_Brochure`}
+                      >
+                        <div className="  mr-14 text-white flex ">
+                          <div className="flex gap-2">
+                            <MdDownloadForOffline color="white" size={60} />{" "}
+                            <p>
+                              Download <br /> Brochure
+                            </p>{" "}
+                          </div>
+                          <div className="flex text flex-col"></div>
+                        </div>
+                      </a>
+                    )}
+                  </div>
 
                   <motion.div className=" flex  flex-col md:flex-row pt-7 pb-7 md:gap-6 text-left px-5 md:px-0  md:items-center">
                     <div>
@@ -275,6 +342,25 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                   <div className="mt-2 font-base md:p-0 p-4  md:text-left text-justify md:w-[100%]">
                     {props.trainingMetadata.body}
                   </div>
+
+                  {pdfUrl && (
+                    <a
+                      style={{ textDecoration: "none" }}
+                      className="md:hidden  underline-0 pt-14 flex justify-center "
+                      href={pdfUrl}
+                      download={`bSkilling_${props.trainingMetadata.name}_Brochure`}
+                    >
+                      <div className="  mr-14 text-white flex ">
+                        <div className="flex gap-2">
+                          <MdDownloadForOffline color="white" size={60} />{" "}
+                          <p>
+                            Download <br /> Brochure
+                          </p>{" "}
+                        </div>
+                        <div className="flex text flex-col"></div>
+                      </div>
+                    </a>
+                  )}
                 </div>
 
                 {/* //////////////////////////////////////rating and course name section //////////////////////////////////////////////////////////*/}
@@ -297,8 +383,10 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                 <div className="flex flex-col md:flex-1  gap-5 h-fit    ">
                   <div className="bg-white px-5 md:px-12 w-full min-h-[1220px]  pb-8  rounded-xl">
                     <div id="Overview" className="h-12 "></div>
-                    <div>
-                      <p className="mt-2 text-2xl font-bold   mb-4">Overview</p>
+                    <div className="mt-2 mb-3">
+                      <div className="flex justify-between">
+                        <p className=" text-2xl font-bold   mb-4">Overview</p>
+                      </div>
                       <p className="   ">{props.trainingMetadata.overview}</p>
                       <div id="Objectives" className="h-12 "></div>
                       <div className=" flex md:flex-row flex-col">
