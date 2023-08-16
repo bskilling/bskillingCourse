@@ -115,9 +115,9 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
       console.error("Error generating PDF:", error);
     }
   };
-  useEffect(() => {
-    generatePDF();
-  }, []);
+  // useEffect(() => {
+  //   generatePDF();
+  // }, []);
   useEffect(() => {
     function handleScroll() {
       const scrollPosition = window.scrollY;
@@ -240,7 +240,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                       {props.trainingMetadata.headLine}
                     </motion.div>
 
-                    {pdfUrl && (
+                    {/* {pdfUrl && (
                       <a
                         style={{ textDecoration: "none" }}
                         className="md:block  underline-0 hidden mr-14"
@@ -257,7 +257,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                           <div className="flex text flex-col"></div>
                         </div>
                       </a>
-                    )}
+                    )} */}
                   </div>
 
                   <motion.div className=" flex  flex-col md:flex-row pt-7 pb-7 md:gap-6 text-left px-5 md:px-0  md:items-center">
