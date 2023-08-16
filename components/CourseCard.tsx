@@ -38,7 +38,7 @@ interface ListOfCoursesDataType {
   trainingTye: string;
 }
 const CourseCard: React.FC<CourseCardProps> = ({ data }) => {
-  console.log(data);
+
 
   const calculateDiscountedPrice = () => {
     if (data.discount === 0) {
