@@ -109,12 +109,26 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
 
       // Create a blob URL for the PDF response
       const blob = new Blob([response.data], { type: "application/pdf" });
-      const pdfUrl = URL.createObjectURL(blob);
-      setPdfUrl(pdfUrl);
+      // const pdfUrl = URL.createObjectURL(blob);
+      // setPdfUrl(pdfUrl);
+
+      return URL.createObjectURL(blob);
     } catch (error) {
       console.error("Error generating PDF:", error);
     }
   };
+
+  const handleGeneratePdf = async () => {
+    const urlPdf = await generatePDF();
+    const fileName = props.trainingMetadata?.name;
+    if (urlPdf && fileName) {
+      const a = document.createElement("a");
+      a.href = urlPdf;
+      a.download = `bSkilling_${fileName}_Brochure`;
+      a.click();
+    }
+  };
+
   // useEffect(() => {
   //   generatePDF();
   // }, []);
@@ -240,24 +254,21 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                       {props.trainingMetadata.headLine}
                     </motion.div>
 
-                    {/* {pdfUrl && (
-                      <a
-                        style={{ textDecoration: "none" }}
-                        className="md:block  underline-0 hidden mr-14"
-                        href={pdfUrl}
-                        download={`bSkilling_${props.trainingMetadata.name}_Brochure`}
-                      >
-                        <div className="  mr-14 text-white flex ">
-                          <div className="flex gap-2">
-                            <MdDownloadForOffline color="white" size={60} />{" "}
-                            <p>
-                              Download <br /> Brochure
-                            </p>{" "}
-                          </div>
-                          <div className="flex text flex-col"></div>
+                    <button
+                      onClick={handleGeneratePdf}
+                      style={{ textDecoration: "none" }}
+                      className="md:block  underline-0 hidden mr-14"
+                    >
+                      <div className="  mr-14 text-white flex ">
+                        <div className="flex gap-2">
+                          <MdDownloadForOffline color="white" size={60} />
+                          <p>
+                            Download <br /> Brochure
+                          </p>
                         </div>
-                      </a>
-                    )} */}
+                        <div className="flex text flex-col"></div>
+                      </div>
+                    </button>
                   </div>
 
                   <motion.div className=" flex  flex-col md:flex-row pt-7 pb-7 md:gap-6 text-left px-5 md:px-0  md:items-center">
@@ -343,24 +354,21 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                     {props.trainingMetadata.body}
                   </div>
 
-                  {/* {pdfUrl && (
-                    <a
-                      style={{ textDecoration: "none" }}
-                      className="md:hidden  underline-0 pt-14 flex justify-center "
-                      href={pdfUrl}
-                      download={`bSkilling_${props.trainingMetadata.name}_Brochure`}
-                    >
-                      <div className="  mr-14 text-white flex ">
-                        <div className="flex gap-2">
-                          <MdDownloadForOffline color="white" size={60} />{" "}
-                          <p>
-                            Download <br /> Brochure
-                          </p>{" "}
-                        </div>
-                        <div className="flex text flex-col"></div>
+                  <button
+                    onClick={handleGeneratePdf}
+                    style={{ textDecoration: "none" }}
+                    className="md:hidden  underline-0 block mr-14"
+                  >
+                    <div className="  mr-14 text-white flex ">
+                      <div className="flex gap-2">
+                        <MdDownloadForOffline color="white" size={60} />
+                        <p>
+                          Download <br /> Brochure
+                        </p>
                       </div>
-                    </a>
-                  )} */}
+                      <div className="flex text flex-col"></div>
+                    </div>
+                  </button>
                 </div>
 
                 {/* //////////////////////////////////////rating and course name section //////////////////////////////////////////////////////////*/}
