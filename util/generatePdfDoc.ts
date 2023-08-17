@@ -1,9 +1,10 @@
-import { NextApiRequest, NextApiResponse } from "next";
 import PDFDocument, { x } from "pdfkit";
+import blobStream from "blob-stream";
 
-const generatePDF = async (req: NextApiRequest, res: NextApiResponse) => {
+export const generateDocPdf = (input: any) => {
   const doc = new PDFDocument();
-  doc.pipe(res);
+  const stream = doc.pipe(blobStream());
+
   doc.registerFont("customFontBold", "public/fonts/SourceSansPro-Bold.ttf");
   doc.registerFont("regular", "public/fonts/SourceSansPro-Regular.ttf");
   doc.registerFont("semibold", "public/fonts/SourceSansPro-Semibold.ttf");
@@ -23,7 +24,7 @@ const generatePDF = async (req: NextApiRequest, res: NextApiResponse) => {
   const bottomY = doc.page.height - imageHeight + 50; // Adjust the spacing as needed
   doc.y = bottomY;
 
-  const title = req.body.title;
+  const title = input.title;
   doc
     .font("customFontBold")
     .fontSize(18)
@@ -65,7 +66,7 @@ const generatePDF = async (req: NextApiRequest, res: NextApiResponse) => {
   doc.moveDown(0.15);
 
   doc.addPage();
-  const { price, level, trainingType, duration, headLine } = req.body;
+  const { price, level, trainingType, duration, headLine } = input;
 
   doc.font("semibold").fontSize(16).fillColor("#125582").text(`${headLine}`);
   doc.moveDown(0.5);
@@ -82,12 +83,12 @@ const generatePDF = async (req: NextApiRequest, res: NextApiResponse) => {
   doc.fontSize(13).font("semibold").text(`Duration: ${duration}`);
   doc.moveDown(0.5);
   doc.moveDown(0.13);
-  const bodyText = req.body.bodyText;
+  const bodyText = input.bodyText;
   doc.moveDown(0.5);
   doc.font("regular").fontSize(12).text(bodyText);
   doc.moveDown(0.9);
   // Add the overview text from the request body to the PDF
-  const overviewText = req.body.overview;
+  const overviewText = input.overview;
   doc.moveDown(0.2);
 
   doc
@@ -106,7 +107,7 @@ const generatePDF = async (req: NextApiRequest, res: NextApiResponse) => {
     .fillColor("#135582")
     .text("Objectives", { align: "left" }); //title objectives
   doc.moveDown(0.5);
-  const objectives = req.body.objectives;
+  const objectives = input.objectives;
   if (objectives && objectives.length > 0) {
     doc.fontSize(12);
     for (const objective of objectives) {
@@ -124,7 +125,7 @@ const generatePDF = async (req: NextApiRequest, res: NextApiResponse) => {
     .text("Prerequisites", { align: "left" }); //title objectives
   doc.moveDown(0.5);
 
-  const Prerequisites = req.body.Prerequisites;
+  const Prerequisites = input.Prerequisites;
   if (Prerequisites && Prerequisites.length > 0) {
     doc.font("regular").fontSize(12);
     for (const objective of Prerequisites) {
@@ -141,7 +142,7 @@ const generatePDF = async (req: NextApiRequest, res: NextApiResponse) => {
     .fillColor("#135582")
     .text("Skills Covered", { align: "left" }); //title objectives
   doc.moveDown(0.5);
-  const skillsCovered = req.body.skillsCovered;
+  const skillsCovered = input.skillsCovered;
   if (skillsCovered && skillsCovered.length > 0) {
     doc.fontSize(12);
     for (let i = 0; i < skillsCovered.length; i++) {
@@ -159,7 +160,7 @@ const generatePDF = async (req: NextApiRequest, res: NextApiResponse) => {
     .fillColor("#135582")
     .text("Audience", { align: "left" }); //title objectives
   doc.moveDown(0.5);
-  const audience = req.body.audience;
+  const audience = input.audience;
   if (audience && audience.length > 0) {
     doc.font("regular").fontSize(12);
     for (let i = 0; i < audience.length; i++) {
@@ -177,7 +178,7 @@ const generatePDF = async (req: NextApiRequest, res: NextApiResponse) => {
     .fillColor("#135582")
     .text("Key Features", { align: "left" }); //title objectives
   doc.moveDown(0.5);
-  const KeyFeatures = req.body.KeyFeatures;
+  const KeyFeatures = input.KeyFeatures;
   if (KeyFeatures && KeyFeatures.length > 0) {
     doc.fontSize(12);
     for (let i = 0; i < KeyFeatures.length; i++) {
@@ -195,7 +196,7 @@ const generatePDF = async (req: NextApiRequest, res: NextApiResponse) => {
     .fillColor("#135582")
     .text("Resources", { align: "left" }); //title objectives
   doc.moveDown(0.5);
-  const Resources = req.body.Resources;
+  const Resources = input.Resources;
   if (Resources && Resources.length > 0) {
     doc.fontSize(12);
     for (let i = 0; i < Resources.length; i++) {
@@ -213,7 +214,7 @@ const generatePDF = async (req: NextApiRequest, res: NextApiResponse) => {
     .fillColor("#135582")
     .text("Benefits", { align: "left" }); //title objectives
   doc.moveDown(0.5);
-  const benefites = req.body.benefites;
+  const benefites = input.benefites;
   if (benefites && benefites.length > 0) {
     doc.fontSize(12);
     for (let i = 0; i < benefites.length; i++) {
@@ -236,7 +237,7 @@ const generatePDF = async (req: NextApiRequest, res: NextApiResponse) => {
   doc.moveDown(0.5); // Adjust the value as needed (in inches)
 
   // Add the curriculum with chapters and lessons
-  const curriculum = req.body.curriculum;
+  const curriculum = input.curriculum;
   if (curriculum && curriculum.length > 0) {
     doc.fontSize(13);
     for (let i = 0; i < curriculum.length; i++) {
@@ -271,7 +272,7 @@ const generatePDF = async (req: NextApiRequest, res: NextApiResponse) => {
     .fillColor("#135582")
     .text("Outcomes", { align: "left" }); //title objectives
   doc.moveDown(0.5);
-  const outcomes = req.body.outcomes;
+  const outcomes = input.outcomes;
   if (outcomes && outcomes.length > 0) {
     doc.fontSize(12);
     for (let i = 0; i < outcomes.length; i++) {
@@ -283,7 +284,7 @@ const generatePDF = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   doc.moveDown(0.9);
-  const certification = req.body.certification;
+  const certification = input.certification;
   doc
     .font("customFontBold")
     .fontSize(15)
@@ -304,7 +305,7 @@ const generatePDF = async (req: NextApiRequest, res: NextApiResponse) => {
   doc.moveDown(0.5); // Adjust the value as needed (in inches)
 
   // Add the curriculum with chapters and lessons
-  const faq = req.body.faq;
+  const faq = input.faq;
   if (faq && faq.length > 0) {
     doc.fontSize(13);
     for (let i = 0; i < faq.length; i++) {
@@ -331,6 +332,6 @@ const generatePDF = async (req: NextApiRequest, res: NextApiResponse) => {
     doc.fontSize(12).text(`Page ${pageNumber}`, { align: "right" });
   });
   doc.end();
-};
 
-export default generatePDF;
+  return stream;
+};
