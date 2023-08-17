@@ -107,10 +107,9 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
         }
       );
 
-      // Create a blob URL for the PDF response
+      
       const blob = new Blob([response.data], { type: "application/pdf" });
-      // const pdfUrl = URL.createObjectURL(blob);
-      // setPdfUrl(pdfUrl);
+      
 
       return URL.createObjectURL(blob);
     } catch (error) {
@@ -254,7 +253,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                       {props.trainingMetadata.headLine}
                     </motion.div>
 
-                    <button
+                    {/* <button
                       onClick={handleGeneratePdf}
                       style={{ textDecoration: "none" }}
                       className="md:block  underline-0 hidden mr-14"
@@ -268,7 +267,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                         </div>
                         <div className="flex text flex-col"></div>
                       </div>
-                    </button>
+                    </button> */}
                   </div>
 
                   <motion.div className=" flex  flex-col md:flex-row pt-7 pb-7 md:gap-6 text-left px-5 md:px-0  md:items-center">
@@ -354,21 +353,21 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                     {props.trainingMetadata.body}
                   </div>
 
-                  <button
-                    onClick={handleGeneratePdf}
-                    style={{ textDecoration: "none" }}
-                    className="md:hidden  underline-0 block mr-14"
-                  >
-                    <div className="  mr-14 text-white flex ">
-                      <div className="flex gap-2">
-                        <MdDownloadForOffline color="white" size={60} />
-                        <p>
-                          Download <br /> Brochure
-                        </p>
+                  {/* <button
+                      onClick={handleGeneratePdf}
+                      style={{ textDecoration: "none" }}
+                      className="md:hidden  underline-0 block mr-14"
+                    >
+                      <div className="  mr-14 text-white flex ">
+                        <div className="flex gap-2">
+                          <MdDownloadForOffline color="white" size={60} />
+                          <p>
+                            Download <br /> Brochure
+                          </p>
+                        </div>
+                        <div className="flex text flex-col"></div>
                       </div>
-                      <div className="flex text flex-col"></div>
-                    </div>
-                  </button>
+                    </button> */}
                 </div>
 
                 {/* //////////////////////////////////////rating and course name section //////////////////////////////////////////////////////////*/}
