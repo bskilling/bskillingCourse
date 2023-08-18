@@ -352,9 +352,9 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                   <button
                     onClick={handleGeneratePdf}
                     style={{ textDecoration: "none" }}
-                    className="md:hidden  underline-0 block mr-14"
+                    className="md:hidden  w-full underline-0 block mr-14"
                   >
-                    <div className="  mr-14 text-white flex ">
+                    <div className="  mt-12 flex justify-center text-white  ">
                       <div className="flex gap-2">
                         <MdDownloadForOffline color="white" size={60} />
                         <p>
