@@ -66,6 +66,7 @@ type TrainingMetadataShape = {
 
 type TrainingMetadataProps = {
   category: string;
+  trainingId: string;
   trainingMetadata: TrainingMetadataShape | null;
 };
 
@@ -74,12 +75,14 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
   const [registerVisible, setRegisterVisible] = useState(false);
 
   const [pdfUrl, setPdfUrl] = useState<string | null>(null);
-
+  const [loadingVisible, setLoadingVisible] = useState(false);
   const generatePDF = async () => {
     try {
+      setLoadingVisible(true);
       const response = await axios.post(
-        "/api/generate-pdf",
+        "https://tooejiytepk5pybi4mxtsmne4i0qybvm.lambda-url.ap-south-1.on.aws/",
         {
+          id: props.trainingId,
           title: props.trainingMetadata?.name,
           bodyText: props.trainingMetadata?.body,
           overview: props.trainingMetadata?.overview,
@@ -95,25 +98,18 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
           certification: props.trainingMetadata?.certificationText,
           certificationImage: props.trainingMetadata?.certificationImage,
           faq: props.trainingMetadata?.faqs,
-
           price: props.trainingMetadata?.price,
           level: props.trainingMetadata?.level,
           trainingType: props.trainingMetadata?.trainingType,
           duration: props.trainingMetadata?.duration,
           headLine: props.trainingMetadata?.headLine,
-        },
-        {
-          responseType: "blob", // To receive binary data (PDF)
         }
       );
-
-      
-      const blob = new Blob([response.data], { type: "application/pdf" });
-      
-
-      return URL.createObjectURL(blob);
+      return response.data.url;
     } catch (error) {
       console.error("Error generating PDF:", error);
+    } finally {
+      setLoadingVisible(false);
     }
   };
 
@@ -123,7 +119,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
     if (urlPdf && fileName) {
       const a = document.createElement("a");
       a.href = urlPdf;
-      a.download = `bSkilling_${fileName}_Brochure`;
+      a.download = `bSkilling_${fileName}_Brochure.pdf`;
       a.click();
     }
   };
@@ -253,7 +249,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                       {props.trainingMetadata.headLine}
                     </motion.div>
 
-                    {/* <button
+                    <button
                       onClick={handleGeneratePdf}
                       style={{ textDecoration: "none" }}
                       className="md:block  underline-0 hidden mr-14"
@@ -267,7 +263,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                         </div>
                         <div className="flex text flex-col"></div>
                       </div>
-                    </button> */}
+                    </button>
                   </div>
 
                   <motion.div className=" flex  flex-col md:flex-row pt-7 pb-7 md:gap-6 text-left px-5 md:px-0  md:items-center">
@@ -353,21 +349,21 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                     {props.trainingMetadata.body}
                   </div>
 
-                  {/* <button
-                      onClick={handleGeneratePdf}
-                      style={{ textDecoration: "none" }}
-                      className="md:hidden  underline-0 block mr-14"
-                    >
-                      <div className="  mr-14 text-white flex ">
-                        <div className="flex gap-2">
-                          <MdDownloadForOffline color="white" size={60} />
-                          <p>
-                            Download <br /> Brochure
-                          </p>
-                        </div>
-                        <div className="flex text flex-col"></div>
+                  <button
+                    onClick={handleGeneratePdf}
+                    style={{ textDecoration: "none" }}
+                    className="md:hidden  underline-0 block mr-14"
+                  >
+                    <div className="  mr-14 text-white flex ">
+                      <div className="flex gap-2">
+                        <MdDownloadForOffline color="white" size={60} />
+                        <p>
+                          Download <br /> Brochure
+                        </p>
                       </div>
-                    </button> */}
+                      <div className="flex text flex-col"></div>
+                    </div>
+                  </button>
                 </div>
 
                 {/* //////////////////////////////////////rating and course name section //////////////////////////////////////////////////////////*/}
@@ -792,6 +788,25 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
               </div>
             </motion.div>
           </section>
+          {loadingVisible === true ? (
+            <div
+              className="inset-0 bg-[#3d3c3d] opacity-75 fixed  flex w-full h-full items-center justify-center duration-300 transition-opacity"
+              style={{ zIndex: 6000 }}
+            >
+              <div className="flex-col">
+                <div className="w-24 h-24 ">
+                  <div className="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-[#3d3c3d] opacity-75 flex flex-col items-center justify-center">
+                    <div className="loader ease-linear rounded-full border-8 border-t-4 border-buttonBlue h-16 w-16 mb-4"></div>
+                    <h2 className="text-center text-white text-xl font-semibold">
+                      Loading...
+                    </h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ) : (
+            ""
+          )}
         </section>
       )}
     </>
@@ -820,6 +835,7 @@ export const getServerSideProps: GetServerSideProps<
     props: {
       category,
       trainingMetadata,
+      trainingId,
     },
   };
 };
