@@ -252,16 +252,13 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                     <button
                       onClick={handleGeneratePdf}
                       style={{ textDecoration: "none" }}
-                      className="md:block  underline-0 hidden mr-14"
+                      className="md:block  underline-0  hidden mr-14"
                     >
-                      <div className="  mr-14 text-white flex ">
-                        <div className="flex gap-2">
-                          <MdDownloadForOffline color="white" size={60} />
-                          <p>
-                            Download <br /> Brochure
-                          </p>
+                      <div className=" bg-white opa  rounded-md py-2 text-white flex w-[]">
+                        <div className="flex gap-2"></div>
+                        <div className="flex w-full px-2  font-semibold text-xl  text-blue-600  flex-col">
+                          Download Brochure
                         </div>
-                        <div className="flex text flex-col"></div>
                       </div>
                     </button>
                   </div>
@@ -354,14 +351,11 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                     style={{ textDecoration: "none" }}
                     className="md:hidden  w-full underline-0 block mr-14"
                   >
-                    <div className="  mt-12 flex justify-center text-white  ">
-                      <div className="flex gap-2">
-                        <MdDownloadForOffline color="white" size={60} />
-                        <p>
-                          Download <br /> Brochure
-                        </p>
+                    <div className="  mt-12 flex justify-center text-white  opa  rounded-md py-2  ">
+                      <div className="flex gap-2"></div>
+                      <div className="flex  px-2  rounded-md py-2 font-semibold text-xl bg-white w-fit text-blue-600  flex-col">
+                        Download Brochure
                       </div>
-                      <div className="flex text flex-col"></div>
                     </div>
                   </button>
                 </div>
