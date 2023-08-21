@@ -237,15 +237,15 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
               </div>
               <div className="  w-full z-[1000] relative  flex  justify-center  text-white">
                 <div className="md:w-[100%] md:basis-[90%] md:mt-10 mt-12  ">
-                  <div className=" flex flex-col md:flex-row justify-between">
+                  <div className=" flex flex-col md:w-[80%] md:flex-row justify-between">
                     <div className="flex items-center">
                       <p className=" pb-2 text-3xl mb-5 text-left px-5 md:px-0 font-semibold">
                         {props.trainingMetadata.name}
                       </p>
                     </div>
                   </div>
-                  <div className="flex justify-between">
-                    <motion.div className="bg-glass text-xl text-left px-5 md:px-0 md:pt-0 pt-3 md:text-xl font-semibold">
+                  <div className="flex  justify-between">
+                    <motion.div className="bg-glass md:w-[80%] text-xl text-left px-5 md:px-0 md:pt-0 pt-3 md:text-xl font-semibold">
                       {props.trainingMetadata.headLine}
                     </motion.div>
 
@@ -345,7 +345,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                     </div>
                   </motion.div>
 
-                  <div className="mt-2 font-base md:p-0 p-4  md:text-left text-justify md:w-[100%]">
+                  <div className="mt-2 md:w-[75%] font-base md:p-0 p-4  md:text-left text-justify ">
                     {props.trainingMetadata.body}
                   </div>
 
