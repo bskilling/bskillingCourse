@@ -38,8 +38,6 @@ interface ListOfCoursesDataType {
   trainingTye: string;
 }
 const CourseCard: React.FC<CourseCardProps> = ({ data }) => {
-
-
   const calculateDiscountedPrice = () => {
     if (data.discount === 0) {
       return data.price; // If the discount is 0, return the original price
@@ -143,22 +141,26 @@ const CourseCard: React.FC<CourseCardProps> = ({ data }) => {
                   </div>
                 </div>
               </div>
-              <div className={`${data.batches.length > 0 ? "" : "h-12"}`}>
+              <div
+                className={`${
+                  data.batches.length > 0 ? "min-h-[48px]" : "h-12"
+                }`}
+              >
                 {" "}
                 <div className="relative flex overflow-x-hidden">
                   {data.batches.length > 0 && (
-                    <div className=" whitespace-nowrap">
-                      {data.batches.map((item, index) => (
-                        <span className="ml-5 text-sm " key={index}>
-                          <Marquee speed={80}>
+                    <div className="py-3 whitespace-nowrap">
+                      <Marquee speed={80}>
+                        {data.batches.map((item, index) => (
+                          <span className="ml-5 text-sm " key={index}>
                             Upcoming Batches&nbsp; &nbsp;|&nbsp; &nbsp;
                             {item.name} &nbsp; | &nbsp;{" "}
                             {moment(item.startDate).format("YYYY-MMM-DD")}{" "}
                             &nbsp;-&nbsp;
                             {moment(item.endDate).format("YYYY-MMM-DD")}
-                          </Marquee>
-                        </span>
-                      ))}
+                          </span>
+                        ))}
+                      </Marquee>
                     </div>
                   )}
                 </div>
