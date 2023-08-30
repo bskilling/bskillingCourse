@@ -11,6 +11,7 @@ interface TabProps {
 
 const Tabs: React.FC<TabProps> = ({ data }) => {
   // data.sort((a, b) => b.localeCompare(a));
+
   const router = useRouter();
   const {
     setButtonIndex,
@@ -107,7 +108,7 @@ const Tabs: React.FC<TabProps> = ({ data }) => {
             ""
           )}
         </div>
-
+        {/* above is browse all dropdown  and below is the mobile view*/}
         {isSmallScreen ? (
           ""
         ) : (
@@ -151,11 +152,11 @@ const Tabs: React.FC<TabProps> = ({ data }) => {
                     >
                       <AiOutlineMenu />
                     </button>
-                    {isDropdownOpen && (
+                    {isDropdownOpen && data.length > 10 && (
                       <div className="origin-top-right absolute  z-[6000]  right-0 mt-6  min-w-[200px]   rounded-md shadow-lg bg-white ring-1     ">
-                        {Object.keys(data)
-                          .slice(11)
-                          .map((categoryName, index) => (
+                        {data.slice(11).map((categoryName, index) => {
+                        
+                          return (
                             <button
                               key={categoryName}
                               className="text-black hover:text-white text-right py-3   block px- border-0 min-w-[200px] pr-5 w-full hover:bg-buttonBlue   cursor-pointer  text-sm  hover:text-gray-900"
@@ -163,7 +164,8 @@ const Tabs: React.FC<TabProps> = ({ data }) => {
                             >
                               <p> {categoryName}</p>
                             </button>
-                          ))}
+                          );
+                        })}
                       </div>
                     )}
                   </li>
