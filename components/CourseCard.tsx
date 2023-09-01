@@ -103,8 +103,8 @@ const CourseCard: React.FC<CourseCardProps> = ({ data }) => {
               </div>
 
               <div className="text-subText flex  justify-left   item gap-2  flex-col mt-2  ">
-                <div className="flex gap-8">
-                  <div className="flex mt-1 gap-2">
+                <div className="flex justify-between gap-8">
+                  <div className="flex mt-1  gap-2">
                     <div className="mt-[2px]   bg-buttonBlue flex flex-col items-center justify-center w-[25px] h-[25px] rounded-full">
                       <FaTrophy size={15} color="white" />
                     </div>
@@ -112,7 +112,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ data }) => {
                       <p className="text-sm">{data.endorsedBy}</p>
                     </div>
                   </div>
-                  <div className="flex mt-1 gap-2">
+                  <div className="flex mt-1 min-w-[100px] gap-2">
                     <div className="mt-[2px] bg-buttonBlue flex flex-col items-center justify-center w-[25px] h-[25px] rounded-full">
                       <BiTimeFive size={15} color="white" />
                     </div>
@@ -121,8 +121,8 @@ const CourseCard: React.FC<CourseCardProps> = ({ data }) => {
                     </div>
                   </div>
                 </div>
-                <div className="flex gap-8">
-                  <div className="flex mt-1 gap-2">
+                <div className="flex justify-between     gap-8">
+                  <div className="flex mt-1 gap-2 ">
                     <div className="mt-[2px]  bg-buttonBlue flex flex-col items-center justify-center w-[25px] h-[25px] rounded-full">
                       <FaChalkboardTeacher size={15} color="white" />
                     </div>
@@ -131,8 +131,8 @@ const CourseCard: React.FC<CourseCardProps> = ({ data }) => {
                       <p className="text-sm"> {data.level}</p>
                     </div>
                   </div>
-                  <div className="flex mt-1 gap-2">
-                    <div className="mt-[2px]  bg-buttonBlue flex flex-col items-center justify-center w-[25px] h-[25px] rounded-full">
+                  <div className="flex mt-1 gap-2 min-w-[100px]">
+                    <div className="mt-[2px]   bg-buttonBlue flex flex-col items-center justify-center w-[25px] h-[25px] rounded-full">
                       <BsFillPeopleFill size={15} color="white" />
                     </div>
                     <div className="mt-1">
