@@ -1,6 +1,7 @@
 import PdfFile from "@/pages/Pdffile";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import axios from "axios";
+import ContactPopUp from "components/ContactPopUp";
 import Accordion from "components/accordion";
 import AccordionFaq from "components/accordionFaq";
 import CourseSlider from "components/courseSlider";
@@ -9,6 +10,7 @@ import RegisterForm from "components/registerForm";
 import { Console } from "console";
 import { motion } from "framer-motion";
 import DropAQueryForm from "modules/leadChat/components/DropAQueryForm";
+import EnquiryForm from "modules/leadChat/components/EnquiryForm";
 import moment from "moment";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
@@ -73,6 +75,7 @@ type TrainingMetadataProps = {
 const TrainingMetadata = (props: TrainingMetadataProps) => {
   const [showFixedLandingFooter, setShowFixedLandingFooter] = useState(false);
   const [registerVisible, setRegisterVisible] = useState(false);
+  const [isContactPopupVisible, setContactPopupVisible] = useState(false);
 
   const [pdfUrl, setPdfUrl] = useState<string | null>(null);
   const [loadingVisible, setLoadingVisible] = useState(false);
@@ -113,6 +116,12 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
     }
   };
 
+  const handleFormSubmit = () => {
+    // Your logic after the form is successfully submitted
+    console.log("Form submitted successfully!");
+    // For example, you can update state, trigger animations, etc.
+  };
+
   const handleGeneratePdf = async () => {
     const urlPdf = await generatePDF();
     const fileName = props.trainingMetadata?.name;
@@ -122,6 +131,13 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
       a.download = `bSkilling_${fileName}_Brochure.pdf`;
       a.click();
     }
+  };
+
+  
+
+
+  const closeContactPopup = () => {
+    setContactPopupVisible(false);
   };
 
   // useEffect(() => {
@@ -225,12 +241,13 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
               <div
                 className="h-full absolute top-0 left-0 w-full"
                 style={{
-                  backgroundImage: `url(${"/education2.png"})`,
+                  backgroundImage: `url(${"/education4.png"})`,
                   // backgroundImage: `url(${"/bgcrs.jpg"})`,
                   backgroundSize: "cover",
                   objectFit: "contain",
                   backgroundPosition: "center",
                   backgroundRepeat: "no-repeat",
+                   filter: "brightness(50%)",
                 }}
               >
                 {/* <img className="absolute  h-auto w-fit" src="/bgcrs.jpg" alt="" /> */}
@@ -250,7 +267,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                     </motion.div>
 
                     <button
-                      onClick={handleGeneratePdf}
+                     onClick={() => setContactPopupVisible(true)}
                       style={{ textDecoration: "none" }}
                       className="md:block  underline-0  hidden mr-14"
                     >
@@ -259,8 +276,18 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                         <div className="flex w-full px-2  font-semibold text-xl  text-blue-600  flex-col">
                           Download Brochure
                         </div>
+                        
                       </div>
                     </button>
+                    {isContactPopupVisible && (
+                      <div className="text-black fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-50">
+                        <EnquiryForm
+                        onClose={() => setContactPopupVisible(false)}
+                        onFormSubmit={handleFormSubmit}
+                        onPdfDownload={handleGeneratePdf}
+                        />
+                      </div>
+                    )}
                   </div>
 
                   <motion.div className=" flex  flex-col md:flex-row pt-7 pb-7 md:gap-6 text-left px-5 md:px-0  md:items-center">

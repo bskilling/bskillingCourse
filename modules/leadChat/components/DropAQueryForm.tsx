@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
+
+
 const DropAQueryForm = () => {
   const [messageSent, setMessage] = useState(false);
   const [CountryCodeValue, setCountryCodeValue] = useState<any>("+91");
@@ -41,7 +43,7 @@ const DropAQueryForm = () => {
           }),
         }
       );
-
+console.log("res",response)
       if (response.status === 200) {
         reset({
           message: "",

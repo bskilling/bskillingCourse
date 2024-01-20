@@ -81,7 +81,7 @@ const FloatWindow = () => {
           className="flex items-center justify-center z-[6000] bg-buttonBlue shadow-md text-white text-3xl fixed bottom-[105px] right-2 w-[75px] h-[75px] rounded-full"
           onClick={() => setFloatWindowMode("chat")}
         >
-          <FaComment />
+          {/* <FaComment /> */}
         </button>
       ) : (
         <button
