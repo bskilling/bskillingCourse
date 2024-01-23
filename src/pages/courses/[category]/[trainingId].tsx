@@ -241,7 +241,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
               <div
                 className="h-full absolute top-0 left-0 w-full"
                 style={{
-                  backgroundImage: `url(${"/education4.png"})`,
+                  backgroundImage: `url(${"/education6.jpeg"})`,
                   // backgroundImage: `url(${"/bgcrs.jpg"})`,
                   backgroundSize: "cover",
                   objectFit: "contain",

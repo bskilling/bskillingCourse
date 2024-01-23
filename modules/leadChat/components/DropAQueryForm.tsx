@@ -64,7 +64,7 @@ console.log("res",response)
 
   return (
     <div>
-      <div className="flex   px-5  mt-4 flex-col">
+      <div className="flex px-5 mt-4 flex-col">
         <input
           type="text"
           className=" block text-base  w-full lg:h-[35px] placeholder:text-sm  px-2 border-2 border-gray    focus:border-green focus:ring focus:ring-green focus:ring-opacity-50"
@@ -92,13 +92,16 @@ console.log("res",response)
             defaultCountry="IN"
             // countrySelectProps={{ unicodeFlags: true }}
             placeholder="Enter phone number"
+             {...register("phone", {
+              required: true,
+            })}
             value={CountryCodeValue}
             onChange={setCountryCodeValue}
-            className="w-[32%] pl-2 px-2 border-2 border-gray   flex gap-2 "
+            className="w-[32%] pl-2 px-2 border-2 border-gray flex gap-2 "
           />
           <input
             type="number"
-            className=" block  w-full lg:h-[35px] placeholder:text-sm  placeholder:font-medium  px-2 border-2 border-gray     focus:border-green focus:ring focus:ring-green focus:ring-opacity-50"
+            className=" block w-full lg:h-[35px] placeholder:text-sm  placeholder:font-medium  px-2 border-2 border-gray     focus:border-green focus:ring focus:ring-green focus:ring-opacity-50"
             placeholder="Your Mobile Number*"
             {...register("phone", {
               required: true,
