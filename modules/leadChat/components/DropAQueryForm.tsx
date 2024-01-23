@@ -43,7 +43,7 @@ const DropAQueryForm = () => {
           }),
         }
       );
-console.log("res",response)
+
       if (response.status === 200) {
         reset({
           message: "",
