@@ -261,7 +261,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                       </p>
                     </div>
                   </div>
-                  <div className="flex  justify-between">
+                  <div className="flex justify-between">
                     <motion.div className="bg-glass md:w-[80%] text-xl text-left px-5 md:px-0 md:pt-0 pt-3 md:text-xl font-semibold">
                       {props.trainingMetadata.headLine}
                     </motion.div>
@@ -371,10 +371,10 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
 
                   <div className="mt-2 md:w-[75%] font-base md:p-0 p-4  md:text-left text-justify ">
                     {props.trainingMetadata.body}
-                  </div>
+                  
 
                   <button
-                    onClick={handleGeneratePdf}
+                    onClick={() => setContactPopupVisible(true)}
                     style={{ textDecoration: "none" }}
                     className="md:hidden  w-full underline-0 block mr-14"
                   >
@@ -385,6 +385,16 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                       </div>
                     </div>
                   </button>
+                  {isContactPopupVisible && (
+                      <div className="text-black top-0 left-0 w-full h-20 flex justify-center items-center bg-black bg-opacity-50">
+                        <EnquiryForm
+                        onClose={() => setContactPopupVisible(false)}
+                        onFormSubmit={handleFormSubmit}
+                        onPdfDownload={handleGeneratePdf}
+                        />
+                      </div>
+                    )}
+                  </div>
                 </div>
 
                 {/* //////////////////////////////////////rating and course name section //////////////////////////////////////////////////////////*/}
