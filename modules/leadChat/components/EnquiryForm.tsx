@@ -41,9 +41,7 @@ const EnquiryForm: React.FC<EnquiryFormProps> = ({ onClose, onFormSubmit, onPdfD
       "https://54txkspp2molgb6p7mgzad2scu0niflz.lambda-url.ap-south-1.on.aws/",
       {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: {},
         body: JSON.stringify(requestData),
       }
     );
