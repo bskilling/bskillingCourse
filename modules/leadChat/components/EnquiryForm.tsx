@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaTimes } from 'react-icons/fa';
+import { useRouter } from "next/router";;
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 
@@ -8,14 +9,17 @@ interface EnquiryFormProps {
   onClose: () => void;
   onFormSubmit?: () => void;
   onPdfDownload?: () => void;
+  courseName?: string;
 }
 
-const EnquiryForm: React.FC<EnquiryFormProps> = ({ onClose, onFormSubmit, onPdfDownload }) => {
+const EnquiryForm: React.FC<EnquiryFormProps> = ({ onClose, onFormSubmit, onPdfDownload,courseName  }) => {
   const [messageSent, setMessage] = useState(false);
- 
+  const router = useRouter();
+
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
     reset,
     watch,
@@ -23,56 +27,61 @@ const EnquiryForm: React.FC<EnquiryFormProps> = ({ onClose, onFormSubmit, onPdfD
     mode: "onChange",
   });
 
-  const isButtonVisible = watch("firstName") && watch("lastName") &&  watch("email") && watch("phone")   ;
-   
-  const submit = handleSubmit(async (data) => {
-      try {
-      
-   
-        const requestData = {
-          type: "enquiry",
-          firstName: data.firstName,
-          lastName: data.lastName,
-          email: data.email,
-          phone: data.phone,
-        };
+  const isButtonVisible =
+  watch("firstName") &&
+  watch("lastName") &&
+  watch("email") &&
+  !errors.email && 
+  watch("phone");
 
-    const response = await fetch(
-      "https://54txkspp2molgb6p7mgzad2scu0niflz.lambda-url.ap-south-1.on.aws/",
-      {
-        method: "POST",
-        headers: {},
-        body: JSON.stringify(requestData),
-      }
-    );
-    console.log("data",response)
-    if (response.status === 200) {
-      reset({
-        firstName: "",
-        lastName: "",
-        email: "",
-        phone: "",
-      });
+  const submitForm = async (data: any) => {
+    
+    try {
+      const requestData = {
+        type: "enquiry",
+        courseName: courseName ,
+        firstName: data.firstName,
+        lastName: data.lastName,
+        email: data.email,
+        phone: data.phone,
+        
+      };
 
-      setMessage(true);
+      const response = await fetch(
+        "https://54txkspp2molgb6p7mgzad2scu0niflz.lambda-url.ap-south-1.on.aws/",
+        {
+          method: "POST",
+          headers: {},
+          body: JSON.stringify(requestData),
+        }
+      );
+        console.log('request',requestData)
+      if (response.status === 200) {
+        reset({
+          firstName: "",
+          lastName: "",
+          email: "",
+          phone: "",
+        });
 
-      // Call the callback function provided by the parent component
-      if (onFormSubmit) {
-        onFormSubmit();
+        setMessage(true);
+        router.push('/thankyou');
+
+        if (onFormSubmit) {
+          onFormSubmit();
+        }
+        if (onPdfDownload) {
+          onPdfDownload();
+        }
+      } else {
+        throw new Error("Error while sending message");
       }
-      if (onPdfDownload) {
-        onPdfDownload();
-      }
-    } else {
-      throw Error("Error while sending message");
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Something went wrong");
     }
-  } catch (error) {
-    alert("Something went wrong");
-  }
-});
-
-
-  // Close the form when clicking outside
+  };
+  
   useEffect(() => {
     const handleOutsideClick = (event:any) => {
       if (event.target.id === "enquiryFormOverlay") {
@@ -86,7 +95,6 @@ const EnquiryForm: React.FC<EnquiryFormProps> = ({ onClose, onFormSubmit, onPdfD
       document.removeEventListener("click", handleOutsideClick);
     };
   }, [onClose]);
-
   return (
     <div id="enquiryFormOverlay" className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
       <div className="bg-white p-8 rounded shadow-md w-96">
@@ -126,28 +134,18 @@ const EnquiryForm: React.FC<EnquiryFormProps> = ({ onClose, onFormSubmit, onPdfD
         </div>
         
         <div className="mb-4">
-          
-          <input
-            type="tel"
-            {...register("phone", {
-              required: true,
-            })}
-            placeholder="Enter Mobile Number*"
-            className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-green-500"
-          />
+          <div className="flex items-center space-x-4">
+            <PhoneInput
+              value={watch("phone") || ""}
+              placeholder="Enter Mobile Number*"
+              defaultCountry="IN"
+              international
+              className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-green-500"
+              onChange={(value) => setValue("phone", value || "")}
+            />
+          </div>
         </div>
-
-
-
-        <label
-          className={`text-red-600   text-xs py-1 ${
-            errors.phone ? "visible" : "invisible"
-          }`}
-        >
-          {errors.phone?.type == "required"
-            ? "Phone Number is required"
-            : "Please enter a valid phone number"}
-        </label>
+        
       
         <div className="mb-4">
           <input
@@ -173,8 +171,15 @@ const EnquiryForm: React.FC<EnquiryFormProps> = ({ onClose, onFormSubmit, onPdfD
             </p>
           ) : (
             <button
-              onClick={() => {
-                submit();
+             onClick={() => {
+                const formData = {
+                  firstName: watch("firstName"),
+                  lastName: watch("lastName"),
+                  email: watch("email"),
+                  phone: watch("phone"),
+                };
+
+                submitForm(formData);
                 onClose();
               }}
               disabled={!isButtonVisible}
