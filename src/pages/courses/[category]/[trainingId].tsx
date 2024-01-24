@@ -133,13 +133,6 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
     }
   };
 
-  
-
-
-  const closeContactPopup = () => {
-    setContactPopupVisible(false);
-  };
-
   // useEffect(() => {
   //   generatePDF();
   // }, []);
@@ -282,9 +275,10 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                     {isContactPopupVisible && (
                       <div className="text-black fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-50">
                         <EnquiryForm
-                        onClose={() => setContactPopupVisible(false)}
-                        onFormSubmit={handleFormSubmit}
-                        onPdfDownload={handleGeneratePdf}
+                          onClose={() => setContactPopupVisible(false)}
+                          onFormSubmit={handleFormSubmit}
+                          onPdfDownload={handleGeneratePdf}
+                          courseName={props.trainingMetadata?.name}
                         />
                       </div>
                     )}
@@ -388,9 +382,10 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                   {isContactPopupVisible && (
                       <div className="text-black top-0 left-0 w-full h-20 flex justify-center items-center bg-black bg-opacity-50">
                         <EnquiryForm
-                        onClose={() => setContactPopupVisible(false)}
-                        onFormSubmit={handleFormSubmit}
-                        onPdfDownload={handleGeneratePdf}
+                          onClose={() => setContactPopupVisible(false)}
+                          onFormSubmit={handleFormSubmit}
+                          onPdfDownload={handleGeneratePdf}
+                          courseName={props.trainingMetadata?.name}
                         />
                       </div>
                     )}
