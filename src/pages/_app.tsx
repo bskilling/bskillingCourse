@@ -10,6 +10,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import "../../style/globals.css";
 
+
 function MyApp({ Component, pageProps }: AppProps) {
   const route = useRouter();
   const {
@@ -71,6 +72,9 @@ function MyApp({ Component, pageProps }: AppProps) {
 
     return () => clearTimeout(timer);
   }, [route.pathname]);
+
+  
+
   return (
     <MyProvider>
       <Layout>
@@ -132,11 +136,11 @@ function MyApp({ Component, pageProps }: AppProps) {
         <Component {...pageProps} />
         {/* <FloatWindow /> */}
 
-        {showFixedFooter && (
+       {showFixedFooter && (
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.1, ease: "easeIn" }}
+            transition={{ duration: 0, ease: "easeInOut" }}
           >
             <FixedFooterBar />
           </motion.div>
