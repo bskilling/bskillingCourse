@@ -69,6 +69,18 @@ export default function FixedFooterBar() {
                   alt=""
                 />
               </a>
+              <a
+                target="_blank"
+                rel="noreferrer"
+                className="underline-0 flex justify-center"
+                href="https://twitter.com/b_SkillingIndia"
+              >
+                <img
+                  src="/twitter2.webp"
+                  className="w-fit object-contain h-10"
+                  alt=""
+                />
+              </a>
             </div>
           </div>
           <div className=" md:flex gap-2 hidden ">
