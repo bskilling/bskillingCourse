@@ -228,11 +228,10 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
               <div className="mt-3 text-buttonBlue hover:cursor-pointer font-semibold">
                 <Link style={{ textDecoration: "none" }} href={"/about"}>
                   <p
-                    className={`${
-                      aboutUnderline === true
+                    className={`${aboutUnderline === true
                         ? "text-buttonBlue border-b-2 underline-offset-2"
                         : "text-buttonBlue  no-underline"
-                    }`}
+                      }`}
                   >
                     {" "}
                     About
@@ -245,13 +244,19 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
               <div className="mt-3 text-buttonBlue font-SourceSans hover:cursor-pointer font-semibold">
                 <Link style={{ textDecoration: "none" }} href={"/blogs"}>
                   <p
-                    className={`${
-                      blogUnderline === true
+                    className={`${blogUnderline === true
                         ? "text-buttonBlue border-b-2 underline-offset-2"
                         : "text-buttonBlue  no-underline"
-                    }`}
+                      }`}
                   >
                     Blogs
+                  </p>
+                </Link>
+              </div>
+              <div className="mt-3 text-buttonBlue font-SourceSans hover:cursor-pointer font-semibold">
+                <Link style={{ textDecoration: "none" }} href="https://sfjbs.talentrecruit.com/career-page" target="blank">
+                  <p className="text-buttonBlue  no-underline">
+                    Careers
                   </p>
                 </Link>
               </div>
