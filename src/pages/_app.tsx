@@ -130,7 +130,24 @@ function MyApp({ Component, pageProps }: AppProps) {
             ></iframe>
           </noscript>
 
-          {/* ... (your existing scripts) */}
+          <script
+            type="text/javascript"
+            id="zsiqchat"
+            dangerouslySetInnerHTML={{
+              __html: `
+                var $zoho = $zoho || {};
+                $zoho.salesiq = $zoho.salesiq || {widgetcode: "siq808c9f0aec2179e3f6906ceb24906ee03d4fd55ab3a9515426e3ab8d00e568a0a8dd3011def5604c4779c2e3a5c0effa", values: {}, ready: function(){}};
+                var d = document;
+                var s = d.createElement("script");
+                s.type = "text/javascript";
+                s.id = "zsiqscript";
+                s.defer = true;
+                s.src = "https://salesiq.zohopublic.com/widget";
+                var t = d.getElementsByTagName("script")[0];
+                t.parentNode.insertBefore(s, t);
+              `,
+            }}
+          />
         </Head>
 
         <Component {...pageProps} />
