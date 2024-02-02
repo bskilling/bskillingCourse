@@ -194,37 +194,60 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
     setRegisterVisible(true);
   };
 
-  useEffect(() => {}, [props.trainingMetadata]);
+  useEffect(() => { }, [props.trainingMetadata]);
 
   return (
     <>
-      <Head>
-        <title>bSkilling </title>
-        <meta
-          name="bSkilling"
-          content="Learn the skills you need to build and deploy intelligent applications on SAP Business Technology Platform"
-        />
-        <meta
-          name="p:domain_verify"
-          content="7bb84546e514612864b5b9d71d1649e4"
-        />
+      {props.trainingMetadata && (
+        <Head>
+          <title>
+            {props.trainingMetadata.name == "Project Management Professional (PMP)® Certification Prep Course "
+              ? "PMP Certification Training Online | Project Management Course in Bangalore"
+              : "bSkilling"}
+          </title>
+          {/* <title>bSkilling </title> */}
+          <meta
+            name="description"
+            content={
+              props.trainingMetadata.name == "Project Management Professional (PMP)® Certification Prep Course "
+                ? "Enhance your project management skills with our PMP certification training. Join our online PMP course."
+                : "bskilling"
+            }
+          />
+          <meta
+            name="keywords"
+            content={
+              props.trainingMetadata.name == "Project Management Professional (PMP)® Certification Prep Course "
+                ? "pmp certification,pmp training,pmp courses,online pmp certification,pmp certification training,pmp training online,project management,pmp certification online,pmp course online,pmp certificate course"
+                : "bskilling"
+            }
+          />
+          <meta
+            name="bSkilling"
+            content="Learn the skills you need to build and deploy intelligent applications on SAP Business Technology Platform"
+          />
+          <meta
+            name="p:domain_verify"
+            content="7bb84546e514612864b5b9d71d1649e4"
+          />
 
-        <link rel="icon" href="/favicon.png" />
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-3PVZC9K8BH"
-        ></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
+          <link rel="icon" href="/favicon.png" />
+          <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-3PVZC9K8BH"
+          ></script>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'G-3PVZC9K8BH');
       `,
-          }}
-        />
-      </Head>
+            }}
+          />
+        </Head>
+      )}
       {showFixedLandingFooter && <LandingPageFooter />}
       {props.trainingMetadata && (
         <section className="bg-gray font-SourceSans">
@@ -240,7 +263,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                   objectFit: "contain",
                   backgroundPosition: "center",
                   backgroundRepeat: "no-repeat",
-                   filter: "brightness(50%)",
+                  filter: "brightness(50%)",
                 }}
               >
                 {/* <img className="absolute  h-auto w-fit" src="/bgcrs.jpg" alt="" /> */}
@@ -260,7 +283,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                     </motion.div>
 
                     <button
-                     onClick={() => setContactPopupVisible(true)}
+                      onClick={() => setContactPopupVisible(true)}
                       style={{ textDecoration: "none" }}
                       className="md:block  underline-0  hidden mr-14"
                     >
@@ -269,7 +292,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                         <div className="flex w-full px-2  font-semibold text-xl  text-blue-600  flex-col">
                           Download Brochure
                         </div>
-                        
+
                       </div>
                     </button>
                     {isContactPopupVisible && (
@@ -365,21 +388,21 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
 
                   <div className="mt-2 md:w-[75%] font-base md:p-0 p-4  md:text-left text-justify ">
                     {props.trainingMetadata.body}
-                  
 
-                  <button
-                    onClick={() => setContactPopupVisible(true)}
-                    style={{ textDecoration: "none" }}
-                    className="md:hidden  w-full underline-0 block mr-14"
-                  >
-                    <div className="  mt-12 flex justify-center text-white  opa  rounded-md py-2  ">
-                      <div className="flex gap-2"></div>
-                      <div className="flex  px-2  rounded-md py-2 font-semibold text-xl bg-white w-fit text-blue-600  flex-col">
-                        Download Brochure
+
+                    <button
+                      onClick={() => setContactPopupVisible(true)}
+                      style={{ textDecoration: "none" }}
+                      className="md:hidden  w-full underline-0 block mr-14"
+                    >
+                      <div className="  mt-12 flex justify-center text-white  opa  rounded-md py-2  ">
+                        <div className="flex gap-2"></div>
+                        <div className="flex  px-2  rounded-md py-2 font-semibold text-xl bg-white w-fit text-blue-600  flex-col">
+                          Download Brochure
+                        </div>
                       </div>
-                    </div>
-                  </button>
-                  {isContactPopupVisible && (
+                    </button>
+                    {isContactPopupVisible && (
                       <div className="text-black top-0 left-0 w-full h-20 flex justify-center items-center bg-black bg-opacity-50">
                         <EnquiryForm
                           onClose={() => setContactPopupVisible(false)}
