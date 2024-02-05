@@ -222,14 +222,18 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                 : "bskilling"
             }
           />
-          <meta
-            name="bSkilling"
-            content="Learn the skills you need to build and deploy intelligent applications on SAP Business Technology Platform"
-          />
-          <meta
-            name="p:domain_verify"
-            content="7bb84546e514612864b5b9d71d1649e4"
-          />
+          {props.trainingMetadata.name !== "Project Management Professional (PMP)® Certification Prep Course " && (
+            <>
+              <meta
+                name="bSkilling"
+                content="Learn the skills you need to build and deploy intelligent applications on SAP Business Technology Platform"
+              />
+              <meta
+                name="p:domain_verify"
+                content="7bb84546e514612864b5b9d71d1649e4"
+              />
+            </>
+          )}
 
           <link rel="icon" href="/favicon.png" />
           <script
