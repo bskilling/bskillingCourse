@@ -200,12 +200,25 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
     <>
       {props.trainingMetadata && (
         <Head>
-          <title>
+          {props.trainingMetadata.name == "Project Management Professional (PMP)® Certification Prep Course " && (
+            <>
+              <title>bSkilling | PMP Certification Training in Bangalore | Project Management Professional Courses </title>
+              <meta
+                name="description"
+                content="Unlock potential with PMP Certification in Bangalore. Expert-led courses for Program Management Professionals. Gain PMP skills. Enroll now!"
+              />
+              <meta
+                name="keywords"
+                content="pmp cost , pmp online , pmp certification near me, pmi pmp, pmp exam, pmp,pmp certification Bangalore, pmp training in bangalore"
+              />
+            </>
+          )}
+          {/* <title>
             {props.trainingMetadata.name == "Project Management Professional (PMP)® Certification Prep Course "
               ? "PMP Certification Training Online | Project Management Course in Bangalore"
               : "bSkilling"}
           </title>
-          {/* <title>bSkilling </title> */}
+         
           <meta
             name="description"
             content={
@@ -221,9 +234,10 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                 ? "pmp certification,pmp training,pmp courses,online pmp certification,pmp certification training,pmp training online,project management,pmp certification online,pmp course online,pmp certificate course"
                 : "bskilling"
             }
-          />
+          /> */}
           {props.trainingMetadata.name !== "Project Management Professional (PMP)® Certification Prep Course " && (
             <>
+              <title>bSkilling </title>
               <meta
                 name="bSkilling"
                 content="Learn the skills you need to build and deploy intelligent applications on SAP Business Technology Platform"
