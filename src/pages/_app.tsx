@@ -73,7 +73,17 @@ function MyApp({ Component, pageProps }: AppProps) {
     return () => clearTimeout(timer);
   }, [route.pathname]);
 
-  
+  useEffect(() => {
+   
+    var styles = document.createElement("style");
+    styles.innerHTML = `
+      body .zsiq_floatmain {
+        right: 40px !important;
+        bottom: 50px !important;
+      }
+    `;
+    document.head.appendChild(styles);
+  }, []);
 
   return (
     <MyProvider>
@@ -129,7 +139,7 @@ function MyApp({ Component, pageProps }: AppProps) {
               style={{ display: 'none', visibility: 'hidden' }}
             ></iframe>
           </noscript>
-
+         {/* salesIQ */}
           <script
             type="text/javascript"
             id="zsiqchat"
@@ -145,6 +155,8 @@ function MyApp({ Component, pageProps }: AppProps) {
                 s.src = "https://salesiq.zohopublic.com/widget";
                 var t = d.getElementsByTagName("script")[0];
                 t.parentNode.insertBefore(s, t);
+                var styles = document.createElement("style");
+                
               `,
             }}
           />
