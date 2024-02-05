@@ -107,7 +107,7 @@ export default function FixedFooterBar() {
                   <p className="flex-1 font-medium">
                     {floatWindowMode === "drop-a-query"
                       ? "Drop Us A Query"
-                      : "Chat With Us"}
+                      : null}
                   </p>
                   <p>
                     {floatWindowMode === "drop-a-query" ? (
@@ -141,12 +141,12 @@ export default function FixedFooterBar() {
               </div>
             )}
 
-            <button
+            {/* <button
               className=" items-center justify-center z-[6000] bg-buttonBlue gap-3 text-white text-3xl  flex h-[20px] rounded-full"
               onClick={() => setFloatWindowMode("chat")}
             >
               <FaComment size={30} /> <p className="text-sm">Chat with us</p>
-            </button>
+            </button> */}
 
             <div>
               <button
