@@ -50,6 +50,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
   const [aboutUnderline, setAboutUnderline] = useState(false);
   const [blogUnderline, setBlogUnderline] = useState(false);
   const [navHide, setNavHide] = useState(false);
+  const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
   const [dropSearchData, setDropSearchData] = useState<ListOfCoursesDataType[]>(
     []
   );
@@ -229,8 +230,8 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
                 <Link style={{ textDecoration: "none" }} href={"/about"}>
                   <p
                     className={`${aboutUnderline === true
-                        ? "text-buttonBlue border-b-2 underline-offset-2"
-                        : "text-buttonBlue  no-underline"
+                      ? "text-buttonBlue border-b-2 underline-offset-2"
+                      : "text-buttonBlue  no-underline"
                       }`}
                   >
                     {" "}
@@ -245,8 +246,8 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
                 <Link style={{ textDecoration: "none" }} href={"/blogs"}>
                   <p
                     className={`${blogUnderline === true
-                        ? "text-buttonBlue border-b-2 underline-offset-2"
-                        : "text-buttonBlue  no-underline"
+                      ? "text-buttonBlue border-b-2 underline-offset-2"
+                      : "text-buttonBlue  no-underline"
                       }`}
                   >
                     Blogs
@@ -461,7 +462,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
         <div className="mx-auto text-left md:text-center text-sm text-zinc-400 pt-4 md:pt-8 md:p-0 p-4 pl-6">
           <p>BSKILLING PRIVATE LIMITED.</p>
           <p>
-            Copyright © 2023. All Rights Reserved. Designed by Deedbee Social
+            Copyright © {currentYear}. All Rights Reserved. Designed by Deedbee Social
             Ventures.
           </p>
         </div>
