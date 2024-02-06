@@ -244,7 +244,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
 
           {props.trainingMetadata.name !== "PRINCE2® Foundation and Practitioner " &&
             props.trainingMetadata.name !== "Project Management Professional (PMP)® Certification Prep Course " &&
-            props.trainingMetadata.name !== "Generative AI" &&(
+            props.trainingMetadata.name !== "Generative AI" && (
               <>
                 <title>bSkilling </title>
                 <meta
@@ -316,9 +316,9 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                       style={{ textDecoration: "none" }}
                       className="md:block  underline-0  hidden mr-14"
                     >
-                      <div className=" bg-white opa  rounded-md py-2 text-white flex w-[]">
+                      <div className=" bg-white rounded-md py-2 text-white flex w-[] hover:bg-gray">
                         <div className="flex gap-2"></div>
-                        <div className="flex w-full px-2  font-semibold text-xl  text-blue-600  flex-col">
+                        <div className="flex w-full px-2 font-semibold text-xl text-blue-600 flex-col">
                           Download Brochure
                         </div>
 
@@ -391,27 +391,27 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                             <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                           </svg>
                         </div>
-                        <div>275 Ratings</div>
+                        <div><b>275 Ratings</b></div>
                       </div>
                     </div>
                     <div className="flex gap-2">
                       <div className="flex items-center ">
                         <BsFillPeopleFill />
                       </div>
-                      399 Learners
+                      <b>399 Learners</b>
                     </div>
                     <div className="flex gap-2">
                       <div className="flex items-center ">
                         <BsFillPeopleFill />
                       </div>
-                      {props.trainingMetadata.trainingType}
+                      <b>{props.trainingMetadata.trainingType}</b>
                     </div>
 
                     <div className="flex gap-2">
                       <div className="flex items-center ">
                         <BiTime />
                       </div>{" "}
-                      {props.trainingMetadata.duration}
+                      <b>{props.trainingMetadata.duration}</b>
                     </div>
                   </motion.div>
 
@@ -715,14 +715,21 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                                   ""
                                 )
                               ) : props.trainingMetadata.discount === 0 ? (
-                                <span className="font-bold text-blue">
-                                  ₹ {formattedPrice}
-                                </span>
+                                <div className="flex flex-col items-center">
+                                  <span className="font-bold text-blue">
+                                    ₹ {formattedPrice}
+                                  </span>
+                                  <p className="mb-1 text-[16px] font-medium">(Incl. taxes)</p>
+                                  <p className="text-[16px] font-dark">Easy EMIs from ₹5333 per month</p>
+                                </div>
+
                               ) : (
-                                <div>
+                                <div className="flex flex-col items-center">
                                   <span className="font-bold text-blue">
                                     ₹ {calculateDiscountedPrice()}
                                   </span>
+                                  <p className="mb-1 text-[16px] font-medium">(Incl. taxes)</p>
+                                  <p className="text-[16px] font-dark">Easy EMIs from ₹5333 per month</p>
                                 </div>
                               )}
                             </span>
@@ -766,7 +773,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                         ""
                       ) : (
                         <div className="pb-7" onClick={() => clickOnRegister()}>
-                          <button className="bg-buttonBlue rounded-md text-white px-9 py-2 font-semibold text-xl mt-4">
+                          <button className="bg-buttonBlue  hover:bg-blue-600 rounded-md text-white px-9 py-2 font-semibold text-xl mt-4">
                             <span>Enrol Me</span>
                           </button>
                         </div>
@@ -796,46 +803,39 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                       </motion.div>
                       <div className="text-center mt-4 pb-"></div>
                     </div>
-                    <div className="flex  shadow-md w-full bg-white pb-12 pt-8 rounded-xl flex-col items-center  gap-5">
+                    <div className="flex shadow-md w-full bg-white pb-12 pt-8 rounded-xl flex-col items-center gap-5">
                       <div className="px-5">
-                        <p className="pt-3 pb-4 text-xl  text-center  font-semibold">
+                        <p className="pt-3 pb-4 text-xl text-center font-semibold">
                           Upcoming Batches
                         </p>
 
-                        <div className="flex m text-blue-600  text-center gap-1 ">
+                        <div className="flex flex-col items-center text-blue-600 text-center gap-3">
                           {props.trainingMetadata.batches.map((item, index) => (
-                            <div className="ml-5 text-sm " key={index}>
-                              {" "}
-                              {item.name}{" "}
-                              <div>
-                                {moment(item.startDate).format(
-                                  "YYYY-MMM-DD HH:mm"
-                                )}{" "}
-                                -{" "}
-                                {moment(item.endDate).format(
-                                  "YYYY-MMM-DD HH:mm"
-                                )}
+                            <div className="text-sm" key={index}>
+                              <div className="mb-1 font-Mynerve font-bold text-2xl tracking-wide">{item.name}</div>
+                              <div className="font-bold">
+                                {moment(item.startDate).format("YYYY-MMM-DD HH:mm")} -{" "}
+                                {moment(item.endDate).format("YYYY-MMM-DD HH:mm")}
                               </div>
-                              <div></div>
                             </div>
                           ))}
                         </div>
                       </div>
                     </div>
+
                     <div className="flex  shadow-md w-full bg-white pb-6 pt-5  rounded-xl   ">
                       <div className="flex px-2 w-full flex-col">
                         <p className="text-center pt-3 pb-4 text-xl  font-semibold ">
                           Contact Us
                         </p>
 
-                        <div className="flex gap-2 justify-center  ">
-                          <div className="text-left text-xl  ">
-                            {" "}
-                            +91-9845348601
+                        <div className="flex items-center gap-2 justify-center">
+                          <div className="text-left text-xl font-semibold">
+                            <span className="tracking-wider">+91-9845 348 601</span>
                           </div>
-                          <div className="flex ">
-                            <div className="flex justify-center items-center">
-                              <BsTelephone color="blue" />
+                          <div className="flex items-center">
+                            <div className="text-blue-600">
+                              <BsTelephone size={24} />
                             </div>
                           </div>
                         </div>
