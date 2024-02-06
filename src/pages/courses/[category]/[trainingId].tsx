@@ -200,6 +200,20 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
     <>
       {props.trainingMetadata && (
         <Head>
+          {props.trainingMetadata.name == "PRINCE2® Foundation and Practitioner " && (
+            <>
+              <title>bSkilling | PRINCE2 Foundation & Practitioner Training | Online Course and Certification </title>
+              <meta
+                name="description"
+                content="Enhance project skills with bSkilling PRINCE2 training. Gain Foundation and Practitioner certification through our online courses. Enroll now!"
+              />
+              <meta
+                name="keywords"
+                content="prince2 , prince2 certificate , prince2 practitioner ,prince2 foundation, prince2 project management , prince2 course price , prince2 course"
+              />
+            </>
+          )}
+
           {props.trainingMetadata.name == "Project Management Professional (PMP)® Certification Prep Course " && (
             <>
               <title>bSkilling | PMP Certification Training in Bangalore | Project Management Professional Courses </title>
@@ -213,41 +227,38 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
               />
             </>
           )}
-          {/* <title>
-            {props.trainingMetadata.name == "Project Management Professional (PMP)® Certification Prep Course "
-              ? "PMP Certification Training Online | Project Management Course in Bangalore"
-              : "bSkilling"}
-          </title>
-         
-          <meta
-            name="description"
-            content={
-              props.trainingMetadata.name == "Project Management Professional (PMP)® Certification Prep Course "
-                ? "Enhance your project management skills with our PMP certification training. Join our online PMP course."
-                : "bskilling"
-            }
-          />
-          <meta
-            name="keywords"
-            content={
-              props.trainingMetadata.name == "Project Management Professional (PMP)® Certification Prep Course "
-                ? "pmp certification,pmp training,pmp courses,online pmp certification,pmp certification training,pmp training online,project management,pmp certification online,pmp course online,pmp certificate course"
-                : "bskilling"
-            }
-          /> */}
-          {props.trainingMetadata.name !== "Project Management Professional (PMP)® Certification Prep Course " && (
+
+          {props.trainingMetadata.name == "Generative AI" && (
             <>
-              <title>bSkilling </title>
+              <title>bSkilling | Online Generative AI - Courses and Certification </title>
               <meta
-                name="bSkilling"
-                content="Learn the skills you need to build and deploy intelligent applications on SAP Business Technology Platform"
+                name="description"
+                content="Discover Online courses and certifications in Generative AI with bSkilling. Elevate yours skills with advanced training. Get Certified Now!"
               />
               <meta
-                name="p:domain_verify"
-                content="7bb84546e514612864b5b9d71d1649e4"
+                name="keywords"
+                content="Generative ai, ai generative, generative ai courses, Generative ai online, generative ai certification, generative ai training,gen ai, gen ai course, generative ai course near me"
               />
             </>
           )}
+
+          {props.trainingMetadata.name !== "PRINCE2® Foundation and Practitioner " &&
+            props.trainingMetadata.name !== "Project Management Professional (PMP)® Certification Prep Course " &&
+            props.trainingMetadata.name !== "Generative AI" &&(
+              <>
+                <title>bSkilling </title>
+                <meta
+                  name="bSkilling"
+                  content="Learn the skills you need to build and deploy intelligent applications on SAP Business Technology Platform"
+                />
+                <meta
+                  name="p:domain_verify"
+                  content="7bb84546e514612864b5b9d71d1649e4"
+                />
+              </>
+            )}
+
+
 
           <link rel="icon" href="/favicon.png" />
           <script
