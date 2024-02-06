@@ -44,7 +44,7 @@ module.exports = {
         gray: "#e9e9e9",
         navyBlue: "#010b37",
         buttonBlue: "#125582",
-        // buttonBlue: "#300ffa",
+        darkBlue: "#300ffa",
         Buttoncolor: "#125582",
         subText: "#666666",
         GreenText: "#10c277",
@@ -54,6 +54,7 @@ module.exports = {
         Mynerve: "Mynerve",
         SourceSans: ["Source Sans Pro"],
       },
+      
     },
   },
   plugins: [],
