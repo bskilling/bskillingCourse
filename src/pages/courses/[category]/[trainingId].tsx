@@ -7,6 +7,7 @@ import AccordionFaq from "components/accordionFaq";
 import CourseSlider from "components/courseSlider";
 import LandingPageFooter from "components/landingPageFooter";
 import RegisterForm from "components/registerForm";
+import Testimonials from "components/testimonials";
 import { Console } from "console";
 import { motion } from "framer-motion";
 import DropAQueryForm from "modules/leadChat/components/DropAQueryForm";
@@ -195,7 +196,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
   };
 
   useEffect(() => { }, [props.trainingMetadata]);
-
+console.log(props.trainingMetadata)
   return (
     <>
       {props.trainingMetadata && (
@@ -242,9 +243,33 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
             </>
           )}
 
+          {props.trainingMetadata.name == "Cloud Engineering- Azure, AWS, GCP Training Certification" && (
+            <>
+              <title>Cloud Engineering Certification: Azure, AWS, GCP Training</title>
+              <meta
+                name="description"
+                content="Find opportunities by obtaining a Cloud Engineering Certification, improve your skills to the next level and reveal your expertise in cloud technologies."
+              />
+              
+            </>
+          )}
+
+          {props.trainingMetadata.name == "PRINCE2® 7th Edition Foundation Certification" && (
+            <>
+              <title>bSkilling | SAP BTP - Online Courses With Certification </title>
+              <meta
+                name="description"
+                content="Explore live, online SAP BTP courses for dynamic learning. Master SAP BTP with bSkilling and get course Certification with Placement."
+              />
+              
+            </>
+          )}
+
           {props.trainingMetadata.name !== "PRINCE2® Foundation and Practitioner " &&
             props.trainingMetadata.name !== "Project Management Professional (PMP)® Certification Prep Course " &&
-            props.trainingMetadata.name !== "Generative AI" && (
+            props.trainingMetadata.name !== "Generative AI" &&
+            props.trainingMetadata.name !== "Cloud Engineering- Azure, AWS, GCP Training Certification" &&
+            props.trainingMetadata.name !== "PRINCE2® 7th Edition Foundation Certification" &&(
               <>
                 <title>bSkilling </title>
                 <meta
@@ -686,6 +711,8 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                       </div>
                     </div>
                   </div>
+
+
                   {/* first sections second card */}
                 </div>
 
@@ -863,8 +890,13 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                     </div>
                   </div>
                 </div>
+
               </div>
+
             </motion.div>
+            <div className="mt-10">
+              <Testimonials />
+            </div>
           </section>
           {loadingVisible === true ? (
             <div

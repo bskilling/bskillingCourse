@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Pagination, Autoplay } from "swiper";
+import { useState, useEffect } from "react";
+import { Pagination, Autoplay, Scrollbar, Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -32,36 +33,99 @@ export default function Testimonials() {
       logo: "/testimonial3.png",
       id: 3,
     },
+    {
+      text: "My experience with Simplilearn was great. It is a fantastic platform for any professional who wants to upgrade their skills and grow professionally. After completing the course, I shifted my career domain to explore new professional capabilities in that field.",
+      name: "Vishal Pandey",
+      position: "Founder & CEO",
+      company: "EarthyBlend Pvt Ltd",
+      logo: "/testimonial4.png",
+      id: 4,
+    },
   ];
+  const [slidesPerView, setSlidesPerView] = useState(1);
+  useEffect(() => {
+    const handleResize = () => {
+      if (typeof window !== "undefined") {
+        setSlidesPerView(calculateSlidesPerView());
+      }
+    };
+
+    if (typeof window !== "undefined") {
+      window.addEventListener("resize", handleResize);
+
+      // Initial calculation
+      setSlidesPerView(calculateSlidesPerView());
+    }
+
+    return () => {
+      if (typeof window !== "undefined") {
+        window.removeEventListener("resize", handleResize);
+      }
+    };
+  }, []);
+
+  function calculateSlidesPerView() {
+    const screenWidth = window.innerWidth;
+
+    if (screenWidth >= 768) {
+      // For screens wider than or equal to 768px, display 2 testimonials
+      return 2;
+    } else {
+      // For screens narrower than 768px, display 1 testimonial
+      return 1;
+    }
+  }
 
   return (
-    <section className="p-4 md:pt-12   bg-Buttoncolor text-white relative">
-      <h1 className="md:container mx-auto   text-center font-bold font-SourceSans text-xl  tracking-wide text-white">
+    <section className="p-4 md:pt-12 bg-gray text-black relative">
+      <h1 className="md:container mx-auto text-center font-bold font-SourceSans text-[2rem] tracking-wide text-black mb-16">
         Alumni Speak
       </h1>
 
       <Swiper
-        modules={[Pagination, Autoplay]}
-        slidesPerView={1}
-        autoplay={true}
-        loop={true}
+        modules={[Navigation, Pagination]}
+        navigation={{
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        }}
+        pagination={{
+          clickable: true,
+        }}
+        slidesPerView={slidesPerView}
+        spaceBetween={16}
         speed={1000}
       >
         {stuff.map(({ text, name, position, company, logo, id }, index) => (
           <SwiperSlide key={id + index + name}>
             <div
               key={id + index + name}
-              className="w-full relative flex pb-8 flex-col justify-center items-center"
+              className={`w-full relative flex flex-col ${slidesPerView === 1 ? "items-start" : "items-center"
+                }`}
             >
-              <div className="md:container mx-auto md:px-24 py-10 flex  justify-center items-center ">
-                <p className="md:max-w-sm md:text-   text-center ">
-                  &ldquo; {text} &rdquo;
-                </p>
+              <div className="w-full md:w-auto md:h-[300px] p-4 bg-white rounded-md shadow-2xl mb-16">
+                <div className="flex items-center space-x-4">
+                  <div>
+                    <img
+                      src="https://www.thearoralawfirm.com/wp-content/uploads/2021/01/testimonials_man3.png"
+                      alt={`Logo ${name}`}
+                      className="w-16 h-16 object-cover rounded-full"
+                    />
+                  </div>
+
+                  <div>
+                    <p className="text-lg text-black font-semibold">{name}</p>
+                    <p className="text-sm text-black font-semibold">{position}</p>
+                  </div>
+                </div>
+                <div className="py-8 text-left">
+                  <p className="max-w-sm text-black">{text}</p>
+                </div>
               </div>
-              <p className="text-lg pt-6 text-white font-semibold">{name}</p>
             </div>
           </SwiperSlide>
         ))}
+        <div className="swiper-button-next" style={{ fontSize: "10px" }}></div>
+        <div className="swiper-button-prev" style={{ fontSize: "0.8rem" }}></div>
       </Swiper>
     </section>
   );
