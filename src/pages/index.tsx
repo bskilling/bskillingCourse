@@ -40,7 +40,7 @@ interface ListOfCoursesDataType {
   trainingTye: string;
 }
 type NestedArrayOfPeople = Array<Array<ListOfCoursesDataType>>;
-const Home: NextPage<NextPage> = ({}) => {
+const Home: NextPage<NextPage> = ({ }) => {
   const [datas, setDatas] = useState<string[]>([]);
   const [eachCourceList, SetEachCourceList] = useState<
     ListOfCoursesDataType[][]
@@ -76,14 +76,14 @@ const Home: NextPage<NextPage> = ({}) => {
   return (
     <>
       <Head>
-        <title>bSkilling </title>
+        <title>bSkilling | Online Courses - Live Training and Certification Programs</title>
         <meta
-          name="bSkilling"
-          content="Unlock Your Potential with the Trending Online Courses of Today | Expand Your Knowledge and Skills"
+          name="description"
+          content="Unlock success with bSkilling online courses and live training. Get certified in Generative AI, SAP BTP, Cloud Engineering, Prince2, PMP. The best online training experience!"
         />
         <meta
-          name="p:domain_verify"
-          content="7bb84546e514612864b5b9d71d1649e4"
+          name="keywords"
+          content="bskilling, generative ai, generative ai online certification, gen ai,sap btp course, sap btp online,prince2 certification, prince2 examination, pmp online certification, pmp online course, cloud engineering course, cloud engineering training,Online course , Online course with placement, online training course, online certification with placement, training certification with placement"
         />
 
         <link rel="icon" href="/favicon.png" />
