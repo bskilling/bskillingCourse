@@ -352,7 +352,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
                   <a
                     target="_blank"
                     rel="noreferrer"
-                    href="https://twitter.com/bskillingindia"
+                    href="https://twitter.com/b_SkillingIndia"
                   >
                     {" "}
                     <img

@@ -43,6 +43,7 @@ export default function Testimonials() {
     },
   ];
   const [slidesPerView, setSlidesPerView] = useState(1);
+
   useEffect(() => {
     const handleResize = () => {
       if (typeof window !== "undefined") {
@@ -67,17 +68,17 @@ export default function Testimonials() {
   function calculateSlidesPerView() {
     const screenWidth = window.innerWidth;
 
-    if (screenWidth >= 768) {
-      // For screens wider than or equal to 768px, display 2 testimonials
-      return 2;
+    if (screenWidth >= 1280) {
+      return 3; // For screens wider than or equal to 1024px, display 3 testimonials
+    } else if (screenWidth >= 1024) {
+      return 2; // For screens wider than or equal to 768px, display 2 testimonials
     } else {
-      // For screens narrower than 768px, display 1 testimonial
-      return 1;
+      return 1; // For screens narrower than 768px, display 1 testimonial
     }
   }
 
   return (
-    <section className="p-4 md:pt-12 bg-gray text-black relative">
+    <section className="p-4 md:px-24 md:pt-12 bg-gray text-black relative">
       <h1 className="md:container mx-auto text-center font-bold font-SourceSans text-[2rem] tracking-wide text-black mb-16">
         Alumni Speak
       </h1>
@@ -92,17 +93,18 @@ export default function Testimonials() {
           clickable: true,
         }}
         slidesPerView={slidesPerView}
-        spaceBetween={16}
+        spaceBetween={20}
         speed={1000}
       >
         {stuff.map(({ text, name, position, company, logo, id }, index) => (
           <SwiperSlide key={id + index + name}>
             <div
               key={id + index + name}
-              className={`w-full relative flex flex-col ${slidesPerView === 1 ? "items-start" : "items-center"
-                }`}
+              className={`w-full relative flex flex-col ${
+                slidesPerView === 1 ? "items-start" : "items-center"
+              }`}
             >
-              <div className="w-full md:w-auto md:h-[300px] p-4 bg-white rounded-md shadow-2xl mb-16">
+              <div className="w-full md:w-auto md:h-[360px] p-4 bg-white rounded-md shadow-2xl mb-16">
                 <div className="flex items-center space-x-4">
                   <div>
                     <img

@@ -142,8 +142,8 @@ export default function Testimonials() {
 
   return (
     <>
-      <section className="text-black md:container  mx-auto  body-font md:pt-14 md:pb-10 ">
-        <p className="   capitalize pt-4 md:pt-0 font-bold font-SourceSans text-xl text-center  mb-10 ">
+      <section className="text-black md:container mx-auto body-font md:pt-14 md:pb-10 ">
+        <p className="capitalize pt-4 md:pt-0 font-bold font-SourceSans text-xl text-center mb-10 ">
           Latest Blog Posts
         </p>
         <div className="p-5">
