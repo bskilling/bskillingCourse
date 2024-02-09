@@ -10,17 +10,17 @@ import "swiper/css/autoplay";
 export default function Testimonials() {
   const stuff = [
     {
-      text: "I strongly recommend this course to any aspiring data scientist After completing this course, even those with no prior knowledge of visualisation tools can become masters.",
-      name: "Swathi MS",
-      position: "Co-Founder",
+      text: "I thought prompt engineering is the easiest and who will take up the course and it just about asking questions to Chat GPT! Oh boy I was wrong! There is so much and its a ocean of knowledge in the field of AI! Trainer helped me understand steps to prompt and the right way to prompt! Mid journey and Bard are something I dint know existed or to work with! Really appreciate the teams effort educate about all of these things in one session!",
+      name: "Amitikumar Mohanty",
+      position: "Systems Engineer",
       company: "Renaura Wellness Pvt Ltd",
       logo: "/testimonial1.png",
       id: 1,
     },
     {
-      text: "This course has helped me understand the fundamentals, advance my ALML knowledge, and apply those concepts to my work. I recommend this course to anyone interested in learning about ALML.",
-      name: "Abhishek K",
-      position: "President",
+      text: "Bskillinng's learning platform is a game-changer. As a trainer, I appreciate the platform's user-friendly interface and robust features that enhance the training experience. It's a valuable resource for both trainers and learners, making our job easier and more effective. Proud to be associated with such an innovative learning solution!",
+      name: "Virender Singh",
+      position: "AWS Certified Trainer",
       company: "Prima USA, LLC",
       logo: "/testimonial2.png",
       id: 2,
@@ -28,15 +28,15 @@ export default function Testimonials() {
     {
       text: "As a newcomer with no technical background, I as able to learn Python at a deeper level. This course includes certification, which will aid in job search.",
       name: "Santhosh Kumar",
-      position: "Founder & CEO",
+      position: "Python Data Engineer",
       company: "EarthyBlend Pvt Ltd",
       logo: "/testimonial3.png",
       id: 3,
     },
     {
-      text: "My experience with Simplilearn was great. It is a fantastic platform for any professional who wants to upgrade their skills and grow professionally. After completing the course, I shifted my career domain to explore new professional capabilities in that field.",
-      name: "Vishal Pandey",
-      position: "Founder & CEO",
+      text: "I'm Pradheep from Non IT background, my friend referred this institute I joined here SAP BTP course. The training went well the concepts are clearly delivered with practical examples. every day task helped me lots.I got good knowledge. SAP BTP is easy and intresting, end of the course I'm satisfied with the training.",
+      name: "Pradheep Eswaramoorthi",
+      position: "Software Engineer",
       company: "EarthyBlend Pvt Ltd",
       logo: "/testimonial4.png",
       id: 4,
@@ -120,7 +120,7 @@ export default function Testimonials() {
                   </div>
                 </div>
                 <div className="py-8 text-left">
-                  <p className="max-w-sm text-black">{text}</p>
+                  <p className="text-sm max-w-sm text-black">{text}</p>
                 </div>
               </div>
             </div>
