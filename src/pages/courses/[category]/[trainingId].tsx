@@ -196,7 +196,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
   };
 
   useEffect(() => { }, [props.trainingMetadata]);
-console.log(props.trainingMetadata)
+
   return (
     <>
       {props.trainingMetadata && (
