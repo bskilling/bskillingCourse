@@ -106,7 +106,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           <link rel="icon" href="/favicon.png" />
           <script
             async
-            src="https://www.googletagmanager.com/gtag/js?id=G-3PVZC9K8BH"
+            src="https://www.googletagmanager.com/gtag/js?id=G-R3LT63CRN0"
           ></script>
           <script
             dangerouslySetInnerHTML={{
@@ -114,7 +114,7 @@ function MyApp({ Component, pageProps }: AppProps) {
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', 'G-3PVZC9K8BH');
+              gtag('config', 'G-R3LT63CRN0');
             `,
             }}
           />
