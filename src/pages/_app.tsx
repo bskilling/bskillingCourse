@@ -74,7 +74,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, [route.pathname]);
 
   useEffect(() => {
-   
+
     var styles = document.createElement("style");
     styles.innerHTML = `
       body .zsiq_floatmain {
@@ -126,20 +126,20 @@ function MyApp({ Component, pageProps }: AppProps) {
                 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
                 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-                })(window,document,'script','dataLayer','GTM-53VV7DVG');
+                })(window,document,'script','dataLayer','GTM-NT8WHZQZ');
               `,
             }}
           />
           <noscript>
             {/* Google Tag Manager (noscript) */}
             <iframe
-              src="https://www.googletagmanager.com/ns.html?id=GTM-53VV7DVG"
+              src="https://www.googletagmanager.com/ns.html?id=GTM-NT8WHZQZ"
               height="0"
               width="0"
               style={{ display: 'none', visibility: 'hidden' }}
             ></iframe>
           </noscript>
-         {/* salesIQ */}
+          {/* salesIQ */}
           <script
             type="text/javascript"
             id="zsiqchat"
@@ -165,7 +165,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <Component {...pageProps} />
         {/* <FloatWindow /> */}
 
-       {showFixedFooter && (
+        {showFixedFooter && (
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
