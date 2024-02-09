@@ -46,6 +46,7 @@ const EnquiryForm: React.FC<EnquiryFormProps> = ({ onClose, onFormSubmit, onPdfD
         lastName: data.lastName,
         email: data.email,
         phone: data.phone,
+        experience: data.experience,
 
       };
 
@@ -64,6 +65,7 @@ const EnquiryForm: React.FC<EnquiryFormProps> = ({ onClose, onFormSubmit, onPdfD
           lastName: "",
           email: "",
           phone: "",
+          experience: ""
         });
 
         setMessage(true);
@@ -171,6 +173,15 @@ const EnquiryForm: React.FC<EnquiryFormProps> = ({ onClose, onFormSubmit, onPdfD
               </p>
             )}
           </div>
+          <div className="mb-4">
+            <input
+              type="text"
+              placeholder="Year Of Experience(optional)"
+              {...register("experience")}
+              className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-green-500"
+            />
+
+          </div>
 
           <div className="text-center">
             {messageSent ? (
@@ -185,6 +196,7 @@ const EnquiryForm: React.FC<EnquiryFormProps> = ({ onClose, onFormSubmit, onPdfD
                     lastName: watch("lastName"),
                     email: watch("email"),
                     phone: watch("phone"),
+                    experience:watch("experience")
                   };
 
                   submitForm(formData);
