@@ -160,9 +160,9 @@ function MyApp({ Component, pageProps }: AppProps) {
               `,
             }}
           />
-          <form>
+          {/* <form>
             <input type='hidden' id="zc_gad" name="zc_gad" value="" />
-          </form>
+          </form> */}
           <script type="text/javascript"
             async
             src="https://crmplus.zoho.com/crm/javascript/zcga.js"
