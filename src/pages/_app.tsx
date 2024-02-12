@@ -160,11 +160,19 @@ function MyApp({ Component, pageProps }: AppProps) {
               `,
             }}
           />
+
         </Head>
 
         <Component {...pageProps} />
         {/* <FloatWindow /> */}
 
+        <form>
+          
+
+          {/* Zoho Tracking Code for Importing Leads */}
+          <input type='hidden' id="zc_gad" name="zc_gad" value="your_data_here" />
+        </form>
+        <Script src='https://crmplus.zoho.com/crm/javascript/zcga.js' strategy="lazyOnload" />
         {showFixedFooter && (
           <motion.div
             initial={{ opacity: 0, y: 50 }}
