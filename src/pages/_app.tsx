@@ -160,7 +160,11 @@ function MyApp({ Component, pageProps }: AppProps) {
               `,
             }}
           />
-
+        
+          <script type="text/javascript" 
+            async
+            src="https://crmplus.zoho.com/crm/javascript/zcga.js"
+          ></script>
         </Head>
 
         <Component {...pageProps} />
@@ -170,9 +174,9 @@ function MyApp({ Component, pageProps }: AppProps) {
           
 
           {/* Zoho Tracking Code for Importing Leads */}
-          <input type='hidden' id="zc_gad" name="zc_gad" value="your_data_here" />
+          <input type='hidden' id="zc_gad" name="zc_gad" value="" />
         </form>
-        <Script src='https://crmplus.zoho.com/crm/javascript/zcga.js' strategy="lazyOnload" />
+        
         {showFixedFooter && (
           <motion.div
             initial={{ opacity: 0, y: 50 }}
