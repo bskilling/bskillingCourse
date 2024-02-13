@@ -250,7 +250,10 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                 name="description"
                 content="Find opportunities by obtaining a Cloud Engineering Certification, improve your skills to the next level and reveal your expertise in cloud technologies."
               />
-              
+              <meta
+                name="keywords"
+                content=" Best Cloud Computing Courses,cloud computing certificate courses,aws cloud computing course,google cloud certification courses,microsoft azure training and certification,cloud engineer certification training,AWS Cloud Certification Course,aws cloud computing certification,Microsoft Azure Certification Training"
+              />
             </>
           )}
 
@@ -265,7 +268,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                 name="keywords"
                 content="prince2 , prince2 certificate , prince2  online course ,prince2 foundation, prince2 foundation online training ,prince2 project management , prince2 course price , prince2 course"
               />
-              
+
             </>
           )}
 
@@ -280,7 +283,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                 name="keywords"
                 content="sap course,sap btp training, learn sap, sap certification, sap training nd certification, sap training courses,sap online,sap btp certifiaction course, sap btp course details"
               />
-              
+
             </>
           )}
 
@@ -289,7 +292,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
             props.trainingMetadata.name !== "Generative AI" &&
             props.trainingMetadata.name !== "Cloud Engineering- Azure, AWS, GCP Training Certification" &&
             props.trainingMetadata.name !== "PRINCE2® 7th Edition Foundation Certification" &&
-            props.trainingMetadata.name !== "SAP Business Technology Platform (BTP)" &&(
+            props.trainingMetadata.name !== "SAP Business Technology Platform (BTP)" && (
               <>
                 <title>bSkilling </title>
                 <meta
