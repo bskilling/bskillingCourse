@@ -256,10 +256,29 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
 
           {props.trainingMetadata.name == "PRINCE2® 7th Edition Foundation Certification" && (
             <>
-              <title>bSkilling | SAP BTP - Online Courses With Certification </title>
+              <title>bSkilling | PRINCE2 Foundation | Online Training Course and Certification</title>
+              <meta
+                name="description"
+                content="Elevate your project management prowess with bSkilling exclusive PRINCE2 Foundation Online Training and Certification. Level up your career now!."
+              />
+              <meta
+                name="keywords"
+                content="prince2 , prince2 certificate , prince2  online course ,prince2 foundation, prince2 foundation online training ,prince2 project management , prince2 course price , prince2 course"
+              />
+              
+            </>
+          )}
+
+          {props.trainingMetadata.name == "SAP Business Technology Platform (BTP)" && (
+            <>
+              <title>bSkilling | SAP BTP - Online Courses With Certification</title>
               <meta
                 name="description"
                 content="Explore live, online SAP BTP courses for dynamic learning. Master SAP BTP with bSkilling and get course Certification with Placement."
+              />
+              <meta
+                name="keywords"
+                content="sap course,sap btp training, learn sap, sap certification, sap training nd certification, sap training courses,sap online,sap btp certifiaction course, sap btp course details"
               />
               
             </>
@@ -269,7 +288,8 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
             props.trainingMetadata.name !== "Project Management Professional (PMP)® Certification Prep Course " &&
             props.trainingMetadata.name !== "Generative AI" &&
             props.trainingMetadata.name !== "Cloud Engineering- Azure, AWS, GCP Training Certification" &&
-            props.trainingMetadata.name !== "PRINCE2® 7th Edition Foundation Certification" &&(
+            props.trainingMetadata.name !== "PRINCE2® 7th Edition Foundation Certification" &&
+            props.trainingMetadata.name !== "SAP Business Technology Platform (BTP)" &&(
               <>
                 <title>bSkilling </title>
                 <meta
