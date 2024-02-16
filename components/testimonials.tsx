@@ -79,9 +79,9 @@ export default function Testimonials() {
 
   return (
     <section className="p-4 md:px-24 md:pt-12 bg-gray text-black relative">
-      <h1 className="md:container mx-auto text-center font-bold font-SourceSans text-[2rem] tracking-wide text-black mb-16">
+      <h2 className="md:container mx-auto text-center font-bold font-SourceSans text-[2rem] tracking-wide text-black mb-16">
         Alumni Speak
-      </h1>
+      </h2>
 
       <Swiper
         modules={[Navigation, Pagination]}
@@ -115,7 +115,7 @@ export default function Testimonials() {
                   </div>
 
                   <div>
-                    <p className="text-lg text-black font-semibold">{name}</p>
+                    <h3 className="text-lg text-black font-semibold">{name}</h3>
                     <p className="text-sm text-black font-semibold">{position}</p>
                   </div>
                 </div>

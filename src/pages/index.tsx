@@ -11,6 +11,8 @@ import { useContext, useEffect, useState } from "react";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import PdfFile from "../pages/Pdffile";
 import axios from "axios";
+import LeadForm from "modules/leadChat/components/LeadForm";
+
 interface UpcomingBatch {
   capacity: string;
   description: string;
@@ -45,6 +47,7 @@ const Home: NextPage<NextPage> = ({ }) => {
   const [eachCourceList, SetEachCourceList] = useState<
     ListOfCoursesDataType[][]
   >([]);
+  
   const fetchApiData = async () => {
     try {
       const response = await axios.get(
@@ -101,6 +104,7 @@ const Home: NextPage<NextPage> = ({ }) => {
             `,
           }}
         />
+        
       </Head>
       <section className="bg-buttonBlue px-8 text-white">
         <Tabs data={datas} />
@@ -108,7 +112,7 @@ const Home: NextPage<NextPage> = ({ }) => {
       <section onClick={clickOnMain}>
         {/* <ContactPopUp /> */}
 
-        <section>
+        <section className="relative">
           <Slider />
         </section>
         <section className="bg-gray">
@@ -127,6 +131,7 @@ const Home: NextPage<NextPage> = ({ }) => {
           <Blogs />
         </section>
         <section className="bg-gray-200">
+          
           <div className="md:hidden flex ">
             <div>
               <p className="font-bold font-SourceSans text-xl text-center pt-12 py-2 ">
@@ -194,11 +199,16 @@ const Home: NextPage<NextPage> = ({ }) => {
               />
             </div>
           </div>
+         
         </section>
       </section>
       {/* <PDFDownloadLink document={<PdfFile />}>
         <button>Download</button>
       </PDFDownloadLink> */}
+      
+      
+    
+      
     </>
   );
 };

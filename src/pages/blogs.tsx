@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
 
+
 export default function Blogs() {
   const blog = [
     {
@@ -87,7 +88,7 @@ export default function Blogs() {
       sorc: "blogs.imf.org",
     },
   ];
-
+  
   return (
     <>
       <Head>
@@ -141,9 +142,9 @@ export default function Blogs() {
                       />
                     </div>
 
-                    <h1 className="title-font px-3 mt-2 text-lg text-left font-bold text-gray-900 mb-3">
+                    <h2 className="title-font px-3 mt-2 text-lg text-left font-bold text-gray-900 mb-3">
                       {name}
-                    </h1>
+                    </h2>
                     <p className="text-left font-semibold text-sm px-3 ">
                       Source : <span className="font-normal">{sorc}</span>{" "}
                     </p>

@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import "../../style/globals.css";
 
 
+
 function MyApp({ Component, pageProps }: AppProps) {
   const route = useRouter();
   const {
@@ -23,6 +24,8 @@ function MyApp({ Component, pageProps }: AppProps) {
   } = useChat();
   const [chatIconVisible, setChatIconVisible] = useState(false);
   const [showFixedFooter, setShowFixedFooter] = useState(false);
+  
+
 
   useEffect(() => {
     function handleScroll() {
@@ -85,6 +88,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     document.head.appendChild(styles);
   }, []);
 
+ 
   return (
     <MyProvider>
       <Layout>
@@ -160,14 +164,12 @@ function MyApp({ Component, pageProps }: AppProps) {
               `,
             }}
           />
-          {/* <form>
-            <input type='hidden' id="zc_gad" name="zc_gad" value="" />
-          </form> */}
+          
           <script type="text/javascript"
             async
             src="https://crmplus.zoho.com/crm/javascript/zcga.js"
           ></script>
-
+          
         </Head>
 
         <Component {...pageProps} />

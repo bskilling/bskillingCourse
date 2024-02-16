@@ -187,9 +187,9 @@ export default function Testimonials() {
                           />
                         </div>
 
-                        <h1 className="title-font px-3 mt-2 text-lg text-left font-bold text-gray-900 mb-3">
+                        <h2 className="title-font px-3 mt-2 text-lg text-left font-bold text-gray-900 mb-3">
                           {name}
-                        </h1>
+                        </h2>
                         <p className="text-left  text-sm px-3 ">
                           Source : {sorc}
                         </p>
