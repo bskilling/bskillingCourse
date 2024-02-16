@@ -48,6 +48,7 @@ module.exports = {
         Buttoncolor: "#125582",
         subText: "#666666",
         GreenText: "#10c277",
+        Aqua:"#0d9488"
       },
       fontFamily: {
         RobotoMono: "Roboto Mono",

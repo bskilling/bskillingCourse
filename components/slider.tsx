@@ -5,7 +5,9 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
 import { EffectFade } from "swiper";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+
+
 interface slider {
   text1: string;
   image: string;
@@ -16,14 +18,14 @@ const Slider = () => {
     {
       text1: "Enrol with us today and take your career to the next level",
 
-      image: "/carosel/ban4.png",
+      image: "/carosel/slider1.png",
       id: "slide1",
     },
     {
       text1:
         "Get certified by globally recognized bodies and deepen your expertise",
 
-      image: "/carosel/ban2.png",
+      image: "/carosel/slider2.png",
       id: "slide2",
     },
     {
@@ -35,9 +37,11 @@ const Slider = () => {
     },
   ];
 
+ 
+
   return (
     <>
-      <div className="relative w-auto">
+      <div className="w-auto">
         {/* <div className="w-full h-[60vh] flex overflow-x-auto snap-mandatory snap-x scrollbar-hide"> */}
         <div className="w-full">
           <Swiper
@@ -48,9 +52,6 @@ const Slider = () => {
             loop={true}
             speed={500}
             pagination={{ clickable: true }}
-
-            // onSlideChange={() => console.log('slide change')}
-            // onSwiper={(swiper) => console.log(swiper)}
           >
             {slides.map(({ text1, image, id }, index) => (
               <SwiperSlide key={index}>
@@ -120,11 +121,12 @@ const ImageSlider = (props: ImageSliderProps) => {
           w-full relative flex justify-center items-center"
       >
         <img
-          className="object-cover first-letter:    w-full h-full absolute"
+          className="object-cover first-letter:w-full h-full absolute"
           src={props.image}
           alt=""
         />
       </div>
+      
     </>
   );
 };

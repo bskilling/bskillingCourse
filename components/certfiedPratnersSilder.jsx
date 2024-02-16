@@ -28,7 +28,7 @@ const CertifiedPartnersSlider = () => {
         </div>
       </div>
 
-      <div className="lg:container mx-auto  lg:pb-5">
+      <div className="lg:container mx-auto lg:pb-5">
         <Swiper
           modules={[Autoplay]}
           slidesPerView={4}

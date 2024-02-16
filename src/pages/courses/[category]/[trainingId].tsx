@@ -20,6 +20,7 @@ import { BiTime } from "react-icons/bi";
 import { BsFillPeopleFill, BsTelephone } from "react-icons/bs";
 import { FaTimes } from "react-icons/fa";
 import { MdDownloadForOffline } from "react-icons/md";
+import LeadForm from "modules/leadChat/components/LeadForm";
 type Batch = {
   id: string;
   name: string;
@@ -80,6 +81,24 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
 
   const [pdfUrl, setPdfUrl] = useState<string | null>(null);
   const [loadingVisible, setLoadingVisible] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
+
+  // useEffect(() => {
+  
+  //   const delayTime = 4000;
+
+  //   const timeoutId = setTimeout(() => {
+  //     setShowPopup(true);
+  //   }, delayTime);
+
+    
+  //   return () => clearTimeout(timeoutId);
+  // }, []);
+
+  // const closePopup = () => {
+  //   setShowPopup(false);
+  // };
+  
   const generatePDF = async () => {
     try {
       setLoadingVisible(true);
@@ -349,14 +368,14 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                 <div className="md:w-[100%] md:basis-[90%] md:mt-10 mt-12  ">
                   <div className=" flex flex-col md:w-[80%] md:flex-row justify-between">
                     <div className="flex items-center">
-                      <p className=" pb-2 text-3xl mb-5 text-left px-5 md:px-0 font-semibold">
+                      <h1 className=" pb-2 text-3xl mb-5 text-left px-5 md:px-0 font-semibold">
                         {props.trainingMetadata.name}
-                      </p>
+                      </h1>
                     </div>
                   </div>
                   <div className="flex justify-between">
                     <motion.div className="bg-glass md:w-[80%] text-xl text-left px-5 md:px-0 md:pt-0 pt-3 md:text-xl font-semibold">
-                      {props.trainingMetadata.headLine}
+                      <h2>{props.trainingMetadata.headLine}</h2>
                     </motion.div>
 
                     <button
@@ -940,6 +959,11 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
           ) : (
             ""
           )}
+          {/* {showPopup && (
+            <div className=" bg-black opacity-82 fixed" style={{ zIndex: 7000 }}>
+              <LeadForm onClose={closePopup} />
+            </div>
+          )} */}
         </section>
       )}
     </>
