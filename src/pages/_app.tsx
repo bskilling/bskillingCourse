@@ -107,7 +107,22 @@ function MyApp({ Component, pageProps }: AppProps) {
             name="p:domain_verify"
             content="7bb84546e514612864b5b9d71d1649e4"
           />
+          {/* Facebook meta tag */}
+          <meta property="og:title" content="bSkilling | Online Courses - Live Training and Certifications" />
+          <meta property="og:description" content="Unlock success with bSkilling online courses and live training. Get certified in Generative AI, SAP BTP, Cloud Engineering, Prince2, PMP" />
+          <meta property="og:image" content="https://www.bskilling.com/icon/facebook.svg" />
+          <meta property="og:url" content="www.bskilling.com" />
+          {/* facebook meta tag end */}
+
+          {/* Twitter meta tags start */}
+          <meta name="twitter:title" content="bSkilling | Online Courses - Live Training and Certifications" />
+          <meta name="twitter:description" content="Unlock success with bSkilling online courses and live training. Get certified in Generative AI, SAP BTP, Cloud Engineering, Prince2, PMP" />
+          <meta name="twitter:url" content="www.bskilling.com" />
+          <meta name="twitter:card" content="summary" />
+          {/* Twitter meta tags end */}
+
           <link rel="icon" href="/favicon.png" />
+          {/* google tag manager start */}
           <script
             async
             src="https://www.googletagmanager.com/gtag/js?id=G-R3LT63CRN0"
@@ -135,7 +150,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             }}
           />
           <noscript>
-            {/* Google Tag Manager (noscript) */}
+            
             <iframe
               src="https://www.googletagmanager.com/ns.html?id=GTM-NT8WHZQZ"
               height="0"
@@ -143,6 +158,8 @@ function MyApp({ Component, pageProps }: AppProps) {
               style={{ display: 'none', visibility: 'hidden' }}
             ></iframe>
           </noscript>
+          {/* google Tag Manager End */}
+
           {/* salesIQ */}
           <script
             type="text/javascript"
@@ -175,12 +192,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <Component {...pageProps} />
         {/* <FloatWindow /> */}
 
-        {/* <form>
-          
-
-          
-          <input type='hidden' id="zc_gad" name="zc_gad" value="" />
-        </form> */}
+        
 
         {showFixedFooter && (
           <motion.div
