@@ -83,22 +83,22 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
   const [loadingVisible, setLoadingVisible] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
 
-  // useEffect(() => {
+  useEffect(() => {
   
-  //   const delayTime = 4000;
+    const delayTime = 4000;
 
-  //   const timeoutId = setTimeout(() => {
-  //     setShowPopup(true);
-  //   }, delayTime);
+    const timeoutId = setTimeout(() => {
+      setShowPopup(true);
+    }, delayTime);
 
     
-  //   return () => clearTimeout(timeoutId);
-  // }, []);
+    return () => clearTimeout(timeoutId);
+  }, []);
 
-  // const closePopup = () => {
-  //   setShowPopup(false);
-  // };
-  
+  const closePopup = () => {
+    setShowPopup(false);
+  };
+
   const generatePDF = async () => {
     try {
       setLoadingVisible(true);
@@ -959,11 +959,11 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
           ) : (
             ""
           )}
-          {/* {showPopup && (
+          {showPopup && (
             <div className=" bg-black opacity-82 fixed" style={{ zIndex: 7000 }}>
               <LeadForm onClose={closePopup} />
             </div>
-          )} */}
+          )}
         </section>
       )}
     </>
