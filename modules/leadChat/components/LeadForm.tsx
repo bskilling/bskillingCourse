@@ -2,23 +2,27 @@ import React from 'react';
 
 
 const zohoWebForm = `<div class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-10000">
-    <div class="bg-white p-8 rounded-md max-w-md w-full md:max-w-xl flex flex-col md:flex-row relative z-10001"> <span class="absolute top-[-7px] right-[-8px] text-gray-600 text-xl cursor-pointer transition-transform transform hover:scale-110" onclick="
-         var popupContainer = document.querySelector('.fixed');
-         popupContainer.classList.add('opacity-0');
-         setTimeout(function () {
-         popupContainer.remove();
-         }, 500);
-         "> <img src="/cross.png" alt="close" class="w-6 h-6"> </span>
-        <div class="md:w-1/2 overflow-hidden"> <img src="/popup.png" alt="Image" class="w-full h-full"> </div>
+    <div class="bg-white p-2 md:p-8 rounded-md max-w-md md:w-full md:max-w-xl flex flex-col md:flex-row relative z-10001">
+        <span class="absolute top-[-7px] right-[-8px] text-gray-600 text-xl cursor-pointer transition-transform transform hover:scale-110" onclick="
+            var popupContainer = document.querySelector('.fixed');
+            popupContainer.classList.add('opacity-0');
+            setTimeout(function () {
+                popupContainer.remove();
+            }, 500);
+        "> <img src="/cross.png" alt="close" class="w-6 h-6"> </span>
+        <div class="md:w-1/2 overflow-hidden"> <img src="/popup.png" alt="Image" class="w-full h-full hidden md:inline-block"> </div>
         <div id='crmWebToEntityForm' class='md:w-1/2 md:ml-4'>
             <meta name='viewport' content='width=device-width, initial-scale=1.0'>
             <META HTTP-EQUIV='content-type' CONTENT='text/html;charset=UTF-8'>
-            <form id='webform' class='p-4 bg-white rounded-md shadow-lg' action='https://crm.zoho.com/crm/WebToLeadForm' name='WebToLeads2662866000048987061' method='POST' accept-charset='UTF-8' onsubmit='javascript:document.charset="UTF-8"; var mandatoryCheck = function() {
-         var mndFileds = new Array(' First Name','Last Name','Email','Mobile'); var fldLangVal=new Array('First\x20Name','Last\x20Name','Email','Mobile'); for(i=0;i<mndFileds.length;i++) { var fieldObj=document.forms['WebToLeads2662866000048987061'][mndFileds[i]]; if(fieldObj) { if (((fieldObj.value).replace(/^\s+|\s+$/g, '' )).length==0) { if(fieldObj.type=='file' ) { alert('Please select a file to upload.'); fieldObj.focus(); return false; } alert(fldLangVal[i] +' cannot be empty.'); fieldObj.focus(); return false; } else if(fieldObj.nodeName=='SELECT' ) { if(fieldObj.options[fieldObj.selectedIndex].value=='-None-' ) { alert(fldLangVal[i] +' cannot be none.'); fieldObj.focus(); return false; } } else if(fieldObj.type=='checkbox' ){ if(fieldObj.checked==false){ alert('Please accept '+fldLangVal[i]);
-         fieldObj.focus();
-         return false;
-         } 
-         } 
+            <form
+             id='webform'
+            class='p-4 bg-white rounded-md shadow-lg'
+            action='https://crm.zoho.com/crm/WebToLeadForm'
+            name='WebToLeads2662866000048987061'
+            method='POST'
+            accept-charset='UTF-8'
+            onsubmit="javascript:document.charset='UTF-8'; document.querySelector('.fixed').style.display = 'none'; return true;"
+            target='_blank'
          try {
          if(fieldObj.name == ' Last Name') { name=fieldObj.value; } } catch (e) {} } } trackVisitor(); var urlparams=new URLSearchParams( window.location.search); if(urlparams.has('service') && (urlparams.get('service')==='smarturl' )){ var webform=document.getElementById('webform'); var service=urlparams.get('service'); var smarturlfield=document.createElement('input'); smarturlfield.setAttribute('type','hidden'); smarturlfield.setAttribute('value',service); smarturlfield.setAttribute('name','service'); webform.appendChild(smarturlfield); } document.querySelector('.crmWebToEntityForm .formsubmit').setAttribute('disabled', true); }; mandatoryCheck(); return false;'> <input type='text' style='display:none;' name='xnQsjsdp' value='fce7f163517f233a52d35402f6fa78590f64a6cc2479ef0c7810de9dffd41ece'></input> <input type='hidden' name='zc_gad' id='zc_gad' value=''></input> <input type='text' style='display:none;' name='xmIwtLD' value='aafcfe9b35232a296481c6b8713b188ad413ebb114edc851ffd4e70ca4449cc1061a00e4a70094c9884720c5a61df1d3'></input> <input type='text' style='display:none;' name='actionType' value='TGVhZHM='></input> <input type='text' style='display:none;' name='returnURL' value='null'>  <!-- Do not remove this code. --> <input type='text' style='display:none;' id='ldeskuid' name='ldeskuid'></input> <input type='text' style='display:none;' id='LDTuvid' name='LDTuvid'></input> <!-- Do not remove this code. -->
                 <style>
@@ -211,6 +215,7 @@ const zohoWebForm = `<div class="fixed inset-0 flex items-center justify-center 
                     <div class='zcwf_col_lab'></div>
                     <div class='zcwf_col_fld'> <button type='submit' id='formsubmit' class='bg-blue-500 text-white text-sm px-4 py-2 rounded-md mr-2 hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300' title='Submit'> Submit </button> <button type='reset' class='bg-gray text-gray-700 px-4 py-2 text-sm rounded-md hover:bg-gray-400 focus:outline-none focus:ring focus:border-gray-300' name='reset' title='Reset'> Reset </button> </div>
                 </div>
+                
                 <script>
                     function tooltipShow2662866000048987061(el){
                     	var tooltip = el.nextElementSibling;
