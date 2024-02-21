@@ -106,9 +106,9 @@ const Home: NextPage<NextPage> = ({ }) => {
         />
         
       </Head>
-      <section className="bg-buttonBlue px-8 text-white">
+      {/* <section className="bg-buttonBlue px-8 text-white">
         <Tabs data={datas} />
-      </section>
+      </section> */}
       <section onClick={clickOnMain}>
         {/* <ContactPopUp /> */}
 

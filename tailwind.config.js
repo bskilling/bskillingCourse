@@ -40,6 +40,7 @@ module.exports = {
           "100%": { transform: "translateX(0%)" },
         },
       },
+      
       colors: {
         gray: "#e9e9e9",
         navyBlue: "#010b37",

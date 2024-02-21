@@ -1,132 +1,79 @@
-import { Navigation, Pagination, Autoplay } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/autoplay";
-import { EffectFade } from "swiper";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import { BiSearchAlt } from "react-icons/bi";
+import { useRouter } from "next/router";
 
-
-interface slider {
-  text1: string;
-  image: string;
-  id: string;
-}
 const Slider = () => {
-  const slides = [
-    {
-      text1: "Enrol with us today and take your career to the next level",
-
-      image: "/carosel/slider1.png",
-      id: "slide1",
-    },
-    {
-      text1:
-        "Get certified by globally recognized bodies and deepen your expertise",
-
-      image: "/carosel/slider2.png",
-      id: "slide2",
-    },
-    {
-      text1:
-        "Upskill yourself with trending technologies and become future-ready",
-
-      image: "/carosel/ban6.png",
-      id: "slide3",
-    },
-  ];
-
- 
-
-  return (
-    <>
-      <div className="w-auto">
-        {/* <div className="w-full h-[60vh] flex overflow-x-auto snap-mandatory snap-x scrollbar-hide"> */}
-        <div className="w-full">
-          <Swiper
-            modules={[Navigation, Pagination, Autoplay]}
-            slidesPerView={1}
-            navigation={false}
-            autoplay={true}
-            loop={true}
-            speed={500}
-            pagination={{ clickable: true }}
-          >
-            {slides.map(({ text1, image, id }, index) => (
-              <SwiperSlide key={index}>
-                <ImageSlider key={index} image={image} />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
-      </div>
-      {/* <div className="relative bg-gray w-auto">
-        <div className="w-full h-[60vh] flex overflow-x-auto snap-mandatory snap-x scrollbar-hide">
-        <div className="w-full h-[90vh]">
-          <Swiper
-            modules={[Navigation, Autoplay]}
-            slidesPerView={1}
-            autoplay={true}
-            loop={true}
-            speed={1300}
-            pagination={true}
-            // onSlideChange={() => console.log('slide change')}
-            // onSwiper={(swiper) => console.log(swiper)}
-          >
-            {slides.map(({ text1, image, id }) => (
-              <SwiperSlide key={id}>
-                <div className="h-96 md:min-h-[60vh] w-full relative flex justify-center items-center">
-                  <img
-                    className="md:object-contain object-cover h-fit w-fill object-center md:object-top absolute w-full  h-full"
-                    src={image}
-                    alt=""
-                  />
-                  <div className="absolute inset-0 bg-green opacity-20"></div>
-                 
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
-      </div> */}
-    </>
-  );
-};
-export default Slider;
-interface ImageSliderProps {
-  image: string;
-}
-const ImageSlider = (props: ImageSliderProps) => {
-  const divref = useRef<HTMLDivElement>(null);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
-    const img = new Image();
-    img.src = props.image;
-    const div = divref.current;
-
-    img.onload = () => {
-      const imgheight = window.innerWidth * (img.height / img.width);
-      if (div) {
-        div.style.height = `${imgheight}px`;
-      }
+    
+    const checkScreenSize = () => {
+      setIsSmallScreen(window.innerWidth <= 720);
     };
-  }, [props.image]);
+    window.addEventListener("resize", checkScreenSize);
+    checkScreenSize();
+    return () => {
+      window.removeEventListener("resize", checkScreenSize);
+    };
+  }, []);
+
+  const searchClick = () => {
+    console.log("clicked")
+  }
 
   return (
-    <>
-      <div
-        ref={divref}
-        className="h-[60vh]
-          w-full relative flex justify-center items-center"
-      >
-        <img
-          className="object-cover first-letter:w-full h-full absolute"
-          src={props.image}
-          alt=""
-        />
-      </div>
-      
-    </>
+    <div className={`relative ${isSmallScreen ? 'bg-blue-500' : ''}`}>
+      {isSmallScreen ? (
+        <div className="text-white p-8">
+          <h1 className="text-3xl  font-bold text-white mb-4 md:mb-4 tracking-wider">
+              Upskilling Made Easy
+            </h1>
+            <p className="text-md text-xl text-white mb-1 md:mb-3 tracking-wider font-bold">
+              Learn from Experts
+            </p>
+
+          <div
+            className="border-2 border-white p-1  flex items-center w-[250px] rounded-lg mt-4  cursor-pointer hover:bg-buttonBlue"
+            onClick={searchClick}
+          >
+              <BiSearchAlt style={{ color: "white" }} />
+              <span className="text-white ml-1 text-sm font-bold">
+                Explore In-Demand Courses
+              </span>
+            </div>
+        </div>
+      ) : (
+        <>
+          <div className="absolute top-1/2 ml-5 py-4 md:py-0 md:ml-20 transform -translate-y-1/2 text-left">
+            <h1 className="text-2xl md:text-5xl font-bold text-white mb-2 md:mb-4 tracking-wider">
+              Upskilling Made Easy
+            </h1>
+            <p className="text-md md:text-2xl text-white mb-1 md:mb-3 tracking-wider font-bold">
+              Learn from Experts
+            </p>
+
+              <div
+                className="border-2 border-white p-1 md:p-2 flex items-center w-full md:w-[270px] rounded-lg mt-2 md:mt-16 cursor-pointer hover:bg-buttonBlue"
+                onClick={searchClick}
+              >
+              <BiSearchAlt style={{ color: "white" }} />
+              <span className="text-white ml-1 md:ml-2 font-bold">
+                Explore In-Demand Courses
+              </span>
+            </div>
+          </div>
+
+          <img
+            src="/landing_image1.png"
+            alt="landing_page"
+            className="w-full h-auto"
+          />
+        </>
+
+      )}
+    </div>
   );
 };
+
+export default Slider;
