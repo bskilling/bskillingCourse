@@ -389,7 +389,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
               href="https://lms.bskilling.com/login/index.php"
               style={{ textDecoration: "none" }}
             >
-              <button className="flex rounded-md gap-1 text-white mt-1 border hover:text-white border-buttonBlue transition duration-500 hover:scale-105 ease-out  bg-buttonBlue hover:bg-buttonBlue py-[8px] focus:ring-1 focus:outline-none focus:ring-buttonBlue font-medium  text-sm px-4 ">
+              <button className="flex rounded-md gap-1 text-white mt-1 border hover:text-white border-lightBlue transition duration-500 hover:scale-105 ease-out  bg-lightBlue hover:bg-lightBlue py-[8px] focus:ring-1 focus:outline-none focus:ring-buttonBlue font-medium  text-sm px-4 ">
                 <p>Login</p>
               </button>
             </a>
@@ -403,7 +403,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
                 className="underline-0"
                 href="https://lms.bskilling.com/login/index.php"
               >
-                <button className="flex gap-1 rounded-md text-white mt-2 border hover:text-white border-buttonBlue transition duration-500 hover:scale-105 ease-out  bg-buttonBlue hover:bg-buttonBlue py-[8px] focus:ring-1 focus:outline-none focus:ring-buttonBlue font-medium  text-sm px-4 ">
+                <button className="flex gap-1 rounded-md text-white mt-2 border hover:text-white border-lightBlue transition duration-500 hover:scale-105 ease-out  bg-lightBlue hover:bg-lightBlue py-[8px] focus:ring-1 focus:outline-none focus:ring-buttonBlue font-medium  text-sm px-4 ">
                   <p>Login</p>
                 </button>
               </a>
