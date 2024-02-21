@@ -186,28 +186,28 @@ const zohoWebForm = `<div class="fixed inset-0 flex items-center justify-center 
                 
                 <div class='zcwf_row '>
                     <div class='zcwf_col_fld'>
-                        <input class='shadow-md w-full p-2 focus:ring focus:ring-blue-500 text-sm mb-2' type='text' id='First_Name' name='First Name' placeholder='First Name' maxlength='40'></input>
+                        <input class='shadow-md w-full p-2 focus:ring focus:ring-blue-500 text-sm mb-2' type='text' id='First_Name' name='First Name' placeholder='First Name' maxlength='40' required></input>
                         <div class='zcwf_col_help'></div>
                     </div>
                 </div>
 
                 <div class='zcwf_row'>
                     <div class='zcwf_col_fld'>
-                        <input class='shadow-md w-full p-2 focus:ring focus:ring-blue-500 text-sm mb-2' type='text' id='Last_Name' name='Last Name' placeholder='Last Name' maxlength='80'></input>
+                        <input class='shadow-md w-full p-2 focus:ring focus:ring-blue-500 text-sm mb-2' type='text' id='Last_Name' name='Last Name' placeholder='Last Name' maxlength='80' required></input>
                         <div class='zcwf_col_help'></div>
                     </div>
                 </div>
 
                 <div class='zcwf_row'>
                     <div class='zcwf_col_fld'>
-                        <input class='shadow-md w-full p-2 focus:ring focus:ring-blue-500 text-sm mb-2' type='text' id='Mobile' name='Mobile' placeholder='Mobile' maxlength='30'></input>
+                        <input class='shadow-md w-full p-2 focus:ring focus:ring-blue-500 text-sm mb-2' type='number' id='Mobile' name='Mobile' placeholder='Phone' maxlength='30' required></input>
                         <div class='zcwf_col_help'></div>
                     </div>
                 </div>
 
                 <div class='zcwf_row'>
                     <div class='zcwf_col_fld'>
-                        <input class='shadow-md w-full p-2 focus:ring focus:ring-blue-500 text-sm mb-2' type='email' ftype='email' autocomplete='false' id='Email' name='Email' placeholder='Email' crmlabel='' maxlength='100'></input>
+                        <input class='shadow-md w-full p-2 focus:ring focus:ring-blue-500 text-sm mb-2' type='email' ftype='email' autocomplete='false' id='Email' name='Email' placeholder='Email' crmlabel='' maxlength='100' required></input>
                         <div class='zcwf_col_help'></div>
                     </div>
                 </div>

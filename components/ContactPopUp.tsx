@@ -75,6 +75,21 @@ const ContactPopUp = () => {
   const [contactVisible, setContactVisible] = useState(false);
   const [chatandQMenuVisible, setChatandQMenuVisible] = useState(false);
   const [value, setValue] = useState<any>();
+  const [initialPopupVisible, setInitialPopupVisible] = useState(false);
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      // Show the popup automatically only for larger screens (e.g., laptops)
+      if (window.innerWidth >= 1024) {
+        setInitialPopupVisible(true);
+      }
+    }, 4000);
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, []);
+  
   const contactDetailsVisible = () => {
     setContactVisible((prev) => !prev);
   };
