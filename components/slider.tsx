@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { BiSearchAlt } from "react-icons/bi";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 const Slider = () => {
   const [isSmallScreen, setIsSmallScreen] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
-    
+
     const checkScreenSize = () => {
       setIsSmallScreen(window.innerWidth <= 720);
     };
@@ -22,26 +23,32 @@ const Slider = () => {
     console.log("clicked")
   }
 
+  const selectCourse = () => {
+    router.push("/allCourses");
+  }
   return (
     <div className={`relative ${isSmallScreen ? 'bg-blue-500' : ''}`}>
       {isSmallScreen ? (
         <div className="text-white p-8">
           <h1 className="text-3xl  font-bold text-white mb-4 md:mb-4 tracking-wider">
-              Upskilling Made Easy
-            </h1>
-            <p className="text-md text-xl text-white mb-1 md:mb-3 tracking-wider font-bold">
-              Learn from Experts
-            </p>
+            Upskilling Made Easy
+          </h1>
+          <p className="text-md text-xl text-white mb-1 md:mb-3 tracking-wider font-bold">
+            Learn from Experts
+          </p>
+
 
           <div
             className="border-2 border-white p-1  flex items-center w-[250px] rounded-lg mt-4  cursor-pointer hover:bg-buttonBlue"
-            onClick={searchClick}
+            onClick={selectCourse}
           >
-              <BiSearchAlt style={{ color: "white" }} />
-              <span className="text-white ml-1 text-sm font-bold">
-                Explore In-Demand Courses
-              </span>
-            </div>
+            <BiSearchAlt style={{ color: "white" }} />
+            <span className="text-white ml-1 text-sm font-bold">
+              Explore In-Demand Courses
+            </span>
+          </div>
+
+
         </div>
       ) : (
         <>
@@ -53,15 +60,19 @@ const Slider = () => {
               Learn from Experts
             </p>
 
-              <div
-                className="border-2 border-white p-1 md:p-2 flex items-center w-full md:w-[270px] rounded-lg mt-2 md:mt-16 cursor-pointer hover:bg-buttonBlue"
-                onClick={searchClick}
-              >
+
+
+            <div
+              className="border-2 border-white p-1 md:p-2 flex items-center w-full md:w-[270px] rounded-lg mt-2 md:mt-16 cursor-pointer hover:bg-buttonBlue"
+              onClick={selectCourse}
+            >
               <BiSearchAlt style={{ color: "white" }} />
               <span className="text-white ml-1 md:ml-2 font-bold">
                 Explore In-Demand Courses
               </span>
             </div>
+
+
           </div>
 
           <img
