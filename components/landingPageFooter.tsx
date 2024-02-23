@@ -56,7 +56,7 @@ export default function LandingPageFooter() {
     },
   ];
   return (
-    <section className="fixed md:flex hidden justify-center top-0 z-[5000] w-screen h-12 bg-buttonBlue">
+    <section className="fixed md:flex hidden justify-center top-0 z-[5000] w-screen h-12 bg-lightBlue">
       <div className=" basis-[90%] flex justify- items-center h-full">
         <div className="flex gap-8">
           {pagePath.map((data, index) => {

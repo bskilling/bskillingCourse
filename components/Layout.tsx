@@ -1,12 +1,14 @@
 import Head from "next/head";
 import { ReactNode, useContext, useEffect, useState } from "react";
-import { BiSearchAlt } from "react-icons/bi";
+import { BiMenu, BiSearchAlt } from "react-icons/bi";
+import { SlArrowDown } from "react-icons/sl";
 
 import { MyContext } from "context/PageContext";
 import courseSearchData from "data/courseSearchData";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import axios from "axios";
+
 
 type Props = {
   children: ReactNode;
@@ -52,15 +54,13 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
   const [navHide, setNavHide] = useState(false);
   const [navbar, setNavbar] = useState(false);
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
-  const [dropSearchData, setDropSearchData] = useState<ListOfCoursesDataType[]>(
-    []
-  );
+  const [dropSearchData, setDropSearchData] = useState<ListOfCoursesDataType[]>([]);
   const [selectedCourse, setSelectedCourse] = useState<SearchCourseArray>();
   const [screenWidth, setScreenWidth] = useState(0);
 
-  const [SearchElementsData, setSearchElementsData] = useState<
-    ListOfCoursesDataType[]
-  >([]);
+  const [SearchElementsData, setSearchElementsData] = useState<ListOfCoursesDataType[]>([]);
+  const [dropdownOpen, setDropdownOpen] = useState<ListOfCoursesDataType[]>([]);
+  const [menuOpen, setMenuOpen] = useState(false);
   const fetchApiData = async () => {
     try {
       const response = await axios.get(
@@ -83,6 +83,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
   useEffect(() => {
     fetchApiData();
   }, []);
+
   const {
     setButtonIndex,
     buttonIndex,
@@ -105,8 +106,11 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
     setIsDropdownOpen,
     setCategoryVisible,
   } = useContext(MyContext);
+
   const handleClick = (Course: ListOfCoursesDataType) => {
+
     setDropSearchData([]);
+    setDropdownOpen([])
     setSelectedCourse(Course);
     setInputValue("");
     const url = `/courses/${encodeURIComponent(
@@ -134,6 +138,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
       setBlogUnderline(false);
     }
   }, [route.pathname]);
+
   useEffect(() => {
     setFetchSearchData(courseSearchData);
   }, []);
@@ -147,6 +152,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
       const filteredData = SearchElementsData.filter((course) =>
         course.name.toLowerCase().includes(value.toLowerCase())
       );
+
       setDropSearchData(filteredData as []);
     }
   };
@@ -177,6 +183,22 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
     setCategoryVisible(false);
   };
 
+  const handleButtonHover = () => {
+    setDropdownOpen(SearchElementsData);
+  };
+
+  const handleButtonLeave = () => {
+    setDropdownOpen([]);
+  };
+
+
+
+  // console.log("data", SearchElementsData)
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
 
 
   return (
@@ -186,19 +208,51 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
         <meta name="bSkilling" content="bSkilling" />
         <link rel="icon" href="/logo.png" />
       </Head>
-      
-      
-      {/* <nav className="w-full h-[70px] md:py-2 bg-white fixed top-0 left-0 right-0 z-10">
-        <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
-          <div className="flex md:gap-5 flex-row items-center justify-center md:ml-10">
-            
-            <Link href={"/"}>
-              <img
-                src="/logo.png"
-                className="object-contain lg:w-[200px] md:my-0 my-5 h-[50px]"
-                alt=""
-              />
-            </Link>
+
+
+      {/* <header className="bg-white md:h-[70px]">
+        <nav className="flex justify-between items-center w-[92%]  mx-auto">
+          <div className="flex md:gap-5  md:flex-row  items-center justify-center md:ml-10 ">
+            <div>
+              <Link href={"/"}>
+                <img
+                  src="/logo.png"
+                  className="object-contain lg:w-[200px] md:my-0 my-5 h-[50px]"
+                  alt=""
+                />
+              </Link>
+            </div>
+
+            <div className="relative">
+              <div className="md:mt-0 mt-3">
+                <button
+                  className="bg-gray text-black px-4 py-2 rounded-md flex items-center hover:bg-subText"
+                  onMouseEnter={handleButtonHover}
+                  onMouseLeave={handleButtonLeave}
+                >
+                  <span className="text-[15px] font-semibold">Courses</span>
+                  <span className="ml-2"><SlArrowDown className="w-3 h-2" /></span>
+                </button>
+              </div>
+              {dropdownOpen && (
+                <div
+                  style={{ maxHeight: "500px", overflowY: "auto", width: "600px" }}
+                  className="absolute top-7 z-[5000] w-full bg-white rounded-lg shadow-lg mt-2"
+                  onMouseEnter={handleButtonHover}
+                  onMouseLeave={handleButtonLeave}
+                >
+                  {dropdownOpen.map((course, index) => (
+                    <div
+                      key={course.id + index}
+                      className="p-2 hover:bg-buttonBlue px-5 hover:text-white cursor-pointer"
+                      onClick={() => handleClick(course)}
+                    >
+                      {course.name}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
             <div className="relative font-SourceSans flex justify-end md:w-[500px]">
               <input
                 type="text"
@@ -228,80 +282,68 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
                 </div>
               )}
             </div>
-            
-            <div className="md:hidden">
-              <button
-                className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
-                onClick={() => setNavbar(!navbar)}
-              >
-                {navbar ? (
-                  <img src="/humberg_menu.png" width={30} height={30} alt="menu" />
-                ) : (
-                  <img src="/humberg_menu.png" width={30} height={30} alt="menu" />
-                )}
-              </button>
-            </div>
           </div>
-          <div className="flex items-center ">
-            <div
-              className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0  ${
-                navbar ? 'p-12 md:p-0 block' : 'hidden'
-              }`}
-            >
-              <ul className="h-screen md:h-auto items-center justify-center md:flex">
-                <li className="pt-4 pb-6 md:py-0 text-sm font-bold md:px-2 text-center">
-                  <Link style={{ textDecoration: "none" }} href={"/about"}>
-                  <p
-                    className={`${aboutUnderline === true
-                      ? "text-buttonBlue border-b-2 underline-offset-2"
-                      : "text-black hover:text-darkBlue  no-underline"
-                      }`}
-                  >
-                    {" "}
-                    About
-                  </p>
-                </Link>
+
+          <div
+            className={`nav-links duration-500 md:static absolute bg-white md:min-h-fit min-h-[60vh] left-0 ${menuOpen ? 'top-[9%]' : 'top-[-100%]'
+              } md:w-auto  w-full flex items-center px-5`}
+          >
+            <ul className="flex md:flex-row flex-col md:items-center md:gap-[4vw] gap-8">
+              <Link style={{ textDecoration: "none" }} href={"/about"}>
+                <li className={`${aboutUnderline === true
+                  ? "text-buttonBlue border-b-2 underline-offset-2"
+                  : "text-black hover:text-darkBlue  no-underline"
+                  }`}
+                >
+
+                  {" "}
+                  About
+
                 </li>
-                <li className="pt-4 pb-6 md:py-0 text-sm font-bold px-2 text-center ">
-                  <Link style={{ textDecoration: "none" }} href={"/blogs"}>
-                  <p
-                    className={`${blogUnderline === true
-                      ? "text-buttonBlue border-b-2 underline-offset-2"
-                      : "text-black hover:text-darkBlue  no-underline"
-                      }`}
-                  >
-                    Blogs
-                  </p>
-                </Link>
+              </Link>
+              <Link style={{ textDecoration: "none" }} href={"/blogs"}>
+                <li className={`${blogUnderline === true
+                  ? "text-buttonBlue border-b-2 underline-offset-2"
+                  : "text-black hover:text-darkBlue  no-underline"
+                  }`}>
+
+                  Solution
+
                 </li>
-                <li className="pt-4 pb-6 md:py-0 text-sm font-bold px-2 text-center ">
-                  <Link style={{ textDecoration: "none" }} href="https://sfjbs.talentrecruit.com/career-page" target="blank">
-                  <p className="text-black hover:text-darkBlue  no-underline">
-                    Careers
-                  </p>
-                </Link>
+              </Link>
+
+              <Link style={{ textDecoration: "none" }} href="https://sfjbs.talentrecruit.com/career-page" target="blank">
+                <li className="text-black hover:text-darkBlue  no-underline">
+                  Careers
                 </li>
-                
-              </ul>
-            </div>
-            <div className="flex items-center">
-              
-              <a
-              target="_blank"
-              rel="noreferrer"
-              className="underline-0 md:block hidden"
-              href="https://lms.bskilling.com/login/index.php"
-              style={{ textDecoration: "none" }}
-            >
-              <button className="flex rounded-md gap-1 text-white mt-1 border hover:text-white border-buttonBlue transition duration-500 hover:scale-105 ease-out  bg-buttonBlue hover:bg-buttonBlue py-[8px] focus:ring-1 focus:outline-none focus:ring-buttonBlue font-medium  text-sm px-4 ">
-                <p>Login</p>
-              </button>
-            </a>
-              
-            </div>
+              </Link>
+
+            </ul>
           </div>
-        </div>
-      </nav> */}
+          <div className="flex items-center gap-6">
+            <button className="bg-[#a6c1ee] text-white px-5 py-2 rounded-full hover:bg-[#87acec]">
+              Sign in
+            </button>
+            <div onClick={toggleMenu} className="text-3xl cursor-pointer md:hidden">
+              
+              {menuOpen ? (
+                <>
+                  <div className="w-2 h-0.5 bg-black transform rotate-45 mb-1"></div>
+                  <div className="w-6 h-0.5 bg-black hidden"></div>
+                  <div className="w-6 h-0.5 bg-black transform -rotate-45"></div>
+                </>
+              ) : (
+                <>
+                  <div className="w-6 h-0.5 bg-black mb-1"></div>
+                  <div className="w-6 h-0.5 bg-black mb-1"></div>
+                  <div className="w-6 h-0.5 bg-black"></div>
+                </>
+              )}
+            </div>
+
+          </div>
+        </nav>
+      </header> */}
 
       {navHide && (
         <nav className="md:py-2 md:h-[70px] font-SourceSans  md:p-0 bg-white flex  md:flex-row flex-col md:gap-36 md:justify-between w-full shadow-">
@@ -314,7 +356,42 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
               />
             </Link>
 
-            <div className="relative font-SourceSans   flex justify-end md:w-[500px]">
+            <div className="relative hidden md:block">
+              <div className="md:mt-0 mt-3">
+                <button
+                  className="bg-gray text-black px-4 py-2 rounded-md flex items-center hover:bg-subText"
+                  onMouseEnter={handleButtonHover}
+                  onMouseLeave={handleButtonLeave}
+                >
+                  <span className="text-[15px] font-semibold">Courses</span>
+                  <span className="ml-2"><SlArrowDown className="w-3 h-2" /></span>
+                </button>
+              </div>
+              {dropdownOpen && (
+                <div
+                  style={{ maxHeight: "500px", overflowY: "auto", width: "600px" }}
+                  className="absolute top-7 z-[5000] w-full bg-white rounded-lg shadow-lg mt-2"
+                  onMouseEnter={handleButtonHover}
+                  onMouseLeave={handleButtonLeave}
+                >
+
+
+                  {dropdownOpen.map((course, index) => (
+                    <div
+                      key={course.id + index}
+                      className="p-2 hover:bg-lightBlue px-5 hover:text-white cursor-pointer"
+                      onClick={() => handleClick(course)}
+                    >
+                      {course.name}
+                    </div>
+                  ))}
+
+
+                </div>
+              )}
+            </div>
+
+            <div className="relative font-SourceSans flex justify-end md:w-[500px]">
               <input
                 type="text"
                 className="md:w-[400px] text-sm rounded-lg border-[1px] bg- border-buttonBlue lg:py-1 lg:mt-[3px] px-5   focus:border-Buttoncolor focus:ring-buttonBlue"
@@ -351,8 +428,8 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
                 <Link style={{ textDecoration: "none" }} href={"/about"}>
                   <p
                     className={`${aboutUnderline === true
-                      ? "text-buttonBlue border-b-2 underline-offset-2"
-                      : "text-black hover:text-darkBlue  no-underline"
+                      ? "text-lightBlue border-b-2 underline-offset-2"
+                      : "text-black hover:text-lightBlue  no-underline"
                       }`}
                   >
                     {" "}
@@ -360,13 +437,13 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
                   </p>
                 </Link>
               </div>
-              
+
               <div className="mt-3 text-black font-SourceSans hover:cursor-pointer font-bold">
                 <Link style={{ textDecoration: "none" }} href={"/blogs"}>
                   <p
                     className={`${blogUnderline === true
-                      ? "text-buttonBlue border-b-2 underline-offset-2"
-                      : "text-black hover:text-darkBlue  no-underline"
+                      ? "text-lightBlue border-b-2 underline-offset-2"
+                      : "text-black hover:text-lightBlue  no-underline"
                       }`}
                   >
                     Blogs
@@ -375,12 +452,12 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
               </div>
               <div className="mt-3 text-GreenText font-SourceSans hover:cursor-pointer font-bold">
                 <Link style={{ textDecoration: "none" }} href="https://sfjbs.talentrecruit.com/career-page" target="blank">
-                  <p className="text-black hover:text-darkBlue  no-underline">
+                  <p className="text-black hover:text-lightBlue  no-underline">
                     Careers
                   </p>
                 </Link>
               </div>
-              
+
             </div>
             <a
               target="_blank"

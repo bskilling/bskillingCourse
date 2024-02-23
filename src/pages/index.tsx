@@ -13,6 +13,7 @@ import PdfFile from "../pages/Pdffile";
 import axios from "axios";
 import LeadForm from "modules/leadChat/components/LeadForm";
 
+
 interface UpcomingBatch {
   capacity: string;
   description: string;
@@ -111,7 +112,7 @@ const Home: NextPage<NextPage> = ({ }) => {
       </section> */}
       <section onClick={clickOnMain}>
         {/* <ContactPopUp /> */}
-
+        
         <section className="relative">
           <Slider />
         </section>

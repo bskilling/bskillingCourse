@@ -36,7 +36,7 @@ export default function FixedFooterBar() {
  
   return (
     <>
-      <div className="fixednav bg-buttonBlue fixed inset-x-0 bottom-[env(safe-area-inset-bottom)] text-white  w-full z-[1000] h-14 py-2"
+      <div className="fixednav bg-lightBlue fixed inset-x-0 bottom-[env(safe-area-inset-bottom)] text-white  w-full z-[1000] h-14 py-2"
       
       >
         <div className="flex h-full py-4 justify-center md:justify-between  md:px-12 items-center">
@@ -101,7 +101,7 @@ export default function FixedFooterBar() {
                 className={`flex flex-col   bg-white w-[400px]  scale-[0.9] rounded-xl h-[500px] fixed right-0  md:-right-3 bottom-16 md:bottom-9 z-[1000] transition-transform duration-700 shadow-md`}
               >
                 <div
-                  className="p-3 flex items-center  bg-buttonBlue rounded-t-xl h-[60px] cursor-pointer text-white"
+                  className="p-3 flex items-center  bg-lightBlue rounded-t-xl h-[60px] cursor-pointer text-white"
                   onClick={() => setIsExpanded((prev) => !prev)}
                 >
                   <p className="flex-1 font-medium">
@@ -150,7 +150,7 @@ export default function FixedFooterBar() {
 
             <div>
               <button
-                className=" items-center justify-center bg-buttonBlue z-[6000]  text-white text-3xl  flex h-[20px] gap-3 rounded-full"
+                className=" items-center justify-center  z-[6000]  text-white text-3xl  flex h-[20px] gap-3 rounded-full"
                 onClick={() => setFloatWindowMode("drop-a-query")}
               >
                 <FaElementor size={30} />
