@@ -553,8 +553,8 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                             )
                           )}
                         </div>
-                        <div className="md:w-[500px] justify-end md:pt-0 pt-4   mr-2 _pt-8 items-end  flex flex-row gap-3">
-                          <div className="md:w-fit flex-3 w-full  md:pt-0 pt-4  h-[300px]  md:h-fit flex justify-center">
+                        <div className="md:w-[500px] justify-end md:pt-0 pt-4 mr-2 _pt-8 items-end  flex flex-row gap-3">
+                          <div className="md:w-fit flex-3 w-full  md:pt-0 pt-4 h-[300px]  md:h-fit flex justify-center">
                             <iframe
                               className="rounded-lg"
                               width="400"

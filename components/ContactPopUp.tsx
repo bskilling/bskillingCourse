@@ -122,7 +122,7 @@ const ContactPopUp = () => {
             </div>
           </div>
         ) : (
-          <div className="min-h-[50px] p-1 flex gap-12  justify-around rounded-sm bg-buttonBlue">
+          <div className="min-h-[50px] p-1 flex gap-12  justify-around rounded-sm bg-lightBlue">
             <p className="text-white mt-1 font-medium">Drop Us A Query</p>
             <div onClick={contactDetailsVisible}>
               <div className="transition-transform duration-1000 ease-in-out pt-[8px]">
