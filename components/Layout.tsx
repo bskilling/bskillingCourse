@@ -8,6 +8,7 @@ import courseSearchData from "data/courseSearchData";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import axios from "axios";
+import { FaWhatsapp } from "react-icons/fa";
 
 
 type Props = {
@@ -490,6 +491,32 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
       )}
 
       <main className=" font-SourceSans font-normal">{children}</main>
+      {/* <div className="fixed bottom-[7.6rem] right-[2.6rem] z-10000">
+        <a
+          href="https://wa.me/919591995793" // Replace 'yourPhoneNumberHere' with your actual WhatsApp number
+          target="_blank"
+          rel="noreferrer"
+          className="text-green-500 hover:text-green-700"
+          style={{
+            display: 'inline-block',
+            backgroundColor: 'green',
+            padding: '10px',
+            borderRadius: '50%',
+            boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.7)', // Optional: Add a subtle shadow
+            transition: 'transform 0.3s ease-in-out', // Add a transition for the transform property
+          }}
+          onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.1)')}
+          onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+        >
+          <img
+            src="https://www.freeiconspng.com/thumbs/logo-whatsapp-png/get-logo-whatsapp-png-pictures-1.png"
+            className="w-7 h-7"
+            alt="WhatsApp Logo"
+          />
+        </a>
+      </div> */}
+
+
       <footer className=" bg-white font-SourceSans  px-10 py-6 md:pt-12">
         <div className="grid grid-cols-1 md:grid-cols-2 md:flex md:flex-row justify-between items-start">
           <div className="col-span-2 pb-4 md:pb-0 ">
@@ -497,7 +524,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
               <p className="font-semibold text-lg pb-2 text-center ">
                 Find us on
               </p>
-              <div className="grid grid-cols-3   gap- i ">
+              <div className="grid grid-cols-3 gap- i ">
                 <div>
                   <a
                     target="_blank"
@@ -549,7 +576,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
                   >
                     {" "}
                     <img
-                      src="/icon/twitter.svg"
+                      src="/twitter.webp"
                       className="w-[48px] h-[48px]"
                       alt=""
                     />
