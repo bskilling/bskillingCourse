@@ -27,17 +27,24 @@ export default function FixedFooterBar() {
   //   return () => clearTimeout(timer);
   // }, [route.pathname]);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isDropQueryVisible, setIsDropQueryVisible] = useState(false);
   useEffect(() => {
     if (isExpanded) {
       setupSocket();
     }
   }, [isExpanded]);
 
- 
+  const handleDropQueryButtonClick = () => {
+    setIsDropQueryVisible((prev) => !prev);
+    setFloatWindowMode("drop-a-query");
+    setupSocket(); // If you need to set up the socket when the button is clicked
+  };
+
+
   return (
     <>
       <div className="fixednav bg-lightBlue fixed inset-x-0 bottom-[env(safe-area-inset-bottom)] text-white  w-full z-[1000] h-14 py-2"
-      
+
       >
         <div className="flex h-full py-4 justify-center md:justify-between  md:px-12 items-center">
           <div className="md:flex justify-center items-center  w-[20%]  hidden">
@@ -76,7 +83,7 @@ export default function FixedFooterBar() {
                 href="https://twitter.com/b_SkillingIndia"
               >
                 <img
-                  src="/twitter2.webp"
+                  src="/twitter.webp"
                   className="w-fit object-contain h-10"
                   alt=""
                 />
@@ -96,12 +103,12 @@ export default function FixedFooterBar() {
             </div>
           </div>
           <div className="flex  text-black justify-between gap-8">
-            {floatWindowMode !== "none" && (
+            {isDropQueryVisible && floatWindowMode !== "none" && (
               <div
-                className={`flex flex-col   bg-white w-[400px]  scale-[0.9] rounded-xl h-[500px] fixed right-0  md:-right-3 bottom-16 md:bottom-9 z-[1000] transition-transform duration-700 shadow-md`}
+                className={`flex flex-col bg-white w-[400px] scale-[0.9] rounded-xl h-[500px] fixed right-0 md:-right-3 bottom-16 md:bottom-9 z-[1000] transition-transform duration-700 shadow-md`}
               >
                 <div
-                  className="p-3 flex items-center  bg-lightBlue rounded-t-xl h-[60px] cursor-pointer text-white"
+                  className="p-3 flex items-center bg-lightBlue rounded-t-xl h-[60px] cursor-pointer text-white"
                   onClick={() => setIsExpanded((prev) => !prev)}
                 >
                   <p className="flex-1 font-medium">
@@ -112,15 +119,21 @@ export default function FixedFooterBar() {
                   <p>
                     {floatWindowMode === "drop-a-query" ? (
                       <button
-                        className="flex items-center justify-center  bg-buttonBlue z-[6000] shadow-md text-white text-3xl   w-[20px] h-[20px] rounded-full"
-                        onClick={() => setFloatWindowMode("none")}
+                        className="flex items-center justify-center bg-buttonBlue z-[6000] shadow-md text-white text-3xl w-[20px] h-[20px] rounded-full"
+                        onClick={() => {
+                          setIsDropQueryVisible(false);
+                          setFloatWindowMode("none");
+                        }}
                       >
                         <FaTimes />
                       </button>
                     ) : (
                       <button
-                        className="flex items-center justify-center z-[6000] bg-buttonBlue shadow-md text-white text-3xl  w-[20px] h-[20px] rounded-full"
-                        onClick={closeChat}
+                        className="flex items-center justify-center z-[6000] bg-buttonBlue shadow-md text-white text-3xl w-[20px] h-[20px] rounded-full"
+                        onClick={() => {
+                          setIsDropQueryVisible(false);
+                          closeChat();
+                        }}
                       >
                         <FaTimes />
                       </button>
@@ -135,9 +148,7 @@ export default function FixedFooterBar() {
                 </div>
                 {floatWindowMode === "drop-a-query" && <DropAQueryForm />}
                 {floatWindowMode === "chat" && <LeadChatBox />}
-                {isChatFormVisible && instanceState !== "closed" && (
-                  <ChatForm />
-                )}
+                {isChatFormVisible && instanceState !== "closed" && <ChatForm />}
               </div>
             )}
 
@@ -150,11 +161,11 @@ export default function FixedFooterBar() {
 
             <div>
               <button
-                className=" items-center justify-center  z-[6000]  text-white text-3xl  flex h-[20px] gap-3 rounded-full"
-                onClick={() => setFloatWindowMode("drop-a-query")}
+                className="items-center justify-center z-[6000] text-white text-3xl flex h-[20px] gap-3 rounded-full"
+                onClick={handleDropQueryButtonClick}
               >
                 <FaElementor size={30} />
-                <p className="text-sm">Drop Us A Query </p>
+                <p className="text-sm">Drop Us A Query</p>
               </button>
             </div>
           </div>
