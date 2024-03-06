@@ -160,13 +160,40 @@ export default function FixedFooterBar() {
             </button> */}
 
             <div>
-              <button
+              {/* <button
                 className="items-center justify-center z-[6000] text-white text-3xl flex h-[20px] gap-3 rounded-full"
                 onClick={handleDropQueryButtonClick}
               >
                 <FaElementor size={30} />
                 <p className="text-sm">Drop Us A Query</p>
-              </button>
+              </button> */}
+              {/* <div
+                className="items-center justify-center z-[6000] text-white text-3xl flex h-[20px] gap-3 rounded-full"
+
+              >
+                <a
+                  href="https://wa.me/919741104412" // Replace 'yourPhoneNumberHere' with your actual WhatsApp number
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-green-500 hover:text-green-700"
+                  style={{
+                    display: 'inline-block',
+                    // backgroundColor: 'green',
+                    padding: '10px',
+                    borderRadius: '50%',
+                    // boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.7)', 
+                    transition: 'transform 0.3s ease-in-out', // Add a transition for the transform property
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.1)')}
+                  onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+                >
+                  <img
+                    src="https://www.freeiconspng.com/thumbs/logo-whatsapp-png/get-logo-whatsapp-png-pictures-1.png"
+                    className="w-7 h-7"
+                    alt="WhatsApp Logo"
+                  />
+                </a>
+              </div> */}
             </div>
           </div>
         </div>
