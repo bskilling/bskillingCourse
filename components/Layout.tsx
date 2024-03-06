@@ -491,9 +491,10 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
       )}
 
       <main className=" font-SourceSans font-normal">{children}</main>
-      {/* <div className="fixed bottom-[7.6rem] right-[2.6rem] z-10000">
+      {/* whatsapp */}
+      <div className="fixed bottom-[7rem] right-[2.6rem] z-10000">
         <a
-          href="https://wa.me/919591995793" // Replace 'yourPhoneNumberHere' with your actual WhatsApp number
+          href="https://wa.me/919741104412" // Replace 'yourPhoneNumberHere' with your actual WhatsApp number
           target="_blank"
           rel="noreferrer"
           className="text-green-500 hover:text-green-700"
@@ -514,7 +515,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
             alt="WhatsApp Logo"
           />
         </a>
-      </div> */}
+      </div>
 
 
       <footer className=" bg-white font-SourceSans  px-10 py-6 md:pt-12">
