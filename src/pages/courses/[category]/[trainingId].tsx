@@ -380,7 +380,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                         </div>
                       </div>
                       <div className="flex justify-between">
-                        <motion.div className="bg-glass md:w-[80%] text-xl text-left px-5 md:px-0 md:pt-0 pt-3 md:text-xl font-semibold">
+                        <motion.div className="bg-glass md:w-[58%] lg:w-[60%] text-xl text-left px-5 md:px-0 md:pt-0 pt-3 md:text-xl font-semibold">
                           <h2>{props.trainingMetadata.headLine}</h2>
                         </motion.div>
 
