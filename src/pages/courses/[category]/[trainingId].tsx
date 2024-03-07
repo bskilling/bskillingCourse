@@ -488,6 +488,19 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                         </div>
                       </motion.div>
 
+                      {props.trainingMetadata.name === 'Microsoft Copilot Training Certification' && (
+                        <div className="flex items-center">
+                          <img src="/microsoftLogo.png" alt="Microsoft Logo" className="w-10 h-10" />
+                          <div className="ml-2">
+                            <p className="text-[11px]">Power By</p>
+                            <p className="text-[15px] tracking-wider font-semibold">MICROSOFT</p>
+                          </div>
+                        </div>
+                      )}
+
+
+
+
                       <div className="mt-2 md:w-[75%] font-base md:p-0 p-4  md:text-left text-justify ">
                         {props.trainingMetadata.body}
 
