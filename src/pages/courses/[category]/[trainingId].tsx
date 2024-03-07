@@ -364,7 +364,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                       objectFit: "contain",
                       backgroundPosition: "center",
                       backgroundRepeat: "no-repeat",
-                      filter: "brightness(50%)",
+                      filter: "brightness(60%)",
                     }}
                   >
                     {/* Add any additional content or components inside this div if needed */}
