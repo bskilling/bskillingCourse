@@ -22,6 +22,7 @@ import { FaTimes } from "react-icons/fa";
 import { MdDownloadForOffline } from "react-icons/md";
 import LeadForm from "modules/leadChat/components/LeadForm";
 import PmpForm from "modules/leadChat/components/PmpForm";
+import StarRating from "components/StarRating";
 type Batch = {
   id: string;
   name: string;
@@ -83,6 +84,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
   const [pdfUrl, setPdfUrl] = useState<string | null>(null);
   const [loadingVisible, setLoadingVisible] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
+  const [rating,setRating]=useState(4.9)
 
   useEffect(() => {
 
@@ -216,7 +218,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
   };
 
   useEffect(() => { }, [props.trainingMetadata]);
-  console.log("course", props.trainingMetadata)
+  // console.log("course", props.trainingMetadata)
   return (
     <>
       {props.trainingMetadata && (
@@ -483,75 +485,12 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                                   alt="Glogo"
                                 />
                               </div>
-                              <b>4.9/5</b>
+                              <b>{rating}/5</b>
 
 
                               <div className="flex items-center">
-                                <svg
-                                  aria-hidden="true"
-                                  className="w-5 h-5 text-yellow-400 star-icon "
-                                  fill="currentColor"
-                                  viewBox="0 0 20 20"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                >
-                                  <title>First star</title>
-                                  <path
-                                    fillRule="evenodd"
-                                    d="M10 1.64l1.84 4.66h4.74l-3.84 2.96 1.84 4.66-3.86-2.98-3.86 2.98 1.84-4.66-3.84-2.96h4.74z"
-                                  />
-                                </svg>
-                                <svg
-                                  aria-hidden="true"
-                                  className="w-5 h-5 text-yellow-400 star-icon "
-                                  fill="currentColor"
-                                  viewBox="0 0 20 20"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                >
-                                  <title>Second star</title>
-                                  <path
-                                    fillRule="evenodd"
-                                    d="M10 1.64l1.84 4.66h4.74l-3.84 2.96 1.84 4.66-3.86-2.98-3.86 2.98 1.84-4.66-3.84-2.96h4.74z"
-                                  />
-                                </svg>
-                                <svg
-                                  aria-hidden="true"
-                                  className="w-5 h-5 text-yellow-400 star-icon "
-                                  fill="currentColor"
-                                  viewBox="0 0 20 20"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                >
-                                  <title>Third star</title>
-                                  <path
-                                    fillRule="evenodd"
-                                    d="M10 1.64l1.84 4.66h4.74l-3.84 2.96 1.84 4.66-3.86-2.98-3.86 2.98 1.84-4.66-3.84-2.96h4.74z"
-                                  />
-                                </svg>
-                                <svg
-                                  aria-hidden="true"
-                                  className="w-5 h-5 text-yellow-400 star-icon "
-                                  fill="currentColor"
-                                  viewBox="0 0 20 20"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                >
-                                  <title>Fourth star</title>
-                                  <path
-                                    fillRule="evenodd"
-                                    d="M10 1.64l1.84 4.66h4.74l-3.84 2.96 1.84 4.66-3.86-2.98-3.86 2.98 1.84-4.66-3.84-2.96h4.74z"
-                                  />
-                                </svg>
-                                <svg
-                                  aria-hidden="true"
-                                  className="w-5 h-5 text-yellow-400 star-icon "
-                                  fill="currentColor"
-                                  viewBox="0 0 20 20"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                >
-                                  <title>Fourth star</title>
-                                  <path
-                                    fillRule="evenodd"
-                                    d="M10 1.64l1.84 4.66h4.74l-3.84 2.96 1.84 4.66-3.86-2.98-3.86 2.98 1.84-4.66-3.84-2.96h4.74z"
-                                  />
-                                </svg>
+                                
+                                <StarRating ratings={() => rating} />
                               </div>
                             </div>
 
@@ -906,268 +845,268 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
 
                               <p>{item}</p>
                             </div>
-                            
-                          ))}
-                      </div>
-                    </div>
-                    <div className=" px-5 md:px-12 w-full bg-white  pb-8  rounded-xl">
-                      {" "}
-                      <div id="Certification" className="h-12 "></div>
-                      <p className="_mt-9 text-2xl font-bold   mb-4">
-                        Certification
-                      </p>
-                      <div className="md:bg-white   pb-8 w-full  rounded-xl">
-                        <div className="flex w-full gap-8   flex-col md:flex-row justify-center">
-                          <div className="md:w-[50%]  flex flex-col justify-start  pt-2">
-                            <p className="">
-                              {props.trainingMetadata.certificationText}
-                            </p>
-                          </div>
-                          <div className="md:w-[50%] flex items-center justify-center">
-                            <img
-                              src={props.trainingMetadata.certificationImage}
-                              className="max-w-full shadow-lg rounded-md max-h-full"
-                              alt=""
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
 
-                    <div className="bg-white px-5 md:px-12 w-full   pb-8  rounded-xl">
-                      {" "}
-                      <div id="FAQs" className="h-12 "></div>
-                      <p className="_mt-9 text-2xl font-bold   mb-4">FAQs</p>
-                      <div className="bg-white  w-full pt-2  pb-8  rounded-xl">
-                        <div>
-                          {props.trainingMetadata.faqs.map((item, index) => (
-                            <AccordionFaq
-                              key={index}
-                              question={item.question}
-                              answer={item.answer}
-                            />
                           ))}
                         </div>
                       </div>
-                    </div>
-
-
-                    {/* first sections second card */}
-                  </div>
-
-                  {/* side tab content here */}
-                  <div className="md:w-[350px]  md:min-h-[1240px]  flex justify-center">
-                    <div className="w-[100%] flex gap-5 flex-col items-center ">
-                      <div className="w-full  bg-white  h-fit rounded-xl flex flex-col   items-center ">
-                        <div className="mt-8 w-full px-4">
-                          <div className="text-center  text-black font-semibold">
-                            <span className=" font-bold text-xl text-blue-600 -top-[10px] -right-1 relative">
-                              {registerVisible ? (
-                                ""
-                              ) : props.trainingMetadata.discount === 0 ? (
-                                ""
-                              ) : (
-                                <span className="line-through text-slate-400">
-                                  ₹ &nbsp;{formattedPrice}
-                                </span>
-                              )}
-                            </span>{" "}
-                            <div className="flex gap-2 items-center justify-center w-full relative mb-2">
-                              <span className="font-bold text-blue-600 text-2xl">
-                                {registerVisible ? (
-                                  props.trainingMetadata.batches.length > 0 ? (
-                                    "Enroll Now"
-                                  ) : (
-                                    ""
-                                  )
-                                ) : props.trainingMetadata.discount === 0 ? (
-                                  <div className="flex flex-col items-center">
-                                    <span className="font-bold text-blue">
-                                      ₹ {formattedPrice}
-                                    </span>
-                                    <p className="mb-1 text-[16px] font-medium">(Incl. taxes)</p>
-                                    <p className="text-[16px] font-dark">Easy EMIs from ₹5333 per month</p>
-                                  </div>
-
-                                ) : (
-                                  <div className="flex flex-col items-center">
-                                    <span className="font-bold text-blue">
-                                      ₹ {calculateDiscountedPrice()}
-                                    </span>
-                                    <p className="mb-1 text-[16px] font-medium">(Incl. taxes)</p>
-                                    <p className="text-[16px] font-dark">Easy EMIs from ₹5333 per month</p>
-                                  </div>
-                                )}
-                              </span>
-                              {registerVisible && (
-                                <button
-                                  className="absolute right-0 text-2xl text-[#888888]"
-                                  onClick={() => setRegisterVisible(false)}
-                                >
-                                  <FaTimes />
-                                </button>
-                              )}
+                      <div className=" px-5 md:px-12 w-full bg-white  pb-8  rounded-xl">
+                        {" "}
+                        <div id="Certification" className="h-12 "></div>
+                        <p className="_mt-9 text-2xl font-bold   mb-4">
+                          Certification
+                        </p>
+                        <div className="md:bg-white   pb-8 w-full  rounded-xl">
+                          <div className="flex w-full gap-8   flex-col md:flex-row justify-center">
+                            <div className="md:w-[50%]  flex flex-col justify-start  pt-2">
+                              <p className="">
+                                {props.trainingMetadata.certificationText}
+                              </p>
                             </div>
-                            {registerVisible === false ? (
+                            <div className="md:w-[50%] flex items-center justify-center">
+                              <img
+                                src={props.trainingMetadata.certificationImage}
+                                className="max-w-full shadow-lg rounded-md max-h-full"
+                                alt=""
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="bg-white px-5 md:px-12 w-full   pb-8  rounded-xl">
+                        {" "}
+                        <div id="FAQs" className="h-12 "></div>
+                        <p className="_mt-9 text-2xl font-bold   mb-4">FAQs</p>
+                        <div className="bg-white  w-full pt-2  pb-8  rounded-xl">
+                          <div>
+                            {props.trainingMetadata.faqs.map((item, index) => (
+                              <AccordionFaq
+                                key={index}
+                                question={item.question}
+                                answer={item.answer}
+                              />
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+
+
+                      {/* first sections second card */}
+                    </div>
+
+                    {/* side tab content here */}
+                    <div className="md:w-[350px]  md:min-h-[1240px]  flex justify-center">
+                      <div className="w-[100%] flex gap-5 flex-col items-center ">
+                        <div className="w-full  bg-white  h-fit rounded-xl flex flex-col   items-center ">
+                          <div className="mt-8 w-full px-4">
+                            <div className="text-center  text-black font-semibold">
+                              <span className=" font-bold text-xl text-blue-600 -top-[10px] -right-1 relative">
+                                {registerVisible ? (
+                                  ""
+                                ) : props.trainingMetadata.discount === 0 ? (
+                                  ""
+                                ) : (
+                                  <span className="line-through text-slate-400">
+                                    ₹ &nbsp;{formattedPrice}
+                                  </span>
+                                )}
+                              </span>{" "}
+                              <div className="flex gap-2 items-center justify-center w-full relative mb-2">
+                                <span className="font-bold text-blue-600 text-2xl">
+                                  {registerVisible ? (
+                                    props.trainingMetadata.batches.length > 0 ? (
+                                      "Enroll Now"
+                                    ) : (
+                                      ""
+                                    )
+                                  ) : props.trainingMetadata.discount === 0 ? (
+                                    <div className="flex flex-col items-center">
+                                      <span className="font-bold text-blue">
+                                        ₹ {formattedPrice}
+                                      </span>
+                                      <p className="mb-1 text-[16px] font-medium">(Incl. taxes)</p>
+                                      <p className="text-[16px] font-dark">Easy EMIs from ₹5333 per month</p>
+                                    </div>
+
+                                  ) : (
+                                    <div className="flex flex-col items-center">
+                                      <span className="font-bold text-blue">
+                                        ₹ {calculateDiscountedPrice()}
+                                      </span>
+                                      <p className="mb-1 text-[16px] font-medium">(Incl. taxes)</p>
+                                      <p className="text-[16px] font-dark">Easy EMIs from ₹5333 per month</p>
+                                    </div>
+                                  )}
+                                </span>
+                                {registerVisible && (
+                                  <button
+                                    className="absolute right-0 text-2xl text-[#888888]"
+                                    onClick={() => setRegisterVisible(false)}
+                                  >
+                                    <FaTimes />
+                                  </button>
+                                )}
+                              </div>
+                              {registerVisible === false ? (
+                                <div>
+                                  {props.trainingMetadata.discount === 0 ? (
+                                    ""
+                                  ) : (
+                                    <div className="text-red-700 text-lg">
+                                      {props.trainingMetadata.discount} % &nbsp;OFF
+                                    </div>
+                                  )}
+                                </div>
+                              ) : (
+                                ""
+                              )}
                               <div>
                                 {props.trainingMetadata.discount === 0 ? (
                                   ""
-                                ) : (
-                                  <div className="text-red-700 text-lg">
-                                    {props.trainingMetadata.discount} % &nbsp;OFF
+                                ) : props.trainingMetadata.couponCode ? (
+                                  <div className="text-red-700">
+                                    Use Coupon Code &nbsp;:&nbsp;
+                                    {props.trainingMetadata.couponCode}
                                   </div>
+                                ) : (
+                                  ""
                                 )}
                               </div>
-                            ) : (
-                              ""
-                            )}
-                            <div>
-                              {props.trainingMetadata.discount === 0 ? (
-                                ""
-                              ) : props.trainingMetadata.couponCode ? (
-                                <div className="text-red-700">
-                                  Use Coupon Code &nbsp;:&nbsp;
-                                  {props.trainingMetadata.couponCode}
+                            </div>
+                          </div>
+                          {registerVisible ? (
+                            ""
+                          ) : (
+                            <div className="pb-7" onClick={() => clickOnRegister()}>
+                              <button className="bg-lightBlue  hover:bg-blue-600 rounded-md text-white px-9 py-2 font-semibold text-xl mt-4">
+                                <span>Enrol Me</span>
+                              </button>
+                            </div>
+                          )}
+                          <motion.div
+                            className="w-full px-5"
+                            animate={registerVisible ? "open" : "closed"}
+                            variants={variants}
+                          >
+                            {registerVisible &&
+                              (props.trainingMetadata.batches.length === 0 ? (
+                                <div className="py-8 text-center">
+                                  <p className="text-buttonBlue text-center  text-md font-semibold mb-4 px-2">
+                                    There are no batches scheduled for this course.
+                                    Please check later.
+                                  </p>
                                 </div>
                               ) : (
-                                ""
-                              )}
+                                <RegisterForm
+                                  email="jkdiadihsadsaio"
+                                  BatchName={props.trainingMetadata.batches || []}
+                                  price={props.trainingMetadata.price}
+                                  course={`${props.trainingMetadata.name}`}
+                                  courseName={props.trainingMetadata.name}
+                                />
+                              ))}
+                          </motion.div>
+                          <div className="text-center mt-4 pb-"></div>
+                        </div>
+                        <div className="flex shadow-md w-full bg-white pb-12 pt-8 rounded-xl flex-col items-center gap-5">
+                          <div className="px-5">
+                            <p className="pt-3 pb-4 text-xl text-center font-semibold">
+                              Upcoming Batches
+                            </p>
+
+                            <div className="flex flex-col items-center text-blue-600 text-center gap-3">
+                              {props.trainingMetadata.batches.map((item, index) => (
+                                <div className="text-sm" key={index}>
+                                  <div className="mb-1 font-Mynerve font-bold text-2xl tracking-wide">{item.name}</div>
+                                  <div className="font-bold">
+                                    {moment(item.startDate).format("YYYY-MMM-DD HH:mm")} -{" "}
+                                    {moment(item.endDate).format("YYYY-MMM-DD HH:mm")}
+                                  </div>
+                                </div>
+                              ))}
                             </div>
                           </div>
                         </div>
-                        {registerVisible ? (
-                          ""
-                        ) : (
-                          <div className="pb-7" onClick={() => clickOnRegister()}>
-                            <button className="bg-lightBlue  hover:bg-blue-600 rounded-md text-white px-9 py-2 font-semibold text-xl mt-4">
-                              <span>Enrol Me</span>
-                            </button>
-                          </div>
-                        )}
-                        <motion.div
-                          className="w-full px-5"
-                          animate={registerVisible ? "open" : "closed"}
-                          variants={variants}
-                        >
-                          {registerVisible &&
-                            (props.trainingMetadata.batches.length === 0 ? (
-                              <div className="py-8 text-center">
-                                <p className="text-buttonBlue text-center  text-md font-semibold mb-4 px-2">
-                                  There are no batches scheduled for this course.
-                                  Please check later.
-                                </p>
-                              </div>
-                            ) : (
-                              <RegisterForm
-                                email="jkdiadihsadsaio"
-                                BatchName={props.trainingMetadata.batches || []}
-                                price={props.trainingMetadata.price}
-                                course={`${props.trainingMetadata.name}`}
-                                courseName={props.trainingMetadata.name}
-                              />
-                            ))}
-                        </motion.div>
-                        <div className="text-center mt-4 pb-"></div>
-                      </div>
-                      <div className="flex shadow-md w-full bg-white pb-12 pt-8 rounded-xl flex-col items-center gap-5">
-                        <div className="px-5">
-                          <p className="pt-3 pb-4 text-xl text-center font-semibold">
-                            Upcoming Batches
-                          </p>
 
-                          <div className="flex flex-col items-center text-blue-600 text-center gap-3">
-                            {props.trainingMetadata.batches.map((item, index) => (
-                              <div className="text-sm" key={index}>
-                                <div className="mb-1 font-Mynerve font-bold text-2xl tracking-wide">{item.name}</div>
-                                <div className="font-bold">
-                                  {moment(item.startDate).format("YYYY-MMM-DD HH:mm")} -{" "}
-                                  {moment(item.endDate).format("YYYY-MMM-DD HH:mm")}
+                        <div className="flex  shadow-md w-full bg-white pb-6 pt-5  rounded-xl   ">
+                          <div className="flex px-2 w-full flex-col">
+                            <p className="text-center pt-3 pb-4 text-xl  font-semibold ">
+                              Contact Us
+                            </p>
+
+                            <div className="flex items-center gap-2 justify-center">
+                              <div className="text-left text-xl font-semibold">
+                                <span className="tracking-wider">+91-9845 348 601</span>
+                              </div>
+                              <div className="flex items-center">
+                                <div className="text-blue-600">
+                                  <BsTelephone size={24} />
                                 </div>
                               </div>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="flex  shadow-md w-full bg-white pb-6 pt-5  rounded-xl   ">
-                        <div className="flex px-2 w-full flex-col">
-                          <p className="text-center pt-3 pb-4 text-xl  font-semibold ">
-                            Contact Us
-                          </p>
-
-                          <div className="flex items-center gap-2 justify-center">
-                            <div className="text-left text-xl font-semibold">
-                              <span className="tracking-wider">+91-9845 348 601</span>
-                            </div>
-                            <div className="flex items-center">
-                              <div className="text-blue-600">
-                                <BsTelephone size={24} />
-                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                      <div className="flex  shadow-md w-full bg-white pb-12 pt-5  rounded-xl flex-col justify-center items-center gap-5">
-                        <div>
-                          <p className="  pt-3 pb-4 text-xl t  font-semibold text-center">
-                            Request More Information
-                          </p>
-                          <DropAQueryForm />
+                        <div className="flex  shadow-md w-full bg-white pb-12 pt-5  rounded-xl flex-col justify-center items-center gap-5">
+                          <div>
+                            <p className="  pt-3 pb-4 text-xl t  font-semibold text-center">
+                              Request More Information
+                            </p>
+                            <DropAQueryForm />
+                          </div>
                         </div>
-                      </div>
 
-                      <div className="flex   w-full  pb-12 pt-5  rounded-xl flex-col justify-center items-center gap-5">
-                        <div>
-                          <p className="  pt-3 pb-4 text-xl t  font-semibold text-center">
-                            Related Courses
-                          </p>
-                          <div className="w-fit px-2">
-                            {" "}
-                            <CourseSlider />
+                        <div className="flex   w-full  pb-12 pt-5  rounded-xl flex-col justify-center items-center gap-5">
+                          <div>
+                            <p className="  pt-3 pb-4 text-xl t  font-semibold text-center">
+                              Related Courses
+                            </p>
+                            <div className="w-fit px-2">
+                              {" "}
+                              <CourseSlider />
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
+
                   </div>
 
+                </motion.div>
+                <div className="mt-10">
+                  <Testimonials />
                 </div>
-
-              </motion.div>
-              <div className="mt-10">
-                <Testimonials />
-              </div>
+              </section>
+              {loadingVisible === true ? (
+                <div
+                  className="inset-0 bg-[#3d3c3d] opacity-75 fixed  flex w-full h-full items-center justify-center duration-300 transition-opacity"
+                  style={{ zIndex: 6000 }}
+                >
+                  <div className="flex-col">
+                    <div className="w-24 h-24 ">
+                      <div className="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-[#3d3c3d] opacity-75 flex flex-col items-center justify-center">
+                        <div className="loader ease-linear rounded-full border-8 border-t-4 border-buttonBlue h-16 w-16 mb-4"></div>
+                        <h2 className="text-center text-white text-xl font-semibold">
+                          Loading...
+                        </h2>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                ""
+              )}
+              {showPopup && (
+                <div className=" bg-black opacity-82 fixed" style={{ zIndex: 7000 }}>
+                  <LeadForm onClose={closePopup} />
+                </div>
+              )}
             </section>
-            {loadingVisible === true ? (
-              <div
-                className="inset-0 bg-[#3d3c3d] opacity-75 fixed  flex w-full h-full items-center justify-center duration-300 transition-opacity"
-                style={{ zIndex: 6000 }}
-              >
-                <div className="flex-col">
-                  <div className="w-24 h-24 ">
-                    <div className="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-[#3d3c3d] opacity-75 flex flex-col items-center justify-center">
-                      <div className="loader ease-linear rounded-full border-8 border-t-4 border-buttonBlue h-16 w-16 mb-4"></div>
-                      <h2 className="text-center text-white text-xl font-semibold">
-                        Loading...
-                      </h2>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ) : (
-              ""
-            )}
-            {showPopup && (
-              <div className=" bg-black opacity-82 fixed" style={{ zIndex: 7000 }}>
-                <LeadForm onClose={closePopup} />
-              </div>
-            )}
+
           </section>
+        </>
 
-        </section>
-    </>
-
-  )
-}
+      )
+      }
     </>
   );
 };
