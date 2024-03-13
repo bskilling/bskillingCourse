@@ -86,6 +86,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
   const [showPopup, setShowPopup] = useState(false);
   const [rating, setRating] = useState(4.9)
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [registerPopup, setRegisterPopup] = useState(false);
 
   useEffect(() => {
 
@@ -225,11 +226,15 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
     console.log("ankit")
   }
   const handleClosePopup = () => {
-        setIsPopupOpen(false);
-    };
+    setIsPopupOpen(false);
+  };
   const handleEnrolpopup = () => {
-    console.log("clicked")
-  }
+    setRegisterPopup(true);
+  };
+
+  const handleEnrolClosePopup = () => {
+    setRegisterPopup(false);
+  };
   // console.log("course", props.trainingMetadata)
   return (
     <>
@@ -501,7 +506,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
 
 
                               <div className="flex items-center">
-                                
+
                                 <StarRating ratings={() => rating} />
                               </div>
                             </div>
@@ -618,6 +623,32 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                                 className="ml-2 w-5 h-5"
                               />
                             </div>
+                            {registerPopup && (
+                              <div className="fixed text-black inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+                                <div className="bg-white p-2 md:p-8 rounded-md max-w-md md:w-full md:max-w-[23rem]">
+                                  <div className="relative">
+                                    <h3 className="text-center text-[20px] text-lightBlue font-bold tracking-wider">Enroll Now</h3>
+                                    <span className="absolute top-0 right-0 cursor-pointer transition-transform transform hover:scale-110" onClick={handleEnrolClosePopup} style={{ zIndex: 9999 }}>
+                                      <FaTimes />
+                                    </span>
+                                  </div>
+
+                                  {/* Conditionally render RegisterForm or message */}
+                                  {props.trainingMetadata.batches.length === 0 ? (
+                                    <p>No batch available</p>
+                                  ) : (
+                                    <RegisterForm
+                                      email="jkdiadihsadsaio"
+                                      BatchName={props.trainingMetadata.batches || []}
+                                      price={props.trainingMetadata.price}
+                                      course={props.trainingMetadata.name}
+                                      courseName={props.trainingMetadata.name}
+                                    />
+                                  )}
+                                </div>
+                              </div>
+                            )}
+
                           </div>
                           {/* {isPopupOpen && <LeadForm handleClose={handleClosePopup} />} */}
 
@@ -1009,6 +1040,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                                   </p>
                                 </div>
                               ) : (
+
                                 <RegisterForm
                                   email="jkdiadihsadsaio"
                                   BatchName={props.trainingMetadata.batches || []}
