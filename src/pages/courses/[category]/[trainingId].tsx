@@ -84,7 +84,8 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
   const [pdfUrl, setPdfUrl] = useState<string | null>(null);
   const [loadingVisible, setLoadingVisible] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
-  const [rating,setRating]=useState(4.9)
+  const [rating, setRating] = useState(4.9)
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   useEffect(() => {
 
@@ -218,6 +219,17 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
   };
 
   useEffect(() => { }, [props.trainingMetadata]);
+
+  const handleLeadpopup = () => {
+    // setIsPopupOpen(true);
+    console.log("ankit")
+  }
+  const handleClosePopup = () => {
+        setIsPopupOpen(false);
+    };
+  const handleEnrolpopup = () => {
+    console.log("clicked")
+  }
   // console.log("course", props.trainingMetadata)
   return (
     <>
@@ -366,7 +378,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                       objectFit: "contain",
                       backgroundPosition: "center",
                       backgroundRepeat: "no-repeat",
-                      filter: "brightness(90%)",
+                      filter: "brightness(70%)",
                     }}
                   >
                     {/* Add any additional content or components inside this div if needed */}
@@ -587,7 +599,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                         <>
                           <div className="flex flex-wrap">
                             <div className="flex px-5 items-center bg-lightBlue rounded-md p-2 mr-8 mb-4 hover:bg-blue-600">
-                              <button className="text-white font-semibold text-[16px] tracking-wide">
+                              <button onClick={handleLeadpopup} className="text-white font-semibold text-[16px] tracking-wide">
                                 Contact Learning Advisor
                               </button>
                               <img
@@ -597,7 +609,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                               />
                             </div>
                             <div className="flex px-5 items-center text-black bg-white rounded-md p-2 mb-4 hover:bg-black hover:text-white">
-                              <button className="font-bold tracking-wide">
+                              <button className="font-bold tracking-wide" onClick={handleEnrolpopup}>
                                 Get Certified Now
                               </button>
                               <img
@@ -607,7 +619,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                               />
                             </div>
                           </div>
-
+                          {/* {isPopupOpen && <LeadForm handleClose={handleClosePopup} />} */}
 
                           <div className="flex items-center mt-4">
                             <img src="/microsoftLogo.png" alt="Microsoft Logo" className="w-14 h-14" />
@@ -1019,8 +1031,8 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                                 <div className="text-sm" key={index}>
                                   <div className="mb-1 font-Mynerve font-bold text-2xl tracking-wide">{item.name}</div>
                                   <div className="font-bold">
-                                    {moment(item.startDate).format("YYYY-MMM-DD HH:mm")} -{" "}
-                                    {moment(item.endDate).format("YYYY-MMM-DD HH:mm")}
+                                    {moment(item.startDate).format("YYYY-MMM-DD")} -{" "}
+                                    {moment(item.endDate).format("YYYY-MMM-DD")}
                                   </div>
                                 </div>
                               ))}
