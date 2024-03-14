@@ -348,7 +348,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
 
       {navHide && (
         <nav className="md:py-2 md:h-[70px] font-SourceSans  md:p-0 bg-white flex  md:flex-row flex-col md:gap-36 md:justify-between w-full shadow-">
-          <div className="flex md:gap-5  md:flex-row flex-col items-center justify-center md:ml-10 ">
+          <div className="flex md:gap-5 md:flex-row flex-col items-center justify-center md:ml-10">
             <Link href={"/"}>
               <img
                 src="/logo.png"
@@ -364,7 +364,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
                   onMouseEnter={handleButtonHover}
                   onMouseLeave={handleButtonLeave}
                 >
-                  <span className="text-[15px] font-semibold">Courses</span>
+                  <span className="text-[18px] font-semibold">Courses</span>
                   <span className="ml-2"><SlArrowDown className="w-3 h-2" /></span>
                 </button>
               </div>
@@ -375,8 +375,6 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
                   onMouseEnter={handleButtonHover}
                   onMouseLeave={handleButtonLeave}
                 >
-
-
                   {dropdownOpen.map((course, index) => (
                     <div
                       key={course.id + index}
@@ -386,33 +384,31 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
                       {course.name}
                     </div>
                   ))}
-
-
                 </div>
               )}
             </div>
 
-            <div className="relative font-SourceSans flex justify-end md:w-[500px]">
+            <div className="relative font-SourceSans flex justify-end md:w-[360px]">
               <input
                 type="text"
-                className="md:w-[400px] text-sm rounded-lg border-[1px] bg- border-buttonBlue lg:py-1 lg:mt-[3px] px-5   focus:border-Buttoncolor focus:ring-buttonBlue"
+                className="md:w-[350px] md:h-[40px] text-sm rounded-lg border-[1px] bg- border-buttonBlue lg:py-1 lg:mt-[3px] px-5 focus:border-Buttoncolor focus:ring-buttonBlue mr-2"
                 placeholder="Enter Course Name"
                 required
                 value={inputValue}
                 onChange={handleSearch}
               />
-              <div className="absolute right-2 top-2 md:top-3">
+              <div className="absolute right-3 top-2 md:top-3">
                 <BiSearchAlt />
               </div>
               {dropSearchData.length > 0 && (
                 <div
                   style={{ maxHeight: "500px", overflowY: "auto" }}
-                  className="absolute z-[5000] w-full  bg-white rounded-lg shadow-lg md:right-[-50px] mt-10"
+                  className="absolute z-[5000] w-full bg-white rounded-lg shadow-lg md:right-[-50px] mt-10"
                 >
                   {dropSearchData.map((course, index) => (
                     <div
                       key={course.id + index}
-                      className="p-2 hover:bg-buttonBlue  px-5 hover:text-white cursor-pointer"
+                      className="p-2 hover:bg-buttonBlue px-5 hover:text-white cursor-pointer"
                       onClick={() => handleClick(course)}
                     >
                       {course.name}
@@ -422,6 +418,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
               )}
             </div>
           </div>
+
 
           <div className="md:mr-6 pb-1 flex font-SourceSans text-sm  justify-center gap-3 md:gap-5 md:my-0 my-5">
             <div className="flex gap-4 md:gap-5">
@@ -492,9 +489,9 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
 
       <main className=" font-SourceSans font-normal">{children}</main>
       {/* whatsapp */}
-      <div className="fixed bottom-[2.4rem] right-[6.8rem]" style={{zIndex:1000}}>
+      <div className="fixed bottom-[2.4rem] right-[6.8rem]" style={{ zIndex: 1000 }}>
         <a
-          href="https://wa.me/919741104412" 
+          href="https://wa.me/919741104412"
           target="_blank"
           rel="noreferrer"
           className="text-green-500 hover:text-green-700"
