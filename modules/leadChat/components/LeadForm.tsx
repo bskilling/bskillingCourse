@@ -10,7 +10,7 @@ const zohoWebForm = `<div class="fixed inset-0 flex items-center justify-center 
                 popupContainer.remove();
             }, 500);
         "> <img src="/cross.png" alt="close" class="w-6 h-6"> </span>
-        <div class="md:w-1/2 overflow-hidden"> <img src="/popup.png" alt="Image" class="w-full h-full hidden md:inline-block"> </div>
+        <div class="md:w-1/2 overflow-hidden"> <img src="/popupImg.jpg" alt="Image" class="w-full h-full hidden md:inline-block"> </div>
         <div id='crmWebToEntityForm' class='md:w-1/2 md:ml-4'>
             <meta name='viewport' content='width=device-width, initial-scale=1.0'>
             <META HTTP-EQUIV='content-type' CONTENT='text/html;charset=UTF-8'>

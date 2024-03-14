@@ -23,6 +23,7 @@ import { MdDownloadForOffline } from "react-icons/md";
 import LeadForm from "modules/leadChat/components/LeadForm";
 import PmpForm from "modules/leadChat/components/PmpForm";
 import StarRating from "components/StarRating";
+import LearningForm from "modules/leadChat/components/LearningForm";
 type Batch = {
   id: string;
   name: string;
@@ -87,6 +88,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
   const [rating, setRating] = useState(4.9)
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [registerPopup, setRegisterPopup] = useState(false);
+  const [leadData, setLeadData] = useState(false)
 
   useEffect(() => {
 
@@ -221,10 +223,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
 
   useEffect(() => { }, [props.trainingMetadata]);
 
-  const handleLeadpopup = () => {
-    // setIsPopupOpen(true);
-    console.log("ankit")
-  }
+
   const handleClosePopup = () => {
     setIsPopupOpen(false);
   };
@@ -604,7 +603,9 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                         <>
                           <div className="flex flex-wrap">
                             <div className="flex px-5 items-center bg-lightBlue rounded-md p-2 mr-8 mb-4 hover:bg-blue-600">
-                              <button onClick={handleLeadpopup} className="text-white font-semibold text-[16px] tracking-wide">
+                              <button
+                                onClick={() => setLeadData(true)}
+                                className="text-white font-semibold text-[16px] tracking-wide">
                                 Contact Learning Advisor
                               </button>
                               <img
@@ -613,6 +614,13 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                                 className="ml-2 w-5 h-5"
                               />
                             </div>
+                            {/* {leadData && (
+                              <div className="text-black fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-50">
+                                <LearningForm
+                                  onClose={() => setLeadData(false)}
+                                />
+                              </div>
+                            )} */}
                             <div className="flex px-5 items-center text-black bg-white rounded-md p-2 mb-4 hover:bg-black hover:text-white">
                               <button className="font-bold tracking-wide" onClick={handleEnrolpopup}>
                                 Get Certified Now
