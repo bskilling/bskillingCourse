@@ -239,7 +239,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
   const breadCrumbs = [
     { title: 'Home', path: '/' },
     { title: 'Courses', path: '/allCourses' },
-    { title: `${props?.trainingMetadata?.name.substring(0,40)}`, path: `` }
+    { title: `${props?.trainingMetadata?.name.substring(0, 40)}`, path: `` }
   ]
   // console.log("course", props.trainingMetadata)
   return (
@@ -396,11 +396,11 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                   </div>
 
                   <div className="  w-full z-[1000] relative  flex  justify-center  text-white">
-                    
+
                     <div className="md:w-[100%] md:basis-[90%] md:mt-10 mt-12  ">
                       <BreadCrumbs breadCrumbs={breadCrumbs} />
                       <div className=" flex flex-col md:w-[80%] md:flex-row justify-between">
-                        
+
                         <div className="flex items-center">
                           <h1 className=" pb-2 text-3xl mb-5 text-left px-5 md:px-0 font-bold">
                             {props.trainingMetadata.name}
@@ -491,7 +491,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                       <motion.div className='flex flex-col md:flex-row pt-7 pb-7 md:gap-6 text-left px-5 md:px-0  md:items-center'>
                         {props.trainingMetadata.name === 'Microsoft Copilot Training Certification' ? (
                           <>
-                            <div className="flex items-center">
+                            <div className="flex items-center md:ml-[0px] ml-[23px]">
                               <img
                                 src="/trainingIcon.png"
                                 className="w-8 h-8"
@@ -502,31 +502,25 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                               </div>
                             </div>
 
-
-                            <div className="flex gap-2">
+                            <div className="flex flex-col sm:flex-row gap-4 mt-4 sm:mt-0 md:ml-[0px] ml-[27px]">
                               <div className="flex items-center tracking-wide">
                                 <img
                                   src="/googleLogo.png"
-                                  className="w-6 h-6"
+                                  className="w-6 h-6 sm:ml-3"
                                   alt="Glogo"
                                 />
+                                <span className="ml-1 font-bold">{rating}/5</span>
+                                <div className="flex items-center ml-2">
+                                  <StarRating ratings={() => rating} />
+                                </div>
                               </div>
-                              <b>{rating}/5</b>
-
-
                               <div className="flex items-center">
-
-                                <StarRating ratings={() => rating} />
+                                <BiTime className="sm:ml-2" />
+                                <span className="ml-1"><b>{props.trainingMetadata.duration}</b></span>
                               </div>
-                            </div>
-
-                            <div className="flex gap-2">
-                              <div className="flex items-center">
-                                <BiTime />
-                              </div>{" "}
-                              <b>{props.trainingMetadata.duration}</b>
                             </div>
                           </>
+
                         ) : (
                           <>
                             <div>
@@ -611,7 +605,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
 
                       {props.trainingMetadata.name === 'Microsoft Copilot Training Certification' && (
                         <>
-                          <div className="flex flex-wrap">
+                          <div className="flex flex-wrap justify-center lg:justify-start">
                             <div className="flex px-5 items-center bg-lightBlue rounded-md p-2 mr-8 mb-4 hover:bg-blue-600">
                               <button
                                 onClick={() => setLeadData(true)}
@@ -635,9 +629,9 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                                   </div>
 
                                   {/* Conditionally render RegisterForm or message */}
-                                  
-                                    <DropAQueryForm />
-                                  
+
+                                  <DropAQueryForm />
+
                                 </div>
                               </div>
                             )}
@@ -648,7 +642,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                                 />
                               </div>
                             )} */}
-                            <div className="flex px-5 items-center text-black bg-white rounded-md p-2 mb-4 hover:bg-black hover:text-white">
+                            <div className="flex px-5 items-center text-black bg-white rounded-md p-2 mb-4 hover:bg-black hover:text-white mr-[4.5rem] lg:mx-0">
                               <button className="font-bold tracking-wide" onClick={handleEnrolpopup}>
                                 Get Certified Now
                               </button>
@@ -688,7 +682,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
 
                           {/* {isPopupOpen && <LeadForm handleClose={handleClosePopup} />} */}
 
-                          <div className="flex items-center md:mt-0">
+                          <div className="flex items-center md:mt-0 sm:ml-0 ml-6">
                             <img src="/microsoftLogo.png" alt="Microsoft Logo" className="w-14 h-14" />
                             <div className="ml-2">
                               <p className="text-[14px]">Powered By</p>

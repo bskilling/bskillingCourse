@@ -13,23 +13,23 @@ const BreadCrumbs: React.FC<BreadCrumbsProps> = ({ breadCrumbs }) => {
     return (
         <section className="relative top-[-20px] md:ml-[-15px]">
             <div className="container max-w-screen-xl mx-auto px-4">
-                <ol className="inline-flex flex-wrap text-gray-600 space-x-1 md:space-x-2  items-center justify-center">
+                <ol className="inline-flex flex-wrap text-gray-600 space-x-1 md:space-x-2  md:items-center md:justify-center">
                     {breadCrumbs?.map((breadCrumb, index) => (
-                        <li className="inline-flex items-center " key={index} >
+                        <li className="inline-flex items-center font-SourceSans" key={index} >
                             {breadCrumb.path ? (
                                 <Link
                                     href={breadCrumb.path}
                                     className="text-white text-[16px] font-semibold hover:text-lightBlue tracking-wider"  style={{ textDecoration: 'none' }}
                                 >
-                                    {breadCrumb.title}
+                                    <h1>{breadCrumb.title}</h1>
                                 </Link>
                             ) : (
-                                <li className="text-gray text-[16px] tracking-wider">{breadCrumb.title}</li>
+                                <h1 className="text-gray text-[16px] tracking-wider">{breadCrumb.title}</h1>
                             )
                             }
 
                             {index < breadCrumbs.length - 1 && (
-                                <span className="text-gray-600 ml-1 mb-0">{'>'}</span>
+                                <span className="relative top-[2px] text-gray-600 ml-1 mb-0">{'>'}</span>
                             )}
                         </li>
                     ))}
