@@ -24,6 +24,7 @@ import LeadForm from "modules/leadChat/components/LeadForm";
 import PmpForm from "modules/leadChat/components/PmpForm";
 import StarRating from "components/StarRating";
 import LearningForm from "modules/leadChat/components/LearningForm";
+import BreadCrumbs from "components/Breadcrumbs";
 type Batch = {
   id: string;
   name: string;
@@ -92,7 +93,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
 
   useEffect(() => {
 
-    const delayTime = 4000;
+    const delayTime = 2000;
 
     const timeoutId = setTimeout(() => {
       setShowPopup(true);
@@ -225,7 +226,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
 
 
   const handleClosePopup = () => {
-    setIsPopupOpen(false);
+    setLeadData(false);
   };
   const handleEnrolpopup = () => {
     setRegisterPopup(true);
@@ -234,6 +235,12 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
   const handleEnrolClosePopup = () => {
     setRegisterPopup(false);
   };
+
+  const breadCrumbs = [
+    { title: 'Home', path: '/' },
+    { title: 'Courses', path: '/allCourses' },
+    { title: `${props?.trainingMetadata?.name.substring(0,40)}`, path: `` }
+  ]
   // console.log("course", props.trainingMetadata)
   return (
     <>
@@ -389,8 +396,11 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                   </div>
 
                   <div className="  w-full z-[1000] relative  flex  justify-center  text-white">
+                    
                     <div className="md:w-[100%] md:basis-[90%] md:mt-10 mt-12  ">
+                      <BreadCrumbs breadCrumbs={breadCrumbs} />
                       <div className=" flex flex-col md:w-[80%] md:flex-row justify-between">
+                        
                         <div className="flex items-center">
                           <h1 className=" pb-2 text-3xl mb-5 text-left px-5 md:px-0 font-bold">
                             {props.trainingMetadata.name}
@@ -614,6 +624,23 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                                 className="ml-2 w-5 h-5"
                               />
                             </div>
+                            {leadData && (
+                              <div className="fixed text-black inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+                                <div className="bg-white p-2 md:p-8 rounded-md max-w-md md:w-full md:max-w-[23rem] animate-scale-in">
+                                  <div className="relative">
+                                    <h3 className="text-center text-[20px] text-lightBlue font-bold tracking-wider">Contact Learning Advisor</h3>
+                                    <span className="absolute top-0 right-0 cursor-pointer transition-transform transform hover:scale-110" onClick={handleClosePopup} style={{ zIndex: 9999 }}>
+                                      <FaTimes />
+                                    </span>
+                                  </div>
+
+                                  {/* Conditionally render RegisterForm or message */}
+                                  
+                                    <DropAQueryForm />
+                                  
+                                </div>
+                              </div>
+                            )}
                             {/* {leadData && (
                               <div className="text-black fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-50">
                                 <LearningForm
@@ -633,7 +660,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                             </div>
                             {registerPopup && (
                               <div className="fixed text-black inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-                                <div className="bg-white p-2 md:p-8 rounded-md max-w-md md:w-full md:max-w-[23rem]">
+                                <div className="bg-white p-2 md:p-8 rounded-md max-w-md md:w-full md:max-w-[23rem] animate-scale-in">
                                   <div className="relative">
                                     <h3 className="text-center text-[20px] text-lightBlue font-bold tracking-wider">Enroll Now</h3>
                                     <span className="absolute top-0 right-0 cursor-pointer transition-transform transform hover:scale-110" onClick={handleEnrolClosePopup} style={{ zIndex: 9999 }}>
@@ -658,9 +685,10 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                             )}
 
                           </div>
+
                           {/* {isPopupOpen && <LeadForm handleClose={handleClosePopup} />} */}
 
-                          <div className="flex items-center mt-4">
+                          <div className="flex items-center md:mt-0">
                             <img src="/microsoftLogo.png" alt="Microsoft Logo" className="w-14 h-14" />
                             <div className="ml-2">
                               <p className="text-[14px]">Powered By</p>
@@ -684,7 +712,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                           style={{ textDecoration: "none" }}
                           className="md:hidden  w-full underline-0 block mr-14"
                         >
-                          <div className="  mt-12 flex justify-center text-white  opa  rounded-md py-2  ">
+                          <div className={`mt-12 flex justify-center text-white opa rounded-md py-2 ${props.trainingMetadata.name === 'Microsoft Copilot Training Certification' ? 'hidden' : ''}`}>
                             <div className="flex gap-2"></div>
                             <div className="flex  px-2  rounded-md py-2 font-semibold text-xl bg-white w-fit text-blue-600  flex-col">
                               Download Brochure
@@ -1100,7 +1128,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                         </div>
                         <div className="flex  shadow-md w-full bg-white pb-12 pt-5  rounded-xl flex-col justify-center items-center gap-5">
                           <div>
-                            <p className="  pt-3 pb-4 text-xl t  font-semibold text-center">
+                            <p className="  pt-3 pb-4 text-xl t font-semibold text-center">
                               Request More Information
                             </p>
                             <DropAQueryForm />
