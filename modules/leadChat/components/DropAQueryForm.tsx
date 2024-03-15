@@ -3,8 +3,10 @@ import { useForm } from "react-hook-form";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 
-
-const DropAQueryForm = () => {
+// interface DropAQueryFormProps{
+//   onClose: () => void;
+// }
+const DropAQueryForm= () => {
   const [messageSent, setMessage] = useState(false);
   const [CountryCodeValue, setCountryCodeValue] = useState<any>("+91");
   const {

@@ -191,3 +191,15 @@ select option:checked {
   background: #125582;
   border-radius: 2rem;
 }
+@keyframes scale-in {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.animate-scale-in {
+  animation: scale-in 0.3s ease-out;
+}
