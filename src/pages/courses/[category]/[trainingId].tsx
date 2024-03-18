@@ -93,8 +93,6 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
   const [leadData, setLeadData] = useState(false)
   const [benifitData, setBenifitData] = useState<any>(BenefitData)
 
-  console.log("data", benifitData)
-
   useEffect(() => {
 
     const delayTime = 2000;
@@ -746,9 +744,9 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                   className=" flex flex-col -violet-600 w-full 0 md:flex-row justify-center gap-10"
                 >
                   {/* main text content here */}
-                  <div className=" flex flex-col md:mt-[170px]  md:flex-row gap-5  md:basis-[90%] ">
-                    <div className="flex flex-col md:flex-1  gap-5 h-fit    ">
-                      <div className="bg-white px-5 md:px-12 w-full min-h-[1220px]  pb-8  rounded-xl">
+                  <div className=" flex flex-col md:mt-[170px] md:flex-row gap-5 md:basis-[90%] ">
+                    <div className="flex flex-col md:flex-1 gap-5 h-fit">
+                      <div className="bg-white px-5 md:px-8 w-full min-h-[1220px]  pb-8  rounded-xl">
                         <div id="Overview" className="h-12 "></div>
                         <div className="mt-2 mb-3">
                           <div className="flex justify-between">
@@ -878,14 +876,14 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                                 </p>
                                 <div className="flex flex-wrap">
                                   {benifitData.map((items: any, index: any) => (
-                                    <div className="flex mb-[20px] w-full md:w-1/2" key={index}> {/* Adjusted width */}
+                                    <div className="flex mb-[20px] w-full md:w-1/2" key={index}> 
                                       <div className="flex gap-3">
                                         <img
-                                          className="h-10 w-16 mt-[8px] "
+                                          className="h-12 w-14 mt-[8px] "
                                           src={items.image}
                                           alt="Copilot Icon"
                                         />
-                                        <div>
+                                        <div className="md:w-[15rem]">
                                           <p className="font-semibold ">{items.title}</p>
                                           <p className="text-[14px]">{items.desc}</p>
                                         </div>
@@ -916,53 +914,6 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                               <div className="flex flex-col md:w-[50%]"></div>
                             </div>
                           )}
-
-                          {/* <div className="flex w-full md:flex-row flex-col gap-4 justify-center">
-                            <div className="flex flex-col md:w-[50%]">
-                              <p className="_pt-8 pb-4 text-xl font-semibold">
-                                Benefits
-                              </p>
-
-                              {props.trainingMetadata.name === 'Microsoft Copilot Training Certification' ? (
-                                <>
-
-                                  {benifitData.map((items: any, index: any) => {
-                                    { console.log("items", items) }
-                                    return (
-                                      <div className="flex gap-3" key={index}>
-                                        <div className="flex">
-                                          <img
-                                            className="h-10 w-16 mt-[8px]"
-                                            src={items.image}
-                                            alt="Copilot Icon"
-                                          />
-                                          <div>
-                                            <p className="font-semibold ">{items.title}</p>
-                                            <p className="text-[10px]">{items.desc}</p>
-                                          </div>
-                                        </div>
-                                      </div>
-
-                                    )
-                                  })}
-
-                                </>
-                              ) : (
-                                props.trainingMetadata.benefites?.map((item, index) => (
-                                  <div key={index} className="flex gap-3">
-                                    <img
-                                      className="h-3 w-3 mt-[8px]"
-                                      src="/checklist.png"
-                                      alt="Icon"
-                                    />
-
-                                    <p>{item}</p>
-                                  </div>
-                                ))
-                              )}
-                            </div>
-                            <div className="flex flex-col md:w-[50%]"></div>
-                          </div> */}
                         </div>
 
                         {/* tabsssssssssssssssssssssssssssssssssssssssss */}
@@ -1225,7 +1176,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                   </div>
 
                 </motion.div>
-                <div className="mt-10">
+                <div className="">
                   <Testimonials />
                 </div>
               </section>
@@ -1248,11 +1199,11 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
               ) : (
                 ""
               )}
-              {showPopup && (
+              {/* {showPopup && (
                 <div className=" bg-black opacity-82 fixed" style={{ zIndex: 7000 }}>
                   <LeadForm onClose={closePopup} />
                 </div>
-              )}
+              )} */}
             </section>
 
           </section>

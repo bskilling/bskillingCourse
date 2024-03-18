@@ -243,18 +243,10 @@ const zohoWebForm = `<div class="fixed inset-0 flex items-center justify-center 
 interface LeadFormProps {
     onClose: () => void;
     // handleClose: () => void;
-
 }
-
 const LeadForm: React.FC<LeadFormProps> = ({onClose }) => {
-
-
-
-
     return (
         <div dangerouslySetInnerHTML={{ __html: zohoWebForm }} />
-
-
     );
 };
 
