@@ -25,6 +25,7 @@ import PmpForm from "modules/leadChat/components/PmpForm";
 import StarRating from "components/StarRating";
 import LearningForm from "modules/leadChat/components/LearningForm";
 import BreadCrumbs from "components/Breadcrumbs";
+import BenefitData from "data/BenefitData";
 type Batch = {
   id: string;
   name: string;
@@ -90,6 +91,9 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [registerPopup, setRegisterPopup] = useState(false);
   const [leadData, setLeadData] = useState(false)
+  const [benifitData, setBenifitData] = useState<any>(BenefitData)
+
+  console.log("data", benifitData)
 
   useEffect(() => {
 
@@ -760,7 +764,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                               {props.trainingMetadata.objectives.map((item, index) => (
                                 <div key={index} className="flex gap-3 ">
 
-                                  <img className="h-3 w-3 mt-[8px]" src="data:image/png;base64,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" alt="Icon" />
+                                  <img className="h-3 w-3 mt-[8px]" src="/checklist.png" alt="Icon" />
 
                                   <p>{item}</p>
                                 </div>
@@ -790,7 +794,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                               {props.trainingMetadata.prerequisites.map(
                                 (item, index) => (
                                   <div key={index} className="flex gap-3">
-                                    <img className="h-3 w-3 mt-[8px]" src="data:image/png;base64,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" alt="Icon" />
+                                    <img className="h-3 w-3 mt-[8px]" src="/checklist.png" alt="Icon" />
 
                                     <p>{item}</p>
                                   </div>
@@ -805,7 +809,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                               {props.trainingMetadata.audience.map(
                                 (item, index) => (
                                   <div key={index} className="flex gap-3">
-                                    <img className="h-3 w-3 mt-[8px]" src="data:image/png;base64,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" alt="Icon" />
+                                    <img className="h-3 w-3 mt-[8px]" src="/checklist.png" alt="Icon" />
 
                                     <p>{item}</p>
                                   </div>
@@ -820,7 +824,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                               {props.trainingMetadata.keyFeatures.map(
                                 (item, index) => (
                                   <div key={index} className="flex gap-3">
-                                    <img className="h-3 w-3 mt-[8px]" src="data:image/png;base64,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" alt="Icon" />
+                                    <img className="h-3 w-3 mt-[8px]" src="/checklist.png" alt="Icon" />
 
                                     <p>{item}</p>
                                   </div>
@@ -866,24 +870,99 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                             </div>
                           </div>
                           <div id="Benefits" className="h-12 "></div>
-                          <div className="flex w-full md:flex-row flex-col  gap-4 justify-center">
-                            <div className="flex flex-col  md:w-[50%]">
-                              <p className="_pt-8 pb-4 text-xl  font-semibold">
+                          {props.trainingMetadata.name === "Microsoft Copilot Training Certification" ? (
+                            <div className="flex w-full md:flex-row flex-col gap-4 justify-start">
+                              <div className="flex flex-col w-full md:w-[100%]"> {/* Adjusted width */}
+                                <p className="_pt-8 pb-4 text-xl font-semibold">
+                                  Benefits
+                                </p>
+                                <div className="flex flex-wrap">
+                                  {benifitData.map((items: any, index: any) => (
+                                    <div className="flex mb-[20px] w-full md:w-1/2" key={index}> {/* Adjusted width */}
+                                      <div className="flex gap-3">
+                                        <img
+                                          className="h-10 w-16 mt-[8px] "
+                                          src={items.image}
+                                          alt="Copilot Icon"
+                                        />
+                                        <div>
+                                          <p className="font-semibold ">{items.title}</p>
+                                          <p className="text-[14px]">{items.desc}</p>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            </div>
+
+                          ) : (
+                            <div className="flex w-full md:flex-row flex-col gap-4 justify-center">
+                              <div className="flex flex-col md:w-[50%]">
+                                <p className="_pt-8 pb-4 text-xl font-semibold">
+                                  Benefits
+                                </p>
+                                {props.trainingMetadata.benefites?.map((item: any, index: any) => (
+                                  <div key={index} className="flex gap-3">
+                                    <img
+                                      className="h-3 w-3 mt-[8px]"
+                                      src="/checklist.png"
+                                      alt="Icon"
+                                    />
+                                    <p>{item}</p>
+                                  </div>
+                                ))}
+                              </div>
+                              <div className="flex flex-col md:w-[50%]"></div>
+                            </div>
+                          )}
+
+                          {/* <div className="flex w-full md:flex-row flex-col gap-4 justify-center">
+                            <div className="flex flex-col md:w-[50%]">
+                              <p className="_pt-8 pb-4 text-xl font-semibold">
                                 Benefits
                               </p>
 
-                              {props.trainingMetadata.benefites?.map(
-                                (item, index) => (
+                              {props.trainingMetadata.name === 'Microsoft Copilot Training Certification' ? (
+                                <>
+
+                                  {benifitData.map((items: any, index: any) => {
+                                    { console.log("items", items) }
+                                    return (
+                                      <div className="flex gap-3" key={index}>
+                                        <div className="flex">
+                                          <img
+                                            className="h-10 w-16 mt-[8px]"
+                                            src={items.image}
+                                            alt="Copilot Icon"
+                                          />
+                                          <div>
+                                            <p className="font-semibold ">{items.title}</p>
+                                            <p className="text-[10px]">{items.desc}</p>
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                    )
+                                  })}
+
+                                </>
+                              ) : (
+                                props.trainingMetadata.benefites?.map((item, index) => (
                                   <div key={index} className="flex gap-3">
-                                    <img className="h-3 w-3 mt-[8px]" src="data:image/png;base64,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" alt="Icon" />
+                                    <img
+                                      className="h-3 w-3 mt-[8px]"
+                                      src="/checklist.png"
+                                      alt="Icon"
+                                    />
 
                                     <p>{item}</p>
                                   </div>
-                                )
+                                ))
                               )}
                             </div>
-                            <div className="flex flex-col  md:w-[50%]"></div>
-                          </div>
+                            <div className="flex flex-col md:w-[50%]"></div>
+                          </div> */}
                         </div>
 
                         {/* tabsssssssssssssssssssssssssssssssssssssssss */}
@@ -914,7 +993,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                         <div className=" flex  w-full flex-col">
                           {props.trainingMetadata.outcomes.map((item, index) => (
                             <div key={index} className="flex gap-3">
-                              <img className="h-3 w-3 mt-[8px]" src="data:image/png;base64,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" alt="Icon" />
+                              <img className="h-3 w-3 mt-[8px]" src="/checklist.png" alt="Icon" />
 
                               <p>{item}</p>
                             </div>
