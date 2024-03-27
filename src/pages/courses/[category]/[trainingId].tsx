@@ -876,7 +876,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                                 </p>
                                 <div className="flex flex-wrap">
                                   {benifitData.map((items: any, index: any) => (
-                                    <div className="flex mb-[20px] w-full md:w-1/2" key={index}> 
+                                    <div className="flex mb-[20px] w-full md:w-1/2" key={index}>
                                       <div className="flex gap-3">
                                         <img
                                           className="h-12 w-14 mt-[8px] "
@@ -916,15 +916,37 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                           )}
                         </div>
 
-                        {/* tabsssssssssssssssssssssssssssssssssssssssss */}
+
                       </div>
 
                       <div className="bg-white md:px-12 px-5  w-full   pb-8  rounded-xl">
                         <div id="Curriculum" className="h-12 "></div>
-                        <p className="_mt-9 text-2xl font-bold   mb-4">
-                          Curriculum
-                        </p>
-                        <div className="bg-white flex-1  w-full   pb-8  rounded-xl">
+                        <div className="flex items-center justify-between">
+                          <p className="_mt-9 text-2xl font-bold mb-4">
+                            Curriculum
+                          </p>
+                          <button
+                            onClick={() => setContactPopupVisible(true)}
+                            style={{ textDecoration: "none" }}
+                            className={`md:block mb-4 underline-0 hidden mr-14 bg-lightBlue rounded-md py-2 flex w-[] hover:bg-blue-600 ${props.trainingMetadata.name === 'Microsoft Copilot Training Certification' ? '' : 'hidden'}`}
+                          >
+                            {/* <div className="flex gap-2"></div> */}
+                            <div className="flex w-full px-2 text-[15px] font-semibold text-white flex-col">
+                              Download Brochure
+                            </div>
+                          </button>
+                        </div>
+                        {isContactPopupVisible && (
+                          <div className="text-black fixed top-0 left-0 w-full h-full flex justify-center items-center bg-opacity-20">
+                            <EnquiryForm
+                              onClose={() => setContactPopupVisible(false)}
+                              onFormSubmit={handleFormSubmit}
+                              onPdfDownload={handleGeneratePdf}
+                              courseName={props.trainingMetadata?.name}
+                            />
+                          </div>
+                        )}
+                        <div className="bg-white flex-1 w-full pb-8 rounded-xl">
                           {" "}
                           <div className="w-full ">
                             {formattedData.map((item, index) => (
