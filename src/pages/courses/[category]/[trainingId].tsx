@@ -919,22 +919,23 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
 
                       </div>
 
-                      <div className="bg-white md:px-12 px-5  w-full   pb-8  rounded-xl">
-                        <div id="Curriculum" className="h-12 "></div>
+                      <div className="bg-white md:px-12 px-5 w-full pb-8 rounded-xl">
+                        <div id="Curriculum" className="h-12"></div>
                         <div className="flex items-center justify-between">
                           <p className="_mt-9 text-2xl font-bold mb-4">
                             Curriculum
                           </p>
-                          <button
-                            onClick={() => setContactPopupVisible(true)}
-                            style={{ textDecoration: "none" }}
-                            className={`md:block mb-4 underline-0 hidden mr-14 bg-lightBlue rounded-md py-2 flex w-[] hover:bg-blue-600 ${props.trainingMetadata.name === 'Microsoft Copilot Training Certification' ? '' : 'hidden'}`}
-                          >
-                            {/* <div className="flex gap-2"></div> */}
-                            <div className="flex w-full px-2 text-[15px] font-semibold text-white flex-col">
-                              Download Brochure
-                            </div>
-                          </button>
+                          {props.trainingMetadata.name === 'Microsoft Copilot Training Certification' && (
+                            <button
+                              onClick={() => setContactPopupVisible(true)}
+                              style={{ textDecoration: "none" }}
+                              className="md:block mb-4 underline-0 hidden mr-14 bg-lightBlue rounded-md py-2 flex hover:bg-blue-600"
+                            >
+                              <div className="flex w-full px-2 text-[15px] font-semibold text-white flex-col">
+                                Download Brochure
+                              </div>
+                            </button>
+                          )}
                         </div>
                         {isContactPopupVisible && (
                           <div className="text-black fixed top-0 left-0 w-full h-full flex justify-center items-center bg-opacity-20">
@@ -947,8 +948,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                           </div>
                         )}
                         <div className="bg-white flex-1 w-full pb-8 rounded-xl">
-                          {" "}
-                          <div className="w-full ">
+                          <div className="w-full">
                             {formattedData.map((item, index) => (
                               <Accordion
                                 key={index}
@@ -959,6 +959,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                           </div>
                         </div>
                       </div>
+
                       <div className="bg-white px-5 md:px-12 w-full   pb-8  rounded-xl">
                         {" "}
                         <div id="OutComes" className="h-12 "></div>
