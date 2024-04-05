@@ -637,13 +637,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                                 </div>
                               </div>
                             )}
-                            {/* {leadData && (
-                              <div className="text-black fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-50">
-                                <LearningForm
-                                  onClose={() => setLeadData(false)}
-                                />
-                              </div>
-                            )} */}
+                            
                             <div className="flex px-5 items-center text-black bg-white rounded-md p-2 mb-4 hover:bg-black hover:text-white mr-[4.5rem] lg:mx-0">
                               <button className="font-bold tracking-wide" onClick={handleEnrolpopup}>
                                 Get Certified Now
@@ -681,8 +675,6 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                             )}
 
                           </div>
-
-                          {/* {isPopupOpen && <LeadForm handleClose={handleClosePopup} />} */}
 
                           <div className="flex items-center md:mt-0 sm:ml-0 ml-6">
                             <img src="/microsoftLogo.png" alt="Microsoft Logo" className="w-14 h-14" />
@@ -1222,11 +1214,11 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
               ) : (
                 ""
               )}
-              {showPopup && (
+              {/* {showPopup && (
                 <div className=" bg-black opacity-82 fixed" style={{ zIndex: 7000 }}>
                   <LeadForm onClose={closePopup} />
                 </div>
-              )}
+              )} */}
             </section>
 
           </section>
