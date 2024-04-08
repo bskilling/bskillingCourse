@@ -1214,11 +1214,11 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
               ) : (
                 ""
               )}
-              {showPopup && (
+              {/* {showPopup && (
                 <div className=" bg-black opacity-82 fixed" style={{ zIndex: 7000 }}>
                   <LeadForm onClose={closePopup} />
                 </div>
-              )}
+              )} */}
             </section>
 
           </section>
