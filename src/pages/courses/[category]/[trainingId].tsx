@@ -113,7 +113,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
     try {
       setLoadingVisible(true);
       const response = await axios.post(
-        "https://tooejiytepk5pybi4mxtsmne4i0qybvm.lambda-url.ap-south-1.on.aws/",
+        "https://32zagdkafwosd2jcq5c7mkerf40ipiry.lambda-url.ap-south-1.on.aws/",
         {
           id: props.trainingId,
           title: props.trainingMetadata?.name,
@@ -138,6 +138,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
           headLine: props.trainingMetadata?.headLine,
         }
       );
+      console.log("res",response)
       return response.data.url;
     } catch (error) {
       console.error("Error generating PDF:", error);
