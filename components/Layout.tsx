@@ -9,6 +9,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import axios from "axios";
 import { FaWhatsapp } from "react-icons/fa";
+import Footer from "./Footer";
 
 
 type Props = {
@@ -514,7 +515,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
         </a>
       </div>
 
-
+        {/* <Footer/> */}
       <footer className=" bg-white font-SourceSans  px-10 py-6 md:pt-12">
         <div className="grid grid-cols-1 md:grid-cols-2 md:flex md:flex-row justify-between items-start">
           <div className="col-span-2 pb-4 md:pb-0 ">
@@ -671,7 +672,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
             </p>
             <p className="text-base">
               Grievances : <br /> grievanceofficer@bskilling.com /
-              +91-9740808405
+              +91 89519 23627
             </p>
           </div>
           <div className=" w-[20px] md:block hidden  h-[20px]"></div>
