@@ -194,7 +194,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
         
 
-        {showFixedFooter && (
+        {/* {showFixedFooter && (
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
@@ -202,7 +202,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           >
             <FixedFooterBar />
           </motion.div>
-        )}
+        )} */}
       </Layout>
     </MyProvider>
   );
