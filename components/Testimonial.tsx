@@ -9,7 +9,7 @@ const testimonials = [
   {
     name: 'ALI TUFAN',
     role: 'Client',
-    image: '/images/user1.jfif', // Replace with actual image paths
+    image: '/images/user1.jfif',
     testimonial: 'Customization is very easy with this theme. Clean and quality design and full support for any kind of request! Great theme!',
   },
   {
@@ -17,6 +17,12 @@ const testimonials = [
     role: 'Client',
     image: '/images/user2.jfif',
     testimonial: 'The support is amazing and the customization options are perfect for our needs. Excellent work!',
+  },
+  {
+    name: 'Jane Smith',
+    role: 'Client',
+    image: '/images/user3.jfif',
+    testimonial: 'Absolutely wonderful! The theme is very easy to use and the support is top-notch.',
   },
   {
     name: 'Jane Smith',
@@ -39,8 +45,8 @@ const Testimonial = () => {
             modules={[Pagination, Navigation]}
             spaceBetween={50}
             slidesPerView={3}
-            centeredSlides={true}
-            pagination={{ clickable: true }}
+            centeredSlides={false}
+            pagination={{ clickable: true, el: '.swiper-pagination' }}
             navigation
             className="testimonial-swiper"
           >
@@ -61,6 +67,7 @@ const Testimonial = () => {
               </SwiperSlide>
             ))}
           </Swiper>
+         
         </div>
       </div>
     </div>

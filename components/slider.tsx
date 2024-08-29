@@ -14,7 +14,7 @@ const Slider = () => {
     {
       heading: "Interactive Online Classes",
       description: "The Future of Learning is Here!",
-      background: "linear-gradient(117.65deg, #3452FF 0%, #FF1053 100%)",
+      background: "radial-gradient(circle at -0.8% 4.3%, rgb(59, 176, 255) 0%, rgb(76, 222, 250) 83.6%)",
       textColor: "text-white",
       borderColor:"border-white"
     },
@@ -22,27 +22,27 @@ const Slider = () => {
       heading: "Land Your Dream Job",
       description: "Get Holistic Placement Support!",
       background: "linear-gradient(117.65deg, #37ECBA 0%, #72AFD3 100%)",
-      textColor: "text-black",
-      borderColor:"border-black"
+      textColor: "text-white",
+      borderColor:"border-white"
     },
     {
       heading: "Professional Courses Specially Designed To Suit Your Needs",
       description: "Flexible | Interactive | Customised Learning",
-      background: "linear-gradient(117.65deg, #C71D6F 0%, #D09693 100%)",
+      background: "linear-gradient(69.8deg, rgb(25, 49, 108) 2.8%, rgb(1, 179, 201) 97.8%)",
       textColor: "text-white",
       borderColor:"border-white"
     },
     {
       heading: "Learn from the Best",
       description: "Expert Faculty, Exceptional Results!",
-      background: "linear-gradient(117.65deg, #85FFBD 0%, #FFFB7D 100%)",
-      textColor: "text-black",
-      borderColor:"border-black"
+      background: "linear-gradient(67.6deg, rgb(225, 242, 254) -2.8%, rgb(193, 224, 250) 44.6%, rgb(19, 116, 197) 102.4%)",
+      textColor: "text-white",
+      borderColor:"border-white"
     },
     {
       heading: "Level Up Your Employees With Corporate Training",
       description: "IT | Banking | HR Onboarding",
-      background: "linear-gradient(117.65deg, #F83600 0%, #F9D423 100%)",
+      background: "linear-gradient(69.8deg, rgb(25, 49, 108) 2.8%, rgb(1, 179, 201) 97.8%)",
       textColor: "text-white",
       borderColor:"border-white"
     }
@@ -55,14 +55,6 @@ const Slider = () => {
 
     return () => clearInterval(interval);
   }, [images.length]);
-
-  const goToNext = () => {
-    setCurrentImage((prevImage) => (prevImage + 1) % images.length);
-  };
-
-  const goToPrevious = () => {
-    setCurrentImage((prevImage) => (prevImage - 1 + images.length) % images.length);
-  };
 
   const imageVariants = {
     initial: { x: '100%', opacity: 0 },
@@ -101,9 +93,9 @@ const Slider = () => {
           <p className="text-sm md:text-lg lg:text-lg mb-4">
             {texts[currentImage].description}
           </p>
-          <button className={`border rounded-3xl ${texts[currentImage].borderColor} px-4 py-2 font-semibold`}>
+          {/* <button className={`border rounded-3xl ${texts[currentImage].borderColor} px-4 py-2 font-semibold`}>
             Ready to get Started?
-          </button>
+          </button> */}
           <div className='flex justify-center mt-12 font-bold text-sm'>
             <div className="flex flex-col items-center mx-10">
               <img src="/images/homeicon1.png" alt="icon" className="w-12 h-12" />
@@ -124,19 +116,6 @@ const Slider = () => {
           </div>
         </div>
       </motion.div>
-
-      <button
-        onClick={goToPrevious}
-        className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-transparent text-white p-2 z-30"
-      >
-        - Prev
-      </button>
-      <button
-        onClick={goToNext}
-        className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-transparent text-white p-2 z-30"
-      >
-        Next -
-      </button>
 
       {/* Dots */}
       <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-30">

@@ -8,6 +8,10 @@ interface OverviewProps {
 
 const Overview: React.FC<OverviewProps> = ({ courseDetails }) => {
     const skillsCovered = courseDetails?.training_metadata?.skills_covered;
+    const objectives = courseDetails?.training_metadata?.objectives;
+    const prerequisites = courseDetails?.training_metadata?.prerequisites;
+    const resources = courseDetails?.training_metadata?.resources;
+    const benefits = courseDetails?.training_metadata?.benefits;
 
     return (
         <div className='bg-white p-6 rounded-lg shadow-md space-y-6 md:py-10'>
@@ -31,26 +35,78 @@ const Overview: React.FC<OverviewProps> = ({ courseDetails }) => {
                     <p>No skills covered listed.</p>
                 )}
             </div>
-            <div>
-                <h3 className='text-xl font-semibold'>Who Is This Course For?</h3>
-                <p>This course is designed for individuals from various backgrounds who are eager to delve into the realm of cloud computing. Ideal for aspiring cloud architects looking to hone their skills, IT professionals aiming to expand their expertise in cloud technologies too can benefit from this program. Additionally, systems administrators, DevOps engineers, and solution architects will find value in the comprehensive coverage of cloud migration strategies and best practices of this course. Cloud enthusiasts seeking to explore the intricacies of modern cloud environments will benefit from this course’s practical approach and hands-on projects.</p>
+            <div className="mt-8">
+                <h3 className="text-xl font-bold text-gray-800 mb-4">Objectives</h3>
+                {objectives && objectives.length > 0 ? (
+                    <div className="space-y-4">
+                        {objectives.map((obj, index) => (
+                            <div
+                                key={index}
+                                className="flex items-start p-4 bg-white shadow-md rounded-lg transition-transform duration-300 hover:shadow-lg"
+                            >
+                                <FaCheck className="text-green-500 mt-1 flex-shrink-0" /> {/* Tick icon */}
+                                <p className="ml-4">{obj.title || 'No title available'}</p>
+                            </div>
+                        ))}
+                    </div>
+                ) : (
+                    <p className="text-gray-500 mt-4">No objectives listed.</p>
+                )}
+            </div>
+
+            <div className="mt-8">
+                <h3 className="text-xl font-bold text-gray-800 mb-4">Prerequisites</h3>
+                {prerequisites && prerequisites.length > 0 ? (
+                    <div className="space-y-4">
+                        {prerequisites.map((reqisite, index) => (
+                            <div
+                                key={index}
+                                className="flex items-start p-4 bg-white shadow-md rounded-lg transition-transform duration-300 hover:shadow-lg"
+                            >
+                                <FaCheck className="text-green-500 mt-1 flex-shrink-0" />
+                                <p className="ml-4">{reqisite.title || 'No title available'}</p>
+                            </div>
+                        ))}
+                    </div>
+                ) : (
+                    <p className="text-gray-500 mt-4">No objectives listed.</p>
+                )}
             </div>
             <div>
-                <h3 className='text-xl font-semibold'>Eligibility</h3>
-                <p>Candidates applying for this course should have basic IT knowledge and an understanding of networking fundamentals. While familiarity with cloud platforms such as AWS, Azure, or GCP is optional, it can be advantageous for participants to have some prior exposure to these technologies. Additionally, a foundational understanding of programming concepts will be beneficial for navigating certain aspects of the course content. Overall, this program welcomes individuals from diverse backgrounds who are eager to expand their skills and knowledge in the field of cloud engineering.</p>
+                <h3 className='text-xl font-bold mb-4'>Resources & Features</h3>
+                {resources && resources.length > 0 ? (
+                    <div className="space-y-4">
+                        {resources.map((resource, index) => (
+                            <div
+                                key={index}
+                                className="flex items-start p-4 bg-white shadow-md rounded-lg transition-transform duration-300 hover:shadow-lg"
+                            >
+                                <FaCheck className="text-green-500 mt-1 flex-shrink-0" />
+                                <p className="ml-4">{resource.title || 'No title available'}</p>
+                            </div>
+                        ))}
+                    </div>
+                ) : (
+                    <p className="text-gray-500 mt-4">No resource listed.</p>
+                )}
             </div>
             <div>
-                <h3 className='text-xl font-semibold'>Resources & Features</h3>
-                <p>
-                    Learn Cloud Engineering from the best in the field! Gain a comprehensive understanding of Cloud Engineering and master key concepts and techniques.
-                    <ul className='list-disc ml-6 mt-2'>
-                        <li>Benefit from the expertise of professionals who bring real-world insights to the table.</li>
-                        <li>Enhance your practical skills with projects that mirror real-world scenarios.</li>
-                        <li>Interact with instructors and peers in live sessions, demonstrations, and Q&A sessions.</li>
-                        <li>Get personalized feedback on assignments and projects, enabling continuous growth.</li>
-                        <li>Explore a wide range of topics and align your skills with industry demands.</li>
-                    </ul>
-                </p>
+                <h3 className='text-xl font-bold'>Benefits</h3>
+                {benefits && benefits.length > 0 ? (
+                    <div className="space-y-4">
+                        {benefits.map((benefit, index) => (
+                            <div
+                                key={index}
+                                className="flex items-start p-4 bg-white shadow-md rounded-lg transition-transform duration-300 hover:shadow-lg"
+                            >
+                                <FaCheck className="text-green-500 mt-1 flex-shrink-0" />
+                                <p className="ml-4">{benefit.title}</p>
+                            </div>
+                        ))}
+                    </div>
+                ) : (
+                    <p className="text-gray-500 mt-4">No resource listed.</p>
+                )}
             </div>
         </div>
     );

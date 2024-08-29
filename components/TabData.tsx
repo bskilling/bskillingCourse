@@ -21,7 +21,7 @@ const TabData: React.FC<TabDataProps> = ({ courseDetails }) => {
         { id: 1, label: 'Overview', ref: overviewRef },
         { id: 2, label: 'Curriculum', ref: curriculumRef },
         { id: 3, label: 'Skills & Tools', ref: null }, // Placeholder
-        { id: 4, label: 'Case Studies', ref: null }, // Placeholder
+        // { id: 4, label: 'Case Studies', ref: null },
         { id: 5, label: 'Certification', ref: certificationRef },
         { id: 6, label: 'FAQs', ref: faqsRef },
     ];

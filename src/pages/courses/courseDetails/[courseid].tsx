@@ -7,6 +7,7 @@ import PaymentForm from 'modules/leadChat/components/PaymentForm';
 import CourseIncludes from 'components/CourseIncludes';
 import PopupForm from 'components/PopupForm';
 import { formatDate } from 'util/dateformat';
+import OtherCourse from 'components/OtherCourse';
 
 const CourseDetails = () => {
     const router = useRouter();
@@ -74,10 +75,10 @@ const CourseDetails = () => {
                                 </p>
                             </div>
 
-                            
+
                             {isPopupOpen && (
                                 <>
-                                    
+
                                     <div
                                         className="fixed inset-0 bg-black opacity-50 z-1000"
                                         onClick={handleClosePopup}
@@ -111,7 +112,7 @@ const CourseDetails = () => {
                                 frameBorder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                 allowFullScreen
-                                style={{ maxWidth: '700px', maxHeight: '500px' }} // Adjusted size
+                                style={{ maxWidth: '850px', maxHeight: '500px' }} // Adjusted size
                             ></iframe>
                         </div>
                     )}
@@ -124,7 +125,9 @@ const CourseDetails = () => {
                 </div>
             </div>
 
-
+            <div>
+                <OtherCourse courseDetails={courseDetails}/>
+            </div>
             <div>
                 <NewsLetter className="bg-deepBlue text-white" />
             </div>
