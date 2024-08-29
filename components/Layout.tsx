@@ -154,14 +154,14 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
                 </div>
 
               </Link>
-              <div className="flex items-center space-x-2">
+              {/* <div className="flex items-center space-x-2">
                 <img
                   src="https://www.shutterstock.com/image-vector/shopping-cart-icon-bag-260nw-1520865410.jpg"
                   alt="cart"
                   className="w-6 h-6"
                 />
 
-              </div>
+              </div> */}
             </div>
           </div>
 
@@ -199,7 +199,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
                       <div className="w-1/2 p-4 border-r border-gray-300"
                         onMouseEnter={() => setSelectedCategory(null)}
                       >
-                        <div className="text-lg font-semibold mb-2 font-bold">Categories</div>
+                        <div className="text-lg mb-2 font-bold text-customRed">Categories</div>
                         <ul>
                           {uniqueCategories.map((category, index) => (
                             <li
@@ -214,7 +214,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
                         </ul>
                       </div>
                       <div className="w-1/2 p-4">
-                        <div className="text-lg font-semibold mb-2 font-bold">Courses</div>
+                        <div className="text-lg mb-2 font-bold text-customRed">Courses</div>
                         {filteredCourses.length > 0 ? (
                           <ul>
                             {filteredCourses.map((course) => (
@@ -226,7 +226,15 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
                             ))}
                           </ul>
                         ) : (
-                          <p>No courses available</p>
+                          <ul>
+                            {SearchElementsData.map((course) => (
+                              <Link style={{ textDecoration: "none" }} href={`/courses/courseDetails/${course._id}`} key={course._id}>
+                                <li className="p-2 hover:bg-customRed font-semibold text-black hover:text-white cursor-pointer">
+                                  {course.title}
+                                </li>
+                              </Link>
+                            ))}
+                          </ul>
                         )}
                       </div>
                     </div>
@@ -405,14 +413,14 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
                     </div>
                   </Link>
 
-                  <div className="flex items-center space-x-2">
+                  {/* <div className="flex items-center space-x-2">
                     <img
                       src="https://www.shutterstock.com/image-vector/shopping-cart-icon-bag-260nw-1520865410.jpg"
                       alt="cart"
                       className="w-6 h-6"
                     />
 
-                  </div>
+                  </div> */}
                   <div className="relative">
                     {/* Search Icon */}
                     {!isSearchVisible && (

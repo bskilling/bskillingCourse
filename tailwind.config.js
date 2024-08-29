@@ -73,7 +73,8 @@ module.exports = {
         borderColor: 'rgba(213, 214, 216, 1)',
         googleBtn: 'rgba(36, 65, 231, 1)',
         dotsBg: 'rgba(255, 154, 40, 1)',
-        dropdownBg:'rgba(20, 3, 66, 1)'
+        dropdownBg: 'rgba(20, 3, 66, 1)',
+        gradient:'linear-gradient(69.8deg, rgb(25, 49, 108) 2.8%, rgb(1, 179, 201) 97.8%)',
         
       },
       fontFamily: {

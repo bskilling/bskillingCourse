@@ -3,6 +3,22 @@ export interface Skill {
     _id: string;
     title: string;
 }
+export interface Objective {
+    _id: string;
+    title: string;
+}
+export interface Prereqisite {
+    _id: string;
+    title: string;
+}
+export interface Resource {
+    _id: string;
+    title: string;
+}
+export interface Benifit {
+    _id: string;
+    title: string;
+}
 export interface SectionPart {
     title: string;
     _id: string;
@@ -24,6 +40,10 @@ export interface TrainingMetadataTypes {
     preview_video?: string;
     overview?: string;
     skills_covered?: Skill[];
+    objectives?: Objective[];
+    prerequisites?: Prereqisite[];
+    resources?: Resource[];
+    benefits?:Benifit[]
     curriculum?: CurriculumModule[];
     certification_text?: string;
     certification_image?: string;

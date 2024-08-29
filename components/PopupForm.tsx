@@ -1,10 +1,54 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 interface PopupFormType {
     handleClosePopup: () => void;
 }
 
 const PopupForm: React.FC<PopupFormType> = ({ handleClosePopup }) => {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        contact: ''
+    });
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value,
+        });
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setLoading(true);
+        setError(null);
+
+        try {
+            const response = await fetch('/api/sendEmail', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            if (response.ok) {
+                alert('Form submitted successfully!');
+                handleClosePopup(); // Close the popup after submission
+            } else {
+                const data = await response.json();
+                setError(data.message || 'Failed to send email');
+            }
+        } catch (error) {
+            console.error('Failed to submit form:', error);
+            setError('Failed to send email. Please try again later.');
+        } finally {
+            setLoading(false);
+        }
+    };
+
     return (
         <>
             <div
@@ -47,7 +91,7 @@ const PopupForm: React.FC<PopupFormType> = ({ handleClosePopup }) => {
                     <h2 className="text-lg text-lightBlue font-semibold text-center mb-4 tracking-widest">
                         Corporate Training Enquiry
                     </h2>
-                    <form>
+                    <form onSubmit={handleSubmit}>
                         <div className="mb-4">
                             <label className="block text-sm font-medium text-gray-700" htmlFor="name">
                                 Full Name
@@ -56,6 +100,8 @@ const PopupForm: React.FC<PopupFormType> = ({ handleClosePopup }) => {
                                 id="name"
                                 name="name"
                                 type="text"
+                                value={formData.name}
+                                onChange={handleChange}
                                 className="mt-1 block w-full border border-gray-300 rounded-lg px-3 py-2 shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                                 required
                             />
@@ -68,6 +114,8 @@ const PopupForm: React.FC<PopupFormType> = ({ handleClosePopup }) => {
                                 id="email"
                                 name="email"
                                 type="email"
+                                value={formData.email}
+                                onChange={handleChange}
                                 className="mt-1 block w-full border border-gray-300 rounded-lg px-3 py-2 shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                                 required
                             />
@@ -80,6 +128,8 @@ const PopupForm: React.FC<PopupFormType> = ({ handleClosePopup }) => {
                                 id="contact"
                                 name="contact"
                                 type="text"
+                                value={formData.contact}
+                                onChange={handleChange}
                                 className="mt-1 block w-full border border-gray-300 rounded-lg px-3 py-2 shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                                 required
                             />
@@ -87,8 +137,9 @@ const PopupForm: React.FC<PopupFormType> = ({ handleClosePopup }) => {
                         <button
                             type="submit"
                             className="w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+                            disabled={loading}
                         >
-                            Submit
+                            {loading ? 'Sending...' : 'Submit'}
                         </button>
                         <button
                             type="button"
@@ -98,6 +149,7 @@ const PopupForm: React.FC<PopupFormType> = ({ handleClosePopup }) => {
                             Close
                         </button>
                     </form>
+                    {error && <p className="mt-4 text-red-600">{error}</p>}
                 </div>
             </div>
         </>

@@ -10,7 +10,7 @@ const Experience = () => {
             <div className="flex flex-col md:flex-row w-full bg-white shadow-lg rounded-lg overflow-hidden mb-6 md:mb-20 md:py-10 py-4 relative">
                 {/* Left half */}
                 <div className="w-full flex flex-col md:w-1/2 p-4 relative text-center items-center">
-                    <img src="/images/card1-image.jpg" alt="Card 1" className="w-10 h-10 rounded-lg mb-4" />
+                    <img src="/images/Personalised_learning.png" alt="Card 1" className="w-10 h-10 rounded-lg mb-4" />
 
                     <div className="ml-2">
                         <h2 className="text-xl md:text-xl font-bold mb-2">Personalised Learning</h2>
@@ -22,7 +22,7 @@ const Experience = () => {
 
                 {/* Right half */}
                 <div className="w-full flex flex-col md:w-1/2 p-8 relative text-center items-center">
-                    <img src="/images/card1-image.jpg" alt="Card 1" className="w-10 h-10 rounded-lg mb-4" />
+                    <img src="/images/easy_course.png" alt="Card 1" className="w-10 h-10 rounded-lg mb-4" />
                     <div className="absolute left-0 top-0 bottom-0 w-[1px] bg-textColor"></div>
 
                     <div className="ml-2">
@@ -32,16 +32,16 @@ const Experience = () => {
                         </p>
                     </div>
                 </div>
-                <button className="bg-primaryButton text-sm text-white px-8 py-2 border-none rounded-xl  absolute bottom-4 left-1/2 transform -translate-x-1/2">
+                {/* <button className="bg-primaryButton text-sm text-white px-8 py-2 border-none rounded-xl  absolute bottom-4 left-1/2 transform -translate-x-1/2">
                     Get in touch
-                </button>
+                </button> */}
             </div>
 
             {/* Card 2 */}
             <div className="flex flex-col md:flex-row w-full bg-white shadow-lg rounded-lg overflow-hidden py-4">
                 {/* Left half */}
                 <div className="w-full flex flex-col md:w-1/2 p-4 relative text-center items-center">
-                    <img src="/images/card2-image.jpg" alt="Card 2" className="w-10 h-10 rounded-lg mb-4" />
+                    <img src="/images/lms_access.png" alt="Card 2" className="w-10 h-10 rounded-lg mb-4" />
 
                     <div className="ml-2">
                         <h2 className="text-xl md:text-xl font-bold mb-2">Convenient Learning with LMS Access</h2>
@@ -55,7 +55,7 @@ const Experience = () => {
                 </div>
                 {/* Right half */}
                 <div className="w-full flex flex-col md:w-1/2 p-4 relative text-center items-center">
-                    <img src="/images/choose1.jfif" alt="Card 2" className="w-10 h-10 rounded-lg mb-4" />
+                    <img src="/images/support.png" alt="Card 2" className="w-10 h-10 rounded-lg mb-4" />
                     <div className="absolute left-0 top-0 bottom-0 w-[1px] bg-textColor"></div>
                     <div className="ml-2">
                         <h2 className="text-xl md:text-xl font-bold mb-2">Projects and Mentor Support</h2>
