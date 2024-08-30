@@ -1,8 +1,18 @@
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
+import PopupForm from './PopupForm';
 
 
 const Placement = () => {
+    const [isCorporatePopupOpen, setCorporatePopupOpen] = useState(false);
+    const [placementOpenPopupOpen, setPlacementPopupOpen] = useState(false)
+    
+    const handleCorporateOpenPopup = () => setCorporatePopupOpen(true);
+    const handleCorporateClosePopup = () => setCorporatePopupOpen(false);
+
+    const handlePlacementOpenPopup = () => setPlacementPopupOpen(true);
+    const handlePlacementClosePopup = () => setPlacementPopupOpen(false);
+
     return (
         <div className='container bg-white mx-auto p-5'>
             <div className="flex flex-col md:flex-row items-center my-10 p-5 gap-6 shadow-md rounded-lg">
@@ -12,11 +22,24 @@ const Placement = () => {
                         Boost your team’s performance with BSkilling&apos;s corporate training solutions. Our programs address your organisation’s specific needs and goals, whether it&apos;s enhancing technical skills, fostering leadership development, or improving team collaboration. <br /><br />
                         Led by industry experts, our cutting-edge curriculum features interactive sessions and real-world case studies to ensure practical application. With flexible delivery options including on-site, virtual, or blended learning, we accommodate your team’s schedule and preferences. Plus, our comprehensive assessment tools track progress and measure ROI, ensuring a lasting impact on your organisation&apos;s success.
                     </p>
-                    <Link href="/aboutus">
-                        <button className="mt-4 text-sm px-5 py-2 border border-textColor text-black hover:bg-subText rounded-full">
-                            Know More
-                        </button>
-                    </Link>
+
+                    <button
+                        className="mt-4 text-sm px-5 py-2 border border-textColor text-black hover:bg-subText rounded-full"
+                        onClick={handleCorporateOpenPopup}
+                    >
+                        Know More
+                    </button>
+                    {isCorporatePopupOpen && (
+                        <>
+
+                            <div className="fixed inset-0 bg-black opacity-50 z-40" onClick={handleCorporateClosePopup}></div>
+
+                            <div className="fixed inset-0 flex items-center justify-center z-50">
+                                <PopupForm handleClosePopup={handleCorporateClosePopup} title="CORPORATE TRAINING" />
+                            </div>
+                        </>
+                    )}
+
                 </div>
                 <div className="md:w-1/2">
                     <img src="/images/support.jfif" alt="Corporate Training" className="rounded-md" />
@@ -36,11 +59,23 @@ const Placement = () => {
                         → Mock interviews to refine your interview skills and boost confidence.<br />
                         → Expert guidance in resume building, highlighting your qualifications effectively.
                     </p>
-                    <Link href="/aboutus">
-                        <button className="mt-4 text-sm px-5 py-2 border border-textColor text-black hover:bg-subText rounded-full">
-                            Know More
-                        </button>
-                    </Link>
+
+                    <button
+                        className="mt-4 text-sm px-5 py-2 border border-textColor text-black hover:bg-subText rounded-full"
+                        onClick={handlePlacementOpenPopup}
+                    >
+                        Know More
+                    </button>
+                    {placementOpenPopupOpen && (
+                        <>
+
+                            <div className="fixed inset-0 bg-black opacity-50 z-40" onClick={handlePlacementClosePopup}></div>
+
+                            <div className="fixed inset-0 flex items-center justify-center z-50">
+                                <PopupForm handleClosePopup={handlePlacementClosePopup} title="PLACEMENT SUPPORT" />
+                            </div>
+                        </>
+                    )}
 
                 </div>
             </div>

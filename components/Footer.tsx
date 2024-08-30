@@ -22,7 +22,7 @@ const Footer = () => {
             <ul className="text-sm space-y-2">
               <Link href="/about"><li className='text-textColor'>About Us</li></Link>
               <Link href="/blog"><li className='text-textColor'>Blog</li></Link>
-              <Link href="/contact"><li className='text-textColor'>Contact</li></Link>
+              <Link href="/privacy"><li className='text-textColor'>Contact</li></Link>
             </ul>
           </div>
           <div className="w-full md:w-1/2 lg:w-1/5 mb-6">
