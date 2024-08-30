@@ -7,29 +7,25 @@ import { Pagination, Navigation } from 'swiper';
 
 const testimonials = [
   {
-    name: 'ALI TUFAN',
-    role: 'Client',
-    image: '/images/user1.jfif',
-    testimonial: 'Customization is very easy with this theme. Clean and quality design and full support for any kind of request! Great theme!',
+    name: 'Pradheep Eswaramoorthi',
+    role: 'Software Engineer',
+    image: '/images/profile.jfif',
+    testimonial: ' I am Pradheep from Non IT background, my friend referred this institute I joined here SAP BTP course. The training went well the concepts are clearly delivered with practical examples. every day task helped me lots.I got good knowledge. SAP BTP is easy and intresting, end of the course I am satisfied with the training.',
   },
   {
-    name: 'John Doe',
-    role: 'Client',
-    image: '/images/user2.jfif',
-    testimonial: 'The support is amazing and the customization options are perfect for our needs. Excellent work!',
+    name: 'Virender Singh',
+    role: 'AWS Certified Trainer',
+    image: '/images/profile.jfif',
+    testimonial:"Bskilling's learning platform is a game-changer. As a trainer, I appreciate the platform's user-friendly interface and robust features that enhance the training experience. It's a valuable resource for both trainers and learners, making our job easier and more effective. I'm proud to be associated with such an innovative learning solution!"
+
   },
   {
-    name: 'Jane Smith',
-    role: 'Client',
-    image: '/images/user3.jfif',
-    testimonial: 'Absolutely wonderful! The theme is very easy to use and the support is top-notch.',
+    name: 'Amitikumar Mohanty',
+    role: 'Systems Engineer',
+    image: '/images/profile.jfif',
+    testimonial: 'I thought prompt engineering is the easiest and who will take up the course and it just about asking questions to Chat GPT! Oh boy I was wrong! There is so much and its a ocean of knowledge in the field of AI! Trainer helped me understand steps to prompt and the right way to prompt! Mid journey and Bard are something I dint know existed or to work with! Really appreciate the teams effort educate about all of these things in one session!',
   },
-  {
-    name: 'Jane Smith',
-    role: 'Client',
-    image: '/images/user3.jfif',
-    testimonial: 'Absolutely wonderful! The theme is very easy to use and the support is top-notch.',
-  },
+  
 ];
 
 const Testimonial = () => {
@@ -62,7 +58,7 @@ const Testimonial = () => {
                   </div>
                   <h3 className="text-xl font-bold">{testimonial.name}</h3>
                   <p className="text-gray-600">{testimonial.role}</p>
-                  <p className="mt-4 text-gray-800">{testimonial.testimonial}</p>
+                  <p className="mt-4 text-gray-800 text-justify">{testimonial.testimonial}</p>
                 </div>
               </SwiperSlide>
             ))}

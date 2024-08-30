@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 
 interface PopupFormType {
     handleClosePopup: () => void;
+    title: string;
 }
 
-const PopupForm: React.FC<PopupFormType> = ({ handleClosePopup }) => {
+const PopupForm: React.FC<PopupFormType> = ({ handleClosePopup,title }) => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -50,9 +51,9 @@ const PopupForm: React.FC<PopupFormType> = ({ handleClosePopup }) => {
     };
 
     return (
-        <>
+        <div>
             <div
-                className="fixed inset-0 bg-black opacity-50 z-40"
+                className="fixed inset-0 bg-black opacity-50"
                 onClick={handleClosePopup}
             ></div>
             <div
@@ -89,7 +90,7 @@ const PopupForm: React.FC<PopupFormType> = ({ handleClosePopup }) => {
                     </div>
 
                     <h2 className="text-lg text-lightBlue font-semibold text-center mb-4 tracking-widest">
-                        Corporate Training Enquiry
+                        {title}
                     </h2>
                     <form onSubmit={handleSubmit}>
                         <div className="mb-4">
@@ -152,7 +153,7 @@ const PopupForm: React.FC<PopupFormType> = ({ handleClosePopup }) => {
                     {error && <p className="mt-4 text-red-600">{error}</p>}
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

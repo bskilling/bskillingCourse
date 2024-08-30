@@ -78,19 +78,16 @@ const CourseDetails = () => {
 
                             {isPopupOpen && (
                                 <>
-
                                     <div
                                         className="fixed inset-0 bg-black opacity-50 z-1000"
                                         onClick={handleClosePopup}
                                     ></div>
-
                                     <div className="fixed inset-0 flex items-center justify-center z-10000">
-                                        <PopupForm handleClosePopup={handleClosePopup} />
+                                        <PopupForm handleClosePopup={handleClosePopup} title="Corporate Training Enquiry" />
                                     </div>
                                 </>
                             )}
                         </div>
-
                     </div>
                     {/* Right Side Content */}
                     <div className="w-1/3 z-10 p-4">
@@ -126,7 +123,7 @@ const CourseDetails = () => {
             </div>
 
             <div>
-                <OtherCourse courseDetails={courseDetails}/>
+                <OtherCourse courseDetails={courseDetails} />
             </div>
             <div>
                 <NewsLetter className="bg-deepBlue text-white" />
