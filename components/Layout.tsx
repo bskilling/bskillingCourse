@@ -11,6 +11,7 @@ import { FaWhatsapp } from "react-icons/fa";
 import Footer from "./Footer";
 import LandingFooter from "./LandingFooter";
 import { Course } from "common/util/types";
+import PopupForm from "./PopupForm";
 
 
 type Props = {
@@ -30,6 +31,11 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
   const [isCategoryHovered, setIsCategoryHovered] = useState<boolean>(false);
+  const [isPopupOpen, setPopupOpen] = useState(false);
+
+  const handleOpenPopup = () => setPopupOpen(true);
+    const handleClosePopup = () => setPopupOpen(false);
+
 
   const homePage = route.pathname === '/';
 
@@ -138,9 +144,24 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
             </div>
             <div className="flex items-center space-x-6">
               <div className="flex items-center space-x-2">
+                <p
+                  className="text-sm text-black cursor-pointer hover:font-bold"
+                  onClick={handleOpenPopup}>
+                  Become an Instructor
+                </p>
+                {isPopupOpen && (
+                    <>
 
+                        <div
+                            className="fixed inset-0 bg-black opacity-50 z-40"
+                            onClick={handleClosePopup}
+                        ></div>
 
-                <p className="text-sm text-black">Become an Instructor</p>
+                        <div className="fixed inset-0 flex items-center justify-center z-50">
+                            <PopupForm handleClosePopup={handleClosePopup} title="Bskilling Enquiry Form" />
+                        </div>
+                    </>
+                )}
               </div>
               <Link href="https://lms.bskilling.com/login/index.php">
                 <div className="flex items-center space-x-2">
@@ -206,7 +227,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
                               key={index}
                               className="p-2 hover:bg-customRed hover:text-white cursor-pointer font-semibold"
                               onMouseEnter={() => handleCategoryHover(category)}
-                              // onMouseLeave={() => setSelectedCategory(null)}
+                            // onMouseLeave={() => setSelectedCategory(null)}
                             >
                               {category}
                             </li>
