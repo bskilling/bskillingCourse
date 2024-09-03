@@ -21,8 +21,8 @@ const LandingFooter = () => {
               <h5 className="text-lg font-semibold mb-4">COMPANY</h5>
               <ul className="text-sm space-y-2">
                 <Link href="/about"><li className='text-white mb-2'>About Us</li></Link>
-                <Link href="/blog"><li className='text-white mb-2'>Blog</li></Link>
-                <Link href="/privacy"><li className='text-white mb-2'>Contact</li></Link>
+                <Link href="/blogs"><li className='text-white mb-2'>Blog</li></Link>
+                <Link href="/contactpolicy"><li className='text-white mb-2'>Contact</li></Link>
               </ul>
             </div>
             <div className="w-full md:w-1/2 lg:w-1/5 mb-6">
@@ -41,7 +41,7 @@ const LandingFooter = () => {
               <ul className="text-sm space-y-2">
                 <li>Sales Inquiries: support@bskilling.com</li>
                 <li>+91-9845348601</li>
-                <li>Grievances: grievanceofficer@bskilling.com</li>
+                <li>grievanceofficer@bskilling.com</li>
                 <li>+91 89519 23627</li>
               </ul>
             </div>
