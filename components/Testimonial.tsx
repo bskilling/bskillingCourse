@@ -16,8 +16,7 @@ const testimonials = [
     name: 'Virender Singh',
     role: 'AWS Certified Trainer',
     image: '/images/profile.jfif',
-    testimonial:"Bskilling's learning platform is a game-changer. As a trainer, I appreciate the platform's user-friendly interface and robust features that enhance the training experience. It's a valuable resource for both trainers and learners, making our job easier and more effective. I'm proud to be associated with such an innovative learning solution!"
-
+    testimonial: "Bskilling's learning platform is a game-changer. As a trainer, I appreciate the platform's user-friendly interface and robust features that enhance the training experience. It's a valuable resource for both trainers and learners, making our job easier and more effective. I'm proud to be associated with such an innovative learning solution!"
   },
   {
     name: 'Amitikumar Mohanty',
@@ -25,7 +24,6 @@ const testimonials = [
     image: '/images/profile.jfif',
     testimonial: 'I thought prompt engineering is the easiest and who will take up the course and it just about asking questions to Chat GPT! Oh boy I was wrong! There is so much and its a ocean of knowledge in the field of AI! Trainer helped me understand steps to prompt and the right way to prompt! Mid journey and Bard are something I dint know existed or to work with! Really appreciate the teams effort educate about all of these things in one session!',
   },
-  
 ];
 
 const Testimonial = () => {
@@ -39,9 +37,21 @@ const Testimonial = () => {
         <div className="mt-8">
           <Swiper
             modules={[Pagination, Navigation]}
-            spaceBetween={50}
-            slidesPerView={3}
-            centeredSlides={false}
+            spaceBetween={30}
+            breakpoints={{
+              640: {
+                slidesPerView: 1,
+                spaceBetween: 20,
+              },
+              768: {
+                slidesPerView: 2,
+                spaceBetween: 30,
+              },
+              1024: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+              },
+            }}
             pagination={{ clickable: true, el: '.swiper-pagination' }}
             navigation
             className="testimonial-swiper"
@@ -63,7 +73,6 @@ const Testimonial = () => {
               </SwiperSlide>
             ))}
           </Swiper>
-         
         </div>
       </div>
     </div>
