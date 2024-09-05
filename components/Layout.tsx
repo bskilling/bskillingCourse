@@ -163,7 +163,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
                     ></div>
 
                     <div className="fixed inset-0 flex items-center justify-center z-50">
-                      <PopupForm handleClosePopup={handleClosePopup} title="Bskilling Enquiry Form" />
+                      <PopupForm handleClosePopup={handleClosePopup} title="" />
                     </div>
                   </>
                 )}
