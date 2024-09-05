@@ -1,42 +1,39 @@
-// components/Footer.js
 import Image from 'next/image';
 import Link from 'next/link';
-
-
 
 const Footer = () => {
   return (
     <footer className="sm:mt-10">
       <div className="bg-footerBg h-20 w-full"></div>
-      <div className="container mx-auto px-6 lg:px-20 mt-10">
-        <div className="flex gap-4">
-          <div className="w-full md:w-1/2 lg:w-1/5 mb-6">
+      <div className="container mx-auto px-6 lg:px-12 mt-10">
+        <div className="flex flex-wrap gap-0">
+          <div className="w-full sm:w-1/2 md:w-1/2 lg:w-1/5 mb-6">
             <h5 className="text-lg font-semibold mb-4">CONTACT</h5>
             <p className="text-sm">
               Uma Shree Dream World, Unit 2, B-block, 4th Floor, Kudlu Gate,
               Hosur Main Road, Bangalore - 560068, Karnataka, INDIA
             </p>
           </div>
-          <div className="w-full md:w-1/2 lg:w-1/5 mb-6">
+          <div className="w-full sm:w-1/2 md:w-1/5 lg:w-1/5 mb-6">
             <h5 className="text-lg font-semibold mb-4">COMPANY</h5>
             <ul className="text-sm space-y-2">
-              <Link href="/about"><li className='text-textColor'>About Us</li></Link>
-              <Link href="/blogs"><li className='text-textColor'>Blog</li></Link>
-              <Link href="/contactpolicy"><li className='text-textColor'>Contact</li></Link>
+              <li><Link href="/about" className='text-textColor'>About Us</Link></li>
+              <li><Link href="/blogs" className='text-textColor'>Blog</Link></li>
+              <li><Link href="/contactpolicy" className='text-textColor'>Contact</Link></li>
             </ul>
           </div>
-          <div className="w-full md:w-1/2 lg:w-1/5 mb-6">
+          <div className="w-full sm:w-1/2 md:w-1/5 lg:w-1/5 mb-6">
             <h5 className="text-lg font-semibold mb-4">PROGRAMS</h5>
             <ul className="text-sm space-y-2">
-              <Link href={`/courses/courseDetails/66b1cb24f86931fdf7712eb0`}><li className='text-textColor mb-2'>Gen AI</li></Link>
-              <Link href={`/courses/courseDetails/66ab29e5637a3684c72041f9`}><li className='text-textColor mb-2'>Cloud Engineering</li></Link>
-              <Link href={`/courses/courseDetails/66ab4dbff86931fdf76f5a30`}><li className='text-textColor mb-2'>Project Management</li></Link>
-              <Link href={`/courses/courseDetails/66ab4dbff86931fdf76f5a30`}><li className='text-textColor mb-2'>Professional (PMP)</li></Link>
-              <Link href={`/courses/courseDetails/66c0369af86931fdf791aeb0`}><li className='text-textColor mb-2'>Prince2</li></Link>
-              <Link href={`/courses/courseDetails/66ab348df86931fdf76f3f80`}><li className='text-textColor mb-2'>SAP Business Technology Platform (BTP)</li></Link>
+              <li><Link href={`/courses/courseDetails/66b1cb24f86931fdf7712eb0`} className='text-textColor mb-2'>Gen AI</Link></li>
+              <li><Link href={`/courses/courseDetails/66ab29e5637a3684c72041f9`} className='text-textColor mb-2'>Cloud Engineering</Link></li>
+              <li><Link href={`/courses/courseDetails/66ab4dbff86931fdf76f5a30`} className='text-textColor mb-2'>Project Management</Link></li>
+              <li><Link href={`/courses/courseDetails/66ab4dbff86931fdf76f5a30`} className='text-textColor mb-2'>Professional (PMP)</Link></li>
+              <li><Link href={`/courses/courseDetails/66c0369af86931fdf791aeb0`} className='text-textColor mb-2'>Prince2</Link></li>
+              <li><Link href={`/courses/courseDetails/66ab348df86931fdf76f3f80`} className='text-textColor mb-2'>SAP Business Technology Platform (BTP)</Link></li>
             </ul>
           </div>
-          <div className="w-full md:w-1/2 lg:w-1/5 mb-6">
+          <div className="w-full sm:w-1/2 md:w-1/5 lg:w-1/5 mb-6">
             <h5 className="text-lg font-semibold mb-4">SUPPORT</h5>
             <ul className="text-sm space-y-2">
               <li>Sales Inquiries: support@bskilling.com</li>
@@ -45,35 +42,33 @@ const Footer = () => {
               <li>+91 89519 23627</li>
             </ul>
           </div>
-          <div className="w-full lg:w-1/5 mb-6">
+          <div className="w-full sm:w-1/2 md:w-1/2 lg:w-1/5 mb-6">
             <h5 className="text-lg font-semibold mb-4">MOBILE</h5>
             <div className="flex flex-col gap-4">
-              <Link href="https://apps.apple.com/eg/app/bskilling/id6445943298" target="_blank">
-                <button className="bg-black text-white p-2 px-4 rounded-lg flex items-center">
-                  {/* <span>
-                    <img src="https://www.freepnglogos.com/uploads/apple-logo-png/apple-logo-hcil-17.png" className="w-10 h-6" alt="Apple Store Logo" />
-                  </span> */}
-                  <span>App Store</span>
-                </button>
+              <Link
+                href="https://apps.apple.com/eg/app/bskilling/id6445943298"
+                target="_blank"
+                className="bg-black text-white p-2 px-4 rounded-lg flex items-center justify-center lg:justify-start"
+              >
+                <span>App Store</span>
               </Link>
 
-              <Link href="https://play.google.com/store/apps/details?id=com.melimu.app.bskilling&hl=en_IN&gl=US" target="_blank">
-                <button className="bg-black text-white p-2 px-4 rounded-lg flex items-center gap-2">
-                  {/* <span>
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQ4LRB4zTdDJ7H3OrFSMOcMNUk0XJ9koNCJA&s" className="w-6 h-6" alt="Google Play Logo" />
-                  </span> */}
-                  <p>Google Play</p><br/>
-                </button>
+              <Link
+                href="https://play.google.com/store/apps/details?id=com.melimu.app.bskilling&hl=en_IN&gl=US"
+                target="_blank"
+                className="bg-black text-white p-2 px-4 rounded-lg flex items-center justify-center lg:justify-start"
+              >
+                <p>Google Play</p>
               </Link>
             </div>
-
           </div>
+
         </div>
       </div>
-      <div className="border-t border-borderColor mt-6 pt-6 text-center text-sm">
+      <div className="border-t border-borderColor mt-6 pt-6">
         <div className='bg-white w-full'>
-          <div className="flex justify-between items-center px-16 py-4 max-w-screen-xl mx-auto">
-            <div className="flex items-center space-x-4">
+          <div className="flex flex-col sm:flex-row justify-between items-center px-6 lg:px-16 py-4 max-w-screen-xl mx-auto">
+            <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4">
               <div>
                 <img
                   src="/logo.png"
@@ -81,91 +76,69 @@ const Footer = () => {
                   alt="bskilling"
                 />
               </div>
-              <div className="flex items-center space-x-4 pl-4 border-l border-borderColor">
-                <Link
-                  style={{ textDecoration: "none" }}
-                  href="/" className='text-footerText'>Home</Link>
-                <Link
-                  style={{ textDecoration: "none" }}
-                  className="no-underline text-footerText"
-                  href={"/privacy"}>
-                  Privacy
-                </Link>
-                <Link
-                  style={{ textDecoration: "none" }}
-                  href={"/Termsofuse"} className='text-footerText no-underline'>Terms</Link>
-                <Link
-                  style={{ textDecoration: "none" }}
-                  href={"/Refundpolicy"} className='text-footerText'>Refund</Link>
-
+              <div className="flex items-center space-x-4 pl-0 sm:pl-4 border-t sm:border-t-0 sm:border-l border-borderColor pt-4 sm:pt-0">
+                <Link href="/" className='text-footerText'>Home</Link>
+                <Link href="/privacy" className='text-footerText'>Privacy</Link>
+                <Link href="/Termsofuse" className='text-footerText'>Terms</Link>
+                <Link href="/Refundpolicy" className='text-footerText'>Refund</Link>
               </div>
             </div>
-            <div className="grid grid-cols-5 gap-4">
-              <div>
-                <a
-                  target="_blank"
-                  rel="noreferrer"
-                  href="https://www.instagram.com/bskillingindia/"
-                >
-                  <img
-                    src="/icon/insta.svg"
-                    className="w-[20px] h-[20px]"
-                    alt="Instagram"
-                  />
-                </a>
-              </div>
-              <div>
-                <a
-                  target="_blank"
-                  rel="noreferrer"
-                  href="https://www.facebook.com/bskillingindia/"
-                >
-                  <img
-                    src="/icon/facebook.svg"
-                    className="w-[20px] h-[20px]"
-                    alt="Facebook"
-                  />
-                </a>
-              </div>
-              <div>
-                <a
-                  target="_blank"
-                  rel="noreferrer"
-                  href="https://www.linkedin.com/company/bskillingindia/"
-                >
-                  <img
-                    src="/icon/link.svg"
-                    className="w-[20px] h-[20px]"
-                    alt="LinkedIn"
-                  />
-                </a>
-              </div>
-              <div>
-                <a
-                  target="_blank"
-                  rel="noreferrer"
-                  href="https://twitter.com/b_SkillingIndia"
-                >
-                  <img
-                    src="/twitter.webp"
-                    className="w-[20px] h-[20px]"
-                    alt="Twitter"
-                  />
-                </a>
-              </div>
-              <div>
-                <a
-                  target="_blank"
-                  rel="noreferrer"
-                  href="https://www.pinterest.com/bskillingdigital/"
-                >
-                  <img
-                    src="/icon/pin.svg"
-                    className="w-[20px] h-[20px]"
-                    alt="Pinterest"
-                  />
-                </a>
-              </div>
+            <div className="flex gap-4 mt-4 sm:mt-0">
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://www.instagram.com/bskillingindia/"
+              >
+                <img
+                  src="/icon/insta.svg"
+                  className="w-[20px] h-[20px]"
+                  alt="Instagram"
+                />
+              </a>
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://www.facebook.com/bskillingindia/"
+              >
+                <img
+                  src="/icon/facebook.svg"
+                  className="w-[20px] h-[20px]"
+                  alt="Facebook"
+                />
+              </a>
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://www.linkedin.com/company/bskillingindia/"
+              >
+                <img
+                  src="/icon/link.svg"
+                  className="w-[20px] h-[20px]"
+                  alt="LinkedIn"
+                />
+              </a>
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://twitter.com/b_SkillingIndia"
+              >
+                <img
+                  src="/twitter.webp"
+                  className="w-[20px] h-[20px]"
+                  alt="Twitter"
+                />
+              </a>
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://www.pinterest.com/bskillingdigital/"
+              >
+                <img
+                  src="/icon/pin.svg"
+                  className="w-[20px] h-[20px]"
+                  alt="Pinterest"
+                />
+              </a>
             </div>
           </div>
         </div>
