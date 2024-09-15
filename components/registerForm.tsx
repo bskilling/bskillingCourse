@@ -51,11 +51,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
   });
 
   const isButtonVisble =
-    watch("email") &&
-    watch("phone") &&
-    watch("batch") &&
-    watch("name") &&
-    CountryCodeValue;
+    watch("email") && watch("phone") && watch("name") && CountryCodeValue;
   function handleManualSubmit() {
     // Manually trigger validation using the trigger function
     trigger().then((isValid) => {
@@ -81,7 +77,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
               email: formData.email,
               phone: formData.phone,
               name: formData.name,
-              BatchName: formData.batch,
+              BatchName: "test",
               countryCode: CountryCodeValue,
               Course: course,
               courseName: courseName,
@@ -219,7 +215,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
         </label>
       </div>
 
-      <div>
+      {/* <div>
         <label className="block">
           <span className="text-sm mb-1">Select Batch</span>
           <select
@@ -240,7 +236,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
             This field is required
           </label>
         </label>
-      </div>
+      </div> */}
 
       <div className="w-full flex justify-center  mb-3 items-center">
         {messageSent ? (
