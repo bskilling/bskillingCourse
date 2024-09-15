@@ -68,6 +68,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
   }
   async function submit(formData: FormValues) {
     const priceToString = `${price}`;
+    console.log(priceToString, "pri", formData);
     if (priceToString === "Free") {
       try {
         const response = await fetch(
@@ -121,7 +122,9 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
         billing_name: formData.name,
         billing_tel: formData.phone,
         redirect_url:
-          "https://h3yr3i2abo46tzkj7zvcydu67y0hmvss.lambda-url.ap-south-1.on.aws/",
+          "https://vhvaj3urva7qpfnbbmqbswzbea0zqhrz.lambda-url.ap-south-1.on.aws/",
+        // redirect_url:
+        //   "https://h3yr3i2abo46tzkj7zvcydu67y0hmvss.lambda-url.ap-south-1.on.aws/",
         cancel_url: "https://www.bskilling.com/",
       });
 
@@ -132,7 +135,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
       encRequst.value = encrypt(data.toString(), workingKey ?? ""); //body key
       const form = document.createElement("form");
       form.action =
-        "https://secure.ccavenue.com/transaction/transaction.do?command=initiateTransaction";
+        "https://test.ccavenue.com/transaction/transaction.do?command=initiateTransaction";
       form.method = "post";
 
       const accessKey = document.createElement("input");
@@ -246,7 +249,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
           </p>
         ) : (
           <button
-            disabled={!isButtonVisble}
+            // disabled={!isButtonVisble}
             onClick={handleManualSubmit}
             className={`text-white  transition duration-500 hover:scale-105 ease-out  placeholder:text-sm bg-buttonBlue hover:bg-buttonBlue py-2 focus:ring-1 focus:outline-none focus:ring-buttonBlue font-medium  text-sm px-4 ${
               isButtonVisble ? "opacity-100" : "opacity-50 "
