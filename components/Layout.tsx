@@ -13,6 +13,7 @@ import LandingFooter from "./LandingFooter";
 import { Course } from "common/util/types";
 import PopupForm from "./PopupForm";
 
+// import Footer from "./Footer";
 
 type Props = {
   children: ReactNode;
@@ -20,7 +21,8 @@ type Props = {
 };
 const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
   const route = useRouter();
-  const { inputValue, setInputValue, setFetchSearchData } = useContext(MyContext);
+  const { inputValue, setInputValue, setFetchSearchData } =
+    useContext(MyContext);
   const [aboutUnderline, setAboutUnderline] = useState(false);
   const [blogUnderline, setBlogUnderline] = useState(false);
   const [navHide, setNavHide] = useState(false);
@@ -37,8 +39,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
   const handleOpenPopup = () => setPopupOpen(true);
   const handleClosePopup = () => setPopupOpen(false);
 
-
-  const homePage = route.pathname === '/';
+  const homePage = route.pathname === "/";
 
   const fetchApiData = async () => {
     try {
@@ -50,7 +51,9 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
       console.log("res", jsonData);
       const ListOfCoursesData = Object.values(jsonData.courses);
       console.log("res", ListOfCoursesData);
-      const flattenedData = ListOfCoursesData.flatMap(innerArray => innerArray);
+      const flattenedData = ListOfCoursesData.flatMap(
+        (innerArray) => innerArray
+      );
 
       setSearchElementsData(flattenedData as Course[]);
     } catch (error) {
@@ -89,7 +92,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
     if (value === "") {
       setDropSearchData([]);
     } else {
-      const filteredData = SearchElementsData.filter(course =>
+      const filteredData = SearchElementsData.filter((course) =>
         course.title.toLowerCase().includes(value.toLowerCase())
       );
 
@@ -125,9 +128,13 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const uniqueCategories = Array.from(new Set(SearchElementsData.map(course => course.category)));
+  const uniqueCategories = Array.from(
+    new Set(SearchElementsData.map((course) => course.category))
+  );
   const filteredCourses = uniqueCategories.flatMap((category) =>
-    selectedCategory === category ? SearchElementsData.filter((course) => course.category === category) : []
+    selectedCategory === category
+      ? SearchElementsData.filter((course) => course.category === category)
+      : []
   );
   return (
     <>
@@ -143,7 +150,10 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
               <p className="flex items-center">
                 <span className="mr-2">📞</span> +91-9845348601
               </p>
-              <Link href="mailto:support@bskilling.com" className="flex items-center text-black">
+              <Link
+                href="mailto:support@bskilling.com"
+                className="flex items-center text-black"
+              >
                 <span className="mr-2">📧</span> support@bskilling.com
               </Link>
             </div>
@@ -151,12 +161,12 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
               <div className="flex items-center space-x-2">
                 <p
                   className="text-sm text-black cursor-pointer hover:font-bold"
-                  onClick={handleOpenPopup}>
+                  onClick={handleOpenPopup}
+                >
                   Become an Instructor
                 </p>
                 {isPopupOpen && (
                   <>
-
                     <div
                       className="fixed inset-0 bg-black opacity-50 z-40"
                       onClick={handleClosePopup}
@@ -178,7 +188,6 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
 
                   <p className="text-sm text-black"> Login/Register</p>
                 </div>
-
               </Link>
               {/* <div className="flex items-center space-x-2">
                 <img
@@ -218,15 +227,22 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
                   </button>
                   {dropdownOpen && (
                     <div
-                      style={{ maxHeight: "500px", overflowY: "auto", width: "800px" }}
+                      style={{
+                        maxHeight: "500px",
+                        overflowY: "auto",
+                        width: "800px",
+                      }}
                       className="absolute top-7 left-0 z-[5000] flex bg-white rounded-lg shadow-lg mt-2"
                       onMouseEnter={handleDropdownHover}
                       onMouseLeave={handleDropdownLeave}
                     >
-                      <div className="w-1/2 p-4 border-r border-gray-300"
+                      <div
+                        className="w-1/2 p-4 border-r border-gray-300"
                         onMouseEnter={() => setSelectedCategory(null)}
                       >
-                        <div className="text-lg mb-2 font-bold text-customRed">Categories</div>
+                        <div className="text-lg mb-2 font-bold text-customRed">
+                          Categories
+                        </div>
                         <ul>
                           {uniqueCategories.map((category, index) => (
                             <li
@@ -240,11 +256,17 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
                         </ul>
                       </div>
                       <div className="w-1/2 p-4">
-                        <div className="text-lg mb-2 font-bold text-customRed">Courses</div>
+                        <div className="text-lg mb-2 font-bold text-customRed">
+                          Courses
+                        </div>
                         {filteredCourses.length > 0 ? (
                           <ul>
                             {filteredCourses.map((course) => (
-                              <Link style={{ textDecoration: "none" }} href={`/courses/courseDetails/${course._id}`} key={course._id}>
+                              <Link
+                                style={{ textDecoration: "none" }}
+                                href={`/courses/courseDetails/${course._id}`}
+                                key={course._id}
+                              >
                                 <li className="p-2 hover:bg-customRed font-semibold text-black hover:text-white cursor-pointer">
                                   {course.title}
                                 </li>
@@ -254,7 +276,11 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
                         ) : (
                           <ul>
                             {SearchElementsData.map((course) => (
-                              <Link style={{ textDecoration: "none" }} href={`/courses/courseDetails/${course._id}`} key={course._id}>
+                              <Link
+                                style={{ textDecoration: "none" }}
+                                href={`/courses/courseDetails/${course._id}`}
+                                key={course._id}
+                              >
                                 <li className="p-2 hover:bg-customRed font-semibold text-black hover:text-white cursor-pointer">
                                   {course.title}
                                 </li>
@@ -286,7 +312,10 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
                       className="absolute z-[5000] w-full bg-white rounded-lg shadow-lg mt-2"
                     >
                       {dropSearchData.map((course, index) => (
-                        <Link href={"courses/courseDetails/" + course._id} key={index}>
+                        <Link
+                          href={"courses/courseDetails/" + course._id}
+                          key={index}
+                        >
                           <div className="p-2 text-black hover:bg-buttonBlue px-5 hover:text-white cursor-pointer">
                             {course.title}
                           </div>
@@ -297,35 +326,85 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
                 </div>
               </div>
 
-
-
               {/* Desktop Navigation Links */}
               <div className="hidden md:flex items-center gap-5 mr-6">
-                <Link href="/" className="text-black hover:text-lightBlue font-bold">Home</Link>
-                <Link href="/aboutus" className="text-black hover:text-lightBlue font-bold">About</Link>
-                <Link href="/blogs" className="text-black hover:text-lightBlue font-bold">Blogs</Link>
-                <Link href="https://sfjbs.talentrecruit.com/career-page" className="text-black hover:text-lightBlue font-bold" target="_blank">Careers</Link>
+                <Link
+                  href="/"
+                  className="text-black hover:text-lightBlue font-bold"
+                >
+                  Home
+                </Link>
+                <Link
+                  href="/aboutus"
+                  className="text-black hover:text-lightBlue font-bold"
+                >
+                  About
+                </Link>
+                <Link
+                  href="/blogs"
+                  className="text-black hover:text-lightBlue font-bold"
+                >
+                  Blogs
+                </Link>
+                <Link
+                  href="https://sfjbs.talentrecruit.com/career-page"
+                  className="text-black hover:text-lightBlue font-bold"
+                  target="_blank"
+                >
+                  Careers
+                </Link>
               </div>
 
               {/* Hamburger Icon for Small Screens */}
               <div className="md:hidden flex items-center mr-4">
-                <FaBars onClick={toggleMenu} className="text-xl cursor-pointer" />
+                <FaBars
+                  onClick={toggleMenu}
+                  className="text-xl cursor-pointer"
+                />
               </div>
 
               {/* Mobile Menu */}
               {isMenuOpen && (
-                <div className={`fixed inset-0 bg-white flex flex-col items-center z-50 overflow-y-auto p-6 transition-transform transform ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+                <div
+                  className={`fixed inset-0 bg-white flex flex-col items-center z-50 overflow-y-auto p-6 transition-transform transform ${
+                    isMenuOpen ? "translate-x-0" : "translate-x-full"
+                  }`}
+                >
                   {/* Close Button */}
                   <div className="flex justify-end w-full mb-6">
-                    <FaTimes onClick={toggleMenu} className="text-3xl text-gray-600 cursor-pointer hover:text-black transition-colors" />
+                    <FaTimes
+                      onClick={toggleMenu}
+                      className="text-3xl text-gray-600 cursor-pointer hover:text-black transition-colors"
+                    />
                   </div>
 
                   {/* Navigation Links */}
                   <div className="flex flex-col gap-8 w-full">
-                    <Link href="/" className="text-black hover:text-blue-500 text-lg font-medium transition-colors">Home</Link>
-                    <Link href="/aboutus" className="text-black hover:text-blue-500 text-lg font-medium transition-colors">About</Link>
-                    <Link href="/blogs" className="text-black hover:text-blue-500 text-lg font-medium transition-colors">Blogs</Link>
-                    <Link href="https://sfjbs.talentrecruit.com/career-page" className="text-black hover:text-blue-500 text-lg font-medium transition-colors" target="_blank">Careers</Link>
+                    <Link
+                      href="/"
+                      className="text-black hover:text-blue-500 text-lg font-medium transition-colors"
+                    >
+                      Home
+                    </Link>
+                    <Link
+                      href="/aboutus"
+                      className="text-black hover:text-blue-500 text-lg font-medium transition-colors"
+                    >
+                      About
+                    </Link>
+                    <Link
+                      href="/blogs"
+                      className="text-black hover:text-blue-500 text-lg font-medium transition-colors"
+                    >
+                      Blogs
+                    </Link>
+                    <Link
+                      href="https://sfjbs.talentrecruit.com/career-page"
+                      className="text-black hover:text-blue-500 text-lg font-medium transition-colors"
+                      target="_blank"
+                    >
+                      Careers
+                    </Link>
 
                     {/* Courses Section in Mobile Menu */}
                     <div className="relative w-full">
@@ -333,7 +412,9 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
                         className="w-full bg-customRed text-white px-5 py-3 rounded-md flex items-center justify-between hover:bg-subText transition-colors"
                         onClick={() => setDropdownOpen(!dropdownOpen)}
                       >
-                        <span className="text-[18px] font-semibold">Courses</span>
+                        <span className="text-[18px] font-semibold">
+                          Courses
+                        </span>
                         <SlArrowDown className="ml-2 w-4 h-4" />
                       </button>
                       {dropdownOpen && (
@@ -342,13 +423,17 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
                           style={{ maxHeight: "300px", overflowY: "auto" }}
                         >
                           <div className="mb-4">
-                            <div className="text-lg mb-3 font-bold text-customRed">Categories</div>
+                            <div className="text-lg mb-3 font-bold text-customRed">
+                              Categories
+                            </div>
                             <ul>
                               {uniqueCategories.map((category, index) => (
                                 <li
                                   key={index}
                                   className="p-2 hover:bg-customRed hover:text-white cursor-pointer font-semibold rounded-md transition-colors"
-                                  onMouseEnter={() => handleCategoryHover(category)}
+                                  onMouseEnter={() =>
+                                    handleCategoryHover(category)
+                                  }
                                 >
                                   {category}
                                 </li>
@@ -356,7 +441,9 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
                             </ul>
                           </div>
                           <div>
-                            <div className="text-lg mb-3 font-bold text-customRed">Courses</div>
+                            <div className="text-lg mb-3 font-bold text-customRed">
+                              Courses
+                            </div>
                             <ul>
                               {filteredCourses.map((course) => (
                                 <Link
@@ -397,7 +484,10 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
                             onClick={handleClosePopup}
                           ></div>
                           <div className="fixed inset-0 flex items-center justify-center z-50">
-                            <PopupForm handleClosePopup={handleClosePopup} title="Bskilling Enquiry Form" />
+                            <PopupForm
+                              handleClosePopup={handleClosePopup}
+                              title="Bskilling Enquiry Form"
+                            />
                           </div>
                         </>
                       )}
@@ -415,7 +505,6 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
                   </div>
                 </div>
               )}
-
             </nav>
             // <nav className="py-2 h-[70px] font-SourceSans p-0 bg-white flex flex-row  gap-36 justify-between w-full">
             //   <div className="flex gap-5 flex-row ml-10">
@@ -523,7 +612,6 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
             //     </div>
             //   </div>
 
-
             //   <div className="md:mr-6 pb-1 flex font-SourceSans text-sm  justify-center gap-3 md:gap-5 md:my-0 my-5">
             //     <div className="flex gap-4 md:gap-5">
             //       <div className="mt-3 text-black hover:cursor-pointer font-bold">
@@ -596,22 +684,29 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
 
           <main className=" font-SourceSans font-normal">{children}</main>
           {/* whatsapp */}
-          <div className="fixed bottom-[2.4rem] right-[6.8rem]" style={{ zIndex: 1000 }}>
+          <div
+            className="fixed bottom-[2.4rem] right-[6.8rem]"
+            style={{ zIndex: 1000 }}
+          >
             <a
               href="https://wa.me/919741104412"
               target="_blank"
               rel="noreferrer"
               className="text-green-500 hover:text-green-700"
               style={{
-                display: 'inline-block',
-                backgroundColor: 'green',
-                padding: '10px',
-                borderRadius: '50%',
-                boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.7)',
-                transition: 'transform 0.3s ease-in-out',
+                display: "inline-block",
+                backgroundColor: "green",
+                padding: "10px",
+                borderRadius: "50%",
+                boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.7)",
+                transition: "transform 0.3s ease-in-out",
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.1)')}
-              onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.transform = "scale(1.1)")
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.transform = "scale(1)")
+              }
             >
               <img
                 src="https://www.freeiconspng.com/thumbs/logo-whatsapp-png/get-logo-whatsapp-png-pictures-1.png"
@@ -624,10 +719,8 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
         </>
       ) : (
         <>
-
-
           {navHide && (
-            <div className='bg-white w-full shadow-md'>
+            <div className="bg-white w-full shadow-md">
               <div className="flex justify-between items-center px-8 py-4 max-w-screen-xl mx-auto">
                 <div className="flex items-center space-x-4">
                   <Link href="/">
@@ -641,10 +734,29 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
                   </Link>
 
                   <div className="flex items-center space-x-6 border-l border-gray-300 pl-6">
-                    <Link href="/" className='text-black text-sm hover:text-blue-500 transition-colors duration-300'>HOME</Link>
-                    <Link href="/aboutus" className='text-black text-sm hover:text-blue-500 transition-colors duration-300'>ABOUT</Link>
-                    <Link href="/blogs" className='text-black text-sm hover:text-blue-500 transition-colors duration-300'>BLOG</Link>
-                    <Link href="https://sfjbs.talentrecruit.com/career-page" target="_blank" className='text-black text-sm hover:text-blue-500 transition-colors duration-300'>
+                    <Link
+                      href="/"
+                      className="text-black text-sm hover:text-blue-500 transition-colors duration-300"
+                    >
+                      HOME
+                    </Link>
+                    <Link
+                      href="/aboutus"
+                      className="text-black text-sm hover:text-blue-500 transition-colors duration-300"
+                    >
+                      ABOUT
+                    </Link>
+                    <Link
+                      href="/blogs"
+                      className="text-black text-sm hover:text-blue-500 transition-colors duration-300"
+                    >
+                      BLOG
+                    </Link>
+                    <Link
+                      href="https://sfjbs.talentrecruit.com/career-page"
+                      target="_blank"
+                      className="text-black text-sm hover:text-blue-500 transition-colors duration-300"
+                    >
                       CAREER
                     </Link>
                   </div>
@@ -674,7 +786,9 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
                     {/* Search Icon */}
                     {!isSearchVisible && (
                       <div
-                        className={`flex items-center space-x-2 cursor-pointer transition-opacity duration-300 ${isSearchVisible ? 'opacity-0' : 'opacity-100'}`}
+                        className={`flex items-center space-x-2 cursor-pointer transition-opacity duration-300 ${
+                          isSearchVisible ? "opacity-0" : "opacity-100"
+                        }`}
                         onClick={toggleSearch}
                       >
                         <img
@@ -700,27 +814,33 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
                 </div>
               </div>
             </div>
-
           )}
 
           <main className=" font-SourceSans font-normal">{children}</main>
           {/* whatsapp */}
-          <div className="fixed bottom-[2.4rem] right-[6.8rem]" style={{ zIndex: 1000 }}>
+          <div
+            className="fixed bottom-[2.4rem] right-[6.8rem]"
+            style={{ zIndex: 1000 }}
+          >
             <a
               href="https://wa.me/919741104412"
               target="_blank"
               rel="noreferrer"
               className="text-green-500 hover:text-green-700"
               style={{
-                display: 'inline-block',
-                backgroundColor: 'green',
-                padding: '10px',
-                borderRadius: '50%',
-                boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.7)',
-                transition: 'transform 0.3s ease-in-out',
+                display: "inline-block",
+                backgroundColor: "green",
+                padding: "10px",
+                borderRadius: "50%",
+                boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.7)",
+                transition: "transform 0.3s ease-in-out",
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.1)')}
-              onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.transform = "scale(1.1)")
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.transform = "scale(1)")
+              }
             >
               <img
                 src="https://www.freeiconspng.com/thumbs/logo-whatsapp-png/get-logo-whatsapp-png-pictures-1.png"
@@ -732,7 +852,6 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
           <LandingFooter />
         </>
       )}
-
     </>
   );
 };
