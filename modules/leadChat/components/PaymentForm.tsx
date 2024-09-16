@@ -57,7 +57,7 @@ const PaymentForm: React.FC<PaymentFormProps> = ({ courseDetails }) => {
                     <div className="mt-2">
                       <RegisterForm
                         email="jkdiadihsadsaio"
-                        BatchName={[{ name: "batch 1" }]}
+                        // BatchName={[{ name: "batch 1" }]}
                         price={10}
                         course={"rtest"}
                         courseName={"test"}

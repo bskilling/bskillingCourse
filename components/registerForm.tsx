@@ -24,7 +24,7 @@ interface UpcomingBatch {
 interface RegisterFormProps {
   price: number;
   email: string;
-  BatchName: UpcomingBatch[];
+  BatchName?: UpcomingBatch[];
   course: string;
   courseName: string;
 }
