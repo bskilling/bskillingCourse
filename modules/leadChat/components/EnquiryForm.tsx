@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { FaTimes } from 'react-icons/fa';
+import { FaTimes } from "react-icons/fa";
 import { useRouter } from "next/router";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
@@ -14,7 +14,12 @@ interface EnquiryFormProps {
   courseName?: string;
 }
 
-const EnquiryForm: React.FC<EnquiryFormProps> = ({ onClose, onFormSubmit, onPdfDownload, courseName }) => {
+const EnquiryForm: React.FC<EnquiryFormProps> = ({
+  onClose,
+  onFormSubmit,
+  onPdfDownload,
+  courseName,
+}) => {
   const [messageSent, setMessage] = useState(false);
 
   const router = useRouter();
@@ -52,22 +57,22 @@ const EnquiryForm: React.FC<EnquiryFormProps> = ({ onClose, onFormSubmit, onPdfD
       const response = await fetch("/api/send-email", {
         method: "POST",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(requestData),
       });
-      console.log("res",response)
+      console.log("res", response);
       if (response.status === 200) {
         reset({
           firstName: "",
           lastName: "",
           email: "",
           phone: "",
-          experience: ""
+          experience: "",
         });
 
         setMessage(true);
-        router.push('/thankyou');
+        router.push("/thankyou");
 
         if (onFormSubmit) {
           onFormSubmit();
@@ -100,14 +105,19 @@ const EnquiryForm: React.FC<EnquiryFormProps> = ({ onClose, onFormSubmit, onPdfD
   }, [onClose]);
 
   return (
-    <div id="enquiryFormOverlay" className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+    <div
+      id="enquiryFormOverlay"
+      className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
+    >
       <div className="bg-white p-8 rounded shadow-md w-96">
         <div className="flex justify-end">
           <button onClick={onClose} className="text-gray-500">
             <FaTimes />
           </button>
         </div>
-        <h2 className="text-2xl font-semibold mb-4 text-center">Enquiry Form</h2>
+        <h2 className="text-2xl font-semibold mb-4 text-center">
+          Enquiry Form
+        </h2>
 
         <div className="mb-4">
           <input
@@ -157,7 +167,9 @@ const EnquiryForm: React.FC<EnquiryFormProps> = ({ onClose, onFormSubmit, onPdfD
             className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-green-500"
           />
           {errors.email && (
-            <p className="text-red-500 text-xs mt-1">Please enter a valid email address</p>
+            <p className="text-red-500 text-xs mt-1">
+              Please enter a valid email address
+            </p>
           )}
         </div>
 
@@ -168,6 +180,14 @@ const EnquiryForm: React.FC<EnquiryFormProps> = ({ onClose, onFormSubmit, onPdfD
             {...register("experience")}
             className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-green-500"
           />
+        </div>
+        <div>
+          <input type="checkbox" />{" "}
+          <span className="text-xs">
+            I authorise Sandip University and its representatives to Call, SMS,
+            Email or WhatsApp me about its programmes and offers. This consent
+            overrides any registration for DNC / NDNC.
+          </span>
         </div>
 
         <div className="text-center">
@@ -190,7 +210,9 @@ const EnquiryForm: React.FC<EnquiryFormProps> = ({ onClose, onFormSubmit, onPdfD
                 onClose();
               }}
               disabled={!isButtonVisible}
-              className={`bg-blue-500 text-white px-4 py-2 rounded ${isButtonVisible ? "" : "opacity-50 cursor-not-allowed"}`}
+              className={`bg-blue-500 text-white px-4 py-2 rounded ${
+                isButtonVisible ? "" : "opacity-50 cursor-not-allowed"
+              }`}
             >
               Submit Query
             </button>

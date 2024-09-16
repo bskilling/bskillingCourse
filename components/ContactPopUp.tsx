@@ -89,7 +89,7 @@ const ContactPopUp = () => {
       clearTimeout(timeoutId);
     };
   }, []);
-  
+
   const contactDetailsVisible = () => {
     setContactVisible((prev) => !prev);
   };
@@ -279,6 +279,15 @@ const ContactPopUp = () => {
               >
                 This field is required
               </label>
+            </div>
+
+            <div>
+              <input type="checkbox" />{" "}
+              <span className="text-xs">
+                I authorise Sandip University and its representatives to Call,
+                SMS, Email or WhatsApp me about its programmes and offers. This
+                consent overrides any registration for DNC / NDNC.
+              </span>
             </div>
 
             <div className="w-full flex justify-center  mb-3 items-center">
