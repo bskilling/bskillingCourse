@@ -9,8 +9,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import axios from "axios";
 import { FaWhatsapp } from "react-icons/fa";
-import Footer from "./Footer";
-
+// import Footer from "./Footer";
 
 type Props = {
   children: ReactNode;
@@ -56,11 +55,15 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
   const [navHide, setNavHide] = useState(false);
   const [navbar, setNavbar] = useState(false);
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
-  const [dropSearchData, setDropSearchData] = useState<ListOfCoursesDataType[]>([]);
+  const [dropSearchData, setDropSearchData] = useState<ListOfCoursesDataType[]>(
+    []
+  );
   const [selectedCourse, setSelectedCourse] = useState<SearchCourseArray>();
   const [screenWidth, setScreenWidth] = useState(0);
 
-  const [SearchElementsData, setSearchElementsData] = useState<ListOfCoursesDataType[]>([]);
+  const [SearchElementsData, setSearchElementsData] = useState<
+    ListOfCoursesDataType[]
+  >([]);
   const [dropdownOpen, setDropdownOpen] = useState<ListOfCoursesDataType[]>([]);
   const [menuOpen, setMenuOpen] = useState(false);
   const fetchApiData = async () => {
@@ -110,9 +113,8 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
   } = useContext(MyContext);
 
   const handleClick = (Course: ListOfCoursesDataType) => {
-
     setDropSearchData([]);
-    setDropdownOpen([])
+    setDropdownOpen([]);
     setSelectedCourse(Course);
     setInputValue("");
     const url = `/courses/${encodeURIComponent(
@@ -193,15 +195,11 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
     setDropdownOpen([]);
   };
 
-
-
   // console.log("data", SearchElementsData)
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
-
-
 
   return (
     <>
@@ -210,7 +208,6 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
         <meta name="bSkilling" content="bSkilling" />
         <link rel="icon" href="/logo.png" />
       </Head>
-
 
       {/* <header className="bg-white md:h-[70px]">
         <nav className="flex justify-between items-center w-[92%]  mx-auto">
@@ -366,12 +363,18 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
                   onMouseLeave={handleButtonLeave}
                 >
                   <span className="text-[18px] font-semibold">Courses</span>
-                  <span className="ml-2"><SlArrowDown className="w-3 h-2" /></span>
+                  <span className="ml-2">
+                    <SlArrowDown className="w-3 h-2" />
+                  </span>
                 </button>
               </div>
               {dropdownOpen && (
                 <div
-                  style={{ maxHeight: "500px", overflowY: "auto", width: "600px" }}
+                  style={{
+                    maxHeight: "500px",
+                    overflowY: "auto",
+                    width: "600px",
+                  }}
                   className="absolute top-7 z-[5000] w-full bg-white rounded-lg shadow-lg mt-2"
                   onMouseEnter={handleButtonHover}
                   onMouseLeave={handleButtonLeave}
@@ -420,16 +423,16 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
             </div>
           </div>
 
-
           <div className="md:mr-6 pb-1 flex font-SourceSans text-sm  justify-center gap-3 md:gap-5 md:my-0 my-5">
             <div className="flex gap-4 md:gap-5">
               <div className="mt-3 text-black hover:cursor-pointer font-bold">
                 <Link style={{ textDecoration: "none" }} href={"/about"}>
                   <p
-                    className={`${aboutUnderline === true
-                      ? "text-lightBlue border-b-2 underline-offset-2"
-                      : "text-black hover:text-lightBlue  no-underline"
-                      }`}
+                    className={`${
+                      aboutUnderline === true
+                        ? "text-lightBlue border-b-2 underline-offset-2"
+                        : "text-black hover:text-lightBlue  no-underline"
+                    }`}
                   >
                     {" "}
                     About
@@ -440,23 +443,27 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
               <div className="mt-3 text-black font-SourceSans hover:cursor-pointer font-bold">
                 <Link style={{ textDecoration: "none" }} href={"/blogs"}>
                   <p
-                    className={`${blogUnderline === true
-                      ? "text-lightBlue border-b-2 underline-offset-2"
-                      : "text-black hover:text-lightBlue  no-underline"
-                      }`}
+                    className={`${
+                      blogUnderline === true
+                        ? "text-lightBlue border-b-2 underline-offset-2"
+                        : "text-black hover:text-lightBlue  no-underline"
+                    }`}
                   >
                     Blogs
                   </p>
                 </Link>
               </div>
               <div className="mt-3 text-GreenText font-SourceSans hover:cursor-pointer font-bold">
-                <Link style={{ textDecoration: "none" }} href="https://sfjbs.talentrecruit.com/career-page" target="blank">
+                <Link
+                  style={{ textDecoration: "none" }}
+                  href="https://sfjbs.talentrecruit.com/career-page"
+                  target="blank"
+                >
                   <p className="text-black hover:text-lightBlue  no-underline">
                     Careers
                   </p>
                 </Link>
               </div>
-
             </div>
             <a
               target="_blank"
@@ -490,22 +497,25 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
 
       <main className=" font-SourceSans font-normal">{children}</main>
       {/* whatsapp */}
-      <div className="fixed bottom-[2.4rem] right-[6.8rem]" style={{ zIndex: 1000 }}>
+      <div
+        className="fixed bottom-[2.4rem] right-[6.8rem]"
+        style={{ zIndex: 1000 }}
+      >
         <a
           href="https://wa.me/919741104412"
           target="_blank"
           rel="noreferrer"
           className="text-green-500 hover:text-green-700"
           style={{
-            display: 'inline-block',
-            backgroundColor: 'green',
-            padding: '10px',
-            borderRadius: '50%',
-            boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.7)', // Optional: Add a subtle shadow
-            transition: 'transform 0.3s ease-in-out', // Add a transition for the transform property
+            display: "inline-block",
+            backgroundColor: "green",
+            padding: "10px",
+            borderRadius: "50%",
+            boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.7)", // Optional: Add a subtle shadow
+            transition: "transform 0.3s ease-in-out", // Add a transition for the transform property
           }}
-          onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.1)')}
-          onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+          onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.1)")}
+          onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
         >
           <img
             src="https://www.freeiconspng.com/thumbs/logo-whatsapp-png/get-logo-whatsapp-png-pictures-1.png"
@@ -515,7 +525,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
         </a>
       </div>
 
-        {/* <Footer/> */}
+      {/* <Footer/> */}
       <footer className=" bg-white font-SourceSans  px-10 py-6 md:pt-12">
         <div className="grid grid-cols-1 md:grid-cols-2 md:flex md:flex-row justify-between items-start">
           <div className="col-span-2 pb-4 md:pb-0 ">
@@ -671,8 +681,8 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
               Sales Inquiries : <br /> support@bskilling.com / +91-9845348601
             </p>
             <p className="text-base">
-              Grievances : <br /> grievanceofficer@bskilling.com /
-              +91 89519 23627
+              Grievances : <br /> grievanceofficer@bskilling.com / +91 89519
+              23627
             </p>
           </div>
           <div className=" w-[20px] md:block hidden  h-[20px]"></div>
@@ -681,8 +691,8 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
         <div className="mx-auto text-left md:text-center text-sm text-zinc-400 pt-4 md:pt-8 md:p-0 p-4 pl-6">
           <p>BSKILLING PRIVATE LIMITED.</p>
           <p>
-            Copyright © {currentYear}. All Rights Reserved. Designed by Deedbee Social
-            Ventures.
+            Copyright © {currentYear}. All Rights Reserved. Designed by Deedbee
+            Social Ventures.
           </p>
         </div>
       </footer>
