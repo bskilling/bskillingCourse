@@ -24,7 +24,7 @@ interface UpcomingBatch {
 interface RegisterFormProps {
   price: number;
   email: string;
-  BatchName?: UpcomingBatch[];
+  BatchName?: any;
   course: string;
   courseName: string;
 }
@@ -224,7 +224,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
             })}
             className=" block  w-full lg:h-[35px] placeholder:text-sm  px-2 border-2 border-gray   border-green  focus:border-green focus:ring focus:ring-green focus:ring-opacity-50"
           >
-            {BatchName.map((item, index) => (
+            {BatchName?.map((item: any, index: any) => (
               <option key={index}>{item.name}</option>
             ))}
           </select>
