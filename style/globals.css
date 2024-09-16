@@ -203,3 +203,16 @@ select option:checked {
 .animate-scale-in {
   animation: scale-in 0.3s ease-out;
 }
+
+.testimonial-swiper .swiper-slide {
+  transition: transform 0.3s;
+}
+
+.testimonial-swiper .swiper-slide-active {
+  transform: scale(1.2);
+}
+
+.testimonial-swiper .swiper-slide-next,
+.testimonial-swiper .swiper-slide-prev {
+  transform: scale(0.8);
+}

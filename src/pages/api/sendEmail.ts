@@ -1,0 +1,38 @@
+// pages/api/sendEmail.js
+import nodemailer from 'nodemailer';
+
+export default async function handler(req:any, res:any) {
+    if (req.method === 'POST') {
+        const { name, email, contact } = req.body;
+
+        // Create a transporter object using SMTP transport
+        const transporter = nodemailer.createTransport({
+            service: 'gmail', // or another email service
+            auth: {
+                user: process.env.EMAIL_USER, // Your Gmail address
+                pass: process.env.EMAIL_PASS, // Your Gmail password or App password if 2FA is enabled
+            },
+        });
+
+        try {
+            // Send email with the defined transport object
+            await transporter.sendMail({
+                from: process.env.EMAIL_USER, // sender address
+                to: ['support@bskilling.com','sarangiankit097@gmail.com','lmsadmin@bskilling.com'], // list of receivers
+                subject: 'Corporate Training Enquiry', 
+                html: `
+                    <p><strong>Name:</strong> ${name}</p>
+                    <p><strong>Email:</strong> ${email}</p>
+                    <p><strong>Contact:</strong> ${contact}</p>
+                `,
+            });
+
+            res.status(200).json({ message: 'Email sent successfully' });
+        } catch (error) {
+            console.error('Error sending email:', error);
+            res.status(500).json({ message: 'Failed to send email' });
+        }
+    } else {
+        res.status(405).json({ message: 'Method not allowed' });
+    }
+}
