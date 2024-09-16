@@ -12,6 +12,14 @@ import { PDFDownloadLink } from "@react-pdf/renderer";
 import PdfFile from "../pages/Pdffile";
 import axios from "axios";
 import LeadForm from "modules/leadChat/components/LeadForm";
+import Gateway from "components/Gateway";
+import Chooseus from "components/Chooseus";
+import Experience from "components/Experience";
+import Testimonial from "components/Testimonial";
+import Placement from "components/Placement";
+import Program from "components/Program";
+
+
 
 
 interface UpcomingBatch {
@@ -116,22 +124,40 @@ const Home: NextPage<NextPage> = ({ }) => {
         <section className="relative">
           <Slider />
         </section>
-        <section className="bg-gray">
-          <ListOfCourses data={datas} CoursesCategoryData={eachCourceList} />
+        <section>
+          <Gateway/>
         </section>
+        <section>
+          <Chooseus/>
+        </section>
+        <section>
+          <Program/>
+        </section>
+        <section>
+          <Experience/>
+        </section>
+        <section>
+          <Testimonial/>
+        </section>
+        {/* <section className="bg-gray">
+          <ListOfCourses data={datas} CoursesCategoryData={eachCourceList} />
+        </section> */}
         <section>
           <CertifiedPartners />
         </section>
-        <section className="">
-          <Testimonials />
+        <section>
+          <Placement/>
         </section>
+        {/* <section className="">
+          <Testimonials />
+        </section> */}
         {/* <section>
           <Playstore />
         </section> */}
-        <section className="bg-gray">
+        {/* <section className="bg-gray">
           <Blogs />
-        </section>
-        <section className="bg-gray-200">
+        </section> */}
+        {/* <section className="bg-gray-200">
           
           <div className="md:hidden flex ">
             <div>
@@ -201,7 +227,7 @@ const Home: NextPage<NextPage> = ({ }) => {
             </div>
           </div>
          
-        </section>
+        </section> */}
       </section>
       {/* <PDFDownloadLink document={<PdfFile />}>
         <button>Download</button>

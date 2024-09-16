@@ -1,7 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
+interface BlogType {
+  _id: string;
+  title: string;
+  content: string;
+  banner: string;
+  createdAt: string;
+  slug: string;
+}
 
 export default function Blogs() {
   const blog = [
@@ -88,7 +98,28 @@ export default function Blogs() {
       sorc: "blogs.imf.org",
     },
   ];
-  
+  const [blogs, setBlogs] = useState<BlogType[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_TRAINING_BASE_URL}api/v1/get-blogs`);
+        console.log("res",response.data)
+        setBlogs(response.data.posts);  // Assuming the API returns an array of blog objects
+        setLoading(false);
+      } catch (err) {
+        setError('Failed to fetch blogs');
+        setLoading(false);
+      }
+    };
+
+    fetchBlogs();
+  }, []);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>{error}</p>;
   return (
     <>
       <Head>
@@ -97,7 +128,7 @@ export default function Blogs() {
           name="bSkilling Blogs"
           content="Stay Updated with Our Blog | Read Informative Articles on the Latest Trends in Online Learning"
         />
-         <meta
+        <meta
           name="p:domain_verify"
           content="7bb84546e514612864b5b9d71d1649e4"
         />
@@ -126,52 +157,40 @@ export default function Blogs() {
               Latest Blog Posts
             </h1>
           </div>
-          <div className="flex  lg:grid md:grid md:grid-cols-3 lg:grid-cols-4 flex-wrap gap-y-5 gap-8 ">
-            {blog.map(({ name, logo, id, desc, link, auth, sorc }) => {
-              return (
-                <div
-                  key={id}
-                  className="w-fit shadow-md bg-white flex flex-col lg:flex-1  justify-between bg-opacity-75    rounded-lg overflow-hidden text-center relative"
-                >
-                  <div>
-                    <div className=" w-full transition duration-150 ease-out hover:ease-in hover:opacity-50">
-                      <img
-                        className=" flex-shrink-0 h-36 w-full object-cover xl:w-[100%] xl:h-[rem]"
-                        src={logo}
-                        alt=""
-                      />
-                    </div>
-
-                    <h2 className="title-font px-3 mt-2 text-lg text-left font-bold text-gray-900 mb-3">
-                      {name}
-                    </h2>
-                    <p className="text-left font-semibold text-sm px-3 ">
-                      Source : <span className="font-normal">{sorc}</span>{" "}
-                    </p>
-                    <p className="text-left font-semibold text-sm px-3 ">
-                      Author : <span className="font-normal">{auth}</span>{" "}
-                    </p>
-                    <p className="leading-relaxed px-3 mb-3 mt-2 text-sm  text-left">
-                      {desc.length > 100
-                        ? desc.substring(0, 100) + "..."
-                        : desc}
-                    </p>
+          <div className="flex lg:grid md:grid md:grid-cols-3 lg:grid-cols-3 flex-wrap gap-y-5 gap-8 ">
+            {blogs.map(({ _id, title, banner, slug, createdAt }) => (
+              <div
+                key={_id}
+                className="w-fit shadow-md bg-white flex flex-col lg:flex-1 justify-between bg-opacity-75 rounded-lg overflow-hidden text-center relative"
+              >
+                <div>
+                  <div className="w-full transition duration-150 ease-out hover:ease-in hover:opacity-50">
+                    <img
+                      className="flex-shrink-0 h-36 w-full object-cover xl:w-[100%] xl:h-[rem]"
+                      src={banner}
+                      alt={title}
+                    />
                   </div>
-                  <div className="flex  pb-4 justify-center  ">
-                    <a
-                      style={{ textDecoration: "none" }}
-                      href={link}
-                      rel="noreferrer"
-                      target="_blank"
-                    >
-                      <p className=" text-white bg-Buttoncolor transition duration-500 hover:scale-105 ease-out   py-2 focus:ring-1 focus:outline-none focus:ring-buttonBlue font-medium  text-sm px-4  ">
-                        Read More
-                      </p>
-                    </a>
-                  </div>
+                  <h2 className="title-font px-3 mt-2 text-lg text-left font-bold text-gray-900 mb-3">
+                    {title}
+                  </h2>
+                  <p className="leading-relaxed px-3 mb-3 mt-2 text-sm text-left">
+                    Published on: {new Date(createdAt).toLocaleDateString()}
+                  </p>
                 </div>
-              );
-            })}
+                <div className="flex pb-4 justify-center">
+                  <Link
+                    style={{ textDecoration: 'none' }}
+                    href={`/blog/blogDetails/${_id}`}
+                    rel="noreferrer"
+                  >
+                    <p className="text-white bg-Buttoncolor transition duration-500 hover:scale-105 ease-out py-2 focus:ring-1 focus:outline-none focus:ring-buttonBlue font-medium text-sm px-4">
+                      Read More
+                    </p>
+                  </Link>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
