@@ -151,12 +151,12 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
             color: "#3399cc",
           },
         };
-        const paymentObject = new window.Razorpay(options);
-        paymentObject.on("payment.failed", function (response: any) {
-          alert(response.error.description);
-        });
+        // const paymentObject = new window.Razorpay(options);
+        // paymentObject.on("payment.failed", function (response: any) {
+         // alert(response.error.description);
+       // });
 
-        paymentObject.open();
+        // paymentObject.open();
       }
     } catch (error) {
       setisLoader(false);
