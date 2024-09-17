@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Script from "next/script";
 import { ReactNode, useCallback, useContext, useEffect, useState } from "react";
 import { BiMenu, BiSearchAlt } from "react-icons/bi";
 import { SlArrowDown } from "react-icons/sl";
@@ -143,6 +144,10 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
         <meta name="bSkilling" content="bSkilling" />
         <link rel="icon" href="/logo.png" />
       </Head>
+      <Script
+        id="razorpay-checkout-js"
+        src="https://checkout.razorpay.com/v1/checkout.js"
+      />
       {homePage ? (
         <>
           <div className="hidden sm:flex justify-between items-center px-8 py-4 max-w-screen-xl mx-auto">
