@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-html-link-for-pages */
 import { MyContext } from "context/PageContext";
 import { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -104,6 +105,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
           description: "description",
           order_id: orderId,
           handler: async function (response: any) {
+            console.log(response);
             const data = {
               orderCreationId: orderId,
               razorpayPaymentId: response.razorpay_payment_id,
@@ -142,6 +144,19 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
               });
               // setisLoader(false);
             }
+          },
+          modal: {
+            ondismiss: function () {
+              setisLoader(false);
+              if (confirm("Are you sure, you want to close the form?")) {
+                // txt = "You pressed OK!";
+                // console.log("Checkout form closed by the user");
+                setisLoader(false);
+              } else {
+                // txt = "You pressed Cancel!";
+                // console.log("Complete the Payment");
+              }
+            },
           },
           prefill: {
             name: formData?.name,
@@ -352,6 +367,17 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
           >
             This field is required
           </label>
+        </div>
+        <div>
+          <input type="checkbox" />{" "}
+          <span className="text-xs">
+            {`I authorise Bskilling & its representatives to contact me with
+            updates and notifications via Email/SMS/What'sApp/Call. This will
+            override on DND/NDNC `}
+            <a href="/privacy" target="_blank">
+              Privacy Policy
+            </a>
+          </span>
         </div>
 
         {/* <div>
