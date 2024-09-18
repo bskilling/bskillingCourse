@@ -184,9 +184,9 @@ const EnquiryForm: React.FC<EnquiryFormProps> = ({
         <div>
           <input type="checkbox" />{" "}
           <span className="text-xs">
-            I authorise Sandip University and its representatives to Call, SMS,
-            Email or WhatsApp me about its programmes and offers. This consent
-            overrides any registration for DNC / NDNC.
+            {`I authorise Bskilling & its representatives to contact me with
+            updates and notifications via Email/SMS/What'sApp/Call. This will
+            override on DND/NDNC <a href="/privacy">Privacy Policy</a>`}
           </span>
         </div>
 

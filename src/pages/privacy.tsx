@@ -632,13 +632,16 @@ export default function Privacy() {
             <div className="mt-4 pb-8">
               <p className="text-xl font-semibold">16. Cookies</p>
               <p className=" md:ml-6 ">
-                When you send us an email, the message usually contains your
-                return email address. Email is not necessarily secure against
-                interception. If you include personally – identifying
-                information in your email because you want to address issues
-                specific to your situation, we may use that information in
-                responding to your request. It is important you send only
-                information necessary to help us process your request.
+                When you voluntarily send us electronic mail / fillup the form,
+                we will keep a record of this information so that we can respond
+                to you. We only collect information from you when you register
+                on our site or fill out a form. Also, when filling out a form on
+                our site, you may be asked to enter your: name, e-mail address
+                or phone number. You may, however, visit our site anonymously.
+                In case you have submitted your personal information and contact
+                details, we reserve the rights to Call, SMS, Email or WhatsApp
+                about our products and offers, even if your number has DND
+                activated on it.
               </p>
             </div>
           </div>
