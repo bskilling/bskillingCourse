@@ -11,8 +11,8 @@ const LandingFooter = () => {
             <div className="w-full sm:w-1/2 md:w-1/2 lg:w-1/5 mb-6">
               <h5 className="text-lg font-semibold mb-4">CONTACT</h5>
               <p className="text-sm">
-                Uma Shree Dream World, Unit 2, B-block, 4th Floor, Kudlu Gate,
-                Hosur Main Road, Bangalore - 560068, Karnataka, INDIA
+                1, 292, Morappur, Harun main road, Obilinyakkanpatti,
+                Morasaptti, Dharmapuri, Tamill Nadu, 635305
               </p>
             </div>
             <div className="w-full sm:w-1/2 md:w-1/2 lg:w-1/5 mb-6">
