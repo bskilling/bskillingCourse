@@ -1,5 +1,5 @@
-import Image from 'next/image';
-import Link from 'next/link';
+import Image from "next/image";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -17,20 +17,74 @@ const Footer = () => {
           <div className="w-full sm:w-1/2 md:w-1/5 lg:w-1/5 mb-6">
             <h5 className="text-lg font-semibold mb-4">COMPANY</h5>
             <ul className="text-sm space-y-2">
-              <li><Link href="/about" className='text-textColor'>About Us</Link></li>
-              <li><Link href="/blogs" className='text-textColor'>Blog</Link></li>
-              <li><Link href="/contactpolicy" className='text-textColor'>Contact</Link></li>
+              <li>
+                <Link href="/about" className="text-textColor">
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link href="/blogs" className="text-textColor">
+                  Blog
+                </Link>
+              </li>
+              <li>
+                <Link href="/contactpolicy" className="text-textColor">
+                  Contact
+                </Link>
+              </li>
             </ul>
           </div>
           <div className="w-full sm:w-1/2 md:w-1/5 lg:w-1/5 mb-6">
             <h5 className="text-lg font-semibold mb-4">PROGRAMS</h5>
             <ul className="text-sm space-y-2">
-              <li><Link href={`/courses/courseDetails/66b1cb24f86931fdf7712eb0`} className='text-textColor mb-2'>Gen AI</Link></li>
-              <li><Link href={`/courses/courseDetails/66ab29e5637a3684c72041f9`} className='text-textColor mb-2'>Cloud Engineering</Link></li>
-              <li><Link href={`/courses/courseDetails/66ab4dbff86931fdf76f5a30`} className='text-textColor mb-2'>Project Management</Link></li>
-              <li><Link href={`/courses/courseDetails/66ab4dbff86931fdf76f5a30`} className='text-textColor mb-2'>Professional (PMP)</Link></li>
-              <li><Link href={`/courses/courseDetails/66c0369af86931fdf791aeb0`} className='text-textColor mb-2'>Prince2</Link></li>
-              <li><Link href={`/courses/courseDetails/66ab348df86931fdf76f3f80`} className='text-textColor mb-2'>SAP Business Technology Platform (BTP)</Link></li>
+              <li>
+                <Link
+                  href={`/courses/courseDetails/66b1cb24f86931fdf7712eb0`}
+                  className="text-textColor mb-2"
+                >
+                  Gen AI
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`/courses/courseDetails/66ab29e5637a3684c72041f9`}
+                  className="text-textColor mb-2"
+                >
+                  Cloud Engineering
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`/courses/courseDetails/66ab4dbff86931fdf76f5a30`}
+                  className="text-textColor mb-2"
+                >
+                  Project Management
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`/courses/courseDetails/66ab4dbff86931fdf76f5a30`}
+                  className="text-textColor mb-2"
+                >
+                  Professional (PMP)
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`/courses/courseDetails/66c0369af86931fdf791aeb0`}
+                  className="text-textColor mb-2"
+                >
+                  Prince2
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`/courses/courseDetails/66ab348df86931fdf76f3f80`}
+                  className="text-textColor mb-2"
+                >
+                  SAP Business Technology Platform (BTP)
+                </Link>
+              </li>
             </ul>
           </div>
           <div className="w-full sm:w-1/2 md:w-1/5 lg:w-1/5 mb-6">
@@ -62,11 +116,10 @@ const Footer = () => {
               </Link>
             </div>
           </div>
-
         </div>
       </div>
       <div className="border-t border-borderColor mt-6 pt-6">
-        <div className='bg-white w-full'>
+        <div className="bg-white w-full">
           <div className="flex flex-col sm:flex-row justify-between items-center px-6 lg:px-16 py-4 max-w-screen-xl mx-auto">
             <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4">
               <div>
@@ -77,10 +130,18 @@ const Footer = () => {
                 />
               </div>
               <div className="flex items-center space-x-4 pl-0 sm:pl-4 border-t sm:border-t-0 sm:border-l border-borderColor pt-4 sm:pt-0">
-                <Link href="/" className='text-footerText'>Home</Link>
-                <Link href="/privacy" className='text-footerText'>Privacy</Link>
-                <Link href="/Termsofuse" className='text-footerText'>Terms</Link>
-                <Link href="/Refundpolicy" className='text-footerText'>Refund</Link>
+                <Link href="/" className="text-footerText">
+                  Home
+                </Link>
+                <Link href="/privacy" className="text-footerText">
+                  Privacy
+                </Link>
+                <Link href="/Termsofuse" className="text-footerText">
+                  Terms
+                </Link>
+                <Link href="/Refundpolicy" className="text-footerText">
+                  Refund
+                </Link>
               </div>
             </div>
             <div className="flex gap-4 mt-4 sm:mt-0">
@@ -143,14 +204,15 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className='bg-gray w-full mt-6'>
+        <div className="bg-gray w-full mt-6">
           <p className="text-footerText text-center mx-auto max-w-screen-xl py-6">
-            Copyright Bskilling © 2024. All Rights Reserved. Designed by Stimulus Research Services
+            Copyright bSkilling © 2024. All Rights Reserved. Designed by
+            Stimulus Research Services
           </p>
         </div>
       </div>
     </footer>
   );
-}
+};
 
 export default Footer;

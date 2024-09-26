@@ -36,6 +36,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
   const [isCategoryHovered, setIsCategoryHovered] = useState<boolean>(false);
   const [isPopupOpen, setPopupOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isOtherMenuOpen, setisOtherMenuOpen] = useState(false);
 
   const handleOpenPopup = () => setPopupOpen(true);
   const handleClosePopup = () => setPopupOpen(false);
@@ -127,6 +128,9 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+  const toggleMenuotherpages = () => {
+    setisOtherMenuOpen(!isOtherMenuOpen);
   };
 
   const uniqueCategories = Array.from(
@@ -725,7 +729,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
       ) : (
         <>
           {navHide && (
-            <div className="bg-white w-full shadow-md">
+            <div className="bg-white w-full shadow-md ">
               <div className="flex justify-between items-center px-8 py-4 max-w-screen-xl mx-auto">
                 <div className="flex items-center space-x-4">
                   <Link href="/">
@@ -737,36 +741,38 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
                       />
                     </div>
                   </Link>
-
-                  <div className="flex items-center space-x-6 border-l border-gray-300 pl-6">
-                    <Link
-                      href="/"
-                      className="text-black text-sm hover:text-blue-500 transition-colors duration-300"
-                    >
-                      HOME
-                    </Link>
-                    <Link
-                      href="/aboutus"
-                      className="text-black text-sm hover:text-blue-500 transition-colors duration-300"
-                    >
-                      ABOUT
-                    </Link>
-                    <Link
-                      href="/blogs"
-                      className="text-black text-sm hover:text-blue-500 transition-colors duration-300"
-                    >
-                      BLOG
-                    </Link>
-                    <Link
-                      href="https://sfjbs.talentrecruit.com/career-page"
-                      target="_blank"
-                      className="text-black text-sm hover:text-blue-500 transition-colors duration-300"
-                    >
-                      CAREER
-                    </Link>
+                  <div className="hidden md:block">
+                    <div className="flex items-center space-x-6 border-l border-gray-300 pl-6">
+                      <Link
+                        href="/"
+                        className="text-black text-sm hover:text-blue-500 transition-colors duration-300"
+                      >
+                        HOME
+                      </Link>
+                      <Link
+                        href="/aboutus"
+                        className="text-black text-sm hover:text-blue-500 transition-colors duration-300"
+                      >
+                        ABOUT
+                      </Link>
+                      <Link
+                        href="/blogs"
+                        className="text-black text-sm hover:text-blue-500 transition-colors duration-300"
+                      >
+                        BLOG
+                      </Link>
+                      <Link
+                        href="https://sfjbs.talentrecruit.com/career-page"
+                        target="_blank"
+                        className="text-black text-sm hover:text-blue-500 transition-colors duration-300"
+                      >
+                        CAREER
+                      </Link>
+                    </div>{" "}
                   </div>
                 </div>
-                <div className="flex items-center space-x-6">
+
+                <div className="md:flex items-center space-x-6  hidden">
                   <Link href="https://lms.bskilling.com/login/index.php">
                     <div className="flex items-center space-x-2">
                       <img
@@ -816,6 +822,100 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
                       </div>
                     )}
                   </div>
+                </div>
+                {isOtherMenuOpen && (
+                  <div
+                    className={`fixed inset-0 bg-white flex flex-col items-center z-50 overflow-y-auto p-6 transition-transform transform ${
+                      isOtherMenuOpen ? "translate-x-0" : "translate-x-full"
+                    }`}
+                  >
+                    {/* Close Button */}
+                    <div className="flex justify-end w-full mb-6">
+                      <FaTimes
+                        onClick={toggleMenuotherpages}
+                        className="text-3xl text-gray-600 cursor-pointer hover:text-black transition-colors"
+                      />
+                    </div>
+
+                    {/* Navigation Links */}
+                    <div className="flex flex-col gap-8 w-full">
+                      <Link
+                        href="/"
+                        className="text-black hover:text-blue-500 text-lg font-medium transition-colors"
+                      >
+                        Home
+                      </Link>
+                      <Link
+                        href="/aboutus"
+                        className="text-black hover:text-blue-500 text-lg font-medium transition-colors"
+                      >
+                        About
+                      </Link>
+                      <Link
+                        href="/blogs"
+                        className="text-black hover:text-blue-500 text-lg font-medium transition-colors"
+                      >
+                        Blogs
+                      </Link>
+                      <Link
+                        href="https://sfjbs.talentrecruit.com/career-page"
+                        className="text-black hover:text-blue-500 text-lg font-medium transition-colors"
+                        target="_blank"
+                      >
+                        Careers
+                      </Link>
+
+                      {/* Courses Section in Mobile Menu */}
+
+                      {/* Instructor Section */}
+                      <div className="flex flex-col gap-4 items-center text-center w-full">
+                        <Link
+                          href="https://lms.bskilling.com/login/index.php"
+                          className="text-white bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-full text-base font-medium transition-colors"
+                        >
+                          Login/Register
+                        </Link>
+
+                        <p
+                          className="text-base text-black cursor-pointer hover:text-blue-500 font-medium transition-colors"
+                          onClick={handleOpenPopup}
+                        >
+                          Become an Instructor
+                        </p>
+                        {isPopupOpen && (
+                          <>
+                            <div
+                              className="fixed inset-0 bg-black opacity-50 z-40"
+                              onClick={handleClosePopup}
+                            ></div>
+                            <div className="fixed inset-0 flex items-center justify-center z-50">
+                              <PopupForm
+                                handleClosePopup={handleClosePopup}
+                                title="Bskilling Enquiry Form"
+                              />
+                            </div>
+                          </>
+                        )}
+                      </div>
+
+                      {/* Contact Section */}
+                      <div className="flex flex-col items-center gap-2 mt-6">
+                        <p className="flex items-center text-gray-800">
+                          <span className="mr-2">📞</span> +91-9845348601
+                        </p>
+                        <p className="flex items-center text-gray-800">
+                          <span className="mr-2">📧</span> support@bskilling.com
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+                {/* Hamburger Icon for Small Screens */}
+                <div className="md:hidden flex items-center mr-4">
+                  <FaBars
+                    onClick={toggleMenuotherpages}
+                    className="text-xl cursor-pointer"
+                  />
                 </div>
               </div>
             </div>
