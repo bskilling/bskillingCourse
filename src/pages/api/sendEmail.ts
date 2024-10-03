@@ -26,7 +26,7 @@ export default async function handler(req: any, res: any) {
         "support@bskilling.com",
         "sarangiankit097@gmail.com",
         "lmsadmin@bskilling.com",
-        // "maan.harmeet7@gmail.com",
+        "maan.harmeet7@gmail.com",
       ], // list of receivers
       subject: "Corporate Training Enquiry",
       html: `
