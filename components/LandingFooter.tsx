@@ -173,7 +173,7 @@ const LandingFooter = () => {
 
           <div className="bg-black w-full mt-6">
             <p className="text-white text-center mx-auto max-w-screen-xl py-6">
-              Copyright bSkilling © 2024. All Rights Reserved
+              Copyright bSkilling © 2024. All Rights Reserved.
             </p>
           </div>
         </div>
