@@ -12,8 +12,8 @@ export default async function handler(req: any, res: any) {
       secure: false,
       service: "gmail", // or another email service
       auth: {
-        user: process.env.EMAIL_USER, // Your Gmail address
-        pass: process.env.EMAIL_PASS, // Your Gmail password or App password if 2FA is enabled
+        user: "lmsbskilling@gmail.com", // Your Gmail address
+        pass: "xuwe nxyj qboy gryz", // Your Gmail password or App password if 2FA is enabled
       },
     });
     // console.log(process.env.EMAIL_USER);
