@@ -206,7 +206,7 @@ const Footer = () => {
 
         <div className="bg-gray w-full mt-6">
           <p className="text-footerText text-center mx-auto max-w-screen-xl py-6">
-            Copyright bSkilling © 2024. All Rights Reserved. Designed by
+            Copyright ©️ BSKILLING PRIVATE LIMITED.All Rights Reserved. Designed by
             Stimulus Research Services
           </p>
         </div>
