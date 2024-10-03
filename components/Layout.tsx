@@ -273,7 +273,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
                             {filteredCourses.map((course) => (
                               <Link
                                 style={{ textDecoration: "none" }}
-                                href={`/courses/courseDetails/${course._id}`}
+                                href={`/courses/courseDetails/${course?.url}`}
                                 key={course._id}
                               >
                                 <li className="p-2 hover:bg-customRed font-semibold text-black hover:text-white cursor-pointer">
@@ -287,7 +287,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
                             {SearchElementsData.map((course) => (
                               <Link
                                 style={{ textDecoration: "none" }}
-                                href={`/courses/courseDetails/${course._id}`}
+                                href={`/courses/courseDetails/${course?.url}`}
                                 key={course._id}
                               >
                                 <li className="p-2 hover:bg-customRed font-semibold text-black hover:text-white cursor-pointer">
@@ -322,7 +322,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
                     >
                       {dropSearchData.map((course, index) => (
                         <Link
-                          href={"courses/courseDetails/" + course._id}
+                          href={"courses/courseDetails/" + course?.url}
                           key={index}
                         >
                           <div className="p-2 text-black hover:bg-buttonBlue px-5 hover:text-white cursor-pointer">
@@ -457,7 +457,7 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
                               {filteredCourses.map((course) => (
                                 <Link
                                   key={course._id}
-                                  href={`/courses/courseDetails/${course._id}`}
+                                  href={`/courses/courseDetails/${course?.url}`}
                                   style={{ textDecoration: "none" }}
                                 >
                                   <li className="p-2 hover:bg-customRed font-semibold text-gray-800 hover:text-white cursor-pointer rounded-md transition-colors">
