@@ -13,6 +13,7 @@ const PopupForm: React.FC<PopupFormType> = ({ handleClosePopup, title }) => {
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<string | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -25,6 +26,7 @@ const PopupForm: React.FC<PopupFormType> = ({ handleClosePopup, title }) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
+    setSuccess(null);
 
     try {
       // const response = await fetch(
@@ -35,28 +37,31 @@ const PopupForm: React.FC<PopupFormType> = ({ handleClosePopup, title }) => {
         phonenumber: formData?.contact,
         email: formData?.email,
       };
-      //   const response = await fetch(
-      //     `${process.env.NEXT_PUBLIC_TRAINING_BASE_URL}api/v1/create-lead`,
-      //     {
-      //       method: "POST",
-      //       headers: {
-      //         "Content-Type": "application/json",
-      //       },
-      //       body: JSON.stringify(payload),
-      //     }
-      //   );
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_TRAINING_BASE_URL}/api/v1/create-lead`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        }
+      );
 
-      const response = await fetch("/api/sendEmail", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      // const response = await fetch("/api/sendEmail", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify(formData),
+      // });
 
       if (response.ok) {
-        alert("Form submitted successfully!");
-        handleClosePopup(); // Close the popup after submission
+        // alert("Form submitted successfully!");
+        setSuccess("Thankyou and get back to you");
+        setTimeout(() => {
+          handleClosePopup(); // Close the popup after submission
+        }, 1000);
       } else {
         const data = await response.json();
         setError(data.message || "Failed to send email");
@@ -179,6 +184,7 @@ const PopupForm: React.FC<PopupFormType> = ({ handleClosePopup, title }) => {
             </button>
           </form>
           {error && <p className="mt-4 text-red-600">{error}</p>}
+          {success && <p className="mt-4 text-green-500">{success}</p>}
         </div>
       </div>
     </div>

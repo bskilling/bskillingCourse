@@ -83,14 +83,14 @@ const CourseDetails = () => {
               </p>
             </div>
             <div className="relative">
-              <div>
+              {/* <div>
                 <p
                   className="hidden md:block cursor-pointer italic font-bold text-white hover:text-blue-800"
                   onClick={handleOpenPopup}
                 >
                   Enquire for corporate training
                 </p>
-              </div>
+              </div> */}
 
               {isPopupOpen && (
                 <>
