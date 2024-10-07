@@ -38,7 +38,7 @@ const PopupForm: React.FC<PopupFormType> = ({ handleClosePopup, title }) => {
         email: formData?.email,
       };
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_TRAINING_BASE_URL}/api/v1/create-lead`,
+        `${process.env.NEXT_PUBLIC_TRAINING_BASE_URL}api/v1/create-lead`,
         {
           method: "POST",
           headers: {
