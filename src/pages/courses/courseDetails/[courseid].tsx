@@ -83,14 +83,14 @@ const CourseDetails = () => {
               </p>
             </div>
             <div className="relative">
-              {/* <div>
+              <div>
                 <p
-                  className="hidden md:block cursor-pointer italic font-bold text-white hover:text-blue-800"
+                  className="hidden md:block bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors w-32 cursor-pointer"
                   onClick={handleOpenPopup}
                 >
-                  Enquire for corporate training
+                  Enquire Now
                 </p>
-              </div> */}
+              </div>
 
               {isPopupOpen && (
                 <>
@@ -101,7 +101,7 @@ const CourseDetails = () => {
                   <div className="fixed inset-0 flex items-center justify-center z-10000">
                     <PopupForm
                       handleClosePopup={handleClosePopup}
-                      title="Corporate Training Enquiry"
+                      title="Get a Callback for Our Trending Tech Courses"
                     />
                   </div>
                 </>

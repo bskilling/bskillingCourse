@@ -1,11 +1,6 @@
 import React, { useState } from "react";
 
-interface PopupFormType {
-  handleClosePopup: () => void;
-  title: string;
-}
-
-const PopupForm: React.FC<PopupFormType> = ({ handleClosePopup, title }) => {
+const LeadForm = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -57,13 +52,19 @@ const PopupForm: React.FC<PopupFormType> = ({ handleClosePopup, title }) => {
       // });
 
       if (response.ok) {
+        setFormData({
+          name: "",
+          email: "",
+          contact: "",
+        });
         // alert("Form submitted successfully!");
         setSuccess(
           "We have received your information successfully. Our team will review your details and get in touch with you shortly."
         );
+
         setTimeout(() => {
-          handleClosePopup(); // Close the popup after submission
-        }, 1000);
+          setSuccess("");
+        }, 5000);
       } else {
         const data = await response.json();
         setError(data.message || "Failed to send email");
@@ -78,46 +79,15 @@ const PopupForm: React.FC<PopupFormType> = ({ handleClosePopup, title }) => {
 
   return (
     <div>
-      <div
+      {/* <div
         className="fixed inset-0 bg-black opacity-50"
-        onClick={handleClosePopup}
-      ></div>
-      <div
-        className="fixed inset-0 flex items-center justify-center z-50 "
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div className="w-96 relative bg-white p-6 rounded-lg shadow-lg max-w-md mx-4 text-black">
-          {/* Close Button */}
-          <button
-            className="absolute top-4 right-4 text-gray-600 hover:text-gray-900"
-            onClick={handleClosePopup}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-
-          {/* Logo */}
-          <div className="flex justify-center mb-4">
-            <img
-              src="/logo.png"
-              className="w-[100px] h-[30px] object-contain"
-              alt=""
-            />
-          </div>
-
-          <h2 className="text-lg text-lightBlue font-semibold text-center mb-4 tracking-widest">
+        // onClick={handleClosePopup}
+      ></div> */}
+      <div>
+        <div className="relative bg-white py-6 rounded-lg max-w-md mx-4 text-black">
+          {/* <h2 className="text-lg text-lightBlue font-semibold text-center mb-4 tracking-widest">
             {title}
-          </h2>
+          </h2> */}
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
               <label
@@ -177,13 +147,13 @@ const PopupForm: React.FC<PopupFormType> = ({ handleClosePopup, title }) => {
             >
               {loading ? "Sending..." : "Submit"}
             </button>
-            <button
+            {/* <button
               type="button"
               className="mt-4 w-full bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors"
-              onClick={handleClosePopup}
+              // onClick={handleClosePopup}
             >
               Close
-            </button>
+            </button> */}
           </form>
           {error && <p className="mt-4 text-red-600">{error}</p>}
           {success && <p className="mt-4 text-green-500">{success}</p>}
@@ -193,4 +163,4 @@ const PopupForm: React.FC<PopupFormType> = ({ handleClosePopup, title }) => {
   );
 };
 
-export default PopupForm;
+export default LeadForm;

@@ -19,9 +19,6 @@ import Testimonial from "components/Testimonial";
 import Placement from "components/Placement";
 import Program from "components/Program";
 
-
-
-
 interface UpcomingBatch {
   capacity: string;
   description: string;
@@ -51,16 +48,16 @@ interface ListOfCoursesDataType {
   trainingTye: string;
 }
 type NestedArrayOfPeople = Array<Array<ListOfCoursesDataType>>;
-const Home: NextPage<NextPage> = ({ }) => {
+const Home: NextPage<NextPage> = ({}) => {
   const [datas, setDatas] = useState<string[]>([]);
   const [eachCourceList, SetEachCourceList] = useState<
     ListOfCoursesDataType[][]
   >([]);
-  
+
   const fetchApiData = async () => {
     try {
       const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_TRAINING_BASE_URL}/api/outsource/trainingList?tenant=2`
+        `${process.env.NEXT_PUBLIC_TRAINING_BASE_URL}api/outsource/trainingList?tenant=2`
       );
       const jsonData = response.data;
       console.log(jsonData);
@@ -88,7 +85,9 @@ const Home: NextPage<NextPage> = ({ }) => {
   return (
     <>
       <Head>
-        <title>bSkilling | Online Courses - Live Training and Certification Programs</title>
+        <title>
+          bSkilling | Online Courses - Live Training and Certification Programs
+        </title>
         <meta
           name="description"
           content="Unlock success with bSkilling online courses and live training. Get certified in Generative AI, SAP BTP, Cloud Engineering, Prince2, PMP. The best online training experience!"
@@ -113,31 +112,30 @@ const Home: NextPage<NextPage> = ({ }) => {
             `,
           }}
         />
-        
       </Head>
       {/* <section className="bg-buttonBlue px-8 text-white">
         <Tabs data={datas} />
       </section> */}
       <section onClick={clickOnMain}>
         {/* <ContactPopUp /> */}
-        
+
         <section className="relative">
           <Slider />
         </section>
         <section>
-          <Gateway/>
+          <Gateway />
         </section>
         <section>
-          <Chooseus/>
+          <Chooseus />
         </section>
         <section>
-          <Program/>
+          <Program />
         </section>
         <section>
-          <Experience/>
+          <Experience />
         </section>
         <section>
-          <Testimonial/>
+          <Testimonial />
         </section>
         {/* <section className="bg-gray">
           <ListOfCourses data={datas} CoursesCategoryData={eachCourceList} />
@@ -146,7 +144,7 @@ const Home: NextPage<NextPage> = ({ }) => {
           <CertifiedPartners />
         </section>
         <section>
-          <Placement/>
+          <Placement />
         </section>
         {/* <section className="">
           <Testimonials />
@@ -232,10 +230,6 @@ const Home: NextPage<NextPage> = ({ }) => {
       {/* <PDFDownloadLink document={<PdfFile />}>
         <button>Download</button>
       </PDFDownloadLink> */}
-      
-      
-    
-      
     </>
   );
 };
