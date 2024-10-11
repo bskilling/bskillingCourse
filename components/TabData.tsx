@@ -10,7 +10,7 @@ interface TabDataProps {
 }
 
 const TabData: React.FC<TabDataProps> = ({ courseDetails }) => {
-  const [activeTab, setActiveTab] = useState<number | null>(null);
+  const [activeTab, setActiveTab] = useState<number | null>(1);
 
   const overviewRef = useRef<HTMLDivElement>(null);
   const curriculumRef = useRef<HTMLDivElement>(null);
@@ -28,9 +28,9 @@ const TabData: React.FC<TabDataProps> = ({ courseDetails }) => {
 
   const handleTabClick = (id: number, ref: React.RefObject<HTMLDivElement>) => {
     setActiveTab(id);
-    if (ref.current) {
-      ref.current.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
+    // if (ref.current) {
+    //   ref.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    // }
   };
 
   const handleChange = (e: any) => {
@@ -77,18 +77,26 @@ const TabData: React.FC<TabDataProps> = ({ courseDetails }) => {
         ))}
       </select>
       <div className="transition-opacity duration-300">
-        <div ref={overviewRef} className="mb-12">
-          <Overview courseDetails={courseDetails} />
-        </div>
-        <div ref={curriculumRef} className="mb-12">
-          <Curriculum courseDetails={courseDetails} />
-        </div>
-        <div ref={certificationRef} className="mb-12">
-          <Certification courseDetails={courseDetails} />
-        </div>
-        <div ref={faqsRef} className="mb-12">
-          <FAQs courseDetails={courseDetails} />
-        </div>
+        {activeTab === 1 && (
+          <div ref={overviewRef} className="mb-12">
+            <Overview courseDetails={courseDetails} />
+          </div>
+        )}
+        {activeTab === 2 && (
+          <div ref={curriculumRef} className="mb-12">
+            <Curriculum courseDetails={courseDetails} />
+          </div>
+        )}
+        {activeTab === 5 && (
+          <div ref={certificationRef} className="mb-12">
+            <Certification courseDetails={courseDetails} />
+          </div>
+        )}
+        {activeTab === 6 && (
+          <div ref={faqsRef} className="mb-12">
+            <FAQs courseDetails={courseDetails} />
+          </div>
+        )}
       </div>
     </div>
   );
