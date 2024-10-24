@@ -55,7 +55,7 @@ const CourseDetails = () => {
           className="absolute inset-0 w-full h-full object-cover opacity-70"
           alt="Course Background"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#FF1053] to-[#3452FF] opacity-50"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#8CD2E8] to-[#1E3F66] opacity-80"></div>
         <div className="w-full flex flex-col md:flex-row justify-between space-y-4 md:space-y-0">
           {/* Left Side Content */}
           <div className="w-full md:w-2/3 z-10 p-4 text-white text-center md:text-left md:px-16">
