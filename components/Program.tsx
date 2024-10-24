@@ -113,7 +113,7 @@ const Program: React.FC = () => {
           {filteredCourses.slice(0, visibleCourses).map((course) => (
             <div
               key={course._id}
-              className="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 w-[20rem] h-80 flex flex-col"
+              className="bg-white p-0 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 w-[20rem] h-72 flex flex-col"
             >
               <Link href={"courses/courseDetails/" + course?.url}>
                 <div className="overflow-hidden rounded-t-lg mb-4">
@@ -127,11 +127,11 @@ const Program: React.FC = () => {
                     className="w-full h-40 object-cover transition-transform duration-300 transform hover:scale-105"
                   />
                 </div>
-                <h3 className="text-md text-black font-semibold mb-2 hover:text-customRed">
+                <h3 className="text-md text-black font-semibold mb-2 px-2 hover:text-customRed">
                   {course.title}
                 </h3>
               </Link>
-              <p className="text-lg text-cartBtn font-bold mb-2 mt-auto">
+              <p className="text-lg text-cartBtn font-bold mb-2 mt-auto px-2">
                 ₹ {course.price ? `${course.price}` : "Price not available"}
               </p>
             </div>
