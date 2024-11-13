@@ -15,14 +15,13 @@ body {
   line-height: 1.6;
   font-size: 18px;
   background-color: white;
-   max-width: 100%;
-    overflow-x: hidden;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 * {
   box-sizing: border-box;
   outline: 0;
-  
 }
 
 a {
@@ -215,4 +214,13 @@ select option:checked {
 .testimonial-swiper .swiper-slide-next,
 .testimonial-swiper .swiper-slide-prev {
   transform: scale(0.8);
+}
+
+.dropdown {
+  background: red;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+  opacity: 1;
 }
