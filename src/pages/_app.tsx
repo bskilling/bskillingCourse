@@ -10,8 +10,6 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import "../../style/globals.css";
 
-
-
 function MyApp({ Component, pageProps }: AppProps) {
   const route = useRouter();
   const {
@@ -24,8 +22,6 @@ function MyApp({ Component, pageProps }: AppProps) {
   } = useChat();
   const [chatIconVisible, setChatIconVisible] = useState(false);
   const [showFixedFooter, setShowFixedFooter] = useState(false);
-  
-
 
   useEffect(() => {
     function handleScroll() {
@@ -77,7 +73,6 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, [route.pathname]);
 
   useEffect(() => {
-
     var styles = document.createElement("style");
     styles.innerHTML = `
       body .zsiq_floatmain {
@@ -88,7 +83,6 @@ function MyApp({ Component, pageProps }: AppProps) {
     document.head.appendChild(styles);
   }, []);
 
- 
   return (
     <MyProvider>
       <Layout>
@@ -108,21 +102,39 @@ function MyApp({ Component, pageProps }: AppProps) {
             content="7bb84546e514612864b5b9d71d1649e4"
           />
           {/* Facebook meta tag */}
-          <meta property="og:title" content="bSkilling | Online Courses - Live Training and Certifications" />
-          <meta property="og:description" content="Unlock success with bSkilling online courses and live training. Get certified in Generative AI, SAP BTP, Cloud Engineering, Prince2, PMP" />
-          <meta property="og:image" content="https://www.bskilling.com/icon/facebook.svg" />
+          <meta
+            property="og:title"
+            content="bSkilling | Online Courses - Live Training and Certifications"
+          />
+          <meta
+            property="og:description"
+            content="Unlock success with bSkilling online courses and live training. Get certified in Generative AI, SAP BTP, Cloud Engineering, Prince2, PMP"
+          />
+          <meta
+            property="og:image"
+            content="https://www.bskilling.com/icon/facebook.svg"
+          />
           <meta property="og:url" content="www.bskilling.com" />
           {/* facebook meta tag end */}
 
           {/* Twitter meta tags start */}
-          <meta name="twitter:title" content="bSkilling | Online Courses - Live Training and Certifications" />
-          <meta name="twitter:description" content="Unlock success with bSkilling online courses and live training. Get certified in Generative AI, SAP BTP, Cloud Engineering, Prince2, PMP" />
+          <meta
+            name="twitter:title"
+            content="bSkilling | Online Courses - Live Training and Certifications"
+          />
+          <meta
+            name="twitter:description"
+            content="Unlock success with bSkilling online courses and live training. Get certified in Generative AI, SAP BTP, Cloud Engineering, Prince2, PMP"
+          />
           <meta name="twitter:url" content="www.bskilling.com" />
           <meta name="twitter:card" content="summary" />
           {/* Twitter meta tags end */}
-  <meta name="google-site-verification" content="l3AerOmZFQ8qlPqtZ64bYdtXuKO2QrMD_R1jtzpSlVo" />
+          <meta
+            name="google-site-verification"
+            content="l3AerOmZFQ8qlPqtZ64bYdtXuKO2QrMD_R1jtzpSlVo"
+          />
 
-         <script
+          <script
             dangerouslySetInnerHTML={{
               __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -131,11 +143,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-5H7RHNRM');`,
             }}
           />
-          
-          
+
           <link rel="icon" href="/favicon.png" />
           {/* google tag manager start */}
-{/*           <script
+          {/*           <script
             async
             src="https://www.googletagmanager.com/gtag/js?id=G-R3LT63CRN0"
           ></script>
@@ -160,8 +171,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 })(window,document,'script','dataLayer','GTM-NT8WHZQZ');
               `,
             }}
-          /> */}
-          // <noscript>
+          /> 
+      <noscript> 
             
           //   <iframe
           //     src="https://www.googletagmanager.com/ns.html?id=GTM-NT8WHZQZ"
@@ -193,24 +204,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               `,
             }}
           />
-          
-          <script type="text/javascript"
+
+          <script
+            type="text/javascript"
             async
             src="https://crmplus.zoho.com/crm/javascript/zcga.js"
           ></script>
-          
         </Head>
-<body>
-  <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5H7RHNRM"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-        <Component {...pageProps} />
-        {/* <FloatWindow /> */}
+        <body>
+          <noscript>
+            <iframe
+              src="https://www.googletagmanager.com/ns.html?id=GTM-5H7RHNRM"
+              height="0"
+              width="0"
+              style={{ display: "none", visibility: "hidden" }}
+            ></iframe>
+          </noscript>
 
-        
+          <Component {...pageProps} />
+          {/* <FloatWindow /> */}
 
-        {/* {showFixedFooter && (
+          {/* {showFixedFooter && (
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
@@ -219,7 +233,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <FixedFooterBar />
           </motion.div>
         )} */}
-  </body>
+        </body>
       </Layout>
     </MyProvider>
   );
