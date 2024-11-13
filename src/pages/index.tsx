@@ -123,13 +123,14 @@ const Home: NextPage<NextPage> = ({}) => {
           <Slider />
         </section>
         <section>
-          <Gateway />
+          <Program />
         </section>
         <section>
           <Chooseus />
         </section>
+
         <section>
-          <Program />
+          <Gateway />
         </section>
         <section>
           <Experience />

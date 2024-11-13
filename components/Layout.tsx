@@ -22,6 +22,16 @@ type Props = {
 };
 const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
   const route = useRouter();
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const handleOptionClick = (option: any) => {
+    console.log(`Selected: ${option}`);
+    setIsOpen(false);
+  };
   const { inputValue, setInputValue, setFetchSearchData } =
     useContext(MyContext);
   const [aboutUnderline, setAboutUnderline] = useState(false);
@@ -362,6 +372,56 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
                 >
                   Careers
                 </Link>
+
+                <div className="relative inline-block text-left dropdown">
+                  <div>
+                    <button
+                      onClick={toggleDropdown}
+                      className=" inline-flex justify-between w-full shadow-sm px-4 py-2 bg-white text-sm font-bold text-black  hover:bg-gray-50 hover:bg-gray-50 focus:outline-none"
+                      aria-haspopup="true"
+                      aria-expanded="true"
+                    >
+                      Training Options
+                      <svg
+                        className="-mr-1 ml-2 h-5 w-5"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+
+                  {/* {isOpen && ( */}
+                  <div className="dropdown-menu absolute right-0 z-10 w-56 rounded-md shadow-lg bg-white transition-opacity duration-300 ease-in-out group-hover:block hidden">
+                    <div
+                      className="py-1"
+                      role="menu"
+                      aria-orientation="vertical"
+                      aria-labelledby="options-menu"
+                    >
+                      <button
+                        onClick={() => handleOptionClick("Corporate Training")}
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
+                      >
+                        Corporate Training
+                      </button>
+                      <button
+                        onClick={() => handleOptionClick("School Training")}
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
+                      >
+                        Collage Training
+                      </button>
+                    </div>
+                  </div>
+                  {/* )} */}
+                </div>
               </div>
 
               {/* Hamburger Icon for Small Screens */}
