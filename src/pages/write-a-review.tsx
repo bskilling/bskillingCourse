@@ -35,6 +35,7 @@ export default function Privacy() {
 
     if (rating === 0) {
       setratingError("Rating is required");
+      return true;
     } else {
       setratingError("");
     }
