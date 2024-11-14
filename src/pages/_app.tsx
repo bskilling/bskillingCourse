@@ -116,7 +116,6 @@ function MyApp({ Component, pageProps }: AppProps) {
           />
           <meta property="og:url" content="www.bskilling.com" />
           {/* facebook meta tag end */}
-
           {/* Twitter meta tags start */}
           <meta
             name="twitter:title"
@@ -133,7 +132,6 @@ function MyApp({ Component, pageProps }: AppProps) {
             name="google-site-verification"
             content="l3AerOmZFQ8qlPqtZ64bYdtXuKO2QrMD_R1jtzpSlVo"
           />
-
           <script
             dangerouslySetInnerHTML={{
               __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -143,7 +141,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-5H7RHNRM');`,
             }}
           />
-
           <link rel="icon" href="/favicon.png" />
           {/* google tag manager start */}
           {/*           <script
@@ -182,9 +179,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           //   ></iframe>
           // </noscript>
           {/* google Tag Manager End */}
-
-          {/* salesIQ */}
+          {/*<!--Start of Tawk.to Script--> */}
           <script
+            type="text/javascript"
+            dangerouslySetInnerHTML={{
+              __html: `var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+              (function(){
+              var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+              s1.async=true;
+              s1.src='https://embed.tawk.to/67358add4304e3196ae263e8/1ickicsdv';
+              s1.charset='UTF-8';
+              s1.setAttribute('crossorigin','*');
+              s0.parentNode.insertBefore(s1,s0);
+              })(); `,
+            }}
+          />
+          {/*<!--End of Tawk.to Script-->*/}=
+          {/* <script
             type="text/javascript"
             id="zsiqchat"
             dangerouslySetInnerHTML={{
@@ -203,8 +214,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 
               `,
             }}
-          />
-
+          /> */}
           <script
             type="text/javascript"
             async
