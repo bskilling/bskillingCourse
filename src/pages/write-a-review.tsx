@@ -5,6 +5,7 @@ import Head from "next/head";
 
 export default function Privacy() {
   const [name, setName] = useState("");
+  const [linkedin, setLinkedin] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [rating, setRating] = useState(0);
@@ -43,7 +44,7 @@ export default function Privacy() {
     setError(null);
     setSuccess(null);
     // Handle form submission logic here
-    console.log({ name, email, phone, rating, description });
+
     try {
       // const response = await fetch(
       //     `${process.env.NEXT_PUBLIC_TRAINING_BASE_URL}api/v1/get-course/${id}`
@@ -53,6 +54,7 @@ export default function Privacy() {
         email,
         phone,
         rating,
+        linkedin,
         description,
       };
       const response = await fetch(
@@ -79,6 +81,7 @@ export default function Privacy() {
         setPhone("");
         setEmail("");
         setRating(0);
+        setLinkedin("");
         setDescription("");
         // alert("Form submitted successfully!");
         setSuccess(
@@ -192,6 +195,15 @@ export default function Privacy() {
               ))}
             </div>
             {ratingerror && <p style={{ color: "red" }}>{ratingerror}</p>}
+          </div>
+          <div className="mb-4">
+            <label className="block text-sm font-medium mb-1">Linkedin</label>
+            <input
+              type="text"
+              value={linkedin}
+              onChange={(e) => setLinkedin(e.target.value)}
+              className="block w-full border border-gray-300 rounded p-2"
+            />
           </div>
 
           <div className="mb-4">
