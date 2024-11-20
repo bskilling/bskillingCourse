@@ -23,7 +23,7 @@ const RegistrationForm = () => {
     consent: false,
   });
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     const { name, value, type, checked } = e.target;
     if (type === "checkbox") {
       setFormData({ ...formData, [name]: checked });
@@ -34,22 +34,24 @@ const RegistrationForm = () => {
     }
   };
 
-  const handleCheckboxChange = (e) => {
+  const handleCheckboxChange = (e: any) => {
     const { name, value, checked } = e.target;
     if (checked) {
       setFormData({
         ...formData,
+        //@ts-ignore
         [name]: [...formData[name], value],
       });
     } else {
       setFormData({
         ...formData,
+        //@ts-ignore
         [name]: formData[name].filter((item) => item !== value),
       });
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: any) => {
     e.preventDefault();
     console.log(formData);
   };
@@ -510,6 +512,7 @@ const RegistrationForm = () => {
 
           {/* Consent */}
           <div className="mb-4">
+            Consent for Participation and Job Assistance
             <label className="inline-flex items-center">
               <input
                 type="radio"
@@ -519,7 +522,10 @@ const RegistrationForm = () => {
                 className="form-checkbox"
               />
               <span className="ml-2">
-                Consent for Participation and Job Assistance
+                By signing below, I confirm that the information provided is
+                accurate. I consent to participate in the 3-month skill
+                development training program and agree to utilize the job
+                assistance provided upon successful completion.
               </span>
             </label>
           </div>
