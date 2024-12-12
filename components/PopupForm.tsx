@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-
+import { useRouter } from "next/router";
 interface PopupFormType {
   handleClosePopup: () => void;
   title: string;
 }
 
 const PopupForm: React.FC<PopupFormType> = ({ handleClosePopup, title }) => {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -57,13 +58,14 @@ const PopupForm: React.FC<PopupFormType> = ({ handleClosePopup, title }) => {
       // });
 
       if (response.ok) {
+        router.push("/thank-you");
         // alert("Form submitted successfully!");
-        setSuccess(
-          "We have received your information successfully. Our team will review your details and get in touch with you shortly."
-        );
-        setTimeout(() => {
-          handleClosePopup(); // Close the popup after submission
-        }, 1000);
+        // setSuccess(
+        //   "We have received your information successfully. Our team will review your details and get in touch with you shortly."
+        // );
+        // setTimeout(() => {
+        handleClosePopup(); // Close the popup after submission
+        // }, 1000);
       } else {
         const data = await response.json();
         setError(data.message || "Failed to send email");

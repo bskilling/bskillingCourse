@@ -39,7 +39,7 @@ export default function TermOfUse() {
             />
             <div className="absolute   h-72 inset-0">
               <p className="text-3xl w-full h-full mt-28 font-semibold   text-white    text-center font-SourceSans ">
-                Terms Of Use
+                Terms and Conditions
               </p>
             </div>
           </div>
@@ -49,302 +49,179 @@ export default function TermOfUse() {
                 1. Acceptance of this Agreement
               </p>
               <p className="mt-2 md:ml-6">
-                By clicking on the ‘SIGNUP’ option, the participant (“You” or
-                “Your“) agrees to the Terms and Conditions, obligations,
-                representations, warranties, and agreements contained herein
-                (the “Agreement“). In the event, You are not willing to accept
-                the Agreement, You shall not be authorized or allowed to proceed
-                further to view or use in any manner any content, information,
-                courseware, products and services (“Services“) published,
-                available or provided on www.bskilling.com (the “Website“),
-                which is owned, maintained and monitored by bSkilling Solutions
-                Private Limited (“Us“, “We” or “Our“).
+                {`These terms and conditions ("Terms and Conditions") govern your
+                use of this website ("Website").`}
+                <br /> Definitions: <br />
+                In these Terms and Conditions, “bSkilling” is referred to as the
+                “Company,” “us,” or “we.” <br />
+                “You” refers to a user or a paying customer. If you are a
+                company or another entity that provides access to our products,
+                your access is subject to these Terms and Conditions.
+                <br /> By using or accessing the Website or any services
+                provided by the Company (collectively referred to as “Company
+                Products”), you agree to the terms and conditions outlined here.
+                If you do not accept these terms, you are not authorized to use
+                the Website or its services
               </p>
             </div>
 
             <div className="mt-4">
-              <p className="text-xl font-semibold">2. User ID and Password</p>
+              <p className="text-xl font-semibold">Acceptance of Agreement</p>
 
               <div className="flex md:ml-6">
-                {" "}
-                <span className="mr-2 mt-2">I.</span>{" "}
                 <p className="mt-2 ">
-                  By entering into this Agreement, You acknowledge and agree
-                  that Your user ID and password (“Participant Account“) are for
-                  Your exclusive use only. Use or sharing of Your Participant
-                  Account with another user is not permitted and is cause for
-                  the immediate blocking of Your access to the Website, the
-                  Services and the Content, the Courseware, and termination of
-                  this Agreement.
-                </p>
-              </div>
-              <div className="flex md:ml-6">
-                {" "}
-                <span className="mr-2 mt-2">II.</span>{" "}
-                <p className="mt-2 ">
-                  You agree that You are solely responsible for maintaining the
-                  confidentiality of Your Participant Account and for all
-                  activities that occur under it. You agree to immediately
-                  notify our Grievance Officer if You become aware of or have
-                  reason to believe that there is any unauthorized use of Your
-                  Participant Account. You also agree to take all reasonable
-                  steps to stop such unauthorized use and to cooperate with Us
-                  in any investigation of such unauthorized uses. We shall not
-                  under any circumstances be held liable for any claims related
-                  to the use or misuse of Your Participant Account due to the
-                  activities of any third party outside of our control or due to
-                  Your failure to maintain the confidentiality and security of
-                  Your Participant Account.
+                  By accessing this Website and using our Products, you agree
+                  that you have read, understood, and are bound by these Terms
+                  and Conditions and our Privacy Policy. If you do not accept
+                  these Terms, you must refrain from using the Website and
+                  Company Products.
                 </p>
               </div>
             </div>
 
             <div className="mt-4">
-              <p className="text-xl font-semibold">3. Content and Courseware</p>
+              <p className="text-xl font-semibold">Website Usage Guidelines</p>
 
               <div className="flex md:ml-6">
-                {" "}
-                <span className="mr-2 mt-2">I.</span>{" "}
                 <p className="mt-2 ">
-                  As a part of our Services offered through our Website, We
-                  shall grant you access to our content, courseware, practice
-                  tests, and other information, documents, and data which may be
-                  in audio, video, written, graphic, recorded, photographic, or
-                  any machine-readable format in relation to the specific
-                  certification training course You have registered for
-                  (“Content and Courseware“).
-                </p>
-              </div>
-
-              <div className="flex md:ml-6">
-                {" "}
-                <span className="mr-2 mt-2">II.</span>{" "}
-                <p className="mt-2 ">
-                  We reserve the right to amend, revise or update the Content
-                  and Courseware offered to You. If such an amendment, revision
-                  or updation occurs, We may require you to pay an additional
-                  fee to access such amended, revised, or updated Content and
-                  Courseware.
-                </p>
-              </div>
-            </div>
-
-            <div className="mt-4">
-              <p className="text-xl font-semibold">4. Free Access</p>
-
-              <div className="flex md:ml-6">
-                {" "}
-                <span className="mr-2 mt-2">I.</span>{" "}
-                <p className="mt-2 ">
-                  The selected courses of free access (hereinafter the
-                  “Courses”) are brought to you by bSkilling Solutions Pvt. Ltd.
-                  (“bSkilling”). Your access to the said Courses is limited to
-                  the extent of self-learning videos and course resources only.
-                  Nothing herein shall at any time be construed to mean
-                  unhindered or unconditional access to all the features of the
-                  said Courses, as may be available upon purchase of the
-                  respective Courses.
-                </p>
-              </div>
-
-              <div className="flex md:ml-6">
-                {" "}
-                <span className="mr-2 mt-2">II.</span>{" "}
-                <p className="mt-2 ">
-                  courses shall be limited to such respective number of days, as
-                  may be notified against each Course on the date of your
-                  enrolment and shall be revoked at the instance of expiry of
-                  the respective number of days. However, bSkilling at its sole
-                  option reserves the right to revoke or extend your free access
-                  to all contents made available to you at any early instance
-                  under the free access without any notice or liability.
-                </p>
-              </div>
-
-              <div className="flex md:ml-6">
-                {" "}
-                <span className="mr-2 mt-2">III.</span>{" "}
-                <p className="mt-2 ">
-                  Upon your enrolment in these free courses, no license is
-                  deemed to be granted to you for further sale or to utilize the
-                  materials for any reuse, reproduction, or re-publication for
-                  commercial/non-commercial purposes.
-                </p>
-              </div>
-
-              <div className="flex md:ml-6">
-                {" "}
-                <span className="mr-2 mt-2">IV.</span>{" "}
-                <p className="mt-2 ">
-                  All materials provided to you under the free access are
-                  copyright products of bSkilling or its partners. Any violation
-                  of laws herein, or otherwise, shall make you liable to the
-                  maximum extent available under law.
-                </p>
-              </div>
-
-              <div className="flex md:ml-6">
-                {" "}
-                <span className="mr-2 mt-2">V.</span>{" "}
-                <p className="mt-2 ">
-                  All regular features of the Courses, including exam vouchers
-                  and certifications, but not limited to them, shall be
-                  available upon a full value complete purchase of the
-                  respective Courses only. Upon such full value complete
-                  purchase of any of these Courses, your balance of the free
-                  access days shall be added onto the number of days that may be
-                  generally applicable to the respective Courses.
-                </p>
-              </div>
-
-              <div className="flex md:ml-6">
-                {" "}
-                <span className="mr-2 mt-2">VI.</span>{" "}
-                <p className="mt-2 ">
-                  The above terms shall be read along with bSkilling’s Terms of
-                  Use and in the event of any conflicts, the ones stated here
-                  shall prevail, but to the extent of the said free access
-                  Courses only.
-                </p>
-              </div>
-
-              <div className="flex md:ml-6">
-                {" "}
-                <span className="mr-2 mt-2">VII.</span>{" "}
-                <p className="mt-2 ">
-                  Please also read our Privacy Policy carefully. bSkilling
-                  reserves all other rights, ‘ingress’ &amp; ‘egress’ with
-                  respect to the free access and may extend or forfeit the
-                  tenure of this offer at any time.
+                  1. Do not use the Website for unlawful activities.
+                  <br />
+                  2. Avoid actions that harass, abuse, threaten, or infringe the
+                  rights of others.
+                  <br />
+                  3. Do not post or share defamatory, offensive, or unlawful
+                  content.
+                  <br />
+                  4. Respect intellectual property rights by not copying or
+                  redistributing content without permission.
+                  <br />
+                  5. Do not attempt to hack, reverse-engineer, or manipulate the
+                  Website or its infrastructure.
+                  <br />
+                  6. Refrain from spamming, advertising, or sharing unauthorized
+                  links.
+                  <br />
                 </p>
               </div>
             </div>
 
             <div className="mt-4">
               <p className="text-xl font-semibold">
-                5. Usage of the Website and Services
+                User Account Responsibilities
               </p>
-              <p className="mt-2 md:ml-6">
-                For the sole purpose of completing the certification training
-                course you have registered for, we grant you a personal,
-                non-transferable, and revocable license to use the Website,
-                Services, Content, and Courseware up until completion or
-                termination of this Agreement, whichever occurs first. The
-                Content and Courseware are only available for your own personal,
-                non- commercial use. Without Our written authorization, it is
-                strictly forbidden to reproduce, distribute, or modify the
-                Content and Courseware in any way for any use other than the
-                Restricted Purpose.
-              </p>
-            </div>
-
-            <div className="mt-4">
-              <p className="text-xl font-semibold">
-                6. Intellectual Property Rights
-              </p>
-              <p className="mt-2 md:ml-6">
-                You acknowledge that we are the sole owners of the Website, the
-                Services, the Content, and the Courseware and that you may only
-                use them for the Restricted Purpose described in this Agreement.
-                All the intellectual property rights and other proprietary
-                rights in and to the Website, Services, Content, and Courseware
-                are owned by us as the owner. Beyond what is required to use the
-                Website, Services, Content, and Courseware for the Restricted
-                Purpose, nothing in this Agreement grants you any right, title,
-                or interest in them.
-              </p>
-            </div>
-
-            <div className="mt-4">
-              <p className="text-xl font-semibold">
-                7. Usage of Personal Information of Participants
-              </p>
-              <p className="mt-2 md:ml-6">
-                We may use any photographs or videos of you for promotional
-                purposes and may inform you about our other certification
-                training courses using your personal information. However, we
-                will not share your personal information with any third-party
-                marketing database or disclose it to any third party without
-                proper verification or if required by law on a case-by-case
-                basis.
-              </p>
-            </div>
-
-            <div className="mt-4">
-              <p className="text-xl font-semibold">
-                8. Limitation of Liability
-              </p>
-              <p className="mt-2 md:ml-6">
-                You use the Website, Services, Content, and Courseware at your
-                own risk. We do not promise that the Website, Services, or
-                access to the Content and Courseware will be error-free or
-                uninterrupted, and we do not promise that any information you
-                obtain through them will be accurate or dependable. We will not
-                be responsible for any losses that result from your use of them,
-                nor will we or any other party involved in their creation,
-                production, or distribution. This covers any inability to
-                perform, mistake, omission, interruption, deletion, defect,
-                delay, computer virus, broken communication line, theft, or
-                destruction, as well as any unauthorized access to, alteration
-                of, or use of records or other data. <br />
-                You agree that we have no responsibility or liability for any
-                libelous, slanderous, tortious, or unlawful acts of any third
-                parties or other users of the website, services, content, or
-                courseware. The amount you paid for the certification training
-                course will serve as the maximum amount of our liability for any
-                legal claims related to the Services, Content, or Courseware.
-              </p>
-            </div>
-
-            <div className="mt-4">
-              <p className="text-xl font-semibold">9.Term and Termination</p>
 
               <div className="flex md:ml-6">
                 {" "}
                 <span className="mr-2 mt-2">I.</span>{" "}
                 <p className="mt-2 ">
-                  By selecting &quot;I ACCEPT,&quot; you agree to this
-                  Agreement. It is valid for as long as your Participant Account
-                  is active and paid in full, or until we decide to terminate
-                  it. If you falsify information, default, act improperly, or
-                  violate this Agreement&#39;s terms, we may immediately
-                  terminate this Agreement and your access to the Content and
-                  Courseware by providing you a written notice through email.
-                </p>
-              </div>
-
-              <div className="flex md:ml-6">
-                {" "}
-                <span className="mr-2 mt-2">II.</span>{" "}
-                <p className="mt-2 ">
-                  We can use all of our rights and remedies under this Agreement
-                  and any relevant legislation if an Event of Default takes
-                  place.
+                  1. Your login credentials (“Participant Account”) are for your
+                  exclusive use. Sharing is prohibited.
+                  <br />
+                  2. You are responsible for maintaining the confidentiality of
+                  your account and for all activities that occur under it.
+                  <br />
+                  3. Notify our support team immediately if you suspect
+                  unauthorized access.
+                  <br />
                 </p>
               </div>
             </div>
 
             <div className="mt-4">
-              <p className="text-xl font-semibold">10. Indemnity</p>
+              <p className="text-xl font-semibold">Content and Courseware</p>
               <p className="mt-2 md:ml-6">
-                By using the Website, Services, Content, and Courseware without
-                authorization or in violation of this Agreement, you agree to
-                hold us and our contractors, licensors, directors, officers,
-                employees, and agents harmless from any claims, losses, damages,
-                liabilities, and expenses, including legal fees.
+                1. As part of our services, you will have access to course
+                materials in various formats (audio, video, text, etc.). <br />
+                2. We may update or revise course content, and additional fees
+                may apply for access to updated content. <br />
+                3. Free courses provide limited access, and their terms are
+                subject to change without notice. <br />
+                4. Unauthorized distribution, reproduction, or commercial use of
+                course materials is prohibited. <br />
               </p>
             </div>
 
             <div className="mt-4">
-              <p className="text-xl font-semibold">11. Waiver</p>
+              <p className="text-xl font-semibold">Transaction Terms</p>
               <p className="mt-2 md:ml-6">
-                No failure or delay in exercising any remedy, power, or
-                privilege provided for in this Agreement shall operate as a
-                waiver of such right or of any other right. Unless we expressly
-                confirm in writing and by our signature, we will not be deemed
-                to have waived any provision of this Agreement or consented to
-                any breach. Any rights waived or breaches accepted will not
-                affect any other rights or violations.
+                1. Payments are required for transactions on the Website. Verify
+                your payment details before completing a purchase.
+                <br />
+                2. Certain courses or products may have additional terms, which
+                will be communicated prior to purchase.
+                <br />
+                3. All sales are final, and pricing is subject to change without
+                notice.
+                <br />
+              </p>
+            </div>
+
+            <div className="mt-4">
+              <p className="text-xl font-semibold">
+                Intellectual Property Rights
+              </p>
+              <p className="mt-2 md:ml-6">
+                1. The Website, its services, and all course content are owned
+                by bSkilling and protected under intellectual property laws.
+                <br />
+                2. You are granted a limited, non-transferable license to use
+                the content solely for personal, non-commercial purposes.
+                <br />
+              </p>
+            </div>
+
+            <div className="mt-4">
+              <p className="text-xl font-semibold">Limitation of Liability</p>
+              <p className="mt-2 md:ml-6">
+                1. The Company is not responsible for any errors, interruptions,
+                or inaccuracies in the Website’s content or services.
+                <br />
+                2. We are not liable for damages arising from the use or
+                inability to use the Website, services, or content.
+                <br />
+              </p>
+            </div>
+
+            <div className="mt-4">
+              <p className="text-xl font-semibold">Indemnification</p>
+
+              <div className="flex md:ml-6">
+                {" "}
+                <p className="mt-2 ">
+                  You agree to indemnify and hold harmless bSkilling, its
+                  affiliates, and employees from any claims, damages, or
+                  liabilities arising from your use of the Website or violation
+                  of these Terms.
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-4">
+              <p className="text-xl font-semibold">
+                Amendments and Termination
+              </p>
+              <p className="mt-2 md:ml-6">
+                1. The Company reserves the right to modify these Terms without
+                prior notice. Changes will be posted on the Website.
+                <br />
+                2. Continued use of the Website constitutes acceptance of any
+                modified Terms.
+                <br />
+                3. We may terminate or restrict access to the Website and its
+                services for violations of these Terms.
+                <br />
+              </p>
+            </div>
+
+            <div className="mt-4">
+              <p className="text-xl font-semibold">
+                Governing Law and Jurisdiction
+              </p>
+              <p className="mt-2 md:ml-6">
+                For users residing in India, these Terms shall be governed by
+                the laws of India, and disputes shall be subject to the
+                jurisdiction of courts in Bangalore, India. For users outside
+                India, applicable local laws will govern these Terms.
               </p>
             </div>
 
@@ -360,38 +237,23 @@ export default function TermOfUse() {
             </div>
 
             <div className="mt-4">
-              <p className="text-xl font-semibold">
-                13. Amendment and Assignment
-              </p>
+              <p className="text-xl font-semibold">Grievance Redressal</p>
               <p className="mt-2 md:ml-6">
-                This agreement is subject to change without prior notice, and
-                the revised version will be posted online. You are responsible
-                for checking for updates, and by using the website going
-                forward, you agree to any modifications. This Agreement is
-                personal to you and may not be assigned or otherwise transferred
-                by you.
-              </p>
-            </div>
-
-            <div className="mt-4">
-              <p className="text-xl font-semibold">14. Entire Agreement</p>
-              <p className="mt-2 md:ml-6">
-                This Agreement, the Terms of Use, the Privacy Statement, the
-                Refund and Rescheduling Policies, and any other guidelines,
-                rules, and/or disclaimers posted on the Website together make up
-                the entire agreement governing Your use of our Website and
-                supersede any prior agreements, if any, relating to any subject
-                matter covered by this Agreement.
+                If you have concerns or queries, please contact our Grievance
+                Officer. We aim to address all grievances promptly. You can
+                reach us via email at{" "}
+                <a href="mailto:grievanceofficer@bskilling.com">
+                  grievanceofficer@bskilling.com
+                </a>
+                .
               </p>
             </div>
 
             <div className="mt-4 mb-12 pb-8">
-              <p className="text-xl font-semibold">15. Query Redressal</p>
+              {/* <p className="text-xl font-semibold">15. Query Redressal</p> */}
               <p className="mt-2 md:ml-6">
-                In case you have any concerns or queries, please reach out to
-                our Support Team. Our team shall undertake all reasonable
-                efforts to address your queries in the shortest possible time.
-                You may contact us at: support@bskilling.com.
+                Thank you for choosing bSkilling. We strive to provide you with
+                the best learning experience.
               </p>
             </div>
           </div>
