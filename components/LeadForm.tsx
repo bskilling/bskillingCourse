@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 
+import { useRouter } from "next/router";
+
 const LeadForm = () => {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -58,13 +61,14 @@ const LeadForm = () => {
           contact: "",
         });
         // alert("Form submitted successfully!");
-        setSuccess(
-          "We have received your information successfully. Our team will review your details and get in touch with you shortly."
-        );
+        // setSuccess(
+        //   "We have received your information successfully. Our team will review your details and get in touch with you shortly."
+        // );
+        router.push("/thank-you");
 
-        setTimeout(() => {
-          setSuccess("");
-        }, 5000);
+        // setTimeout(() => {
+        //   setSuccess("");
+        // }, 5000);
       } else {
         const data = await response.json();
         setError(data.message || "Failed to send email");

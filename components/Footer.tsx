@@ -10,8 +10,11 @@ const Footer = () => {
           <div className="w-full sm:w-1/2 md:w-1/2 lg:w-1/5 mb-6">
             <h5 className="text-lg font-semibold mb-4">CONTACT</h5>
             <p className="text-sm">
-              1, 292, Morappur, Harun main road, Obilinyakkanpatti, Morasaptti,
-              Dharmapuri, Tamill Nadu, 635305
+              B-Block 4th Floor, COMMERCIAL BUILDING, UMA SREE DREAM WORLD, Unit
+              -2, Hosur Rd, Kudlu Gate, Industrial Layout, Garvebhavi Palya,
+              Bengaluru, Karnataka 560068
+              {/* 1, 292, Morappur, Harun main road, Obilinyakkanpatti, Morasaptti,
+              Dharmapuri, Tamill Nadu, 635305 */}
             </p>
           </div>
           <div className="w-full sm:w-1/2 md:w-1/5 lg:w-1/5 mb-6">
