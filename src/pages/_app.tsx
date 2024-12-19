@@ -180,8 +180,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           // </noscript>
           {/* google Tag Manager End */}
           {/*<!--Start of Tawk.to Script--> */}
-          <script
+          {/* <script
             type="text/javascript"
+            dangerouslySetInnerHTML={{
+              __html: `window.$zoho=window.$zoho || {};$zoho.salesiq=$zoho.salesiq||{ready:function(){}}</script><script id="zsiqscript" src="https://salesiq.zohopublic.com/widget?wc=siqba043d49321d330a04edd51b439e5f75969a208346e176c79254bd8b093846bc" defer`,
+            }}
+          /> */}
+          {/* <script
+            type="text/javascript" 
             dangerouslySetInnerHTML={{
               __html: `var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
               (function(){
@@ -193,15 +199,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               s0.parentNode.insertBefore(s1,s0);
               })(); `,
             }}
-          />
+          /> */}
           {/*<!--End of Tawk.to Script-->*/}=
-          {/* <script
+          <script
             type="text/javascript"
             id="zsiqchat"
             dangerouslySetInnerHTML={{
               __html: `
                 var $zoho = $zoho || {};
-                $zoho.salesiq = $zoho.salesiq || {widgetcode: "siq808c9f0aec2179e3f6906ceb24906ee03d4fd55ab3a9515426e3ab8d00e568a0a8dd3011def5604c4779c2e3a5c0effa", values: {}, ready: function(){}};
+                $zoho.salesiq = $zoho.salesiq || {widgetcode: "siqba043d49321d330a04edd51b439e5f75969a208346e176c79254bd8b093846bc", values: {}, ready: function(){}};
                 var d = document;
                 var s = d.createElement("script");
                 s.type = "text/javascript";
@@ -214,7 +220,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 
               `,
             }}
-          /> */}
+          />
           <script
             type="text/javascript"
             async
