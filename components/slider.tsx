@@ -1,88 +1,132 @@
-import { useEffect, useState } from "react";
-import { BiSearchAlt } from "react-icons/bi";
-import { useRouter } from "next/router";
-import Link from "next/link";
+import { motion } from 'framer-motion';
+import React, { useEffect, useState } from 'react';
 
 const Slider = () => {
-  const [isSmallScreen, setIsSmallScreen] = useState(false);
-  const router = useRouter();
+  const [currentImage, setCurrentImage] = useState(0);
+  const images = [
+    '/images/slider1.jfif',
+    '/images/slider2.png',
+    '/images/slider3.jfif',
+    '/images/slider4.jfif',
+    '/images/slider5.png'
+  ];
+  const texts = [
+    {
+      heading: "Interactive Online Classes",
+      description: "The Future of Learning is Here!",
+      background: "radial-gradient(circle at -0.8% 4.3%, rgb(59, 176, 255) 0%, rgb(76, 222, 250) 83.6%)",
+      textColor: "text-white",
+      borderColor:"border-white"
+    },
+    {
+      heading: "Land Your Dream Job",
+      description: "Get Holistic Placement Support!",
+      background: "linear-gradient(117.65deg, #37ECBA 0%, #72AFD3 100%)",
+      textColor: "text-white",
+      borderColor:"border-white"
+    },
+    {
+      heading: "Professional Courses Specially Designed To Suit Your Needs",
+      description: "Flexible | Interactive | Customised Learning",
+      background: "linear-gradient(69.8deg, rgb(25, 49, 108) 2.8%, rgb(1, 179, 201) 97.8%)",
+      textColor: "text-white",
+      borderColor:"border-white"
+    },
+    {
+      heading: "Learn from the Best",
+      description: "Expert Faculty, Exceptional Results!",
+      background: "linear-gradient(67.6deg, rgb(225, 242, 254) -2.8%, rgb(193, 224, 250) 44.6%, rgb(19, 116, 197) 102.4%)",
+      textColor: "text-white",
+      borderColor:"border-white"
+    },
+    {
+      heading: "Level Up Your Employees With Corporate Training",
+      description: "IT | Banking | HR Onboarding",
+      background: "linear-gradient(69.8deg, rgb(25, 49, 108) 2.8%, rgb(1, 179, 201) 97.8%)",
+      textColor: "text-white",
+      borderColor:"border-white"
+    }
+  ];
 
   useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImage((prevImage) => (prevImage + 1) % images.length);
+    }, 5000);
 
-    const checkScreenSize = () => {
-      setIsSmallScreen(window.innerWidth <= 720);
-    };
-    window.addEventListener("resize", checkScreenSize);
-    checkScreenSize();
-    return () => {
-      window.removeEventListener("resize", checkScreenSize);
-    };
-  }, []);
+    return () => clearInterval(interval);
+  }, [images.length]);
 
-  const searchClick = () => {
-    console.log("clicked")
-  }
+  const imageVariants = {
+    initial: { x: '100%', opacity: 0 },
+    animate: { x: 0, opacity: 1 },
+    exit: { x: '-100%', opacity: 0 },
+  };
 
-  const selectCourse = () => {
-    router.push("/allCourses");
-  }
   return (
-    <div className={`relative ${isSmallScreen ? 'bg-blue-500' : ''}`}>
-      {isSmallScreen ? (
-        <div className="text-white p-8">
-          <h1 className="text-3xl  font-bold text-white mb-4 md:mb-4 tracking-wider">
-            Upskilling Made Easy
-          </h1>
-          <p className="text-md text-xl text-white mb-1 md:mb-3 tracking-wider font-bold">
-            Learn from Experts
+    <div className="relative w-full max-w-screen-2xl mx-auto overflow-hidden">
+      <motion.div
+        key={currentImage}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        variants={imageVariants}
+        transition={{ duration: 0.5 }}
+        className="relative"
+      >
+        <img
+          src={images[currentImage]}
+          alt={`slide${currentImage + 1}`}
+          className="w-full h-[400px] md:h-[500px] lg:h-[600px] object-cover"
+        />
+        <div
+          className="absolute inset-0 bg-gradient-to-r from-transparent to-transparent"
+          style={{
+            backgroundImage: texts[currentImage].background,
+            opacity: 0.5,
+            zIndex: 1 
+          }}
+        />
+        <div className={`absolute inset-0 flex flex-col justify-center items-center text-center z-20 ${texts[currentImage].textColor}`}>
+          <h2 className="text-xl md:text-2xl lg:text-3xl mb-4 font-bold tracking-wider">
+            {texts[currentImage].heading}
+          </h2>
+          <p className="text-sm md:text-lg lg:text-lg mb-4">
+            {texts[currentImage].description}
           </p>
-
-
-          <div
-            className="border-2 border-white p-1  flex items-center w-[250px] rounded-lg mt-4  cursor-pointer hover:bg-buttonBlue"
-            onClick={selectCourse}
-          >
-            <BiSearchAlt style={{ color: "white" }} />
-            <span className="text-white ml-1 text-sm font-bold">
-              Explore In-Demand Courses
-            </span>
-          </div>
-
-
-        </div>
-      ) : (
-        <>
-          <div className="absolute top-1/2 ml-5 py-4 md:py-0 md:ml-20 transform -translate-y-1/2 text-left">
-            <h1 className="text-2xl md:text-5xl font-bold text-white mb-2 md:mb-4 tracking-wider">
-              Upskilling Made Easy
-            </h1>
-            <p className="text-md md:text-2xl text-white mb-1 md:mb-3 tracking-wider font-bold">
-              Learn from Experts
-            </p>
-
-
-
-            <div
-              className="border-2 border-white p-1 md:p-2 flex items-center w-full md:w-[270px] rounded-lg mt-2 md:mt-16 cursor-pointer hover:bg-buttonBlue"
-              onClick={selectCourse}
-            >
-              <BiSearchAlt style={{ color: "white" }} />
-              <span className="text-white ml-1 md:ml-2 font-bold">
-                Explore In-Demand Courses
-              </span>
+          {/* <button className={`border rounded-3xl ${texts[currentImage].borderColor} px-4 py-2 font-semibold`}>
+            Ready to get Started?
+          </button> */}
+          <div className='flex justify-center mt-12 font-bold text-sm'>
+            <div className="flex flex-col items-center mx-10">
+              <img src="/images/homeicon1.png" alt="icon" className="w-12 h-12" />
+              <p className=" text-center mt-4">Customized Learning Programs</p>
             </div>
-
-
+            <div className="flex flex-col items-center mx-10">
+              <img src="/images/homeicon2.png" alt="icon" className="w-12 h-12" />
+              <p className=" text-center mt-4">1-1 Doubt Support</p>
+            </div>
+            <div className="flex flex-col items-center mx-10">
+              <img src="/images/homeicon3.png" alt="icon" className="w-12 h-12" />
+              <p className=" text-center mt-4">Live Interactive Class</p>
+            </div>
+            <div className="flex flex-col items-center mx-10">
+              <img src="/images/homeicon4.png" alt="icon" className="w-12 h-12" />
+              <p className=" text-center mt-4">Job Readiness</p>
+            </div>
           </div>
+        </div>
+      </motion.div>
 
-          <img
-            src="/landing_image1.png"
-            alt="landing_page"
-            className="w-full h-auto"
+      {/* Dots */}
+      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-30">
+        {images.map((_, index) => (
+          <button
+            key={index}
+            className={`w-2 h-2 rounded-full ${currentImage === index ? 'bg-dotsBg' : 'bg-white'}`}
+            onClick={() => setCurrentImage(index)}
           />
-        </>
-
-      )}
+        ))}
+      </div>
     </div>
   );
 };

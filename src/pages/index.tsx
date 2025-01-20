@@ -1,18 +1,23 @@
-import Blogs from "components/blognew";
-import CertifiedPartners from "components/certfiedPratnersSilder";
-import ListOfCourses from "components/listOfCourses";
-import Slider from "components/slider";
-import Tabs from "components/tabs";
-import Testimonials from "components/testimonials";
-import { MyContext } from "context/PageContext";
-import { NextPage } from "next";
-import Head from "next/head";
-import { useContext, useEffect, useState } from "react";
-import { PDFDownloadLink } from "@react-pdf/renderer";
-import PdfFile from "../pages/Pdffile";
-import axios from "axios";
-import LeadForm from "modules/leadChat/components/LeadForm";
-
+import Blogs from 'components/blognew';
+import CertifiedPartners from 'components/certfiedPratnersSilder';
+import ListOfCourses from 'components/listOfCourses';
+import Slider from 'components/slider';
+import Tabs from 'components/tabs';
+import Testimonials from 'components/testimonials';
+import { MyContext } from 'context/PageContext';
+import { NextPage } from 'next';
+import Head from 'next/head';
+import { useContext, useEffect, useState } from 'react';
+import { PDFDownloadLink } from '@react-pdf/renderer';
+import PdfFile from '../pages/Pdffile';
+import axios from 'axios';
+import LeadForm from 'modules/leadChat/components/LeadForm';
+import Gateway from 'components/Gateway';
+import Chooseus from 'components/Chooseus';
+import Experience from 'components/Experience';
+import Testimonial from 'components/Testimonial';
+import Placement from 'components/Placement';
+import Program from 'components/Program';
 
 interface UpcomingBatch {
   capacity: string;
@@ -43,16 +48,16 @@ interface ListOfCoursesDataType {
   trainingTye: string;
 }
 type NestedArrayOfPeople = Array<Array<ListOfCoursesDataType>>;
-const Home: NextPage<NextPage> = ({ }) => {
+const Home: NextPage<NextPage> = ({}) => {
   const [datas, setDatas] = useState<string[]>([]);
   const [eachCourceList, SetEachCourceList] = useState<
     ListOfCoursesDataType[][]
   >([]);
-  
+
   const fetchApiData = async () => {
     try {
       const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_TRAINING_BASE_URL}/api/outsource/trainingList?tenant=2`
+        `${process.env.NEXT_PUBLIC_TRAINING_BASE_URL}api/outsource/trainingList?tenant=2`
       );
       const jsonData = response.data;
       console.log(jsonData);
@@ -63,7 +68,7 @@ const Home: NextPage<NextPage> = ({ }) => {
 
       SetEachCourceList(ListOfCourcesData as ListOfCoursesDataType[][]);
     } catch (error) {
-      console.error("Error fetching API:", error);
+      console.error('Error fetching API:', error);
     }
   };
 
@@ -80,7 +85,9 @@ const Home: NextPage<NextPage> = ({ }) => {
   return (
     <>
       <Head>
-        <title>bSkilling | Online Courses - Live Training and Certification Programs</title>
+        <title>
+          bSkilling | Online Courses - Live Training and Certification Programs
+        </title>
         <meta
           name="description"
           content="Unlock success with bSkilling online courses and live training. Get certified in Generative AI, SAP BTP, Cloud Engineering, Prince2, PMP. The best online training experience!"
@@ -105,33 +112,51 @@ const Home: NextPage<NextPage> = ({ }) => {
             `,
           }}
         />
-        
       </Head>
       {/* <section className="bg-buttonBlue px-8 text-white">
         <Tabs data={datas} />
       </section> */}
-      <section onClick={clickOnMain}>
+      <section onClick={clickOnMain} className="w-full md:px-14">
         {/* <ContactPopUp /> */}
-        
-        <section className="relative">
+
+        <section className="relative w-full">
           <Slider />
         </section>
-        <section className="bg-gray">
-          <ListOfCourses data={datas} CoursesCategoryData={eachCourceList} />
+        <section>
+          <Program />
         </section>
+        <section>
+          <Chooseus />
+        </section>
+
+        <section>
+          <Gateway />
+        </section>
+        <section>
+          <Experience />
+        </section>
+        <section>
+          <Testimonial />
+        </section>
+        {/* <section className="bg-gray">
+          <ListOfCourses data={datas} CoursesCategoryData={eachCourceList} />
+        </section> */}
         <section>
           <CertifiedPartners />
         </section>
-        <section className="">
-          <Testimonials />
+        <section>
+          <Placement />
         </section>
+        {/* <section className="">
+          <Testimonials />
+        </section> */}
         {/* <section>
           <Playstore />
         </section> */}
-        <section className="bg-gray">
+        {/* <section className="bg-gray">
           <Blogs />
-        </section>
-        <section className="bg-gray-200">
+        </section> */}
+        {/* <section className="bg-gray-200">
           
           <div className="md:hidden flex ">
             <div>
@@ -201,15 +226,11 @@ const Home: NextPage<NextPage> = ({ }) => {
             </div>
           </div>
          
-        </section>
+        </section> */}
       </section>
       {/* <PDFDownloadLink document={<PdfFile />}>
         <button>Download</button>
       </PDFDownloadLink> */}
-      
-      
-    
-      
     </>
   );
 };

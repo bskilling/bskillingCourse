@@ -6,7 +6,7 @@ import PhoneInput from "react-phone-number-input";
 // interface DropAQueryFormProps{
 //   onClose: () => void;
 // }
-const DropAQueryForm= () => {
+const DropAQueryForm = () => {
   const [messageSent, setMessage] = useState(false);
   const [CountryCodeValue, setCountryCodeValue] = useState<any>("+91");
   const {
@@ -94,7 +94,7 @@ const DropAQueryForm= () => {
             defaultCountry="IN"
             // countrySelectProps={{ unicodeFlags: true }}
             placeholder="Enter phone number"
-             {...register("phone", {
+            {...register("phone", {
               required: true,
             })}
             value={CountryCodeValue}
@@ -179,6 +179,14 @@ const DropAQueryForm= () => {
         </label>
       </div>
 
+      <div>
+        <input type="checkbox" />{" "}
+        <span className="text-xs">
+          I authorise Sandip University and its representatives to Call, SMS,
+          Email or WhatsApp me about its programmes and offers. This consent
+          overrides any registration for DNC / NDNC.
+        </span>
+      </div>
       <div className="w-full flex justify-center  mb-3 items-center">
         {messageSent ? (
           <p className="text-buttonBlue  text-md font-semibold mb-4 ">
