@@ -340,7 +340,7 @@ export default function Nasscom() {
                 <img
                   src="/new-images/students.jpg"
                   alt=""
-                  className="w-full object-cover h-80"
+                  className="w-full object-cover h-96"
                 />
               </CardContent>
             </Card>
