@@ -1,9 +1,9 @@
-import Image from "next/image";
-import Link from "next/link";
+import Image from 'next/image';
+import Link from 'next/link';
 
 const Footer = () => {
   return (
-    <footer className="sm:mt-10">
+    <footer className="sm:mt-10 bg-black text-white">
       <div className="bg-footerBg h-20 w-full"></div>
       <div className="container mx-auto px-6 lg:px-12 mt-10">
         <div className="flex flex-wrap gap-0">

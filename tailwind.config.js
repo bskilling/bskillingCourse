@@ -1,89 +1,106 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: ['class'],
   content: [
-    "./app/**/*.{js,ts,jsx,tsx}",
-    "./pages/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
-    "./modules/**/*.{js,ts,jsx,tsx}",
-    "./styles/**/*.{css,scss}",
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
 
     // Or if using `src` directory:
-    "./src/**/*.{js,ts,jsx,tsx}",
+    './src/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    container: {
-      padding: "4rem",
-    },
-    screens: {
-      sm: "640px",
-      md: "768px",
-      mycustombreakpoint: "960px",
-      lg: "1024px",
-      xl: "1280px",
-      "2xl": "1536px",
-    },
-
     extend: {
-      backgroundColor: {
-        glass: "rgba(255, 255, 255, 0.0)",
-        glass2: "rgba(255, 255, 255, 0.2)",
+      borderRadius: {
+        lg: 'var(--radius)',
+        md: 'calc(var(--radius) - 2px)',
+        sm: 'calc(var(--radius) - 4px)',
       },
-      backgroundImage: {
-        'gradient-background': 'linear-gradient(101.77deg, #FF1053 0%, #3452FF 100%)',
-      },
-      
-      animation: {
-        marquee: "marquee 12s linear infinite",
-        marquee2: "marquee2 12s linear infinite",
+      colors: {
+        background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
+        card: {
+          DEFAULT: 'hsl(var(--card))',
+          foreground: 'hsl(var(--card-foreground))',
+        },
+        popover: {
+          DEFAULT: 'hsl(var(--popover))',
+          foreground: 'hsl(var(--popover-foreground))',
+        },
+        primary: {
+          DEFAULT: 'hsl(var(--primary))',
+          foreground: 'hsl(var(--primary-foreground))',
+        },
+        secondary: {
+          DEFAULT: 'hsl(var(--secondary))',
+          foreground: 'hsl(var(--secondary-foreground))',
+        },
+        muted: {
+          DEFAULT: 'hsl(var(--muted))',
+          foreground: 'hsl(var(--muted-foreground))',
+        },
+        accent: {
+          DEFAULT: 'hsl(var(--accent))',
+          foreground: 'hsl(var(--accent-foreground))',
+        },
+        destructive: {
+          DEFAULT: 'hsl(var(--destructive))',
+          foreground: 'hsl(var(--destructive-foreground))',
+        },
+        border: 'hsl(var(--border))',
+        input: 'hsl(var(--input))',
+        ring: 'hsl(var(--ring))',
+        chart: {
+          1: 'hsl(var(--chart-1))',
+          2: 'hsl(var(--chart-2))',
+          3: 'hsl(var(--chart-3))',
+          4: 'hsl(var(--chart-4))',
+          5: 'hsl(var(--chart-5))',
+        },
       },
       keyframes: {
-        marquee: {
-          "0%": { transform: "translateX(0%)" },
-          "100%": { transform: "translateX(-100%)" },
+        'accordion-down': {
+          from: {
+            height: '0',
+          },
+          to: {
+            height: 'var(--radix-accordion-content-height)',
+          },
         },
-        marquee2: {
-          "0%": { transform: "translateX(100%)" },
-          "100%": { transform: "translateX(0%)" },
+        'accordion-up': {
+          from: {
+            height: 'var(--radix-accordion-content-height)',
+          },
+          to: {
+            height: '0',
+          },
+        },
+        slideLeft: {
+          '0%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(0)' },
+        },
+        slideRight: {
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(0)' },
+        },
+        slideDown: {
+          '0%': { transform: 'translateY(-100%)' },
+          '100%': { transform: 'translateY(0)' },
+        },
+        slideUp: {
+          '0%': { transform: 'translateY(100%)' },
+          '100%': { transform: 'translateY(0)' },
         },
       },
-      
-      colors: {
-        gray: "#e9e9e9",
-        navyBlue: "#010b37",
-        buttonBlue: "#125582",
-        darkBlue: "#300ffa",
-        Buttoncolor: "#125582",
-        subText: " rgba(111, 112, 116, 1)",
-        GreenText: "#10c277",
-        Aqua: "#0d9488",
-        lightBlue: "#0E9BD7",
-        textColor: "#6F7074",
-        primaryButton: "#6440FB",
-        customPurple: 'rgba(112, 84, 230, 1)',
-        customRed: 'rgba(239, 92, 114, 1)',
-        customOrange: 'rgba(199, 85, 51, 1)',
-        customBlue: 'rgba(25, 38, 117, 0.8)',
-        cardbg: 'rgba(54, 159, 219, 1)',
-        bgColor: 'rgba(240, 250, 252, 1)',
-        btColor: 'rgba(36, 65, 231, 1)',
-        deepBlue: 'rgba(1, 34, 55, 1)',
-        cartBtn: 'rgba(255, 16, 83, 1)',
-        footerBg: 'rgba(100, 64, 251, 1)',
-        footerText: 'rgba(150, 150, 150, 1)',
-        borderColor: 'rgba(213, 214, 216, 1)',
-        googleBtn: 'rgba(36, 65, 231, 1)',
-        dotsBg: 'rgba(255, 154, 40, 1)',
-        dropdownBg: 'rgba(20, 3, 66, 1)',
-        gradient:'linear-gradient(69.8deg, rgb(25, 49, 108) 2.8%, rgb(1, 179, 201) 97.8%)',
-        
+      animation: {
+        'accordion-down': 'accordion-down 0.2s ease-out',
+        'accordion-up': 'accordion-up 0.2s ease-out',
+        'slide-left': 'slideLeft 1s ease-in-out',
+        'slide-right': 'slideRight 1s ease-in-out',
+        'slide-down': 'slideDown 1s ease-in-out',
+        'slide-up': 'slideUp 1s ease-in-out',
       },
-      fontFamily: {
-        RobotoMono: "Roboto Mono",
-        Mynerve: "Mynerve",
-        SourceSans: ["Source Sans Pro"],
-      },
-      
     },
   },
-  plugins: [],
+  plugins: [require('tailwindcss-animate')],
 };

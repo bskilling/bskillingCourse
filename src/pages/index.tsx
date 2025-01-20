@@ -1,23 +1,23 @@
-import Blogs from "components/blognew";
-import CertifiedPartners from "components/certfiedPratnersSilder";
-import ListOfCourses from "components/listOfCourses";
-import Slider from "components/slider";
-import Tabs from "components/tabs";
-import Testimonials from "components/testimonials";
-import { MyContext } from "context/PageContext";
-import { NextPage } from "next";
-import Head from "next/head";
-import { useContext, useEffect, useState } from "react";
-import { PDFDownloadLink } from "@react-pdf/renderer";
-import PdfFile from "../pages/Pdffile";
-import axios from "axios";
-import LeadForm from "modules/leadChat/components/LeadForm";
-import Gateway from "components/Gateway";
-import Chooseus from "components/Chooseus";
-import Experience from "components/Experience";
-import Testimonial from "components/Testimonial";
-import Placement from "components/Placement";
-import Program from "components/Program";
+import Blogs from 'components/blognew';
+import CertifiedPartners from 'components/certfiedPratnersSilder';
+import ListOfCourses from 'components/listOfCourses';
+import Slider from 'components/slider';
+import Tabs from 'components/tabs';
+import Testimonials from 'components/testimonials';
+import { MyContext } from 'context/PageContext';
+import { NextPage } from 'next';
+import Head from 'next/head';
+import { useContext, useEffect, useState } from 'react';
+import { PDFDownloadLink } from '@react-pdf/renderer';
+import PdfFile from '../pages/Pdffile';
+import axios from 'axios';
+import LeadForm from 'modules/leadChat/components/LeadForm';
+import Gateway from 'components/Gateway';
+import Chooseus from 'components/Chooseus';
+import Experience from 'components/Experience';
+import Testimonial from 'components/Testimonial';
+import Placement from 'components/Placement';
+import Program from 'components/Program';
 
 interface UpcomingBatch {
   capacity: string;
@@ -68,7 +68,7 @@ const Home: NextPage<NextPage> = ({}) => {
 
       SetEachCourceList(ListOfCourcesData as ListOfCoursesDataType[][]);
     } catch (error) {
-      console.error("Error fetching API:", error);
+      console.error('Error fetching API:', error);
     }
   };
 
@@ -116,10 +116,10 @@ const Home: NextPage<NextPage> = ({}) => {
       {/* <section className="bg-buttonBlue px-8 text-white">
         <Tabs data={datas} />
       </section> */}
-      <section onClick={clickOnMain}>
+      <section onClick={clickOnMain} className="w-full md:px-14">
         {/* <ContactPopUp /> */}
 
-        <section className="relative">
+        <section className="relative w-full">
           <Slider />
         </section>
         <section>
