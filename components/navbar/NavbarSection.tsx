@@ -286,51 +286,6 @@ export default function NavbarSection() {
                       <IoChevronDownSharp size={20} />
                     </span>
                   </p>
-                  {close && (
-                    <div className="pl-4">
-                      {menu?.children?.map((child) => (
-                        <div key={child.name}>
-                          {child?.type === 'collapse' ? (
-                            <div className="mt-5">
-                              <div
-                                className="font-bold text-gray-600"
-                                onClick={() => setOpen((prev) => !prev)}
-                              >
-                                {child.name}
-                              </div>
-                              {open && (
-                                <div className="pl-4">
-                                  {child?.children?.map((child) => (
-                                    <div
-                                      key={child.name}
-                                      className="text-sm mt-4"
-                                    >
-                                      <Link
-                                        href={child.href as string}
-                                        className="inline-flex gap-x-2"
-                                      >
-                                        <span>{menu?.icon}</span> {child.name}
-                                      </Link>
-                                    </div>
-                                  ))}
-                                </div>
-                              )}
-                            </div>
-                          ) : (
-                            <div className="text-sm mt-4">
-                              <Link
-                                href={child.href as string}
-                                className="inline-flex gap-x-2"
-                              >
-                                <span>{menu?.icon}</span>
-                                {child.name}
-                              </Link>
-                            </div>
-                          )}
-                        </div>
-                      ))}
-                    </div>
-                  )}
                 </div>
               ) : (
                 <div className="mt-5">
