@@ -166,7 +166,8 @@
 //     </div>
 //   );
 // }
-import { GetStaticProps, GetStaticPaths, InferGetStaticPropsType } from 'next';
+
+import { GetStaticProps, GetStaticPaths } from 'next';
 import axios from 'axios';
 import Layout from 'components/Layout';
 import { Coursedetailstype } from 'common/util/types';
@@ -177,6 +178,7 @@ import CourseIncludes from 'components/CourseIncludes';
 import OtherCourse from 'components/OtherCourse';
 import NewsLetter from 'components/NewsLetter';
 import PopupForm from 'components/PopupForm';
+import { useState } from 'react';
 
 interface CourseDetailsProps {
   courseDetails: Coursedetailstype | null;
@@ -193,7 +195,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
       params: { courseid: course._id },
     }));
 
-    return { paths, fallback: false }; // or 'blocking' if you want ISR
+    return { paths, fallback: 'blocking' };
   } catch (error) {
     console.error('Error fetching course IDs:', error);
     return { paths: [], fallback: false };
@@ -202,7 +204,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   try {
-    const { courseid } = params!;
+    if (!params || typeof params.courseid !== 'string') {
+      console.error('Missing or invalid courseid in params');
+      return { notFound: true };
+    }
+
+    const { courseid } = params;
     const response = await axios.get(
       `${process.env.NEXT_PUBLIC_TRAINING_BASE_URL}api/v1/get-course/${courseid}`
     );
@@ -221,9 +228,12 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   }
 };
 
-const CourseDetails = ({
-  courseDetails,
-}: InferGetStaticPropsType<typeof getStaticProps>) => {
+const CourseDetails = ({ courseDetails }: CourseDetailsProps) => {
+  const [isPopupOpen, setPopupOpen] = useState(false);
+
+  const handleOpenPopup = () => setPopupOpen(true);
+  const handleClosePopup = () => setPopupOpen(false);
+
   if (!courseDetails) {
     return <p>Course not found.</p>;
   }
@@ -233,7 +243,8 @@ const CourseDetails = ({
   const batchTime = courseDetails?.training_batches?.enrollment_end_date || '';
 
   return (
-    <Layout>
+    <div className="flex flex-col min-h-screen bg-gray">
+      {/* landing section start */}
       <div className="relative w-full h-[200px] md:h-[300px] lg:h-[400px] flex items-center justify-center bg-gradient-background">
         <img
           src="/images/about1.jfif"
@@ -242,6 +253,7 @@ const CourseDetails = ({
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#8CD2E8] to-[#1E3F66] opacity-80"></div>
         <div className="w-full flex flex-col md:flex-row justify-between space-y-4 md:space-y-0">
+          {/* Left Side Content */}
           <div className="w-full md:w-2/3 z-10 p-4 text-white text-center md:text-left md:px-16">
             <h1 className="text-xl md:text-2xl lg:text-3xl font-bold tracking-wider mb-4">
               {courseDetails?.title}
@@ -266,20 +278,50 @@ const CourseDetails = ({
                 </span>
               </p>
             </div>
+            <div className="relative">
+              <div>
+                <p
+                  className="hidden md:block bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors w-32 cursor-pointer"
+                  onClick={handleOpenPopup}
+                >
+                  Enquire Now
+                </p>
+              </div>
+
+              {isPopupOpen && (
+                <>
+                  <div
+                    className="fixed inset-0 bg-black opacity-50 z-1000"
+                    onClick={handleClosePopup}
+                  ></div>
+                  <div className="fixed inset-0 flex items-center justify-center z-10000">
+                    <PopupForm
+                      handleClosePopup={handleClosePopup}
+                      title="Get a Callback for Our Trending Tech Courses"
+                    />
+                  </div>
+                </>
+              )}
+            </div>
           </div>
+          {/* Right Side Content */}
           <div className="w-full md:w-1/3 z-10 p-4 absolute md:relative top-24 md:top-0">
             <PaymentForm courseDetails={courseDetails} />
           </div>
         </div>
       </div>
+      {/* landing section end */}
 
+      {/* video section */}
       <div className="flex-grow px-4 md:px-16 mt-56 md:mt-12 mb-2 flex flex-col md:flex-row gap-12">
         <div className="flex-grow w-full md:w-3/4">
           {courseDetails?.training_metadata?.preview_video && (
             <div
-              className="relative w-full md:h-auto h-72"
+              className="relative w-full md:h-auto h-72 md:h-auto"
               style={{ paddingTop: '30.25%' }}
             >
+              {' '}
+              {/* 16:9 Aspect Ratio */}
               <iframe
                 className="absolute inset-0 w-full h-full rounded-lg"
                 src={`https://www.youtube.com/embed/${videoId}`}
@@ -291,7 +333,7 @@ const CourseDetails = ({
                   maxWidth: '850px',
                   maxHeight: '500px',
                   minHeight: '300px',
-                }}
+                }} // Adjusted size
               ></iframe>
             </div>
           )}
@@ -309,7 +351,7 @@ const CourseDetails = ({
       <div>
         <NewsLetter className="bg-deepBlue text-white" />
       </div>
-    </Layout>
+    </div>
   );
 };
 
