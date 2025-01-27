@@ -165,7 +165,6 @@ export default function NavbarSection() {
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem> */}
-
           <NavigationMenuItem>
             <Popover open={open2} onOpenChange={setOpen2}>
               <PopoverTrigger className=" inline-flex gap-x-2 cursor-pointer items-center">
@@ -176,15 +175,15 @@ export default function NavbarSection() {
                 <div className="flex flex-col gap-y-3">
                   <p>Training Options</p>
                   {/* <DropdownMenuSeparator /> */}
-                  <div
-                    className="text-foreground inline-flex gap-x-2 cursor-pointer items-center"
-                    onClick={() => {
-                      setCollege((prev) => !prev);
-                    }}
+                  <Link
+                    href={'/individual-training'}
+                    className="text-foreground"
                   >
-                    <IoSchool size={20} className="mx-2" />
-                    <p>Individual Courses</p>
-                  </div>
+                    <div className="text-foreground inline-flex gap-x-2 cursor-pointer items-center">
+                      <IoSchool size={20} className="mx-2" />
+                      <p>Individual Courses</p>
+                    </div>
+                  </Link>
                   <div className="text-foreground inline-flex gap-x-2">
                     {' '}
                     <MdCorporateFare className="mx-2" size={20} />
@@ -221,16 +220,6 @@ export default function NavbarSection() {
                             Job Assisting Program
                           </Link>
                         </div>
-                        <div className="text-foreground inline-flex gap-x-2">
-                          <RiGovernmentFill size={20} className="mx-2" />
-                          <Link
-                            href={
-                              '/training-programs/government-training-program'
-                            }
-                          >
-                            Government Program
-                          </Link>
-                        </div>
                       </div>
                     </>
                   )}
@@ -238,6 +227,15 @@ export default function NavbarSection() {
               </PopoverContent>
             </Popover>
           </NavigationMenuItem>
+          <NavigationMenuItem>
+            <div className="text-foreground inline-flex gap-x-2">
+              {/* <RiGovernmentFill size={20} className="mx-2" /> */}
+              <Link href={'/training-programs/government-training-program'}>
+                Government Program
+              </Link>
+            </div>
+          </NavigationMenuItem>
+
           <NavigationMenuItem className="">
             <Popover>
               <PopoverTrigger className="flex gap-x-3 items-center">
