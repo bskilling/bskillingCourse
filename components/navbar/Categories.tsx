@@ -49,8 +49,37 @@ export default function Categories() {
   if (isLoading) return <CategorySkelton />;
 
   return (
-    <div className="flex items-center  gap-x-4 2xl:px-14 px-5 py-5 bg-muted">
-      <Popover>
+    <div className="flex items-center justify-between gap-x-4 2xl:px-14 px-5 py-5 bg-muted">
+      <div className="w-full flex items-center  gap-x-10">
+        {visibleItems.map((key) => (
+          <Link
+            key={key}
+            href={`/individual-training?tab=${key}`}
+            className="text-sm"
+          >
+            {key}
+          </Link>
+        ))}
+        {hiddenItems?.length > 0 && (
+          <Popover>
+            <PopoverTrigger>
+              <RxHamburgerMenu size={20} />
+            </PopoverTrigger>
+            <PopoverContent className="flex flex-col gap-y-4">
+              {hiddenItems.map((key) => (
+                <Link
+                  key={key}
+                  href={`/individual-training?tab=${key}`}
+                  className="text-sm"
+                >
+                  {key}
+                </Link>
+              ))}
+            </PopoverContent>
+          </Popover>
+        )}
+      </div>
+      {/* <Popover>
         <PopoverTrigger className=" md:flex ">
           {' '}
           <div className="flex gap-x-2 items-center  font-medium">
@@ -80,36 +109,7 @@ export default function Categories() {
               ))}
           </div>
         </PopoverContent>
-      </Popover>
-      <div className="w-full">
-        {visibleItems.map((key) => (
-          <Link
-            key={key}
-            href={`/individual-training?tab=${key}`}
-            className="text-sm"
-          >
-            {key}
-          </Link>
-        ))}
-        {hiddenItems?.length > 0 && (
-          <Popover>
-            <PopoverTrigger>
-              <RxHamburgerMenu size={20} />
-            </PopoverTrigger>
-            <PopoverContent className="flex flex-col gap-y-4">
-              {hiddenItems.map((key) => (
-                <Link
-                  key={key}
-                  href={`/individual-training?tab=${key}`}
-                  className="text-sm"
-                >
-                  {key}
-                </Link>
-              ))}
-            </PopoverContent>
-          </Popover>
-        )}
-      </div>
+      </Popover> */}
     </div>
   );
 }

@@ -26,13 +26,18 @@ const ShowMoreText: React.FC<ShowMoreTextProps> = ({ text }) => {
       >
         {text}
       </p>
-      {isTruncated && (
+      {isTruncated ? (
         <button
           onClick={() => setIsExpanded(!isExpanded)}
           className="text-blue-500 mt-2 "
         >
           {isExpanded ? 'Show Less' : 'Show More'}
         </button>
+      ) : (
+        <button
+          onClick={() => setIsExpanded(!isExpanded)}
+          className="text-blue-500 mt-2 "
+        ></button>
       )}
     </div>
   );
