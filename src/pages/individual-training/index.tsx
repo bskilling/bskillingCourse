@@ -135,7 +135,7 @@ export default function IndividualTraining({
           <NavbarSection />
         </nav>
       </div>
-      <div className="pb-20">
+      <div className="pb-20 w-[80vw] m-auto">
         <Tabs
           defaultValue="Artificial intelligence"
           className="w-full md:mt-10 mt-5 "
