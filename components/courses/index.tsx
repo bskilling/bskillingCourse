@@ -66,6 +66,7 @@ export default function Courses() {
         return [];
       }
     },
+    staleTime: 60 * 60 * 1000,
   });
   const handleCategoryHover = (category: any) => {
     setSelectedCategory(category);
@@ -85,7 +86,11 @@ export default function Courses() {
       <Sheet>
         <SheetTrigger className="md:hidden block">
           {' '}
-          <Button size={'sm'} className="flex gap-x-2 items-center">
+          <Button
+            size={'sm'}
+            className="flex gap-x-2 items-center"
+            variant={'outline'}
+          >
             Courses <FaAngleDown />
           </Button>
         </SheetTrigger>
@@ -130,7 +135,7 @@ export default function Courses() {
                         filteredCourses?.map((course) => (
                           <Link
                             style={{ textDecoration: 'none' }}
-                            href={`/courses/courseDetails/${course?.url}`}
+                            href={`/courses/course-details/${course?.url}`}
                             key={course?._id}
                           >
                             <Card className="!p-0">
@@ -168,7 +173,10 @@ export default function Courses() {
       <Popover>
         <PopoverTrigger className="hidden md:flex ">
           {' '}
-          <Button className="flex gap-x-2 items-center">
+          <Button
+            className="flex gap-x-2 items-center border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+            variant={'outline'}
+          >
             Courses <FaAngleDown />
           </Button>
         </PopoverTrigger>
@@ -209,7 +217,7 @@ export default function Courses() {
                     filteredCourses?.map((course) => (
                       <Link
                         style={{ textDecoration: 'none' }}
-                        href={`/courses/courseDetails/${course?.url}`}
+                        href={`/courses/course-details/${course?.url}`}
                         key={course?._id}
                       >
                         <Card className="!p-0 h-[300px]">
@@ -227,14 +235,6 @@ export default function Courses() {
                               className="w-full h-36 object-cover rounded-md"
                             />
                           </CardContent>
-                          <CardFooter>
-                            <p>
-                              <span className="mx-2"> Training Mode:</span>
-                              <span className="text-sm text-blue-500">
-                                {course?.training_mode}
-                              </span>
-                            </p>
-                          </CardFooter>
                         </Card>
 
                         {/* <li className="p-2 hover:bg-customRed font-semibold text-black hover:text-blue-600 cursor-pointer">
@@ -248,10 +248,10 @@ export default function Courses() {
                   {data?.map((course) => (
                     <Link
                       style={{ textDecoration: 'none' }}
-                      href={`/courses/courseDetails/${course?.url}`}
+                      href={`/courses/course-details/${course?.url}`}
                       key={course?._id}
                     >
-                      <Card className="!p-0 h-[300px] ">
+                      <Card className="!p-0  ">
                         <CardHeader className="h-[100px]">
                           <CardTitle>{course?.title}</CardTitle>
                           <CardDescription>
@@ -266,14 +266,6 @@ export default function Courses() {
                             className="w-full h-36 object-cover rounded-md"
                           />
                         </CardContent>
-                        <CardFooter>
-                          <p>
-                            <span className="mx-2"> Training Mode:</span>
-                            <span className="text-sm text-green-500">
-                              {course?.training_mode}
-                            </span>
-                          </p>
-                        </CardFooter>
                       </Card>
                     </Link>
                   ))}

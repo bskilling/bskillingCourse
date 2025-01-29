@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="bg-footerBg h-20 w-full"></div>
       <div className="container mx-auto px-6 lg:px-12 mt-10">
         <div className="flex flex-wrap gap-0">
-          <div className="w-full sm:w-1/2 md:w-1/2 lg:w-1/5 mb-6">
+          <div className="w-full mb-6">
             <h5 className="text-lg font-semibold mb-4">CONTACT</h5>
             <p className="text-sm">
               B-Block 4th Floor, COMMERCIAL BUILDING, UMA SREE DREAM WORLD, Unit
@@ -17,7 +17,7 @@ const Footer = () => {
               Dharmapuri, Tamill Nadu, 635305 */}
             </p>
           </div>
-          <div className="w-full sm:w-1/2 md:w-1/5 lg:w-1/5 mb-6">
+          <div className="w-full  mb-6">
             <h5 className="text-lg font-semibold mb-4">COMPANY</h5>
             <ul className="text-sm space-y-2">
               <li>
@@ -37,12 +37,12 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          <div className="w-full sm:w-1/2 md:w-1/5 lg:w-1/5 mb-6">
+          <div className="w-full  mb-6">
             <h5 className="text-lg font-semibold mb-4">PROGRAMS</h5>
             <ul className="text-sm space-y-2">
               <li>
                 <Link
-                  href={`/courses/courseDetails/66b1cb24f86931fdf7712eb0`}
+                  href={`/courses/course-details/66b1cb24f86931fdf7712eb0`}
                   className="text-textColor mb-2"
                 >
                   Gen AI
@@ -50,7 +50,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  href={`/courses/courseDetails/66ab29e5637a3684c72041f9`}
+                  href={`/courses/course-details/66ab29e5637a3684c72041f9`}
                   className="text-textColor mb-2"
                 >
                   Cloud Engineering
@@ -58,7 +58,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  href={`/courses/courseDetails/66ab4dbff86931fdf76f5a30`}
+                  href={`/courses/course-details/66ab4dbff86931fdf76f5a30`}
                   className="text-textColor mb-2"
                 >
                   Project Management
@@ -66,7 +66,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  href={`/courses/courseDetails/66ab4dbff86931fdf76f5a30`}
+                  href={`/courses/course-details/66ab4dbff86931fdf76f5a30`}
                   className="text-textColor mb-2"
                 >
                   Professional (PMP)
@@ -74,7 +74,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  href={`/courses/courseDetails/66c0369af86931fdf791aeb0`}
+                  href={`/courses/course-details/66c0369af86931fdf791aeb0`}
                   className="text-textColor mb-2"
                 >
                   Prince2
@@ -82,7 +82,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  href={`/courses/courseDetails/66ab348df86931fdf76f3f80`}
+                  href={`/courses/course-details/66ab348df86931fdf76f3f80`}
                   className="text-textColor mb-2"
                 >
                   SAP Business Technology Platform (BTP)
@@ -90,7 +90,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          <div className="w-full sm:w-1/2 md:w-1/5 lg:w-1/5 mb-6">
+          <div className="w-full  mb-6">
             <h5 className="text-lg font-semibold mb-4">SUPPORT</h5>
             <ul className="text-sm space-y-2">
               <li>Sales Inquiries: support@bskilling.com</li>

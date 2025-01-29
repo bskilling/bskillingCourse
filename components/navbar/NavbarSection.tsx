@@ -52,6 +52,7 @@ import { FaProductHunt } from 'react-icons/fa';
 import { usePathname, useRouter } from 'next/navigation';
 import { FiFileText } from 'react-icons/fi';
 import { GoPerson } from 'react-icons/go';
+import { buttonVariants } from '@/components/ui/button';
 
 const menus = [
   {
@@ -139,6 +140,36 @@ export default function NavbarSection() {
       <NavigationMenu className="hidden xl:flex">
         <NavigationMenuList className="space-x-5">
           <NavigationMenuItem>
+            <Link href={'/individual-training'} className="text-foreground">
+              <div className="text-foreground inline-flex gap-x-2 cursor-pointer items-center text-sm">
+                <p>All Courses</p>
+              </div>
+            </Link>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <div className="text-foreground inline-flex gap-x-2">
+              {' '}
+              <Link
+                href={'/corporate-training'}
+                className="text-foreground text-sm"
+              >
+                Corporate Training
+              </Link>
+            </div>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <div className="text-foreground inline-flex gap-x-2">
+              {/* <RiGovernmentFill size={20} className="mx-2" /> */}
+              <Link
+                href={'/training-programs/government-training-program'}
+                className="text-sm"
+              >
+                Government Program
+              </Link>
+            </div>
+          </NavigationMenuItem>
+
+          {/* <NavigationMenuItem>
             <Link href="/aboutus">
               <NavigationMenuLink>About</NavigationMenuLink>
             </Link>
@@ -152,7 +183,7 @@ export default function NavbarSection() {
             <Link href="/reviews">
               <NavigationMenuLink>Reviews</NavigationMenuLink>
             </Link>
-          </NavigationMenuItem>
+          </NavigationMenuItem> */}
           {/* <NavigationMenuItem>
             <Link
               href="https://sfjbs.talentrecruit.com/career-page"  
@@ -166,81 +197,35 @@ export default function NavbarSection() {
             </Link>
           </NavigationMenuItem> */}
 
-          <NavigationMenuItem>
-            <Popover open={open2} onOpenChange={setOpen2}>
-              <PopoverTrigger className=" inline-flex gap-x-2 cursor-pointer items-center">
-                {' '}
-                Training Programs <IoIosArrowDown />
-              </PopoverTrigger>
-              <PopoverContent className="font-normal">
-                <div className="flex flex-col gap-y-3">
-                  <p>Training Options</p>
-                  {/* <DropdownMenuSeparator /> */}
-                  <div
-                    className="text-foreground inline-flex gap-x-2 cursor-pointer items-center"
-                    onClick={() => {
-                      setCollege((prev) => !prev);
-                    }}
-                  >
-                    <IoSchool size={20} className="mx-2" />
-                    <p>Individual Courses</p>
-                  </div>
-                  <div className="text-foreground inline-flex gap-x-2">
-                    {' '}
-                    <MdCorporateFare className="mx-2" size={20} />
-                    <Link
-                      href={'/corporate-training'}
-                      className="text-foreground"
-                    >
-                      Corporate Training
-                    </Link>
-                  </div>
-                  <div
-                    className="text-foreground inline-flex gap-x-2 cursor-pointer items-center"
-                    onClick={() => {
-                      setCollege((prev) => !prev);
-                    }}
-                  >
-                    <IoSchool size={20} className="mx-2" />
-                    <p>College Training</p>
-                  </div>
-                  {college && (
-                    <>
-                      <div className="bg-muted rounded-md pl-2 py-2 flex flex-col gap-y-3 text-sm">
-                        <div className="text-foreground inline-flex gap-x-2">
-                          <GrUserWorker size={20} className="mx-2" />
-                          <Link
-                            href={'/college-training/skill-assisting-program'}
-                          >
-                            Skill Assisting Program
-                          </Link>
-                        </div>
-                        <div className="text-foreground inline-flex gap-x-2">
-                          <BsPersonWorkspace size={20} className="mx-2" />
-                          <Link href={'/college-training'}>
-                            Job Assisting Program
-                          </Link>
-                        </div>
-                        <div className="text-foreground inline-flex gap-x-2">
-                          <RiGovernmentFill size={20} className="mx-2" />
-                          <Link
-                            href={
-                              '/training-programs/government-training-program'
-                            }
-                          >
-                            Government Program
-                          </Link>
-                        </div>
-                      </div>
-                    </>
-                  )}
-                </div>
-              </PopoverContent>
-            </Popover>
+          {/* <div className="bg-muted rounded-md pl-2 py-2 flex flex-col gap-y-3 text-sm">
+            <div className="text-foreground inline-flex gap-x-2">
+              <GrUserWorker size={20} className="mx-2" />
+              <Link href={'/college-training/skill-assisting-program'}>
+                Skill Assisting Program
+              </Link>
+            </div>
+            <div className="text-foreground inline-flex gap-x-2">
+              <BsPersonWorkspace size={20} className="mx-2" />
+              <Link href={'/college-training'}>Job Assisting Program</Link>
+            </div>
+          </div> */}
+          <NavigationMenuItem className="">
+            <Link
+              href={'/college-training/skill-assisting-program'}
+              className="text-sm"
+            >
+              Skills
+            </Link>
           </NavigationMenuItem>
+          {/* <NavigationMenuItem className="">
+            <Link href={'/college-training'} className="text-sm">
+              Jobs
+            </Link>
+          </NavigationMenuItem> */}
+
           <NavigationMenuItem className="">
             <Popover>
-              <PopoverTrigger className="flex gap-x-3 items-center">
+              <PopoverTrigger className="flex gap-x-3 items-center text-sm">
                 {' '}
                 More <IoIosArrowDown />
               </PopoverTrigger>
@@ -260,6 +245,33 @@ export default function NavbarSection() {
                 </div>
               </PopoverContent>
             </Popover>
+          </NavigationMenuItem>
+
+          <NavigationMenuItem
+            className={cn(
+              buttonVariants({ variant: 'outline' }),
+              'text-base font-light'
+            )}
+          >
+            <Link
+              href={'https://lms.bskilling.com/login/index.php'}
+              className="text-sm"
+            >
+              Sign Up
+            </Link>
+          </NavigationMenuItem>
+          <NavigationMenuItem
+            className={cn(
+              buttonVariants({ variant: 'outline' }),
+              'text-base font-light'
+            )}
+          >
+            <Link
+              href={'https://lms.bskilling.com/login/index.php'}
+              className="text-sm"
+            >
+              Login
+            </Link>
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>

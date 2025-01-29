@@ -1,6 +1,7 @@
 import PopupForm from 'components/PopupForm';
 import Link from 'next/link';
 import React, { useState } from 'react';
+import { FiUser } from 'react-icons/fi';
 import { IoMdCall } from 'react-icons/io';
 
 export default function NavSection() {
@@ -9,7 +10,7 @@ export default function NavSection() {
   const handleClosePopup = () => setPopupOpen(false);
   return (
     <div>
-      <div className="hidden sm:flex justify-between items-center px-14 py-1 w-full  mx-auto bg-gradient-to-br from-[#5dade2] via-[#4b97ca] to-[#0063a5] text-white text-sm">
+      <div className="hidden sm:flex justify-between items-center px-14 py-1 w-full  mx-auto bg-primary text-white text-sm">
         <div className="flex space-x-4">
           <p className="flex items-center">
             <span className="mr-2">
@@ -45,17 +46,12 @@ export default function NavSection() {
               </>
             )}
           </div>
-          <Link href="https://lms.bskilling.com/login/index.php">
+          {/* <Link href="https://lms.bskilling.com/login/index.php">
             <div className="flex items-center space-x-2">
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNzXYh-X4wxX1jfbPywa8HWoNGDnx1Tlo0-g&s"
-                alt="Login/Register"
-                className="w-6 h-6"
-              />
-
+              <FiUser />
               <p className="text-sm text-white"> Login/Register</p>
             </div>
-          </Link>
+          </Link> */}
           {/* <div className="flex items-center space-x-2">
                 <img
                   src="https://www.shutterstock.com/image-vector/shopping-cart-icon-bag-260nw-1520865410.jpg"
