@@ -1,6 +1,6 @@
 // components/LandingFooter.js
-import Image from "next/image";
-import Link from "next/link";
+import Image from 'next/image';
+import Link from 'next/link';
 
 const LandingFooter = () => {
   return (
@@ -35,22 +35,22 @@ const LandingFooter = () => {
             <div className="w-full sm:w-1/2 md:w-1/2 lg:w-1/5 mb-6">
               <h5 className="text-lg font-semibold mb-4">PROGRAMS</h5>
               <ul className="text-sm space-y-2">
-                <Link href={`/courses/courseDetails/66b1cb24f86931fdf7712eb0`}>
+                <Link href={`/courses/course-details/66b1cb24f86931fdf7712eb0`}>
                   <li className="text-white mb-2">Gen AI</li>
                 </Link>
-                <Link href={`/courses/courseDetails/66ab29e5637a3684c72041f9`}>
+                <Link href={`/courses/course-details/66ab29e5637a3684c72041f9`}>
                   <li className="text-white mb-2">Cloud Engineering</li>
                 </Link>
-                <Link href={`/courses/courseDetails/66ab4dbff86931fdf76f5a30`}>
+                <Link href={`/courses/course-details/66ab4dbff86931fdf76f5a30`}>
                   <li className="text-white mb-2">Project Management</li>
                 </Link>
-                <Link href={`/courses/courseDetails/66ab4dbff86931fdf76f5a30`}>
+                <Link href={`/courses/course-details/66ab4dbff86931fdf76f5a30`}>
                   <li className="text-white mb-2">Professional (PMP)</li>
                 </Link>
-                <Link href={`/courses/courseDetails/66c0369af86931fdf791aeb0`}>
+                <Link href={`/courses/course-details/66c0369af86931fdf791aeb0`}>
                   <li className="text-white mb-2">Prince2</li>
                 </Link>
-                <Link href={`/courses/courseDetails/66ab348df86931fdf76f3f80`}>
+                <Link href={`/courses/course-details/66ab348df86931fdf76f3f80`}>
                   <li className="text-white mb-2">
                     SAP Business Technology Platform (BTP)
                   </li>
