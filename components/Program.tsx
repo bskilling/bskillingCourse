@@ -120,7 +120,7 @@ const Program: React.FC = () => {
               key={course._id}
               className="bg-white p-0 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 w-[20rem] h-72 flex flex-col"
             >
-              <Link href={'courses/courseDetails/' + course?.url}>
+              <Link href={'courses/course-details/' + course?.url}>
                 <div className="overflow-hidden rounded-t-lg mb-4">
                   <img
                     src={

@@ -2,7 +2,7 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import Head from 'next/head';
-import React, { useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 
 import { GetServerSideProps } from 'next';
 import { Course } from 'common/util/types';
@@ -20,6 +20,7 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import NavbarSection from 'components/navbar/NavbarSection';
 
 interface IndividualTrainingProps {
   training: Course[];
@@ -55,6 +56,11 @@ export default function IndividualTraining({
   const { query } = router;
   const { tab } = query;
   const [activeTab, setActiveTab] = useState(tab ?? 'Artificial intelligence');
+
+  useEffect(() => {
+    setActiveTab(tab ?? 'Artificial intelligence');
+  }, [tab]);
+
   if (!training) {
     return <div className=""></div>;
   }
@@ -117,10 +123,19 @@ export default function IndividualTraining({
           content="https://yourwebsite.com/images/individual-training-og-image.jpg"
         />
       </Head>
+      <div className="sticky top-0 z-[50] bg-card shadow-md">
+        <nav className="text-[#1f1f1f] bg-card 2xl:w-[80vw] px-5  md:w-[90vw] w-full 2xl:m-auto flex justify-between items-center text-sm font-medium md:py-2  ">
+          <div className="text-3xl font-bold inline-flex items-center">
+            <Link href="/">
+              <div className="relative w-[80px] h-[30px] md:w-[150px] md:h-[50px] ">
+                <img src="/logo.png" alt="Logo" className="object-cover" />
+              </div>
+            </Link>
+          </div>
+          <NavbarSection />
+        </nav>
+      </div>
       <div className="pb-20">
-        <h1 className="text-4xl text-center text-primary mt-10">
-          Individual Training/Courses
-        </h1>
         <Tabs
           defaultValue="Artificial intelligence"
           className="w-full md:mt-10 mt-5 "
@@ -130,8 +145,13 @@ export default function IndividualTraining({
               <TabsTrigger
                 key={key}
                 value={key}
-                className={cn(key === activeTab && '!bg-primary !text-white')}
-                onClick={() => setActiveTab(key)}
+                className={cn(
+                  key === activeTab && '!bg-primary !text-white text-xl'
+                )}
+                onClick={() => {
+                  router.push(`/individual-training?tab=${key}`);
+                  setActiveTab(key);
+                }}
               >
                 {key}
               </TabsTrigger>
@@ -147,7 +167,7 @@ export default function IndividualTraining({
               <div className="2xl:grid-cols-5 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid grid-cols-1 gap-5 md:px-10 px-3">
                 {content.map((item) => (
                   <Link
-                    href={'courses/courseDetails/' + item?.url}
+                    href={'courses/course-details/' + item?.url}
                     key={item._id}
                   >
                     <Card className="">
