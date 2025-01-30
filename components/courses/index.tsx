@@ -176,6 +176,7 @@ export default function Courses() {
           <Button
             className="flex gap-x-2 items-center border-primary text-primary hover:bg-primary hover:text-primary-foreground"
             variant={'outline'}
+            size={'sm'}
           >
             Courses <FaAngleDown />
           </Button>

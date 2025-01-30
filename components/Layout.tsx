@@ -208,7 +208,7 @@ const Layout = ({ children, pageTitle = 'bSkilling' }: Props) => {
           <>
             <NavSection />
             <div className="bg-card  sticky top-0 z-50">
-              <nav className="py-2 h-[70px] 2xl:px-14 md:px-5 px-3  w-full m-auto    font-SourceSans p-0  flex flex-row items-center justify-between gap-x-5  text-foreground  ">
+              <nav className="py-2 h-[70px] 2xl:px-14 md:px-5 px-3  w-full m-auto     p-0  flex flex-row items-center justify-between gap-x-5  text-foreground  ">
                 <div className="flex 2xl:gap-x-10 gap-x-5 items-center">
                   <div className="flex items-center gap-5 ">
                     <Link href={'/'}>
@@ -223,7 +223,7 @@ const Layout = ({ children, pageTitle = 'bSkilling' }: Props) => {
                   <div className="relative">
                     <input
                       type="text"
-                      className="w-full  text-[14px] h-10 md:w-[20vw]  border rounded-full bg-primary/10   px-5 pl-8 outline-none focus:outline-none"
+                      className="w-[30vw]  text-[14px] h-10 md:w-[15vw]  2xl:w-[20vw]  border rounded-full bg-primary/10   px-5 pl-8 outline-none focus:outline-none"
                       placeholder="Search for the course or skills"
                       required
                       value={inputValue}
