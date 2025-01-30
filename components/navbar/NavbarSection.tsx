@@ -233,15 +233,16 @@ export default function NavbarSection() {
                 <div className="flex flex-col gap-y-3">
                   <p> Options</p>
                   {/* <DropdownMenuSeparator /> */}
-                  <div
-                    className="text-foreground inline-flex gap-x-2 cursor-pointer items-center"
-                    onClick={() => {
-                      setCollege((prev) => !prev);
-                    }}
+                  <Link
+                    href={'https://sfjbs.talentrecruit.com/career-page'}
+                    target="_blank"
                   >
-                    <IoSchool size={20} className="mx-2" />
-                    <p>Career</p>
-                  </div>
+                    {' '}
+                    <div className="text-foreground inline-flex gap-x-2 cursor-pointer items-center">
+                      <IoSchool size={20} className="mx-2" />
+                      <p>Career</p>
+                    </div>
+                  </Link>
                 </div>
               </PopoverContent>
             </Popover>
@@ -254,7 +255,7 @@ export default function NavbarSection() {
             )}
           >
             <Link
-              href={'https://lms.bskilling.com/login/index.php'}
+              href={'https://lms.bskilling.com/login/signup.php?'}
               className="text-sm"
             >
               Sign Up

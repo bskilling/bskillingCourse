@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { motion } from 'framer-motion';
 import React, { useEffect, useState } from 'react';
 import {
@@ -7,7 +8,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
-
+import Autoplay from 'embla-carousel-autoplay';
 // const Slider = () => {
 //   const [currentImage, setCurrentImage] = useState(0);
 //   const images = [
@@ -161,9 +162,17 @@ import {
 // };
 
 const Slider = () => {
+  const plugin = React.useRef(
+    Autoplay({ delay: 2000, stopOnInteraction: true })
+  );
   return (
     <>
-      <Carousel className=" w-[100vw] bg-gray-300">
+      <Carousel
+        className=" w-[100vw] bg-gray-300"
+        plugins={[plugin.current]}
+        onMouseEnter={plugin.current.stop}
+        onMouseLeave={plugin.current.reset}
+      >
         <CarouselContent>
           <CarouselItem>
             <img
