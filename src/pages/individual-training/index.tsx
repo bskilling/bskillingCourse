@@ -136,17 +136,20 @@ export default function IndividualTraining({
         </nav>
       </div>
       <div className="pb-20 w-[80vw] m-auto">
+        <h2 className="text-4xl font-bold mt-10">All Courses</h2>
         <Tabs
           defaultValue="Artificial intelligence"
-          className="w-full md:mt-10 mt-5 "
+          className="w-full md:mt-10 mt-5 px-0 md:px-0"
         >
-          <TabsList className="m-auto  w-full flex flex-wrap bg-transparent gap-x-6 gap-y-3">
+          <TabsList className="  md:w-[50vw] w-full flex flex-wrap bg-transparent justify-start gap-x-6 gap-y-3 px-0">
             {Object.entries(groupedItems).map(([key]) => (
               <TabsTrigger
                 key={key}
                 value={key}
                 className={cn(
-                  key === activeTab && '!bg-primary !text-white text-xl'
+                  'text-lg',
+                  key === activeTab &&
+                    '!bg-primary !text-white rounded-none !text-xl'
                 )}
                 onClick={() => {
                   router.push(`/individual-training?tab=${key}`);
@@ -162,26 +165,26 @@ export default function IndividualTraining({
             <TabsContent
               key={key}
               value={key}
-              className="w-full md:mt-16 mt-36"
+              className="w-full md:mt-36 mt-36"
             >
-              <div className="2xl:grid-cols-5 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid grid-cols-1 gap-5 md:px-10 px-3">
+              <div className="2xl:grid-cols-5 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid grid-cols-1 gap-5 ">
                 {content.map((item) => (
                   <Link
                     href={'courses/course-details/' + item?.url}
                     key={item._id}
                   >
-                    <Card className="">
-                      <CardHeader>
+                    <Card className="rounded-none h-[300px] flex flex-col">
+                      <CardHeader className="p-0">
                         <img
                           src={item.preview_image_uri}
                           alt=""
                           className="h-40 w-full object-cover"
                         />
                       </CardHeader>
-                      <CardContent>
+                      <CardContent className="p-0 px-2 pt-1">
                         <ShowMoreText text={item.title} />
                       </CardContent>
-                      <CardFooter className="justify-between">
+                      <CardFooter className="justify-between p-0 px-2 py-2 mt-auto">
                         <p className="font-semibold"> ₹ {item?.price}</p>
                         <Button>Enroll Now</Button>
                       </CardFooter>

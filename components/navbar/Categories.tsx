@@ -49,68 +49,85 @@ export default function Categories() {
   if (isLoading) return <CategorySkelton />;
 
   return (
-    <div className="flex items-center justify-between gap-x-4 2xl:px-14 px-5 py-5 bg-muted">
-      <div className="w-full flex items-center  gap-x-10">
-        {visibleItems.map((key) => (
-          <Link
-            key={key}
-            href={`/individual-training?tab=${key}`}
-            className="text-sm"
-          >
-            {key}
-          </Link>
-        ))}
-        {hiddenItems?.length > 0 && (
-          <Popover>
-            <PopoverTrigger>
-              <RxHamburgerMenu size={20} />
-            </PopoverTrigger>
-            <PopoverContent className="flex flex-col gap-y-4">
-              {hiddenItems.map((key) => (
-                <Link
-                  key={key}
-                  href={`/individual-training?tab=${key}`}
-                  className="text-sm"
-                >
-                  {key}
-                </Link>
-              ))}
-            </PopoverContent>
-          </Popover>
-        )}
+    <>
+      <div className="md:hidden flex items-center justify-between gap-x-4 overflow-x-auto w-[100vw] p-2">
+        {data &&
+          Object.entries(data).map(([key, value]) => (
+            <Link
+              href={`/individual-training?tab=${key}`}
+              key={key}
+              className="text-xs w-full whitespace-nowrap"
+            >
+              {key}
+            </Link>
+          ))}
       </div>
-      {/* <Popover>
-        <PopoverTrigger className=" md:flex ">
-          {' '}
-          <div className="flex gap-x-2 items-center  font-medium">
-            Courses <FaAngleDown />
-          </div>
-        </PopoverTrigger>
-        <PopoverContent className=" 2xl:w-[800px] md:w-[600px] w-[95vw] flex m-auto md:ml-10  mt-3 max-h-[600px] ">
-          <div className="flex flex-col gap-y-5">
-            {data &&
-              Object.entries(data).map(([key, value]) => (
-                <p key={key} className="text-sm">
-                  {key}
-                </p>
-              ))}
-          </div>{' '}
-          <div className="border-l pl-3 flex flex-col gap-y-5 ml-2">
-            {data &&
-              data[currentCat].map((content, key) => (
-                <div key={key} className="w-full text-sm">
+      <div className="hidden md:flex items-center justify-between gap-x-4 2xl:px-14 px-5 py-1 bg-muted">
+        <Popover>
+          <PopoverTrigger className="">
+            {' '}
+            <div className="   font-medium flex flex-col justify-start items-start">
+              <p className="text-sm font-normal">All</p>
+              <p className="inline-flex gap-x-2 items-center">
+                Courses <FaAngleDown />
+              </p>
+            </div>
+          </PopoverTrigger>
+          <PopoverContent className=" 2xl:w-[800px] md:w-[600px] w-[95vw] flex m-auto md:ml-10  mt-3 max-h-[600px] ">
+            <div className="flex flex-col gap-y-5">
+              {data &&
+                Object.entries(data).map(([key, value]) => (
+                  <p key={key} className="text-sm">
+                    {key}
+                  </p>
+                ))}
+            </div>{' '}
+            <div className="border-l pl-3 flex flex-col gap-y-5 ml-2">
+              {data &&
+                data[currentCat].map((content, key) => (
+                  <div key={key} className="w-full text-sm">
+                    <Link
+                      href={'courses/course-details/' + content?.url}
+                      key={content._id}
+                    >
+                      <p>{content?.title}</p>
+                    </Link>
+                  </div>
+                ))}
+            </div>
+          </PopoverContent>
+        </Popover>
+        <div className="w-full flex items-center  justify-end gap-x-10">
+          {visibleItems.map((key) => (
+            <Link
+              key={key}
+              href={`/individual-training?tab=${key}`}
+              className="text-sm text-muted-foreground"
+            >
+              {key}
+            </Link>
+          ))}
+          {hiddenItems?.length > 0 && (
+            <Popover>
+              <PopoverTrigger>
+                <RxHamburgerMenu size={20} />
+              </PopoverTrigger>
+              <PopoverContent className="flex flex-col gap-y-4">
+                {hiddenItems.map((key) => (
                   <Link
-                    href={'courses/course-details/' + content?.url}
-                    key={content._id}
+                    key={key}
+                    href={`/individual-training?tab=${key}`}
+                    className="text-sm"
                   >
-                    <p>{content?.title}</p>
+                    {key}
                   </Link>
-                </div>
-              ))}
-          </div>
-        </PopoverContent>
-      </Popover> */}
-    </div>
+                ))}
+              </PopoverContent>
+            </Popover>
+          )}
+        </div>
+      </div>
+    </>
   );
 }
 

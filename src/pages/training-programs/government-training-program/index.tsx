@@ -35,10 +35,10 @@ const ties = [
   },
   {
     id: 3,
-    name: 'NASSCOM',
+    name: 'Future Skills',
     description:
       'A premier trade body and chamber of commerce for the tech industry, driving innovation, policy advocacy, and skill development to foster India’s digital transformation.',
-    img: '/new-images/nasscom1.png', // Add the image URL when ready
+    img: '/new-images/future-skills.png', // Add the image URL when ready
     link: `/training-programs/government-training-program/nasscom`,
   },
   {
@@ -147,7 +147,7 @@ export default function GovernmentTrainingProgram() {
             {ties.map((tie) => (
               <Card
                 key={tie.id}
-                className="hover:bg-gradient-to-r group hover:bg-green-500 hover:text-blue-950"
+                className="hover:bg-gradient-to-r group "
                 role="button"
                 onClick={() => {
                   router.push(tie.link);
@@ -158,14 +158,14 @@ export default function GovernmentTrainingProgram() {
                     src={tie.img}
                     alt={tie.name}
                     className={cn(
-                      ' p-3 object-cover m-auto h-40',
-                      tie.id === 4 && 'xl:h-28 md:24'
+                      ' p-3 object-cover m-auto h-40 ',
+                      tie.id === 4 && 'xl:h-28'
                     )}
                   />
                 </CardHeader>
                 <CardContent className="mt-5 ">
                   <p className="text-xl font-bold">{tie.name}</p>
-                  <p className="inline-flex gap-x-2 mt-5 group-hover:text-white">
+                  <p className="inline-flex gap-x-2 mt-5">
                     {' '}
                     <span>
                       <BsCircleFill className="text-primary w-3 mt-1" />
