@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import {
@@ -11,7 +12,17 @@ import Link from 'next/link';
 import React, { useEffect, useMemo, useState } from 'react';
 import { FaAngleDown } from 'react-icons/fa';
 import { RxHamburgerMenu } from 'react-icons/rx';
-
+import {
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import { useQuery } from '@tanstack/react-query';
+import { Course } from 'common/util/types';
+import axios from 'axios';
+import { cn } from '@/lib/utils';
 const breakpoints = [
   { width: 1800, items: 14 }, // Ultra-wide screens
   { width: 1600, items: 10 }, // Extra-large screens
@@ -24,6 +35,50 @@ const breakpoints = [
 ];
 
 export default function Categories() {
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [close, setClose] = useState(false);
+
+  const {
+    isLoading: isLoading1,
+    data: data1,
+    error: error1,
+  } = useQuery<Course[] | []>({
+    queryKey: ['courses'],
+    queryFn: async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_TRAINING_BASE_URL}api/v1/get-course-title`
+        );
+
+        const jsonData = response.data;
+        console.log('res', jsonData);
+        const ListOfCoursesData = Object.values(jsonData.courses);
+        console.log('res', ListOfCoursesData);
+        const flattenedData = ListOfCoursesData.flatMap(
+          (innerArray) => innerArray
+        );
+
+        return flattenedData as Course[];
+      } catch (error) {
+        console.error('Error fetching API:', error);
+        return [];
+      }
+    },
+    staleTime: 60 * 60 * 1000,
+  });
+  const handleCategoryHover = (category: any) => {
+    setSelectedCategory(category);
+  };
+
+  const uniqueCategories = Array.from(
+    new Set(data1?.map((course) => course.category))
+  );
+  const filteredCourses = uniqueCategories.flatMap((category) =>
+    selectedCategory === category
+      ? data1?.filter((course) => course.category === category)
+      : []
+  );
+
   const { data, isLoading, error } = usePrograms();
   const [currentCat, setCurrentCat] = useState('Artificial intelligence');
   const [windowWidth, setWindowWidth] = useState<number>(
@@ -73,6 +128,78 @@ export default function Categories() {
               </p>
             </div>
           </PopoverTrigger>
+          <PopoverContent className=" w-[55vw] m-auto ml-3 max-h-[600px] ">
+            {' '}
+            <div className="flex text-sm font-normal">
+              <div
+                className="w-1/4 p-4  h-[570px]  overflow-y-auto"
+                //   onMouseEnter={() => setSelectedCategory(null)}
+              >
+                <div className="text-lg mb-2 font-bold text-black ">
+                  Categories
+                </div>
+                <ul>
+                  {uniqueCategories.map((category, index) => (
+                    <li
+                      key={index}
+                      className={cn(
+                        'p-2  hover:bg-primary hover:text-primary-foreground hover:rounded-[8px] cursor-pointer mt-2',
+                        selectedCategory === category &&
+                          ' bg-primary text-primary-foreground font-semibold shadow-md rounded-[8px]'
+                      )}
+                      onClick={() => handleCategoryHover(category)}
+                    >
+                      {category}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="w-3/4 p-4 max-h-[560px] border-l overflow-y-auto">
+                <div className="text-lg mb-2 font-bold text-customRed">
+                  Courses
+                </div>
+                {filteredCourses?.length > 0 ? (
+                  <div className="grid grid-cols-1 gap-5">
+                    {data &&
+                      filteredCourses &&
+                      filteredCourses?.map((course) => (
+                        <Link
+                          style={{ textDecoration: 'none' }}
+                          href={`/courses/course-details/${course?.url}`}
+                          key={course?._id}
+                        >
+                          <p>{course?.title}</p>
+                        </Link>
+                      ))}
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-1 gap-5">
+                    {data1?.map((course) => (
+                      <Link
+                        style={{ textDecoration: 'none' }}
+                        href={`/courses/course-details/${course?.url}`}
+                        key={course?._id}
+                      >
+                        <p>{course?.title}</p>
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+          </PopoverContent>
+        </Popover>
+
+        {/* <Popover>
+          <PopoverTrigger className="">
+            {' '}
+            <div className="   font-medium flex flex-col justify-start items-start">
+              <p className="text-sm font-normal">All</p>
+              <p className="inline-flex gap-x-2 items-center">
+                Courses <FaAngleDown />
+              </p>
+            </div>
+          </PopoverTrigger>
           <PopoverContent className=" 2xl:w-[800px] md:w-[600px] w-[95vw] flex m-auto md:ml-10  mt-3 max-h-[600px] ">
             <div className="flex flex-col gap-y-5">
               {data &&
@@ -96,7 +223,7 @@ export default function Categories() {
                 ))}
             </div>
           </PopoverContent>
-        </Popover>
+        </Popover> */}
         <div className="w-full flex items-center  justify-end gap-x-10">
           {visibleItems.map((key) => (
             <Link
