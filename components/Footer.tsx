@@ -5,8 +5,8 @@ const Footer = () => {
   return (
     <footer className="sm:mt-10 bg-black text-white">
       <div className="bg-footerBg h-20 w-full"></div>
-      <div className="container mx-auto px-6 lg:px-12 mt-10">
-        <div className="flex flex-wrap gap-0">
+      <div className="container mx-auto px-6 lg:px-6 mt-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
           <div className="w-full mb-6">
             <h5 className="text-lg font-semibold mb-4">CONTACT</h5>
             <p className="text-sm">
@@ -121,7 +121,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="border-t border-borderColor mt-6 pt-6">
+      <div className=" mt-6 pt-6">
         <div className="bg-white w-full">
           <div className="flex flex-col sm:flex-row justify-between items-center px-6 lg:px-16 py-4 max-w-screen-xl mx-auto">
             <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4">
