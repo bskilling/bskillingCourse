@@ -58,7 +58,7 @@ const Program: React.FC = () => {
   return (
     <div className="p-6 max-w-screen-xl mx-auto">
       <h1 className="text-4xl font-bold text-center mb-6">
-        PROFESSIONAL CERTIFICATE PROGRAMS
+        Professional Certification Courses
       </h1>
       <p className="text-xl text-center mb-10 text-subText">
         Transform Your Skills, Transform Your Career!
