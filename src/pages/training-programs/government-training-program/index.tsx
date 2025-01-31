@@ -159,7 +159,8 @@ export default function GovernmentTrainingProgram() {
                     alt={tie.name}
                     className={cn(
                       ' p-3 object-cover m-auto h-40 ',
-                      tie.id === 4 && 'xl:h-28'
+                      tie.id === 4 && 'xl:h-28',
+                      tie.id === 3 && 'xl:h-28'
                     )}
                   />
                 </CardHeader>

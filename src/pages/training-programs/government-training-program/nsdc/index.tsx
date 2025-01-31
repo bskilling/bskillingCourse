@@ -109,7 +109,7 @@ export default function NSDC() {
           <img
             src="/new-images/aa.png"
             alt=""
-            className=" object-cover m-auto xl:w-[80vw] 2xl:w-full  h-auto"
+            className=" object-cover m-auto  2xl:w-full  h-auto"
           />
           {/* <h1 className="absolute top-1/3 left-20 mt-5   text-black text-lg md:text-xl font-bold">
             A massive industry relevant skill enhancement initiative for the
