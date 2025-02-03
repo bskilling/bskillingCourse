@@ -163,7 +163,7 @@ import Autoplay from 'embla-carousel-autoplay';
 
 const Slider = () => {
   const plugin = React.useRef(
-    Autoplay({ delay: 2000, stopOnInteraction: true })
+    Autoplay({ delay: 1000, stopOnInteraction: true })
   );
   return (
     <>
@@ -174,6 +174,13 @@ const Slider = () => {
         onMouseLeave={plugin.current.reset}
       >
         <CarouselContent>
+          <CarouselItem>
+            <img
+              src="/new-images/skill-development.webp"
+              alt=""
+              className=" w-full object-cover"
+            />
+          </CarouselItem>
           <CarouselItem>
             <img
               src="/new-images/govt-training.webp"
@@ -187,13 +194,6 @@ const Slider = () => {
               alt=""
               className=" w-full object-cover"
             />
-          </CarouselItem>
-
-          <CarouselItem>
-            <p>All Courses</p>
-          </CarouselItem>
-          <CarouselItem>
-            <p>Offers</p>
           </CarouselItem>
         </CarouselContent>
         <CarouselPrevious className="absolute left-10 z-30 flex items-center justify-center px-4 cursor-pointer focus:outline-none" />
