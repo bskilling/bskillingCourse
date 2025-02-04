@@ -11,7 +11,7 @@ import {
 } from '@/components/ui/card';
 import { BsCircleFill } from 'react-icons/bs';
 import { useRouter } from 'next/navigation';
-import SVGSpeedometer from '../_components/Circular';
+import SVGSpeedometer from '../training-programs/_components/Circular';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import NavbarSection from 'components/navbar/NavbarSection';
