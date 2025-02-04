@@ -21,6 +21,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
+import Link from 'next/link';
 export default function KSDC() {
   const plugin = React.useRef(
     Autoplay({ delay: 2000, stopOnInteraction: true })
@@ -80,11 +81,13 @@ export default function KSDC() {
             <div className="text-3xl font-bold inline-flex items-center">
               {/* <span className="">b</span>
             <span>Skilling</span> */}
-              <img
-                src="/logo.png"
-                className="object-contain md:w-[150px] md:h-[50px] w-[120] h-[30px]"
-                alt="Logo"
-              />
+              <Link href="/">
+                <img
+                  src="/logo.png"
+                  className="object-contain md:w-[150px] md:h-[50px] w-[120] h-[30px]"
+                  alt="Logo"
+                />
+              </Link>
             </div>
             <NavbarSection />
           </nav>

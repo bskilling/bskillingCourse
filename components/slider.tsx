@@ -176,6 +176,13 @@ const Slider = () => {
         <CarouselContent>
           <CarouselItem>
             <img
+              src="/new-images/offer.webp"
+              alt=""
+              className=" w-full object-cover"
+            />
+          </CarouselItem>
+          <CarouselItem>
+            <img
               src="/new-images/skill-development.webp"
               alt=""
               className=" w-full object-cover"
