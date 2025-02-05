@@ -118,7 +118,7 @@ const menus = [
       },
       {
         name: 'Government Training Program',
-        href: '/training-programs/government-training-program',
+        href: '/government-training-program',
       },
     ],
   },
@@ -160,10 +160,7 @@ export default function NavbarSection() {
           <NavigationMenuItem>
             <div className="text-foreground inline-flex gap-x-2">
               {/* <RiGovernmentFill size={20} className="mx-2" /> */}
-              <Link
-                href={'/training-programs/government-training-program'}
-                className="text-sm"
-              >
+              <Link href={'/government-training-program'} className="text-sm">
                 Government Program
               </Link>
             </div>

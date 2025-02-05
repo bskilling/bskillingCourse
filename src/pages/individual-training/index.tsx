@@ -136,65 +136,49 @@ export default function IndividualTraining({
         </nav>
       </div>
       <div className="pb-20 w-[80vw] m-auto">
-        <h2 className="text-4xl font-bold mt-10">All Courses</h2>
-        <Tabs
-          defaultValue="Artificial intelligence"
-          className="w-full md:mt-10 mt-5 px-0 md:px-0"
-        >
-          <TabsList className="  md:w-[50vw] w-full flex flex-wrap bg-transparent justify-start gap-x-6 gap-y-3 px-0">
-            {Object.entries(groupedItems).map(([key]) => (
-              <TabsTrigger
-                key={key}
-                value={key}
-                className={cn(
-                  'text-lg',
-                  key === activeTab &&
-                    '!bg-primary !text-white rounded-none !text-xl'
-                )}
-                onClick={() => {
-                  router.push(`/individual-training?tab=${key}`);
-                  setActiveTab(key);
-                }}
-              >
-                {key}
-              </TabsTrigger>
-            ))}
-          </TabsList>
-
-          {Object.entries(groupedItems).map(([key, content]) => (
-            <TabsContent
+        <h2 className="text-4xl font-bold mt-10 text-primary">All Courses</h2>
+        <p className="my-5">
+          100+ Live online courses chosen by 10000+ working professionals,
+          students and entrepreneurs
+        </p>
+        <div className="flex flex-wrap gap-5">
+          {Object.entries(groupedItems).map(([key]) => (
+            <Button
               key={key}
-              value={key}
-              className="w-full md:mt-36 mt-36"
+              variant={key === activeTab ? 'default' : 'outline'}
+              className="p-8 text-xl font-semibold"
+              onClick={() => {
+                router.push(`/individual-training?tab=${key}`);
+                setActiveTab(key);
+              }}
             >
-              <div className="2xl:grid-cols-5 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid grid-cols-1 gap-5 ">
-                {content.map((item) => (
-                  <Link
-                    href={'courses/course-details/' + item?.url}
-                    key={item._id}
-                  >
-                    <Card className="rounded-none h-[300px] flex flex-col">
-                      <CardHeader className="p-0">
-                        <img
-                          src={item.preview_image_uri}
-                          alt=""
-                          className="h-40 w-full object-cover"
-                        />
-                      </CardHeader>
-                      <CardContent className="p-0 px-2 pt-1">
-                        <ShowMoreText text={item.title} />
-                      </CardContent>
-                      <CardFooter className="justify-between p-0 px-2 py-2 mt-auto">
-                        <p className="font-semibold"> ₹ {item?.price}</p>
-                        <Button>Enroll Now</Button>
-                      </CardFooter>
-                    </Card>
-                  </Link>
-                ))}
-              </div>
-            </TabsContent>
+              {key}
+            </Button>
           ))}
-        </Tabs>
+        </div>
+
+        <div className="2xl:grid-cols-5 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid grid-cols-1 gap-5 mt-10">
+          {groupedItems[activeTab as string]?.map((item) => (
+            <Link href={'courses/course-details/' + item?.url} key={item._id}>
+              <Card className="rounded-none h-[300px] flex flex-col">
+                <CardHeader className="p-0">
+                  <img
+                    src={item.preview_image_uri}
+                    alt=""
+                    className="h-40 w-full object-cover"
+                  />
+                </CardHeader>
+                <CardContent className="p-0 px-2 pt-1">
+                  <ShowMoreText text={item.title} />
+                </CardContent>
+                <CardFooter className="justify-between p-0 px-2 py-2 mt-auto">
+                  <p className="font-semibold"> ₹ {item?.price}</p>
+                  <Button>Enroll Now</Button>
+                </CardFooter>
+              </Card>
+            </Link>
+          ))}
+        </div>
       </div>
     </>
   );

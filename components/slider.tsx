@@ -163,7 +163,7 @@ import Autoplay from 'embla-carousel-autoplay';
 
 const Slider = () => {
   const plugin = React.useRef(
-    Autoplay({ delay: 1000, stopOnInteraction: true })
+    Autoplay({ delay: 3000, stopOnInteraction: true })
   );
   return (
     <>
