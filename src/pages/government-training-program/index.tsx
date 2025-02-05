@@ -23,7 +23,7 @@ const ties = [
     description:
       'In partnership with bSkilling, we drive impactful programs focused on innovation and skill development.',
     img: '/new-images/ksdc.png', // Add the image URL when ready
-    link: `/training-programs/government-training-program/ksdc`,
+    link: `/government-training-program/karnataka-skill-development-corporation`,
   },
   {
     id: 2,
@@ -31,7 +31,7 @@ const ties = [
     description:
       'A transformative initiative aimed at empowering youth with industry-relevant skills, career guidance, and opportunities, shaping the leaders of tomorrow.',
     img: '/new-images/naan-logo.png',
-    link: `/training-programs/government-training-program/naan-mudhalvan`, // Add the image URL when ready
+    link: `/government-training-program/naan-mudhalvan`, // Add the image URL when ready
   },
   {
     id: 3,
@@ -39,7 +39,7 @@ const ties = [
     description:
       'A premier trade body and chamber of commerce for the tech industry, driving innovation, policy advocacy, and skill development to foster India’s digital transformation.',
     img: '/new-images/future-skills.png', // Add the image URL when ready
-    link: `/training-programs/government-training-program/nasscom`,
+    link: `/government-training-program/future-skills`,
   },
   {
     id: 4,
@@ -47,7 +47,7 @@ const ties = [
     description:
       'The National Skill Development Corporation focuses on empowering India’s workforce through skill development initiatives, industry partnerships, and training programs to enhance employability.',
     img: '/new-images/nsdc.png', // Add the image URL when ready
-    link: `/training-programs/government-training-program/nsdc`,
+    link: `/government-training-program/national-skill-development-corporation`,
   },
 ];
 
@@ -134,7 +134,7 @@ export default function GovernmentTrainingProgram() {
         </div>
         <div className="bg-red-400">
           <img
-            src="/new-images/govt.png"
+            src="/new-images/govt.webp"
             alt="asasasasasa"
             className="w-full object-cover"
           />
@@ -147,7 +147,7 @@ export default function GovernmentTrainingProgram() {
             {ties.map((tie) => (
               <Card
                 key={tie.id}
-                className="hover:bg-gradient-to-r group "
+                className=" group  relative"
                 role="button"
                 onClick={() => {
                   router.push(tie.link);
@@ -173,6 +173,11 @@ export default function GovernmentTrainingProgram() {
                     </span>{' '}
                     <span>{tie.description}</span>
                   </p>
+                  <div className="absolute inset-0 bg-black bg-opacity-0 flex items-center justify-center transition-all duration-300 group-hover:bg-opacity-80 group-hover:backdrop-blur-sm">
+                    <span className="text-white text-xl  tracking-wider opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:scale-110 group-hover:animate-pulse">
+                      View Details
+                    </span>
+                  </div>
                 </CardContent>
               </Card>
             ))}
