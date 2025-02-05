@@ -180,7 +180,7 @@ const Layout = ({ children, pageTitle = 'bSkilling' }: Props) => {
 
     if (
       pathname.split('/').includes('ksdc') ||
-      pathname.split('/').includes('training-programs') ||
+      pathname.split('/').includes('government-training-program') ||
       pathname.split('/').includes('individual-training')
     ) {
       return false;
