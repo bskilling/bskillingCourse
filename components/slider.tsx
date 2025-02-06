@@ -9,6 +9,7 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel';
 import Autoplay from 'embla-carousel-autoplay';
+import Link from 'next/link';
 // const Slider = () => {
 //   const [currentImage, setCurrentImage] = useState(0);
 //   const images = [
@@ -175,32 +176,40 @@ const Slider = () => {
       >
         <CarouselContent>
           <CarouselItem>
-            <img
-              src="/new-images/offer.webp"
-              alt=""
-              className=" w-full object-cover"
-            />
+            <Link href="/individual-training">
+              <img
+                src="/new-images/offer.webp"
+                alt=""
+                className=" w-full object-cover"
+              />
+            </Link>
           </CarouselItem>
           <CarouselItem>
-            <img
-              src="/new-images/skill-development.webp"
-              alt=""
-              className=" w-full object-cover"
-            />
+            <Link href="/college-training/skill-assisting-program">
+              <img
+                src="/new-images/skill-development.webp"
+                alt=""
+                className=" w-full object-cover"
+              />
+            </Link>
           </CarouselItem>
           <CarouselItem>
-            <img
-              src="/new-images/govt-training.webp"
-              alt=""
-              className=" w-full object-cover"
-            />
+            <Link href={'/government-training-program'}>
+              <img
+                src="/new-images/govt-training.webp"
+                alt=""
+                className=" w-full object-cover"
+              />
+            </Link>
           </CarouselItem>
           <CarouselItem>
-            <img
-              src="/new-images/corporate.webp"
-              alt=""
-              className=" w-full object-cover"
-            />
+            <Link href={'/government-training-program'}>
+              <img
+                src="/new-images/corporate.webp"
+                alt=""
+                className=" w-full object-cover"
+              />
+            </Link>
           </CarouselItem>
         </CarouselContent>
         <CarouselPrevious className="absolute left-10 z-30 flex items-center justify-center px-4 cursor-pointer focus:outline-none" />

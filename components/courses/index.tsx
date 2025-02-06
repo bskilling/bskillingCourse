@@ -181,11 +181,11 @@ export default function Courses() {
             Courses <FaAngleDown />
           </Button>
         </PopoverTrigger>
-        <PopoverContent className=" w-[85vw] m-auto ml-[7.2vw] mt-3 max-h-[600px] ">
+        <PopoverContent className=" w-[85vw] h-[60vh] m-auto ml-[7.2vw] mt-3 ">
           {' '}
-          <div className="flex text-sm font-normal">
+          <div className="flex text-sm font-normal h-[56vh]">
             <div
-              className="w-1/4 p-4  h-[570px]  overflow-y-auto"
+              className="w-1/4 p-4    overflow-y-auto"
               //   onMouseEnter={() => setSelectedCategory(null)}
             >
               <div className="text-lg mb-2 font-bold text-black ">
@@ -207,7 +207,7 @@ export default function Courses() {
                 ))}
               </ul>
             </div>
-            <div className="w-3/4 p-4 max-h-[560px] border-l overflow-y-auto">
+            <div className="w-3/4 p-4 h-full  border-l overflow-y-auto">
               <div className="text-lg mb-2 font-bold text-customRed">
                 Courses
               </div>
