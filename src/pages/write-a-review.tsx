@@ -1,20 +1,21 @@
-import React, { useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import Head from "next/head";
+import React, { useState } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import Head from 'next/head';
 
 export default function Privacy() {
-  const [name, setName] = useState("");
-  const [linkedin, setLinkedin] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
+  console.log('hellow world');
+  const [name, setName] = useState('');
+  const [linkedin, setLinkedin] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
   const [rating, setRating] = useState(0);
-  const [description, setDescription] = useState("");
+  const [description, setDescription] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
-  const [phoneerror, setphoneError] = useState("");
-  const [ratingerror, setratingError] = useState("");
+  const [phoneerror, setphoneError] = useState('');
+  const [ratingerror, setratingError] = useState('');
 
   const validatePhoneNumber = (phoneNumber: any) => {
     // Regular expression to validate phone number (allows different formats)
@@ -28,17 +29,17 @@ export default function Privacy() {
     e.preventDefault();
     console.log(validatePhoneNumber(phone));
     if (!validatePhoneNumber(phone)) {
-      setphoneError("Invalid phone number");
+      setphoneError('Invalid phone number');
       return true;
     } else {
-      setphoneError("");
+      setphoneError('');
     }
 
     if (rating === 0) {
-      setratingError("Rating is required");
+      setratingError('Rating is required');
       return true;
     } else {
-      setratingError("");
+      setratingError('');
     }
     setLoading(true);
     setError(null);
@@ -60,9 +61,9 @@ export default function Privacy() {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_TRAINING_BASE_URL}api/v1/submit-review`,
         {
-          method: "POST",
+          method: 'POST',
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
           body: JSON.stringify(payload),
         }
@@ -77,27 +78,27 @@ export default function Privacy() {
       // });
 
       if (response.ok) {
-        setName("");
-        setPhone("");
-        setEmail("");
+        setName('');
+        setPhone('');
+        setEmail('');
         setRating(0);
-        setLinkedin("");
-        setDescription("");
+        setLinkedin('');
+        setDescription('');
         // alert("Form submitted successfully!");
         setSuccess(
-          "We have received your information successfully. Our team will review your details and get in touch with you shortly."
+          'We have received your information successfully. Our team will review your details and get in touch with you shortly.'
         );
 
         setTimeout(() => {
-          setSuccess("");
+          setSuccess('');
         }, 5000);
       } else {
         const data = await response.json();
-        setError(data.message || "Failed to send email");
+        setError(data.message || 'Failed to send email');
       }
     } catch (error) {
-      console.error("Failed to submit form:", error);
-      setError("Failed to send email. Please try again later.");
+      console.error('Failed to submit form:', error);
+      setError('Failed to send email. Please try again later.');
     } finally {
       setLoading(false);
     }
@@ -168,7 +169,7 @@ export default function Privacy() {
               className="block w-full border border-gray-300 rounded p-2"
               required
             />
-            {phoneerror && <p style={{ color: "red" }}>{phoneerror}</p>}
+            {phoneerror && <p style={{ color: 'red' }}>{phoneerror}</p>}
           </div>
 
           <div className="mb-4">
@@ -186,7 +187,7 @@ export default function Privacy() {
                   />
                   <span
                     className={`cursor-pointer text-2xl ${
-                      rating >= star ? "text-yellow-500" : "text-gray-300"
+                      rating >= star ? 'text-yellow-500' : 'text-gray-300'
                     }`}
                   >
                     ★
@@ -194,7 +195,7 @@ export default function Privacy() {
                 </label>
               ))}
             </div>
-            {ratingerror && <p style={{ color: "red" }}>{ratingerror}</p>}
+            {ratingerror && <p style={{ color: 'red' }}>{ratingerror}</p>}
           </div>
           <div className="mb-4">
             <label className="block text-sm font-medium mb-1">Linkedin</label>
