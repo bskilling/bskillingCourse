@@ -1,15 +1,8 @@
 import Head from "next/head";
 import React, { useState } from "react";
 import Image from "next/image";
-import RegisterForm from "components/registerForm";
 
 const About = () => {
-  const [registerVisible, setRegisterVisible] = useState(false);
-
-  const clickOnRegister = () => {
-    setRegisterVisible(true);
-  };
-
   return (
     <>
       <Head>
@@ -45,21 +38,6 @@ const About = () => {
         />
       </Head>
 
-      {registerVisible ? (
-        <RegisterForm
-          email="jkdiadihsadsaio"
-          BatchName={[{ name: "batch 1" }]}
-          price={10}
-          course={"rtest"}
-          courseName={"test"}
-        />
-      ) : (
-        <div className="pb-7" onClick={() => clickOnRegister()}>
-          <button className="bg-lightBlue  hover:bg-blue-600 rounded-md text-white px-9 py-2 font-semibold text-xl mt-4">
-            <span>Enrol Me</span>
-          </button>
-        </div>
-      )}
       <section className=" bg-buttonBlue">
         <div
           className="md:container  py-8 md:mx-auto

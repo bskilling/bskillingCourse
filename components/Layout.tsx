@@ -1,139 +1,113 @@
-import Head from "next/head";
-import { ReactNode, useContext, useEffect, useState } from "react";
-import { BiMenu, BiSearchAlt } from "react-icons/bi";
-import { SlArrowDown } from "react-icons/sl";
+/* eslint-disable @next/next/no-img-element */
+import Head from 'next/head';
+import Script from 'next/script';
+import {
+  ReactNode,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
+import { BiMenu, BiSearchAlt } from 'react-icons/bi';
+import { SlArrowDown } from 'react-icons/sl';
+import { MyContext } from 'context/PageContext';
+import courseSearchData from 'data/courseSearchData';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import axios from 'axios';
+import { FaBars, FaTimes, FaWhatsapp } from 'react-icons/fa';
+import Footer from './Footer';
+import LandingFooter from './LandingFooter';
+import { Course } from 'common/util/types';
+import PopupForm from './PopupForm';
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuIndicator,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  NavigationMenuViewport,
+} from '@/components/ui/navigation-menu';
+import NavbarSection from './navbar/NavbarSection';
+import Courses from './courses';
+import NavSection from './navbar/NavSection';
+import { usePathname } from 'next/navigation';
+import Categories from './navbar/Categories';
 
-import { MyContext } from "context/PageContext";
-import courseSearchData from "data/courseSearchData";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import axios from "axios";
-import { FaWhatsapp } from "react-icons/fa";
 // import Footer from "./Footer";
 
 type Props = {
   children: ReactNode;
   pageTitle?: string;
 };
-interface SearchCourseArray {
-  category: string;
-  currency: string;
-  description: string;
-  discount: string;
-  duration: string;
-  endorsedBy: string;
-  id: string;
-  language: string;
-  level: string;
-  ownedBy: string;
-  price: number;
-  thumbnail: string;
-  trainingTye: string;
-}
-
-interface ListOfCoursesDataType {
-  category: string;
-  currency: string;
-  description: string;
-  discount: string;
-  duration: string;
-  endorsedBy: string;
-  id: string;
-  language: string;
-  level: string;
-  name: string;
-  ownedBy: string;
-  price: number;
-  thumbnail: string;
-  trainingTye: string;
-}
-
-const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
+const Layout = ({ children, pageTitle = 'bSkilling' }: Props) => {
   const route = useRouter();
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const handleOptionClick = (option: any) => {
+    console.log(`Selected: ${option}`);
+    setIsOpen(false);
+  };
+  const { inputValue, setInputValue, setFetchSearchData } =
+    useContext(MyContext);
   const [aboutUnderline, setAboutUnderline] = useState(false);
   const [blogUnderline, setBlogUnderline] = useState(false);
   const [navHide, setNavHide] = useState(false);
-  const [navbar, setNavbar] = useState(false);
-  const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
-  const [dropSearchData, setDropSearchData] = useState<ListOfCoursesDataType[]>(
-    []
-  );
-  const [selectedCourse, setSelectedCourse] = useState<SearchCourseArray>();
-  const [screenWidth, setScreenWidth] = useState(0);
+  const [dropSearchData, setDropSearchData] = useState<Course[]>([]);
+  const [SearchElementsData, setSearchElementsData] = useState<Course[]>([]);
+  const [isSearchVisible, setIsSearchVisible] = useState(false);
+  const [categories, setCategories] = useState<Course[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
+  const [isCategoryHovered, setIsCategoryHovered] = useState<boolean>(false);
+  const [isPopupOpen, setPopupOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isOtherMenuOpen, setisOtherMenuOpen] = useState(false);
 
-  const [SearchElementsData, setSearchElementsData] = useState<
-    ListOfCoursesDataType[]
-  >([]);
-  const [dropdownOpen, setDropdownOpen] = useState<ListOfCoursesDataType[]>([]);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const handleOpenPopup = () => setPopupOpen(true);
+  const handleClosePopup = () => setPopupOpen(false);
+
+  const homePage = route.pathname === '/';
+
   const fetchApiData = async () => {
     try {
       const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_TRAINING_BASE_URL}/api/outsource/trainingList?tenant=2`
+        `${process.env.NEXT_PUBLIC_TRAINING_BASE_URL}api/v1/get-course-title`
       );
+
       const jsonData = response.data;
-
-      const catagoryList = Object.keys(jsonData.trainings);
-      const ListOfCourcesData = Object.values(jsonData.trainings);
-
-      const flattenedData = ListOfCourcesData.flatMap(
+      console.log('res', jsonData);
+      const ListOfCoursesData = Object.values(jsonData.courses);
+      console.log('res', ListOfCoursesData);
+      const flattenedData = ListOfCoursesData.flatMap(
         (innerArray) => innerArray
       );
 
-      setSearchElementsData(flattenedData as []);
+      setSearchElementsData(flattenedData as Course[]);
     } catch (error) {
-      console.error("Error fetching API:", error);
+      console.error('Error fetching API:', error);
     }
   };
+
   useEffect(() => {
     fetchApiData();
   }, []);
 
-  const {
-    setButtonIndex,
-    buttonIndex,
-    clickOnSearch,
-    setClickOnSearch,
-    currentTab,
-    setCurrentTab,
-
-    inputValue,
-    setInputValue,
-    loadingVisible,
-    setLoadingVisible,
-    searchData,
-    setSearchData,
-    setTabVisible,
-    tabVisible,
-    fetchSearchData,
-    setFetchSearchData,
-    isDropdownOpen,
-    setIsDropdownOpen,
-    setCategoryVisible,
-  } = useContext(MyContext);
-
-  const handleClick = (Course: ListOfCoursesDataType) => {
-    setDropSearchData([]);
-    setDropdownOpen([]);
-    setSelectedCourse(Course);
-    setInputValue("");
-    const url = `/courses/${encodeURIComponent(
-      Course.category
-    )}/${encodeURIComponent(Course.id)}?id=${encodeURIComponent(
-      Course.id
-    )}&category=${encodeURIComponent(Course.category)}`;
-
-    route.push(url);
-  };
-
   useEffect(() => {
-    if (route.pathname === "/about") {
+    if (route.pathname === '/about') {
       setNavHide(true);
       setAboutUnderline(true);
       setBlogUnderline(false);
-    } else if (route.pathname === "/PaymentStatus") {
+    } else if (route.pathname === '/PaymentStatus') {
       setNavHide(false);
-    } else if (route.pathname === "/blogs") {
+    } else if (route.pathname === '/blogs') {
       setBlogUnderline(true);
       setAboutUnderline(false);
     } else {
@@ -150,57 +124,69 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     setInputValue(value);
-    if (value === "") {
+    if (value === '') {
       setDropSearchData([]);
     } else {
       const filteredData = SearchElementsData.filter((course) =>
-        course.name.toLowerCase().includes(value.toLowerCase())
+        course.title.toLowerCase().includes(value.toLowerCase())
       );
 
-      setDropSearchData(filteredData as []);
+      setDropSearchData(filteredData as Course[]);
     }
   };
 
-  const handleSearchClick = () => {
-    // if (selectedCourse?.CourseLink) {
-    //   window.open(selectedCourse.CourseLink, "_blank");
-    // }
-  };
-
-  const clickbackground = () => {
-    setDropSearchData([]);
-  };
-
-  const ClearButtonClick = () => {
-    setLoadingVisible(true);
-    setTimeout(() => {
-      setDropSearchData([]);
-      setInputValue("");
-      setSearchData([]);
-      setTabVisible(true);
-      setClickOnSearch(false);
-      setLoadingVisible(false);
-    }, 1000);
-  };
-  const clickOnMain = () => {
-    setIsDropdownOpen(false);
-    setCategoryVisible(false);
-  };
-
   const handleButtonHover = () => {
-    setDropdownOpen(SearchElementsData);
+    setDropdownOpen(true);
   };
 
   const handleButtonLeave = () => {
-    setDropdownOpen([]);
+    setDropdownOpen(false);
   };
 
-  // console.log("data", SearchElementsData)
+  const toggleSearch = () => {
+    setIsSearchVisible(!isSearchVisible);
+  };
+
+  const handleDropdownHover = useCallback(() => {
+    setDropdownOpen(true);
+  }, []);
+
+  const handleDropdownLeave = useCallback(() => {
+    setDropdownOpen(false);
+  }, []);
+
+  const handleCategoryHover = (category: any) => {
+    setSelectedCategory(category);
+  };
 
   const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
+    setIsMenuOpen(!isMenuOpen);
+  };
+  const toggleMenuotherpages = () => {
+    setisOtherMenuOpen(!isOtherMenuOpen);
   };
 
+  const uniqueCategories = Array.from(
+    new Set(SearchElementsData.map((course) => course.category))
+  );
+  const filteredCourses = uniqueCategories.flatMap((category) =>
+    selectedCategory === category
+      ? SearchElementsData.filter((course) => course.category === category)
+      : []
+  );
+  const pathname = usePathname();
+  const isVisible = useMemo(() => {
+    let exist = true;
+
+    if (
+      pathname.split('/').includes('ksdc') ||
+      pathname.split('/').includes('government-training-program') ||
+      pathname.split('/').includes('individual-training')
+    ) {
+      return false;
+    }
+    return exist;
+  }, [pathname]);
   return (
     <>
       <Head>
@@ -208,497 +194,479 @@ const Layout = ({ children, pageTitle = "bSkilling" }: Props) => {
         <meta name="bSkilling" content="bSkilling" />
         <link rel="icon" href="/logo.png" />
       </Head>
+      <Script
+        id="razorpay-checkout-js"
+        src="https://checkout.razorpay.com/v1/checkout.js"
+      />
 
-      {/* <header className="bg-white md:h-[70px]">
-        <nav className="flex justify-between items-center w-[92%]  mx-auto">
-          <div className="flex md:gap-5  md:flex-row  items-center justify-center md:ml-10 ">
-            <div>
-              <Link href={"/"}>
-                <img
-                  src="/logo.png"
-                  className="object-contain lg:w-[200px] md:my-0 my-5 h-[50px]"
-                  alt=""
-                />
-              </Link>
-            </div>
+      <>
+        {/* <NavSection /> */}
 
-            <div className="relative">
-              <div className="md:mt-0 mt-3">
-                <button
-                  className="bg-gray text-black px-4 py-2 rounded-md flex items-center hover:bg-subText"
-                  onMouseEnter={handleButtonHover}
-                  onMouseLeave={handleButtonLeave}
-                >
-                  <span className="text-[15px] font-semibold">Courses</span>
-                  <span className="ml-2"><SlArrowDown className="w-3 h-2" /></span>
-                </button>
-              </div>
-              {dropdownOpen && (
-                <div
-                  style={{ maxHeight: "500px", overflowY: "auto", width: "600px" }}
-                  className="absolute top-7 z-[5000] w-full bg-white rounded-lg shadow-lg mt-2"
-                  onMouseEnter={handleButtonHover}
-                  onMouseLeave={handleButtonLeave}
-                >
-                  {dropdownOpen.map((course, index) => (
-                    <div
-                      key={course.id + index}
-                      className="p-2 hover:bg-buttonBlue px-5 hover:text-white cursor-pointer"
-                      onClick={() => handleClick(course)}
-                    >
-                      {course.name}
-                    </div>
-                  ))}
+        {/* <hr className="border-gray-300" /> */}
+
+        {navHide && isVisible && (
+          <>
+            <NavSection />
+            <div className="bg-card  sticky top-0 z-50">
+              <nav className="py-2 h-[70px] 2xl:px-14 md:px-5 px-3  w-full m-auto     p-0  flex flex-row items-center justify-between gap-x-5  text-foreground  ">
+                <div className="flex 2xl:gap-x-10 gap-x-5 items-center">
+                  <div className="flex items-center gap-5 ">
+                    <Link href={'/'}>
+                      <img
+                        src="/logo.png"
+                        className="object-contain md:w-[130px] md:h-[50px] w-[120] h-[30px]"
+                        alt="Logo"
+                      />
+                    </Link>
+                  </div>
+                  <Courses />
+                  <div className="relative">
+                    <input
+                      type="text"
+                      className="w-[30vw]  text-[14px] h-10 md:w-[15vw]  2xl:w-[20vw]  border rounded-full bg-primary/10   px-5 pl-8 outline-none focus:outline-none"
+                      placeholder="Search for the course or skills"
+                      required
+                      value={inputValue}
+                      onChange={handleSearch}
+                    />
+                    <BiSearchAlt className=" absolute top-3 left-3 text-primary" />
+                    {dropSearchData.length > 0 && (
+                      <div
+                        style={{ maxHeight: '500px', overflowY: 'auto' }}
+                        className="absolute z-[5000] w-full bg-white rounded-lg shadow-lg mt-12"
+                      >
+                        {dropSearchData.map((course, index) => (
+                          <Link
+                            href={'courses/course-details/' + course?.url}
+                            key={index}
+                          >
+                            <div className="p-2 text-black hover:bg-buttonBlue px-5 hover:text-primary cursor-pointer">
+                              {course.title}
+                            </div>
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 </div>
-              )}
-            </div>
-            <div className="relative font-SourceSans flex justify-end md:w-[500px]">
-              <input
-                type="text"
-                className="md:w-[400px] text-sm rounded-lg border-[1px] bg- border-buttonBlue lg:py-1 lg:mt-[3px] px-5   focus:border-Buttoncolor focus:ring-buttonBlue"
-                placeholder="Enter Course Name"
-                required
-                value={inputValue}
-                onChange={handleSearch}
-              />
-              <div className="absolute right-2 top-2 md:top-3">
-                <BiSearchAlt />
-              </div>
-              {dropSearchData.length > 0 && (
-                <div
-                  style={{ maxHeight: "500px", overflowY: "auto" }}
-                  className="absolute z-[5000] w-full  bg-white rounded-lg shadow-lg md:right-[-50px] mt-10"
-                >
-                  {dropSearchData.map((course, index) => (
-                    <div
-                      key={course.id + index}
-                      className="p-2 hover:bg-buttonBlue  px-5 hover:text-white cursor-pointer"
-                      onClick={() => handleClick(course)}
-                    >
-                      {course.name}
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          </div>
 
-          <div
-            className={`nav-links duration-500 md:static absolute bg-white md:min-h-fit min-h-[60vh] left-0 ${menuOpen ? 'top-[9%]' : 'top-[-100%]'
-              } md:w-auto  w-full flex items-center px-5`}
-          >
-            <ul className="flex md:flex-row flex-col md:items-center md:gap-[4vw] gap-8">
-              <Link style={{ textDecoration: "none" }} href={"/about"}>
-                <li className={`${aboutUnderline === true
-                  ? "text-buttonBlue border-b-2 underline-offset-2"
-                  : "text-black hover:text-darkBlue  no-underline"
-                  }`}
-                >
+                <NavbarSection />
 
-                  {" "}
-                  About
-
-                </li>
-              </Link>
-              <Link style={{ textDecoration: "none" }} href={"/blogs"}>
-                <li className={`${blogUnderline === true
-                  ? "text-buttonBlue border-b-2 underline-offset-2"
-                  : "text-black hover:text-darkBlue  no-underline"
-                  }`}>
-
-                  Solution
-
-                </li>
-              </Link>
-
-              <Link style={{ textDecoration: "none" }} href="https://sfjbs.talentrecruit.com/career-page" target="blank">
-                <li className="text-black hover:text-darkBlue  no-underline">
-                  Careers
-                </li>
-              </Link>
-
-            </ul>
-          </div>
-          <div className="flex items-center gap-6">
-            <button className="bg-[#a6c1ee] text-white px-5 py-2 rounded-full hover:bg-[#87acec]">
-              Sign in
-            </button>
-            <div onClick={toggleMenu} className="text-3xl cursor-pointer md:hidden">
-              
-              {menuOpen ? (
-                <>
-                  <div className="w-2 h-0.5 bg-black transform rotate-45 mb-1"></div>
-                  <div className="w-6 h-0.5 bg-black hidden"></div>
-                  <div className="w-6 h-0.5 bg-black transform -rotate-45"></div>
-                </>
-              ) : (
-                <>
-                  <div className="w-6 h-0.5 bg-black mb-1"></div>
-                  <div className="w-6 h-0.5 bg-black mb-1"></div>
-                  <div className="w-6 h-0.5 bg-black"></div>
-                </>
-              )}
-            </div>
-
-          </div>
-        </nav>
-      </header> */}
-
-      {navHide && (
-        <nav className="md:py-2 md:h-[70px] font-SourceSans  md:p-0 bg-white flex  md:flex-row flex-col md:gap-36 md:justify-between w-full shadow-">
-          <div className="flex md:gap-5 md:flex-row flex-col items-center justify-center md:ml-10">
-            <Link href={"/"}>
-              <img
-                src="/logo.png"
-                className="object-contain lg:w-[200px] md:my-0 my-5 h-[50px]"
-                alt=""
-              />
-            </Link>
-
-            <div className="relative hidden md:block">
-              <div className="md:mt-0 mt-3">
-                <button
-                  className="bg-gray text-black px-4 py-2 rounded-md flex items-center hover:bg-subText"
-                  onMouseEnter={handleButtonHover}
-                  onMouseLeave={handleButtonLeave}
-                >
-                  <span className="text-[18px] font-semibold">Courses</span>
-                  <span className="ml-2">
-                    <SlArrowDown className="w-3 h-2" />
-                  </span>
-                </button>
-              </div>
-              {dropdownOpen && (
-                <div
-                  style={{
-                    maxHeight: "500px",
-                    overflowY: "auto",
-                    width: "600px",
-                  }}
-                  className="absolute top-7 z-[5000] w-full bg-white rounded-lg shadow-lg mt-2"
-                  onMouseEnter={handleButtonHover}
-                  onMouseLeave={handleButtonLeave}
-                >
-                  {dropdownOpen.map((course, index) => (
-                    <div
-                      key={course.id + index}
-                      className="p-2 hover:bg-lightBlue px-5 hover:text-white cursor-pointer"
-                      onClick={() => handleClick(course)}
-                    >
-                      {course.name}
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            <div className="relative font-SourceSans flex justify-end md:w-[360px]">
-              <input
-                type="text"
-                className="md:w-[350px] md:h-[40px] text-sm rounded-lg border-[1px] bg- border-buttonBlue lg:py-1 lg:mt-[3px] px-5 focus:border-Buttoncolor focus:ring-buttonBlue mr-2"
-                placeholder="Enter Course Name"
-                required
-                value={inputValue}
-                onChange={handleSearch}
-              />
-              <div className="absolute right-3 top-2 md:top-3">
-                <BiSearchAlt />
-              </div>
-              {dropSearchData.length > 0 && (
-                <div
-                  style={{ maxHeight: "500px", overflowY: "auto" }}
-                  className="absolute z-[5000] w-full bg-white rounded-lg shadow-lg md:right-[-50px] mt-10"
-                >
-                  {dropSearchData.map((course, index) => (
-                    <div
-                      key={course.id + index}
-                      className="p-2 hover:bg-buttonBlue px-5 hover:text-white cursor-pointer"
-                      onClick={() => handleClick(course)}
-                    >
-                      {course.name}
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          </div>
-
-          <div className="md:mr-6 pb-1 flex font-SourceSans text-sm  justify-center gap-3 md:gap-5 md:my-0 my-5">
-            <div className="flex gap-4 md:gap-5">
-              <div className="mt-3 text-black hover:cursor-pointer font-bold">
-                <Link style={{ textDecoration: "none" }} href={"/about"}>
-                  <p
-                    className={`${
-                      aboutUnderline === true
-                        ? "text-lightBlue border-b-2 underline-offset-2"
-                        : "text-black hover:text-lightBlue  no-underline"
+                {isMenuOpen && (
+                  <div
+                    className={`fixed inset-0 bg-white flex flex-col items-center z-50 overflow-y-auto p-6 transition-transform transform ${
+                      isMenuOpen ? 'translate-x-0' : 'translate-x-full'
                     }`}
                   >
-                    {" "}
-                    About
-                  </p>
-                </Link>
-              </div>
+                    <div className="flex justify-end w-full mb-6">
+                      <FaTimes
+                        onClick={toggleMenu}
+                        className="text-3xl text-gray-600 cursor-pointer hover:text-black transition-colors"
+                      />
+                    </div>
 
-              <div className="mt-3 text-black font-SourceSans hover:cursor-pointer font-bold">
-                <Link style={{ textDecoration: "none" }} href={"/blogs"}>
-                  <p
-                    className={`${
-                      blogUnderline === true
-                        ? "text-lightBlue border-b-2 underline-offset-2"
-                        : "text-black hover:text-lightBlue  no-underline"
-                    }`}
-                  >
-                    Blogs
-                  </p>
-                </Link>
-              </div>
-              <div className="mt-3 text-GreenText font-SourceSans hover:cursor-pointer font-bold">
-                <Link
-                  style={{ textDecoration: "none" }}
-                  href="https://sfjbs.talentrecruit.com/career-page"
-                  target="blank"
-                >
-                  <p className="text-black hover:text-lightBlue  no-underline">
-                    Careers
-                  </p>
-                </Link>
-              </div>
-            </div>
-            <a
-              target="_blank"
-              rel="noreferrer"
-              className="underline-0 md:block hidden"
-              href="https://lms.bskilling.com/login/index.php"
-              style={{ textDecoration: "none" }}
-            >
-              <button className="flex rounded-md gap-1 text-white mt-1 border hover:text-white border-lightBlue transition duration-500 hover:scale-105 ease-out  bg-lightBlue hover:bg-lightBlue py-[8px] focus:ring-1 focus:outline-none focus:ring-buttonBlue font-medium  text-sm px-4 ">
-                <p>Login</p>
-              </button>
-            </a>
-          </div>
-          <div className="mb-4 flex md:hidden justify-center">
-            <div>
-              {" "}
-              <a
-                target="_blank"
-                rel="noreferrer"
-                className="underline-0"
-                href="https://lms.bskilling.com/login/index.php"
-              >
-                <button className="flex gap-1 rounded-md text-white mt-2 border hover:text-white border-lightBlue transition duration-500 hover:scale-105 ease-out  bg-lightBlue hover:bg-lightBlue py-[8px] focus:ring-1 focus:outline-none focus:ring-buttonBlue font-medium  text-sm px-4 ">
-                  <p>Login</p>
-                </button>
-              </a>
-            </div>
-          </div>
-        </nav>
-      )}
+                    <div className="flex flex-col gap-8 w-full">
+                      <Link
+                        href="/"
+                        className="text-black hover:text-blue-500 text-lg font-medium transition-colors"
+                      >
+                        Home
+                      </Link>
+                      <Link
+                        href="/aboutus"
+                        className="text-black hover:text-blue-500 text-lg font-medium transition-colors"
+                      >
+                        About
+                      </Link>
+                      <Link
+                        href="/blogs"
+                        className="text-black hover:text-blue-500 text-lg font-medium transition-colors"
+                      >
+                        Blogs
+                      </Link>
+                      <Link
+                        href="https://sfjbs.talentrecruit.com/career-page"
+                        className="text-black hover:text-blue-500 text-lg font-medium transition-colors"
+                        target="_blank"
+                      >
+                        Careers
+                      </Link>
 
-      <main className=" font-SourceSans font-normal">{children}</main>
-      {/* whatsapp */}
-      <div
-        className="fixed bottom-[2.4rem] right-[6.8rem]"
-        style={{ zIndex: 1000 }}
-      >
-        <a
-          href="https://wa.me/919741104412"
-          target="_blank"
-          rel="noreferrer"
-          className="text-green-500 hover:text-green-700"
-          style={{
-            display: "inline-block",
-            backgroundColor: "green",
-            padding: "10px",
-            borderRadius: "50%",
-            boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.7)", // Optional: Add a subtle shadow
-            transition: "transform 0.3s ease-in-out", // Add a transition for the transform property
-          }}
-          onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.1)")}
-          onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+                      <div className="relative w-full">
+                        <button
+                          className="w-full bg-customRed text-white px-5 py-3 rounded-md flex items-center justify-between hover:bg-subText transition-colors"
+                          onClick={() => setDropdownOpen(!dropdownOpen)}
+                        >
+                          <span className="text-[18px] font-semibold">
+                            Courses
+                          </span>
+                          <SlArrowDown className="ml-2 w-4 h-4" />
+                        </button>
+                        {dropdownOpen && (
+                          <div
+                            className="w-full bg-white rounded-lg shadow-lg mt-2 p-4"
+                            style={{ maxHeight: '300px', overflowY: 'auto' }}
+                          >
+                            <div className="mb-4">
+                              <div className="text-lg mb-3 font-bold text-customRed">
+                                Categories
+                              </div>
+                              <ul>
+                                {uniqueCategories.map((category, index) => (
+                                  <li
+                                    key={index}
+                                    className="p-2 hover:bg-customRed hover:text-white cursor-pointer font-semibold rounded-md transition-colors"
+                                    onMouseEnter={() =>
+                                      handleCategoryHover(category)
+                                    }
+                                  >
+                                    {category}
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                            <div>
+                              <div className="text-lg mb-3 font-bold text-customRed">
+                                Courses
+                              </div>
+                              <ul>
+                                {filteredCourses.map((course) => (
+                                  <Link
+                                    key={course._id}
+                                    href={`/courses/course-details/${course?.url}`}
+                                    style={{ textDecoration: 'none' }}
+                                  >
+                                    <li className="p-2 hover:bg-customRed font-semibold text-gray-800 hover:text-white cursor-pointer rounded-md transition-colors">
+                                      {course.title}
+                                    </li>
+                                  </Link>
+                                ))}
+                              </ul>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+
+                      <div className="flex flex-col gap-4 items-center text-center w-full">
+                        <Link
+                          href="https://lms.bskilling.com/login/index.php"
+                          className="text-white bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-full text-base font-medium transition-colors"
+                        >
+                          Login/Register
+                        </Link>
+
+                        <p
+                          className="text-base text-black cursor-pointer hover:text-blue-500 font-medium transition-colors"
+                          onClick={handleOpenPopup}
+                        >
+                          Become an Instructor
+                        </p>
+                        {isPopupOpen && (
+                          <>
+                            <div
+                              className="fixed inset-0 bg-black opacity-50 z-40"
+                              onClick={handleClosePopup}
+                            ></div>
+                            <div className="fixed inset-0 flex items-center justify-center z-50">
+                              <PopupForm
+                                handleClosePopup={handleClosePopup}
+                                title="Bskilling Enquiry Form"
+                              />
+                            </div>
+                          </>
+                        )}
+                      </div>
+
+                      <div className="flex flex-col items-center gap-2 mt-6">
+                        <p className="flex items-center text-gray-800">
+                          <span className="mr-2">📞</span> +91-9845348601
+                        </p>
+                        <p className="flex items-center text-gray-800">
+                          <span className="mr-2">📧</span> support@bskilling.com
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </nav>
+            </div>
+            <Categories />
+          </>
+        )}
+
+        <main className="">{children}</main>
+        {/* whatsapp */}
+        <div
+          className="fixed bottom-[2.4rem] right-[6.8rem]"
+          style={{ zIndex: 1000 }}
         >
-          <img
-            src="https://www.freeiconspng.com/thumbs/logo-whatsapp-png/get-logo-whatsapp-png-pictures-1.png"
-            className="w-7 h-7"
-            alt="WhatsApp Logo"
-          />
-        </a>
-      </div>
-
-      {/* <Footer/> */}
-      <footer className=" bg-white font-SourceSans  px-10 py-6 md:pt-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 md:flex md:flex-row justify-between items-start">
-          <div className="col-span-2 pb-4 md:pb-0 ">
-            <div className=" p-4 md:p-0 pl-6 ">
-              <p className="font-semibold text-lg pb-2 text-center ">
-                Find us on
-              </p>
-              <div className="grid grid-cols-3 gap- i ">
-                <div>
-                  <a
-                    target="_blank"
-                    rel="noreferrer"
-                    href="https://www.instagram.com/bskillingindia/"
-                  >
-                    {" "}
-                    <img
-                      src="/icon/insta.svg"
-                      className="w-[48px] h-[48px]"
-                      alt=""
-                    />
-                  </a>
-                </div>
-                <div>
-                  <a
-                    target="_blank"
-                    rel="noreferrer"
-                    href="https://www.facebook.com/bskillingindia/"
-                  >
-                    {" "}
-                    <img
-                      src="/icon/facebook.svg"
-                      className="w-[48px] h-[48px]"
-                      alt=""
-                    />
-                  </a>
-                </div>
-
-                <div>
-                  <a
-                    target="_blank"
-                    rel="noreferrer"
-                    href="https://www.linkedin.com/company/bskillingindia/"
-                  >
-                    {" "}
-                    <img
-                      src="/icon/link.svg"
-                      className="w-[48px] h-[48px]"
-                      alt=""
-                    />
-                  </a>
-                </div>
-                <div>
-                  <a
-                    target="_blank"
-                    rel="noreferrer"
-                    href="https://twitter.com/b_SkillingIndia"
-                  >
-                    {" "}
-                    <img
-                      src="/twitter.webp"
-                      className="w-[48px] h-[48px]"
-                      alt=""
-                    />
-                  </a>
-                </div>
-                <div>
-                  <a
-                    target="_blank"
-                    rel="noreferrer"
-                    href="https://www.pinterest.com/bskillingdigital/"
-                  >
-                    {" "}
-                    <img
-                      src="/icon/pin.svg"
-                      className="w-[48px] h-[48px]"
-                      alt=""
-                    />
-                  </a>
-                </div>
-
-                <div>
-                  <a
-                    target="_blank"
-                    rel="noreferrer"
-                    href="https://www.youtube.com/@BSkillingIndia"
-                  >
-                    {" "}
-                    <img
-                      src="/icon/yt.svg"
-                      className="w-[48px] h-[48px]"
-                      alt=""
-                    />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="text-sm col-span-2  p-4 md:p-0 ">
-            <p className="font-semibold text-lg">BSKILLING PRIVATE LIMITED</p>
-            <p className="text-base">Uma Sree Dream World, Unit -2,</p>
-            <p className="text-base">B-Block, 4th Floor, Kudlu Gate,</p>
-            <p className="text-base">Hosur Main Road,</p>
-            <p className="text-base">Bangalore – 560068. Karnataka, INDIA</p>
-          </div>
-          <div className="text-sm cursor-pointer p-4 md:p-0 ">
-            <div>
-              <p className="font-semibold text-lg">Company</p>
-            </div>
-            <Link style={{ textDecoration: "none" }} href={"/about"}>
-              <p className="text-black text-base  no-underline"> About</p>
-            </Link>
-
-            <Link style={{ textDecoration: "none" }} href={"/blogs"}>
-              <p className="text-base text-black">Blogs</p>
-            </Link>
-          </div>
-          <div className="text-sm cursor-pointer  p-4 md:p-0 ">
-            <div>
-              <p className="font-semibold text-lg">Policies </p>
-            </div>
-            <div className=" text-black text-base">
-              <Link
-                style={{ textDecoration: "none" }}
-                className="no-underline text-black"
-                href={"/Termsofuse"}
-              >
-                Terms of Use
-              </Link>
-            </div>
-            <div className="text-black text-base">
-              <Link
-                style={{ textDecoration: "none" }}
-                className="no-underline text-black"
-                href={"/privacy"}
-              >
-                Privacy Policy
-              </Link>
-            </div>
-            <div className="text-black text-base">
-              <Link
-                style={{ textDecoration: "none" }}
-                className="no-underline text-black"
-                href={"/Refundpolicy"}
-              >
-                Refund Policy
-              </Link>
-            </div>
-          </div>
-
-          <div className="text-sm p-4 md:p-0 ">
-            <p className="font-semibold  text-lg">Contact</p>
-            <p className="text-base">
-              Sales Inquiries : <br /> support@bskilling.com / +91-9845348601
-            </p>
-            <p className="text-base">
-              Grievances : <br /> grievanceofficer@bskilling.com / +91 89519
-              23627
-            </p>
-          </div>
-          <div className=" w-[20px] md:block hidden  h-[20px]"></div>
+          <a
+            href="https://wa.me/919741104412"
+            target="_blank"
+            rel="noreferrer"
+            className="text-green-500 hover:text-green-700"
+            style={{
+              display: 'inline-block',
+              backgroundColor: 'green',
+              padding: '10px',
+              borderRadius: '50%',
+              boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.7)',
+              transition: 'transform 0.3s ease-in-out',
+            }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.transform = 'scale(1.1)')
+            }
+            onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+          >
+            <img
+              src="https://www.freeiconspng.com/thumbs/logo-whatsapp-png/get-logo-whatsapp-png-pictures-1.png"
+              className="w-7 h-7"
+              alt="WhatsApp Logo"
+            />
+          </a>
         </div>
-
-        <div className="mx-auto text-left md:text-center text-sm text-zinc-400 pt-4 md:pt-8 md:p-0 p-4 pl-6">
-          <p>BSKILLING PRIVATE LIMITED.</p>
-          <p>
-            Copyright © {currentYear}. All Rights Reserved. Designed by Deedbee
-            Social Ventures.
-          </p>
-        </div>
-      </footer>
-      <div className="h-[50px] w-full"></div>
+        <Footer />
+      </>
     </>
   );
 };
 
 export default Layout;
+
+//**
+// <>
+//   {navHide && (
+//     <div className="bg-white w-full shadow-md ">
+//       <div className="flex justify-between items-center px-8 py-4 max-w-screen-xl mx-auto">
+//         <div className="flex items-center space-x-4">
+//           <Link href="/">
+//             <div>
+//               <img
+//                 src="/logo.png"
+//                 className="w-[100px] h-[30px] object-contain"
+//                 alt="bskilling"
+//               />
+//             </div>
+//           </Link>
+//           <div className="hidden md:block">
+//             <div className="flex items-center space-x-6 border-l border-gray-300 pl-6">
+//               <Link
+//                 href="/"
+//                 className="text-black text-sm hover:text-blue-500 transition-colors duration-300"
+//               >
+//                 HOME
+//               </Link>
+//               <Link
+//                 href="/aboutus"
+//                 className="text-black text-sm hover:text-blue-500 transition-colors duration-300"
+//               >
+//                 ABOUT
+//               </Link>
+//               <Link
+//                 href="/blogs"
+//                 className="text-black text-sm hover:text-blue-500 transition-colors duration-300"
+//               >
+//                 BLOG
+//               </Link>
+//               <Link
+//                 href="https://sfjbs.talentrecruit.com/career-page"
+//                 target="_blank"
+//                 className="text-black text-sm hover:text-blue-500 transition-colors duration-300"
+//               >
+//                 CAREER
+//               </Link>
+//             </div>{' '}
+//           </div>
+//         </div>
+
+//         <div className="md:flex items-center space-x-6  hidden">
+//           <Link href="https://lms.bskilling.com/login/index.php">
+//             <div className="flex items-center space-x-2">
+//               <img
+//                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNzXYh-X4wxX1jfbPywa8HWoNGDnx1Tlo0-g&s"
+//                 alt="Login/Register"
+//                 className="w-6 h-6"
+//               />
+
+//               <p className="text-sm text-black"> Login/Register</p>
+//             </div>
+//           </Link>
+
+//           {/* <div className="flex items-center space-x-2">
+//             <img
+//               src="https://www.shutterstock.com/image-vector/shopping-cart-icon-bag-260nw-1520865410.jpg"
+//               alt="cart"
+//               className="w-6 h-6"
+//             />
+
+//           </div> */}
+//           <div className="relative">
+//             {/* Search Icon */}
+//             {!isSearchVisible && (
+//               <div
+//                 className={`flex items-center space-x-2 cursor-pointer transition-opacity duration-300 ${
+//                   isSearchVisible ? 'opacity-0' : 'opacity-100'
+//                 }`}
+//                 onClick={toggleSearch}
+//               >
+//                 <img
+//                   src="https://cdn0.iconfinder.com/data/icons/art-designing-glyph/2048/1871_-_Magnifier-512.png"
+//                   alt="search"
+//                   className="w-6 h-6"
+//                 />
+//               </div>
+//             )}
+
+//             {/* Search Input */}
+//             {isSearchVisible && (
+//               <div className="flex items-center space-x-2 transition-opacity duration-300 opacity-100">
+//                 <input
+//                   type="text"
+//                   placeholder="Search..."
+//                   className="border rounded px-2 py-1"
+//                   onBlur={() => setIsSearchVisible(false)}
+//                 />
+//               </div>
+//             )}
+//           </div>
+//         </div>
+//         {isOtherMenuOpen && (
+//           <div
+//             className={`fixed inset-0 bg-white flex flex-col items-center z-50 overflow-y-auto p-6 transition-transform transform ${
+//               isOtherMenuOpen ? 'translate-x-0' : 'translate-x-full'
+//             }`}
+//           >
+//             {/* Close Button */}
+//             <div className="flex justify-end w-full mb-6">
+//               <FaTimes
+//                 onClick={toggleMenuotherpages}
+//                 className="text-3xl text-gray-600 cursor-pointer hover:text-black transition-colors"
+//               />
+//             </div>
+
+//             {/* Navigation Links */}
+//             <div className="flex flex-col gap-8 w-full">
+//               <Link
+//                 href="/"
+//                 className="text-black hover:text-blue-500 text-lg font-medium transition-colors"
+//               >
+//                 Home
+//               </Link>
+//               <Link
+//                 href="/aboutus"
+//                 className="text-black hover:text-blue-500 text-lg font-medium transition-colors"
+//               >
+//                 About
+//               </Link>
+//               <Link
+//                 href="/blogs"
+//                 className="text-black hover:text-blue-500 text-lg font-medium transition-colors"
+//               >
+//                 Blogs
+//               </Link>
+//               <Link
+//                 href="https://sfjbs.talentrecruit.com/career-page"
+//                 className="text-black hover:text-blue-500 text-lg font-medium transition-colors"
+//                 target="_blank"
+//               >
+//                 Careers
+//               </Link>
+
+//               {/* Courses Section in Mobile Menu */}
+
+//               {/* Instructor Section */}
+//               <div className="flex flex-col gap-4 items-center text-center w-full">
+//                 <Link
+//                   href="https://lms.bskilling.com/login/index.php"
+//                   className="text-white bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-full text-base font-medium transition-colors"
+//                 >
+//                   Login/Register
+//                 </Link>
+
+//                 <p
+//                   className="text-base text-black cursor-pointer hover:text-blue-500 font-medium transition-colors"
+//                   onClick={handleOpenPopup}
+//                 >
+//                   Become an Instructor
+//                 </p>
+//                 {isPopupOpen && (
+//                   <>
+//                     <div
+//                       className="fixed inset-0 bg-black opacity-50 z-40"
+//                       onClick={handleClosePopup}
+//                     ></div>
+//                     <div className="fixed inset-0 flex items-center justify-center z-50">
+//                       <PopupForm
+//                         handleClosePopup={handleClosePopup}
+//                         title="Bskilling Enquiry Form"
+//                       />
+//                     </div>
+//                   </>
+//                 )}
+//               </div>
+
+//               {/* Contact Section */}
+//               <div className="flex flex-col items-center gap-2 mt-6">
+//                 <p className="flex items-center text-gray-800">
+//                   <span className="mr-2">📞</span> +91-9845348601
+//                 </p>
+//                 <p className="flex items-center text-gray-800">
+//                   <span className="mr-2">📧</span> support@bskilling.com
+//                 </p>
+//               </div>
+//             </div>
+//           </div>
+//         )}
+//         {/* Hamburger Icon for Small Screens */}
+//         <div className="md:hidden flex items-center mr-4">
+//           <FaBars
+//             onClick={toggleMenuotherpages}
+//             className="text-xl cursor-pointer"
+//           />
+//         </div>
+//       </div>
+//     </div>
+//   )}
+
+//   <main className=" font-SourceSans font-normal">{children}</main>
+//   {/* whatsapp */}
+//   <div
+//     className="fixed bottom-[2.4rem] right-[6.8rem]"
+//     style={{ zIndex: 1000 }}
+//   >
+//     <a
+//       href="https://wa.me/919741104412"
+//       target="_blank"
+//       rel="noreferrer"
+//       className="text-green-500 hover:text-green-700"
+//       style={{
+//         display: 'inline-block',
+//         backgroundColor: 'green',
+//         padding: '10px',
+//         borderRadius: '50%',
+//         boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.7)',
+//         transition: 'transform 0.3s ease-in-out',
+//       }}
+//       onMouseEnter={(e) =>
+//         (e.currentTarget.style.transform = 'scale(1.1)')
+//       }
+//       onMouseLeave={(e) =>
+//         (e.currentTarget.style.transform = 'scale(1)')
+//       }
+//     >
+//       <img
+//         src="https://www.freeiconspng.com/thumbs/logo-whatsapp-png/get-logo-whatsapp-png-pictures-1.png"
+//         className="w-7 h-7"
+//         alt="WhatsApp Logo"
+//       />
+//     </a>
+//   </div>
+//   <LandingFooter />
+// </>
+//
+//
+//
+//
+//
+//
+//  */

@@ -52,7 +52,7 @@ const AllCourses = () => {
   const fetchApiData = async () => {
     try {
       const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_TRAINING_BASE_URL}/api/outsource/trainingList?tenant=2`
+        `${process.env.NEXT_PUBLIC_TRAINING_BASE_URL}api/outsource/trainingList?tenant=2`
       );
       const jsonData = response.data;
 

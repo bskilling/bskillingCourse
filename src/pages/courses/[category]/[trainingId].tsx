@@ -110,10 +110,11 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
   };
 
   const generatePDF = async () => {
+    console.log("hiii")
     try {
-      setLoadingVisible(true);
+      setLoadingVisible(true); // Show loading indicator
       const response = await axios.post(
-        "https://32zagdkafwosd2jcq5c7mkerf40ipiry.lambda-url.ap-south-1.on.aws/",
+        "/api/generate-pdf",
         {
           id: props.trainingId,
           title: props.trainingMetadata?.name,
@@ -136,37 +137,42 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
           trainingType: props.trainingMetadata?.trainingType,
           duration: props.trainingMetadata?.duration,
           headLine: props.trainingMetadata?.headLine,
+        },
+        {
+          responseType: 'blob', // Important to handle the binary data
         }
       );
-      console.log("res",response)
-      return response.data.url;
+      console.log("res", response);
+      return response.data; // Return the binary data
     } catch (error) {
       console.error("Error generating PDF:", error);
     } finally {
-      setLoadingVisible(false);
+      setLoadingVisible(false); // Hide loading indicator
     }
   };
 
+  // Function to handle form submission
   const handleFormSubmit = () => {
-    // Your logic after the form is successfully submitted
     console.log("Form submitted successfully!");
-    // For example, you can update state, trigger animations, etc.
   };
 
   const handleGeneratePdf = async () => {
-    const urlPdf = await generatePDF();
-    const fileName = props.trainingMetadata?.name;
-    if (urlPdf && fileName) {
+    console.log("trigger");
+    const pdfBlob = await generatePDF();
+    if (pdfBlob) {
+      const fileName = props.trainingMetadata?.name || 'course';
+      const url = window.URL.createObjectURL(pdfBlob);
       const a = document.createElement("a");
-      a.href = urlPdf;
+      a.href = url;
       a.download = `bSkilling_${fileName}_Brochure.pdf`;
-      a.click();
+      document.body.appendChild(a); // Append anchor to body
+      a.click(); // Trigger download
+      document.body.removeChild(a); // Remove anchor after download
+      window.URL.revokeObjectURL(url); // Free memory
     }
   };
 
-  // useEffect(() => {
-  //   generatePDF();
-  // }, []);
+
   useEffect(() => {
     function handleScroll() {
       const scrollPosition = window.scrollY;
@@ -638,7 +644,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                                 </div>
                               </div>
                             )}
-                            
+
                             <div className="flex px-5 items-center text-black bg-white rounded-md p-2 mb-4 hover:bg-black hover:text-white mr-[4.5rem] lg:mx-0">
                               <button className="font-bold tracking-wide" onClick={handleEnrolpopup}>
                                 Get Certified Now

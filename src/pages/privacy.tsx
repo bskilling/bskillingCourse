@@ -629,6 +629,21 @@ export default function Privacy() {
                 Vishnupriya S Email: grievanceofficer@bskilling.com.
               </p>
             </div>
+            <div className="mt-4 pb-8">
+              <p className="text-xl font-semibold">16. Cookies</p>
+              <p className=" md:ml-6 ">
+                When you voluntarily send us electronic mail / fillup the form,
+                we will keep a record of this information so that we can respond
+                to you. We only collect information from you when you register
+                on our site or fill out a form. Also, when filling out a form on
+                our site, you may be asked to enter your: name, e-mail address
+                or phone number. You may, however, visit our site anonymously.
+                In case you have submitted your personal information and contact
+                details, we reserve the rights to Call, SMS, Email or WhatsApp
+                about our products and offers, even if your number has DND
+                activated on it.
+              </p>
+            </div>
           </div>
         </section>
       </section>
