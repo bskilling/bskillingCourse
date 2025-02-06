@@ -304,11 +304,7 @@ export default function CorporateTraining() {
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <div className=" w-full">
-        <img
-          src="/new-images/corp.png"
-          alt=""
-          className="w-full md:h-[400px]"
-        />
+        <img src="/new-images/corp.webp" alt="" className="w-full" />
       </div>
       <div className="md:w-[80vw] w-full m-auto px-5 md:px-0 pb-10">
         <div className="mt-10">

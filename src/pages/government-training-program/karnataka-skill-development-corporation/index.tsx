@@ -94,14 +94,9 @@ export default function KSDC() {
         </div>
         <div className="relative">
           <img
-            src="/new-images/karnataka.png"
+            src="/new-images/karnataka.webp"
             alt=""
             className=" object-cover w-full"
-          />
-          <img
-            src="/new-images/seal-karnataka.png"
-            alt=""
-            className="2xl:w-40 md:w-24 w-6 object-cover absolute top-2 right-5"
           />
         </div>
         <div className="md:w-[80vw] md:px-0 px-4 w-full m-auto">

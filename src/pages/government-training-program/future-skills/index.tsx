@@ -87,7 +87,7 @@ export default function Nasscom() {
         </div>
         <div className="relative">
           <img
-            src="/new-images/naascom.png"
+            src="/new-images/Nasscom.webp"
             alt=""
             className=" object-cover m-auto xl:w-[80vw] 2xl:w-full  h-auto"
           />
