@@ -107,7 +107,7 @@ export default function NSDC() {
         </div>
         <div className="relative">
           <img
-            src="/new-images/aa.png"
+            src="/new-images/nsdc.webp"
             alt=""
             className=" object-cover m-auto  2xl:w-full  h-auto"
           />

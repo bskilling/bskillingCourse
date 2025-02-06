@@ -90,7 +90,7 @@ export default function NaanMudhalvan() {
           <img
             width={1000}
             height={500}
-            src="/new-images/naan.png"
+            src="/new-images/naan.webp"
             alt=""
             className=" object-cover w-full"
           />
