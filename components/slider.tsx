@@ -203,7 +203,7 @@ const Slider = () => {
             </Link>
           </CarouselItem>
           <CarouselItem>
-            <Link href={'/government-training-program'}>
+            <Link href={'/corporate-training'}>
               <img
                 src="/new-images/corporate.webp"
                 alt=""
