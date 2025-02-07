@@ -2,7 +2,7 @@
 import React from 'react';
 import Head from 'next/head';
 import NavbarSection from 'components/navbar/NavbarSection';
-import { FaCircle } from 'react-icons/fa';
+import { FaCircle, FaHandPointRight } from 'react-icons/fa';
 import {
   Card,
   CardContent,
@@ -526,6 +526,22 @@ export default function KSDC() {
               someone looking to upgrade your skills, KSDC is here to support
               your journey.
             </p>
+          </div>
+
+          <div className="mt-10">
+            <div className="mt-5 flex gap-x-3 items-center justify-center">
+              <FaHandPointRight
+                size={50}
+                className="animate-pulse text-destructive"
+              />
+              Email:
+              <a
+                href="mailto:contact.ksdc@bskilling.com"
+                className="text-primary "
+              >
+                contact.ksdc@bskilling.com
+              </a>
+            </div>
           </div>
         </div>
       </div>
