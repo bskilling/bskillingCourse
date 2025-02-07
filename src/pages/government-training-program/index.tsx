@@ -39,7 +39,7 @@ const ties = [
     description:
       'A premier trade body and chamber of commerce for the tech industry, driving innovation, policy advocacy, and skill development to foster India’s digital transformation.',
     img: '/new-images/future-skills.png', // Add the image URL when ready
-    link: `/government-training-program/future-skills`,
+    link: `/government-training-program/nasscom-future-skills`,
   },
   {
     id: 4,
