@@ -2,7 +2,7 @@
 import React from 'react';
 import Head from 'next/head';
 import NavbarSection from 'components/navbar/NavbarSection';
-import { FaCircle } from 'react-icons/fa';
+import { FaCircle, FaHandPointRight } from 'react-icons/fa';
 import {
   Card,
   CardContent,
@@ -441,6 +441,21 @@ export default function Nasscom() {
                 revolution. Let NASSCOM and bSkilling guide you on your path to
                 success.
               </p>
+            </div>
+          </div>
+          <div className="mt-10">
+            <div className="mt-5 flex gap-x-3 items-center justify-center">
+              <FaHandPointRight
+                size={50}
+                className="animate-pulse text-destructive"
+              />
+              Email:
+              <a
+                href="mailto:contact.nasscom@bskilling.com"
+                className="text-primary "
+              >
+                contact.nasscom@bskilling.com
+              </a>
             </div>
           </div>
         </div>

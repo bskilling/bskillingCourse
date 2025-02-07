@@ -2,7 +2,7 @@
 import React from 'react';
 import Head from 'next/head';
 import NavbarSection from 'components/navbar/NavbarSection';
-import { FaCircle } from 'react-icons/fa';
+import { FaCircle, FaHandPointRight } from 'react-icons/fa';
 import {
   Card,
   CardContent,
@@ -472,6 +472,21 @@ export default function NSDC() {
             <p className="mt-4">
               Take the first step toward a successful career today!
             </p>
+          </div>
+          <div className="mt-10">
+            <div className="mt-5 flex gap-x-3 items-center justify-center">
+              <FaHandPointRight
+                size={50}
+                className="animate-pulse text-destructive"
+              />
+              Email:
+              <a
+                href="mailto:contact.nsdc@bskilling.com"
+                className="text-primary "
+              >
+                contact.nsdc@bskilling.com
+              </a>
+            </div>
           </div>
         </div>
       </div>
