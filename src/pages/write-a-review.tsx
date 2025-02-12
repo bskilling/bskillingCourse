@@ -106,7 +106,7 @@ export default function Privacy() {
   return (
     <>
       <Head>
-        <title>bSkilling Privacy Policy</title>
+        <title>bSkilling Privacy Policy.</title>
         <meta name="bSkilling" content=" Privacy Policy" />
 
         <meta
