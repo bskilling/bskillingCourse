@@ -41,6 +41,15 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover';
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from '@/components/ui/sheet';
+import Cats from './navbar/Cats';
 
 // import Footer from "./Footer";
 
@@ -75,11 +84,18 @@ const Layout = ({ children, pageTitle = 'bSkilling' }: Props) => {
   const [isPopupOpen, setPopupOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isOtherMenuOpen, setisOtherMenuOpen] = useState(false);
+  const pathName = usePathname();
+  const [sheetOpen, setSheetOpen] = useState(false);
 
   const handleOpenPopup = () => setPopupOpen(true);
   const handleClosePopup = () => setPopupOpen(false);
 
   const homePage = route.pathname === '/';
+
+  useEffect(() => {
+    console.log('pathName', pathName);
+    setSheetOpen(false);
+  }, [pathName]);
 
   const fetchApiData = async () => {
     try {
@@ -227,9 +243,8 @@ const Layout = ({ children, pageTitle = 'bSkilling' }: Props) => {
                   </div>
                   <Courses />
                   <div className="relative">
-                    <Popover open={show} onOpenChange={setShow}>
-                      <PopoverTrigger className="relative">
-                        {' '}
+                    <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
+                      <SheetTrigger className="relative">
                         <input
                           type="text"
                           className="w-[30vw]  text-[14px] h-10 md:w-[15vw]  2xl:w-[20vw]  border rounded-full bg-primary/10   px-5 pl-8 outline-none focus:outline-none"
@@ -242,21 +257,41 @@ const Layout = ({ children, pageTitle = 'bSkilling' }: Props) => {
                           }}
                         />
                         <BiSearchAlt className=" absolute top-3 left-3 text-primary" />
-                      </PopoverTrigger>
-                      <PopoverContent className="w-[30vw] max-h-[50vh] overflow-y-auto">
-                        {' '}
-                        {dropSearchData.map((course, index) => (
-                          <Link
-                            href={'courses/course-details/' + course?.url}
-                            key={index}
-                          >
-                            <div className="p-2 text-black hover:bg-buttonBlue px-5 hover:text-primary cursor-pointer">
-                              {course.title}
-                            </div>
-                          </Link>
-                        ))}
-                      </PopoverContent>
-                    </Popover>
+                      </SheetTrigger>
+                      <SheetContent
+                        side={'top'}
+                        className="h-screen overflow-y-auto"
+                      >
+                        <SheetHeader>
+                          <input
+                            type="text"
+                            className="w-[90vw]  text-[14px] h-10  2xl:w-[90vw]  border rounded-full bg-primary/10   px-5 pl-8 outline-none focus:outline-none"
+                            placeholder="Search for the course or skills"
+                            required
+                            value={inputValue}
+                            onChange={(e) => {
+                              handleSearch(e);
+                              setShow(true);
+                            }}
+                          />
+                          <Cats />
+                          <SheetTitle></SheetTitle>
+                          <SheetDescription></SheetDescription>{' '}
+                          {dropSearchData.map((course, index) => (
+                            <Link href={course?.url} key={index}>
+                              <div className="p-2 text-black hover:bg-buttonBlue px-5 hover:text-primary cursor-pointer">
+                                {course.title}
+                              </div>
+                            </Link>
+                          ))}
+                        </SheetHeader>
+                      </SheetContent>
+                    </Sheet>
+
+                    {/* <Popover open={show} onOpenChange={setShow}>
+                      <PopoverTrigger className="relative"> </PopoverTrigger>
+                      <PopoverContent className="w-[30vw] max-h-[50vh] overflow-y-auto"></PopoverContent>
+                    </Popover> */}
                   </div>
                 </div>
 

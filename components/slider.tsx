@@ -180,7 +180,7 @@ const Slider = () => {
               <img
                 src="/new-images/offer.webp"
                 alt=""
-                className=" w-full object-cover"
+                className=" w-full object-cover md:h-auto h-[400px]"
               />
             </Link>
           </CarouselItem>
@@ -189,7 +189,7 @@ const Slider = () => {
               <img
                 src="/new-images/skill-development.webp"
                 alt=""
-                className=" w-full object-cover"
+                className=" w-full object-cover md:h-auto h-[400px]"
               />
             </Link>
           </CarouselItem>
