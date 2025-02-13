@@ -278,14 +278,17 @@ const Layout = ({ children, pageTitle = 'bSkilling' }: Props) => {
                           <SheetTitle></SheetTitle>
                           <SheetDescription></SheetDescription>{' '}
                           {dropSearchData.map((course, index) => (
-                            <Link
-                              href={'courses/course-details/' + course?.url}
+                            <div
                               key={index}
+                              onClick={() => {
+                                route.replace(
+                                  `/courses/course-details/${course?.url}`
+                                );
+                              }}
+                              className="p-2 text-black hover:bg-buttonBlue px-5 hover:text-primary cursor-pointer"
                             >
-                              <div className="p-2 text-black hover:bg-buttonBlue px-5 hover:text-primary cursor-pointer">
-                                {course.title}
-                              </div>
-                            </Link>
+                              {course.title}
+                            </div>
                           ))}
                         </SheetHeader>
                       </SheetContent>
