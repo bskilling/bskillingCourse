@@ -69,46 +69,25 @@ const menus = [
     icon: <BsPersonWorkspace size={20} />,
   },
   {
-    name: 'Jobs',
-    href: '/job-assisting-program',
+    name: 'Government Training Program',
+    href: '/government-training-program',
     icon: <GrWorkshop size={20} />,
   },
   {
-    name: 'Training Programs',
-    type: 'collapse',
-    icon: <BsPersonVideo3 size={20} />,
-    children: [
-      {
-        name: 'Individual Training',
-        href: '/individual-training',
-        icon: <GoPerson size={20} />,
-        type: 'item',
-      },
-      {
-        name: 'Corporate Training',
-        href: '/corporate-training',
-        type: 'item',
-      },
-    ],
-  },
-  {
-    name: 'College Training',
-    type: 'collapse',
+    name: 'Corporate Training Program',
+    href: '/corporate-training',
     icon: <BsBuilding size={20} />,
-    children: [
-      {
-        name: 'Skill Assisting Program',
-        href: '/college-training/skill-assisting-program',
-      },
-      {
-        name: 'Job Assisting Program',
-        href: '/job-assisting-program',
-      },
-      {
-        name: 'Government Training Program',
-        href: '/government-training-program',
-      },
-    ],
+  },
+  // {
+  //   name: 'Jobs',
+  //   href: '/job-assisting-program',
+  //   icon: <GrWorkshop size={20} />,
+  // },
+  {
+    name: 'All Courses',
+    href: '/individual-training',
+    icon: <GoPerson size={20} />,
+    type: 'item',
   },
 ];
 
