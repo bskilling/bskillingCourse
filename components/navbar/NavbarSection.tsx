@@ -1,26 +1,14 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import {
   NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuIndicator,
   NavigationMenuItem,
-  NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
-  NavigationMenuViewport,
-  navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 
-import { MdCorporateFare } from 'react-icons/md';
-import {
-  IoChevronDownSharp,
-  IoHome,
-  IoNewspaper,
-  IoSchool,
-} from 'react-icons/io5';
-import { GrUserWorker, GrWorkshop } from 'react-icons/gr';
+import { IoChevronDownSharp, IoSchool } from 'react-icons/io5';
+import { GrWorkshop } from 'react-icons/gr';
 import {
   BsBuilding,
   BsChatSquareDots,
@@ -35,21 +23,11 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover';
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from '@/components/ui/sheet';
-import { PiNewspaperFill } from 'react-icons/pi';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 
 import { RxHamburgerMenu } from 'react-icons/rx';
-import { icon } from '@fortawesome/fontawesome-svg-core';
 import { IoIosArrowDown, IoIosCall } from 'react-icons/io';
-import { FaProductHunt } from 'react-icons/fa';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { FiFileText } from 'react-icons/fi';
 import { GoPerson } from 'react-icons/go';
 import { buttonVariants } from '@/components/ui/button';
@@ -84,6 +62,16 @@ const menus = [
     name: 'Contact',
     href: '/contact',
     icon: <IoIosCall size={20} />,
+  },
+  {
+    name: 'Skills',
+    href: '/college-training/skill-assisting-program',
+    icon: <BsPersonWorkspace size={20} />,
+  },
+  {
+    name: 'Jobs',
+    href: '/job-assisting-program',
+    icon: <GrWorkshop size={20} />,
   },
   {
     name: 'Training Programs',
@@ -166,46 +154,6 @@ export default function NavbarSection() {
             </div>
           </NavigationMenuItem>
 
-          {/* <NavigationMenuItem>
-            <Link href="/aboutus">
-              <NavigationMenuLink>About</NavigationMenuLink>
-            </Link>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
-            <Link href="/blogs">
-              <NavigationMenuLink>Blogs</NavigationMenuLink>
-            </Link>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
-            <Link href="/reviews">
-              <NavigationMenuLink>Reviews</NavigationMenuLink>
-            </Link>
-          </NavigationMenuItem> */}
-          {/* <NavigationMenuItem>
-            <Link
-              href="https://sfjbs.talentrecruit.com/career-page"  
-              target="_blank"
-            >
-              <NavigationMenuLink
-                className={cn(navigationMenuTriggerStyle(), 'text-foreground')}
-              >
-                Careers
-              </NavigationMenuLink>
-            </Link>
-          </NavigationMenuItem> */}
-
-          {/* <div className="bg-muted rounded-md pl-2 py-2 flex flex-col gap-y-3 text-sm">
-            <div className="text-foreground inline-flex gap-x-2">
-              <GrUserWorker size={20} className="mx-2" />
-              <Link href={'/college-training/skill-assisting-program'}>
-                Skill Assisting Program
-              </Link>
-            </div>
-            <div className="text-foreground inline-flex gap-x-2">
-              <BsPersonWorkspace size={20} className="mx-2" />
-              <Link href={'/college-training'}>Job Assisting Program</Link>
-            </div>
-          </div> */}
           <NavigationMenuItem className="">
             <Link
               href={'/college-training/skill-assisting-program'}
@@ -214,11 +162,6 @@ export default function NavbarSection() {
               Skills
             </Link>
           </NavigationMenuItem>
-          {/* <NavigationMenuItem className="">
-            <Link href={'/college-training'} className="text-sm">
-              Jobs
-            </Link>
-          </NavigationMenuItem> */}
 
           <NavigationMenuItem className="">
             <Popover>
