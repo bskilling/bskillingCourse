@@ -169,7 +169,7 @@ const Slider = () => {
   return (
     <>
       <Carousel
-        className=" w-[100vw] bg-gray-300"
+        className=" w-[100vw] "
         plugins={[plugin.current]}
         onMouseEnter={plugin.current.stop}
         onMouseLeave={plugin.current.reset}
@@ -180,7 +180,7 @@ const Slider = () => {
               <img
                 src="/new-images/offer.webp"
                 alt=""
-                className=" w-full object-cover md:h-auto h-[400px]"
+                className=" w-full object-cover "
               />
             </Link>
           </CarouselItem>
@@ -189,7 +189,7 @@ const Slider = () => {
               <img
                 src="/new-images/skill-development.webp"
                 alt=""
-                className=" w-full object-cover md:h-auto h-[400px]"
+                className=" w-full object-cover "
               />
             </Link>
           </CarouselItem>
