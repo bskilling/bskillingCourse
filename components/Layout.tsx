@@ -202,7 +202,8 @@ const Layout = ({ children, pageTitle = 'bSkilling' }: Props) => {
     if (
       pathname.split('/').includes('ksdc') ||
       pathname.split('/').includes('government-training-program') ||
-      pathname.split('/').includes('individual-training')
+      pathname.split('/').includes('individual-training') ||
+      pathname.split('/').includes('reviews')
     ) {
       return false;
     }
@@ -229,6 +230,7 @@ const Layout = ({ children, pageTitle = 'bSkilling' }: Props) => {
         {navHide && isVisible && (
           <>
             <NavSection />
+            {/* <Link href="/linkedin">Go to Linkedin</Link> */}
             <div className="bg-card  sticky top-0 z-[40]">
               <nav className="py-2 h-[70px] 2xl:px-14 md:px-5 px-3  w-full m-auto     p-0  flex flex-row items-center justify-between gap-x-5  text-foreground  ">
                 <div className="flex 2xl:gap-x-10 gap-x-5 items-center">

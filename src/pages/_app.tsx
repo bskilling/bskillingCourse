@@ -15,6 +15,7 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query';
 import { Toaster } from 'sonner';
+import { SessionProvider } from 'next-auth/react';
 function MyApp({ Component, pageProps }: AppProps) {
   const route = useRouter();
   const [queryClient] = React.useState(() => new QueryClient());
@@ -90,68 +91,69 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, []);
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <HydrationBoundary state={pageProps.dehydratedState}>
-        <MyProvider>
-          <Layout>
-            <Head>
-              <title>bSkilling</title>
-              <meta
-                name="bSkilling"
-                content="bSkilling is a pioneer in technology training and we focus on
+    <SessionProvider session={pageProps.session}>
+      <QueryClientProvider client={queryClient}>
+        <HydrationBoundary state={pageProps.dehydratedState}>
+          <MyProvider>
+            <Layout>
+              <Head>
+                <title>bSkilling</title>
+                <meta
+                  name="bSkilling"
+                  content="bSkilling is a pioneer in technology training and we focus on
                 offering top-notch IT and fintech education and skill
                 development programs. We work hard to help people and
                 organizations with the information and skills necessary to
                 prosper in the quickly changing digital landscape. We aim and
                 deliver excellence in all fields."
-              />
-              <meta
-                name="p:domain_verify"
-                content="7bb84546e514612864b5b9d71d1649e4"
-              />
-              {/* Facebook meta tag */}
-              <meta
-                property="og:title"
-                content="bSkilling | Online Courses - Live Training and Certifications"
-              />
-              <meta
-                property="og:description"
-                content="Unlock success with bSkilling online courses and live training. Get certified in Generative AI, SAP BTP, Cloud Engineering, Prince2, PMP"
-              />
-              <meta
-                property="og:image"
-                content="https://www.bskilling.com/icon/facebook.svg"
-              />
-              <meta property="og:url" content="www.bskilling.com" />
-              {/* facebook meta tag end */}
-              {/* Twitter meta tags start */}
-              <meta
-                name="twitter:title"
-                content="bSkilling | Online Courses - Live Training and Certifications"
-              />
-              <meta
-                name="twitter:description"
-                content="Unlock success with bSkilling online courses and live training. Get certified in Generative AI, SAP BTP, Cloud Engineering, Prince2, PMP"
-              />
-              <meta name="twitter:url" content="www.bskilling.com" />
-              <meta name="twitter:card" content="summary" />
-              {/* Twitter meta tags end */}
-              <meta
-                name="google-site-verification"
-                content="l3AerOmZFQ8qlPqtZ64bYdtXuKO2QrMD_R1jtzpSlVo"
-              />
-              <script
-                dangerouslySetInnerHTML={{
-                  __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                />
+                <meta
+                  name="p:domain_verify"
+                  content="7bb84546e514612864b5b9d71d1649e4"
+                />
+                {/* Facebook meta tag */}
+                <meta
+                  property="og:title"
+                  content="bSkilling | Online Courses - Live Training and Certifications"
+                />
+                <meta
+                  property="og:description"
+                  content="Unlock success with bSkilling online courses and live training. Get certified in Generative AI, SAP BTP, Cloud Engineering, Prince2, PMP"
+                />
+                <meta
+                  property="og:image"
+                  content="https://www.bskilling.com/icon/facebook.svg"
+                />
+                <meta property="og:url" content="www.bskilling.com" />
+                {/* facebook meta tag end */}
+                {/* Twitter meta tags start */}
+                <meta
+                  name="twitter:title"
+                  content="bSkilling | Online Courses - Live Training and Certifications"
+                />
+                <meta
+                  name="twitter:description"
+                  content="Unlock success with bSkilling online courses and live training. Get certified in Generative AI, SAP BTP, Cloud Engineering, Prince2, PMP"
+                />
+                <meta name="twitter:url" content="www.bskilling.com" />
+                <meta name="twitter:card" content="summary" />
+                {/* Twitter meta tags end */}
+                <meta
+                  name="google-site-verification"
+                  content="l3AerOmZFQ8qlPqtZ64bYdtXuKO2QrMD_R1jtzpSlVo"
+                />
+                <script
+                  dangerouslySetInnerHTML={{
+                    __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-5H7RHNRM');`,
-                }}
-              />
-              <link rel="icon" href="/favicon.png" />
-              {/* google tag manager start */}
-              {/*           <script
+                  }}
+                />
+                <link rel="icon" href="/favicon.png" />
+                {/* google tag manager start */}
+                {/*           <script
             async
             src="https://www.googletagmanager.com/gtag/js?id=G-R3LT63CRN0"
           ></script>
@@ -187,14 +189,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           //   ></iframe>
           // </noscript>
           {/* google Tag Manager End */}
-              {/*<!--Start of Tawk.to Script--> */}
-              {/* <script
+                {/*<!--Start of Tawk.to Script--> */}
+                {/* <script
             type="text/javascript"
             dangerouslySetInnerHTML={{
               __html: `window.$zoho=window.$zoho || {};$zoho.salesiq=$zoho.salesiq||{ready:function(){}}</script><script id="zsiqscript" src="https://salesiq.zohopublic.com/widget?wc=siqba043d49321d330a04edd51b439e5f75969a208346e176c79254bd8b093846bc" defer`,
             }}
           /> */}
-              {/* <script
+                {/* <script
             type="text/javascript" 
             dangerouslySetInnerHTML={{
               __html: `var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
@@ -208,12 +210,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               })(); `,
             }}
           /> */}
-              {/*<!--End of Tawk.to Script-->*/}=
-              <script
-                type="text/javascript"
-                id="zsiqchat"
-                dangerouslySetInnerHTML={{
-                  __html: `
+                {/*<!--End of Tawk.to Script-->*/}=
+                <script
+                  type="text/javascript"
+                  id="zsiqchat"
+                  dangerouslySetInnerHTML={{
+                    __html: `
                 var $zoho = $zoho || {};
                 $zoho.salesiq = $zoho.salesiq || {widgetcode: "siqba043d49321d330a04edd51b439e5f75969a208346e176c79254bd8b093846bc", values: {}, ready: function(){}};
                 var d = document;
@@ -227,31 +229,32 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 var styles = document.createElement("style");
                 
               `,
-                }}
-              />
-              <script
-                type="text/javascript"
-                async
-                src="https://crmplus.zoho.com/crm/javascript/zcga.js"
-              ></script>
-            </Head>
-            <>
-              <noscript>
-                <iframe
-                  src="https://www.googletagmanager.com/ns.html?id=GTM-5H7RHNRM"
-                  height="0"
-                  width="0"
-                  style={{ display: 'none', visibility: 'hidden' }}
-                ></iframe>
-              </noscript>
+                  }}
+                />
+                <script
+                  type="text/javascript"
+                  async
+                  src="https://crmplus.zoho.com/crm/javascript/zcga.js"
+                ></script>
+              </Head>
+              <>
+                <noscript>
+                  <iframe
+                    src="https://www.googletagmanager.com/ns.html?id=GTM-5H7RHNRM"
+                    height="0"
+                    width="0"
+                    style={{ display: 'none', visibility: 'hidden' }}
+                  ></iframe>
+                </noscript>
 
-              <Component {...pageProps} />
-              <Toaster />
-            </>
-          </Layout>
-        </MyProvider>
-      </HydrationBoundary>
-    </QueryClientProvider>
+                <Component {...pageProps} />
+                <Toaster />
+              </>
+            </Layout>
+          </MyProvider>
+        </HydrationBoundary>
+      </QueryClientProvider>
+    </SessionProvider>
   );
 }
 

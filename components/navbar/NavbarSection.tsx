@@ -31,6 +31,7 @@ import { usePathname } from 'next/navigation';
 import { FiFileText } from 'react-icons/fi';
 import { GoPerson } from 'react-icons/go';
 import { buttonVariants } from '@/components/ui/button';
+import { FaStar } from 'react-icons/fa';
 
 const menus = [
   {
@@ -161,6 +162,13 @@ export default function NavbarSection() {
                       <IoSchool size={20} className="mx-2" />
                       <p>Career</p>
                     </div>
+                  </Link>
+                  <Link href={'/reviews'}>
+                    {' '}
+                    <div className="text-foreground inline-flex gap-x-2 cursor-pointer items-center">
+                      <FaStar className="mx-2" size={20} />
+                      <p>Review</p>
+                    </div>{' '}
                   </Link>
                 </div>
               </PopoverContent>
