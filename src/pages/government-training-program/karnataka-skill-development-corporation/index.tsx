@@ -80,7 +80,7 @@ export default function KSDC() {
           <nav className="text-[#020b39] bg-white 2xl:w-[80vw] px-5  md:w-[90vw] w-full 2xl:m-auto flex justify-between items-center text-sm font-medium md:py-2  ">
             <div className="text-3xl font-bold inline-flex items-center">
               {/* <span className="">b</span>
-            <span>Skilling</span> */}
+            <span>Skilling</span>  sasas*/}
               <Link href="/">
                 <img
                   src="/logo.png"
