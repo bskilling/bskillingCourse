@@ -90,7 +90,7 @@ export default function NaanMudhalvan() {
           <img
             width={1000}
             height={500}
-            src="/new-images/naan.webp"
+            src="/new-image/naan.webp"
             alt=""
             className=" object-cover w-full"
           />
@@ -196,7 +196,7 @@ export default function NaanMudhalvan() {
               </div>
             </div>
             <div className="md:w-1/2 md:-ml-24 mt-6">
-              <img src="/new-images/holistic.jpg" alt="" className="w-full" />
+              <img src="/new-image/holistic.jpg" alt="" className="w-full" />
             </div>
             <div className="md:hidden">
               <ul className="mt-4  ">
@@ -379,7 +379,7 @@ export default function NaanMudhalvan() {
                       <CardContent className=" justify-center px-0">
                         <div className=" justify-center">
                           <img
-                            src="/new-images/pract.jpg"
+                            src="/new-image/pract.jpg"
                             alt=""
                             className="h-96 object-cover w-full"
                           />
@@ -405,7 +405,7 @@ export default function NaanMudhalvan() {
                     <Card>
                       <CardContent className="px-0">
                         <img
-                          src="/new-images/focused.jpg"
+                          src="/new-image/focused.jpg"
                           alt=""
                           className="h-96 object-cover w-full"
                         />
@@ -591,18 +591,18 @@ export default function NaanMudhalvan() {
             <CarouselContent>
               <CarouselItem className="md:basis-1/3">
                 <img
-                  src="/new-images/gallery/1.jpeg"
+                  src="/new-image/gallery/1.jpeg"
                   alt="naan-mudhalvan gallery"
                 />
               </CarouselItem>
               <CarouselItem className="md:basis-1/3">
-                <img src="/new-images/gallery/2.jpeg" alt="images" />
+                <img src="/new-image/gallery/2.jpeg" alt="images" />
               </CarouselItem>
               <CarouselItem className="md:basis-1/3">
-                <img src="/new-images/gallery/3.jpeg" alt="images" />
+                <img src="/new-image/gallery/3.jpeg" alt="images" />
               </CarouselItem>
               <CarouselItem className="md:basis-1/3">
-                <img src="/new-images/gallery/4.jpeg" alt="images" />
+                <img src="/new-image/gallery/4.jpeg" alt="images" />
               </CarouselItem>
             </CarouselContent>
             <CarouselPrevious className="md:flex hidden" />

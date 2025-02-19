@@ -178,7 +178,7 @@ const Slider = () => {
           <CarouselItem>
             <Link href="/individual-training">
               <img
-                src="/new-images/offer.webp"
+                src="/new-image/offer.webp"
                 alt=""
                 className=" w-full object-cover "
               />
@@ -187,7 +187,7 @@ const Slider = () => {
           <CarouselItem>
             <Link href="/college-training/skill-assisting-program">
               <img
-                src="/new-images/skill-development.webp"
+                src="/new-image/skill-development.webp"
                 alt=""
                 className=" w-full object-cover "
               />
@@ -196,7 +196,7 @@ const Slider = () => {
           <CarouselItem>
             <Link href={'/government-training-program'}>
               <img
-                src="/new-images/govt-training.webp"
+                src="/new-image/govt-training.webp"
                 alt=""
                 className=" w-full object-cover"
               />
@@ -205,7 +205,7 @@ const Slider = () => {
           <CarouselItem>
             <Link href={'/corporate-training'}>
               <img
-                src="/new-images/corporate.webp"
+                src="/new-image/corporate.webp"
                 alt=""
                 className=" w-full object-cover"
               />

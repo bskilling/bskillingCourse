@@ -107,7 +107,7 @@ export default function NSDC() {
         </div>
         <div className="relative">
           <img
-            src="/new-images/nsdc.webp"
+            src="/new-image/nsdc.webp"
             alt=""
             className=" object-cover m-auto  2xl:w-full  h-auto"
           />
@@ -166,7 +166,7 @@ export default function NSDC() {
                 </section>
 
                 <img
-                  src="/new-images/ai.jpg"
+                  src="/new-image/ai.jpg"
                   alt="AI Illustration"
                   className="h-[450px] object-cover w-full rounded-lg"
                 />
@@ -203,7 +203,7 @@ export default function NSDC() {
                 </section>
 
                 <img
-                  src="/new-images/cloud.jpg"
+                  src="/new-image/cloud.jpg"
                   alt=""
                   className="h-[450px] object-cover w-full rounded-lg"
                 />
@@ -295,7 +295,7 @@ export default function NSDC() {
               </div>
             </div>
             <div className="md:w-1/2 md:-ml-24 mt-6">
-              <img src="/new-images/holistic.jpg" alt="" className="w-full" />
+              <img src="/new-image/holistic.jpg" alt="" className="w-full" />
             </div>
             <div className="md:hidden">
               <ul className="mt-4  ">
@@ -387,7 +387,7 @@ export default function NSDC() {
               </CardHeader>
               <CardContent>
                 <img
-                  src="/new-images/students.jpg"
+                  src="/new-image/students.jpg"
                   alt=""
                   className="w-full object-cover h-80"
                 />
@@ -403,7 +403,7 @@ export default function NSDC() {
               </CardHeader>
               <CardContent>
                 <img
-                  src="/new-images/job-seekers.jpg"
+                  src="/new-image/job-seekers.jpg"
                   alt=""
                   className="w-full object-cover md:h-40 xl:h-52 h-80   "
                 />
@@ -419,7 +419,7 @@ export default function NSDC() {
               </CardHeader>
               <CardContent>
                 <img
-                  src="/new-images/tech.jpg"
+                  src="/new-image/tech.jpg"
                   alt=""
                   className="w-full object-cover h-80"
                 />

@@ -304,7 +304,7 @@ export default function CorporateTraining() {
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <div className=" w-full">
-        <img src="/new-images/corp.webp" alt="" className="w-full" />
+        <img src="/new-image/corp.webp" alt="" className="w-full" />
       </div>
       <div className="md:w-[80vw] w-full m-auto px-5 md:px-0 pb-10">
         <div className="mt-10">
@@ -394,35 +394,35 @@ export default function CorporateTraining() {
             <CarouselContent className="items-center">
               <CarouselItem className="text-center md:basis-1/4">
                 <img
-                  src="/new-images/companies/1.png"
+                  src="/new-image/companies/1.png"
                   alt=""
                   className="h-20 m-auto object-cover"
                 />
               </CarouselItem>
               <CarouselItem className="text-center md:basis-1/4">
                 <img
-                  src="/new-images/companies/2.jpg"
+                  src="/new-image/companies/2.jpg"
                   alt=""
                   className="h-20 m-auto object-cover"
                 />
               </CarouselItem>
               <CarouselItem className="text-center md:basis-1/4">
                 <img
-                  src="/new-images/companies/3.png"
+                  src="/new-image/companies/3.png"
                   alt=""
                   className="h-20 m-auto object-cover"
                 />
               </CarouselItem>
               <CarouselItem className="text-center md:basis-1/4">
                 <img
-                  src="/new-images/companies/4.png"
+                  src="/new-image/companies/4.png"
                   alt=""
                   className="h-20 m-auto object-cover"
                 />
               </CarouselItem>
               <CarouselItem className="text-center md:basis-1/4">
                 <img
-                  src="/new-images/companies/5.png"
+                  src="/new-image/companies/5.png"
                   alt=""
                   className="h-20 m-auto object-cover"
                 />
@@ -430,21 +430,21 @@ export default function CorporateTraining() {
 
               <CarouselItem className="text-center md:basis-1/4">
                 <img
-                  src="/new-images/companies/AWS.png"
+                  src="/new-image/companies/AWS.png"
                   alt=""
                   className="h-10 m-auto object-cover"
                 />
               </CarouselItem>
               <CarouselItem className="text-center md:basis-1/4">
                 <img
-                  src="/new-images/companies/micro.png"
+                  src="/new-image/companies/micro.png"
                   alt=""
                   className="h-10 m-auto object-cover"
                 />
               </CarouselItem>
               <CarouselItem className="text-center md:basis-1/4">
                 <img
-                  src="/new-images/companies/company.png"
+                  src="/new-image/companies/company.png"
                   alt="asassasa"
                   className="h-10 m-auto object-cover"
                 />

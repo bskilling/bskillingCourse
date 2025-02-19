@@ -62,7 +62,7 @@ export default function SkillAssistingProgram() {
       </Head>
       <div className="">
         <img
-          src="/new-images/header1.png"
+          src="/new-image/header1.png"
           alt=""
           className="w-full object-cover "
         />
@@ -75,7 +75,7 @@ export default function SkillAssistingProgram() {
         </div>
         <div className="w-1/2  md:h-[400px] h-[200px] relative">
           <img
-            src="/new-images/skill-header.png"
+            src="/new-image/skill-header.png"
             alt=""
             className="w-[500px] object-cover  mt-10 absolute bottom-0 right-0"
           />
@@ -94,7 +94,7 @@ export default function SkillAssistingProgram() {
 
         <div className="flex flex-col md:flex-row mt-5  gap-5 md:mt-10 md:w-[80vw] m-auto">
           {/* <div className="md:w-1/2 bg-green-50">
-            <img src="/new-images/skill11.jpg" alt="imges" />
+            <img src="/new-image/skill11.jpg" alt="imges" />
           </div> */}
           <div className=" md:flex flex-col">
             <h2 className="text-xl font-bold">
@@ -135,7 +135,7 @@ export default function SkillAssistingProgram() {
         <section className="mt-5 md:mt-10 md:flex md:flex-row-reverse items-center  md:px-5 md:w-[80vw] m-auto">
           <div className="md:w-1/2 bg-green-50 flex justify-end">
             <img
-              src="/new-images/skill2.jpg"
+              src="/new-image/skill2.jpg"
               alt="skill222"
               className="object-cover text-right "
             />
@@ -178,7 +178,7 @@ export default function SkillAssistingProgram() {
         {/* Program Overview */}
         <section className="md:mt-0 mt-5 md:flex flex-row items-center md:px-5 md:w-[80vw] m-auto">
           <div className="md:w-1/2">
-            <img src="/new-images/skill3.jpg" alt="" className="object-cover" />
+            <img src="/new-image/skill3.jpg" alt="" className="object-cover" />
           </div>
           <div className="bg-white  md:p-12 md:w-1/2">
             <h2 className="text-2xl md:text-3xl font-bold mb-4 text-gray-800">

@@ -94,7 +94,7 @@ export default function KSDC() {
         </div>
         <div className="relative">
           <img
-            src="/new-images/karnataka.webp"
+            src="/new-image/karnataka.webp"
             alt=""
             className=" object-cover w-full"
           />
@@ -195,7 +195,7 @@ export default function KSDC() {
               </div>
             </div>
             <div className="md:w-1/2 md:-ml-24 mt-6">
-              <img src="/new-images/holistic.jpg" alt="" className="w-full" />
+              <img src="/new-image/holistic.jpg" alt="" className="w-full" />
             </div>
             <div className="md:hidden">
               <ul className="mt-4  ">
@@ -367,7 +367,7 @@ export default function KSDC() {
                       <CardContent className=" justify-center px-0">
                         <div className=" justify-center">
                           <img
-                            src="/new-images/pract.jpg"
+                            src="/new-image/pract.jpg"
                             alt=""
                             className="h-96 object-cover w-full"
                           />
@@ -394,7 +394,7 @@ export default function KSDC() {
                       <CardContent className="px-0">
                         <div>
                           <img
-                            src="/new-images/tech.png"
+                            src="/new-image/tech.png"
                             alt=""
                             className="max-h-96  pl-5 object-cover rounded-md m-auto"
                           />
@@ -417,7 +417,7 @@ export default function KSDC() {
                     <Card>
                       <CardContent className="px-0">
                         <img
-                          src="/new-images/focused.jpg"
+                          src="/new-image/focused.jpg"
                           alt=""
                           className="h-96 object-cover w-full"
                         />

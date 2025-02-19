@@ -87,7 +87,7 @@ export default function Nasscom() {
         </div>
         <div className="relative">
           <img
-            src="/new-images/Nasscom.webp"
+            src="/new-image/Nasscom.webp"
             alt=""
             className=" object-cover m-auto xl:w-[80vw] 2xl:w-full  h-auto"
           />
@@ -165,7 +165,7 @@ export default function Nasscom() {
                     </CardHeader>
                     <CardContent>
                       <img
-                        src="/new-images/ai.jpg"
+                        src="/new-image/ai.jpg"
                         alt=""
                         className="w-full h-80 object-cover"
                       />
@@ -184,7 +184,7 @@ export default function Nasscom() {
                     </CardHeader>
                     <CardContent>
                       <img
-                        src="/new-images/aii.jpg"
+                        src="/new-image/aii.jpg"
                         alt=""
                         className="w-full h-80 object-cover"
                       />
@@ -203,7 +203,7 @@ export default function Nasscom() {
                     </CardHeader>
                     <CardContent>
                       <img
-                        src="/new-images/cloud1.jpg"
+                        src="/new-image/cloud1.jpg"
                         alt=""
                         className="w-full h-80 object-cover"
                       />
@@ -231,7 +231,7 @@ export default function Nasscom() {
                     </CardHeader>
                     <CardContent>
                       <img
-                        src="/new-images/pm.jpg"
+                        src="/new-image/pm.jpg"
                         alt=""
                         className="w-full h-80 object-cover"
                       />
@@ -247,7 +247,7 @@ export default function Nasscom() {
                     </CardHeader>
                     <CardContent>
                       <img
-                        src="/new-images/it.jpg"
+                        src="/new-image/it.jpg"
                         alt=""
                         className="w-full h-80 object-cover"
                       />
@@ -263,7 +263,7 @@ export default function Nasscom() {
                     </CardHeader>
                     <CardContent>
                       <img
-                        src="/new-images/prm.jpg"
+                        src="/new-image/prm.jpg"
                         alt=""
                         className="w-full h-80 object-cover"
                       />
@@ -338,7 +338,7 @@ export default function Nasscom() {
               </CardHeader>
               <CardContent>
                 <img
-                  src="/new-images/students.jpg"
+                  src="/new-image/students.jpg"
                   alt=""
                   className="w-full object-cover h-80"
                 />
@@ -354,7 +354,7 @@ export default function Nasscom() {
               </CardHeader>
               <CardContent>
                 <img
-                  src="/new-images/job-seekers.jpg"
+                  src="/new-image/job-seekers.jpg"
                   alt=""
                   className="w-full object-cover md:h-40 xl:h-52 h-40   "
                 />
@@ -370,7 +370,7 @@ export default function Nasscom() {
               </CardHeader>
               <CardContent>
                 <img
-                  src="/new-images/tech.jpg"
+                  src="/new-image/tech.jpg"
                   alt=""
                   className="w-full object-cover h-80"
                 />

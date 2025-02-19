@@ -134,7 +134,7 @@ export default function GovernmentTrainingProgram() {
         </div>
         <div className="bg-red-400">
           <img
-            src="/new-images/govt.webp"
+            src="/new-image/govt.webp"
             alt="asasasasasa"
             className="w-full object-cover"
           />
