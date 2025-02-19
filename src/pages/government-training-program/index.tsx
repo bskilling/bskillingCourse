@@ -22,7 +22,7 @@ const ties = [
     name: 'Karnataka Skill Development Corporation',
     description:
       'In partnership with bSkilling, we drive impactful programs focused on innovation and skill development.',
-    img: '/new-images/ksdc.png', // Add the image URL when ready
+    img: '/new-image/ksdc.png', // Add the image URL when ready
     link: `/government-training-program/karnataka-skill-development-corporation`,
   },
   {
@@ -30,7 +30,7 @@ const ties = [
     name: 'Naan Mudhalvan',
     description:
       'A transformative initiative aimed at empowering youth with industry-relevant skills, career guidance, and opportunities, shaping the leaders of tomorrow.',
-    img: '/new-images/naan-logo.png',
+    img: '/new-image/naan-logo.png',
     link: `/government-training-program/naan-mudhalvan`, // Add the image URL when ready
   },
   {
@@ -38,7 +38,7 @@ const ties = [
     name: 'Future Skills',
     description:
       'A premier trade body and chamber of commerce for the tech industry, driving innovation, policy advocacy, and skill development to foster India’s digital transformation.',
-    img: '/new-images/future-skills.png', // Add the image URL when ready
+    img: '/new-image/future-skills.png', // Add the image URL when ready
     link: `/government-training-program/nasscom-future-skills`,
   },
   {
@@ -46,7 +46,7 @@ const ties = [
     name: 'NSDC',
     description:
       'The National Skill Development Corporation focuses on empowering India’s workforce through skill development initiatives, industry partnerships, and training programs to enhance employability.',
-    img: '/new-images/nsdc.png', // Add the image URL when ready
+    img: '/new-image/nsdc.png', // Add the image URL when ready
     link: `/government-training-program/national-skill-development-corporation`,
   },
 ];

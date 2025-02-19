@@ -64,7 +64,7 @@ const skillDevelopmentAreas = {
   informationTechnology: {
     title: 'Information Technology (IT)',
     icon: 'it-icon.svg', // Optional icon
-    imageBanner: '/new-images/it-bg.webp', // Optional image banner
+    imageBanner: '/new-image/it-bg.webp', // Optional image banner
     subTitles: [
       'Software Development',
       'Cloud Computing',
@@ -76,7 +76,7 @@ const skillDevelopmentAreas = {
   businessManagement: {
     title: 'Business and Management',
     icon: 'business-icon.svg',
-    imageBanner: '/new-images/bussiness.webp',
+    imageBanner: '/new-image/bussiness.webp',
     subTitles: [
       'Product Management',
       'Project Management (PMP, Agile, Scrum)',
@@ -87,7 +87,7 @@ const skillDevelopmentAreas = {
   retailEcommerce: {
     title: 'Retail and E-commerce',
     icon: 'retail-icon.svg',
-    imageBanner: '/new-images/ecom.webp',
+    imageBanner: '/new-image/ecom.webp',
     subTitles: [
       'Digital Transformation in Retail',
       'Customer Relationship Management (CRM)',
@@ -97,7 +97,7 @@ const skillDevelopmentAreas = {
   telecommunications: {
     title: 'Telecommunications',
     icon: 'telecom-icon.svg',
-    imageBanner: '/new-images/telecom.webp',
+    imageBanner: '/new-image/telecom.webp',
     subTitles: [
       'Networking and Infrastructure',
       'IoT in Telecommunications',
@@ -107,7 +107,7 @@ const skillDevelopmentAreas = {
   healthcare: {
     title: 'Healthcare',
     icon: 'healthcare-icon.svg',
-    imageBanner: '/new-images/doctor.webp',
+    imageBanner: '/new-image/doctor.webp',
     subTitles: [
       'Medical Coding and Billing',
       'Pharmacovigilance',

@@ -12,20 +12,20 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 
 const topicsWithImages = {
-  'Artificial intelligence': '/new-images/aii.jpg', // Replace with actual URL
-  AWS: '/new-images/aws.jpg', // Replace with actual URL
-  'Latest Technology': '/new-images/latest-tech.jpg', // Replace with actual URL
-  Microsoft: '/new-images/microsoft.webp', // Replace with actual URL
-  Others: '/new-images/others.jpg', // Replace with actual URL
-  'Cyber Security': '/new-images/cyber-security.jpg', // Replace with actual URL
-  Cloud: '/new-images/cloud11.jpg', // Replace with actual URL
-  'Project Management': '/new-images/project-mangement.jpg', // Replace with actual URL
-  FinTech: '/new-images/fintech.webp', // Replace with actual URL
-  IIBA: '/new-images/bussiness.jpg', // Replace with actual URL
-  GenZ: '/new-images/genz.webp', // Replace with actual URL
-  'IT Service & Architecture': '/new-images/it.webp', // Replace with actual URL
-  SAP: '/new-images/sap.webp', // Replace with actual URL
-  Java: '/new-images/java.jpg', // Replace with actual URL
+  'Artificial intelligence': '/new-image/aii.jpg', // Replace with actual URL
+  AWS: '/new-image/aws.jpg', // Replace with actual URL
+  'Latest Technology': '/new-image/latest-tech.jpg', // Replace with actual URL
+  Microsoft: '/new-image/microsoft.webp', // Replace with actual URL
+  Others: '/new-image/others.jpg', // Replace with actual URL
+  'Cyber Security': '/new-image/cyber-security.jpg', // Replace with actual URL
+  Cloud: '/new-image/cloud11.jpg', // Replace with actual URL
+  'Project Management': '/new-image/project-mangement.jpg', // Replace with actual URL
+  FinTech: '/new-image/fintech.webp', // Replace with actual URL
+  IIBA: '/new-image/bussiness.jpg', // Replace with actual URL
+  GenZ: '/new-image/genz.webp', // Replace with actual URL
+  'IT Service & Architecture': '/new-image/it.webp', // Replace with actual URL
+  SAP: '/new-image/sap.webp', // Replace with actual URL
+  Java: '/new-image/java.jpg', // Replace with actual URL
 };
 const cats = [
   // Cloud Related
@@ -33,25 +33,25 @@ const cats = [
     title: 'AWS',
     description:
       'Master cloud computing with Amazon Web Services. Learn how to design and deploy scalable, reliable, and efficient solutions.',
-    image: '/new-images/aws.jpg',
+    image: '/new-image/aws.jpg',
   },
   {
     title: 'Cloud Computing',
     description:
       'Explore the future of IT with cloud-based technologies. Gain insights into infrastructure, storage, and SaaS solutions.',
-    image: '/new-images/cloud11.jpg',
+    image: '/new-image/cloud11.jpg',
   },
   {
     title: 'Microsoft Azure',
     description:
       'Unlock the power of Azure for cloud-based application development, storage solutions, and advanced analytics.',
-    image: '/new-images/microsoft.webp',
+    image: '/new-image/microsoft.webp',
   },
   {
     title: 'Cyber Security in Cloud',
     description:
       'Learn to secure your cloud-based applications and infrastructure with best practices and advanced tools.',
-    image: '/new-images/cyber-security.jpg',
+    image: '/new-image/cyber-security.jpg',
   },
 
   // Business Related
@@ -59,19 +59,19 @@ const cats = [
     title: 'Project Management',
     description:
       'Enhance your leadership skills and manage projects efficiently with tools like Agile, Scrum, and Waterfall.',
-    image: '/new-images/project-mangement.jpg',
+    image: '/new-image/project-mangement.jpg',
   },
   {
     title: 'FinTech',
     description:
       'Dive into the world of financial technology, where innovation meets banking, payment systems, and blockchain.',
-    image: '/new-images/fintech.webp',
+    image: '/new-image/fintech.webp',
   },
   {
     title: 'IIBA',
     description:
       'Gain business analysis expertise with International Institute of Business Analysis certifications and training.',
-    image: '/new-images/bussiness.jpg',
+    image: '/new-image/bussiness.jpg',
   },
 
   // Medical Related
@@ -79,19 +79,19 @@ const cats = [
     title: 'Medical AI',
     description:
       'Learn how AI is transforming the healthcare sector, from diagnostics to personalized medicine.',
-    image: '/new-images/aii.jpg',
+    image: '/new-image/aii.jpg',
   },
   {
     title: 'Telemedicine Technology',
     description:
       'Explore advancements in telemedicine and how it connects doctors with patients seamlessly.',
-    image: '/new-images/others.jpg',
+    image: '/new-image/others.jpg',
   },
   {
     title: 'Healthcare Data Security',
     description:
       'Understand the importance of cybersecurity in protecting sensitive healthcare data.',
-    image: '/new-images/cyber-security.jpg',
+    image: '/new-image/cyber-security.jpg',
   },
 
   // Technology Related
@@ -99,25 +99,25 @@ const cats = [
     title: 'Artificial Intelligence',
     description:
       'Discover the latest in AI, including machine learning, natural language processing, and AI ethics.',
-    image: '/new-images/aii.jpg',
+    image: '/new-image/aii.jpg',
   },
   {
     title: 'Java',
     description:
       'Master Java programming for web development, enterprise applications, and Android development.',
-    image: '/new-images/java.jpg',
+    image: '/new-image/java.jpg',
   },
   {
     title: 'Latest Technology',
     description:
       'Stay ahead with insights into cutting-edge technologies shaping the future of innovation.',
-    image: '/new-images/latest-tech.jpg',
+    image: '/new-image/latest-tech.jpg',
   },
   {
     title: 'SAP',
     description:
       'Get hands-on training in SAP ERP systems, from financials to logistics and supply chain management.',
-    image: '/new-images/sap.webp',
+    image: '/new-image/sap.webp',
   },
 
   // GenZ Related
@@ -125,7 +125,7 @@ const cats = [
     title: 'GenZ Workforce',
     description:
       'Learn how to engage and manage GenZ employees in today’s evolving workplace.',
-    image: '/new-images/genz.webp',
+    image: '/new-image/genz.webp',
   },
 
   // Miscellaneous
@@ -133,13 +133,13 @@ const cats = [
     title: 'IT Service & Architecture',
     description:
       'Master IT service management and architectural design for scalable IT solutions.',
-    image: '/new-images/it.webp',
+    image: '/new-image/it.webp',
   },
   {
     title: 'Others',
     description:
       'Find out about various emerging topics and customized training solutions tailored to your needs.',
-    image: '/new-images/others.jpg',
+    image: '/new-image/others.jpg',
   },
 ];
 const sectors = [
@@ -150,31 +150,31 @@ const sectors = [
         title: 'AWS',
         description:
           'Master cloud computing with Amazon Web Services. Learn how to design and deploy scalable, reliable, and efficient solutions.',
-        image: '/new-images/aws.jpg',
+        image: '/new-image/aws.jpg',
       },
       {
         title: 'Cloud Computing Basics',
         description:
           'Explore the future of IT with cloud-based technologies. Gain insights into infrastructure, storage, and SaaS solutions.',
-        image: '/new-images/cloud11.jpg',
+        image: '/new-image/cloud11.jpg',
       },
       {
         title: 'Microsoft Azure',
         description:
           'Unlock the power of Azure for cloud-based application development, storage solutions, and advanced analytics.',
-        image: '/new-images/microsoft.webp',
+        image: '/new-image/microsoft.webp',
       },
       {
         title: 'Cyber Security in Cloud',
         description:
           'Learn to secure your cloud-based applications and infrastructure with best practices and advanced tools.',
-        image: '/new-images/cyber-security.jpg',
+        image: '/new-image/cyber-security.jpg',
       },
       {
         title: 'IT Service & Architecture',
         description:
           'Master IT service management and architectural design for scalable IT solutions, especially in cloud environments.',
-        image: '/new-images/it.webp',
+        image: '/new-image/it.webp',
       },
     ],
   },
@@ -185,19 +185,19 @@ const sectors = [
         title: 'Project Management',
         description:
           'Enhance your leadership skills and manage projects efficiently with tools like Agile, Scrum, and Waterfall.',
-        image: '/new-images/project-mangement.jpg',
+        image: '/new-image/project-mangement.jpg',
       },
       {
         title: 'FinTech',
         description:
           'Dive into the world of financial technology, where innovation meets banking, payment systems, and blockchain.',
-        image: '/new-images/fintech.webp',
+        image: '/new-image/fintech.webp',
       },
       {
         title: 'IIBA (Business Analysis)',
         description:
           'Gain business analysis expertise with International Institute of Business Analysis certifications and training.',
-        image: '/new-images/bussiness.jpg',
+        image: '/new-image/bussiness.jpg',
       },
     ],
   },
@@ -208,19 +208,19 @@ const sectors = [
         title: 'Medical AI',
         description:
           'Learn how AI is transforming the healthcare sector, from diagnostics to personalized medicine.',
-        image: '/new-images/aii.jpg',
+        image: '/new-image/aii.jpg',
       },
       {
         title: 'Telemedicine Technology',
         description:
           'Explore advancements in telemedicine and how it connects doctors with patients seamlessly.',
-        image: '/new-images/others.jpg',
+        image: '/new-image/others.jpg',
       },
       {
         title: 'Healthcare Data Security',
         description:
           'Understand the importance of cybersecurity in protecting sensitive healthcare data.',
-        image: '/new-images/cyber-security.jpg',
+        image: '/new-image/cyber-security.jpg',
       },
     ],
   },
@@ -231,25 +231,25 @@ const sectors = [
         title: 'Artificial Intelligence',
         description:
           'Discover the latest in AI, including machine learning, natural language processing, and AI ethics.',
-        image: '/new-images/aii.jpg',
+        image: '/new-image/aii.jpg',
       },
       {
         title: 'Java Development',
         description:
           'Master Java programming for web development, enterprise applications, and Android development.',
-        image: '/new-images/java.jpg',
+        image: '/new-image/java.jpg',
       },
       {
         title: 'Latest Technology Trends',
         description:
           'Stay ahead with insights into cutting-edge technologies shaping the future of innovation.',
-        image: '/new-images/latest-tech.jpg',
+        image: '/new-image/latest-tech.jpg',
       },
       {
         title: 'SAP Systems',
         description:
           'Get hands-on training in SAP ERP systems, from financials to logistics and supply chain management.',
-        image: '/new-images/sap.webp',
+        image: '/new-image/sap.webp',
       },
     ],
   },
@@ -260,13 +260,13 @@ const sectors = [
         title: 'GenZ Workforce',
         description:
           'Learn how to engage and manage GenZ employees in today’s evolving workplace.',
-        image: '/new-images/genz.webp',
+        image: '/new-image/genz.webp',
       },
       {
         title: 'Others',
         description:
           'Find out about various emerging topics and customized training solutions tailored to your needs.',
-        image: '/new-images/others.jpg',
+        image: '/new-image/others.jpg',
       },
     ],
   },
@@ -296,7 +296,7 @@ export default function CorporateTraining() {
           property="og:description"
           content="Elevate your organization's performance with bSkilling's AI-powered corporate training programs."
         />
-        <meta property="og:image" content="/new-images/corporate-train.jpg" />
+        <meta property="og:image" content="/new-image/corporate-train.jpg" />
         <meta
           property="og:url"
           content="https://yourwebsite.com/corporate-training"
