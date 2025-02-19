@@ -49,7 +49,7 @@ const LinkedInLogin = () => {
     try {
       // Call the backend to exchange the code for user data
       const response = await axios.get(
-        `http://localhost:3001/api/auth/callback/linkedin?code=${code}`
+        `${process.env.NEXT_PUBLIC_TRAINING_BASE_URL}api/auth/callback/linkedin?code=${code}`
       );
       setUserData(response.data); // Save user data to state
       setDialogOpen(false); // Close dialog after successful fetch

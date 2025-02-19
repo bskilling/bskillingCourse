@@ -29,7 +29,7 @@ export default function Profile() {
     const fetchLinkedInData = async (code: string) => {
       try {
         const response = await axios.get(
-          `http://localhost:3001/api/auth/callback/linkedin?code=${code}`
+          `${process.env.NEXT_PUBLIC_TRAINING_BASE_URL}api/auth/callback/linkedin?code=${code}`
         );
         setUserData(response.data); // Backend should return { name, image }
       } catch (err) {
