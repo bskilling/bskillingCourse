@@ -165,7 +165,7 @@ export default function Nasscom() {
                     </CardHeader>
                     <CardContent>
                       <img
-                        src="/new-images/ai1.jpg"
+                        src="/new-images/ai.jpg"
                         alt=""
                         className="w-full h-80 object-cover"
                       />
@@ -184,7 +184,7 @@ export default function Nasscom() {
                     </CardHeader>
                     <CardContent>
                       <img
-                        src="/new-images/ai2.jpg"
+                        src="/new-images/aii.jpg"
                         alt=""
                         className="w-full h-80 object-cover"
                       />
