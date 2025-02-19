@@ -38,7 +38,7 @@ const LinkedInLogin = () => {
     return <p className="text-red-500 text-center">{(err as Error).message}</p>;
 
   const handleLogin = () => {
-    const authUrl = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${process.env.NEXT_PUBLIC_LINKEDIN_CLIENT_ID}&redirect_uri=http://localhost:3000/reviews/give-a-review&scope=openid%20profile`;
+    const authUrl = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${process.env.NEXT_PUBLIC_LINKEDIN_CLIENT_ID}&redirect_uri=${process.env.NEXT_PUBLIC_LINKEDIN_REDIRECT_URL}&scope=openid%20profile`;
 
     // Redirect the user to LinkedIn OAuth page
     window.location.href = authUrl;
