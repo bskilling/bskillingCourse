@@ -99,74 +99,76 @@ export default function Courses() {
             <SheetTitle>Categories</SheetTitle>
           </SheetHeader>
 
-          {uniqueCategories?.map((category, index) => (
-            <div key={`item-${index}`}>
-              <div>
-                {' '}
-                <p
-                  key={index + category}
-                  className={cn(
-                    'p-2   hover:rounded-[8px] cursor-pointer mt-2 flex items-center justify-between w-full',
-                    close &&
-                      selectedCategory === category &&
-                      ' bg-primary text-primary-foreground font-semibold shadow-md rounded-[8px]'
-                  )}
-                  onClick={() => {
-                    handleCategoryHover(category);
-                    setClose((prev) => !prev);
-                  }}
-                >
-                  {category}{' '}
-                  <span className="mx-2">
-                    {close && selectedCategory === category ? (
-                      <FaAngleDown />
-                    ) : (
-                      <FaAngleUp />
+          {uniqueCategories
+            .filter((category) => category !== 'SAP')
+            ?.map((category, index) => (
+              <div key={`item-${index}`}>
+                <div>
+                  {' '}
+                  <p
+                    key={index + category}
+                    className={cn(
+                      'p-2   hover:rounded-[8px] cursor-pointer mt-2 flex items-center justify-between w-full',
+                      close &&
+                        selectedCategory === category &&
+                        ' bg-primary text-primary-foreground font-semibold shadow-md rounded-[8px]'
                     )}
-                  </span>
-                </p>
-              </div>
-              {close && selectedCategory === category && (
-                <>
-                  <div className="mt-4  rounded-md p-1 bg-muted">
-                    <div className="grid grid-cols-2 gap-5">
-                      {data &&
-                        filteredCourses &&
-                        filteredCourses?.map((course) => (
-                          <Link
-                            style={{ textDecoration: 'none' }}
-                            href={`/courses/course-details/${course?.url}`}
-                            key={course?._id}
-                          >
-                            <Card className="!p-0">
-                              <CardHeader>
-                                <img
-                                  src={course?.preview_image_uri}
-                                  alt={course?._id}
-                                  className="w-full h-20 object-cover rounded-md"
-                                />
+                    onClick={() => {
+                      handleCategoryHover(category);
+                      setClose((prev) => !prev);
+                    }}
+                  >
+                    {category}{' '}
+                    <span className="mx-2">
+                      {close && selectedCategory === category ? (
+                        <FaAngleDown />
+                      ) : (
+                        <FaAngleUp />
+                      )}
+                    </span>
+                  </p>
+                </div>
+                {close && selectedCategory === category && (
+                  <>
+                    <div className="mt-4  rounded-md p-1 bg-muted">
+                      <div className="grid grid-cols-2 gap-5">
+                        {data &&
+                          filteredCourses &&
+                          filteredCourses?.map((course) => (
+                            <Link
+                              style={{ textDecoration: 'none' }}
+                              href={`/courses/course-details/${course?.url}`}
+                              key={course?._id}
+                            >
+                              <Card className="!p-0">
+                                <CardHeader>
+                                  <img
+                                    src={course?.preview_image_uri}
+                                    alt={course?._id}
+                                    className="w-full h-20 object-cover rounded-md"
+                                  />
 
-                                {/* <CardDescription>
+                                  {/* <CardDescription>
                                     {course?.endorsed_by}
                                   </CardDescription> */}
-                              </CardHeader>
-                              <CardContent>
-                                <p className="text-xs">{course?.title}</p>
-                                {/* <p>Card Content</p> */}
-                              </CardContent>
-                            </Card>
+                                </CardHeader>
+                                <CardContent>
+                                  <p className="text-xs">{course?.title}</p>
+                                  {/* <p>Card Content</p> */}
+                                </CardContent>
+                              </Card>
 
-                            {/* <li className="p-2 hover:bg-customRed font-semibold text-black hover:text-blue-600 cursor-pointer">
+                              {/* <li className="p-2 hover:bg-customRed font-semibold text-black hover:text-blue-600 cursor-pointer">
                           {course?.preview_image_uri}
                         </li> */}
-                          </Link>
-                        ))}
+                            </Link>
+                          ))}
+                      </div>
                     </div>
-                  </div>
-                </>
-              )}
-            </div>
-          ))}
+                  </>
+                )}
+              </div>
+            ))}
         </SheetContent>
       </Sheet>
 
@@ -192,19 +194,21 @@ export default function Courses() {
                 Categories
               </div>
               <ul>
-                {uniqueCategories.map((category, index) => (
-                  <li
-                    key={index}
-                    className={cn(
-                      'p-2  hover:bg-primary hover:text-primary-foreground hover:rounded-[8px] cursor-pointer mt-2',
-                      selectedCategory === category &&
-                        ' bg-primary text-primary-foreground font-semibold shadow-md rounded-[8px]'
-                    )}
-                    onClick={() => handleCategoryHover(category)}
-                  >
-                    {category}
-                  </li>
-                ))}
+                {uniqueCategories
+                  .filter((category) => category !== 'SAP')
+                  .map((category, index) => (
+                    <li
+                      key={index}
+                      className={cn(
+                        'p-2  hover:bg-primary hover:text-primary-foreground hover:rounded-[8px] cursor-pointer mt-2',
+                        selectedCategory === category &&
+                          ' bg-primary text-primary-foreground font-semibold shadow-md rounded-[8px]'
+                      )}
+                      onClick={() => handleCategoryHover(category)}
+                    >
+                      {category}
+                    </li>
+                  ))}
               </ul>
             </div>
             <div className="w-3/4 p-4 h-full  border-l overflow-y-auto">
