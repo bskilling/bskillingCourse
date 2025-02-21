@@ -142,19 +142,21 @@ export default function IndividualTraining({
           students and entrepreneurs
         </p>
         <div className="flex flex-wrap gap-5">
-          {Object.entries(groupedItems).map(([key]) => (
-            <Button
-              key={key}
-              variant={key === activeTab ? 'default' : 'outline'}
-              className="p-8 text-xl font-semibold"
-              onClick={() => {
-                router.push(`/individual-training?tab=${key}`);
-                setActiveTab(key);
-              }}
-            >
-              {key}
-            </Button>
-          ))}
+          {Object.entries(groupedItems)
+            .filter(([key]) => key !== 'SAP')
+            .map(([key]) => (
+              <Button
+                key={key}
+                variant={key === activeTab ? 'default' : 'outline'}
+                className="p-8 text-xl font-semibold rounded-full shadow-md"
+                onClick={() => {
+                  router.push(`/individual-training?tab=${key}`);
+                  setActiveTab(key);
+                }}
+              >
+                {key}
+              </Button>
+            ))}
         </div>
 
         <div className="2xl:grid-cols-5 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid grid-cols-1 gap-5 mt-10">

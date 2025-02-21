@@ -107,15 +107,17 @@ export default function Categories() {
     <>
       <div className="md:hidden flex items-center justify-between gap-x-4 overflow-x-auto w-[100vw] p-2">
         {data &&
-          Object.entries(data).map(([key, value]) => (
-            <Link
-              href={`/individual-training?tab=${key}`}
-              key={key}
-              className="text-xs w-full whitespace-nowrap"
-            >
-              {key}
-            </Link>
-          ))}
+          Object.entries(data)
+            .filter(([key]) => key !== 'SAP')
+            .map(([key, value]) => (
+              <Link
+                href={`/individual-training?tab=${key}`}
+                key={key}
+                className="text-xs w-full whitespace-nowrap"
+              >
+                {key}
+              </Link>
+            ))}
       </div>
       <div className="hidden md:flex items-center justify-between gap-x-4 2xl:px-14 px-5 py-1 bg-muted">
         <Popover>
@@ -139,19 +141,21 @@ export default function Categories() {
                   Categories
                 </div>
                 <ul>
-                  {uniqueCategories.map((category, index) => (
-                    <li
-                      key={index}
-                      className={cn(
-                        'p-2  hover:bg-primary hover:text-primary-foreground hover:rounded-[8px] cursor-pointer mt-2',
-                        selectedCategory === category &&
-                          ' bg-primary text-primary-foreground font-semibold shadow-md rounded-[8px]'
-                      )}
-                      onClick={() => handleCategoryHover(category)}
-                    >
-                      {category}
-                    </li>
-                  ))}
+                  {uniqueCategories
+                    .filter((category) => category !== 'SAP')
+                    .map((category, index) => (
+                      <li
+                        key={index}
+                        className={cn(
+                          'p-2  hover:bg-primary hover:text-primary-foreground hover:rounded-[8px] cursor-pointer mt-2',
+                          selectedCategory === category &&
+                            ' bg-primary text-primary-foreground font-semibold shadow-md rounded-[8px]'
+                        )}
+                        onClick={() => handleCategoryHover(category)}
+                      >
+                        {category}
+                      </li>
+                    ))}
                 </ul>
               </div>
               <div className="w-3/4 p-4 max-h-[560px] border-l overflow-y-auto">
@@ -225,15 +229,17 @@ export default function Categories() {
           </PopoverContent>
         </Popover> */}
         <div className="w-full flex items-center  justify-end gap-x-10">
-          {visibleItems.map((key) => (
-            <Link
-              key={key}
-              href={`/individual-training?tab=${key}`}
-              className="text-sm text-muted-foreground"
-            >
-              {key}
-            </Link>
-          ))}
+          {visibleItems
+            .filter((key) => key !== 'SAP')
+            .map((key) => (
+              <Link
+                key={key}
+                href={`/individual-training?tab=${key}`}
+                className="text-sm text-muted-foreground"
+              >
+                {key}
+              </Link>
+            ))}
           {hiddenItems?.length > 0 && (
             <Popover>
               <PopoverTrigger>

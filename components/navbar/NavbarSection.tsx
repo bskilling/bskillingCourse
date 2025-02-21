@@ -135,11 +135,8 @@ export default function NavbarSection() {
           </NavigationMenuItem>
 
           <NavigationMenuItem className="">
-            <Link
-              href={'/college-training/skill-assisting-program'}
-              className="text-sm"
-            >
-              Skills
+            <Link href={'/institutions'} className="text-sm">
+              Institutions
             </Link>
           </NavigationMenuItem>
 
