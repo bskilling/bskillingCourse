@@ -257,12 +257,6 @@ const sectors = [
     sector: 'Workforce & Management',
     subCategories: [
       {
-        title: 'GenZ Workforce',
-        description:
-          'Learn how to engage and manage GenZ employees in today’s evolving workplace.',
-        image: '/new-image/genz.webp',
-      },
-      {
         title: 'Others',
         description:
           'Find out about various emerging topics and customized training solutions tailored to your needs.',
