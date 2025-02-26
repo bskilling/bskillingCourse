@@ -133,12 +133,17 @@ export default function NavbarSection() {
               </Link>
             </div>
           </NavigationMenuItem>
-
+          <NavigationMenuItem className="">
+            <Link href={'/aboutus'} className="text-sm">
+              About Us
+            </Link>
+          </NavigationMenuItem>
+          {/* 
           <NavigationMenuItem className="">
             <Link href={'/institutions'} className="text-sm">
               Institutions
             </Link>
-          </NavigationMenuItem>
+          </NavigationMenuItem> */}
 
           <NavigationMenuItem className="">
             <Popover>
