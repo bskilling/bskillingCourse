@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/next-script-for-ga */
 import Blogs from 'components/blognew';
 import CertifiedPartners from 'components/certfiedPratnersSilder';
 import ListOfCourses from 'components/listOfCourses';
@@ -123,6 +124,9 @@ const Home: NextPage<NextPage> = ({}) => {
           <Slider />
         </section>
         <section>
+          <CertifiedPartners />
+        </section>
+        <section>
           <Program />
         </section>
         <section>
@@ -141,9 +145,7 @@ const Home: NextPage<NextPage> = ({}) => {
         {/* <section className="bg-gray">
           <ListOfCourses data={datas} CoursesCategoryData={eachCourceList} />
         </section> */}
-        <section>
-          <CertifiedPartners />
-        </section>
+
         <section>
           <Placement />
         </section>

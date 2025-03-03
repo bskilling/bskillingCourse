@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { Course } from 'common/util/types';
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   HoverCard,
   HoverCardContent,
@@ -39,10 +39,20 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
+import { usePathname } from 'next/navigation';
 
 export default function Courses() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [close, setClose] = useState(false);
+
+  const [open2, setOpen2] = useState(false);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    console.log(pathname);
+    setOpen2(false);
+    // setClose(false);
+  }, [pathname]);
 
   const { isLoading, data, error } = useQuery<Course[] | []>({
     queryKey: ['courses'],
@@ -172,7 +182,7 @@ export default function Courses() {
         </SheetContent>
       </Sheet>
 
-      <Popover>
+      <Popover open={open2} onOpenChange={setOpen2}>
         <PopoverTrigger className="hidden md:flex ">
           {' '}
           <Button

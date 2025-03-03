@@ -3,157 +3,90 @@ import React, { useState, useEffect } from 'react';
 import { Course } from 'common/util/types';
 import Link from 'next/link';
 import axios from 'axios';
+import { CheckCircle } from 'lucide-react';
+import LeadForm from '@/components/global/LeadForm';
 
 const Program: React.FC = () => {
   const [courses, setCourses] = useState<Course[]>([]);
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(
-    'All'
-  );
-  const [visibleCourses, setVisibleCourses] = useState<number>(6);
-  const [showDropdown, setShowDropdown] = useState<boolean>(false);
-
-  const fetchData = async () => {
-    const response = await axios.get(
-      `${process.env.NEXT_PUBLIC_TRAINING_BASE_URL}api/v1/get-course-title`,
-      {
-        withCredentials: true,
-      }
-    );
-    const data = response;
-    console.log(data, '----------------------------------------------------');
-    setCourses(data?.data?.courses);
-  };
+  const [selectedCategory, setSelectedCategory] = useState<string>('All');
+  const [visibleCourses, setVisibleCourses] = useState<number>(8);
 
   useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_TRAINING_BASE_URL}api/v1/get-course-title`,
+        { withCredentials: true }
+      );
+      setCourses(response?.data?.courses);
+    };
     fetchData();
   }, []);
 
-  // Extract unique categories, including "All"
   const uniqueCategories = Array.from(
     new Set(courses.map((course) => course.category))
   );
-  let categories = ['All', ...uniqueCategories];
-
-  // Separate the 'Others' category to ensure it's always under "More"
-  const otherCategoryIndex = categories.indexOf('Others');
-  if (otherCategoryIndex > -1) {
-    categories.splice(otherCategoryIndex, 1);
-    categories.push('Others');
-  }
-
-  // Split categories into visible and dropdown categories
-  const visibleCategories = categories.slice(0, 8);
-  const dropdownCategories = categories.slice(8);
-
-  // Filter courses by selected category
+  const categories = ['All', ...uniqueCategories];
   const filteredCourses =
-    selectedCategory === 'All' || !selectedCategory
+    selectedCategory === 'All'
       ? courses
       : courses.filter((course) => course.category === selectedCategory);
 
-  // Load more courses
-  const loadMoreCourses = () => {
-    setVisibleCourses((prevVisibleCourses) => prevVisibleCourses + 6);
-  };
-
   return (
-    <div className="p-6 max-w-screen-xl mx-auto">
-      <h1 className="text-4xl font-bold text-center mb-6">
-        Professional Certification Courses
+    <div className="min-h-screen w-[90vw] m-auto bg-gray-50 text-gray-900 py-12 px-6 mt-10 ">
+      <h1 className="text-4xl md:text-5xl font-extrabold text-center mb-6 text-blue-800">
+        Explore Our Courses
       </h1>
-      <p className="text-xl text-center mb-10 text-subText">
-        Transform Your Skills, Transform Your Career!
+      <p className="text-lg text-center mb-8 text-gray-600">
+        Gain industry-leading skills and elevate your career!
       </p>
 
-      <div>
-        <div className="flex flex-wrap justify-center mb-8 space-x-4">
-          {visibleCategories.map((category, index) => (
-            <span
-              key={index}
-              className={`cursor-pointer transition duration-300 text-base font-semibold hover:text-customRed ${
-                selectedCategory === category
-                  ? 'text-blue-600 border-b-2 border-blue-600'
-                  : 'text-subText'
-              }`}
-              onClick={() => setSelectedCategory(category)}
-            >
-              {category}
-            </span>
-          ))}
-
-          {dropdownCategories.length > 0 && (
-            <div className="relative">
-              <span
-                onClick={() => setShowDropdown(!showDropdown)}
-                className={`cursor-pointer transition duration-300 text-base font-semibold text-subText hover:text-customRed`}
-              >
-                More ▼
-              </span>
-              {showDropdown && (
-                <div className="absolute z-10 bg-white border rounded shadow-lg mt-2">
-                  {dropdownCategories.map((category, index) => (
-                    <span
-                      key={index}
-                      className={`block px-4 py-2 cursor-pointer hover:bg-customRed transition duration-300 text-base font-semibold ${
-                        selectedCategory === category
-                          ? 'text-blue-600'
-                          : 'text-subText'
-                      }`}
-                      onClick={() => {
-                        setSelectedCategory(category);
-                        setShowDropdown(false);
-                      }}
-                    >
-                      {category}
-                    </span>
-                  ))}
-                </div>
-              )}
-            </div>
-          )}
-        </div>
+      <div className="flex flex-wrap justify-center gap-4 mb-8">
+        {categories.map((category, index) => (
+          <span
+            key={index}
+            className={`cursor-pointer px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 shadow-md ${
+              selectedCategory === category
+                ? 'bg-blue-600 text-white'
+                : 'bg-gray-200 text-gray-800 hover:bg-blue-500 hover:text-white'
+            }`}
+            onClick={() => setSelectedCategory(category)}
+          >
+            {category}
+          </span>
+        ))}
       </div>
 
-      {filteredCourses.length > 0 ? (
-        <div className="flex flex-wrap justify-center gap-6">
-          {filteredCourses.slice(0, visibleCourses).map((course) => (
-            <div
-              key={course._id}
-              className="bg-white p-0 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 w-[20rem] h-72 flex flex-col"
-            >
-              <Link href={'courses/course-details/' + course?.url}>
-                <div className="overflow-hidden rounded-t-lg mb-4">
-                  <img
-                    src={
-                      course.preview_image_uri
-                        ? `${course.preview_image_uri}`
-                        : '/images/emptycourse.jfif'
-                    }
-                    alt={course.title}
-                    className="w-full h-40 object-cover transition-transform duration-300 transform hover:scale-105"
-                  />
-                </div>
-                <h3 className="text-md text-black font-semibold mb-2 px-2 hover:text-customRed">
-                  {course.title}
-                </h3>
-              </Link>
-              <p className="text-lg text-cartBtn font-bold mb-2 mt-auto px-2">
-                ₹ {course.price ? `${course.price}` : 'Price not available'}
-              </p>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+        {filteredCourses.slice(0, visibleCourses).map((course) => (
+          <Link
+            key={course._id}
+            href={'/courses/course-details/' + course?.url}
+          >
+            <div className="relative bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-2xl">
+              <img
+                src={course.preview_image_uri || '/images/emptycourse.jfif'}
+                alt={course.title}
+                className="w-full h-40 object-cover"
+              />
+              <div className="p-5 flex flex-col gap-2">
+                <h3 className=" font-semibold text-gray-900">{course.title}</h3>
+                <p className="text-sm font-bold text-blue-600">
+                  ₹ {course.price || 'N/A'}
+                </p>
+                <span className="self-start bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-xs font-medium">
+                  {course.category}
+                </span>
+              </div>
             </div>
-          ))}
-        </div>
-      ) : (
-        <p className="text-center text-gray-500 mt-4">
-          No courses available for this category.
-        </p>
-      )}
+          </Link>
+        ))}
+      </div>
 
       {filteredCourses.length > visibleCourses && (
-        <div className="text-center mt-8">
+        <div className="text-center mt-10">
           <button
-            onClick={loadMoreCourses}
-            className="bg-blue-600 text-white py-2 px-4 rounded-lg shadow-lg hover:bg-blue-700 transition duration-300"
+            onClick={() => setVisibleCourses((prev) => prev + 8)}
+            className="bg-blue-600 text-white py-3 px-8 rounded-full text-lg font-bold shadow-md hover:bg-blue-700 transition duration-300"
           >
             Load More
           </button>

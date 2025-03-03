@@ -1,75 +1,81 @@
-import React from "react";
+/* eslint-disable @next/next/no-img-element */
+import React from 'react';
 
 const Gateway = () => {
-  const images = [
-    "/images/gateway1.jfif",
-    "/images/gateway2.jfif",
-    "/images/gateway3.jfif",
-    "/images/gateway4.jfif",
-    "/images/gateway5.jfif",
-    "/images/gateway6.jfif",
-  ];
-  const texts = [
+  const features = [
     {
-      heading: "Dynamic Learning",
+      image: '/images/gateway1.jfif',
+      heading: 'Dynamic Learning',
       description:
-        "Engage with interactive content, and collaborate with peers and experienced instructors in real-time.",
+        'Engage with interactive content, and collaborate with peers and experienced instructors in real-time.',
     },
     {
-      heading: "Live Interactive Class",
+      image: '/images/gateway2.jfif',
+      heading: 'Live Interactive Class',
       description:
-        "Take part in engaging educational experiences with dynamic interaction and real-time engagement.",
+        'Take part in engaging educational experiences with dynamic interaction and real-time engagement.',
     },
     {
-      heading: "Accessible Learning",
+      image: '/images/gateway3.jfif',
+      heading: 'Accessible Learning',
       description:
-        "Access free programs and flexible learning, tailored to fit your busy schedule and learning pace.",
+        'Access free programs and flexible learning, tailored to fit your busy schedule and learning pace.',
     },
     {
-      heading: "Experienced Faculty",
+      image: '/images/gateway4.jfif',
+      heading: 'Experienced Faculty',
       description:
-        "Our seasoned subject matter experts are here to guide you with their knowledge base and practical insights!",
+        'Our seasoned subject matter experts are here to guide you with their knowledge base and practical insights!',
     },
     {
-      heading: "Upskilling Programs",
+      image: '/images/gateway5.jfif',
+      heading: 'Upskilling Programs',
       description:
-        "Gain a competitive edge in the job market through programs that will propel you towards success in your field.",
+        'Gain a competitive edge in the job market through programs that will propel you towards success in your field.',
     },
     {
-      heading: "Doubt Support",
+      image: '/images/gateway6.jfif',
+      heading: 'Doubt Support',
       description:
-        "Get personalised guidance, from 9 AM to 9 PM, encompassing both theoretical concepts and practical applications.",
+        'Get personalised guidance, from 9 AM to 9 PM, encompassing both theoretical concepts and practical applications.',
     },
   ];
 
   return (
-    <div className="container mx-auto px-4 md:px-8 lg:px-12 mt-0 py-10">
-      <div className="text-center mt-3">
-        <h1 className="text-xl md:text-3xl font-bold">
-          Your Gateway to Transformative Learning Experiences
+    <div className="relative py-16 px-6 bg-gray-50">
+      {/* Abstract Design Elements */}
+      <div className="absolute top-0 left-0 w-1/2 h-1/3 bg-gradient-to-r from-gray-200 to-transparent rounded-br-3xl"></div>
+      <div className="absolute bottom-0 right-0 w-1/3 h-1/4 bg-gradient-to-l from-gray-200 to-transparent rounded-tl-3xl"></div>
+
+      <div className="text-center relative z-10">
+        <h1 className="text-3xl md:text-5xl font-bold text-gray-800 mb-4">
+          Your Gateway to Transformative Learning
         </h1>
-        <p className="mt-4 text-sm md:text-sm">
+        <p className="text-md md:text-lg text-gray-600 max-w-3xl mx-auto">
           With innovative online classes led by seasoned instructors,
-          personalised placement support, and access to expert <br />
-          faculty, BSkilling empowers you to unlock your full potential and
-          achieve your career goals with confidence.
+          personalized placement support, and access to expert faculty,
+          BSkilling empowers you to unlock your full potential and achieve your
+          career goals with confidence.
         </p>
       </div>
 
-      <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
-        {images.map((image, index) => (
-          <div key={index} className="relative">
+      <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
+        {features.map((feature, index) => (
+          <div
+            key={index}
+            className="relative bg-white shadow-lg rounded-xl overflow-hidden hover:scale-105 transition-transform duration-300"
+          >
             <img
-              src={image}
-              alt={`gateway-${index + 1}`}
-              className="w-full h-auto opacity-85"
+              src={feature.image}
+              alt={feature.heading}
+              className="w-full h-52 object-cover rounded-t-xl"
             />
-            <div className="absolute inset-0 flex flex-col items-center justify-center p-4 bg-black bg-opacity-70 text-white">
-              <h2 className="text-lg font-semibold text-center">
-                {texts[index].heading}
+            <div className="p-6">
+              <h2 className="text-lg font-semibold text-gray-800">
+                {feature.heading}
               </h2>
-              <p className="mt-2 text-sm text-center">
-                {texts[index].description}
+              <p className="mt-2 text-sm text-gray-600">
+                {feature.description}
               </p>
             </div>
           </div>
