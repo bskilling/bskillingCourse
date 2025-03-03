@@ -1,74 +1,54 @@
-import Image from "next/image";
-import { Autoplay } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/autoplay";
+/* eslint-disable @next/next/no-img-element */
+import Image from 'next/image';
+import { Autoplay } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/autoplay';
 
 const CertifiedPartnersSlider = () => {
   const logos = [
-    "/edu&car/AWS.png",
-    "/edu&car/company.png",
-
-    // "/edu&car/5.png",
-    "/edu&car/2.jpg",
-    "/edu&car/micro.png",
-    "/edu&car/6.png",
-    "/edu&car/1.png",
-    "/edu&car/4.png",
-    "/edu&car/3.png",
+    '/edu&car/AWS.png',
+    '/edu&car/company.png',
+    '/edu&car/2.jpg',
+    '/edu&car/micro.png',
+    '/edu&car/6.png',
+    '/edu&car/1.png',
+    '/edu&car/4.png',
+    '/edu&car/3.png',
   ];
 
   return (
-    <section className=" md:pt-14  pb-5 pt-7   relative">
-      <div className="flex gap-4 justify-center mb-8 ">
-        <div className="mt-4 font-bold font-SourceSans text-xl text-center ">
-          Certified Learning Partner
-        </div>
-      </div>
+    <section className="pt-10 pb-10 bg-gray-100">
+      <div className="container mx-auto">
+        {/* Title */}
+        <h2 className="text-center text-3xl font-semibold text-gray-800 mb-6">
+          Certified Learning Partners
+        </h2>
 
-      <div className="lg:container mx-auto lg:pb-5">
+        {/* Swiper Container */}
         <Swiper
           modules={[Autoplay]}
-          slidesPerView={4}
-          spaceBetween={40}
-          slidesPerGroup={4}
-          breakPoints={{
-            768: {
-              slidesPerView: 5,
-              slidesPerGroup: 5,
-              spaceBetween: 0,
-              autoplay: true,
-              loop: true,
-              speed: 800,
-
-              pagination: {},
-            },
-            1024: {
-              slidesPerView: 5,
-              slidesPerGroup: 5,
-              spaceBetween: 0,
-              autoplay: true,
-              loop: true,
-              speed: 1200,
-
-              pagination: {},
-            },
+          slidesPerView={2}
+          spaceBetween={20}
+          breakpoints={{
+            640: { slidesPerView: 3, spaceBetween: 30 },
+            768: { slidesPerView: 4, spaceBetween: 30 },
+            1024: { slidesPerView: 5, spaceBetween: 40 },
           }}
-          autoplay={{
-            delay: 2000, // Delay between slides in milliseconds
-          }}
+          autoplay={{ delay: 2500, disableOnInteraction: false }}
           loop={true}
-          speed={1200}
+          speed={1000}
+          className="max-w-6xl mx-auto"
         >
-          {logos.map((x, index) => (
-            <SwiperSlide key={index}>
-              <div className="md:h-36  md:pb-0 pb-8 flex  justify-center   relative cursor-pointer">
+          {logos.map((src, index) => (
+            <SwiperSlide key={index} className="flex justify-center">
+              <div className="p-4 bg-white h-40 rounded-lg shadow-md flex items-center justify-center">
                 <img
-                  className="w-[120px] object-contain mt-1 "
-                  src={x}
-                  alt=""
+                  src={src}
+                  alt="Partner Logo"
+                  width={120}
+                  height={120}
+                  className="object-contain"
                 />
               </div>
             </SwiperSlide>
@@ -78,4 +58,5 @@ const CertifiedPartnersSlider = () => {
     </section>
   );
 };
+
 export default CertifiedPartnersSlider;
