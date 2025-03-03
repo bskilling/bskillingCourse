@@ -168,11 +168,11 @@ const ReviewForm = ({
           {/* Review Title */}
           <div>
             <Input
-              label="Review Title"
+              label="Course Name"
               type="text"
               className="w-full p-3 border rounded-md"
-              title="Review Title"
-              placeholder="Review Title"
+              title="Course name"
+              placeholder="Course name"
               {...register('title', { required: true })}
             />
             {errors.title && <p className="text-red-500">Title is required</p>}

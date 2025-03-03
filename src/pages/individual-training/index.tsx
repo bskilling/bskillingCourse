@@ -113,16 +113,16 @@ export default function IndividualTraining({
         </div>
       </>
 
-      <div className="flex w-[85vw] min-h-screen mx-auto py-10 gap-6">
+      <div className="flex md:w-[85vw] w-[100vw] min-h-screen mx-auto py-10 gap-6">
         {/* Sidebar for Categories */}
-        <div className="w-1/4 bg-white p-4 rounded-xl shadow-lg border border-gray-200 sticky top-20">
+        <div className="w-1/2 md:w-1/4  bg-white p-4 rounded-xl shadow-lg border border-gray-200 sticky top-20">
           <h3 className="text-lg font-semibold mb-3">Course Categories</h3>
           <div className="flex flex-col gap-2">
             {categories.map((category) => (
               <motion.button
                 key={category}
                 className={cn(
-                  'w-full text-left px-4 py-2 text-sm font-medium rounded-md transition-all duration-200',
+                  'w-full text-left px-4 py-2 md:text-sm text-xs font-medium rounded-md transition-all duration-200',
                   activeTab === category
                     ? 'bg-gradient-to-r from-blue-500 to-blue-700 text-white'
                     : 'bg-gray-100 hover:bg-gray-200'
@@ -140,7 +140,7 @@ export default function IndividualTraining({
         </div>
 
         {/* Courses Section */}
-        <div className="w-3/4 overflow-y-auto h-[75vh]">
+        <div className="w-3/4 pr-4 overflow-y-auto h-[75vh]">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">
             Explore Our Courses
           </h2>
@@ -159,7 +159,7 @@ export default function IndividualTraining({
                 key={course._id}
                 className="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-transform transform hover:-translate-y-1 "
               >
-                <CardHeader className="relative h-36 p-0">
+                <CardHeader className="relative md:h-36 h-20  p-0">
                   <img
                     src={course.preview_image_uri}
                     alt={course.title}
@@ -168,10 +168,10 @@ export default function IndividualTraining({
                   />
                 </CardHeader>
                 <CardContent className="p-3">
-                  <h4 className="text-lg font-semibold text-gray-900 truncate">
+                  <h4 className="md:text-lg text-sm font-semibold text-gray-900 truncate">
                     {course.title}
                   </h4>
-                  <p className="text-sm text-gray-500 mt-1">
+                  <p className="md:text-sm text-xs text-gray-500 mt-1">
                     {
                       // @ts-ignore
                       course?.short_description ||
