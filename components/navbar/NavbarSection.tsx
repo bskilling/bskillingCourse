@@ -32,63 +32,52 @@ import { FiFileText } from 'react-icons/fi';
 import { GoPerson } from 'react-icons/go';
 import { buttonVariants } from '@/components/ui/button';
 import { FaStar } from 'react-icons/fa';
-
+import {
+  IoHomeOutline,
+  IoSchoolOutline,
+  IoBriefcaseOutline,
+  IoPersonOutline,
+  IoChatbubbleEllipsesOutline,
+  IoStarOutline,
+  IoCallOutline,
+} from 'react-icons/io5';
+import { FaUniversity } from 'react-icons/fa';
 const menus = [
-  {
-    name: 'Home',
-    href: '/',
-    icon: <RiHome2Line size={20} />,
-  },
-  {
-    name: 'About Us',
-    href: '/aboutus',
-    icon: <FiFileText size={20} />,
-  },
-  {
-    name: 'Blogs',
-    href: '/blogs',
-    icon: <BsChatSquareDots size={20} />,
-  },
-  {
-    name: 'Reviews',
-    href: '/reviews',
-    icon: <BsListStars size={20} />,
-  },
-  {
-    name: 'Career',
-    href: 'https://sfjbs.talentrecruit.com/career-page',
-    icon: <BsPersonGear size={20} />,
-  },
-  {
-    name: 'Contact',
-    href: '/contact',
-    icon: <IoIosCall size={20} />,
-  },
-  {
-    name: 'Skills',
-    href: '/college-training/skill-assisting-program',
-    icon: <BsPersonWorkspace size={20} />,
-  },
-  {
-    name: 'Government Training Program',
-    href: '/government-training-program',
-    icon: <GrWorkshop size={20} />,
-  },
-  {
-    name: 'Corporate Training Program',
-    href: '/corporate-training',
-    icon: <BsBuilding size={20} />,
-  },
-  // {
-  //   name: 'Jobs',
-  //   href: '/job-assisting-program',
-  //   icon: <GrWorkshop size={20} />,
-  // },
+  { name: 'Home', href: '/', icon: <IoHomeOutline size={22} /> },
   {
     name: 'All Courses',
     href: '/individual-training',
-    icon: <GoPerson size={20} />,
-    type: 'item',
+    icon: <IoSchoolOutline size={22} />,
+  },
+  {
+    name: 'Skills Training',
+    href: '/college-training/skill-assisting-program',
+    icon: <FaUniversity size={22} />,
+  },
+  {
+    name: 'Govt. Training',
+    href: '/government-training-program',
+    icon: <IoSchoolOutline size={22} />,
+  },
+  {
+    name: 'Corporate Training',
+    href: '/corporate-training',
+    icon: <BsBuilding size={22} />,
+  },
+
+  { name: 'About Us', href: '/aboutus', icon: <IoPersonOutline size={22} /> },
+
+  {
+    name: 'Blogs',
+    href: '/blogs',
+    icon: <IoChatbubbleEllipsesOutline size={22} />,
+  },
+  { name: 'Reviews', href: '/reviews', icon: <IoStarOutline size={22} /> },
+  {
+    name: 'Career',
+    href: 'https://sfjbs.talentrecruit.com/career-page',
+    icon: <IoBriefcaseOutline size={22} />,
+    external: true,
   },
 ];
 
@@ -205,44 +194,45 @@ export default function NavbarSection() {
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
-      <Sheet>
-        <SheetTrigger className="xl:hidden">
-          <RxHamburgerMenu size={30} />
-        </SheetTrigger>
-        <SheetContent className=" border-none">
-          <h2 className="text-2xl font-bold">
-            <span className="text-blue-400">b</span>
-            <span className="text-blue-400  ">Skilling</span>
-          </h2>
-          {menus.map((menu) => (
-            <div key={menu.name} className="flex flex-col gap-y-10 text-base">
-              {menu?.type === 'collapse' ? (
-                <div className="mt-4">
-                  <p
-                    className=" inline-flex gap-x-4 cursor-pointer items-center text-base"
-                    onClick={() => setClose((prev) => !prev)}
-                  >
-                    <span>{menu?.icon}</span>
-                    <span>{menu.name}</span>
-                    <span>
-                      <IoChevronDownSharp size={20} />
-                    </span>
-                  </p>
-                </div>
-              ) : (
-                <div className="mt-5">
-                  <Link
-                    href={menu.href as string}
-                    className=" inline-flex gap-x-4 items-center"
-                  >
-                    <span>{menu?.icon}</span> {menu.name}
-                  </Link>
-                </div>
-              )}
+      <div>
+        <Sheet open={open} onOpenChange={setOpen}>
+          <SheetTrigger className="xl:hidden p-2">
+            <RxHamburgerMenu size={30} />
+          </SheetTrigger>
+          <SheetContent className="border-none py-5 px-6">
+            <h2 className="text-2xl font-bold text-center mb-6">
+              <span className="text-blue-500">b</span>Skilling
+            </h2>
+            <nav className="flex flex-col space-y-4">
+              {menus.map((menu) => (
+                <Link
+                  key={menu.name}
+                  href={menu.href}
+                  target={menu.external ? '_blank' : '_self'}
+                  className="flex items-center gap-x-4 p-3 rounded-lg hover:bg-gray-100 transition"
+                >
+                  {menu.icon}
+                  <span className="text-lg">{menu.name}</span>
+                </Link>
+              ))}
+            </nav>
+            <div className="mt-6 border-t pt-4">
+              <Link
+                href="https://lms.bskilling.com/login/signup.php"
+                className="block text-center p-3 bg-blue-600 text-white rounded-lg mb-2 hover:bg-blue-700"
+              >
+                Sign Up
+              </Link>
+              <Link
+                href="https://lms.bskilling.com/login/index.php"
+                className="block text-center p-3 border rounded-lg hover:bg-gray-100"
+              >
+                Login
+              </Link>
             </div>
-          ))}
-        </SheetContent>
-      </Sheet>
+          </SheetContent>
+        </Sheet>
+      </div>
     </div>
   );
 }
