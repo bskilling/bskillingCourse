@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 import PopupForm from './PopupForm';
+import GoogleReviews from '@/components/pages/GoogleReviews';
 
 const Footer = () => {
   const [isPopupOpen, setPopupOpen] = useState(false);
@@ -10,10 +11,12 @@ const Footer = () => {
   const handleClosePopup = () => setPopupOpen(false);
   return (
     <footer className="bg-gray-900 text-white py-12">
-      <div className="container mx-auto px-6 lg:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+      <div className="w-full mx-auto px-3 md:px-6">
+        <div className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 xl:grid-cols-6  gap-5">
           {/* CONTACT */}
-
+          <div>
+            <GoogleReviews />
+          </div>
           <div>
             <h5 className="text-xl font-semibold mb-4">COMPANY</h5>
             <ul className="text-sm space-y-2">
@@ -214,7 +217,7 @@ const Footer = () => {
 
       {/* FOOTER BOTTOM */}
       <div className="border-t border-gray-700 mt-10 pt-6">
-        <div className="container mx-auto px-6 lg:px-12 flex flex-col md:flex-row justify-between items-center">
+        <div className="container mx-auto px-3 lg:px-3 flex flex-col md:flex-row justify-between items-center">
           <div className="flex items-center space-x-4">
             <div className="flex space-x-4 mt-4 md:mt-0">
               {[
