@@ -155,39 +155,41 @@ export default function IndividualTraining({
             transition={{ duration: 0.5 }}
           >
             {filteredCourses.map((course) => (
-              <Card
+              <Link
+                href={`/courses/course-details/${course.url}`}
                 key={course._id}
-                className="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-transform transform hover:-translate-y-1 "
               >
-                <CardHeader className="relative md:h-36 h-20  p-0">
-                  <img
-                    src={course.preview_image_uri}
-                    alt={course.title}
-                    className="w-full h-full object-cover rounded-t-xl"
-                    loading="lazy"
-                  />
-                </CardHeader>
-                <CardContent className="p-3">
-                  <h4 className="md:text-lg text-sm font-semibold text-gray-900 truncate">
-                    {course.title}
-                  </h4>
-                  <p className="md:text-sm text-xs text-gray-500 mt-1">
-                    {
-                      // @ts-ignore
-                      course?.short_description ||
-                        'Join this course to enhance your skills.'
-                    }
-                  </p>
-                </CardContent>
-                <CardFooter className="flex justify-between items-center p-3 border-t border-gray-200">
-                  <p className="font-semibold text-gray-900">
-                    ₹ {course.price}
-                  </p>
-                  <Button className="bg-gradient-to-r from-blue-500 to-blue-700 text-white text-sm px-4 py-2 rounded-md shadow-md">
-                    Enroll Now
-                  </Button>
-                </CardFooter>
-              </Card>
+                <Card className="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-transform transform hover:-translate-y-1 ">
+                  <CardHeader className="relative md:h-36 h-20  p-0">
+                    <img
+                      src={course.preview_image_uri}
+                      alt={course.title}
+                      className="w-full h-full object-cover rounded-t-xl"
+                      loading="lazy"
+                    />
+                  </CardHeader>
+                  <CardContent className="p-3">
+                    <h4 className="md:text-lg text-sm font-semibold text-gray-900 truncate">
+                      {course.title}
+                    </h4>
+                    <p className="md:text-sm text-xs text-gray-500 mt-1">
+                      {
+                        // @ts-ignore
+                        course?.short_description ||
+                          'Join this course to enhance your skills.'
+                      }
+                    </p>
+                  </CardContent>
+                  <CardFooter className="flex justify-between items-center p-3 border-t border-gray-200">
+                    <p className="font-semibold text-gray-900">
+                      ₹ {course.price}
+                    </p>
+                    <Button className="bg-gradient-to-r from-blue-500 to-blue-700 text-white text-sm px-4 py-2 rounded-md shadow-md">
+                      Enroll Now
+                    </Button>
+                  </CardFooter>
+                </Card>
+              </Link>
             ))}
           </motion.div>
         </div>
