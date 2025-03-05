@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 import { useQuery } from '@tanstack/react-query';
 import Link from 'next/link';
 import NavbarSection from 'components/navbar/NavbarSection';
+import Head from 'next/head';
 
 const fetchReviews = async (page: number) => {
   const { data } = await axios.get(
@@ -74,6 +75,33 @@ const LinkedInLogin = () => {
 
   return (
     <>
+      <Head>
+        {/* Open Graph Meta Tags for Link Preview */}
+        <title>Give a Review - BSkilling</title>
+        <meta property="og:title" content="Share Your Feedback - BSkilling" />
+        <meta
+          property="og:description"
+          content="Help us improve by sharing your review on BSkilling!"
+        />
+        <meta
+          property="og:image"
+          content="https://d3lzcn6mbbadaf.cloudfront.net/media/details/ANI-20231206101939.jpg"
+        />
+        <meta property="og:url" content="https://www.bskilling.com/reviews" />
+        <meta property="og:type" content="website" />
+
+        {/* Twitter Card for Twitter link previews */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Share Your Feedback - BSkilling" />
+        <meta
+          name="twitter:description"
+          content="Help us improve by sharing your review on BSkilling!"
+        />
+        <meta
+          name="twitter:image"
+          content="https://d3lzcn6mbbadaf.cloudfront.net/media/details/ANI-20231206101939.jpg"
+        />
+      </Head>
       <div className="sticky top-0 z-[50] bg-card shadow-md">
         <nav className="text-[#1f1f1f] bg-card 2xl:w-[80vw] px-5  md:w-[90vw] w-full 2xl:m-auto flex justify-between items-center text-sm font-medium md:py-2  ">
           <div className="text-3xl font-bold inline-flex items-center">
