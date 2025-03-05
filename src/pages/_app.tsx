@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/next-script-for-ga */
 import FixedFooterBar from 'components/fixedFooterBar';
 import Layout from 'components/Layout';
 import { MyProvider } from 'context/PageContext';
@@ -122,7 +123,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                 />
                 <meta
                   property="og:image"
-                  content="https://www.bskilling.com/icon/facebook.svg"
+                  content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIou9WTweBF8jIBPf8Mjyxzud5PEiEQpRp2w&s"
                 />
                 <meta property="og:url" content="www.bskilling.com" />
                 {/* facebook meta tag end */}
