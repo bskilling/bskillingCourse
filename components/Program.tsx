@@ -41,45 +41,52 @@ const Program: React.FC = () => {
       </p>
 
       <div className="flex flex-wrap justify-center gap-4 mb-8">
-        {categories.map((category, index) => (
-          <span
-            key={index}
-            className={`cursor-pointer px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 shadow-md ${
-              selectedCategory === category
-                ? 'bg-blue-600 text-white'
-                : 'bg-gray-200 text-gray-800 hover:bg-blue-500 hover:text-white'
-            }`}
-            onClick={() => setSelectedCategory(category)}
-          >
-            {category}
-          </span>
-        ))}
+        {categories
+          .filter((cat) => cat !== 'SAP')
+          .map((category, index) => (
+            <span
+              key={index}
+              className={`cursor-pointer px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 shadow-md ${
+                selectedCategory === category
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-gray-200 text-gray-800 hover:bg-blue-500 hover:text-white'
+              }`}
+              onClick={() => setSelectedCategory(category)}
+            >
+              {category}
+            </span>
+          ))}
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-        {filteredCourses.slice(0, visibleCourses).map((course) => (
-          <Link
-            key={course._id}
-            href={'/courses/course-details/' + course?.url}
-          >
-            <div className="relative bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-2xl">
-              <img
-                src={course.preview_image_uri || '/images/emptycourse.jfif'}
-                alt={course.title}
-                className="w-full h-40 object-cover"
-              />
-              <div className="p-5 flex flex-col gap-2">
-                <h3 className=" font-semibold text-gray-900">{course.title}</h3>
-                <p className="text-sm font-bold text-blue-600">
-                  ₹ {course.price || 'N/A'}
-                </p>
-                <span className="self-start bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-xs font-medium">
-                  {course.category}
-                </span>
+        {filteredCourses
+          .slice(0, visibleCourses)
+          .filter((course) => course.category !== 'SAP')
+          .map((course) => (
+            <Link
+              key={course._id}
+              href={'/courses/course-details/' + course?.url}
+            >
+              <div className="relative bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-2xl">
+                <img
+                  src={course.preview_image_uri || '/images/emptycourse.jfif'}
+                  alt={course.title}
+                  className="w-full h-40 object-cover"
+                />
+                <div className="p-5 flex flex-col gap-2">
+                  <h3 className=" font-semibold text-gray-900">
+                    {course.title}
+                  </h3>
+                  <p className="text-sm font-bold text-blue-600">
+                    ₹ {course.price || 'N/A'}
+                  </p>
+                  <span className="self-start bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-xs font-medium">
+                    {course.category}
+                  </span>
+                </div>
               </div>
-            </div>
-          </Link>
-        ))}
+            </Link>
+          ))}
       </div>
 
       {filteredCourses.length > visibleCourses && (

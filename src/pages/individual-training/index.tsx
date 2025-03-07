@@ -118,24 +118,26 @@ export default function IndividualTraining({
         <div className="w-1/2 md:w-1/4  bg-white p-4 rounded-xl shadow-lg border border-gray-200 sticky top-20">
           <h3 className="text-lg font-semibold mb-3">Course Categories</h3>
           <div className="flex flex-col gap-2">
-            {categories.map((category) => (
-              <motion.button
-                key={category}
-                className={cn(
-                  'w-full text-left px-4 py-2 md:text-sm text-xs font-medium rounded-md transition-all duration-200',
-                  activeTab === category
-                    ? 'bg-gradient-to-r from-blue-500 to-blue-700 text-white'
-                    : 'bg-gray-100 hover:bg-gray-200'
-                )}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => {
-                  router.push(`/individual-training?tab=${category}`);
-                  setActiveTab(category);
-                }}
-              >
-                {category}
-              </motion.button>
-            ))}
+            {categories
+              ?.filter((category) => category !== 'SAP')
+              .map((category) => (
+                <motion.button
+                  key={category}
+                  className={cn(
+                    'w-full text-left px-4 py-2 md:text-sm text-xs font-medium rounded-md transition-all duration-200',
+                    activeTab === category
+                      ? 'bg-gradient-to-r from-blue-500 to-blue-700 text-white'
+                      : 'bg-gray-100 hover:bg-gray-200'
+                  )}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => {
+                    router.push(`/individual-training?tab=${category}`);
+                    setActiveTab(category);
+                  }}
+                >
+                  {category}
+                </motion.button>
+              ))}
           </div>
         </div>
 
