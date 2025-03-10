@@ -14,7 +14,7 @@ import { useRouter } from 'next/navigation';
 import SVGSpeedometer from '../training-programs/_components/Circular';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
-import NavbarSection from 'components/navbar/NavbarSection';
+import NavbarSection from '@/component/navbar/NavbarSection';
 
 const ties = [
   {

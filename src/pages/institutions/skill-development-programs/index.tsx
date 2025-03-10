@@ -8,7 +8,7 @@ import { LucideBrainCircuit, Paintbrush } from 'lucide-react';
 import { Code, Cpu, Layers, ShieldCheck, Terminal } from 'lucide-react';
 import { Briefcase, Building, BadgeCheck, TrendingUp } from 'lucide-react';
 import Link from 'next/link';
-import NavbarSection from 'components/navbar/NavbarSection';
+import NavbarSection from '@/component/navbar/NavbarSection';
 import SkillOffering from '@/pages/college-training/skill-assisting-program/_components/SkillOffering';
 import { MdOutlineArrowRightAlt } from 'react-icons/md';
 import ProgramSections from '@/components/pages/institution/ProgramSection';

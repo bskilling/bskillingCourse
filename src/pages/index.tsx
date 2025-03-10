@@ -1,10 +1,9 @@
 /* eslint-disable @next/next/next-script-for-ga */
-import Blogs from 'components/blognew';
-import CertifiedPartners from 'components/certfiedPratnersSilder';
-import ListOfCourses from 'components/listOfCourses';
-import Slider from 'components/slider';
-import Tabs from 'components/tabs';
-import Testimonials from 'components/testimonials';
+import Blogs from '@/component/blognew';
+import ListOfCourses from '@/component/listOfCourses';
+import Slider from '@/component/slider';
+import Tabs from '@/component/tabs';
+import Testimonials from '@/component/testimonials';
 import { MyContext } from 'context/PageContext';
 import { NextPage } from 'next';
 import Head from 'next/head';
@@ -13,12 +12,13 @@ import { PDFDownloadLink } from '@react-pdf/renderer';
 import PdfFile from '../pages/Pdffile';
 import axios from 'axios';
 import LeadForm from 'modules/leadChat/components/LeadForm';
-import Gateway from 'components/Gateway';
-import Chooseus from 'components/Chooseus';
-import Experience from 'components/Experience';
-import Testimonial from 'components/Testimonial';
-import Placement from 'components/Placement';
-import Program from 'components/Program';
+import Gateway from '@/component/Gateway';
+import Chooseus from '@/component/Chooseus';
+import Experience from '@/component/Experience';
+import Testimonial from '@/component/Testimonial';
+import Placement from '@/component/Placement';
+import Program from '@/component/Program';
+import CertifiedPartners from '@/component/certifiedPartners';
 
 interface UpcomingBatch {
   capacity: string;

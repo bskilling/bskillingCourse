@@ -198,16 +198,19 @@ const Layout = ({ children, pageTitle = 'bSkilling' }: Props) => {
   const pathname = usePathname();
   const isVisible = useMemo(() => {
     let exist = true;
-
-    if (
-      pathname.split('/').includes('ksdc') ||
-      pathname.split('/').includes('government-training-program') ||
-      pathname.split('/').includes('individual-training') ||
-      pathname.split('/').includes('reviews') ||
-      pathname.split('/').includes('institutions')
-    ) {
-      return false;
+    if (pathname) {
+      if (
+        pathname.split('/').includes('ksdc') ||
+        pathname.split('/').includes('government-training-program') ||
+        pathname.split('/').includes('individual-training') ||
+        pathname.split('/').includes('reviews') ||
+        pathname.split('/').includes('institutions') ||
+        pathname.split('/').includes('course')
+      ) {
+        return false;
+      }
     }
+
     return exist;
   }, [pathname]);
   const [show, setShow] = useState(false);

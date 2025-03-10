@@ -1,8 +1,8 @@
-import axios from "axios";
-import { Course, Coursedetailstype } from "common/util/types";
-import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import PopupForm from "components/PopupForm";
+import axios from 'axios';
+import { Course, Coursedetailstype } from 'common/util/types';
+import Link from 'next/link';
+import React, { useEffect, useState } from 'react';
+import PopupForm from '@/component/PopupForm';
 
 interface OtherCourseProps {
   courseDetails: Coursedetailstype | null;
@@ -32,7 +32,7 @@ const OtherCourse: React.FC<OtherCourseProps> = ({ courseDetails }) => {
       );
       setCourses(filteredCourses);
     } catch (error) {
-      console.error("Error fetching API:", error);
+      console.error('Error fetching API:', error);
     }
   };
 
@@ -71,7 +71,7 @@ const OtherCourse: React.FC<OtherCourseProps> = ({ courseDetails }) => {
                     src={
                       course.preview_image_uri
                         ? `${course.preview_image_uri}`
-                        : "/images/emptycourse.jfif"
+                        : '/images/emptycourse.jfif'
                     }
                     alt={course.title}
                     className="w-full h-40 object-cover transition-transform duration-300 transform hover:scale-105"
@@ -82,7 +82,7 @@ const OtherCourse: React.FC<OtherCourseProps> = ({ courseDetails }) => {
                 </h3>
               </Link>
               <p className="text-lg text-cartBtn font-bold mb-2 mt-auto">
-                ₹ {course.price ? `${course.price}` : "Price not available"}
+                ₹ {course.price ? `${course.price}` : 'Price not available'}
               </p>
             </div>
           ))}

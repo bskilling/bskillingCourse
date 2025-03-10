@@ -14,7 +14,7 @@ import {
 import ShowMoreText from './_components/Text';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import NavbarSection from 'components/navbar/NavbarSection';
+import NavbarSection from '@/component/navbar/NavbarSection';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 

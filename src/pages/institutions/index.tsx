@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Head from 'next/head';
-import NavbarSection from 'components/navbar/NavbarSection';
+import NavbarSection from '@/component/navbar/NavbarSection';
 import Link from 'next/link';
 import {
   Briefcase,
