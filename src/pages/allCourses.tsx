@@ -1,11 +1,11 @@
-import axios from "axios";
-import CourseCard from "components/CourseCard";
-import { MyContext } from "context/PageContext";
-import Head from "next/head";
-import { useRouter } from "next/router";
-import { useContext, useEffect, useState } from "react";
-import { AiFillCaretDown, AiOutlineMenu } from "react-icons/ai";
-import { useMediaQuery } from "react-responsive";
+import axios from 'axios';
+import CourseCard from '@/component/CourseCard';
+import { MyContext } from 'context/PageContext';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
+import { useContext, useEffect, useState } from 'react';
+import { AiFillCaretDown, AiOutlineMenu } from 'react-icons/ai';
+import { useMediaQuery } from 'react-responsive';
 interface UpcomingBatch {
   capacity: string;
   description: string;
@@ -45,7 +45,7 @@ const AllCourses = () => {
     if (buttonIndexs) {
       const index = parseInt(buttonIndexs as string);
       setAllCourseButtonIndex(index);
-      router.push("/allCourses");
+      router.push('/allCourses');
     }
   }, [router.query]);
 
@@ -65,14 +65,14 @@ const AllCourses = () => {
       setApierror(false);
     } catch (error) {
       setApierror(true);
-      console.error("Error fetching API:", error);
+      console.error('Error fetching API:', error);
     }
   };
   // datas.sort((a, b) => b.localeCompare(a));
   useEffect(() => {}, []);
   const [apiEro, setApierror] = useState(false);
   const [errorMessage, setErrormessage] = useState(
-    "We are in the process of updating our course offerings. Please check in some time."
+    'We are in the process of updating our course offerings. Please check in some time.'
   );
   useEffect(() => {
     fetchApiData();
@@ -97,7 +97,7 @@ const AllCourses = () => {
 
   const TabButtonClick = (x: number) => {
     setLoadingVisible(true);
-    router.push("/allCourses");
+    router.push('/allCourses');
     setAllCourseButtonIndex(x);
     setTimeout(() => {
       setLoadingVisible(false);
@@ -175,12 +175,12 @@ const AllCourses = () => {
                   ))}
                 </div>
               ) : (
-                ""
+                ''
               )}
             </div>
 
             {isSmallScreen ? (
-              ""
+              ''
             ) : (
               <div className="hidden md:block pt-5  mb-5 w-full">
                 <div
@@ -193,8 +193,8 @@ const AllCourses = () => {
                         key={categoryName + index}
                         className={`font-semibold ${
                           index === AllCourseButtonIndex
-                            ? "text-black border-b-4  border-buttonBlue "
-                            : "text-black hover:text-black "
+                            ? 'text-black border-b-4  border-buttonBlue '
+                            : 'text-black hover:text-black '
                         }`}
                       >
                         <button
@@ -257,7 +257,7 @@ const AllCourses = () => {
                 {errorMessage}
               </div>
             ) : (
-              ""
+              ''
             )}
           </section>
         </div>
@@ -280,7 +280,7 @@ const AllCourses = () => {
           </div>
         </div>
       ) : (
-        ""
+        ''
       )}
     </>
   );

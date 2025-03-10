@@ -1,8 +1,8 @@
-import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
-import { Coursedetailstype } from "common/util/types";
-import LeadForm from "../components/LeadForm";
+import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import { Coursedetailstype } from 'common/util/types';
+import LeadForm from './LeadForm';
 
 interface CourseIncludesProps {
   courseDetails: Coursedetailstype | null;
@@ -86,7 +86,7 @@ const CourseIncludes: React.FC<CourseIncludesProps> = ({ courseDetails }) => {
           <div className="flex justify-between">
             <p className="font-semibold">Assessments</p>
             <p className="text-subText">
-              {courseDetails?.assessment_required ? "Yes" : "No"}
+              {courseDetails?.assessment_required ? 'Yes' : 'No'}
             </p>
           </div>
         </div>

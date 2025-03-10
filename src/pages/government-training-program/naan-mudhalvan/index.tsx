@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react';
 import Head from 'next/head';
-import NavbarSection from 'components/navbar/NavbarSection';
+import NavbarSection from '@/component/navbar/NavbarSection';
 import { FaCircle, FaHandPointRight } from 'react-icons/fa';
 import {
   Card,

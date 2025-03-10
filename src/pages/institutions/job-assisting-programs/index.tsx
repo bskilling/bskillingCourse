@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import NavbarSection from 'components/navbar/NavbarSection';
+import NavbarSection from '@/component/navbar/NavbarSection';
 import Head from 'next/head';
 import Link from 'next/link';
 import React from 'react';
