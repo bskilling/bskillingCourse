@@ -6,7 +6,7 @@ const AboutOnlineLearning = () => {
       <div className="relative z-10  text-center py-12">
         <p className="text-[16px] mb-6">STARTING ONLINE LEARNING</p>
 
-        <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold tracking-wider mb-4 uppercase ">
+        <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold tracking-wider mb-4 uppercase">
           Enhance your skIlls wIth best <br />
           OnlIne courses
         </h1>

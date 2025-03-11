@@ -1,33 +1,34 @@
-import React, { useState } from "react";
-import Head from "next/head";
+/* eslint-disable @next/next/next-script-for-ga */
+import React, { useState } from 'react';
+import Head from 'next/head';
 
 const RegistrationForm = () => {
   const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    dateOfBirth: "",
-    gender: "",
-    contactNumber: "",
-    residentialAddress: "",
-    degree: "",
-    specialization: "",
-    yearOfPassing: "",
-    collegeName: "",
-    category: "",
-    communityCertificateNumber: "",
+    fullName: '',
+    email: '',
+    dateOfBirth: '',
+    gender: '',
+    contactNumber: '',
+    residentialAddress: '',
+    degree: '',
+    specialization: '',
+    yearOfPassing: '',
+    collegeName: '',
+    category: '',
+    communityCertificateNumber: '',
     communityCertificate: null,
     studyCertificate: null,
     aadharCard: null,
-    currentlyEmployed: "",
+    currentlyEmployed: '',
     careerGoals: [],
     consent: false,
   });
 
   const handleChange = (e: any) => {
     const { name, value, type, checked } = e.target;
-    if (type === "checkbox") {
+    if (type === 'checkbox') {
       setFormData({ ...formData, [name]: checked });
-    } else if (type === "file") {
+    } else if (type === 'file') {
       setFormData({ ...formData, [name]: e.target.files[0] });
     } else {
       setFormData({ ...formData, [name]: value });
@@ -155,7 +156,7 @@ const RegistrationForm = () => {
                   type="radio"
                   name="gender"
                   value="male"
-                  checked={formData.gender === "male"}
+                  checked={formData.gender === 'male'}
                   onChange={handleChange}
                   className="form-radio"
                 />
@@ -166,7 +167,7 @@ const RegistrationForm = () => {
                   type="radio"
                   name="gender"
                   value="female"
-                  checked={formData.gender === "female"}
+                  checked={formData.gender === 'female'}
                   onChange={handleChange}
                   className="form-radio"
                 />
@@ -223,7 +224,7 @@ const RegistrationForm = () => {
                   type="radio"
                   name="degree"
                   value="B-tech"
-                  checked={formData.degree === "B-tech"}
+                  checked={formData.degree === 'B-tech'}
                   onChange={handleChange}
                   className="form-radio"
                 />
@@ -234,7 +235,7 @@ const RegistrationForm = () => {
                   type="radio"
                   name="degree"
                   value="BE"
-                  checked={formData.degree === "BE"}
+                  checked={formData.degree === 'BE'}
                   onChange={handleChange}
                   className="form-radio"
                 />
@@ -245,7 +246,7 @@ const RegistrationForm = () => {
                   type="radio"
                   name="degree"
                   value="MCS"
-                  checked={formData.degree === "MCS"}
+                  checked={formData.degree === 'MCS'}
                   onChange={handleChange}
                   className="form-radio"
                 />
@@ -256,7 +257,7 @@ const RegistrationForm = () => {
                   type="radio"
                   name="degree"
                   value="Others"
-                  checked={formData.degree === "Others"}
+                  checked={formData.degree === 'Others'}
                   onChange={handleChange}
                   className="form-radio"
                 />
@@ -276,7 +277,7 @@ const RegistrationForm = () => {
                   type="radio"
                   name="specialization"
                   value="Mechanical"
-                  checked={formData.specialization === "Mechanical"}
+                  checked={formData.specialization === 'Mechanical'}
                   onChange={handleChange}
                   className="form-radio"
                 />
@@ -287,7 +288,7 @@ const RegistrationForm = () => {
                   type="radio"
                   name="specialization"
                   value="Computer Science"
-                  checked={formData.specialization === "Computer Science"}
+                  checked={formData.specialization === 'Computer Science'}
                   onChange={handleChange}
                   className="form-radio"
                 />
@@ -298,7 +299,7 @@ const RegistrationForm = () => {
                   type="radio"
                   name="specialization"
                   value="EEE"
-                  checked={formData.specialization === "EEE"}
+                  checked={formData.specialization === 'EEE'}
                   onChange={handleChange}
                   className="form-radio"
                 />
@@ -309,7 +310,7 @@ const RegistrationForm = () => {
                   type="radio"
                   name="specialization"
                   value="Civil"
-                  checked={formData.specialization === "Civil"}
+                  checked={formData.specialization === 'Civil'}
                   onChange={handleChange}
                   className="form-radio"
                 />
@@ -320,7 +321,7 @@ const RegistrationForm = () => {
                   type="radio"
                   name="specialization"
                   value="Others"
-                  checked={formData.specialization === "Others"}
+                  checked={formData.specialization === 'Others'}
                   onChange={handleChange}
                   className="form-radio"
                 />
@@ -441,7 +442,7 @@ const RegistrationForm = () => {
                   type="radio"
                   name="currentlyEmployed"
                   value="yes"
-                  checked={formData.currentlyEmployed === "yes"}
+                  checked={formData.currentlyEmployed === 'yes'}
                   onChange={handleChange}
                   className="form-radio"
                 />
@@ -452,7 +453,7 @@ const RegistrationForm = () => {
                   type="radio"
                   name="currentlyEmployed"
                   value="no"
-                  checked={formData.currentlyEmployed === "no"}
+                  checked={formData.currentlyEmployed === 'no'}
                   onChange={handleChange}
                   className="form-radio"
                 />

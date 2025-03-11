@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { Coursedetailstype } from 'common/util/types';
 import React, { useState } from 'react';
 import RegisterForm from '@/component/registerForm';

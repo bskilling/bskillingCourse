@@ -1,7 +1,9 @@
-import React from "react";
-import Image from "next/image";
-import Link from "next/link";
-import Head from "next/head";
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable @next/next/next-script-for-ga */
+import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import Head from 'next/head';
 
 export default function Privacy() {
   return (
@@ -183,8 +185,8 @@ export default function Privacy() {
                 4. Usage of the Website and Services
               </p>
               <div className="flex md:ml-6">
-                {" "}
-                <span className="mr-2 mt-2">‣</span>{" "}
+                {' '}
+                <span className="mr-2 mt-2">‣</span>{' '}
                 <p className="mt-2 ">
                   You are granted a personal, non-transferable, non-exclusive,
                   and revocable license to use the website, services, and
@@ -194,8 +196,8 @@ export default function Privacy() {
               </div>
 
               <div className="flex md:ml-6">
-                {" "}
-                <span className="mr-2 mt-2">‣</span>{" "}
+                {' '}
+                <span className="mr-2 mt-2">‣</span>{' '}
                 <p className="mt-2 ">
                   You acknowledge and agree that bSkilling is the sole and
                   exclusive owner of the website, services, and content and
@@ -206,8 +208,8 @@ export default function Privacy() {
               </div>
 
               <div className="flex md:ml-6">
-                {" "}
-                <span className="mr-2 mt-2">‣</span>{" "}
+                {' '}
+                <span className="mr-2 mt-2">‣</span>{' '}
                 <p className="mt-2 ">
                   You acknowledge and agree that this agreement does not convey
                   to you any right, title, or interest in the website, services,
@@ -227,8 +229,8 @@ export default function Privacy() {
               </p>
 
               <div className="flex md:ml-6">
-                {" "}
-                <span className="mr-2 mt-2">‣</span>{" "}
+                {' '}
+                <span className="mr-2 mt-2">‣</span>{' '}
                 <p className="mt-2 ">
                   You are granted a limited, non-exclusive right to use the
                   website, services, and content and courseware for the sole
@@ -238,8 +240,8 @@ export default function Privacy() {
               </div>
 
               <div className="flex md:ml-6">
-                {" "}
-                <span className="mr-2 mt-2">‣</span>{" "}
+                {' '}
+                <span className="mr-2 mt-2">‣</span>{' '}
                 <p className="mt-2 ">
                   You acknowledge and agree that bSkilling is the sole and
                   exclusive owner of the website, services, and content and
@@ -250,8 +252,8 @@ export default function Privacy() {
               </div>
 
               <div className="flex md:ml-6">
-                {" "}
-                <span className="mr-2 mt-2">‣</span>{" "}
+                {' '}
+                <span className="mr-2 mt-2">‣</span>{' '}
                 <p className="mt-2 ">
                   You acknowledge and agree that this agreement does not convey
                   to you any right, title, or interest in the website, services,
@@ -271,8 +273,8 @@ export default function Privacy() {
               </p>
 
               <div className="flex md:ml-6">
-                {" "}
-                <span className="mr-2 mt-2">‣</span>{" "}
+                {' '}
+                <span className="mr-2 mt-2">‣</span>{' '}
                 <p className="mt-2 ">
                   bSkilling may use your picture in any photos, videos, or other
                   promotional material they use
@@ -280,8 +282,8 @@ export default function Privacy() {
               </div>
 
               <div className="flex md:ml-6">
-                {" "}
-                <span className="mr-2 mt-2">‣</span>{" "}
+                {' '}
+                <span className="mr-2 mt-2">‣</span>{' '}
                 <p className="mt-2 ">
                   bSkilling may use your personal information to inform you
                   about other certification training courses they offer
@@ -289,8 +291,8 @@ export default function Privacy() {
               </div>
 
               <div className="flex md:ml-6">
-                {" "}
-                <span className="mr-2 mt-2">‣</span>{" "}
+                {' '}
+                <span className="mr-2 mt-2">‣</span>{' '}
                 <p className="mt-2 ">
                   bSkilling will not distribute or share your personal
                   information with any third-party marketing database or
@@ -318,8 +320,8 @@ export default function Privacy() {
               </p>
 
               <div className="flex md:ml-6">
-                {" "}
-                <span className="mr-2 mt-2">‣</span>{" "}
+                {' '}
+                <span className="mr-2 mt-2">‣</span>{' '}
                 <p className="mt-2 ">
                   You agree to use the website, services, and content and
                   courseware at your own risk
@@ -327,8 +329,8 @@ export default function Privacy() {
               </div>
 
               <div className="flex md:ml-6">
-                {" "}
-                <span className="mr-2 mt-2">‣</span>{" "}
+                {' '}
+                <span className="mr-2 mt-2">‣</span>{' '}
                 <p className="mt-2 ">
                   bSkilling does not guarantee that the website, services, or
                   content and courseware will be uninterrupted or error-free
@@ -336,8 +338,8 @@ export default function Privacy() {
               </div>
 
               <div className="flex md:ml-6">
-                {" "}
-                <span className="mr-2 mt-2">‣</span>{" "}
+                {' '}
+                <span className="mr-2 mt-2">‣</span>{' '}
                 <p className="mt-2 ">
                   bSkilling is not liable for any direct, indirect, incidental,
                   special, or consequential damages arising from the use of the
@@ -346,8 +348,8 @@ export default function Privacy() {
               </div>
 
               <div className="flex md:ml-6">
-                {" "}
-                <span className="mr-2 mt-2">‣</span>{" "}
+                {' '}
+                <span className="mr-2 mt-2">‣</span>{' '}
                 <p className="mt-2 ">
                   This disclaimer of liability applies to all damages or injury
                   caused by any failure of performance, error, omission,
@@ -359,8 +361,8 @@ export default function Privacy() {
               </div>
 
               <div className="flex md:ml-6">
-                {" "}
-                <span className="mr-2 mt-2">‣</span>{" "}
+                {' '}
+                <span className="mr-2 mt-2">‣</span>{' '}
                 <p className="mt-2 ">
                   bSkilling is not liable for any defamatory, offensive,
                   wrongful, or illegal conduct of third parties or other users
@@ -369,8 +371,8 @@ export default function Privacy() {
               </div>
 
               <div className="flex md:ml-6">
-                {" "}
-                <span className="mr-2 mt-2">‣</span>{" "}
+                {' '}
+                <span className="mr-2 mt-2">‣</span>{' '}
                 <p className="mt-2 ">
                   bSkilling&#39;s liability, and the liability of its
                   affiliates, directors, officers, employees, agents, and
@@ -386,8 +388,8 @@ export default function Privacy() {
               <p className="text-xl font-semibold">8. Term and Termination</p>
 
               <div className="flex md:ml-6">
-                {" "}
-                <span className="mr-2 mt-2">‣</span>{" "}
+                {' '}
+                <span className="mr-2 mt-2">‣</span>{' '}
                 <p className="mt-2 ">
                   This agreement will take effect when you click on the &quot;I
                   ACCEPT&quot; button and will remain in effect until you cancel
@@ -397,8 +399,8 @@ export default function Privacy() {
               </div>
 
               <div className="flex md:ml-6">
-                {" "}
-                <span className="mr-2 mt-2">‣</span>{" "}
+                {' '}
+                <span className="mr-2 mt-2">‣</span>{' '}
                 <p className="mt-2 ">
                   bSkilling can terminate this agreement and block your access
                   to the content and courseware immediately by sending you a
@@ -409,8 +411,8 @@ export default function Privacy() {
               </div>
 
               <div className="flex md:ml-6">
-                {" "}
-                <span className="mr-2 mt-2">‣</span>{" "}
+                {' '}
+                <span className="mr-2 mt-2">‣</span>{' '}
                 <p className="mt-2 ">
                   If you breach any of the terms of this agreement, bSkilling
                   may exercise all of its rights and remedies under this
@@ -420,8 +422,8 @@ export default function Privacy() {
               </div>
 
               <div className="flex md:ml-6">
-                {" "}
-                <span className="mr-2 mt-2">‣</span>{" "}
+                {' '}
+                <span className="mr-2 mt-2">‣</span>{' '}
                 <p className="mt-2 ">
                   The provisions of clauses 4.3, 7.2, 8, and 11 of this
                   agreement will survive the termination of this
@@ -430,8 +432,8 @@ export default function Privacy() {
               </div>
 
               <div className="flex md:ml-6">
-                {" "}
-                <span className="mr-2 mt-2">‣</span>{" "}
+                {' '}
+                <span className="mr-2 mt-2">‣</span>{' '}
                 <p className="mt-2 ">
                   You agree to indemnify and hold Us, Our contractors,
                   licensors, directors, officers, employees, and agents,
@@ -448,8 +450,8 @@ export default function Privacy() {
               <p className="text-xl font-semibold">9. Waiver</p>
 
               <div className="flex md:ml-6">
-                {" "}
-                <span className="mr-2 mt-2">‣</span>{" "}
+                {' '}
+                <span className="mr-2 mt-2">‣</span>{' '}
                 <p className="mt-2 ">
                   If a party does not exercise a right, remedy, power, or
                   privilege under this agreement, it does not mean that the
@@ -458,8 +460,8 @@ export default function Privacy() {
               </div>
 
               <div className="flex md:ml-6">
-                {" "}
-                <span className="mr-2 mt-2">‣</span>{" "}
+                {' '}
+                <span className="mr-2 mt-2">‣</span>{' '}
                 <p className="mt-2 ">
                   No term of this agreement can be waived unless it is in
                   writing and signed by the party that is waiving the term
@@ -467,8 +469,8 @@ export default function Privacy() {
               </div>
 
               <div className="flex md:ml-6">
-                {" "}
-                <span className="mr-2 mt-2">‣</span>{" "}
+                {' '}
+                <span className="mr-2 mt-2">‣</span>{' '}
                 <p className="mt-2 ">
                   A waiver of one right or breach does not waive any other
                   rights or breaches
@@ -480,8 +482,8 @@ export default function Privacy() {
               <p className="text-xl font-semibold">10. Severability</p>
 
               <div className="flex md:ml-6">
-                {" "}
-                <span className="mr-2 mt-2">‣</span>{" "}
+                {' '}
+                <span className="mr-2 mt-2">‣</span>{' '}
                 <p className="mt-2 ">
                   If any provision of this agreement is held invalid or
                   unenforceable under the laws of India, the remaining
@@ -490,8 +492,8 @@ export default function Privacy() {
               </div>
 
               <div className="flex md:ml-6">
-                {" "}
-                <span className="mr-2 mt-2">‣</span>{" "}
+                {' '}
+                <span className="mr-2 mt-2">‣</span>{' '}
                 <p className="mt-2 ">
                   The agreement will be deemed to be amended by replacing the
                   invalid or unenforceable provision with a valid and
@@ -514,8 +516,8 @@ export default function Privacy() {
               </p>
 
               <div className="flex md:ml-6">
-                {" "}
-                <span className="mr-2 mt-2">‣</span>{" "}
+                {' '}
+                <span className="mr-2 mt-2">‣</span>{' '}
                 <p className="mt-2 ">
                   For participants who are residents of the United States, this
                   agreement will be governed by and construed in accordance with
@@ -526,8 +528,8 @@ export default function Privacy() {
               </div>
 
               <div className="flex md:ml-6">
-                {" "}
-                <span className="mr-2 mt-2">‣</span>{" "}
+                {' '}
+                <span className="mr-2 mt-2">‣</span>{' '}
                 <p className="mt-2 ">
                   For participants who are not residents of the United States,
                   this agreement will be governed by and construed in accordance
@@ -543,8 +545,8 @@ export default function Privacy() {
                 12. Amendment and Assignment
               </p>
               <div className="flex md:ml-6">
-                {" "}
-                <span className="mr-2 mt-2">‣</span>{" "}
+                {' '}
+                <span className="mr-2 mt-2">‣</span>{' '}
                 <p className="mt-2 ">
                   bSkilling can unilaterally amend or modify this agreement at
                   any time
@@ -552,8 +554,8 @@ export default function Privacy() {
               </div>
 
               <div className="flex md:ml-6">
-                {" "}
-                <span className="mr-2 mt-2">‣</span>{" "}
+                {' '}
+                <span className="mr-2 mt-2">‣</span>{' '}
                 <p className="mt-2 ">
                   bSkilling will publish the revised agreement on the website so
                   that you are aware of the changes
@@ -561,8 +563,8 @@ export default function Privacy() {
               </div>
 
               <div className="flex md:ml-6">
-                {" "}
-                <span className="mr-2 mt-2">‣</span>{" "}
+                {' '}
+                <span className="mr-2 mt-2">‣</span>{' '}
                 <p className="mt-2 ">
                   You are responsible for checking the website periodically for
                   any changes to the agreement
@@ -570,8 +572,8 @@ export default function Privacy() {
               </div>
 
               <div className="flex md:ml-6">
-                {" "}
-                <span className="mr-2 mt-2">‣</span>{" "}
+                {' '}
+                <span className="mr-2 mt-2">‣</span>{' '}
                 <p className="mt-2 ">
                   Your continued use of or access to the website, services, and
                   content and courseware following the posting of any changes to
@@ -580,8 +582,8 @@ export default function Privacy() {
               </div>
 
               <div className="flex md:ml-6">
-                {" "}
-                <span className="mr-2 mt-2">‣</span>{" "}
+                {' '}
+                <span className="mr-2 mt-2">‣</span>{' '}
                 <p className="mt-2 ">
                   You are not permitted to assign this agreement or the rights
                   and obligations mentioned in this agreement to any third party
@@ -589,8 +591,8 @@ export default function Privacy() {
               </div>
 
               <div className="flex md:ml-6">
-                {" "}
-                <span className="mr-2 mt-2">‣</span>{" "}
+                {' '}
+                <span className="mr-2 mt-2">‣</span>{' '}
                 <p className="mt-2 ">
                   You are solely responsible for any breach of this agreement or
                   any terms and conditions hereof

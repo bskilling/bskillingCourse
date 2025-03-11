@@ -1,6 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/next-script-for-ga */
 import FixedFooterBar from '@/component/fixedFooterBar';
-import Layout from '@/component/Layout';
+import Layout from '@/component//Layout';
 import { MyProvider } from 'context/PageContext';
 import { motion } from 'framer-motion';
 import useChat from 'modules/leadChat/zustand';

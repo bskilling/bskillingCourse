@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @next/next/next-script-for-ga */
 import axios from 'axios';
 import CourseCard from '@/component/CourseCard';
 import { MyContext } from 'context/PageContext';

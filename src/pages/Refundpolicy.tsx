@@ -1,7 +1,8 @@
-import React from "react";
-import Image from "next/image";
-import Link from "next/link";
-import Head from "next/head";
+/* eslint-disable @next/next/next-script-for-ga */
+import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import Head from 'next/head';
 
 export default function RefundPolicy() {
   return (
@@ -109,8 +110,8 @@ export default function RefundPolicy() {
               </p>
 
               <div className="flex md:ml-6">
-                {" "}
-                <span className="mr-2 mt-2">‣</span>{" "}
+                {' '}
+                <span className="mr-2 mt-2">‣</span>{' '}
                 <p className="mt-2 ">
                   bSkilling may postpone, cancel, or change the location of an
                   event due to insufficient enrolment, instructor illness, or
@@ -120,8 +121,8 @@ export default function RefundPolicy() {
               </div>
 
               <div className="flex md:ml-6">
-                {" "}
-                <span className="mr-2 mt-2">‣</span>{" "}
+                {' '}
+                <span className="mr-2 mt-2">‣</span>{' '}
                 <p className="mt-2 ">
                   If bSkilling cancels an event, 100% of the course fees will be
                   refunded to the delegate if the refund request is made within
@@ -132,8 +133,8 @@ export default function RefundPolicy() {
               </div>
 
               <div className="flex md:ml-6">
-                {" "}
-                <span className="mr-2 mt-2">‣</span>{" "}
+                {' '}
+                <span className="mr-2 mt-2">‣</span>{' '}
                 <p className="mt-2 ">
                   If bSkilling postpones/cancels an event, participants who
                   purchased the course more than 10 days ago will be rescheduled
@@ -142,8 +143,8 @@ export default function RefundPolicy() {
               </div>
 
               <div className="flex md:ml-6">
-                {" "}
-                <span className="mr-2 mt-2">‣</span>{" "}
+                {' '}
+                <span className="mr-2 mt-2">‣</span>{' '}
                 <p className="mt-2 ">
                   If a delegate cancels their participation in an event 10
                   business days (or more) prior to the event, 10% of the total
@@ -153,16 +154,16 @@ export default function RefundPolicy() {
               </div>
 
               <div className="flex md:ml-6">
-                {" "}
-                <span className="mr-2 mt-2">‣</span>{" "}
+                {' '}
+                <span className="mr-2 mt-2">‣</span>{' '}
                 <p className="mt-2 ">
                   All materials are copyrighted by bSkilling or its partners
                 </p>
               </div>
 
               <div className="flex md:ml-6">
-                {" "}
-                <span className="mr-2 mt-2">‣</span>{" "}
+                {' '}
+                <span className="mr-2 mt-2">‣</span>{' '}
                 <p className="mt-2 ">
                   If a delegate cancels their participation in an event within
                   10 business days (or less) of the event, no refunds will be
@@ -171,8 +172,8 @@ export default function RefundPolicy() {
               </div>
 
               <div className="flex md:ml-6">
-                {" "}
-                <span className="mr-2 mt-2">‣</span>{" "}
+                {' '}
+                <span className="mr-2 mt-2">‣</span>{' '}
                 <p className="mt-2 ">
                   No refunds or credits will be given to participants who do not
                   attend both days of the course

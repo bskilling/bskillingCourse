@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/next-script-for-ga */
 import Blogs from '@/component/blognew';
+import CertifiedPartners from '@/component/certfiedPratnersSilder';
 import ListOfCourses from '@/component/listOfCourses';
 import Slider from '@/component/slider';
 import Tabs from '@/component/tabs';
@@ -18,7 +19,6 @@ import Experience from '@/component/Experience';
 import Testimonial from '@/component/Testimonial';
 import Placement from '@/component/Placement';
 import Program from '@/component/Program';
-import CertifiedPartners from '@/component/certifiedPartners';
 
 interface UpcomingBatch {
   capacity: string;

@@ -1,7 +1,9 @@
-import React, { useEffect } from "react";
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable jsx-a11y/alt-text */
+import React, { useEffect } from 'react';
 
-import { useRouter } from "next/router";
-import { url } from "inspector";
+import { useRouter } from 'next/router';
+import { url } from 'inspector';
 
 const ThankYou = () => {
   const router = useRouter();
@@ -46,8 +48,8 @@ const ThankYou = () => {
       </p>
 
       <p className="mt-4">
-        {" "}
-        Email us at:{" "}
+        {' '}
+        Email us at:{' '}
         <a href="mailto:support@bskilling.com">support@bskilling.com</a>
       </p>
       <p>

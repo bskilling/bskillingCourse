@@ -38,16 +38,16 @@ const AboutBskilling = () => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-16 mt-16">
         <div className="bg-cardbg p-6 rounded-lg text-center shadow-lg">
-          <h2 className="text-2xl font-bold mb-4 text-white">Our Vision</h2>
-          <p className="text-white text-base leading-relaxed">
+          <h2 className="text-2xl font-bold mb-4 ">Our Vision</h2>
+          <p className=" text-base leading-relaxed">
             To emerge as the premier market leader in shaping the
             technology-based workforce of the future, driving impactful
             disruptions in upskilling and staffing solutions.
           </p>
         </div>
         <div className="bg-customPurple p-6 rounded-lg text-center shadow-lg">
-          <h2 className="text-2xl font-bold mb-4 text-white">Our Mission</h2>
-          <p className="text-white text-base leading-relaxed">
+          <h2 className="text-2xl font-bold mb-4 ">Our Mission</h2>
+          <p className=" text-base leading-relaxed">
             BSkilling aims to empower organisations to achieve scalability
             through innovative and efficient talent enhancement programs. We
             strive to deliver customised knowledge and talent services that

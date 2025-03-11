@@ -1,6 +1,8 @@
-import Head from "next/head";
-import React, { useState } from "react";
-import Image from "next/image";
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable @next/next/next-script-for-ga */
+import Head from 'next/head';
+import React, { useState } from 'react';
+import Image from 'next/image';
 
 const About = () => {
   return (
@@ -72,9 +74,9 @@ const About = () => {
             <div className="my-5 text-base">
               <p>
                 <span className="font-semibold">
-                  {" "}
+                  {' '}
                   Offering a wide range of courses :
-                </span>{" "}
+                </span>{' '}
                 bSkilling offers courses on a wide range of topics, including
                 IT, business, social media, and many more. This allows students
                 to find the courses that are right for them and develop the
@@ -85,9 +87,9 @@ const About = () => {
             <div className="my-5 text-base leading-relaxed ">
               <p>
                 <span className="font-semibold">
-                  {" "}
+                  {' '}
                   Providing high-quality education :
-                </span>{" "}
+                </span>{' '}
                 bSkilling&#39;s courses are taught by experienced trainers who
                 are experts in their field. This ensures that students are
                 learning from the best and getting the most out of their
@@ -98,9 +100,9 @@ const About = () => {
             <div className="my-5 leading-relaxed text-base">
               <p>
                 <span className="font-semibold">
-                  {" "}
+                  {' '}
                   Making education accessible to everyone :
-                </span>{" "}
+                </span>{' '}
                 bSkilling offers its courses at an affordable price and provides
                 financial aid to students who need it. This makes education
                 accessible to everyone, regardless of their financial
@@ -110,9 +112,9 @@ const About = () => {
             <div className="my-5 leading-relaxed text-base">
               <p>
                 <span className="font-semibold">
-                  {" "}
+                  {' '}
                   Offering flexible learning options :
-                </span>{" "}
+                </span>{' '}
                 bSkilling offers its courses online, which allows students to
                 learn at their own pace and from anywhere in the world. This
                 makes education more convenient and accessible for students.
