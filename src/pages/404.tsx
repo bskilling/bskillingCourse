@@ -1,4 +1,5 @@
-import Link from "next/link";
+/* eslint-disable @next/next/no-img-element */
+import Link from 'next/link';
 export default function Custom404() {
   return (
     <div className="w-full h-screen flex flex-col items-center justify-center">
@@ -162,9 +163,9 @@ export default function Custom404() {
           Sorry, the page you are looking for could not be found.
         </p>
         <div className="flex items-center text-white space-x-2 bg-buttonBlue  text- px-4 py-2 mt-12  transition duration-150">
-          <Link style={{ textDecoration: "none" }} href={"/"}>
-            <span style={{ textDecoration: "none" }} className="text-white">
-              {" "}
+          <Link style={{ textDecoration: 'none' }} href={'/'}>
+            <span style={{ textDecoration: 'none' }} className="text-white">
+              {' '}
               Home
             </span>
           </Link>

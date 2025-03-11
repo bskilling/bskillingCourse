@@ -1,7 +1,8 @@
-import React from "react";
-import Image from "next/image";
-import Link from "next/link";
-import Head from "next/head";
+/* eslint-disable @next/next/next-script-for-ga */
+import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import Head from 'next/head';
 
 export default function TermOfUse() {
   return (
@@ -111,8 +112,8 @@ export default function TermOfUse() {
               </p>
 
               <div className="flex md:ml-6">
-                {" "}
-                <span className="mr-2 mt-2">I.</span>{" "}
+                {' '}
+                <span className="mr-2 mt-2">I.</span>{' '}
                 <p className="mt-2 ">
                   1. Your login credentials (“Participant Account”) are for your
                   exclusive use. Sharing is prohibited.
@@ -186,7 +187,7 @@ export default function TermOfUse() {
               <p className="text-xl font-semibold">Indemnification</p>
 
               <div className="flex md:ml-6">
-                {" "}
+                {' '}
                 <p className="mt-2 ">
                   You agree to indemnify and hold harmless bSkilling, its
                   affiliates, and employees from any claims, damages, or
@@ -241,7 +242,7 @@ export default function TermOfUse() {
               <p className="mt-2 md:ml-6">
                 If you have concerns or queries, please contact our Grievance
                 Officer. We aim to address all grievances promptly. You can
-                reach us via email at{" "}
+                reach us via email at{' '}
                 <a href="mailto:grievanceofficer@bskilling.com">
                   grievanceofficer@bskilling.com
                 </a>

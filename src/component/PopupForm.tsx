@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { useRouter } from "next/router";
+/* eslint-disable @next/next/no-img-element */
+import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 interface PopupFormType {
   handleClosePopup: () => void;
   title: string;
@@ -8,9 +9,9 @@ interface PopupFormType {
 const PopupForm: React.FC<PopupFormType> = ({ handleClosePopup, title }) => {
   const router = useRouter();
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    contact: "",
+    name: '',
+    email: '',
+    contact: '',
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -41,9 +42,9 @@ const PopupForm: React.FC<PopupFormType> = ({ handleClosePopup, title }) => {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_TRAINING_BASE_URL}api/v1/create-lead`,
         {
-          method: "POST",
+          method: 'POST',
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
           body: JSON.stringify(payload),
         }
@@ -58,7 +59,7 @@ const PopupForm: React.FC<PopupFormType> = ({ handleClosePopup, title }) => {
       // });
 
       if (response.ok) {
-        router.push("/thank-you");
+        router.push('/thank-you');
         // alert("Form submitted successfully!");
         // setSuccess(
         //   "We have received your information successfully. Our team will review your details and get in touch with you shortly."
@@ -68,11 +69,11 @@ const PopupForm: React.FC<PopupFormType> = ({ handleClosePopup, title }) => {
         // }, 1000);
       } else {
         const data = await response.json();
-        setError(data.message || "Failed to send email");
+        setError(data.message || 'Failed to send email');
       }
     } catch (error) {
-      console.error("Failed to submit form:", error);
-      setError("Failed to send email. Please try again later.");
+      console.error('Failed to submit form:', error);
+      setError('Failed to send email. Please try again later.');
     } finally {
       setLoading(false);
     }
@@ -177,7 +178,7 @@ const PopupForm: React.FC<PopupFormType> = ({ handleClosePopup, title }) => {
               className="w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
               disabled={loading}
             >
-              {loading ? "Sending..." : "Submit"}
+              {loading ? 'Sending...' : 'Submit'}
             </button>
             <button
               type="button"

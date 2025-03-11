@@ -31,6 +31,7 @@ export default function Login() {
       return;
     }
     window.location.href = 'https://bskilling.edmingle.com/login';
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query]);
 
   return (
