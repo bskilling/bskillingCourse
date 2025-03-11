@@ -1,11 +1,12 @@
-import React from "react";
-import { FaTrophy } from "react-icons/fa";
-import { BiTimeFive } from "react-icons/bi";
-import { FaChalkboardTeacher } from "react-icons/fa";
-import { BsCalendarDate, BsFillPeopleFill } from "react-icons/bs";
-import Link from "next/link";
-import Marquee from "react-fast-marquee";
-import moment from "moment";
+/* eslint-disable @next/next/no-img-element */
+import React from 'react';
+import { FaTrophy } from 'react-icons/fa';
+import { BiTimeFive } from 'react-icons/bi';
+import { FaChalkboardTeacher } from 'react-icons/fa';
+import { BsCalendarDate, BsFillPeopleFill } from 'react-icons/bs';
+import Link from 'next/link';
+import Marquee from 'react-fast-marquee';
+import moment from 'moment';
 interface CourseCardProps {
   data: ListOfCoursesDataType;
 }
@@ -71,12 +72,12 @@ const CourseCard: React.FC<CourseCardProps> = ({ data }) => {
                 alt=""
               />
               <div className="absolute bottom-0 flex gap-1 rounded-t-md left-0 bg-red-700 px-3">
-                {" "}
+                {' '}
                 {data.discount === 0 ? (
-                  ""
+                  ''
                 ) : (
                   <span className="font-bold  text-white">
-                    {" "}
+                    {' '}
                     {data.discount}%&nbsp; OFF
                   </span>
                 )}
@@ -143,10 +144,10 @@ const CourseCard: React.FC<CourseCardProps> = ({ data }) => {
               </div>
               <div
                 className={`${
-                  data.batches.length > 0 ? "min-h-[48px]" : "h-12"
+                  data.batches.length > 0 ? 'min-h-[48px]' : 'h-12'
                 }`}
               >
-                {" "}
+                {' '}
                 <div className="relative flex overflow-x-hidden">
                   {data.batches.length > 0 && (
                     <div className="py-3 whitespace-nowrap">
@@ -154,10 +155,10 @@ const CourseCard: React.FC<CourseCardProps> = ({ data }) => {
                         {data.batches.map((item, index) => (
                           <span className="ml-5 text-sm " key={index}>
                             Upcoming Batches&nbsp; &nbsp;|&nbsp; &nbsp;
-                            {item.name} &nbsp; | &nbsp;{" "}
-                            {moment(item.startDate).format("YYYY-MMM-DD")}{" "}
+                            {item.name} &nbsp; | &nbsp;{' '}
+                            {moment(item.startDate).format('YYYY-MMM-DD')}{' '}
                             &nbsp;-&nbsp;
-                            {moment(item.endDate).format("YYYY-MMM-DD")}
+                            {moment(item.endDate).format('YYYY-MMM-DD')}
                           </span>
                         ))}
                       </Marquee>
