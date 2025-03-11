@@ -34,7 +34,7 @@ export default function GoogleReviews() {
           href={`https://search.google.com/local/reviews?placeid=${placeId}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-blue-400 hover:underline text-sm"
+          className="text-blue-400  text-sm"
         >
           ({totalReviews}) View More Reviews on Google
         </a>
