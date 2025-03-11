@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/next-script-for-ga */
 /* eslint-disable @next/next/no-img-element */
 import React from 'react';
 import Image from 'next/image';

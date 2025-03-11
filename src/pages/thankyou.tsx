@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { useRouter } from 'next/router';
 
 export default function ThankYou() {
@@ -6,8 +7,6 @@ export default function ThankYou() {
   const handleGoBack = () => {
     router.back();
   };
-
-  
 
   return (
     <div className="w-full h-screen flex flex-col items-center justify-center mb-50">

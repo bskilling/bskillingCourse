@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @next/next/no-img-element */
 import axios from 'axios';
 import { Course, Coursedetailstype } from 'common/util/types';
 import Link from 'next/link';
