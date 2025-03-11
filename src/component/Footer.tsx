@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import PopupForm from './PopupForm';
 import GoogleReviews from '@/components/pages/GoogleReviews';
+import { FaApple, FaGooglePlay } from 'react-icons/fa';
 
 const Footer = () => {
   const [isPopupOpen, setPopupOpen] = useState(false);
@@ -12,13 +13,25 @@ const Footer = () => {
 
   return (
     <footer className="bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 text-white py-10 px-6">
-      <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+      <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
         {/* Reviews */}
-        <div className="col-span-2 lg:col-span-1">
+        <div className="-mt-4">
+          <Link href={'/'}>
+            <img
+              src="/logo.png"
+              className="object-contain md:w-[130px] md:h-[50px] w-[120] h-[30px]"
+              alt="Logo"
+            />
+          </Link>
+          <div className="mt-5">
+            <p className="text-sm text-white leading-relaxed">
+              B-Block 4th Floor, COMMERCIAL BUILDING, UMA SREE DREAM WORLD, Unit
+              -2, Hosur Rd, Kudlu Gate, GB Palya, Bengaluru, Karnataka 560068
+            </p>
+          </div>
           <GoogleReviews />
         </div>
 
-        {/* Company */}
         <div>
           <h5 className="text-lg font-semibold mb-3">Company</h5>
           <ul className="space-y-2 text-sm">
@@ -141,71 +154,33 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-      </div>
-
-      {/* Footer Bottom */}
-      <div className="border-t border-gray-700 mt-6 pt-6 flex flex-col md:flex-row items-center md:justify-between text-sm text-gray-400">
-        {/* SOCIAL ICONS */}
-        <div className="flex space-x-4">
-          {[
-            {
-              name: 'Instagram',
-              icon: '/icon/insta.svg',
-              link: 'https://www.instagram.com/bskillingindia/',
-            },
-            {
-              name: 'Facebook',
-              icon: '/icon/facebook.svg',
-              link: 'https://www.facebook.com/bskillingindia/',
-            },
-            {
-              name: 'LinkedIn',
-              icon: '/icon/link.svg',
-              link: 'https://www.linkedin.com/company/bskillingindia/',
-            },
-            {
-              name: 'Twitter',
-              icon: '/twitter.webp',
-              link: 'https://twitter.com/b_SkillingIndia',
-            },
-          ].map((social, idx) => (
-            <a
-              key={idx}
-              href={social.link}
-              target="_blank"
-              className="hover:opacity-75 transition"
-            >
-              <img src={social.icon} alt={social.name} className="w-7 h-7" />
-            </a>
-          ))}
-        </div>
-
-        {/* COPYRIGHT */}
-        <p className="text-center md:text-left mb-4 md:mb-0">
-          &copy; {new Date().getFullYear()} BSkilling. All rights reserved.
-        </p>
-
-        {/* MOBILE APP SECTION */}
+        {/* Phones */}
         <div className="text-center md:text-left mb-6 md:mb-0">
-          <h5 className="text-xl font-semibold mb-4 text-white">MOBILE APPS</h5>
-          <div className="flex flex-col gap-3">
+          <h5 className="text-xl font-semibold mb-4 text-white text-right">
+            MOBILE APPS
+          </h5>
+          <div className="flex flex-col gap-3 justify-end items-end">
             <Link
               href="https://apps.apple.com/eg/app/bskilling/id6445943298"
               target="_blank"
-              className="bg-white hover:bg-yellow-400 text-blue-700  hover:text-black py-3 px-6 rounded-lg flex items-center justify-center transition"
+              className="w-fit flex items-center gap-2 px-4 py-3 rounded-lg bg-gradient-to-r from-blue-500 to-blue-700 text-white font-semibold hover:opacity-90 transition"
             >
-              📱 Download on the App Store
+              <FaApple className="text-xl" /> App Store
             </Link>
             <Link
               href="https://play.google.com/store/apps/details?id=com.melimu.app.bskilling&hl=en_IN&gl=US"
               target="_blank"
-              className="bg-white hover:bg-yellow-400 text-blue-700  hover:text-black py-3 px-6 rounded-lg flex items-center justify-center transition"
+              className="w-fit flex items-center gap-2 px-4 py-3 rounded-lg bg-gradient-to-r from-blue-500 to-blue-700 text-white font-semibold hover:opacity-90 transition"
             >
-              📲 Get it on Google Play
+              <FaGooglePlay className="text-xl" /> Google Play
             </Link>
           </div>
         </div>
       </div>
+
+      <p className="text-center md:text-center mb-4 md:mb-0">
+        &copy; {new Date().getFullYear()} BSkilling. All rights reserved.
+      </p>
     </footer>
   );
 };
