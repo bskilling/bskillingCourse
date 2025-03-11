@@ -2,6 +2,7 @@
 import { Calendar, Clock } from 'lucide-react';
 import { BiSolidCertification } from 'react-icons/bi';
 import { FaChalkboardTeacher } from 'react-icons/fa';
+//
 import { format } from 'date-fns';
 
 interface CourseDetailsProps {

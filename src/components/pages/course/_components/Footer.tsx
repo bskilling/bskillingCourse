@@ -1,10 +1,11 @@
+import Link from 'next/link';
 import {
   FaFacebook,
   FaLinkedin,
   FaTwitter,
   FaInstagram,
   FaArrowRight,
-} from "react-icons/fa";
+} from 'react-icons/fa';
 
 const Footer = () => {
   return (
@@ -22,18 +23,18 @@ const Footer = () => {
         {/* Center - Quick Links */}
         <div className="flex flex-col space-y-3">
           <h3 className="text-lg font-semibold text-gray-100">Quick Links</h3>
-          <a href="/about" className="hover:text-[#F8B400] transition">
+          <Link href="/about" className="hover:text-[#F8B400] transition">
             About Us
-          </a>
-          <a href="/courses" className="hover:text-[#F8B400] transition">
+          </Link>
+          <Link href="/courses" className="hover:text-[#F8B400] transition">
             Courses
-          </a>
-          <a href="/faq" className="hover:text-[#F8B400] transition">
+          </Link>
+          <Link href="/faq" className="hover:text-[#F8B400] transition">
             FAQ
-          </a>
-          <a href="/contact" className="hover:text-[#F8B400] transition">
+          </Link>
+          <Link href="/contact" className="hover:text-[#F8B400] transition">
             Contact
-          </a>
+          </Link>
         </div>
 
         {/* Right - Newsletter & Social Media */}
