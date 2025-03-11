@@ -1,13 +1,14 @@
-import { Coursedetailstype } from "common/util/types";
-import React, { useState } from "react";
-import RegisterForm from "components/registerForm";
+/* eslint-disable @next/next/no-img-element */
+import { Coursedetailstype } from 'common/util/types';
+import React, { useState } from 'react';
+import RegisterForm from '@/component/registerForm';
 import {
   Dialog,
   DialogBackdrop,
   DialogPanel,
   DialogTitle,
-} from "@headlessui/react";
-import { IoMdClose } from "react-icons/io";
+} from '@headlessui/react';
+import { IoMdClose } from 'react-icons/io';
 
 interface PaymentFormProps {
   courseDetails: Coursedetailstype | null;
@@ -60,8 +61,8 @@ const PaymentForm: React.FC<PaymentFormProps> = ({ courseDetails }) => {
                           email="jkdiadihsadsaio"
                           // BatchName={[{ name: "batch 1" }]}
                           price={courseDetails?.price}
-                          course={"rtest"}
-                          courseName={"test"}
+                          course={'rtest'}
+                          courseName={'test'}
                         />
                       </div>
                     </div>

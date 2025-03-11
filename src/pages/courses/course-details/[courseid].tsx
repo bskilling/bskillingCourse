@@ -1,14 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
 // import React, { useEffect, useState } from 'react';
 // import { useRouter } from 'next/router';
-// import TabData from 'components/TabData';
+// import TabData from '@/component/TabData';
 // import { Coursedetailstype, TrainingMetadataTypes } from 'common/util/types';
-// import NewsLetter from 'components/NewsLetter';
+// import NewsLetter from '@/component/NewsLetter';
 // import PaymentForm from 'modules/leadChat/components/PaymentForm';
-// import CourseIncludes from 'components/CourseIncludes';
-// import PopupForm from 'components/PopupForm';
+// import CourseIncludes from '@/component/CourseIncludes';
+// import PopupForm from '@/component/PopupForm';
 // import { formatDate } from 'util/dateformat';
-// import OtherCourse from 'components/OtherCourse';
+// import OtherCourse from '@/component/OtherCourse';
 
 // export default function CourseDetails() {
 //   const router = useRouter();
@@ -169,15 +169,15 @@
 
 import { GetStaticProps, GetStaticPaths } from 'next';
 import axios from 'axios';
-import Layout from 'components/Layout';
+import Layout from '@/component/Layout';
 import { Coursedetailstype } from 'common/util/types';
 import { formatDate } from 'util/dateformat';
 import PaymentForm from 'modules/leadChat/components/PaymentForm';
-import TabData from 'components/TabData';
-import CourseIncludes from 'components/CourseIncludes';
-import OtherCourse from 'components/OtherCourse';
-import NewsLetter from 'components/NewsLetter';
-import PopupForm from 'components/PopupForm';
+import TabData from '@/component/TabData';
+import CourseIncludes from '@/component/CourseIncludes';
+import OtherCourse from '@/component/OtherCourse';
+import NewsLetter from '@/component/NewsLetter';
+import PopupForm from '@/component/PopupForm';
 import { useState } from 'react';
 
 interface CourseDetailsProps {

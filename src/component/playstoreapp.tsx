@@ -1,9 +1,10 @@
+/* eslint-disable @next/next/no-img-element */
 const Playstore = () => {
   return (
     <>
       <section
         className="bg-cover bg-center bg-no-repeat flex justify-center items-center"
-        style={{ backgroundImage: `url(${"/qebg.png"})` }}
+        style={{ backgroundImage: `url(${'/qebg.png'})` }}
       >
         <div className="flex justify-end items-center">
           <img src="/play.png" className="w-[50%] h-auto" alt="" />

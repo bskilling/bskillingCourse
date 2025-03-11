@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { useSession, signIn } from 'next-auth/react';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';

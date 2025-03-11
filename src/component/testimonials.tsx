@@ -1,44 +1,45 @@
-import Link from "next/link";
-import { useState, useEffect } from "react";
-import { Pagination, Autoplay, Scrollbar, Navigation } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/autoplay";
+/* eslint-disable @next/next/no-img-element */
+import Link from 'next/link';
+import { useState, useEffect } from 'react';
+import { Pagination, Autoplay, Scrollbar, Navigation } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/autoplay';
 
 export default function Testimonials() {
   const stuff = [
     {
-      text: "I thought prompt engineering is the easiest and who will take up the course and it just about asking questions to Chat GPT! Oh boy I was wrong! There is so much and its a ocean of knowledge in the field of AI! Trainer helped me understand steps to prompt and the right way to prompt! Mid journey and Bard are something I dint know existed or to work with! Really appreciate the teams effort educate about all of these things in one session!",
-      name: "Amitikumar Mohanty",
-      position: "Systems Engineer",
-      company: "Renaura Wellness Pvt Ltd",
-      logo: "/testimonial1.png",
+      text: 'I thought prompt engineering is the easiest and who will take up the course and it just about asking questions to Chat GPT! Oh boy I was wrong! There is so much and its a ocean of knowledge in the field of AI! Trainer helped me understand steps to prompt and the right way to prompt! Mid journey and Bard are something I dint know existed or to work with! Really appreciate the teams effort educate about all of these things in one session!',
+      name: 'Amitikumar Mohanty',
+      position: 'Systems Engineer',
+      company: 'Renaura Wellness Pvt Ltd',
+      logo: '/testimonial1.png',
       id: 1,
     },
     {
       text: "Bskillinng's learning platform is a game-changer. As a trainer, I appreciate the platform's user-friendly interface and robust features that enhance the training experience. It's a valuable resource for both trainers and learners, making our job easier and more effective. Proud to be associated with such an innovative learning solution!",
-      name: "Virender Singh",
-      position: "AWS Certified Trainer",
-      company: "Prima USA, LLC",
-      logo: "/testimonial2.png",
+      name: 'Virender Singh',
+      position: 'AWS Certified Trainer',
+      company: 'Prima USA, LLC',
+      logo: '/testimonial2.png',
       id: 2,
     },
     {
-      text: "As a newcomer with no technical background, I as able to learn Python at a deeper level. This course includes certification, which will aid in job search.",
-      name: "Santhosh Kumar",
-      position: "Python Data Engineer",
-      company: "EarthyBlend Pvt Ltd",
-      logo: "/testimonial3.png",
+      text: 'As a newcomer with no technical background, I as able to learn Python at a deeper level. This course includes certification, which will aid in job search.',
+      name: 'Santhosh Kumar',
+      position: 'Python Data Engineer',
+      company: 'EarthyBlend Pvt Ltd',
+      logo: '/testimonial3.png',
       id: 3,
     },
     {
       text: "I'm Pradheep from Non IT background, my friend referred this institute I joined here SAP BTP course. The training went well the concepts are clearly delivered with practical examples. every day task helped me lots.I got good knowledge. SAP BTP is easy and intresting, end of the course I'm satisfied with the training.",
-      name: "Pradheep Eswaramoorthi",
-      position: "Software Engineer",
-      company: "EarthyBlend Pvt Ltd",
-      logo: "/testimonial4.png",
+      name: 'Pradheep Eswaramoorthi',
+      position: 'Software Engineer',
+      company: 'EarthyBlend Pvt Ltd',
+      logo: '/testimonial4.png',
       id: 4,
     },
   ];
@@ -46,21 +47,21 @@ export default function Testimonials() {
 
   useEffect(() => {
     const handleResize = () => {
-      if (typeof window !== "undefined") {
+      if (typeof window !== 'undefined') {
         setSlidesPerView(calculateSlidesPerView());
       }
     };
 
-    if (typeof window !== "undefined") {
-      window.addEventListener("resize", handleResize);
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', handleResize);
 
       // Initial calculation
       setSlidesPerView(calculateSlidesPerView());
     }
 
     return () => {
-      if (typeof window !== "undefined") {
-        window.removeEventListener("resize", handleResize);
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('resize', handleResize);
       }
     };
   }, []);
@@ -86,8 +87,8 @@ export default function Testimonials() {
       <Swiper
         modules={[Navigation, Pagination]}
         navigation={{
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
         }}
         pagination={{
           clickable: true,
@@ -101,7 +102,7 @@ export default function Testimonials() {
             <div
               key={id + index + name}
               className={`w-full relative flex flex-col ${
-                slidesPerView === 1 ? "items-start" : "items-center"
+                slidesPerView === 1 ? 'items-start' : 'items-center'
               }`}
             >
               <div className="w-full md:w-auto md:h-[360px] p-4 bg-white rounded-md shadow-2xl mb-16">
@@ -116,7 +117,9 @@ export default function Testimonials() {
 
                   <div>
                     <h3 className="text-lg text-black font-semibold">{name}</h3>
-                    <p className="text-sm text-black font-semibold">{position}</p>
+                    <p className="text-sm text-black font-semibold">
+                      {position}
+                    </p>
                   </div>
                 </div>
                 <div className="py-8 text-left">
@@ -126,8 +129,11 @@ export default function Testimonials() {
             </div>
           </SwiperSlide>
         ))}
-        <div className="swiper-button-next" style={{ fontSize: "10px" }}></div>
-        <div className="swiper-button-prev" style={{ fontSize: "0.8rem" }}></div>
+        <div className="swiper-button-next" style={{ fontSize: '10px' }}></div>
+        <div
+          className="swiper-button-prev"
+          style={{ fontSize: '0.8rem' }}
+        ></div>
       </Swiper>
     </section>
   );

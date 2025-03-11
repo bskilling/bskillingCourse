@@ -1,12 +1,13 @@
-import { MyContext } from "context/PageContext";
-import CourseDetails from "data/CoursesData";
-import courseSearchData from "data/courseSearchData";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { useContext, useEffect, useState } from "react";
-import { AiOutlineMenu } from "react-icons/ai";
-import { useMediaQuery } from "react-responsive";
-import CourseCard from "./CourseCard";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { MyContext } from 'context/PageContext';
+import CourseDetails from 'data/CoursesData';
+import courseSearchData from 'data/courseSearchData';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useContext, useEffect, useState } from 'react';
+import { AiOutlineMenu } from 'react-icons/ai';
+import { useMediaQuery } from 'react-responsive';
+import CourseCard from './CourseCard';
 interface searchCourseArray {
   id: string;
   CourseName: string;
@@ -87,7 +88,7 @@ const ListOfCourses: React.FC<TabProps> = ({ data, CoursesCategoryData }) => {
   }, [CoursesCategoryData]);
   const [apiEro, setApierror] = useState(false);
   const [errorMessage, setErrormessage] = useState(
-    "We are in the process of updating our course offerings. Please check in some time."
+    'We are in the process of updating our course offerings. Please check in some time.'
   );
   const handleClick = (CourseName: string) => {
     setDropSearchData([]);
@@ -97,7 +98,7 @@ const ListOfCourses: React.FC<TabProps> = ({ data, CoursesCategoryData }) => {
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     setInputValue(value);
-    if (value === "") {
+    if (value === '') {
       setDropSearchData([]);
     } else {
       const filteredData = fetchSearchData.filter((course) =>
@@ -108,7 +109,7 @@ const ListOfCourses: React.FC<TabProps> = ({ data, CoursesCategoryData }) => {
     }
   };
   function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
-    if (event.key === "Enter") {
+    if (event.key === 'Enter') {
       setLoadingVisible(true);
       setTimeout(() => {
         const filteredData = fetchSearchData.filter((course) =>
@@ -124,7 +125,7 @@ const ListOfCourses: React.FC<TabProps> = ({ data, CoursesCategoryData }) => {
   const handleSearchClick = () => {
     if (tabVisible === false) {
     }
-    if (inputValue === "") {
+    if (inputValue === '') {
       setClickOnSearch(false);
     } else {
       setLoadingVisible(true);
@@ -158,7 +159,7 @@ const ListOfCourses: React.FC<TabProps> = ({ data, CoursesCategoryData }) => {
       setLoadingVisible(true);
       setTimeout(() => {
         setDropSearchData([]);
-        setInputValue("");
+        setInputValue('');
         setSearchData([]);
         setTabVisible(true);
         setClickOnSearch(false);
@@ -171,7 +172,7 @@ const ListOfCourses: React.FC<TabProps> = ({ data, CoursesCategoryData }) => {
     setAllCourseButtonIndex(0);
     setTimeout(() => {
       setLoadingVisible(false);
-      window.open("/allCourses", "_blank");
+      window.open('/allCourses', '_blank');
     }, 1000);
   };
   const isSmallScreen = useMediaQuery({ maxWidth: 1020 });
@@ -188,7 +189,7 @@ const ListOfCourses: React.FC<TabProps> = ({ data, CoursesCategoryData }) => {
           {errorMessage}
         </div>
       ) : (
-        ""
+        ''
       )}
       {isSmallScreen ? (
         <div className="block p-5 ">
@@ -219,8 +220,8 @@ const ListOfCourses: React.FC<TabProps> = ({ data, CoursesCategoryData }) => {
                   key={categoryKey + index}
                   className={` -4 ${
                     index === buttonIndex
-                      ? "border-b-4 border-buttonBlue"
-                      : "text-gray-400 hover:text-gray-500 hover:border-buttonBlue"
+                      ? 'border-b-4 border-buttonBlue'
+                      : 'text-gray-400 hover:text-gray-500 hover:border-buttonBlue'
                   }`}
                 >
                   <button
@@ -268,7 +269,7 @@ const ListOfCourses: React.FC<TabProps> = ({ data, CoursesCategoryData }) => {
       <section className="" onClick={() => setIsDropdownOpenInListCrs(false)}>
         <section
           onClick={() => setIsDropdownOpenInListCrs(false)}
-          className={"py-4 md:container  md:mx-auto"}
+          className={'py-4 md:container  md:mx-auto'}
         >
           {/* <div className="grid grid-cols-1 slide-in transition duration-1000  ease-in md:grid-cols-4 gap-4 w-full">
             {searchData.map((data, index) => {
@@ -301,7 +302,7 @@ const ListOfCourses: React.FC<TabProps> = ({ data, CoursesCategoryData }) => {
 
       <div>
         <div className="flex  pb-8 justify-center">
-          <Link href={"/allCourses"}>
+          <Link href={'/allCourses'}>
             <button className=" text-white rounded-md bg-Buttoncolor transition duration-500 hover:scale-105 ease-out   py-2 focus:ring-1 focus:outline-none focus:ring-buttonBlue font-medium  text-sm px-4  ">
               Browse All Courses
             </button>

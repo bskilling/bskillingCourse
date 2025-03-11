@@ -1,12 +1,13 @@
-import ChatForm from "modules/leadChat/components/ChatForm";
-import DropAQueryForm from "modules/leadChat/components/DropAQueryForm";
-import LeadChatBox from "modules/leadChat/components/LeadChatBox";
-import useChat from "modules/leadChat/zustand";
-import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
-import { FaComment, FaElementor, FaTimes } from "react-icons/fa";
-import { FiPhoneCall } from "react-icons/fi";
-
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @next/next/no-img-element */
+import ChatForm from 'modules/leadChat/components/ChatForm';
+import DropAQueryForm from 'modules/leadChat/components/DropAQueryForm';
+import LeadChatBox from 'modules/leadChat/components/LeadChatBox';
+import useChat from 'modules/leadChat/zustand';
+import { useRouter } from 'next/router';
+import React, { useEffect, useState } from 'react';
+import { FaComment, FaElementor, FaTimes } from 'react-icons/fa';
+import { FiPhoneCall } from 'react-icons/fi';
 
 export default function FixedFooterBar() {
   const route = useRouter();
@@ -36,16 +37,13 @@ export default function FixedFooterBar() {
 
   const handleDropQueryButtonClick = () => {
     setIsDropQueryVisible((prev) => !prev);
-    setFloatWindowMode("drop-a-query");
+    setFloatWindowMode('drop-a-query');
     setupSocket(); // If you need to set up the socket when the button is clicked
   };
 
-
   return (
     <>
-      <div className="fixednav bg-lightBlue fixed inset-x-0 bottom-[env(safe-area-inset-bottom)] text-white  w-full z-[1000] h-14 py-2"
-
-      >
+      <div className="fixednav bg-lightBlue fixed inset-x-0 bottom-[env(safe-area-inset-bottom)] text-white  w-full z-[1000] h-14 py-2">
         <div className="flex h-full py-4 justify-center md:justify-between  md:px-12 items-center">
           <div className="md:flex justify-center items-center  w-[20%]  hidden">
             <div className="text-sm flex justify-center   w-full">
@@ -91,7 +89,7 @@ export default function FixedFooterBar() {
             </div>
           </div>
           <div className=" md:flex gap-2 hidden ">
-            {" "}
+            {' '}
             <div className="flex justify-center items-center ">
               <FiPhoneCall />
             </div>
@@ -103,7 +101,7 @@ export default function FixedFooterBar() {
             </div>
           </div>
           <div className="flex  text-black justify-between gap-8">
-            {isDropQueryVisible && floatWindowMode !== "none" && (
+            {isDropQueryVisible && floatWindowMode !== 'none' && (
               <div
                 className={`flex flex-col bg-white w-[400px] scale-[0.9] rounded-xl h-[500px] fixed right-0 md:-right-3 bottom-16 md:bottom-9 z-[1000] transition-transform duration-700 shadow-md`}
               >
@@ -112,17 +110,17 @@ export default function FixedFooterBar() {
                   onClick={() => setIsExpanded((prev) => !prev)}
                 >
                   <p className="flex-1 font-medium">
-                    {floatWindowMode === "drop-a-query"
-                      ? "Drop Us A Query"
+                    {floatWindowMode === 'drop-a-query'
+                      ? 'Drop Us A Query'
                       : null}
                   </p>
                   <p>
-                    {floatWindowMode === "drop-a-query" ? (
+                    {floatWindowMode === 'drop-a-query' ? (
                       <button
                         className="flex items-center justify-center bg-buttonBlue z-[6000] shadow-md text-white text-3xl w-[20px] h-[20px] rounded-full"
                         onClick={() => {
                           setIsDropQueryVisible(false);
-                          setFloatWindowMode("none");
+                          setFloatWindowMode('none');
                         }}
                       >
                         <FaTimes />
@@ -142,13 +140,15 @@ export default function FixedFooterBar() {
                   <span
                     className={`transition-transform`}
                     style={{
-                      transform: isExpanded ? "rotate(180deg)" : "rotate(0deg)",
+                      transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)',
                     }}
                   ></span>
                 </div>
-                {floatWindowMode === "drop-a-query" && <DropAQueryForm />}
-                {floatWindowMode === "chat" && <LeadChatBox />}
-                {isChatFormVisible && instanceState !== "closed" && <ChatForm />}
+                {floatWindowMode === 'drop-a-query' && <DropAQueryForm />}
+                {floatWindowMode === 'chat' && <LeadChatBox />}
+                {isChatFormVisible && instanceState !== 'closed' && (
+                  <ChatForm />
+                )}
               </div>
             )}
 

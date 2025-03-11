@@ -74,7 +74,7 @@
 
 import { GetStaticProps, GetStaticPaths, InferGetStaticPropsType } from 'next';
 import axios from 'axios';
-import Layout from 'components/Layout';
+import Layout from '@/component/Layout';
 
 interface BlogDetailsProps {
   _id: string;

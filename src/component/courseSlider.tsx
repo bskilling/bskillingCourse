@@ -1,17 +1,18 @@
-import axios from "axios";
-import moment from "moment";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import Marquee from "react-fast-marquee";
-import { BiTimeFive } from "react-icons/bi";
-import { BsFillPeopleFill } from "react-icons/bs";
-import { FaChalkboardTeacher, FaTrophy } from "react-icons/fa";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/scrollbar";
-import CourseCard from "./CourseCard";
+/* eslint-disable react-hooks/exhaustive-deps */
+import axios from 'axios';
+import moment from 'moment';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+import Marquee from 'react-fast-marquee';
+import { BiTimeFive } from 'react-icons/bi';
+import { BsFillPeopleFill } from 'react-icons/bs';
+import { FaChalkboardTeacher, FaTrophy } from 'react-icons/fa';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+import CourseCard from './CourseCard';
 interface UpcomingBatch {
   capacity: string;
   description: string;
@@ -94,7 +95,7 @@ const CourseSlider = () => {
 
       SetEachCourceList(ListOfCourcesData as ListOfCoursesDataType[][]);
     } catch (error) {
-      console.error("Error fetching API:", error);
+      console.error('Error fetching API:', error);
     }
   };
 

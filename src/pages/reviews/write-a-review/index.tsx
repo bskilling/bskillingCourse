@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import axios from 'axios';
 import ReviewForm from '@/components/global/ReviewForm';
 import Link from 'next/link';
-import NavbarSection from 'components/navbar/NavbarSection';
+import NavbarSection from '@/component/navbar/NavbarSection';
 import { FaLinkedin } from 'react-icons/fa';
 import { Button } from '@/components/ui/button';
 interface RootObject {

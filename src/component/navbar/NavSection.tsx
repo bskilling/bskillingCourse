@@ -1,4 +1,4 @@
-import PopupForm from 'components/PopupForm';
+import PopupForm from '@/component/PopupForm';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import { FiUser } from 'react-icons/fi';

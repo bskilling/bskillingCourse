@@ -1,11 +1,12 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable @next/next/no-html-link-for-pages */
-import { MyContext } from "context/PageContext";
-import { useContext, useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import "react-phone-number-input/style.css";
-import { encrypt } from "util/ccavenue.utils";
-import { useRouter } from "next/router";
-const { v4: uuidv4 } = require("uuid");
+import { MyContext } from 'context/PageContext';
+import { useContext, useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import 'react-phone-number-input/style.css';
+import { encrypt } from 'util/ccavenue.utils';
+import { useRouter } from 'next/router';
+const { v4: uuidv4 } = require('uuid');
 interface FormValues {
   name: string;
   email: string;
@@ -41,7 +42,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
   const [messageSent, setMessage] = useState(false);
   const [isLoader, setisLoader] = useState(false);
   const router = useRouter();
-  const [CountryCodeValue, setCountryCodeValue] = useState<any>("+91");
+  const [CountryCodeValue, setCountryCodeValue] = useState<any>('+91');
   const {
     register,
     handleSubmit,
@@ -51,11 +52,11 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
     trigger,
     getValues,
   } = useForm({
-    mode: "onChange",
+    mode: 'onChange',
   });
 
   const isButtonVisble =
-    watch("email") && watch("phone") && watch("name") && CountryCodeValue;
+    watch('email') && watch('phone') && watch('name') && CountryCodeValue;
   function handleManualSubmit() {
     // Manually trigger validation using the trigger function
     trigger().then((isValid) => {
@@ -68,10 +69,10 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
   }
   const createOrderId = async () => {
     try {
-      const response = await fetch("/api/order", {
-        method: "POST",
+      const response = await fetch('/api/order', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           amount: parseFloat(price) * 100,
@@ -79,30 +80,30 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
       });
 
       if (!response.ok) {
-        throw new Error("Network response was not ok");
+        throw new Error('Network response was not ok');
       }
 
       const data = await response.json();
       return data.orderId;
     } catch (error) {
-      console.error("There was a problem with your fetch operation:", error);
+      console.error('There was a problem with your fetch operation:', error);
     }
   };
 
   async function submit(formData: FormValues) {
     const priceToString = `${price}`;
-    console.log(priceToString, "pri", formData);
+    console.log(priceToString, 'pri', formData);
     setisLoader(true);
     try {
       const orderId: string = await createOrderId();
       console.log(orderId);
       if (orderId) {
         const options = {
-          key: "rzp_live_ut3CymoeapHYqB",
+          key: 'rzp_live_ut3CymoeapHYqB',
           amount: parseFloat(price) * 100,
-          currency: "INR",
+          currency: 'INR',
           name: formData.name,
-          description: "description",
+          description: 'description',
           order_id: orderId,
           handler: async function (response: any) {
             console.log(response);
@@ -113,17 +114,17 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
               razorpaySignature: response.razorpay_signature,
             };
 
-            const result = await fetch("/api/verify", {
-              method: "POST",
+            const result = await fetch('/api/verify', {
+              method: 'POST',
               body: JSON.stringify(data),
-              headers: { "Content-Type": "application/json" },
+              headers: { 'Content-Type': 'application/json' },
             });
             const res = await result.json();
             if (res.isOk) {
               router.push({
-                pathname: "/payment-status",
+                pathname: '/payment-status',
                 query: {
-                  payment_status: "success",
+                  payment_status: 'success',
                   amount: parseFloat(price),
                   order_id: orderId,
                   billing_name: formData.name,
@@ -133,9 +134,9 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
               // setisLoader(false);
             } else {
               router.push({
-                pathname: "/payment-status",
+                pathname: '/payment-status',
                 query: {
-                  payment_status: "error",
+                  payment_status: 'error',
                   amount: parseFloat(price),
                   order_id: orderId,
                   billing_name: formData.name,
@@ -148,7 +149,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
           modal: {
             ondismiss: function () {
               setisLoader(false);
-              if (confirm("Are you sure, you want to close the form?")) {
+              if (confirm('Are you sure, you want to close the form?')) {
                 // txt = "You pressed OK!";
                 // console.log("Checkout form closed by the user");
                 setisLoader(false);
@@ -163,11 +164,11 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
             email: formData.email,
           },
           theme: {
-            color: "#3399cc",
+            color: '#3399cc',
           },
         };
         const paymentObject = new (window as any).Razorpay(options);
-        paymentObject.on("payment.failed", function (response: any) {
+        paymentObject.on('payment.failed', function (response: any) {
           alert(response.error.description);
         });
 
@@ -273,33 +274,33 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
         <div>
           <div
             style={{
-              position: "fixed",
-              zIndex: "999",
-              height: "100%",
-              width: "100%",
-              overflow: "show",
-              margin: "auto",
-              top: "0",
-              left: "0",
-              bottom: "0",
-              right: "0",
-              opacity: "0.8",
-              background: "#000",
+              position: 'fixed',
+              zIndex: '999',
+              height: '100%',
+              width: '100%',
+              overflow: 'show',
+              margin: 'auto',
+              top: '0',
+              left: '0',
+              bottom: '0',
+              right: '0',
+              opacity: '0.8',
+              background: '#000',
             }}
           />
           <div
             style={{
-              position: "fixed",
-              zIndex: "999",
-              height: "20px",
-              width: "60px",
-              overflow: "show",
-              margin: "auto",
-              top: "0",
-              left: "0",
-              bottom: "0",
-              right: "0",
-              opacity: "0.8",
+              position: 'fixed',
+              zIndex: '999',
+              height: '20px',
+              width: '60px',
+              overflow: 'show',
+              margin: 'auto',
+              top: '0',
+              left: '0',
+              bottom: '0',
+              right: '0',
+              opacity: '0.8',
             }}
           >
             <img
@@ -316,18 +317,18 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
           <input
             type="text"
             className=" block text-base  w-full lg:h-[35px] placeholder:text-sm  px-2 border-2 border-gray    focus:border-green focus:ring focus:ring-green focus:ring-opacity-50"
-            {...register("name", {
+            {...register('name', {
               required: true,
             })}
           />
           <label
             className={`text-red-600   text-xs py-1 ${
-              errors.name ? "visible" : "invisible"
+              errors.name ? 'visible' : 'invisible'
             }`}
           >
-            {errors.phone?.type == "required"
-              ? "This field required"
-              : "This field required"}
+            {errors.phone?.type == 'required'
+              ? 'This field required'
+              : 'This field required'}
           </label>
         </div>
 
@@ -336,7 +337,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
           <input
             type="text"
             className="block  w-full lg:h-[35px] placeholder:text-sm  px-2 border-2 border-gray   border-green  focus:border-green focus:ring focus:ring-green focus:ring-opacity-50"
-            {...register("email", {
+            {...register('email', {
               required: true,
               pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
             })}
@@ -344,7 +345,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
 
           <label
             className={`text-red-600   text-xs py-1 ${
-              errors.email ? "visible" : "invisible"
+              errors.email ? 'visible' : 'invisible'
             }`}
           >
             Please enter a valid email address
@@ -355,21 +356,21 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
           <input
             type="text"
             className="block  w-full lg:h-[35px] placeholder:text-sm  px-2 border-2 border-gray   border-green  focus:border-green focus:ring focus:ring-green focus:ring-opacity-50"
-            {...register("phone", {
+            {...register('phone', {
               required: true,
             })}
           />
 
           <label
             className={`text-red-600   text-xs py-1 ${
-              errors.phone ? "visible" : "invisible"
+              errors.phone ? 'visible' : 'invisible'
             }`}
           >
             This field is required
           </label>
         </div>
         <div>
-          <input type="checkbox" />{" "}
+          <input type="checkbox" />{' '}
           <span className="text-xs">
             {`I authorise Bskilling & its representatives to contact me with
             updates and notifications via Email/SMS/What'sApp/Call. This will
@@ -413,7 +414,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
               // disabled={!isButtonVisble}
               onClick={handleManualSubmit}
               className={`text-white  transition duration-500 hover:scale-105 ease-out  placeholder:text-sm bg-buttonBlue hover:bg-buttonBlue py-2 focus:ring-1 focus:outline-none focus:ring-buttonBlue font-medium  text-sm px-4 ${
-                isButtonVisble ? "opacity-100" : "opacity-50 "
+                isButtonVisble ? 'opacity-100' : 'opacity-50 '
               }  `}
             >
               Submit
