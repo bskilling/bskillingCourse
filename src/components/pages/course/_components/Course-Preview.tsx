@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 'use client';
 import { format } from 'date-fns';
-import { Link } from 'react-scroll';
+import { Link as Scroll } from 'react-scroll';
 import {
   PlayIcon,
   CheckIcon,
@@ -46,6 +46,9 @@ import FAQSection from './faqs';
 import WhyJoinSection from './Whychoose';
 import Footer from './Footer';
 import Modules from './Modules';
+import ConsultationForm from '../../indiviual/LeadForm';
+import Link from 'next/link';
+
 // Adjust this type as needed.
 export interface TDraftCourseForm {
   _id: string;
@@ -157,8 +160,15 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
       <nav className="fixed w-full bg-white shadow-sm z-50 top-0">
         <div className="w-full 2xl:w-[80vw] md:[90vw]  mx-auto px-4 sm:px-3 lg:px-4">
           <div className="flex justify-between h-16">
+            <Link href={'/'}>
+              <img
+                src="/logo.png"
+                className="object-contain md:w-[130px] md:h-[50px] w-[120] h-[30px]"
+                alt="Logo"
+              />
+            </Link>
             <div className="hidden md:flex items-center space-x-8">
-              <Link
+              <Scroll
                 to="hero"
                 spy={true}
                 smooth={true}
@@ -172,8 +182,8 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
                 )}
               >
                 Home
-              </Link>
-              <Link
+              </Scroll>
+              <Scroll
                 to="overview"
                 smooth={true}
                 onClick={() => {
@@ -185,8 +195,8 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
                 )}
               >
                 Overview
-              </Link>
-              <Link
+              </Scroll>
+              <Scroll
                 to="curriculum"
                 smooth={true}
                 onClick={() => {
@@ -198,9 +208,9 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
                 )}
               >
                 Curriculum
-              </Link>
+              </Scroll>
               {skills && skills.length > 0 && (
-                <Link
+                <Scroll
                   to="skills"
                   smooth={true}
                   className={cn(
@@ -212,9 +222,9 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
                   }}
                 >
                   Skills
-                </Link>
+                </Scroll>
               )}
-              <Link
+              <Scroll
                 to="why-join"
                 smooth={true}
                 onClick={() => {
@@ -226,8 +236,8 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
                 )}
               >
                 Why Join
-              </Link>
-              <Link
+              </Scroll>
+              <Scroll
                 to="faqs"
                 spy={true}
                 onClick={() => {
@@ -240,8 +250,8 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
                 )}
               >
                 FAQs
-              </Link>
-              <Link
+              </Scroll>
+              <Scroll
                 to="pricing"
                 smooth={true}
                 onClick={() => {
@@ -253,7 +263,7 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
                 )}
               >
                 Pricing
-              </Link>
+              </Scroll>
             </div>
           </div>
         </div>
@@ -274,65 +284,18 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
         enrollmentEnd={endTime}
         enrollmentStart={startTime}
         trainingMode={'Hybrid'}
+        overview={overview}
       />
 
       <section id="overview" className="   -mt-56  m-auto flex ">
-        <section className="flex  w-[70vw]  pl-[10vw] pt-60 pb-10">
+        <section className="flex  w-[61vw]  pl-[10vw] pt-60 pb-10">
           <div className=" w-full">
-            <h2 className="text-xl font-semibold text-gray-900 mt-10 tracking-wide">
-              Course Overview
-            </h2>
-
-            {overview && (
-              <section className="mt-6 space-y-3">
-                <h3 className="text-lg font-medium text-gray-800">
-                  {overview.title}
-                </h3>
-                <p className="text-sm text-gray-600 leading-relaxed">
-                  {overview.description}
-                </p>
-              </section>
-            )}
-
             {/* Chapters */}
-
             <div className="rounded-xl  mt-10" id="curriculum">
               <h3 className="text-lg  mb-4 font-medium text-gray-800">
                 Course Ciricullum
               </h3>
               <Modules chapters={curriculum.chapters} />
-              {/* <div className="space-y-4">
-                {curriculum.chapters?.map((chapter) => (
-                  <div
-                    key={chapter._id}
-                    className="border-l-4 border-green-500 pl-4"
-                  >
-                    <Accordion type="single" collapsible>
-                      <AccordionItem value="item-1">
-                        <AccordionTrigger>
-                          {" "}
-                          <h4 className="font-semibold">{chapter.title}</h4>
-                        </AccordionTrigger>
-                        <AccordionContent>
-                          <div className="mt-2 space-y-2">
-                            {chapter.lessons?.map((lesson) => (
-                              <div
-                                key={lesson._id}
-                                className="flex items-center space-x-2"
-                              >
-                                <PlayIcon className="h-4 w-4 text-gray-500" />
-                                <span>
-                                  {lesson.title}: {lesson.content}
-                                </span>
-                              </div>
-                            ))}
-                          </div>
-                        </AccordionContent>
-                      </AccordionItem>
-                    </Accordion>
-                  </div>
-                ))}
-              </div> */}
             </div>
             <Highlights highlights={highlights || []} />
             <Outcomes outcomes={outcomes || []} />
@@ -428,33 +391,10 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
             )}
           </div>
         </section>
-        <section className="bg-card w-[50vw]  pt-60 pb-10 pl-10 flex flex-col">
-          <div className="hidden lg:flex flex-col gap-6 w-80  top-10">
-            {/* Inquiry Form */}
-            <div className="bg-white shadow-lg rounded-2xl p-6 flex flex-col gap-4">
-              <h3 className="text-xl font-semibold text-gray-800">
-                Quick Inquiry
-              </h3>
-              <p className="text-gray-600 text-sm">
-                Want more details? Fill in your info and we’ll get in touch!
-              </p>
-              <input
-                type="text"
-                placeholder="Your Name"
-                className="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400"
-              />
-              <input
-                type="email"
-                placeholder="Your Email"
-                className="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400"
-              />
-              <button className="bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition">
-                Submit Inquiry
-              </button>
-            </div>
-
+        <section className="bg-card w-[50vw]   pt-60 pb-10 pl-10 flex flex-col">
+          <div className="hidden lg:flex flex-col gap-6 items-start   top-10">
             {/* Key Highlights */}
-            <div className="bg-gradient-to-b from-purple-600 to-purple-800 text-white shadow-lg rounded-2xl p-6 flex flex-col gap-4">
+            {/* <div className="bg-gradient-to-b from-purple-600 to-purple-800 text-white shadow-lg rounded-2xl p-6 flex flex-col gap-4">
               <h3 className="text-xl font-semibold">
                 Why Choose This Program?
               </h3>
@@ -476,19 +416,7 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
                   Personalized mentorship and career guidance.
                 </li>
               </ul>
-            </div>
-
-            {/* Call-to-Action Box */}
-            <div className="bg-purple-100 text-purple-900 shadow-lg rounded-2xl p-6 text-center">
-              <h3 className="text-lg font-semibold">🚀 Ready to Upskill?</h3>
-              <p className="text-sm mt-2">
-                Take the first step towards a brighter future with our
-                cutting-edge program.
-              </p>
-              <button className="mt-4 bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-700 transition">
-                Apply Now
-              </button>
-            </div>
+            </div> */}
           </div>
           <div className="mt-6">
             <div>
@@ -529,30 +457,33 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
                 ))}
               </div>
             </div>
-            <div className="mt-5 mr-10">
-              <h2 className="mt-10 text-xl font-semibold">Key Features</h2>
-              {overview.keyFeatures && overview.keyFeatures.length > 0 && (
-                <div className="flex flex-col gap-y-5 mt-5">
-                  {overview.keyFeatures.map((feature, index) => (
-                    <div
-                      key={index}
-                      className="flex items-center gap-x-2 text-sm"
-                    >
-                      <div className="w-fit">
-                        <IoIosCheckmarkCircle
-                          className=" text-blue-500"
-                          size={20}
-                        />
-                      </div>
-                      <p>{feature}</p>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
           </div>
         </section>
       </section>
+
+      <div>
+        {/* Certification Section */}
+        <div className="w-full md:w-1/2 flex flex-col items-center text-center">
+          <p className="font-semibold flex items-center gap-x-3 text-lg text-gray-800">
+            <BiSolidCertification className="w-7 h-7 text-red-500" />
+            Certification
+          </p>
+          {certification?.title && (
+            <p className="font-semibold text-lg mt-2 text-gray-700">
+              {certification.title}
+            </p>
+          )}
+          <p className="text-gray-600 text-sm mt-3">
+            Completing this course grants an industry-recognized certification
+            to enhance your professional skills.
+          </p>
+          <img
+            src="/assets/certificate.png"
+            className="w-4/5 max-h-44 object-contain rounded-lg mt-4 shadow-md"
+            alt="Certification"
+          />
+        </div>
+      </div>
       <CourseEnrollment
         formattedPrice={formattedPrice}
         durationHours={durationHours}

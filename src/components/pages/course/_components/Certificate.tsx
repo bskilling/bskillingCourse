@@ -4,6 +4,8 @@ import { BiSolidCertification } from 'react-icons/bi';
 import { FaChalkboardTeacher } from 'react-icons/fa';
 //
 import { format } from 'date-fns';
+import ConsultationForm from '../../indiviual/LeadForm';
+import KeyFeatures from './KeyFeatures';
 
 interface CourseDetailsProps {
   durationHours: number;
@@ -14,6 +16,11 @@ interface CourseDetailsProps {
   certification?: {
     title: string;
   };
+  overview: {
+    title: string;
+    description: string;
+    keyFeatures: string[];
+  };
 }
 
 const CourseDetails: React.FC<CourseDetailsProps> = ({
@@ -23,11 +30,12 @@ const CourseDetails: React.FC<CourseDetailsProps> = ({
   enrollmentStart,
   enrollmentEnd,
   certification,
+  overview,
 }) => {
   return (
-    <section className="py-10 bg-card rounded-lg shadow-lg px-12 relative z-40  w-[80vw] flex flex-col md:flex-row justify-between m-auto min-h-[320px] gap-8">
+    <section className="py-10 bg-card rounded-lg  px-12 relative z-40  w-[80vw] flex flex-col justify-between m-auto min-h-[320px] gap-8">
       {/* Left Section: Course Details */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-y-8 w-full md:w-1/2">
+      <div className="flex justify-between px-5 gap-y-8 w-full md:w-full bg-gray-100 py-20">
         <div className="flex items-center gap-x-4">
           <Clock className="w-7 h-7 text-purple-600" />
           <div>
@@ -65,28 +73,32 @@ const CourseDetails: React.FC<CourseDetailsProps> = ({
           </div>
         </div>
       </div>
+      <div className="flex   justify-between ">
+        {' '}
+        <div className="w-full ">
+          <h2 className="text-xl font-semibold text-gray-900 mt-10 tracking-wide">
+            Course Overview
+          </h2>
+
+          {overview && (
+            <section className="mt-6 space-y-3 w-full ">
+              <h3 className="text-lg font-medium text-gray-800">
+                {overview.title}
+              </h3>
+              <p className="text-sm text-gray-600 leading-relaxed">
+                {overview.description}
+              </p>
+            </section>
+          )}
+
+          <KeyFeatures features={overview.keyFeatures} />
+        </div>
+        <div className="flex justify-end  w-[45vw]">
+          <ConsultationForm />
+        </div>
+      </div>
 
       {/* Right Section: Certification */}
-      <div className="w-full md:w-1/2 flex flex-col items-center text-center">
-        <p className="font-semibold flex items-center gap-x-3 text-lg text-gray-800">
-          <BiSolidCertification className="w-7 h-7 text-red-500" />
-          Certification
-        </p>
-        {certification?.title && (
-          <p className="font-semibold text-lg mt-2 text-gray-700">
-            {certification.title}
-          </p>
-        )}
-        <p className="text-gray-600 text-sm mt-3">
-          Completing this course grants an industry-recognized certification to
-          enhance your professional skills.
-        </p>
-        <img
-          src="/assets/certificate.png"
-          className="w-4/5 max-h-44 object-contain rounded-lg mt-4 shadow-md"
-          alt="Certification"
-        />
-      </div>
     </section>
   );
 };

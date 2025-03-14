@@ -21,6 +21,7 @@ interface HeroSectionProps {
   description: string;
   bannerImage: string;
 }
+// from-[#2E1A47] to-[#0D1B2A]
 
 export const HeroSection: React.FC<HeroSectionProps> = ({
   category,
@@ -31,7 +32,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   return (
     <section
       id="hero"
-      className="relative w-full py-16 px-6 flex justify-center bg-gradient-to-r from-[#2E1A47] to-[#0D1B2A] rounded-xl shadow-2xl overflow-hidden"
+      className="relative w-full py-16 px-6 flex justify-center bg-gradient-to-r from-[#2E1A47] to-[#0D1B2A]  rounded-xl  overflow-hidden"
     >
       {/* Background Icons */}
       <div className="absolute inset-0 flex justify-between items-center opacity-10 pointer-events-none px-10">
