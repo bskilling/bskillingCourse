@@ -19,6 +19,7 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog';
 import { useRouter } from 'next/router';
+import AlterLoader from '@/components/global/AlterLoader';
 
 interface Question {
   question: string;
@@ -64,16 +65,18 @@ export default function Gst({ formId, rollNo }: GstProps) {
     queryKey: ['form', formId],
     queryFn: async () => {
       const res = await axios.get(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/questions/${formId + ''}`
+        `https://backendbskilling-production-20ff.up.railway.app/api/questions/${
+          formId + ''
+        }`
       );
       return res.data;
     },
   });
 
-  const { mutate } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationFn: async () => {
       const res = await axios.post(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/form/submitExam`,
+        `https://backendbskilling-production-20ff.up.railway.app/api/form/submitExam`,
         {
           rollNo,
           courseId: formId,
@@ -125,6 +128,7 @@ export default function Gst({ formId, rollNo }: GstProps) {
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-blue-100 to-blue-50 py-8">
+      {isPending && <AlterLoader />}
       <div className="max-w-5xl mx-auto bg-white shadow-xl rounded-lg p-8">
         <div className="w-full px-6 flex items-center justify-between">
           <img

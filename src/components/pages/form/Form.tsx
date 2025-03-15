@@ -15,6 +15,7 @@ import { FiUser, FiMail, FiPhone } from 'react-icons/fi';
 import OTPVerificationDialog from './OTP';
 import { toast } from 'sonner';
 import { processError } from '@/lib/error';
+import AlterLoader from '@/components/global/AlterLoader';
 const formSchema = z.object({
   email: z.string().email('Invalid email address').optional(),
   countryCode: z.string().min(2, 'Select a country code'),
@@ -44,7 +45,7 @@ export default function FormRegister() {
   const sendOtpMutation = useMutation({
     mutationFn: async (e: FormValues) => {
       await axios.post(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/form/send-otp`,
+        `https://backendbskilling-production-20ff.up.railway.app/api/form/send-otp`,
         e
       );
     },
@@ -58,7 +59,7 @@ export default function FormRegister() {
   const verifyOtpMutation = useMutation({
     mutationFn: async () => {
       await axios.post(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/form/verify-otp`,
+        `https://backendbskilling-production-20ff.up.railway.app/api/form/verify-otp`,
         {
           phone: formData?.phone,
           otp,
@@ -73,7 +74,7 @@ export default function FormRegister() {
   const registerUserMutation = useMutation({
     mutationFn: async () => {
       await axios.post(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/form/register`,
+        `https://backendbskilling-production-20ff.up.railway.app/api/form/register`,
         formData
       );
     },
@@ -90,6 +91,7 @@ export default function FormRegister() {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-blue-100 px-4">
+      {sendOtpMutation.isPending && <AlterLoader />}
       <div className="flex flex-col md:flex-row bg-white shadow-lg rounded-lg overflow-hidden w-full max-w-4xl">
         {/* Left Section */}
         <div className="w-full md:w-1/3 bg-blue-500 flex flex-col items-center justify-center p-6 text-white text-center">
