@@ -198,9 +198,9 @@ export default function Gst({ formId, rollNo }: GstProps) {
                   <input
                     type="radio"
                     name={`question-${index}`}
-                    value={oIndex}
-                    checked={answers[index] === oIndex}
-                    onChange={() => handleOptionChange(index, oIndex)}
+                    value={oIndex + 1}
+                    checked={answers[index] === oIndex + 1}
+                    onChange={() => handleOptionChange(index, oIndex + 1)}
                     className="form-radio h-5 w-5 text-blue-600"
                   />
                   <span className="text-gray-800">{option}</span>
