@@ -176,7 +176,10 @@ export default function Gst({ formId, rollNo }: GstProps) {
 
         {/* Quiz Title */}
         <h1 className="text-3xl font-bold text-center text-blue-600 mb-8">
-          GST Quiz
+          {formId === 2815 && 'GST'}
+          {formId === 2851 && 'Financial Modelling'}
+          {formId === 2814 && 'Graphic Design'}
+          Quiz
         </h1>
 
         {/* Quiz Questions */}
