@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -94,9 +95,14 @@ export default function FormRegister() {
       {sendOtpMutation.isPending && <AlterLoader />}
       <div className="flex flex-col md:flex-row bg-white shadow-lg rounded-lg overflow-hidden w-full max-w-4xl">
         {/* Left Section */}
-        <div className="w-full md:w-1/3 bg-blue-500 flex flex-col items-center justify-center p-6 text-white text-center">
-          <h2 className="text-2xl font-bold">Enter Your Details</h2>
+        <div className="w-full md:w-1/3 bg-card flex flex-col items-center justify-center p-6 text-white text-center">
+          {/* <h2 className="text-2xl font-bold">Enter Your Details</h2> */}
           {/* <p className="text-sm mt-2">Join us for a seamless experience</p> */}
+          <img
+            src="/new-image/naan-logo.png"
+            alt=""
+            className="object-cover w-40"
+          />
         </div>
 
         {/* Right Section */}
@@ -136,7 +142,7 @@ export default function FormRegister() {
               <FiPhone className="absolute left-24 md:left-28 top-3 text-gray-500" />
               <input
                 {...register('phone', { required: 'Phone number is required' })}
-                className="w-full pl-10 py-2 focus:outline-none bg-transparent"
+                className="w-full pl-10 py-2 ml-5 focus:outline-none bg-transparent"
                 placeholder="Phone Number"
               />
             </div>
