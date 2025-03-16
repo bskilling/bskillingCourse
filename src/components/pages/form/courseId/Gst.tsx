@@ -179,7 +179,7 @@ export default function Gst({ formId, rollNo }: GstProps) {
           {formId === 2815 && 'GST'}
           {formId === 2851 && 'Financial Modelling'}
           {formId === 2814 && 'Graphic Design'}
-          Quiz
+          {'  '} Quiz
         </h1>
 
         {/* Quiz Questions */}
