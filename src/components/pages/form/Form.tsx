@@ -12,7 +12,7 @@ import {
 import OtpInput from 'react-otp-input';
 import { useMutation } from '@tanstack/react-query';
 import axios from 'axios';
-import { FiUser, FiMail, FiPhone } from 'react-icons/fi';
+import { FiUser, FiMail, FiPhone, FiAlertTriangle } from 'react-icons/fi';
 import OTPVerificationDialog from './OTP';
 import { toast } from 'sonner';
 import { processError } from '@/lib/error';
@@ -114,22 +114,36 @@ export default function FormRegister() {
             {/* Name Field */}
 
             {/* Email Field */}
+            <div>
+              <div className="flex items-start sm:items-center gap-2 mb-1 text-yellow-600 text-xs sm:text-sm font-medium">
+                {/* Icon Container */}
+                <div className="flex-shrink-0 w-4 sm:w-5">
+                  <FiAlertTriangle className="text-yellow-600 text-lg sm:text-xl" />
+                </div>
 
-            <div className="relative border-b border-gray-300 focus-within:border-blue-500">
-              <FiMail className="absolute left-2 top-3 text-gray-500" />
-              <input
-                {...register('rollNo', { required: 'Email is required' })}
-                className="w-full pl-8 py-2 focus:outline-none bg-transparent"
-                placeholder="Roll No"
-                type="text"
-              />
-              {errors.rollNo && (
-                <p className="text-red-500 text-xs">
-                  {errors?.rollNo?.message}
-                </p>
-              )}
+                {/* Text */}
+                <span className="leading-tight sm:leading-normal">
+                  Roll Number is <b>case-sensitive</b>
+                  (e.g., <span className="font-mono">C29UG149DOM020</span> ≠
+                  <span className="font-mono lowercase">c29uG149DOM020</span>).
+                </span>
+              </div>
+
+              <div className="relative border-b border-gray-300 focus-within:border-blue-500">
+                <FiMail className="absolute left-2 top-3 text-gray-500" />
+                <input
+                  {...register('rollNo', { required: 'Email is required' })}
+                  className="w-full pl-8 py-2 focus:outline-none bg-transparent"
+                  placeholder="Roll No"
+                  type="text"
+                />
+                {errors.rollNo && (
+                  <p className="text-red-500 text-xs">
+                    {errors?.rollNo?.message}
+                  </p>
+                )}
+              </div>
             </div>
-
             {/* Phone Field */}
             <div className="relative border-b border-gray-300 focus-within:border-blue-500 flex items-center">
               <select
