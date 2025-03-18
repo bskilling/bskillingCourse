@@ -13,6 +13,7 @@ import { useStudentSessionStore } from '@/lib/store/useSession';
 import { useRouter } from 'next/router';
 import { processError } from '@/lib/error';
 import AlterLoader from '@/components/global/AlterLoader';
+import { IoLogoWhatsapp } from 'react-icons/io';
 
 interface FormValues {
   name: string;
@@ -78,8 +79,11 @@ const OTPVerificationDialog: React.FC<OTPVerificationDialogProps> = ({
           <h2 className="text-2xl font-bold text-blue-600 text-center mb-4">
             OTP Verification
           </h2>
-          <p className="text-center text-gray-600 mb-6">
-            Please enter the 6-digit OTP sent to your phone.
+          <p className="text-center text-gray-600 mb-6 inline-flex">
+            <div className="w-8">
+              <IoLogoWhatsapp className="text-green-600" size={30} />
+            </div>{' '}
+            Please enter the 6-digit OTP sent to your Whatsapp.
           </p>
           <div className="flex justify-center">
             <InputOTP maxLength={6} onChange={(value: string) => setOtp(value)}>

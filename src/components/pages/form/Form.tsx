@@ -17,6 +17,7 @@ import OTPVerificationDialog from './OTP';
 import { toast } from 'sonner';
 import { processError } from '@/lib/error';
 import AlterLoader from '@/components/global/AlterLoader';
+import { IoLogoWhatsapp } from 'react-icons/io';
 const formSchema = z.object({
   email: z.string().email('Invalid email address').optional(),
   countryCode: z.string().min(2, 'Select a country code'),
@@ -153,11 +154,11 @@ export default function FormRegister() {
               >
                 <option value="+91">🇮🇳 +91</option>
               </select>
-              <FiPhone className="absolute left-24 md:left-28 top-3 text-gray-500" />
+              <IoLogoWhatsapp className="absolute left-24 md:left-28 top-3 text-green-500" />
               <input
                 {...register('phone', { required: 'Phone number is required' })}
                 className="w-full pl-10 py-2 ml-5 focus:outline-none bg-transparent"
-                placeholder="Phone Number"
+                placeholder="Whatsapp Phone Number"
               />
             </div>
 
