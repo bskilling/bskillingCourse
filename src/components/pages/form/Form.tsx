@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -38,6 +38,26 @@ export default function FormRegister() {
     setValue,
     watch,
   } = useForm<FormValues>({ resolver: zodResolver(formSchema) });
+
+  const [isCooldown, setIsCooldown] = useState(false);
+  const [timeLeft, setTimeLeft] = useState(60); // 60 seconds
+
+  useEffect(() => {
+    let timer: NodeJS.Timeout;
+    if (isCooldown) {
+      timer = setInterval(() => {
+        setTimeLeft((prev) => {
+          if (prev === 1) {
+            clearInterval(timer);
+            setIsCooldown(false);
+            return 60;
+          }
+          return prev - 1;
+        });
+      }, 1000);
+    }
+    return () => clearInterval(timer);
+  }, [isCooldown]);
 
   const [otp, setOtp] = useState('');
   const [openOtpDialog, setOpenOtpDialog] = useState(false);
@@ -109,7 +129,10 @@ export default function FormRegister() {
         {/* Right Section */}
         <div className="w-full md:w-2/3 p-6">
           <form
-            onSubmit={handleSubmit((e) => sendOtpMutation.mutate(e))}
+            onSubmit={handleSubmit((e) => {
+              sendOtpMutation.mutate(e);
+              setIsCooldown(true);
+            })}
             className="space-y-4"
           >
             {/* Name Field */}
@@ -184,10 +207,21 @@ export default function FormRegister() {
             {/* Submit Button */}
             <button
               type="submit"
+              className={`w-full text-white p-2 rounded ${
+                isCooldown
+                  ? 'bg-gray-400 cursor-not-allowed'
+                  : 'bg-blue-500 hover:bg-blue-600'
+              }`}
+              disabled={isCooldown}
+            >
+              {isCooldown ? `Wait ${timeLeft}s` : 'Send OTP'}
+            </button>
+            {/* <button
+              type="submit"
               className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
             >
               Send OTP
-            </button>
+            </button> */}
           </form>
         </div>
       </div>
