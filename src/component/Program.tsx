@@ -62,6 +62,7 @@ export default function Program() {
           page: 1,
           category: scategory?._id ?? undefined,
           isPublished: true,
+          type: selectedType ?? undefined,
         },
       });
       return res.data.data;

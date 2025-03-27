@@ -20,7 +20,7 @@ interface CourseCardProps {
 
 export default function CourseCard({ course }: CourseCardProps) {
   return (
-    <Card className="relative overflow-hidden rounded-2xl shadow-lg transition-transform hover:scale-105 hover:shadow-2xl bg-white">
+    <Card className="relative flex flex-col overflow-hidden rounded-2xl shadow-lg transition-transform hover:scale-105 hover:shadow-2xl bg-white">
       <Link href={`/course/${course.slug}?id=${course._id.toString()}`}>
         <CardHeader className="p-0">
           {course?.previewImage?.viewUrl ? (
@@ -54,7 +54,9 @@ export default function CourseCard({ course }: CourseCardProps) {
           <span className="font-medium">Price:</span>
           <span
             className={cn(
-              course.price.amount === 0 ? 'text-green-600' : 'text-gray-800'
+              course.price.amount === 0
+                ? 'text-green-600'
+                : 'text-blue-500 font-bold'
             )}
           >
             {course.price.amount === 0
@@ -64,7 +66,7 @@ export default function CourseCard({ course }: CourseCardProps) {
         </div>
       </CardContent>
 
-      <CardFooter className="p-4 border-t flex justify-between items-center">
+      <CardFooter className="p-4 border-t flex justify-between items-center mt-auto">
         <Button asChild variant="outline" className="w-full font-semibold">
           <Link href={`/course/${course.slug}?id=${course._id.toString()}`}>
             View Course
