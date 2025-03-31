@@ -22,6 +22,7 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 import NavbarSection from '@/component/navbar/NavbarSection';
+import JobAssistForm from '@/components/pages/institution/JobLeadForm';
 
 const highlights = [
   {
@@ -202,6 +203,7 @@ export default function JobAssistingPage() {
                 skills, personalized mentorship, and guaranteed job placement
                 assistance.
               </p>
+
               <div className="mt-8 flex gap-4">
                 <Button className="bg-white text-indigo-700 hover:bg-yellow-300 hover:text-indigo-800 px-6 py-6 rounded-xl shadow-lg text-lg font-medium transition-all flex items-center gap-2">
                   Get Started <ArrowRight className="w-5 h-5" />
@@ -214,36 +216,7 @@ export default function JobAssistingPage() {
                 </Button>
               </div>
             </div>
-            <div className="hidden md:block md:w-2/5">
-              {/* This could be replaced with an actual image */}
-              <div className="bg-white/20 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
-                <div className="flex items-center gap-4 mb-4">
-                  <Award className="w-10 h-10 text-yellow-300" />
-                  <div>
-                    <div className="text-sm text-blue-200">Success Rate</div>
-                    <div className="text-2xl font-bold">93% Job Placement</div>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4 mb-4">
-                  <Calendar className="w-10 h-10 text-yellow-300" />
-                  <div>
-                    <div className="text-sm text-blue-200">
-                      Program Duration
-                    </div>
-                    <div className="text-2xl font-bold">3-6 Months</div>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4">
-                  <Users className="w-10 h-10 text-yellow-300" />
-                  <div>
-                    <div className="text-sm text-blue-200">Alumni Network</div>
-                    <div className="text-2xl font-bold">
-                      10,000+ Professionals
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <JobAssistForm />
           </div>
         </div>
       </header>
