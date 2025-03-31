@@ -298,6 +298,21 @@ select option:checked {
   }
 }
 
+/* .peer:-webkit-autofill {
+  background-color: transparent !important;
+  color: white !important;
+  -webkit-text-fill-color: white !important;
+  -webkit-box-shadow: 0 0 0px 1000px #0d1b2a inset !important;
+
+  box-shadow: 0 0 0px 1000px #0d1b2a inset !important;
+} */
+.peer:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px rgba(0, 0, 0, 0) inset !important; /* Fully transparent */
+  -webkit-text-fill-color: black !important; /* Force white text */
+  background-clip: text !important; /* Ensures background doesn’t override */
+  transition: background-color 5000s ease-in-out 0s; /* Trick browser into keeping it transparent */
+}
+
 .poppins-thin {
   font-family: 'Poppins', serif;
   font-weight: 100;

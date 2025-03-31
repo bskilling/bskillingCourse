@@ -122,6 +122,14 @@ export default function NavbarSection() {
               </Link>
             </div>
           </NavigationMenuItem>
+          <NavigationMenuItem>
+            <div className="text-foreground inline-flex gap-x-2">
+              {/* <RiGovernmentFill size={20} className="mx-2" /> */}
+              <Link href={'/institutions'} className="text-sm">
+                Institutions
+              </Link>
+            </div>
+          </NavigationMenuItem>
           <NavigationMenuItem className="">
             <Link href={'/aboutus'} className="text-sm">
               About Us
