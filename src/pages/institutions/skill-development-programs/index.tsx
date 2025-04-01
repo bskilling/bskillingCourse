@@ -18,6 +18,7 @@ import {
   BadgeCheck,
   GraduationCap,
   Award,
+  ArrowRight,
 } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
@@ -36,6 +37,7 @@ import NavbarSection from '@/component/navbar/NavbarSection';
 import ProgramSections from '@/components/pages/institution/ProgramSection';
 import SkillLeadForm from '@/components/pages/institution/SkillLeadForm';
 import SkillPrograms from '@/components/pages/institution/SkillPrograms';
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 
 export default function SkillDevelopmentPrograms() {
   // Animation variants
@@ -241,36 +243,16 @@ export default function SkillDevelopmentPrograms() {
                 projects, and personalized mentorship to excel in today&apos;s
                 competitive job market.
               </p>
-
-              <div className="flex flex-wrap gap-4">
-                <Button
-                  size="lg"
-                  className="bg-indigo-600 hover:bg-indigo-700 text-white"
-                >
-                  Explore Programs
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-white  hover:bg-white/10"
-                >
-                  Watch Demo
-                </Button>
-              </div>
-
-              <div className="flex items-center space-x-6 pt-4">
-                <div className="text-slate-200">
-                  <div className="font-semibold">500+ Students</div>
-                  <div className="text-sm text-slate-300">Already enrolled</div>
-                </div>
-              </div>
             </motion.div>
-
-            <SkillLeadForm />
+            <div className=" flex justify-end ">
+              <div className="md:w-4/5">
+                <SkillLeadForm />
+              </div>
+            </div>
           </div>
         </div>
       </section>
-      <SkillPrograms />
+      <SkillPrograms skill />
 
       {/* Program Features Section */}
       <section className="py-20 bg-slate-50">
@@ -466,19 +448,20 @@ export default function SkillDevelopmentPrograms() {
               their careers through our skill development programs.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Button
-                size="lg"
-                className="bg-white text-indigo-900 hover:bg-slate-100"
-              >
-                Apply Now
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-white text-gray-900 hover:bg-white/10"
-              >
-                Request Information
-              </Button>
+              <Dialog>
+                <DialogTrigger className="mt-6">
+                  {' '}
+                  <Button
+                    size="lg"
+                    className="bg-white text-indigo-900 hover:bg-slate-100"
+                  >
+                    Apply Now
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className=" bg-gradient-to-br from-violet-950 via-indigo-900 to-blue-800">
+                  <SkillLeadForm />
+                </DialogContent>
+              </Dialog>
             </div>
           </motion.div>
         </div>

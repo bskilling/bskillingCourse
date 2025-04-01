@@ -27,6 +27,14 @@ import {
   BadgeCheck,
   Paintbrush,
 } from 'lucide-react';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -43,6 +51,7 @@ import { Textarea } from '@/components/ui/textarea';
 import Link from 'next/link';
 import NavbarSection from '@/component/navbar/NavbarSection';
 import { useRouter } from 'next/navigation';
+import LeadForm from '@/components/pages/institution/LeadForm';
 
 const InstitutionHomepage = () => {
   const [activeTab, setActiveTab] = useState('overview');
@@ -294,12 +303,17 @@ const InstitutionHomepage = () => {
                 tomorrow&apos;s leaders.
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
-                <Button className="bg-white text-indigo-700 hover:bg-blue-50 px-6 py-6 rounded-xl shadow-lg text-lg font-medium transition-all flex items-center gap-2">
-                  Get Started <ArrowRight className="w-5 h-5" />
-                </Button>
-                <Button className="bg-transparent border-white text-white hover:bg-white/10 px-6 py-6 rounded-xl text-lg font-medium transition-all">
-                  Explore Programs
-                </Button>
+                <Dialog>
+                  <DialogTrigger>
+                    {' '}
+                    <Button className="bg-white text-indigo-700 hover:bg-blue-50 px-6 py-6 rounded-xl shadow-lg text-lg font-medium transition-all flex items-center gap-2">
+                      Get Started <ArrowRight className="w-5 h-5" />
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-5xl">
+                    <LeadForm />
+                  </DialogContent>
+                </Dialog>
               </div>
             </div>
             <div className="hidden md:block md:w-2/5">
@@ -451,14 +465,6 @@ const InstitutionHomepage = () => {
                 </h3>
                 <p className="text-slate-600">{highlight.description}</p>
               </CardContent>
-              <CardFooter className="pt-0 pb-4">
-                <a
-                  href="#"
-                  className={`text-sm font-medium inline-flex items-center bg-gradient-to-r ${highlight.color} bg-clip-text text-transparent`}
-                >
-                  Learn more <ChevronRight className="w-4 h-4 ml-1" />
-                </a>
-              </CardFooter>
             </Card>
           ))}
         </div>
@@ -470,7 +476,7 @@ const InstitutionHomepage = () => {
           <h2 className="text-3xl font-bold text-slate-800">
             Featured Programs
           </h2>
-          <div className="flex gap-2">
+          {/* <div className="flex gap-2">
             <Button
               variant={activeTab === 'overview' ? 'default' : 'outline'}
               className={
@@ -498,7 +504,7 @@ const InstitutionHomepage = () => {
             >
               Job Assistance
             </Button>
-          </div>
+          </div> */}
         </div>
 
         {activeTab === 'overview' || activeTab === 'skill' ? (
@@ -545,7 +551,12 @@ const InstitutionHomepage = () => {
                         <span>{program.modules}</span>
                       </div>
                     </div>
-                    <Button className="w-full bg-white border border-slate-300 text-slate-800 hover:bg-slate-50">
+                    <Button
+                      onClick={() => {
+                        router.push(`/institutions/skill-development-programs`);
+                      }}
+                      className="w-full bg-white border border-slate-300 text-slate-800 hover:bg-slate-50"
+                    >
                       View Details
                     </Button>
                   </CardContent>
@@ -554,6 +565,9 @@ const InstitutionHomepage = () => {
             </div>
             <div className="text-center mt-8">
               <Button
+                onClick={() => {
+                  router.push(`/institutions/skill-development-programs`);
+                }}
                 variant="outline"
                 className="border-indigo-600 text-indigo-600 hover:bg-indigo-50"
               >
@@ -611,7 +625,13 @@ const InstitutionHomepage = () => {
                     </div>
                   </CardContent>
                   <CardFooter>
-                    <Button variant="outline" className="w-full">
+                    <Button
+                      onClick={() => {
+                        router.push(`/institutions/job-assisting-programs`);
+                      }}
+                      variant="outline"
+                      className="w-full"
+                    >
                       View All Jobs
                     </Button>
                   </CardFooter>
@@ -620,6 +640,9 @@ const InstitutionHomepage = () => {
             </div>
             <div className="text-center mt-8">
               <Button
+                onClick={() => {
+                  router.push(`/institutions/job-assisting-programs`);
+                }}
                 variant="outline"
                 className="border-indigo-600 text-indigo-600 hover:bg-indigo-50"
               >
@@ -773,9 +796,18 @@ const InstitutionHomepage = () => {
                 consultation today.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button className="bg-gradient-to-r from-indigo-600 to-purple-700 hover:from-indigo-700 hover:to-purple-800 px-6 py-3 text-white rounded-xl">
-                  Schedule Consultation
-                </Button>
+                <Dialog>
+                  <DialogTrigger>
+                    {' '}
+                    <Button className="bg-gradient-to-r from-indigo-600 to-purple-700 hover:from-indigo-700 hover:to-purple-800 px-6 py-3 text-white rounded-xl">
+                      Schedule Consultation
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-5xl">
+                    <LeadForm />
+                  </DialogContent>
+                </Dialog>
+
                 <Button
                   variant="outline"
                   className="border-slate-300 text-slate-700 hover:bg-slate-100 px-6 py-3 rounded-xl"

@@ -23,6 +23,8 @@ import {
 import Link from 'next/link';
 import NavbarSection from '@/component/navbar/NavbarSection';
 import JobAssistForm from '@/components/pages/institution/JobLeadForm';
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
+import SkillPrograms from '@/components/pages/institution/SkillPrograms';
 
 const highlights = [
   {
@@ -125,8 +127,8 @@ const jobs = [
     position: 'Python Developer',
     location: 'Delhi NCR, Mumbai',
     salary: '₹6-12 LPA',
-    featured: false,
-    tag: '',
+    featured: true,
+    tag: 'IT Jobs',
   },
   {
     position: 'Cloud Engineer (AWS/Azure)',
@@ -139,8 +141,8 @@ const jobs = [
     position: 'Pharmacovigilance Associate',
     location: 'Hyderabad, Mumbai',
     salary: '₹5-8 LPA',
-    featured: false,
-    tag: '',
+    featured: true,
+    tag: 'IT Jobs',
   },
   {
     position: 'Project Manager (PMP Certified)',
@@ -204,19 +206,23 @@ export default function JobAssistingPage() {
                 assistance.
               </p>
 
-              <div className="mt-8 flex gap-4">
-                <Button className="bg-white text-indigo-700 hover:bg-yellow-300 hover:text-indigo-800 px-6 py-6 rounded-xl shadow-lg text-lg font-medium transition-all flex items-center gap-2">
-                  Get Started <ArrowRight className="w-5 h-5" />
-                </Button>
-                <Button
-                  variant="outline"
-                  className="bg-transparent border-white text-white hover:bg-white/10 px-6 py-6 rounded-xl text-lg font-medium transition-all"
-                >
-                  Explore Programs
-                </Button>
+              <Dialog>
+                <DialogTrigger className="mt-6">
+                  {' '}
+                  <Button className="bg-white text-indigo-700 hover:bg-yellow-300 hover:text-indigo-800 px-6 py-6 rounded-xl shadow-lg text-lg font-medium transition-all flex items-center gap-2">
+                    Get Started <ArrowRight className="w-5 h-5" />
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className=" bg-gradient-to-r from-blue-700 via-indigo-700 to-purple-800">
+                  <JobAssistForm />
+                </DialogContent>
+              </Dialog>
+            </div>
+            <div className=" flex justify-end ">
+              <div className="md:w-4/5">
+                <JobAssistForm />
               </div>
             </div>
-            <JobAssistForm />
           </div>
         </div>
       </header>
@@ -245,7 +251,7 @@ export default function JobAssistingPage() {
           </div>
         </div>
       </div> */}
-
+      <SkillPrograms skill={false} />
       {/* Highlights Section */}
       <section className="max-w-6xl mx-auto mt-16 px-6 md:px-0">
         <div className="text-center mb-10">
@@ -278,9 +284,7 @@ export default function JobAssistingPage() {
                 <a
                   href="#"
                   className={`text-sm font-medium inline-flex items-center bg-gradient-to-r ${highlight.color} bg-clip-text text-transparent`}
-                >
-                  Learn more <ChevronRight className="w-4 h-4 ml-1" />
-                </a>
+                ></a>
               </CardFooter>
             </Card>
           ))}
