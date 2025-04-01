@@ -255,7 +255,7 @@ export default function SkillPrograms() {
             <div className="relative z-10 md:flex justify-between items-center">
               <div className="mb-6 md:mb-0">
                 <h2 className="text-xl md:text-2xl font-bold text-white mb-2">
-                  Can't find what you're looking for?
+                  Can&apos;t find what you&apos;re looking for?
                 </h2>
                 <p className="text-indigo-100 max-w-xl">
                   We can create custom skill development programs tailored to

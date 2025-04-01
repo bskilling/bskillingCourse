@@ -43,7 +43,7 @@ export default function SkillLeadForm() {
   });
 
   // Handle input changes
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -98,7 +98,7 @@ export default function SkillLeadForm() {
   };
 
   // Handle form submission
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
 
     if (!validateForm()) {
