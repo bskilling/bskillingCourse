@@ -38,6 +38,7 @@ import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ICourse } from '@/component/types/Course.types';
 import CourseCard from '@/component/courses/CourseCard';
+import SkillLeadForm from './SkillLeadForm';
 
 // Animation variants
 const container = {
@@ -59,7 +60,7 @@ const backendUrl =
   process.env.NEXT_PUBLIC_BACKEND_URL ??
   'https://backendbskilling-production-20ff.up.railway.app';
 
-export default function SkillPrograms() {
+export default function SkillPrograms({ skill }: { skill: boolean }) {
   const selectedType = 'b2i';
   const [searchTerm, setSearchTerm] = useState('');
   const [scategory, setScategory] = useState<
@@ -118,7 +119,7 @@ export default function SkillPrograms() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            Skill Development Programs
+            {skill ? 'Skill Development Programs' : 'Job Assisting Programs'}
           </motion.h1>
           <motion.p
             className="text-lg text-slate-600 max-w-3xl mx-auto"
@@ -262,12 +263,20 @@ export default function SkillPrograms() {
                   your specific needs and goals.
                 </p>
               </div>
-              <Button
-                size="lg"
-                className="bg-white text-indigo-700 hover:bg-slate-100 whitespace-nowrap"
-              >
-                Request Custom Program
-              </Button>
+              <Dialog>
+                <DialogTrigger className="mt-6">
+                  {' '}
+                  <Button
+                    size="lg"
+                    className="bg-white text-indigo-700 hover:bg-slate-100 whitespace-nowrap"
+                  >
+                    Request Custom Program
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className=" bg-gradient-to-br from-violet-950 via-indigo-900 to-blue-800">
+                  <SkillLeadForm />
+                </DialogContent>
+              </Dialog>
             </div>
           </div>
         </div>

@@ -42,6 +42,7 @@ import {
   IoCallOutline,
 } from 'react-icons/io5';
 import { FaUniversity } from 'react-icons/fa';
+import { FcAbout } from 'react-icons/fc';
 const menus = [
   { name: 'Home', href: '/', icon: <IoHomeOutline size={22} /> },
   {
@@ -130,11 +131,11 @@ export default function NavbarSection() {
               </Link>
             </div>
           </NavigationMenuItem>
-          <NavigationMenuItem className="">
+          {/* <NavigationMenuItem className="">
             <Link href={'/aboutus'} className="text-sm">
               About Us
             </Link>
-          </NavigationMenuItem>
+          </NavigationMenuItem> */}
           {/* 
           <NavigationMenuItem className="">
             <Link href={'/institutions'} className="text-sm">
@@ -167,6 +168,13 @@ export default function NavbarSection() {
                     <div className="text-foreground inline-flex gap-x-2 cursor-pointer items-center">
                       <FaStar className="mx-2" size={20} />
                       <p>Review</p>
+                    </div>{' '}
+                  </Link>
+
+                  <Link href={'/aboutus'}>
+                    <div className="text-foreground inline-flex gap-x-2 cursor-pointer items-center">
+                      <FcAbout className="mx-2" size={20} />
+                      <p>About Us</p>
                     </div>{' '}
                   </Link>
                 </div>
