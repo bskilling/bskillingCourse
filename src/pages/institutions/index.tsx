@@ -291,7 +291,7 @@ const InstitutionHomepage = () => {
               <p className="text-lg mt-6 text-blue-100 max-w-xl">
                 Building industry-ready skills and providing job placement
                 assistance to transform students and professionals into
-                tomorrow's leaders.
+                tomorrow&apos;s leaders.
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
                 <Button className="bg-white text-indigo-700 hover:bg-blue-50 px-6 py-6 rounded-xl shadow-lg text-lg font-medium transition-all flex items-center gap-2">
@@ -701,8 +701,8 @@ const InstitutionHomepage = () => {
                 </div>
                 <p className="italic text-indigo-100 mb-6">
                   As a career changer, I was worried about switching to tech.
-                  The program provided step-by-step guidance and I'm now a cloud
-                  engineer earning twice my previous salary.
+                  The program provided step-by-step guidance and I&apos;m now a
+                  cloud engineer earning twice my previous salary.
                 </p>
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center text-xl font-bold">
@@ -768,8 +768,8 @@ const InstitutionHomepage = () => {
                 Ready to Take the Next Step in Your Career?
               </h2>
               <p className="text-slate-600 mb-6">
-                Join thousands of professionals who've transformed their careers
-                with our expert-led programs. Schedule a free career
+                Join thousands of professionals who&apos;ve transformed their
+                careers with our expert-led programs. Schedule a free career
                 consultation today.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">

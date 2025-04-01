@@ -46,7 +46,7 @@ const staggerContainer = {
   },
 };
 
-const CourseCard = ({ title, description, icon }) => (
+const CourseCard = ({ title, description, icon }: any) => (
   <motion.div
     variants={fadeIn}
     className="bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 p-6 flex flex-col gap-4 border border-slate-100"
@@ -281,8 +281,8 @@ export default function ProgramOverview() {
                   Quick Inquiry
                 </CardTitle>
                 <CardDescription>
-                  Want more details? Fill in your information and we'll get in
-                  touch!
+                  Want more details? Fill in your information and we&apos;ll get
+                  in touch!
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -432,7 +432,7 @@ export default function ProgramOverview() {
             Technical Terminology
           </h2>
           <p className="text-slate-600 mt-3">
-            Common technical terms you'll encounter during the program
+            Common technical terms you&apos;ll encounter during the program
           </p>
         </motion.div>
 

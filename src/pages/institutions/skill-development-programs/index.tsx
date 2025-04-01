@@ -238,7 +238,7 @@ export default function SkillDevelopmentPrograms() {
 
               <p className="text-lg lg:text-xl text-slate-200 max-w-2xl">
                 Build industry-ready skills through expert-led courses, hands-on
-                projects, and personalized mentorship to excel in today's
+                projects, and personalized mentorship to excel in today&apos;s
                 competitive job market.
               </p>
 
