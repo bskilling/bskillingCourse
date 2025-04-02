@@ -29,24 +29,19 @@ const leadSchema = z
     phoneNumber: z
       .string()
       .regex(/^\d{10,15}$/, 'Phone number must be between 10 to 15 digits'),
-    category: z.enum([
-      'individual_course',
-      'corporate_training',
-      'institutional',
-      'government',
-    ]),
+    type: z.enum(['b2c', 'b2c', 'b2b', 'b2i', 'general']),
     subcategory: z.enum(['', 'jobs', 'skills']).optional(),
     query: z.string().min(10, 'Query must be at least 10 characters long'),
   })
   .superRefine((data, ctx) => {
-    if (data.category === 'institutional' && !data.subcategory) {
+    if (data.type === 'b2i' && !data.subcategory) {
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
         message: "Subcategory is required when category is 'institutional'",
         path: ['subcategory'],
       });
     }
-    if (data.category !== 'institutional' && data.subcategory) {
+    if (data.type !== 'b2i' && data.subcategory) {
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
         message:
@@ -80,14 +75,14 @@ const ConsultationForm = () => {
       email: '',
       countryCode: '+91',
       phoneNumber: '',
-      category: 'individual_course',
+      type: 'b2c',
       subcategory: '',
       query: '',
     },
   });
 
-  const selectedCategory = watch('category');
-  const showSubcategory = selectedCategory === 'institutional';
+  const selectedCategory = watch('type');
+  const showSubcategory = selectedCategory === 'b2c';
 
   const onSubmit = useMutation({
     mutationFn: async (data: LeadFormData) => {
