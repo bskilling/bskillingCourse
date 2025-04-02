@@ -23,12 +23,7 @@ const Footer = () => {
               alt="Logo"
             />
           </Link>
-          <div className="mt-5">
-            <p className="text-sm text-white leading-relaxed">
-              B-Block 4th Floor, COMMERCIAL BUILDING, UMA SREE DREAM WORLD, Unit
-              -2, Hosur Rd, Kudlu Gate, GB Palya, Bengaluru, Karnataka 560068
-            </p>
-          </div>
+
           <GoogleReviews />
         </div>
 
@@ -177,7 +172,10 @@ const Footer = () => {
           </div>
         </div>
       </div>
-
+      <p className="text-sm text-white text-center leading-relaxed mt-10">
+        B-Block 4th Floor, COMMERCIAL BUILDING, UMA SREE DREAM WORLD, Unit -2,
+        Hosur Rd, Kudlu Gate, GB Palya, Bengaluru, Karnataka 560068
+      </p>
       <p className="text-center md:text-center mb-4 md:mb-0">
         &copy; {new Date().getFullYear()} BSkilling. All rights reserved.
       </p>
