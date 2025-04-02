@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 'use client';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
@@ -39,6 +40,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ICourse } from '@/component/types/Course.types';
 import CourseCard from '@/component/courses/CourseCard';
 import SkillLeadForm from './SkillLeadForm';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 // Animation variants
 const container = {
@@ -62,6 +65,7 @@ const backendUrl =
 
 export default function SkillPrograms({ skill }: { skill: boolean }) {
   const selectedType = 'b2i';
+  const router = useRouter();
   const [searchTerm, setSearchTerm] = useState('');
   const [scategory, setScategory] = useState<
     ICategories['categories'][number] | null
@@ -212,7 +216,67 @@ export default function SkillPrograms({ skill }: { skill: boolean }) {
                     variants={item}
                     className="w-full"
                   >
-                    <CourseCard course={course} />
+                    <Card className="relative flex flex-col overflow-hidden rounded-2xl shadow-lg transition-transform hover:scale-105 hover:shadow-2xl bg-white">
+                      <Link
+                        href={`/institutions/${
+                          course.slug
+                        }?id=${course._id.toString()}`}
+                      >
+                        <CardHeader className="p-0">
+                          {course?.previewImage?.viewUrl ? (
+                            <img
+                              src={course?.previewImage?.viewUrl}
+                              alt={'Course Preview'}
+                              className="w-full h-52 object-cover rounded-t-2xl"
+                            />
+                          ) : (
+                            <img
+                              src={'/images/placeholder.png'}
+                              alt="Placeholder"
+                              className="w-full h-52 object-cover rounded-t-2xl p-3"
+                            />
+                          )}
+                        </CardHeader>
+                      </Link>
+
+                      <CardContent className="p-4 space-y-2">
+                        <CardTitle className="text-lg font-semibold text-gray-900 truncate">
+                          {course?.title || 'No Title'}
+                        </CardTitle>
+                        <CardDescription className="text-sm text-gray-600 line-clamp-2">
+                          {course?.description || 'No Description Available'}
+                        </CardDescription>
+                        <div className="flex items-center gap-2 text-sm text-gray-500">
+                          <span className="font-medium">Duration:</span>
+                          <span>{course.durationHours} hours</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-sm text-gray-500">
+                          <span className="font-medium">Price:</span>
+                          <span
+                            className={cn(
+                              course.price.amount === 0
+                                ? 'text-green-600'
+                                : 'text-blue-500 font-bold'
+                            )}
+                          >
+                            {course.price.amount === 0
+                              ? 'Free'
+                              : `${course.price.amount} ${course.price.currency}`}
+                          </span>
+                        </div>
+                      </CardContent>
+
+                      <CardFooter className="p-4 border-t flex justify-between items-center mt-auto text-center">
+                        <Link
+                          href={`/institutions/${
+                            course.slug
+                          }?id=${course._id.toString()}`}
+                          className="m-auto"
+                        >
+                          View Course
+                        </Link>
+                      </CardFooter>
+                    </Card>
                   </motion.div>
                 ))}
               </motion.div>

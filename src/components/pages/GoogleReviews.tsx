@@ -10,7 +10,7 @@ export default function GoogleReviews() {
   const totalReviews = 34;
 
   return (
-    <div className="max-w-md bg-transparent text-white  rounded-xl pt-0 mt-5">
+    <div className="max-w-md bg-transparent   rounded-xl pt-0 mt-5">
       {/* Header */}
       <div className="flex items-center gap-2 mb-2">
         <FcGoogle size={22} />

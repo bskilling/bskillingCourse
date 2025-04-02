@@ -1,0 +1,112 @@
+import { useState } from 'react';
+import { ChevronDown, ChevronUp, HelpCircle } from 'lucide-react';
+
+interface FAQ {
+  question: string;
+  answer: string;
+}
+
+interface FAQProps {
+  faqs: FAQ[];
+}
+
+const FAQSection: React.FC<FAQProps> = ({ faqs }) => {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  // If no FAQs exist, don't render the section
+  if (!faqs || faqs.length === 0) {
+    return null;
+  }
+
+  const toggleFAQ = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
+  return (
+    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16" id="faqs">
+      <div className="flex items-center space-x-3 mb-8">
+        <div className="w-1.5 h-8 bg-blue-600 rounded-full"></div>
+        <h2 className="text-2xl font-bold text-gray-800">
+          Frequently Asked Questions
+        </h2>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {faqs.map((faq, index) => {
+          const isOpen = openIndex === index;
+
+          return (
+            <div
+              key={index}
+              className={`bg-white rounded-xl overflow-hidden transition-all duration-200 ${
+                isOpen
+                  ? 'shadow-md border-blue-200 border'
+                  : 'shadow-sm border border-gray-100 hover:border-blue-100'
+              }`}
+            >
+              <button
+                className="w-full text-left p-5 focus:outline-none flex justify-between items-start"
+                onClick={() => toggleFAQ(index)}
+              >
+                <div className="flex items-start">
+                  <div
+                    className={`flex-shrink-0 mt-0.5 mr-4 rounded-full p-1.5 ${
+                      isOpen ? 'bg-blue-100' : 'bg-gray-100'
+                    }`}
+                  >
+                    <HelpCircle
+                      className={`h-5 w-5 ${
+                        isOpen ? 'text-blue-600' : 'text-gray-500'
+                      }`}
+                    />
+                  </div>
+                  <span
+                    className={`font-medium ${
+                      isOpen ? 'text-blue-700' : 'text-gray-800'
+                    }`}
+                  >
+                    {faq.question}
+                  </span>
+                </div>
+                {isOpen ? (
+                  <ChevronUp className="h-5 w-5 text-blue-600 flex-shrink-0 ml-4" />
+                ) : (
+                  <ChevronDown className="h-5 w-5 text-gray-400 flex-shrink-0 ml-4" />
+                )}
+              </button>
+
+              <div
+                className={`px-5 pb-5 transition-all duration-300 ease-in-out ${
+                  isOpen ? 'block' : 'hidden'
+                }`}
+              >
+                <div className="pt-2 border-t border-gray-100">
+                  <p className="text-gray-600 mt-3 text-sm leading-relaxed">
+                    {faq.answer}
+                  </p>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      <div className="mt-10 text-center">
+        <div className="inline-flex items-center p-4 bg-gray-50 rounded-lg border border-gray-200">
+          <HelpCircle className="h-5 w-5 text-blue-600 mr-2" />
+          <p className="text-sm text-gray-600">
+            Still have questions?{' '}
+            <a
+              href="#contact"
+              className="text-blue-600 font-medium hover:underline"
+            >
+              Contact our support team
+            </a>
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default FAQSection;
