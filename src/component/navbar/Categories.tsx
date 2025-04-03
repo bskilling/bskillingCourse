@@ -1,11 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@/components/ui/popover';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Skeleton } from '@/components/ui/skeleton';
 import usePrograms from '@/lib/hooks/usePrograms';
 import Link from 'next/link';
@@ -54,9 +50,7 @@ export default function Categories() {
         console.log('res', jsonData);
         const ListOfCoursesData = Object.values(jsonData.courses);
         console.log('res', ListOfCoursesData);
-        const flattenedData = ListOfCoursesData.flatMap(
-          (innerArray) => innerArray
-        );
+        const flattenedData = ListOfCoursesData.flatMap(innerArray => innerArray);
 
         return flattenedData as Course[];
       } catch (error) {
@@ -70,13 +64,9 @@ export default function Categories() {
     setSelectedCategory(category);
   };
 
-  const uniqueCategories = Array.from(
-    new Set(data1?.map((course) => course.category))
-  );
-  const filteredCourses = uniqueCategories.flatMap((category) =>
-    selectedCategory === category
-      ? data1?.filter((course) => course.category === category)
-      : []
+  const uniqueCategories = Array.from(new Set(data1?.map(course => course.category)));
+  const filteredCourses = uniqueCategories.flatMap(category =>
+    selectedCategory === category ? data1?.filter(course => course.category === category) : []
   );
 
   const { data, isLoading, error } = usePrograms();
@@ -93,8 +83,7 @@ export default function Categories() {
 
   const { visibleItems, hiddenItems } = useMemo(() => {
     if (!data) return { visibleItems: [], hiddenItems: [] };
-    const maxItems =
-      breakpoints.find((bp) => windowWidth >= bp.width)?.items || 1;
+    const maxItems = breakpoints.find(bp => windowWidth >= bp.width)?.items || 1;
     const keys = Object.keys(data);
     return {
       visibleItems: keys.slice(0, maxItems),
@@ -137,12 +126,10 @@ export default function Categories() {
                 className="w-1/4 p-4  h-[570px]  overflow-y-auto"
                 //   onMouseEnter={() => setSelectedCategory(null)}
               >
-                <div className="text-lg mb-2 font-bold text-black ">
-                  Categories
-                </div>
+                <div className="text-lg mb-2 font-bold text-black ">Categories</div>
                 <ul>
                   {uniqueCategories
-                    .filter((category) => category !== 'SAP')
+                    .filter(category => category !== 'SAP')
                     .map((category, index) => (
                       <li
                         key={index}
@@ -159,14 +146,12 @@ export default function Categories() {
                 </ul>
               </div>
               <div className="w-3/4 p-4 max-h-[560px] border-l overflow-y-auto">
-                <div className="text-lg mb-2 font-bold text-customRed">
-                  Courses
-                </div>
+                <div className="text-lg mb-2 font-bold text-customRed">Courses</div>
                 {filteredCourses?.length > 0 ? (
                   <div className="grid grid-cols-1 gap-5">
                     {data &&
                       filteredCourses &&
-                      filteredCourses?.map((course) => (
+                      filteredCourses?.map(course => (
                         <Link
                           style={{ textDecoration: 'none' }}
                           href={`/courses/course-details/${course?.url}`}
@@ -178,7 +163,7 @@ export default function Categories() {
                   </div>
                 ) : (
                   <div className="grid grid-cols-1 gap-5">
-                    {data1?.map((course) => (
+                    {data1?.map(course => (
                       <Link
                         style={{ textDecoration: 'none' }}
                         href={`/courses/course-details/${course?.url}`}
@@ -230,8 +215,8 @@ export default function Categories() {
         </Popover> */}
         <div className="w-full flex items-center  justify-end gap-x-10">
           {visibleItems
-            .filter((key) => key !== 'SAP')
-            .map((key) => (
+            .filter(key => key !== 'SAP')
+            .map(key => (
               <Link
                 key={key}
                 href={`/individual-training?tab=${key}`}
@@ -246,12 +231,8 @@ export default function Categories() {
                 <RxHamburgerMenu size={20} />
               </PopoverTrigger>
               <PopoverContent className="flex flex-col gap-y-4">
-                {hiddenItems.map((key) => (
-                  <Link
-                    key={key}
-                    href={`/individual-training?tab=${key}`}
-                    className="text-sm"
-                  >
+                {hiddenItems.map(key => (
+                  <Link key={key} href={`/individual-training?tab=${key}`} className="text-sm">
                     {key}
                   </Link>
                 ))}

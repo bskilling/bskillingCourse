@@ -1,15 +1,10 @@
-import { QuestionMarkCircleIcon } from "@heroicons/react/24/outline";
-import {
-  ChevronDownIcon,
-  ChevronUpIcon,
-  PlayCircle,
-  PlayIcon,
-} from "lucide-react";
-import React, { useState } from "react";
-import { ICourse } from "./types";
+import { QuestionMarkCircleIcon } from '@heroicons/react/24/outline';
+import { ChevronDownIcon, ChevronUpIcon, PlayCircle, PlayIcon } from 'lucide-react';
+import React, { useState } from 'react';
+import { ICourse } from './types';
 
 interface FAQProps {
-  chapters: ICourse["curriculum"]["chapters"];
+  chapters: ICourse['curriculum']['chapters'];
 }
 
 export default function Modules({ chapters }: FAQProps) {
@@ -50,9 +45,7 @@ export default function Modules({ chapters }: FAQProps) {
               </button>
               <div
                 className={`mt-2 pl-4 text-gray-700 transition-all duration-300 ${
-                  openIndex === index
-                    ? "h-auto opacity-100"
-                    : "max-h-0 opacity-0 overflow-hidden"
+                  openIndex === index ? 'h-auto opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
                 }`}
               >
                 {faq.lessons.map((content, contentIndex) => (
@@ -74,7 +67,7 @@ export default function Modules({ chapters }: FAQProps) {
               className="text-[#F8B400] font-semibold underline"
               onClick={() => setShowAll(!showAll)}
             >
-              {showAll ? "Show Less" : "Show More"}
+              {showAll ? 'Show Less' : 'Show More'}
             </button>
           </div>
         )}

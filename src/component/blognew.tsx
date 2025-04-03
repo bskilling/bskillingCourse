@@ -191,12 +191,8 @@ export default function Testimonials() {
                         <h2 className="title-font px-3 mt-2 text-lg text-left font-bold text-gray-900 mb-3">
                           {name}
                         </h2>
-                        <p className="text-left  text-sm px-3 ">
-                          Source : {sorc}
-                        </p>
-                        <p className="text-left text-sm  px-3 ">
-                          Author : {auth}
-                        </p>
+                        <p className="text-left  text-sm px-3 ">Source : {sorc}</p>
+                        <p className="text-left text-sm  px-3 ">Author : {auth}</p>
                         {/* <p className="leading-relaxed px-3 mb-5 mt-2 text-sm  text-left">
                           {desc.length > 100
                             ? desc.substring(0, 100) + "..."

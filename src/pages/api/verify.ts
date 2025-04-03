@@ -1,25 +1,20 @@
-import { NextRequest, NextResponse } from "next/server";
-import crypto from "crypto";
+import { NextRequest, NextResponse } from 'next/server';
+import crypto from 'crypto';
 
-const generatedSignature = (
-  razorpayOrderId: string,
-  razorpayPaymentId: string
-) => {
-  const keySecret = "OHMl0eaUeKWN5YXd0zmWFErp";
+const generatedSignature = (razorpayOrderId: string, razorpayPaymentId: string) => {
+  const keySecret = 'OHMl0eaUeKWN5YXd0zmWFErp';
   if (!keySecret) {
-    throw new Error(
-      "Razorpay key secret is not defined in environment variables."
-    );
+    throw new Error('Razorpay key secret is not defined in environment variables.');
   }
   const sig = crypto
-    .createHmac("sha256", keySecret)
-    .update(razorpayOrderId + "|" + razorpayPaymentId)
-    .digest("hex");
+    .createHmac('sha256', keySecret)
+    .update(razorpayOrderId + '|' + razorpayPaymentId)
+    .digest('hex');
   return sig;
 };
 
 export default async function handler(req: any, res: any) {
-  if (req.method === "POST") {
+  if (req.method === 'POST') {
     const { orderCreationId, razorpayPaymentId, razorpaySignature } = req.body;
     console.log(req.body);
 
@@ -35,18 +30,12 @@ export default async function handler(req: any, res: any) {
     if (signature !== razorpaySignature) {
       return res
         .status(400)
-        .json(
-          { message: "payment verification failed", isOk: false },
-          { status: 400 }
-        );
+        .json({ message: 'payment verification failed', isOk: false }, { status: 400 });
     }
     return res
       .status(200)
-      .json(
-        { message: "payment verified successfully", isOk: true },
-        { status: 200 }
-      );
+      .json({ message: 'payment verified successfully', isOk: true }, { status: 200 });
   } else {
-    res.status(500).json({ message: "Internal Server Error" });
+    res.status(500).json({ message: 'Internal Server Error' });
   }
 }

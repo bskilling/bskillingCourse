@@ -1,13 +1,6 @@
 import React, { useState } from 'react';
 import { ICourse } from './types';
-import {
-  ChevronDown,
-  ChevronUp,
-  PlayCircle,
-  Clock,
-  CheckCircle,
-  BookOpen,
-} from 'lucide-react';
+import { ChevronDown, ChevronUp, PlayCircle, Clock, CheckCircle, BookOpen } from 'lucide-react';
 import { LockClosedIcon } from '@heroicons/react/24/outline';
 
 interface ModulesProps {
@@ -24,19 +17,14 @@ export default function Modules({ chapters }: ModulesProps) {
 
   const visibleChapters = showAll ? chapters : chapters.slice(0, 5);
   const totalModules = chapters.length;
-  const totalLessons = chapters.reduce(
-    (acc, chapter) => acc + chapter.lessons.length,
-    0
-  );
+  const totalLessons = chapters.reduce((acc, chapter) => acc + chapter.lessons.length, 0);
 
   return (
     <div className="container mx-auto max-w-7xl py-8 px-8">
       {/* Curriculum Header */}
       <div className="flex justify-between items-center mb-6">
         <div>
-          <h2 className="text-2xl font-bold text-gray-900">
-            Course Curriculum
-          </h2>
+          <h2 className="text-2xl font-bold text-gray-900">Course Curriculum</h2>
           <p className="text-gray-600 mt-1">
             {totalModules} modules • {totalLessons} lessons
           </p>
@@ -87,19 +75,13 @@ export default function Modules({ chapters }: ModulesProps) {
                 <div className="flex items-center space-x-4">
                   <div
                     className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center ${
-                      isOpen
-                        ? 'bg-blue-100 text-blue-600'
-                        : 'bg-gray-100 text-gray-600'
+                      isOpen ? 'bg-blue-100 text-blue-600' : 'bg-gray-100 text-gray-600'
                     }`}
                   >
                     {index + 1}
                   </div>
                   <div>
-                    <h3
-                      className={`font-semibold ${
-                        isOpen ? 'text-blue-700' : 'text-gray-800'
-                      }`}
-                    >
+                    <h3 className={`font-semibold ${isOpen ? 'text-blue-700' : 'text-gray-800'}`}>
                       {chapter.title}
                     </h3>
                     <div className="flex items-center mt-1 text-sm text-gray-500 space-x-4">
@@ -122,15 +104,11 @@ export default function Modules({ chapters }: ModulesProps) {
                   )}
                   {isOpen ? (
                     <ChevronUp
-                      className={`h-5 w-5 ${
-                        isOpen ? 'text-blue-600' : 'text-gray-400'
-                      }`}
+                      className={`h-5 w-5 ${isOpen ? 'text-blue-600' : 'text-gray-400'}`}
                     />
                   ) : (
                     <ChevronDown
-                      className={`h-5 w-5 ${
-                        isOpen ? 'text-blue-600' : 'text-gray-400'
-                      }`}
+                      className={`h-5 w-5 ${isOpen ? 'text-blue-600' : 'text-gray-400'}`}
                     />
                   )}
                 </div>
@@ -156,9 +134,7 @@ export default function Modules({ chapters }: ModulesProps) {
                       <div>
                         <span className="font-medium">{lesson.title}</span>
                         {lesson.content && (
-                          <p className="text-xs text-gray-500 mt-0.5">
-                            {lesson.content}
-                          </p>
+                          <p className="text-xs text-gray-500 mt-0.5">{lesson.content}</p>
                         )}
                       </div>
                     </div>

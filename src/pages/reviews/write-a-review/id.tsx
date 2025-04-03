@@ -32,11 +32,7 @@ const GiveAReviewPage = () => {
         <h2 className="text-lg font-semibold">Hello, {session?.user?.name}</h2>
         <p>Email: {session?.user?.email}</p>
         {session?.user?.image && (
-          <img
-            src={session.user.image}
-            alt="Profile"
-            className="rounded-full w-20 h-20"
-          />
+          <img src={session.user.image} alt="Profile" className="rounded-full w-20 h-20" />
         )}
       </div>
 
@@ -46,9 +42,7 @@ const GiveAReviewPage = () => {
           placeholder="Write your review here..."
           className="w-full h-32 border border-gray-300 p-2"
         />
-        <button className="mt-2 bg-blue-500 text-white p-2 rounded">
-          Submit Review
-        </button>
+        <button className="mt-2 bg-blue-500 text-white p-2 rounded">Submit Review</button>
       </div>
     </div>
   );

@@ -8,15 +8,9 @@ interface CourseEnrollmentProps {
   durationHours: number;
 }
 
-const CourseEnrollment: React.FC<CourseEnrollmentProps> = ({
-  formattedPrice,
-  durationHours,
-}) => {
+const CourseEnrollment: React.FC<CourseEnrollmentProps> = ({ formattedPrice, durationHours }) => {
   return (
-    <section
-      id="pricing"
-      className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16"
-    >
+    <section id="pricing" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       <div className="flex items-center space-x-3 mb-8">
         <div className="w-1.5 h-8 bg-blue-600 rounded-full"></div>
         <h2 className="text-2xl font-bold text-gray-800">Enrollment Details</h2>
@@ -34,14 +28,10 @@ const CourseEnrollment: React.FC<CourseEnrollmentProps> = ({
           {/* Left Side - Pricing Info */}
           <div className="lg:w-2/5 p-8 lg:border-r border-gray-200 flex flex-col justify-center items-center">
             <div className="text-center">
-              <span className="text-gray-500 line-through text-lg">
-                ₹19,999
-              </span>
+              <span className="text-gray-500 line-through text-lg">₹19,999</span>
               <div className="flex items-center justify-center gap-2 mt-1">
                 <FaIndianRupeeSign className="h-8 w-8 text-blue-600" />
-                <span className="text-4xl font-bold text-gray-900">
-                  {formattedPrice}
-                </span>
+                <span className="text-4xl font-bold text-gray-900">{formattedPrice}</span>
               </div>
               <span className="bg-green-100 text-green-700 text-xs font-medium px-3 py-1 rounded-full mt-2 inline-block">
                 65% OFF
@@ -73,9 +63,7 @@ const CourseEnrollment: React.FC<CourseEnrollmentProps> = ({
 
           {/* Right Side - Course Features */}
           <div className="lg:w-3/5 p-8 bg-gray-50">
-            <h3 className="text-xl font-semibold text-gray-800 mb-6">
-              What&apos;s Included
-            </h3>
+            <h3 className="text-xl font-semibold text-gray-800 mb-6">What&apos;s Included</h3>
 
             <div className="grid md:grid-cols-2 gap-4">
               <div className="flex items-start gap-3">
@@ -83,9 +71,7 @@ const CourseEnrollment: React.FC<CourseEnrollmentProps> = ({
                   <FaClock className="h-4 w-4 text-blue-600" />
                 </div>
                 <div>
-                  <p className="font-medium text-gray-800">
-                    {durationHours} Hours of Content
-                  </p>
+                  <p className="font-medium text-gray-800">{durationHours} Hours of Content</p>
                   <p className="text-sm text-gray-500">Self-paced learning</p>
                 </div>
               </div>
@@ -95,9 +81,7 @@ const CourseEnrollment: React.FC<CourseEnrollmentProps> = ({
                   <Award className="h-4 w-4 text-indigo-600" />
                 </div>
                 <div>
-                  <p className="font-medium text-gray-800">
-                    Completion Certificate
-                  </p>
+                  <p className="font-medium text-gray-800">Completion Certificate</p>
                   <p className="text-sm text-gray-500">Industry recognized</p>
                 </div>
               </div>
@@ -108,9 +92,7 @@ const CourseEnrollment: React.FC<CourseEnrollmentProps> = ({
                 </div>
                 <div>
                   <p className="font-medium text-gray-800">Lifetime Access</p>
-                  <p className="text-sm text-gray-500">
-                    Learn at your own pace
-                  </p>
+                  <p className="text-sm text-gray-500">Learn at your own pace</p>
                 </div>
               </div>
 
@@ -120,9 +102,7 @@ const CourseEnrollment: React.FC<CourseEnrollmentProps> = ({
                 </div>
                 <div>
                   <p className="font-medium text-gray-800">Course Materials</p>
-                  <p className="text-sm text-gray-500">
-                    Downloadable resources
-                  </p>
+                  <p className="text-sm text-gray-500">Downloadable resources</p>
                 </div>
               </div>
 
@@ -131,12 +111,8 @@ const CourseEnrollment: React.FC<CourseEnrollmentProps> = ({
                   <FaGraduationCap className="h-4 w-4 text-yellow-600" />
                 </div>
                 <div>
-                  <p className="font-medium text-gray-800">
-                    Expert Mentor Support
-                  </p>
-                  <p className="text-sm text-gray-500">
-                    Get your questions answered
-                  </p>
+                  <p className="font-medium text-gray-800">Expert Mentor Support</p>
+                  <p className="text-sm text-gray-500">Get your questions answered</p>
                 </div>
               </div>
 
@@ -153,9 +129,7 @@ const CourseEnrollment: React.FC<CourseEnrollmentProps> = ({
                   </svg>
                 </div>
                 <div>
-                  <p className="font-medium text-gray-800">
-                    2 Real-world Projects
-                  </p>
+                  <p className="font-medium text-gray-800">2 Real-world Projects</p>
                   <p className="text-sm text-gray-500">Build your portfolio</p>
                 </div>
               </div>
@@ -179,9 +153,8 @@ const CourseEnrollment: React.FC<CourseEnrollmentProps> = ({
                 </div>
                 <div className="ml-3">
                   <p className="text-sm text-blue-800">
-                    Not sure if this course is right for you? Try our free
-                    introductory module or schedule a call with our career
-                    advisor.
+                    Not sure if this course is right for you? Try our free introductory module or
+                    schedule a call with our career advisor.
                   </p>
                 </div>
               </div>

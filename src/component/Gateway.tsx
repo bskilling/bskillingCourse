@@ -52,10 +52,9 @@ const Gateway = () => {
           Your Gateway to Transformative Learning
         </h1>
         <p className="text-md md:text-lg text-gray-600 max-w-3xl mx-auto">
-          With innovative online classes led by seasoned instructors,
-          personalized placement support, and access to expert faculty,
-          BSkilling empowers you to unlock your full potential and achieve your
-          career goals with confidence.
+          With innovative online classes led by seasoned instructors, personalized placement
+          support, and access to expert faculty, BSkilling empowers you to unlock your full
+          potential and achieve your career goals with confidence.
         </p>
       </div>
 
@@ -71,12 +70,8 @@ const Gateway = () => {
               className="w-full h-52 object-cover rounded-t-xl"
             />
             <div className="p-6">
-              <h2 className="text-lg font-semibold text-gray-800">
-                {feature.heading}
-              </h2>
-              <p className="mt-2 text-sm text-gray-600">
-                {feature.description}
-              </p>
+              <h2 className="text-lg font-semibold text-gray-800">{feature.heading}</h2>
+              <p className="mt-2 text-sm text-gray-600">{feature.description}</p>
             </div>
           </div>
         ))}

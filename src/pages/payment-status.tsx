@@ -67,28 +67,25 @@ const PaymentStatus = () => {
                 {paymentStatus === 'error'
                   ? 'Your payment has failed!'
                   : paymentStatus !== null
-                  ? 'Your payment is successful. Happy learning !'
-                  : null}
+                    ? 'Your payment is successful. Happy learning !'
+                    : null}
               </p>
             </div>
           </div>
           <div className="mb-4 px-6 text-sm text-center">
             {paymentStatus === 'error' ? (
               <p>
-                We could not process your transaction due to some network error.
-                If the amount is debited from your bank account, it will be
-                refunded back to your account within 5-7 business days. Please
-                keep this transaction ID for reference.
-                <br /> For further assistance, reach out to
-                support@bskilling.com
+                We could not process your transaction due to some network error. If the amount is
+                debited from your bank account, it will be refunded back to your account within 5-7
+                business days. Please keep this transaction ID for reference.
+                <br /> For further assistance, reach out to support@bskilling.com
               </p>
             ) : paymentStatus !== null ? (
               <p>
-                An automated payment receipt has been sent to your registered
-                email address. <br /> Please keep this transaction ID for
-                reference. You will receive the LMS access details via mail
-                within 3 working days. For further assistance, please reach out
-                to support@bskilling.com.{' '}
+                An automated payment receipt has been sent to your registered email address. <br />{' '}
+                Please keep this transaction ID for reference. You will receive the LMS access
+                details via mail within 3 working days. For further assistance, please reach out to
+                support@bskilling.com.{' '}
               </p>
             ) : null}
           </div>
@@ -99,16 +96,12 @@ const PaymentStatus = () => {
           <div className="flex md:flex-row px-4 md:px-5 flex-col justify-center w-full md:gap-8 text-sm items-center  py-7">
             <div className="flex w-full flex-col">
               <div className="flex  md:gap-3">
-                <div className="font-semibold  min-w-[200px] text-start ">
-                  AMOUNT{' '}
-                </div>{' '}
+                <div className="font-semibold  min-w-[200px] text-start ">AMOUNT </div>{' '}
                 <p className="font-semibold">{amount}</p>
               </div>
 
               <div className="flex gap-3 text-sm">
-                <p className=" font-semibold text-sm min-w-[200px]">
-                  Order Id{' '}
-                </p>{' '}
+                <p className=" font-semibold text-sm min-w-[200px]">Order Id </p>{' '}
                 <p className="">{orderId}</p>
               </div>
               {/* <div className="flex gap-3">
@@ -124,8 +117,7 @@ const PaymentStatus = () => {
 
             <div className="w-full ">
               <div className="flex gap-3">
-                <p className="font-semibold min-w-[200px]">Currency</p>{' '}
-                <p className="">INR</p>
+                <p className="font-semibold min-w-[200px]">Currency</p> <p className="">INR</p>
               </div>
 
               {/* <div className="flex gap-3">
@@ -133,8 +125,7 @@ const PaymentStatus = () => {
                 <p className="">{trackingId}</p>
               </div> */}
               <div className="flex gap-3">
-                <p className="font-semibold min-w-[200px]">Name</p>{' '}
-                <p className="">{cardName}</p>
+                <p className="font-semibold min-w-[200px]">Name</p> <p className="">{cardName}</p>
               </div>
 
               {/* <div className="flex gap-3">

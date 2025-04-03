@@ -2,14 +2,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Head from 'next/head';
 import Script from 'next/script';
-import {
-  ReactNode,
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-} from 'react';
+import { ReactNode, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { BiMenu, BiSearchAlt } from 'react-icons/bi';
 import { SlArrowDown } from 'react-icons/sl';
 import { MyContext } from 'context/PageContext';
@@ -37,11 +30,7 @@ import Courses from './courses';
 import NavSection from './navbar/NavSection';
 import { usePathname } from 'next/navigation';
 import Categories from './navbar/Categories';
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@/components/ui/popover';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import {
   Sheet,
   SheetContent,
@@ -71,8 +60,7 @@ const Layout = ({ children, pageTitle = 'bSkilling' }: Props) => {
     console.log(`Selected: ${option}`);
     setIsOpen(false);
   };
-  const { inputValue, setInputValue, setFetchSearchData } =
-    useContext(MyContext);
+  const { inputValue, setInputValue, setFetchSearchData } = useContext(MyContext);
   const [aboutUnderline, setAboutUnderline] = useState(false);
   const [blogUnderline, setBlogUnderline] = useState(false);
   const [navHide, setNavHide] = useState(false);
@@ -109,9 +97,7 @@ const Layout = ({ children, pageTitle = 'bSkilling' }: Props) => {
       console.log('res', jsonData);
       const ListOfCoursesData = Object.values(jsonData.courses);
       console.log('res', ListOfCoursesData);
-      const flattenedData = ListOfCoursesData.flatMap(
-        (innerArray) => innerArray
-      );
+      const flattenedData = ListOfCoursesData.flatMap(innerArray => innerArray);
 
       setSearchElementsData(flattenedData as Course[]);
     } catch (error) {
@@ -150,7 +136,7 @@ const Layout = ({ children, pageTitle = 'bSkilling' }: Props) => {
     if (value === '') {
       setDropSearchData([]);
     } else {
-      const filteredData = SearchElementsData.filter((course) =>
+      const filteredData = SearchElementsData.filter(course =>
         course.title.toLowerCase().includes(value.toLowerCase())
       );
 
@@ -189,12 +175,10 @@ const Layout = ({ children, pageTitle = 'bSkilling' }: Props) => {
     setisOtherMenuOpen(!isOtherMenuOpen);
   };
 
-  const uniqueCategories = Array.from(
-    new Set(SearchElementsData.map((course) => course.category))
-  );
-  const filteredCourses = uniqueCategories.flatMap((category) =>
+  const uniqueCategories = Array.from(new Set(SearchElementsData.map(course => course.category)));
+  const filteredCourses = uniqueCategories.flatMap(category =>
     selectedCategory === category
-      ? SearchElementsData.filter((course) => course.category === category)
+      ? SearchElementsData.filter(course => course.category === category)
       : []
   );
   const pathname = usePathname();
@@ -221,12 +205,12 @@ const Layout = ({ children, pageTitle = 'bSkilling' }: Props) => {
       <Head>
         <title>{pageTitle}</title>
         <meta name="bSkilling" content="bSkilling" />
-        <link rel="icon" href="/logo.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+        <link rel="manifest" href="/favicon_io/site.webmanifest" />
       </Head>
-      <Script
-        id="razorpay-checkout-js"
-        src="https://checkout.razorpay.com/v1/checkout.js"
-      />
+      <Script id="razorpay-checkout-js" src="https://checkout.razorpay.com/v1/checkout.js" />
 
       <>
         {/* <NavSection /> */}
@@ -259,17 +243,14 @@ const Layout = ({ children, pageTitle = 'bSkilling' }: Props) => {
                           placeholder="Search for the course or skills"
                           required
                           value={inputValue}
-                          onChange={(e) => {
+                          onChange={e => {
                             handleSearch(e);
                             setShow(true);
                           }}
                         />
                         <BiSearchAlt className=" absolute top-3 left-3 text-primary" />
                       </SheetTrigger>
-                      <SheetContent
-                        side={'top'}
-                        className="h-screen overflow-y-auto"
-                      >
+                      <SheetContent side={'top'} className="h-screen overflow-y-auto">
                         <SheetHeader>
                           <input
                             type="text"
@@ -277,7 +258,7 @@ const Layout = ({ children, pageTitle = 'bSkilling' }: Props) => {
                             placeholder="Search for the course or skills"
                             required
                             value={inputValue}
-                            onChange={(e) => {
+                            onChange={e => {
                               handleSearch(e);
                               setShow(true);
                             }}
@@ -289,9 +270,7 @@ const Layout = ({ children, pageTitle = 'bSkilling' }: Props) => {
                             <div
                               key={index}
                               onClick={() => {
-                                route.replace(
-                                  `/courses/course-details/${course?.url}`
-                                );
+                                route.replace(`/courses/course-details/${course?.url}`);
                               }}
                               className="p-2 text-black hover:bg-buttonBlue px-5 hover:text-primary cursor-pointer"
                             >
@@ -356,9 +335,7 @@ const Layout = ({ children, pageTitle = 'bSkilling' }: Props) => {
                           className="w-full bg-customRed text-white px-5 py-3 rounded-md flex items-center justify-between hover:bg-subText transition-colors"
                           onClick={() => setDropdownOpen(!dropdownOpen)}
                         >
-                          <span className="text-[18px] font-semibold">
-                            Courses
-                          </span>
+                          <span className="text-[18px] font-semibold">Courses</span>
                           <SlArrowDown className="ml-2 w-4 h-4" />
                         </button>
                         {dropdownOpen && (
@@ -375,9 +352,7 @@ const Layout = ({ children, pageTitle = 'bSkilling' }: Props) => {
                                   <li
                                     key={index}
                                     className="p-2 hover:bg-customRed hover:text-white cursor-pointer font-semibold rounded-md transition-colors"
-                                    onMouseEnter={() =>
-                                      handleCategoryHover(category)
-                                    }
+                                    onMouseEnter={() => handleCategoryHover(category)}
                                   >
                                     {category}
                                   </li>
@@ -385,11 +360,9 @@ const Layout = ({ children, pageTitle = 'bSkilling' }: Props) => {
                               </ul>
                             </div>
                             <div>
-                              <div className="text-lg mb-3 font-bold text-customRed">
-                                Courses
-                              </div>
+                              <div className="text-lg mb-3 font-bold text-customRed">Courses</div>
                               <ul>
-                                {filteredCourses.map((course) => (
+                                {filteredCourses.map(course => (
                                   <Link
                                     key={course._id}
                                     href={`/courses/course-details/${course?.url}`}

@@ -1,6 +1,6 @@
-import React from "react";
-import { CheckCircle } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import React from 'react';
+import { CheckCircle } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface HighlightsProps {
   highlights: string[];
@@ -29,9 +29,7 @@ const Highlights: React.FC<HighlightsProps> = ({ highlights }) => {
               <div className="w-5">
                 <CheckCircle className="text-green-500 h-5 w-5 drop-shadow-md" />
               </div>
-              <span className="text-gray-900 text-base  tracking-tight">
-                {highlight}
-              </span>
+              <span className="text-gray-900 text-base  tracking-tight">{highlight}</span>
             </motion.li>
           ))}
         </AnimatePresence>

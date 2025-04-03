@@ -117,9 +117,7 @@ export default function Testimonials() {
 
                   <div>
                     <h3 className="text-lg text-black font-semibold">{name}</h3>
-                    <p className="text-sm text-black font-semibold">
-                      {position}
-                    </p>
+                    <p className="text-sm text-black font-semibold">{position}</p>
                   </div>
                 </div>
                 <div className="py-8 text-left">
@@ -130,10 +128,7 @@ export default function Testimonials() {
           </SwiperSlide>
         ))}
         <div className="swiper-button-next" style={{ fontSize: '10px' }}></div>
-        <div
-          className="swiper-button-prev"
-          style={{ fontSize: '0.8rem' }}
-        ></div>
+        <div className="swiper-button-prev" style={{ fontSize: '0.8rem' }}></div>
       </Swiper>
     </section>
   );

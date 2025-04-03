@@ -3,11 +3,11 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
-import { IoIosCheckmarkCircle } from "react-icons/io";
-import { BsFolderCheck } from "react-icons/bs";
-import Image from "next/image";
-import { CheckCircle } from "lucide-react";
+} from '@/components/ui/accordion';
+import { IoIosCheckmarkCircle } from 'react-icons/io';
+import { BsFolderCheck } from 'react-icons/bs';
+import Image from 'next/image';
+import { CheckCircle } from 'lucide-react';
 
 interface CourseOverviewProps {
   overview: { title: string; description: string; keyFeatures: string[] };
@@ -51,11 +51,8 @@ const CourseOverview: React.FC<CourseOverviewProps> = ({
           <div className="rounded-xl mt-10">
             <h3 className="text-xl font-bold mb-4">Course Content</h3>
             <div className="space-y-4">
-              {curriculum.modules?.map((module) => (
-                <div
-                  key={module._id}
-                  className="border-l-4 border-green-500 pl-4"
-                >
+              {curriculum.modules?.map(module => (
+                <div key={module._id} className="border-l-4 border-green-500 pl-4">
                   <Accordion type="single" collapsible>
                     <AccordionItem value={`module-${module._id}`}>
                       <AccordionTrigger>
@@ -63,11 +60,8 @@ const CourseOverview: React.FC<CourseOverviewProps> = ({
                       </AccordionTrigger>
                       <AccordionContent>
                         <div className="mt-2 space-y-2">
-                          {module.lessons?.map((lesson) => (
-                            <div
-                              key={lesson._id}
-                              className="flex items-center space-x-2"
-                            >
+                          {module.lessons?.map(lesson => (
+                            <div key={lesson._id} className="flex items-center space-x-2">
                               <span>
                                 {lesson.title}: {lesson.content}
                               </span>
@@ -87,48 +81,40 @@ const CourseOverview: React.FC<CourseOverviewProps> = ({
             <h3 className="text-xl font-semibold">Why Choose This Program?</h3>
             <ul className="text-sm space-y-2">
               <li className="flex items-start gap-2">
-                <CheckCircle className="w-5 h-5 text-green-400" /> Hands-on
-                projects with real-world applications.
+                <CheckCircle className="w-5 h-5 text-green-400" /> Hands-on projects with real-world
+                applications.
               </li>
               <li className="flex items-start gap-2">
-                <CheckCircle className="w-5 h-5 text-green-400" /> Training in
-                modern tools & emerging technologies.
+                <CheckCircle className="w-5 h-5 text-green-400" /> Training in modern tools &
+                emerging technologies.
               </li>
               <li className="flex items-start gap-2">
-                <CheckCircle className="w-5 h-5 text-green-400" />{" "}
-                Industry-relevant curriculum aligned with market trends.
+                <CheckCircle className="w-5 h-5 text-green-400" /> Industry-relevant curriculum
+                aligned with market trends.
               </li>
               <li className="flex items-start gap-2">
-                <CheckCircle className="w-5 h-5 text-green-400" /> Personalized
-                mentorship and career guidance.
+                <CheckCircle className="w-5 h-5 text-green-400" /> Personalized mentorship and
+                career guidance.
               </li>
             </ul>
           </div>
 
           {/* Projects Section */}
-          {category?.type !== "b2i" && (
+          {category?.type !== 'b2i' && (
             <div className="rounded-xl mt-10">
               <h3 className="text-xl font-bold mb-4">Projects Covered</h3>
               <div className="space-y-4">
-                {curriculum.projects?.map((project) => (
-                  <div
-                    key={project._id}
-                    className="border-l-4 border-purple-500 pl-4"
-                  >
+                {curriculum.projects?.map(project => (
+                  <div key={project._id} className="border-l-4 border-purple-500 pl-4">
                     <Accordion type="single" collapsible>
                       <AccordionItem value={`project-${project._id}`}>
                         <AccordionTrigger>
-                          <h4 className="font-semibold capitalize">
-                            {project.title}
-                          </h4>
+                          <h4 className="font-semibold capitalize">{project.title}</h4>
                         </AccordionTrigger>
                         <AccordionContent>
                           <div className="mt-2 space-y-2">
                             {project.content?.map((lesson, index) => (
-                              <div
-                                key={index}
-                                className="flex items-center space-x-2"
-                              >
+                              <div key={index} className="flex items-center space-x-2">
                                 <BsFolderCheck className="h-4 w-4 text-purple-500" />
                                 <span>{lesson}</span>
                               </div>
@@ -153,9 +139,7 @@ const CourseOverview: React.FC<CourseOverviewProps> = ({
                   {curriculum.prerequisites.map((prerequisite, index) => (
                     <p key={index} className="flex gap-x-4 items-center">
                       <IoIosCheckmarkCircle className="w-6 h-6 text-blue-500" />
-                      <span className="text-sm font-semibold">
-                        {prerequisite}
-                      </span>
+                      <span className="text-sm font-semibold">{prerequisite}</span>
                     </p>
                   ))}
                 </div>
@@ -166,9 +150,7 @@ const CourseOverview: React.FC<CourseOverviewProps> = ({
                   {curriculum.eligibility.map((eligibility, index) => (
                     <p key={index} className="flex gap-x-4 items-center">
                       <IoIosCheckmarkCircle className="w-6 h-6 text-purple-500" />
-                      <span className="text-sm font-semibold">
-                        {eligibility}
-                      </span>
+                      <span className="text-sm font-semibold">{eligibility}</span>
                     </p>
                   ))}
                 </div>

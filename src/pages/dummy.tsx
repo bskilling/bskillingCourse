@@ -1,7 +1,7 @@
-import axios from "axios";
-import { GetServerSidePropsContext } from "next";
-import { useRouter } from "next/router";
-import React from "react";
+import axios from 'axios';
+import { GetServerSidePropsContext } from 'next';
+import { useRouter } from 'next/router';
+import React from 'react';
 // interface IDummyProps {
 //   query: unknown;
 //   param: unknown;

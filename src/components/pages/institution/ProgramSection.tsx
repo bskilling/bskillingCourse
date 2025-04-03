@@ -101,20 +101,17 @@ export default function ProgramOverview() {
     {
       icon: <Users className="w-8 h-8 text-indigo-600" />,
       title: 'Comprehensive Skill Training',
-      description:
-        'Covering both technical and soft skills to create well-rounded professionals.',
+      description: 'Covering both technical and soft skills to create well-rounded professionals.',
     },
     {
       icon: <BarChart3 className="w-8 h-8 text-indigo-600" />,
       title: 'Modern Tools & Technologies',
-      description:
-        'Exposure to IT systems, data analytics, and emerging technologies.',
+      description: 'Exposure to IT systems, data analytics, and emerging technologies.',
     },
     {
       icon: <Layers className="w-8 h-8 text-indigo-600" />,
       title: 'Industry-Relevant Curriculum',
-      description:
-        'A carefully curated curriculum aligned with current market demands and trends.',
+      description: 'A carefully curated curriculum aligned with current market demands and trends.',
     },
   ];
 
@@ -122,20 +119,17 @@ export default function ProgramOverview() {
     {
       icon: <Users className="w-10 h-10 text-white" />,
       title: 'Enroll in Course',
-      description:
-        'Select a program that matches your career goals and register online',
+      description: 'Select a program that matches your career goals and register online',
     },
     {
       icon: <GraduationCap className="w-10 h-10 text-white" />,
       title: 'Complete Training',
-      description:
-        'Attend workshops, complete projects, and receive personalized mentorship',
+      description: 'Attend workshops, complete projects, and receive personalized mentorship',
     },
     {
       icon: <CheckCircle className="w-10 h-10 text-white" />,
       title: 'Get Certified',
-      description:
-        'Earn your industry-recognized certification and showcase your skills',
+      description: 'Earn your industry-recognized certification and showcase your skills',
     },
   ];
 
@@ -191,9 +185,7 @@ export default function ProgramOverview() {
                 <div className="flex items-center justify-center mb-8">
                   <div className="inline-flex items-center px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-600">
                     <Code className="h-4 w-4 mr-2" />
-                    <span className="text-sm font-medium">
-                      Program Highlights
-                    </span>
+                    <span className="text-sm font-medium">Program Highlights</span>
                   </div>
                 </div>
 
@@ -218,9 +210,7 @@ export default function ProgramOverview() {
                         {item.icon}
                       </div>
                       <div>
-                        <h3 className="text-lg font-semibold text-slate-900 mb-1">
-                          {item.title}
-                        </h3>
+                        <h3 className="text-lg font-semibold text-slate-900 mb-1">{item.title}</h3>
                         <p className="text-slate-600">{item.description}</p>
                       </div>
                     </motion.div>
@@ -257,9 +247,7 @@ export default function ProgramOverview() {
                     <div className="w-16 h-16 bg-indigo-100 rounded-xl flex items-center justify-center mb-4">
                       {item.icon}
                     </div>
-                    <h3 className="text-lg font-semibold text-slate-900 mb-2">
-                      {item.title}
-                    </h3>
+                    <h3 className="text-lg font-semibold text-slate-900 mb-2">{item.title}</h3>
                     <p className="text-slate-600 text-sm">{item.description}</p>
                   </motion.div>
                 ))}
@@ -277,12 +265,9 @@ export default function ProgramOverview() {
             {/* Inquiry Form */}
             <Card className="shadow-md border-slate-200">
               <CardHeader>
-                <CardTitle className="text-xl text-slate-900">
-                  Quick Inquiry
-                </CardTitle>
+                <CardTitle className="text-xl text-slate-900">Quick Inquiry</CardTitle>
                 <CardDescription>
-                  Want more details? Fill in your information and we&apos;ll get
-                  in touch!
+                  Want more details? Fill in your information and we&apos;ll get in touch!
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -308,18 +293,14 @@ export default function ProgramOverview() {
                 />
               </CardContent>
               <CardFooter>
-                <Button className="w-full bg-indigo-600 hover:bg-indigo-700">
-                  Submit Inquiry
-                </Button>
+                <Button className="w-full bg-indigo-600 hover:bg-indigo-700">Submit Inquiry</Button>
               </CardFooter>
             </Card>
 
             {/* Benefits Box */}
             <Card className="shadow-md bg-gradient-to-br from-indigo-900 to-violet-900 text-white">
               <CardHeader>
-                <CardTitle className="text-xl">
-                  Why Choose This Program?
-                </CardTitle>
+                <CardTitle className="text-xl">Why Choose This Program?</CardTitle>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-3">
@@ -344,16 +325,11 @@ export default function ProgramOverview() {
                 <div className="w-14 h-14 mx-auto bg-indigo-600 rounded-full flex items-center justify-center text-white mb-4">
                   <Rocket className="w-7 h-7" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">
-                  Ready to Upskill?
-                </h3>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">Ready to Upskill?</h3>
                 <p className="text-slate-600 mb-6">
-                  Take the first step towards a brighter future with our
-                  cutting-edge program.
+                  Take the first step towards a brighter future with our cutting-edge program.
                 </p>
-                <Button className="bg-indigo-600 hover:bg-indigo-700">
-                  Apply Now
-                </Button>
+                <Button className="bg-indigo-600 hover:bg-indigo-700">Apply Now</Button>
               </CardContent>
             </Card>
           </motion.div>
@@ -380,8 +356,7 @@ export default function ProgramOverview() {
             How Our Program Works
           </h2>
           <p className="text-lg text-slate-600">
-            A streamlined process designed to transform your skills and boost
-            your career prospects
+            A streamlined process designed to transform your skills and boost your career prospects
           </p>
         </motion.div>
 
@@ -428,9 +403,7 @@ export default function ProgramOverview() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl font-bold text-slate-900">
-            Technical Terminology
-          </h2>
+          <h2 className="text-3xl font-bold text-slate-900">Technical Terminology</h2>
           <p className="text-slate-600 mt-3">
             Common technical terms you&apos;ll encounter during the program
           </p>
@@ -444,11 +417,7 @@ export default function ProgramOverview() {
           viewport={{ once: true }}
         >
           {techTerms.map((term, index) => (
-            <motion.div
-              key={index}
-              variants={fadeIn}
-              className="flex items-center space-x-3 group"
-            >
+            <motion.div key={index} variants={fadeIn} className="flex items-center space-x-3 group">
               <div className="w-12 h-12 rounded-lg bg-indigo-100 flex items-center justify-center text-indigo-600 group-hover:bg-indigo-200 transition-colors">
                 <span className="font-mono font-bold">{term.short}</span>
               </div>
@@ -469,12 +438,10 @@ export default function ProgramOverview() {
           <div className="inline-flex items-center justify-center mb-4">
             <GraduationCap className="h-8 w-8 text-indigo-600" />
           </div>
-          <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
-            Courses Offered
-          </h2>
+          <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">Courses Offered</h2>
           <p className="text-lg text-slate-600 max-w-3xl mx-auto">
-            Comprehensive training programs designed to equip you with in-demand
-            skills for the modern job market
+            Comprehensive training programs designed to equip you with in-demand skills for the
+            modern job market
           </p>
         </motion.div>
 
@@ -506,18 +473,13 @@ export default function ProgramOverview() {
           </div>
 
           <div className="relative z-10 max-w-3xl mx-auto text-center text-white">
-            <h2 className="text-3xl font-bold mb-6">
-              Ready to Transform Your Career?
-            </h2>
+            <h2 className="text-3xl font-bold mb-6">Ready to Transform Your Career?</h2>
             <p className="text-indigo-200 text-lg mb-8">
-              Join thousands of students who have already boosted their skills
-              and advanced their careers through our program.
+              Join thousands of students who have already boosted their skills and advanced their
+              careers through our program.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Button
-                size="lg"
-                className="bg-white text-indigo-900 hover:bg-slate-100"
-              >
+              <Button size="lg" className="bg-white text-indigo-900 hover:bg-slate-100">
                 Apply Now
               </Button>
               <Button

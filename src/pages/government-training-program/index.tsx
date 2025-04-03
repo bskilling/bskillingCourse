@@ -3,13 +3,7 @@
 
 import React, { useEffect } from 'react';
 import Head from 'next/head';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { BsCircleFill } from 'react-icons/bs';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
@@ -107,10 +101,7 @@ export default function GovernmentTrainingProgram() {
           content="government training, college training, skill enhancement, government programs, student training"
         />
         <meta name="author" content="Your Company Name" />
-        <meta
-          property="og:title"
-          content="Government Training Program - College Training"
-        />
+        <meta property="og:title" content="Government Training Program - College Training" />
         <meta
           property="og:description"
           content="Join our comprehensive government training program designed for college students. Enhance your skills with expert-led courses and practical experience."
@@ -125,10 +116,7 @@ export default function GovernmentTrainingProgram() {
           content="https://www.yourwebsite.com/images/og-government-training.jpg"
         />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="Government Training Program - College Training"
-        />
+        <meta name="twitter:title" content="Government Training Program - College Training" />
         <meta
           name="twitter:description"
           content="Join our comprehensive government training program designed for college students. Enhance your skills with expert-led courses and practical experience."
@@ -149,11 +137,7 @@ export default function GovernmentTrainingProgram() {
             <div className="text-3xl font-bold inline-flex items-center">
               <Link href="/">
                 <div className="relative w-[80px] h-[30px] md:w-[150px] md:h-[50px]">
-                  <img
-                    src="/logo.png"
-                    alt="Logo"
-                    className="object-cover w-full h-full"
-                  />
+                  <img src="/logo.png" alt="Logo" className="object-cover w-full h-full" />
                 </div>
               </Link>
             </div>
@@ -180,8 +164,8 @@ export default function GovernmentTrainingProgram() {
                   Government Training Programs
                 </h1>
                 <p className="text-lg md:text-xl opacity-90">
-                  Partner with leading government initiatives to empower the
-                  next generation of skilled professionals.
+                  Partner with leading government initiatives to empower the next generation of
+                  skilled professionals.
                 </p>
                 <motion.div
                   initial={{ opacity: 0 }}
@@ -237,8 +221,8 @@ export default function GovernmentTrainingProgram() {
                 Our Government Partnerships
               </h2>
               <p className="max-w-3xl mx-auto text-gray-600 text-lg">
-                Collaborate with prestigious government bodies to drive
-                innovation and empower the workforce of tomorrow.
+                Collaborate with prestigious government bodies to drive innovation and empower the
+                workforce of tomorrow.
               </p>
             </motion.div>
 
@@ -249,7 +233,7 @@ export default function GovernmentTrainingProgram() {
               variants={containerVariants}
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
             >
-              {ties.map((tie) => (
+              {ties.map(tie => (
                 <motion.div key={tie.id} variants={cardVariants}>
                   <Card
                     className="h-full overflow-hidden group cursor-pointer transform transition-all duration-300 hover:shadow-xl hover:-translate-y-2 bg-white"
@@ -258,11 +242,7 @@ export default function GovernmentTrainingProgram() {
                     <CardHeader className="h-52 p-0 relative overflow-hidden bg-gray-100">
                       <div className="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent"></div>
                       <div className="h-full flex items-center justify-center p-6">
-                        <img
-                          src={tie.img}
-                          alt={tie.name}
-                          className="max-h-32 object-contain"
-                        />
+                        <img src={tie.img} alt={tie.name} className="max-h-32 object-contain" />
                       </div>
                     </CardHeader>
                     <CardContent className="p-6">
@@ -313,14 +293,12 @@ export default function GovernmentTrainingProgram() {
               </h2>
 
               <p className="text-lg text-gray-600 leading-relaxed">
-                We are committed to empowering individuals through a wide array
-                of skill development initiatives in partnership with esteemed
-                government bodies. Our Government Training Program serves as a
-                cornerstone for fostering innovation, enhancing employability,
-                and driving economic growth. By collaborating with national and
-                state-level organizations, we aim to bridge the skill gap and
-                prepare a workforce ready to meet the demands of the
-                ever-evolving job market.
+                We are committed to empowering individuals through a wide array of skill development
+                initiatives in partnership with esteemed government bodies. Our Government Training
+                Program serves as a cornerstone for fostering innovation, enhancing employability,
+                and driving economic growth. By collaborating with national and state-level
+                organizations, we aim to bridge the skill gap and prepare a workforce ready to meet
+                the demands of the ever-evolving job market.
               </p>
 
               <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -341,12 +319,10 @@ export default function GovernmentTrainingProgram() {
                       />
                     </svg>
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                    Nationwide Impact
-                  </h3>
+                  <h3 className="text-xl font-semibold text-gray-800 mb-2">Nationwide Impact</h3>
                   <p className="text-gray-600">
-                    Our initiatives span across the country, reaching diverse
-                    communities and demographics.
+                    Our initiatives span across the country, reaching diverse communities and
+                    demographics.
                   </p>
                 </div>
                 <div className="bg-primary/5 p-6 rounded-xl">
@@ -370,8 +346,8 @@ export default function GovernmentTrainingProgram() {
                     Industry Partnerships
                   </h3>
                   <p className="text-gray-600">
-                    Collaborating with industry leaders to align training with
-                    market demands and opportunities.
+                    Collaborating with industry leaders to align training with market demands and
+                    opportunities.
                   </p>
                 </div>
                 <div className="bg-primary/5 p-6 rounded-xl">
@@ -391,12 +367,10 @@ export default function GovernmentTrainingProgram() {
                       />
                     </svg>
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                    Certified Curriculum
-                  </h3>
+                  <h3 className="text-xl font-semibold text-gray-800 mb-2">Certified Curriculum</h3>
                   <p className="text-gray-600">
-                    Government-approved curriculum designed to meet national
-                    standards of excellence.
+                    Government-approved curriculum designed to meet national standards of
+                    excellence.
                   </p>
                 </div>
               </div>
@@ -417,8 +391,8 @@ export default function GovernmentTrainingProgram() {
                 Ready to Transform Your Institution?
               </h2>
               <p className="text-xl opacity-90 max-w-3xl mx-auto mb-8">
-                Join our government training programs and provide your students
-                with industry-recognized certifications and skills.
+                Join our government training programs and provide your students with
+                industry-recognized certifications and skills.
               </p>
               <button className="bg-white text-primary px-8 py-4 rounded-full font-bold text-lg hover:bg-opacity-90 transition-all shadow-lg transform hover:-translate-y-1">
                 Partner With Us

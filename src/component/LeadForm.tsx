@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import { useRouter } from "next/router";
+import { useRouter } from 'next/router';
 
 const LeadForm = () => {
   const router = useRouter();
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    contact: "",
+    name: '',
+    email: '',
+    contact: '',
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -38,9 +38,9 @@ const LeadForm = () => {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_TRAINING_BASE_URL}api/v1/create-lead`,
         {
-          method: "POST",
+          method: 'POST',
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
           body: JSON.stringify(payload),
         }
@@ -56,26 +56,26 @@ const LeadForm = () => {
 
       if (response.ok) {
         setFormData({
-          name: "",
-          email: "",
-          contact: "",
+          name: '',
+          email: '',
+          contact: '',
         });
         // alert("Form submitted successfully!");
         // setSuccess(
         //   "We have received your information successfully. Our team will review your details and get in touch with you shortly."
         // );
-        router.push("/thank-you");
+        router.push('/thank-you');
 
         // setTimeout(() => {
         //   setSuccess("");
         // }, 5000);
       } else {
         const data = await response.json();
-        setError(data.message || "Failed to send email");
+        setError(data.message || 'Failed to send email');
       }
     } catch (error) {
-      console.error("Failed to submit form:", error);
-      setError("Failed to send email. Please try again later.");
+      console.error('Failed to submit form:', error);
+      setError('Failed to send email. Please try again later.');
     } finally {
       setLoading(false);
     }
@@ -94,10 +94,7 @@ const LeadForm = () => {
           </h2> */}
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
-              <label
-                className="block text-sm font-medium text-gray-700"
-                htmlFor="name"
-              >
+              <label className="block text-sm font-medium text-gray-700" htmlFor="name">
                 Full Name
               </label>
               <input
@@ -111,10 +108,7 @@ const LeadForm = () => {
               />
             </div>
             <div className="mb-4">
-              <label
-                className="block text-sm font-medium text-gray-700"
-                htmlFor="email"
-              >
+              <label className="block text-sm font-medium text-gray-700" htmlFor="email">
                 Official Email-ID
               </label>
               <input
@@ -128,10 +122,7 @@ const LeadForm = () => {
               />
             </div>
             <div className="mb-4">
-              <label
-                className="block text-sm font-medium text-gray-700"
-                htmlFor="contact"
-              >
+              <label className="block text-sm font-medium text-gray-700" htmlFor="contact">
                 Contact No
               </label>
               <input
@@ -149,7 +140,7 @@ const LeadForm = () => {
               className="w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
               disabled={loading}
             >
-              {loading ? "Sending..." : "Submit"}
+              {loading ? 'Sending...' : 'Submit'}
             </button>
             {/* <button
               type="button"

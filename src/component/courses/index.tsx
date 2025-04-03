@@ -4,19 +4,11 @@ import axios from 'axios';
 import { Course } from 'common/util/types';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from '@/components/ui/hover-card';
+import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card';
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@/components/ui/popover';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import {
   Card,
   CardContent,
@@ -66,9 +58,7 @@ export default function Courses() {
         console.log('res', jsonData);
         const ListOfCoursesData = Object.values(jsonData.courses);
         console.log('res', ListOfCoursesData);
-        const flattenedData = ListOfCoursesData.flatMap(
-          (innerArray) => innerArray
-        );
+        const flattenedData = ListOfCoursesData.flatMap(innerArray => innerArray);
 
         return flattenedData as Course[];
       } catch (error) {
@@ -82,13 +72,9 @@ export default function Courses() {
     setSelectedCategory(category);
   };
 
-  const uniqueCategories = Array.from(
-    new Set(data?.map((course) => course.category))
-  );
-  const filteredCourses = uniqueCategories.flatMap((category) =>
-    selectedCategory === category
-      ? data?.filter((course) => course.category === category)
-      : []
+  const uniqueCategories = Array.from(new Set(data?.map(course => course.category)));
+  const filteredCourses = uniqueCategories.flatMap(category =>
+    selectedCategory === category ? data?.filter(course => course.category === category) : []
   );
 
   return (
@@ -96,11 +82,7 @@ export default function Courses() {
       <Sheet>
         <SheetTrigger className="md:hidden block">
           {' '}
-          <Button
-            size={'sm'}
-            className="flex gap-x-2 items-center"
-            variant={'outline'}
-          >
+          <Button size={'sm'} className="flex gap-x-2 items-center" variant={'outline'}>
             Courses <FaAngleDown />
           </Button>
         </SheetTrigger>
@@ -110,7 +92,7 @@ export default function Courses() {
           </SheetHeader>
 
           {uniqueCategories
-            .filter((category) => category !== 'SAP')
+            .filter(category => category !== 'SAP')
             ?.map((category, index) => (
               <div key={`item-${index}`}>
                 <div>
@@ -125,16 +107,12 @@ export default function Courses() {
                     )}
                     onClick={() => {
                       handleCategoryHover(category);
-                      setClose((prev) => !prev);
+                      setClose(prev => !prev);
                     }}
                   >
                     {category}{' '}
                     <span className="mx-2">
-                      {close && selectedCategory === category ? (
-                        <FaAngleDown />
-                      ) : (
-                        <FaAngleUp />
-                      )}
+                      {close && selectedCategory === category ? <FaAngleDown /> : <FaAngleUp />}
                     </span>
                   </p>
                 </div>
@@ -144,7 +122,7 @@ export default function Courses() {
                       <div className="grid grid-cols-2 gap-5">
                         {data &&
                           filteredCourses &&
-                          filteredCourses?.map((course) => (
+                          filteredCourses?.map(course => (
                             <Link
                               style={{ textDecoration: 'none' }}
                               href={`/courses/course-details/${course?.url}`}
@@ -200,12 +178,10 @@ export default function Courses() {
               className="w-1/4 p-4    overflow-y-auto"
               //   onMouseEnter={() => setSelectedCategory(null)}
             >
-              <div className="text-lg mb-2 font-bold text-black ">
-                Categories
-              </div>
+              <div className="text-lg mb-2 font-bold text-black ">Categories</div>
               <ul>
                 {uniqueCategories
-                  .filter((category) => category !== 'SAP')
+                  .filter(category => category !== 'SAP')
                   .map((category, index) => (
                     <li
                       key={index}
@@ -222,14 +198,12 @@ export default function Courses() {
               </ul>
             </div>
             <div className="w-3/4 p-4 h-full  border-l overflow-y-auto">
-              <div className="text-lg mb-2 font-bold text-customRed">
-                Courses
-              </div>
+              <div className="text-lg mb-2 font-bold text-customRed">Courses</div>
               {filteredCourses?.length > 0 ? (
                 <div className="grid grid-cols-3 gap-5">
                   {data &&
                     filteredCourses &&
-                    filteredCourses?.map((course) => (
+                    filteredCourses?.map(course => (
                       <Link
                         style={{ textDecoration: 'none' }}
                         href={`/courses/course-details/${course?.url}`}
@@ -238,9 +212,7 @@ export default function Courses() {
                         <Card className="!p-0 h-[300px]">
                           <CardHeader>
                             <CardTitle>{course?.title}</CardTitle>
-                            <CardDescription>
-                              {course?.endorsed_by}
-                            </CardDescription>
+                            <CardDescription>{course?.endorsed_by}</CardDescription>
                           </CardHeader>
                           <CardContent>
                             {/* <p>Card Content</p> */}
@@ -260,7 +232,7 @@ export default function Courses() {
                 </div>
               ) : (
                 <div className="grid grid-cols-3 gap-5">
-                  {data?.map((course) => (
+                  {data?.map(course => (
                     <Link
                       style={{ textDecoration: 'none' }}
                       href={`/courses/course-details/${course?.url}`}
@@ -269,9 +241,7 @@ export default function Courses() {
                       <Card className="!p-0  ">
                         <CardHeader className="h-[100px]">
                           <CardTitle>{course?.title}</CardTitle>
-                          <CardDescription>
-                            {course?.endorsed_by}
-                          </CardDescription>
+                          <CardDescription>{course?.endorsed_by}</CardDescription>
                         </CardHeader>
                         <CardContent>
                           {/* <p>Card Content</p> */}

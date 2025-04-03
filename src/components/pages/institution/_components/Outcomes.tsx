@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  FaBullseye,
-  FaRocket,
-  FaCheck,
-  FaGraduationCap,
-  FaStar,
-} from 'react-icons/fa';
+import { FaBullseye, FaRocket, FaCheck, FaGraduationCap, FaStar } from 'react-icons/fa';
 
 interface OutcomesProps {
   outcomes: string[];
@@ -79,9 +73,7 @@ const Outcomes: React.FC<OutcomesProps> = ({ outcomes }) => {
                   {React.cloneElement(icon, { className: `h-5 w-5` })}
                 </div>
                 <div className="flex-1">
-                  <span className="text-gray-800 text-md font-medium block">
-                    {outcome}
-                  </span>
+                  <span className="text-gray-800 text-md font-medium block">{outcome}</span>
                 </div>
               </div>
             );

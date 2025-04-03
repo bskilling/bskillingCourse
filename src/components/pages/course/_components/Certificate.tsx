@@ -48,9 +48,7 @@ const CourseDetails: React.FC<CourseDetailsProps> = ({
           <Calendar className="w-7 h-7 text-green-500" />
           <div>
             <p className="font-semibold text-gray-800">Enrolled Students</p>
-            <p className="text-gray-600 text-lg">
-              {enrolledStudents}+ Students
-            </p>
+            <p className="text-gray-600 text-lg">{enrolledStudents}+ Students</p>
           </div>
         </div>
 
@@ -82,12 +80,8 @@ const CourseDetails: React.FC<CourseDetailsProps> = ({
 
           {overview && (
             <section className="mt-6 space-y-3 w-full ">
-              <h3 className="text-lg font-medium text-gray-800">
-                {overview.title}
-              </h3>
-              <p className="text-sm text-gray-600 leading-relaxed">
-                {overview.description}
-              </p>
+              <h3 className="text-lg font-medium text-gray-800">{overview.title}</h3>
+              <p className="text-sm text-gray-600 leading-relaxed">{overview.description}</p>
             </section>
           )}
 

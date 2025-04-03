@@ -55,11 +55,10 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
     mode: 'onChange',
   });
 
-  const isButtonVisble =
-    watch('email') && watch('phone') && watch('name') && CountryCodeValue;
+  const isButtonVisble = watch('email') && watch('phone') && watch('name') && CountryCodeValue;
   function handleManualSubmit() {
     // Manually trigger validation using the trigger function
-    trigger().then((isValid) => {
+    trigger().then(isValid => {
       if (isValid) {
         // If the form is valid, call your submit function
         const formData = getValues() as FormValues; // Cast to FormValues type
@@ -303,11 +302,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
               opacity: '0.8',
             }}
           >
-            <img
-              src="/loader.gif"
-              alt="About BSkilling"
-              className="w-10 h-10"
-            />
+            <img src="/loader.gif" alt="About BSkilling" className="w-10 h-10" />
           </div>
         </div>
       )}
@@ -321,14 +316,8 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
               required: true,
             })}
           />
-          <label
-            className={`text-red-600   text-xs py-1 ${
-              errors.name ? 'visible' : 'invisible'
-            }`}
-          >
-            {errors.phone?.type == 'required'
-              ? 'This field required'
-              : 'This field required'}
+          <label className={`text-red-600   text-xs py-1 ${errors.name ? 'visible' : 'invisible'}`}>
+            {errors.phone?.type == 'required' ? 'This field required' : 'This field required'}
           </label>
         </div>
 
@@ -344,9 +333,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
           />
 
           <label
-            className={`text-red-600   text-xs py-1 ${
-              errors.email ? 'visible' : 'invisible'
-            }`}
+            className={`text-red-600   text-xs py-1 ${errors.email ? 'visible' : 'invisible'}`}
           >
             Please enter a valid email address
           </label>
@@ -362,9 +349,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
           />
 
           <label
-            className={`text-red-600   text-xs py-1 ${
-              errors.phone ? 'visible' : 'invisible'
-            }`}
+            className={`text-red-600   text-xs py-1 ${errors.phone ? 'visible' : 'invisible'}`}
           >
             This field is required
           </label>

@@ -36,7 +36,7 @@ export default function FixedFooterBar() {
   }, [isExpanded]);
 
   const handleDropQueryButtonClick = () => {
-    setIsDropQueryVisible((prev) => !prev);
+    setIsDropQueryVisible(prev => !prev);
     setFloatWindowMode('drop-a-query');
     setupSocket(); // If you need to set up the socket when the button is clicked
   };
@@ -56,11 +56,7 @@ export default function FixedFooterBar() {
                 className="underline-0 flex justify-center"
                 href="https://play.google.com/store/apps/details?id=com.melimu.app.bskilling&hl=en_IN&gl=US"
               >
-                <img
-                  src="/gpmobile.png"
-                  className="w-fit object-contain h-10"
-                  alt=""
-                />
+                <img src="/gpmobile.png" className="w-fit object-contain h-10" alt="" />
               </a>
               <a
                 target="_blank"
@@ -68,11 +64,7 @@ export default function FixedFooterBar() {
                 className="underline-0 flex justify-center"
                 href="https://apps.apple.com/eg/app/bskilling/id6445943298"
               >
-                <img
-                  src="/appleMobile.png"
-                  className="w-fit object-contain h-10"
-                  alt=""
-                />
+                <img src="/appleMobile.png" className="w-fit object-contain h-10" alt="" />
               </a>
               <a
                 target="_blank"
@@ -80,11 +72,7 @@ export default function FixedFooterBar() {
                 className="underline-0 flex justify-center"
                 href="https://twitter.com/b_SkillingIndia"
               >
-                <img
-                  src="/twitter.webp"
-                  className="w-fit object-contain h-10"
-                  alt=""
-                />
+                <img src="/twitter.webp" className="w-fit object-contain h-10" alt="" />
               </a>
             </div>
           </div>
@@ -107,12 +95,10 @@ export default function FixedFooterBar() {
               >
                 <div
                   className="p-3 flex items-center bg-lightBlue rounded-t-xl h-[60px] cursor-pointer text-white"
-                  onClick={() => setIsExpanded((prev) => !prev)}
+                  onClick={() => setIsExpanded(prev => !prev)}
                 >
                   <p className="flex-1 font-medium">
-                    {floatWindowMode === 'drop-a-query'
-                      ? 'Drop Us A Query'
-                      : null}
+                    {floatWindowMode === 'drop-a-query' ? 'Drop Us A Query' : null}
                   </p>
                   <p>
                     {floatWindowMode === 'drop-a-query' ? (
@@ -146,9 +132,7 @@ export default function FixedFooterBar() {
                 </div>
                 {floatWindowMode === 'drop-a-query' && <DropAQueryForm />}
                 {floatWindowMode === 'chat' && <LeadChatBox />}
-                {isChatFormVisible && instanceState !== 'closed' && (
-                  <ChatForm />
-                )}
+                {isChatFormVisible && instanceState !== 'closed' && <ChatForm />}
               </div>
             )}
 

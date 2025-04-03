@@ -1,4 +1,4 @@
-import { AiOutlineRight } from "react-icons/ai";
+import { AiOutlineRight } from 'react-icons/ai';
 
 const Become = () => {
   return (

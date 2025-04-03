@@ -7,8 +7,7 @@ interface CertificationProps {
 }
 
 const Certification: React.FC<CertificationProps> = ({ courseDetails }) => {
-  const certificateText =
-    courseDetails?.training_metadata?.certification_text || '';
+  const certificateText = courseDetails?.training_metadata?.certification_text || '';
   // const certificateImage = courseDetails?.training_metadata?.certification_image || '';
 
   return (

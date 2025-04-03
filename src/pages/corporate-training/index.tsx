@@ -41,8 +41,7 @@ const CorporateTraining = () => {
             Elevate Your Workforce with Expert-Led Training
           </h1>
           <p className="text-lg md:text-2xl max-w-3xl mx-auto">
-            Future-proof your organization with our comprehensive upskilling
-            programs.
+            Future-proof your organization with our comprehensive upskilling programs.
           </p>
 
           {/* CTA Button */}
@@ -56,10 +55,7 @@ const CorporateTraining = () => {
           </div>
 
           {/* Consultation Form Modal */}
-          <ConsultationForm
-            open={isDialogOpen}
-            onOpenChange={setIsDialogOpen}
-          />
+          <ConsultationForm open={isDialogOpen} onOpenChange={setIsDialogOpen} />
         </div>
       </section>
 
@@ -76,19 +72,16 @@ const CorporateTraining = () => {
             {/* Left Content (Text) */}
             <div className="md:col-span-7">
               <p className="text-lg text-gray-800 leading-relaxed mb-4">
-                The digital landscape is evolving rapidly, and staying ahead
-                requires a future-ready workforce. As technology stacks shift,
-                even top enterprises struggle to keep pace.
+                The digital landscape is evolving rapidly, and staying ahead requires a future-ready
+                workforce. As technology stacks shift, even top enterprises struggle to keep pace.
               </p>
               <p className="text-lg text-gray-800 leading-relaxed mb-4">
-                Traditional training isn&lsquo;t enough. Organizations need
-                real-time expertise, hands-on guidance, and customized learning
-                solutions that align with their goals.
+                Traditional training isn&lsquo;t enough. Organizations need real-time expertise,
+                hands-on guidance, and customized learning solutions that align with their goals.
               </p>
               <p className="text-lg text-gray-800 leading-relaxed">
-                We provide cutting-edge, expert-led training programs, ensuring
-                your teams acquire in-demand skills quickly and effectively—both
-                online and offline.
+                We provide cutting-edge, expert-led training programs, ensuring your teams acquire
+                in-demand skills quickly and effectively—both online and offline.
               </p>
             </div>
 
@@ -97,12 +90,9 @@ const CorporateTraining = () => {
               <div className="flex items-start gap-4">
                 <span className="text-blue-700 text-3xl">📈</span>
                 <div>
-                  <h4 className="text-xl font-semibold text-blue-900">
-                    Industry-Relevant Skills
-                  </h4>
+                  <h4 className="text-xl font-semibold text-blue-900">Industry-Relevant Skills</h4>
                   <p className="text-gray-700">
-                    Stay updated with the latest tools & technologies shaping
-                    the industry.
+                    Stay updated with the latest tools & technologies shaping the industry.
                   </p>
                 </div>
               </div>
@@ -114,8 +104,7 @@ const CorporateTraining = () => {
                     Customized Training Solutions
                   </h4>
                   <p className="text-gray-700">
-                    Tailored programs to fit your organization&lsquo;s unique
-                    learning needs.
+                    Tailored programs to fit your organization&lsquo;s unique learning needs.
                   </p>
                 </div>
               </div>
@@ -123,12 +112,9 @@ const CorporateTraining = () => {
               <div className="flex items-start gap-4">
                 <span className="text-blue-700 text-3xl">🚀</span>
                 <div>
-                  <h4 className="text-xl font-semibold text-blue-900">
-                    Expert-Led Sessions
-                  </h4>
+                  <h4 className="text-xl font-semibold text-blue-900">Expert-Led Sessions</h4>
                   <p className="text-gray-700">
-                    Learn from top industry professionals with real-world
-                    experience.
+                    Learn from top industry professionals with real-world experience.
                   </p>
                 </div>
               </div>
@@ -159,9 +145,7 @@ const CorporateTraining = () => {
                 />
               </svg>
             </div>
-            <h3 className="text-xl font-bold mb-3 text-blue-800">
-              Accelerated Skill Development
-            </h3>
+            <h3 className="text-xl font-bold mb-3 text-blue-800">Accelerated Skill Development</h3>
             <p className="text-gray-600">
               Rapid upskilling programs tailored to your business objectives
             </p>
@@ -183,9 +167,7 @@ const CorporateTraining = () => {
                 />
               </svg>
             </div>
-            <h3 className="text-xl font-bold mb-3 text-blue-800">
-              Customized Learning Paths
-            </h3>
+            <h3 className="text-xl font-bold mb-3 text-blue-800">Customized Learning Paths</h3>
             <p className="text-gray-600">
               Personalized training journeys based on role and skill gaps
             </p>
@@ -207,12 +189,9 @@ const CorporateTraining = () => {
                 />
               </svg>
             </div>
-            <h3 className="text-xl font-bold mb-3 text-blue-800">
-              Measurable ROI
-            </h3>
+            <h3 className="text-xl font-bold mb-3 text-blue-800">Measurable ROI</h3>
             <p className="text-gray-600">
-              Comprehensive analytics to track progress and performance
-              improvement
+              Comprehensive analytics to track progress and performance improvement
             </p>
           </div>
         </div>
@@ -248,12 +227,7 @@ const CorporateTraining = () => {
               },
               {
                 title: 'Cybersecurity',
-                topics: [
-                  'Pen Testing',
-                  'Compliance',
-                  'Secure Coding',
-                  'Risk Management',
-                ],
+                topics: ['Pen Testing', 'Compliance', 'Secure Coding', 'Risk Management'],
                 icon: '🔒',
               },
               {
@@ -261,17 +235,15 @@ const CorporateTraining = () => {
                 topics: ['Scrum', 'Kanban', 'SAFe', 'Project Management'],
                 icon: '🔄',
               },
-            ].map((domain) => (
+            ].map(domain => (
               <div
                 key={domain.title}
                 className="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-all"
               >
                 <div className="text-5xl mb-6">{domain.icon}</div>
-                <h3 className="text-xl font-bold mb-4 text-blue-800">
-                  {domain.title}
-                </h3>
+                <h3 className="text-xl font-bold mb-4 text-blue-800">{domain.title}</h3>
                 <div className="flex flex-wrap gap-2">
-                  {domain.topics.map((topic) => (
+                  {domain.topics.map(topic => (
                     <span
                       key={topic}
                       className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm"
@@ -373,8 +345,8 @@ const CorporateTraining = () => {
                     Blended Learning Approach
                   </h3>
                   <p className="text-gray-600">
-                    Combine self-paced modules with live expert sessions for
-                    maximum knowledge retention and practical skill building.
+                    Combine self-paced modules with live expert sessions for maximum knowledge
+                    retention and practical skill building.
                   </p>
                 </div>
               </div>
@@ -382,12 +354,10 @@ const CorporateTraining = () => {
               <div className="flex items-start gap-6 bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all">
                 <div className="bg-blue-100 p-4 rounded-lg text-2xl">🧩</div>
                 <div>
-                  <h3 className="text-xl font-bold mb-2 text-blue-800">
-                    Project-Based Learning
-                  </h3>
+                  <h3 className="text-xl font-bold mb-2 text-blue-800">Project-Based Learning</h3>
                   <p className="text-gray-600">
-                    Apply new skills to real-world scenarios with hands-on
-                    projects tailored to your industry challenges.
+                    Apply new skills to real-world scenarios with hands-on projects tailored to your
+                    industry challenges.
                   </p>
                 </div>
               </div>
@@ -395,12 +365,10 @@ const CorporateTraining = () => {
               <div className="flex items-start gap-6 bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all">
                 <div className="bg-blue-100 p-4 rounded-lg text-2xl">🔄</div>
                 <div>
-                  <h3 className="text-xl font-bold mb-2 text-blue-800">
-                    Continuous Assessment
-                  </h3>
+                  <h3 className="text-xl font-bold mb-2 text-blue-800">Continuous Assessment</h3>
                   <p className="text-gray-600">
-                    Regular feedback loops and skill validation ensure learning
-                    objectives are being met throughout the program.
+                    Regular feedback loops and skill validation ensure learning objectives are being
+                    met throughout the program.
                   </p>
                 </div>
               </div>
@@ -408,19 +376,13 @@ const CorporateTraining = () => {
 
             {/* Right Column - New content */}
             <div className="bg-white p-8 rounded-xl shadow-lg">
-              <h3 className="text-2xl font-bold mb-6 text-blue-800 text-center">
-                Training Impact
-              </h3>
+              <h3 className="text-2xl font-bold mb-6 text-blue-800 text-center">Training Impact</h3>
 
               <div className="space-y-6">
                 <div className="relative pt-1">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm font-medium text-blue-700">
-                      Knowledge Retention
-                    </span>
-                    <span className="text-sm font-medium text-blue-700">
-                      92%
-                    </span>
+                    <span className="text-sm font-medium text-blue-700">Knowledge Retention</span>
+                    <span className="text-sm font-medium text-blue-700">92%</span>
                   </div>
                   <div className="overflow-hidden h-2 text-xs flex rounded bg-blue-100">
                     <div className="w-11/12 shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-600 rounded"></div>
@@ -429,12 +391,8 @@ const CorporateTraining = () => {
 
                 <div className="relative pt-1">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm font-medium text-blue-700">
-                      Practical Application
-                    </span>
-                    <span className="text-sm font-medium text-blue-700">
-                      88%
-                    </span>
+                    <span className="text-sm font-medium text-blue-700">Practical Application</span>
+                    <span className="text-sm font-medium text-blue-700">88%</span>
                   </div>
                   <div className="overflow-hidden h-2 text-xs flex rounded bg-blue-100">
                     <div className="w-10/12 shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-600 rounded"></div>
@@ -443,12 +401,8 @@ const CorporateTraining = () => {
 
                 <div className="relative pt-1">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm font-medium text-blue-700">
-                      Team Collaboration
-                    </span>
-                    <span className="text-sm font-medium text-blue-700">
-                      95%
-                    </span>
+                    <span className="text-sm font-medium text-blue-700">Team Collaboration</span>
+                    <span className="text-sm font-medium text-blue-700">95%</span>
                   </div>
                   <div className="overflow-hidden h-2 text-xs flex rounded bg-blue-100">
                     <div className="w-11/12 shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-600 rounded"></div>
@@ -460,9 +414,7 @@ const CorporateTraining = () => {
                     <span className="text-sm font-medium text-blue-700">
                       Problem-Solving Skills
                     </span>
-                    <span className="text-sm font-medium text-blue-700">
-                      90%
-                    </span>
+                    <span className="text-sm font-medium text-blue-700">90%</span>
                   </div>
                   <div className="overflow-hidden h-2 text-xs flex rounded bg-blue-100">
                     <div className="w-10/12 shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-600 rounded"></div>
@@ -471,9 +423,7 @@ const CorporateTraining = () => {
               </div>
 
               <div className="mt-8 pt-6 border-t border-gray-200">
-                <h4 className="font-bold text-lg mb-4 text-blue-800">
-                  Training Outcomes
-                </h4>
+                <h4 className="font-bold text-lg mb-4 text-blue-800">Training Outcomes</h4>
                 <ul className="space-y-3">
                   <li className="flex items-center">
                     <svg
@@ -487,9 +437,7 @@ const CorporateTraining = () => {
                         clipRule="evenodd"
                       ></path>
                     </svg>
-                    <span className="text-gray-700">
-                      Improved productivity by 35%
-                    </span>
+                    <span className="text-gray-700">Improved productivity by 35%</span>
                   </li>
                   <li className="flex items-center">
                     <svg
@@ -503,9 +451,7 @@ const CorporateTraining = () => {
                         clipRule="evenodd"
                       ></path>
                     </svg>
-                    <span className="text-gray-700">
-                      Reduced onboarding time by 40%
-                    </span>
+                    <span className="text-gray-700">Reduced onboarding time by 40%</span>
                   </li>
                   <li className="flex items-center">
                     <svg
@@ -519,9 +465,7 @@ const CorporateTraining = () => {
                         clipRule="evenodd"
                       ></path>
                     </svg>
-                    <span className="text-gray-700">
-                      Increased innovation initiatives by 28%
-                    </span>
+                    <span className="text-gray-700">Increased innovation initiatives by 28%</span>
                   </li>
                 </ul>
               </div>
@@ -538,35 +482,27 @@ const CorporateTraining = () => {
           </h2>
 
           <div className="bg-white rounded-xl shadow-lg p-8 mb-12 border-l-8 border-blue-600">
-            <h3 className="text-2xl font-bold mb-4 text-blue-800">
-              Hybrid Learning
-            </h3>
+            <h3 className="text-2xl font-bold mb-4 text-blue-800">Hybrid Learning</h3>
             <p className="text-gray-700 leading-relaxed">
-              When it comes to workforce training, each organization has
-              specific needs. We at SFJ understand that, and offer a diverse and
-              flexible approach to training without compromising on quality or
-              effectiveness. Our training programs are delivered online and
-              offline, in self-learning mode and an instructor-led mode. We also
-              offer hybrid models, where employees can go through a series of
-              courses online followed by advanced offline sessions with
-              instructors. Whether it&#39;s a project specific training or
-              long-term capacity building, experienced professionals or campus
-              recruits, we got your upskilling needs covered.
+              When it comes to workforce training, each organization has specific needs. We at SFJ
+              understand that, and offer a diverse and flexible approach to training without
+              compromising on quality or effectiveness. Our training programs are delivered online
+              and offline, in self-learning mode and an instructor-led mode. We also offer hybrid
+              models, where employees can go through a series of courses online followed by advanced
+              offline sessions with instructors. Whether it&#39;s a project specific training or
+              long-term capacity building, experienced professionals or campus recruits, we got your
+              upskilling needs covered.
             </p>
           </div>
 
           <div className="bg-white rounded-xl shadow-lg p-8 border-l-8 border-blue-600">
-            <h3 className="text-2xl font-bold mb-4 text-blue-800">
-              Our Strong Network
-            </h3>
+            <h3 className="text-2xl font-bold mb-4 text-blue-800">Our Strong Network</h3>
             <p className="text-gray-700 leading-relaxed">
-              Our knowledge services ecosystem is constantly connected and
-              updated with experts who can deliver training sessions on demand.
-              We have an exceptional turnaround time when it comes to deploying
-              the training bandwidth your organization needs. Through our
-              network of 5000+ trainers, 1000+ SMEs, we are uniquely placed to
-              help your organization achieve your talent transformation goals
-              with the most optimal strategy.
+              Our knowledge services ecosystem is constantly connected and updated with experts who
+              can deliver training sessions on demand. We have an exceptional turnaround time when
+              it comes to deploying the training bandwidth your organization needs. Through our
+              network of 5000+ trainers, 1000+ SMEs, we are uniquely placed to help your
+              organization achieve your talent transformation goals with the most optimal strategy.
             </p>
           </div>
         </div>
@@ -577,15 +513,11 @@ const CorporateTraining = () => {
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-4 gap-8 text-center">
             <div className="p-6 bg-white shadow-lg rounded-lg">
-              <div className="text-4xl font-bold text-blue-800 mb-2">
-                5,000+
-              </div>
+              <div className="text-4xl font-bold text-blue-800 mb-2">5,000+</div>
               <p className="text-gray-700">Expert Trainers</p>
             </div>
             <div className="p-6 bg-white shadow-lg rounded-lg">
-              <div className="text-4xl font-bold text-blue-800 mb-2">
-                1,000+
-              </div>
+              <div className="text-4xl font-bold text-blue-800 mb-2">1,000+</div>
               <p className="text-gray-700">Subject Matter Experts</p>
             </div>
             <div className="p-6 bg-white shadow-lg rounded-lg">
@@ -611,8 +543,8 @@ const CorporateTraining = () => {
             Start Your Upskilling Journey Today
           </h2>
           <p className="mb-8 text-lg max-w-2xl mx-auto">
-            Contact our learning consultants to design your custom program
-            tailored to your organization&lsquo;s specific needs.
+            Contact our learning consultants to design your custom program tailored to your
+            organization&lsquo;s specific needs.
           </p>
 
           {/* CTA Buttons */}
@@ -641,61 +573,47 @@ const CorporateTraining = () => {
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-white p-8 rounded-xl shadow-md relative">
-              <div className="text-5xl text-blue-200 absolute -top-4 left-4">
-                {"'"}
-              </div>
+              <div className="text-5xl text-blue-200 absolute -top-4 left-4">{"'"}</div>
               <p className="text-gray-700 mb-6 pt-4">
-                The bSkilling team delivered exceptional cloud training for our
-                IT department. The customized curriculum addressed our specific
-                needs and the hands-on approach ensured immediate application.
+                The bSkilling team delivered exceptional cloud training for our IT department. The
+                customized curriculum addressed our specific needs and the hands-on approach ensured
+                immediate application.
               </p>
               <div className="flex items-center">
                 <div className="bg-blue-100 w-12 h-12 rounded-full mr-4"></div>
                 <div>
                   <h4 className="font-bold">Sarah Johnson</h4>
-                  <p className="text-sm text-gray-500">
-                    CTO, TechSolutions Inc.
-                  </p>
+                  <p className="text-sm text-gray-500">CTO, TechSolutions Inc.</p>
                 </div>
               </div>
             </div>
             <div className="bg-white p-8 rounded-xl shadow-md relative">
-              <div className="text-5xl text-blue-200 absolute -top-4 left-4">
-                {"'"}
-              </div>
+              <div className="text-5xl text-blue-200 absolute -top-4 left-4">{"'"}</div>
               <p className="text-gray-700 mb-6 pt-4">
-                Our team&lsquo;s AI capabilities improved dramatically after
-                bSkilling&lsquo;s comprehensive machine learning program. The
-                ROI was evident within months through increased efficiency and
-                innovation.
+                Our team&lsquo;s AI capabilities improved dramatically after bSkilling&lsquo;s
+                comprehensive machine learning program. The ROI was evident within months through
+                increased efficiency and innovation.
               </p>
               <div className="flex items-center">
                 <div className="bg-blue-100 w-12 h-12 rounded-full mr-4"></div>
                 <div>
                   <h4 className="font-bold">Michael Chen</h4>
-                  <p className="text-sm text-gray-500">
-                    Data Science Lead, Innovate Corp
-                  </p>
+                  <p className="text-sm text-gray-500">Data Science Lead, Innovate Corp</p>
                 </div>
               </div>
             </div>
             <div className="bg-white p-8 rounded-xl shadow-md relative">
-              <div className="text-5xl text-blue-200 absolute -top-4 left-4">
-                &lsquo;
-              </div>
+              <div className="text-5xl text-blue-200 absolute -top-4 left-4">&lsquo;</div>
               <p className="text-gray-700 mb-6 pt-4">
-                bSkilling&lsquo;s hybrid learning approach was perfect for our
-                distributed team. The flexibility of online modules combined
-                with targeted workshops resulted in consistent skill
-                development.
+                bSkilling&lsquo;s hybrid learning approach was perfect for our distributed team. The
+                flexibility of online modules combined with targeted workshops resulted in
+                consistent skill development.
               </p>
               <div className="flex items-center">
                 <div className="bg-blue-100 w-12 h-12 rounded-full mr-4"></div>
                 <div>
                   <h4 className="font-bold">Lisa Rodriguez</h4>
-                  <p className="text-sm text-gray-500">
-                    HR Director, GlobalServe
-                  </p>
+                  <p className="text-sm text-gray-500">HR Director, GlobalServe</p>
                 </div>
               </div>
             </div>

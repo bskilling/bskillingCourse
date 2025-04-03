@@ -17,11 +17,9 @@ const CourseDetails: React.FC<CourseDetailsProps> = ({ course }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async context => {
   const id = context.query.id;
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/courses/${id}`
-  );
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/courses/${id}`);
 
   if (!res.ok) {
     return {

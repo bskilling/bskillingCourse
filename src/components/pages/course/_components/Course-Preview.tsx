@@ -142,10 +142,8 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
 
   // Use a default banner image if not provided.
   const bannerImage =
-    banner?.viewUrl ||
-    'https://www.svgrepo.com/show/508699/landscape-placeholder.svg';
-  const placeholder =
-    'https://www.svgrepo.com/show/508699/landscape-placeholder.svg';
+    banner?.viewUrl || 'https://www.svgrepo.com/show/508699/landscape-placeholder.svg';
+  const placeholder = 'https://www.svgrepo.com/show/508699/landscape-placeholder.svg';
 
   // Format price (assuming price is in cents)
   const formattedPrice = price ? price?.amount?.toFixed(2) : 'Free';
@@ -177,8 +175,7 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
                 }}
                 className={cn(
                   'cursor-pointer text-gray-600 hover:text-blue-600',
-                  activeTab === 'home' &&
-                    'text-blue-500 font-bold border-b border-blue-500'
+                  activeTab === 'home' && 'text-blue-500 font-bold border-b border-blue-500'
                 )}
               >
                 Home
@@ -292,9 +289,7 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
           <div className=" w-full">
             {/* Chapters */}
             <div className="rounded-xl  mt-10" id="curriculum">
-              <h3 className="text-lg  mb-4 font-medium text-gray-800">
-                Course Ciricullum
-              </h3>
+              <h3 className="text-lg  mb-4 font-medium text-gray-800">Course Ciricullum</h3>
               <Modules chapters={curriculum.chapters} />
             </div>
             <Highlights highlights={highlights || []} />
@@ -307,26 +302,18 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
                   <div className="text-gray-600">No projects covered</div>
                 )}
                 <div className="space-y-4">
-                  {curriculum.projects?.map((project) => (
-                    <div
-                      key={project._id}
-                      className="border-l-4 border-purple-500 pl-4"
-                    >
+                  {curriculum.projects?.map(project => (
+                    <div key={project._id} className="border-l-4 border-purple-500 pl-4">
                       <Accordion type="single" collapsible>
                         <AccordionItem value="item-1">
                           <AccordionTrigger>
                             {' '}
-                            <h4 className="font-semibold capitalize">
-                              {project.title}
-                            </h4>
+                            <h4 className="font-semibold capitalize">{project.title}</h4>
                           </AccordionTrigger>
                           <AccordionContent>
                             <div className="mt-2 space-y-2">
                               {project.content?.map((lesson: string) => (
-                                <div
-                                  key={lesson}
-                                  className="flex items-center space-x-2"
-                                >
+                                <div key={lesson} className="flex items-center space-x-2">
                                   {/* <PlayIcon className="h-4 w-4 text-gray-500" /> */}
                                   <BsFolderCheck className="h-4 w-4 text-purple-500" />
                                   <span>{lesson}</span>
@@ -357,9 +344,7 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
                           <p key={index} className="mt-5 inline-flex gap-x-4">
                             {' '}
                             <IoIosCheckmarkCircle className="w-6 h-6 text-blue-500" />{' '}
-                            <span className="text-sm font-semibold">
-                              {prerequisite}
-                            </span>
+                            <span className="text-sm font-semibold">{prerequisite}</span>
                           </p>
                         ))}
                       </div>
@@ -372,14 +357,9 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
                         {/* <p>{curriculum.eligibility}</p> */}
                         <div className="flex flex-col ">
                           {curriculum.eligibility.map((eligibility, index) => (
-                            <p
-                              key={index}
-                              className="mt-5 inline-flex gap-x-4 items-center"
-                            >
+                            <p key={index} className="mt-5 inline-flex gap-x-4 items-center">
                               <IoIosCheckmarkCircle className="w-6 h-6 text-purple-500" />{' '}
-                              <span className="text-sm font-semibold">
-                                {eligibility}
-                              </span>
+                              <span className="text-sm font-semibold">{eligibility}</span>
                             </p>
                           ))}
                         </div>
@@ -469,13 +449,11 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
             Certification
           </p>
           {certification?.title && (
-            <p className="font-semibold text-lg mt-2 text-gray-700">
-              {certification.title}
-            </p>
+            <p className="font-semibold text-lg mt-2 text-gray-700">{certification.title}</p>
           )}
           <p className="text-gray-600 text-sm mt-3">
-            Completing this course grants an industry-recognized certification
-            to enhance your professional skills.
+            Completing this course grants an industry-recognized certification to enhance your
+            professional skills.
           </p>
           <img
             src="/assets/certificate.png"
@@ -484,10 +462,7 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
           />
         </div>
       </div>
-      <CourseEnrollment
-        formattedPrice={formattedPrice}
-        durationHours={durationHours}
-      />
+      <CourseEnrollment formattedPrice={formattedPrice} durationHours={durationHours} />
 
       {/* Overview Section */}
       <WhyJoinSection whyJoin={whyJoin} />

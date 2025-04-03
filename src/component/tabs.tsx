@@ -1,9 +1,9 @@
-import { MyContext } from "context/PageContext";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { useContext, useState } from "react";
-import { AiFillCaretDown, AiOutlineMenu } from "react-icons/ai";
-import { useMediaQuery } from "react-responsive";
+import { MyContext } from 'context/PageContext';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useContext, useState } from 'react';
+import { AiFillCaretDown, AiOutlineMenu } from 'react-icons/ai';
+import { useMediaQuery } from 'react-responsive';
 
 interface TabProps {
   data: string[];
@@ -44,7 +44,7 @@ const Tabs: React.FC<TabProps> = ({ data }) => {
     // const url = "/allCourses?buttonIndexs=" + x;
     setTimeout(() => {
       setLoadingVisible(false);
-      router.push("/allCourses");
+      router.push('/allCourses');
       // window.open(url, "_blank");
     }, 1000);
   };
@@ -61,7 +61,7 @@ const Tabs: React.FC<TabProps> = ({ data }) => {
     setTimeout(() => {
       setLoadingVisible(false);
       setCategoryVisible(false);
-      router.push("/allCourses");
+      router.push('/allCourses');
       // window.open(url, "_blank");
     }, 1000);
   };
@@ -74,26 +74,19 @@ const Tabs: React.FC<TabProps> = ({ data }) => {
           <div className="flex items-center  mb-5 md:mb-2 gap-">
             <button
               className="mt-4 text-left md:gap-0 md:mt-0 "
-              onClick={() => setCategoryVisible((pre) => !pre)}
+              onClick={() => setCategoryVisible(pre => !pre)}
             >
               <p className="md:text-sm">Browse</p>
               <p>Categories</p>
             </button>
-            <div
-              onClick={() => setCategoryVisible((pre) => !pre)}
-              className="mb-1"
-            >
+            <div onClick={() => setCategoryVisible(pre => !pre)} className="mb-1">
               <AiFillCaretDown />
             </div>
           </div>
           {categoryVisible ? (
             <div className="absolute mt-[100px] md:mt-[75px] z-[1000] w-[] bg-white  rounded-lg shadow-lg ">
               {data.map((categoryKey, index) => (
-                <Link
-                  style={{ textDecoration: "none" }}
-                  key={categoryKey}
-                  href={"/allCourses"}
-                >
+                <Link style={{ textDecoration: 'none' }} key={categoryKey} href={'/allCourses'}>
                   <div
                     key={categoryKey}
                     className="px-5 py-2 text-black cursor-pointer hover:bg-buttonBlue hover:text-white"
@@ -105,32 +98,24 @@ const Tabs: React.FC<TabProps> = ({ data }) => {
               ))}
             </div>
           ) : (
-            ""
+            ''
           )}
         </div>
         {/* above is browse all dropdown  and below is the mobile view*/}
         {isSmallScreen ? (
-          ""
+          ''
         ) : (
           <div className="hidden w-full pt-5 mb-5 md:block">
-            <div
-              className="-mb-0.5 flex justify-start sm:block"
-              aria-label="Tabs"
-            >
+            <div className="-mb-0.5 flex justify-start sm:block" aria-label="Tabs">
               <ul className="flex flex-col items-center space-x-5 md:flex-row md:justify-start">
                 {data.map((categoryKey, index) => (
                   <li
                     key={index}
                     className={`${
-                      index === AllCourseButtonIndex
-                        ? ""
-                        : "text-white hover:text-white "
+                      index === AllCourseButtonIndex ? '' : 'text-white hover:text-white '
                     }`}
                   >
-                    <Link
-                      style={{ textDecoration: "none" }}
-                      href={"/allCourses"}
-                    >
+                    <Link style={{ textDecoration: 'none' }} href={'/allCourses'}>
                       <button
                         type="button"
                         className="px-4 pb-1 text-white "
@@ -155,7 +140,6 @@ const Tabs: React.FC<TabProps> = ({ data }) => {
                     {isDropdownOpen && data.length > 10 && (
                       <div className="origin-top-right absolute  z-[6000]  right-0 mt-6  min-w-[200px]   rounded-md shadow-lg bg-white ring-1     ">
                         {data.slice(11).map((categoryName, index) => {
-                        
                           return (
                             <button
                               key={categoryName}
@@ -185,15 +169,13 @@ const Tabs: React.FC<TabProps> = ({ data }) => {
             <div className="w-24 h-24 ">
               <div className="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-[#3d3c3d] opacity-75 flex flex-col items-center justify-center">
                 <div className="w-16 h-16 mb-4 ease-linear border-8 border-t-4 rounded-full loader border-buttonBlue"></div>
-                <h2 className="text-xl font-semibold text-center text-white">
-                  Loading...
-                </h2>
+                <h2 className="text-xl font-semibold text-center text-white">Loading...</h2>
               </div>
             </div>
           </div>
         </div>
       ) : (
-        ""
+        ''
       )}
     </div>
   );

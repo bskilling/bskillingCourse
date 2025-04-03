@@ -88,8 +88,7 @@ const InstitutionHomepage = () => {
     {
       icon: Briefcase,
       title: 'Internships & Certification',
-      description:
-        'Strengthen your credentials with recognized certifications.',
+      description: 'Strengthen your credentials with recognized certifications.',
       color: 'from-rose-500 to-pink-600',
       iconBg: 'bg-rose-100',
     },
@@ -106,8 +105,7 @@ const InstitutionHomepage = () => {
     {
       icon: Code,
       title: 'Technical Skills',
-      description:
-        'Master programming, data science, and other technical competencies',
+      description: 'Master programming, data science, and other technical competencies',
       color: 'bg-blue-600',
     },
     {
@@ -287,9 +285,7 @@ const InstitutionHomepage = () => {
             <div className="md:w-3/5">
               <div className="inline-flex items-center px-4 py-2 rounded-full bg-indigo-500/20 border border-indigo-500/30 text-indigo-200 mb-4">
                 <Rocket className="h-4 w-4 mr-2" />
-                <span className="text-sm font-medium">
-                  Future-Ready Education
-                </span>
+                <span className="text-sm font-medium">Future-Ready Education</span>
               </div>
               <h1 className="text-4xl md:text-5xl font-bold leading-tight">
                 Empowering Careers Through{' '}
@@ -298,9 +294,8 @@ const InstitutionHomepage = () => {
                 </span>
               </h1>
               <p className="text-lg mt-6 text-blue-100 max-w-xl">
-                Building industry-ready skills and providing job placement
-                assistance to transform students and professionals into
-                tomorrow&apos;s leaders.
+                Building industry-ready skills and providing job placement assistance to transform
+                students and professionals into tomorrow&apos;s leaders.
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
                 <Dialog>
@@ -328,9 +323,7 @@ const InstitutionHomepage = () => {
                 <div className="flex items-center gap-4 mb-4">
                   <Calendar className="w-10 h-10 text-yellow-300" />
                   <div>
-                    <div className="text-sm text-blue-200">
-                      Program Duration
-                    </div>
+                    <div className="text-sm text-blue-200">Program Duration</div>
                     <div className="text-2xl font-bold">3-6 Months</div>
                   </div>
                 </div>
@@ -338,9 +331,7 @@ const InstitutionHomepage = () => {
                   <Users className="w-10 h-10 text-yellow-300" />
                   <div>
                     <div className="text-sm text-blue-200">Alumni Network</div>
-                    <div className="text-2xl font-bold">
-                      10,000+ Professionals
-                    </div>
+                    <div className="text-2xl font-bold">10,000+ Professionals</div>
                   </div>
                 </div>
               </div>
@@ -359,14 +350,11 @@ const InstitutionHomepage = () => {
                 <div className="bg-blue-100 p-3 rounded-xl">
                   <GraduationCap className="w-8 h-8 text-blue-700" />
                 </div>
-                <h2 className="text-2xl font-bold text-slate-800">
-                  Skill Development Programs
-                </h2>
+                <h2 className="text-2xl font-bold text-slate-800">Skill Development Programs</h2>
               </div>
               <p className="text-slate-600 mb-6">
-                Build industry-relevant technical and soft skills through
-                expert-led courses, hands-on projects, and personalized
-                mentorship.
+                Build industry-relevant technical and soft skills through expert-led courses,
+                hands-on projects, and personalized mentorship.
               </p>
               <div className="flex flex-wrap gap-3 mb-6">
                 <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
@@ -383,9 +371,7 @@ const InstitutionHomepage = () => {
                 </span>
               </div>
               <Button
-                onClick={() =>
-                  router.push('/institutions/skill-development-programs')
-                }
+                onClick={() => router.push('/institutions/skill-development-programs')}
                 className="w-full bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 text-white flex items-center justify-center gap-2 py-6 rounded-xl shadow-md"
               >
                 Explore Skill Programs <ChevronRight className="w-5 h-5" />
@@ -400,14 +386,11 @@ const InstitutionHomepage = () => {
                 <div className="bg-purple-100 p-3 rounded-xl">
                   <Briefcase className="w-8 h-8 text-purple-700" />
                 </div>
-                <h2 className="text-2xl font-bold text-slate-800">
-                  Job Assistance Programs
-                </h2>
+                <h2 className="text-2xl font-bold text-slate-800">Job Assistance Programs</h2>
               </div>
               <p className="text-slate-600 mb-6">
-                Access personalized career guidance, interview preparation,
-                resume building, and direct job placement assistance from our
-                network of 500+ hiring partners.
+                Access personalized career guidance, interview preparation, resume building, and
+                direct job placement assistance from our network of 500+ hiring partners.
               </p>
               <div className="flex flex-wrap gap-3 mb-6">
                 <span className="bg-rose-100 text-rose-800 px-3 py-1 rounded-full text-sm font-medium">
@@ -424,9 +407,7 @@ const InstitutionHomepage = () => {
                 </span>
               </div>
               <Button
-                onClick={() =>
-                  router.push('/institutions/job-assisting-programs')
-                }
+                onClick={() => router.push('/institutions/job-assisting-programs')}
                 className="w-full bg-gradient-to-r from-purple-600 to-violet-700 hover:from-purple-700 hover:to-violet-800 text-white flex items-center justify-center gap-2 py-6 rounded-xl shadow-md"
               >
                 Discover Job Assistance <ChevronRight className="w-5 h-5" />
@@ -439,9 +420,7 @@ const InstitutionHomepage = () => {
       {/* Program Highlights */}
       <section className="max-w-6xl mx-auto mt-20 px-6 md:px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-slate-800">
-            Program Highlights
-          </h2>
+          <h2 className="text-3xl font-bold text-slate-800">Program Highlights</h2>
           <p className="text-slate-600 mt-2 text-lg">
             Everything you need to accelerate your career growth
           </p>
@@ -455,14 +434,10 @@ const InstitutionHomepage = () => {
             >
               <div className={`h-2 bg-gradient-to-r ${highlight.color}`}></div>
               <CardContent className="pt-6 pb-4">
-                <div
-                  className={`${highlight.iconBg} p-3 rounded-lg inline-block mb-4`}
-                >
+                <div className={`${highlight.iconBg} p-3 rounded-lg inline-block mb-4`}>
                   <highlight.icon className="w-6 h-6 text-slate-700" />
                 </div>
-                <h3 className="text-xl font-semibold text-slate-800 mb-2">
-                  {highlight.title}
-                </h3>
+                <h3 className="text-xl font-semibold text-slate-800 mb-2">{highlight.title}</h3>
                 <p className="text-slate-600">{highlight.description}</p>
               </CardContent>
             </Card>
@@ -473,9 +448,7 @@ const InstitutionHomepage = () => {
       {/* Featured Programs */}
       <section className="max-w-6xl mx-auto mt-20 px-6 md:px-4">
         <div className="flex justify-between items-center mb-8">
-          <h2 className="text-3xl font-bold text-slate-800">
-            Featured Programs
-          </h2>
+          <h2 className="text-3xl font-bold text-slate-800">Featured Programs</h2>
           {/* <div className="flex gap-2">
             <Button
               variant={activeTab === 'overview' ? 'default' : 'outline'}
@@ -518,9 +491,7 @@ const InstitutionHomepage = () => {
                   key={index}
                   className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
                 >
-                  <div
-                    className={`h-2 bg-gradient-to-r ${program.color}`}
-                  ></div>
+                  <div className={`h-2 bg-gradient-to-r ${program.color}`}></div>
                   <CardContent className="p-6">
                     <div className="flex justify-between items-start mb-4">
                       <div
@@ -534,9 +505,7 @@ const InstitutionHomepage = () => {
                         </span>
                       )}
                     </div>
-                    <h3 className="text-lg font-semibold text-slate-800 mb-2">
-                      {program.title}
-                    </h3>
+                    <h3 className="text-lg font-semibold text-slate-800 mb-2">{program.title}</h3>
                     <div className="space-y-2 text-sm text-slate-600 mb-4">
                       <div className="flex items-center gap-2">
                         <Calendar className="w-4 h-4 text-slate-400" />
@@ -579,9 +548,7 @@ const InstitutionHomepage = () => {
 
         {activeTab === 'overview' || activeTab === 'job' ? (
           <div>
-            <h3 className="text-2xl font-semibold text-slate-800 mb-6">
-              Top Jobs by Category
-            </h3>
+            <h3 className="text-2xl font-semibold text-slate-800 mb-6">Top Jobs by Category</h3>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               {topJobsCategories.map((category, catIndex) => (
                 <Card key={catIndex} className="overflow-hidden shadow-lg">
@@ -601,9 +568,7 @@ const InstitutionHomepage = () => {
                           className="p-3 border rounded-lg hover:bg-slate-50 transition-colors"
                         >
                           <div className="flex justify-between items-start">
-                            <h4 className="font-semibold text-slate-800">
-                              {job.position}
-                            </h4>
+                            <h4 className="font-semibold text-slate-800">{job.position}</h4>
                             {job.featured && (
                               <span className="bg-amber-100 text-amber-800 text-xs px-2 py-1 rounded-full">
                                 {job.tag}
@@ -658,22 +623,19 @@ const InstitutionHomepage = () => {
         <div className="max-w-6xl mx-auto px-6 md:px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold">Success Stories</h2>
-            <p className="text-indigo-200 mt-2">
-              Hear from our program graduates
-            </p>
+            <p className="text-indigo-200 mt-2">Hear from our program graduates</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <Card className="bg-white/10 backdrop-blur-sm border-none shadow-xl text-white">
               <CardContent className="p-6">
                 <div className="flex items-center gap-1 mb-4 text-yellow-300">
-                  {[1, 2, 3, 4, 5].map((star) => (
+                  {[1, 2, 3, 4, 5].map(star => (
                     <Star key={star} className="w-5 h-5 fill-current" />
                   ))}
                 </div>
                 <p className="italic text-indigo-100 mb-6">
-                  The mentorship program was transformative. I landed a role at
-                  a top tech company with a 40% salary increase within 2 months
-                  of completion.
+                  The mentorship program was transformative. I landed a role at a top tech company
+                  with a 40% salary increase within 2 months of completion.
                 </p>
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-orange-500 rounded-full flex items-center justify-center text-xl font-bold">
@@ -681,9 +643,7 @@ const InstitutionHomepage = () => {
                   </div>
                   <div>
                     <div className="font-medium">Rahul P.</div>
-                    <div className="text-indigo-200 text-sm">
-                      Data Scientist @ Amazon
-                    </div>
+                    <div className="text-indigo-200 text-sm">Data Scientist @ Amazon</div>
                   </div>
                 </div>
               </CardContent>
@@ -692,14 +652,13 @@ const InstitutionHomepage = () => {
             <Card className="bg-white/10 backdrop-blur-sm border-none shadow-xl text-white">
               <CardContent className="p-6">
                 <div className="flex items-center gap-1 mb-4 text-yellow-300">
-                  {[1, 2, 3, 4, 5].map((star) => (
+                  {[1, 2, 3, 4, 5].map(star => (
                     <Star key={star} className="w-5 h-5 fill-current" />
                   ))}
                 </div>
                 <p className="italic text-indigo-100 mb-6">
-                  The hands-on projects gave me real-world experience that made
-                  my portfolio stand out. The interview prep was spot on for
-                  what I actually faced.
+                  The hands-on projects gave me real-world experience that made my portfolio stand
+                  out. The interview prep was spot on for what I actually faced.
                 </p>
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-teal-500 rounded-full flex items-center justify-center text-xl font-bold">
@@ -707,9 +666,7 @@ const InstitutionHomepage = () => {
                   </div>
                   <div>
                     <div className="font-medium">Ananya S.</div>
-                    <div className="text-indigo-200 text-sm">
-                      SAP Consultant @ Accenture
-                    </div>
+                    <div className="text-indigo-200 text-sm">SAP Consultant @ Accenture</div>
                   </div>
                 </div>
               </CardContent>
@@ -718,14 +675,14 @@ const InstitutionHomepage = () => {
             <Card className="bg-white/10 backdrop-blur-sm border-none shadow-xl text-white">
               <CardContent className="p-6">
                 <div className="flex items-center gap-1 mb-4 text-yellow-300">
-                  {[1, 2, 3, 4, 5].map((star) => (
+                  {[1, 2, 3, 4, 5].map(star => (
                     <Star key={star} className="w-5 h-5 fill-current" />
                   ))}
                 </div>
                 <p className="italic text-indigo-100 mb-6">
-                  As a career changer, I was worried about switching to tech.
-                  The program provided step-by-step guidance and I&apos;m now a
-                  cloud engineer earning twice my previous salary.
+                  As a career changer, I was worried about switching to tech. The program provided
+                  step-by-step guidance and I&apos;m now a cloud engineer earning twice my previous
+                  salary.
                 </p>
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center text-xl font-bold">
@@ -733,9 +690,7 @@ const InstitutionHomepage = () => {
                   </div>
                   <div>
                     <div className="font-medium">Vivek K.</div>
-                    <div className="text-indigo-200 text-sm">
-                      Cloud Engineer @ Microsoft
-                    </div>
+                    <div className="text-indigo-200 text-sm">Cloud Engineer @ Microsoft</div>
                   </div>
                 </div>
               </CardContent>
@@ -755,9 +710,8 @@ const InstitutionHomepage = () => {
               Why Choose Our Institution
             </h2>
             <p className="text-lg text-slate-600">
-              Our curriculum is continuously updated to reflect the latest
-              industry trends and technologies, ensuring you stay ahead in the
-              rapidly evolving job market.
+              Our curriculum is continuously updated to reflect the latest industry trends and
+              technologies, ensuring you stay ahead in the rapidly evolving job market.
             </p>
           </div>
 
@@ -772,9 +726,7 @@ const InstitutionHomepage = () => {
                 >
                   <feature.icon className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-semibold text-slate-900 mb-2">
-                  {feature.title}
-                </h3>
+                <h3 className="text-xl font-semibold text-slate-900 mb-2">{feature.title}</h3>
                 <p className="text-slate-600">{feature.description}</p>
               </div>
             ))}
@@ -791,9 +743,8 @@ const InstitutionHomepage = () => {
                 Ready to Take the Next Step in Your Career?
               </h2>
               <p className="text-slate-600 mb-6">
-                Join thousands of professionals who&apos;ve transformed their
-                careers with our expert-led programs. Schedule a free career
-                consultation today.
+                Join thousands of professionals who&apos;ve transformed their careers with our
+                expert-led programs. Schedule a free career consultation today.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Dialog>

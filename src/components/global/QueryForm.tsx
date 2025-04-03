@@ -2,31 +2,16 @@
 
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { motion, AnimatePresence } from 'framer-motion';
 import axios from 'axios';
 import { toast } from 'sonner';
-import {
-  User,
-  Mail,
-  Phone,
-  MessageSquare,
-  ChevronDown,
-  Sparkles,
-  Headphones,
-} from 'lucide-react';
+import { User, Mail, Phone, MessageSquare, ChevronDown, Sparkles, Headphones } from 'lucide-react';
 
 const backendUrl =
-  process.env.NEXT_PUBLIC_BACKEND_URL ??
-  'https://backendbskilling-production-20ff.up.railway.app';
+  process.env.NEXT_PUBLIC_BACKEND_URL ?? 'https://backendbskilling-production-20ff.up.railway.app';
 
 export default function QueryForm() {
   const [isOpen, setIsOpen] = useState(false);
@@ -50,7 +35,7 @@ export default function QueryForm() {
   // Handle input changes
   const handleChange = (e: any) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
+    setFormData(prev => ({
       ...prev,
       [name]: value,
     }));
@@ -108,9 +93,7 @@ export default function QueryForm() {
     try {
       const response = await axios.post(`${backendUrl}/api/lead`, formData);
       setIsSuccess(true);
-      toast.success(
-        'Your query has been submitted successfully. Our team will contact you soon.'
-      );
+      toast.success('Your query has been submitted successfully. Our team will contact you soon.');
 
       // Reset form
       setFormData({
@@ -129,9 +112,7 @@ export default function QueryForm() {
       }, 2000);
     } catch (error) {
       console.error('Error submitting query:', error);
-      toast.error(
-        'There was a problem submitting your request. Please try again.'
-      );
+      toast.error('There was a problem submitting your request. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -256,9 +237,7 @@ export default function QueryForm() {
                         />
                       </svg>
                     </div>
-                    <span className="text-sm font-medium text-gray-600">
-                      bSkilling
-                    </span>
+                    <span className="text-sm font-medium text-gray-600">bSkilling</span>
                   </div>
                 </div>
 
@@ -286,11 +265,7 @@ export default function QueryForm() {
                         className="pl-10 border-blue-200 focus:border-blue-400 focus:ring-2 focus:ring-blue-200 transition-all"
                         disabled={isSubmitting}
                       />
-                      {errors.name && (
-                        <p className="text-red-500 text-xs mt-1">
-                          {errors.name}
-                        </p>
-                      )}
+                      {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
                     </div>
 
                     <div className="relative">
@@ -306,11 +281,7 @@ export default function QueryForm() {
                         className="pl-10 border-blue-200 focus:border-blue-400 focus:ring-2 focus:ring-blue-200 transition-all"
                         disabled={isSubmitting}
                       />
-                      {errors.email && (
-                        <p className="text-red-500 text-xs mt-1">
-                          {errors.email}
-                        </p>
-                      )}
+                      {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
                     </div>
 
                     <div className="flex gap-2">
@@ -340,9 +311,7 @@ export default function QueryForm() {
                           disabled={isSubmitting}
                         />
                         {errors.phoneNumber && (
-                          <p className="text-red-500 text-xs mt-1">
-                            {errors.phoneNumber}
-                          </p>
+                          <p className="text-red-500 text-xs mt-1">{errors.phoneNumber}</p>
                         )}
                       </div>
                     </div>
@@ -360,19 +329,11 @@ export default function QueryForm() {
                         rows={3}
                         disabled={isSubmitting}
                       />
-                      {errors.query && (
-                        <p className="text-red-500 text-xs mt-1">
-                          {errors.query}
-                        </p>
-                      )}
+                      {errors.query && <p className="text-red-500 text-xs mt-1">{errors.query}</p>}
                     </div>
 
                     {/* Hidden field for category */}
-                    <input
-                      type="hidden"
-                      name="category"
-                      value={formData.type}
-                    />
+                    <input type="hidden" name="category" value={formData.type} />
 
                     <Button
                       type="submit"
@@ -409,8 +370,7 @@ export default function QueryForm() {
                         ></path>
                       </svg>
                       <span>
-                        Your message has been sent successfully! We&apos;ll be
-                        in touch shortly.
+                        Your message has been sent successfully! We&apos;ll be in touch shortly.
                       </span>
                     </motion.div>
                   )}

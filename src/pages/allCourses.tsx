@@ -38,9 +38,7 @@ interface ListOfCoursesDataType {
 }
 const AllCourses = () => {
   const [datas, setDatas] = useState<string[]>([]);
-  const [eachCourceList, SetEachCourceList] = useState<
-    ListOfCoursesDataType[][]
-  >([]);
+  const [eachCourceList, SetEachCourceList] = useState<ListOfCoursesDataType[][]>([]);
   const router = useRouter();
   useEffect(() => {
     const { buttonIndexs } = router.query;
@@ -81,12 +79,8 @@ const AllCourses = () => {
   }, []);
 
   const isSmallScreen = useMediaQuery({ maxWidth: 1020 });
-  const {
-    loadingVisible,
-    setLoadingVisible,
-    AllCourseButtonIndex,
-    setAllCourseButtonIndex,
-  } = useContext(MyContext);
+  const { loadingVisible, setLoadingVisible, AllCourseButtonIndex, setAllCourseButtonIndex } =
+    useContext(MyContext);
   const [categoryVisible, setCategoryVisible] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   function handleBack() {
@@ -107,7 +101,7 @@ const AllCourses = () => {
     }, 400);
   };
   const clickOnCategory = (x: number) => {
-    setCategoryVisible((pre) => !pre);
+    setCategoryVisible(pre => !pre);
     setLoadingVisible(true);
     setTimeout(() => {
       setLoadingVisible(false);
@@ -124,16 +118,10 @@ const AllCourses = () => {
           name="bSkilling"
           content="Unlock Your Potential with the Trending Online Courses of Today | Expand Your Knowledge and Skills"
         />
-        <meta
-          name="p:domain_verify"
-          content="7bb84546e514612864b5b9d71d1649e4"
-        />
+        <meta name="p:domain_verify" content="7bb84546e514612864b5b9d71d1649e4" />
 
         <link rel="icon" href="/favicon.png" />
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-3PVZC9K8BH"
-        ></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-3PVZC9K8BH"></script>
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -152,15 +140,12 @@ const AllCourses = () => {
               <div className="flex items-center  mb-5 md:mb-2 gap-">
                 <button
                   className="text-left md:gap-0 gap-1 md:mt-0 mt-4 block  "
-                  onClick={() => setCategoryVisible((pre) => !pre)}
+                  onClick={() => setCategoryVisible(pre => !pre)}
                 >
                   <p className="md:text-sm">Browse</p>
                   <p>Categories</p>
                 </button>
-                <div
-                  onClick={() => setCategoryVisible((pre) => !pre)}
-                  className="mb-1"
-                >
+                <div onClick={() => setCategoryVisible(pre => !pre)} className="mb-1">
                   <AiFillCaretDown />
                 </div>
               </div>
@@ -185,10 +170,7 @@ const AllCourses = () => {
               ''
             ) : (
               <div className="hidden md:block pt-5  mb-5 w-full">
-                <div
-                  className="-mb-0.5 flex justify-start sm:block"
-                  aria-label="Tabs"
-                >
+                <div className="-mb-0.5 flex justify-start sm:block" aria-label="Tabs">
                   <ul className="flex md:flex-row flex-col items-center md:justify-start space-x-5">
                     {datas.slice(0, 11).map((categoryName, index) => (
                       <li
@@ -274,9 +256,7 @@ const AllCourses = () => {
             <div className="w-24 h-24 ">
               <div className="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-[#3d3c3d] opacity-75 flex flex-col items-center justify-center">
                 <div className="loader ease-linear rounded-full border-8 border-t-4 border-buttonBlue h-16 w-16 mb-4"></div>
-                <h2 className="text-center text-white text-xl font-semibold">
-                  Loading...
-                </h2>
+                <h2 className="text-center text-white text-xl font-semibold">Loading...</h2>
               </div>
             </div>
           </div>

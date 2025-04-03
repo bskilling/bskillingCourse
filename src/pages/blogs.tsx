@@ -132,16 +132,10 @@ export default function Blogs() {
           name="bSkilling Blogs"
           content="Stay Updated with Our Blog | Read Informative Articles on the Latest Trends in Online Learning"
         />
-        <meta
-          name="p:domain_verify"
-          content="7bb84546e514612864b5b9d71d1649e4"
-        />
+        <meta name="p:domain_verify" content="7bb84546e514612864b5b9d71d1649e4" />
 
         <link rel="icon" href="/favicon.png" />
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-3PVZC9K8BH"
-        ></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-3PVZC9K8BH"></script>
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -157,9 +151,7 @@ export default function Blogs() {
       <section className="text-black bg-gray body-font">
         <div className="container px-5 py-14 mx-auto">
           <div className="flex flex-col flex-wrap text-center w-full mb-12 ">
-            <h1 className="text-4xl tracking-wide mb-10 text-center ">
-              Latest Blog Posts
-            </h1>
+            <h1 className="text-4xl tracking-wide mb-10 text-center ">Latest Blog Posts</h1>
           </div>
           <div className="flex lg:grid md:grid md:grid-cols-3 lg:grid-cols-3 flex-wrap gap-y-5 gap-8 ">
             {blogs.map(({ _id, title, banner, slug, createdAt }) => (

@@ -75,22 +75,19 @@ const steps = [
   {
     icon: Search,
     title: 'Choose Your Program',
-    description:
-      'Select from our job-focused training programs based on your career goals.',
+    description: 'Select from our job-focused training programs based on your career goals.',
     color: 'bg-gradient-to-r from-blue-500 to-blue-700',
   },
   {
     icon: GraduationCap,
     title: 'Learn & Apply Skills',
-    description:
-      'Attend expert-led live sessions, complete projects, and gain industry exposure.',
+    description: 'Attend expert-led live sessions, complete projects, and gain industry exposure.',
     color: 'bg-gradient-to-r from-indigo-500 to-indigo-700',
   },
   {
     icon: FileText,
     title: 'Build Your Profile',
-    description:
-      'Optimize your resume, LinkedIn, and portfolio with expert guidance.',
+    description: 'Optimize your resume, LinkedIn, and portfolio with expert guidance.',
     color: 'bg-gradient-to-r from-purple-500 to-purple-700',
   },
   {
@@ -102,8 +99,7 @@ const steps = [
   {
     icon: Target,
     title: 'Job Assistance & Placement',
-    description:
-      'Get access to job openings, referrals, and networking opportunities.',
+    description: 'Get access to job openings, referrals, and networking opportunities.',
     color: 'bg-gradient-to-r from-fuchsia-500 to-fuchsia-700',
   },
 ];
@@ -201,9 +197,8 @@ export default function JobAssistingPage() {
                 Transform Your Career With Expert Guidance
               </h1>
               <p className="text-lg mt-6 text-blue-100 max-w-xl">
-                Empowering students and professionals with industry-ready
-                skills, personalized mentorship, and guaranteed job placement
-                assistance.
+                Empowering students and professionals with industry-ready skills, personalized
+                mentorship, and guaranteed job placement assistance.
               </p>
 
               <Dialog>
@@ -255,9 +250,7 @@ export default function JobAssistingPage() {
       {/* Highlights Section */}
       <section className="max-w-6xl mx-auto mt-16 px-6 md:px-0">
         <div className="text-center mb-10">
-          <h2 className="text-3xl font-bold text-slate-800">
-            Program Highlights
-          </h2>
+          <h2 className="text-3xl font-bold text-slate-800">Program Highlights</h2>
           <p className="text-slate-600 mt-2">
             Everything you need to accelerate your career growth
           </p>
@@ -270,14 +263,10 @@ export default function JobAssistingPage() {
             >
               <div className={`h-2 bg-gradient-to-r ${highlight.color}`}></div>
               <CardContent className="pt-6 pb-4">
-                <div
-                  className={`${highlight.iconBg} p-3 rounded-lg inline-block mb-4`}
-                >
+                <div className={`${highlight.iconBg} p-3 rounded-lg inline-block mb-4`}>
                   <highlight.icon className="w-6 h-6 text-slate-700" />
                 </div>
-                <h3 className="text-xl font-semibold text-slate-800 mb-2">
-                  {highlight.title}
-                </h3>
+                <h3 className="text-xl font-semibold text-slate-800 mb-2">{highlight.title}</h3>
                 <p className="text-slate-600">{highlight.description}</p>
               </CardContent>
               <CardFooter className="pt-0 pb-4">
@@ -301,9 +290,7 @@ export default function JobAssistingPage() {
         <div className="max-w-6xl mx-auto px-6 md:px-0">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold">Success Stories</h2>
-            <p className="text-indigo-200 mt-2">
-              Hear from our program graduates
-            </p>
+            <p className="text-indigo-200 mt-2">Hear from our program graduates</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <Card className="bg-white/10 backdrop-blur-sm border-none shadow-xl text-white">
@@ -316,9 +303,8 @@ export default function JobAssistingPage() {
                   <Star className="w-5 h-5 fill-current" />
                 </div>
                 <p className="italic text-indigo-100 mb-6">
-                  The mentorship program was transformative. I landed a role at
-                  a top tech company with a 40% salary increase within 2 months
-                  of completion.
+                  The mentorship program was transformative. I landed a role at a top tech company
+                  with a 40% salary increase within 2 months of completion.
                 </p>
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-orange-500 rounded-full flex items-center justify-center text-xl font-bold">
@@ -326,9 +312,7 @@ export default function JobAssistingPage() {
                   </div>
                   <div>
                     <div className="font-medium">Rahul P.</div>
-                    <div className="text-indigo-200 text-sm">
-                      Data Scientist @ Amazon
-                    </div>
+                    <div className="text-indigo-200 text-sm">Data Scientist @ Amazon</div>
                   </div>
                 </div>
               </CardContent>
@@ -344,9 +328,8 @@ export default function JobAssistingPage() {
                   <Star className="w-5 h-5 fill-current" />
                 </div>
                 <p className="italic text-indigo-100 mb-6">
-                  The hands-on projects gave me real-world experience that made
-                  my portfolio stand out. The interview prep was spot on for
-                  what I actually faced.
+                  The hands-on projects gave me real-world experience that made my portfolio stand
+                  out. The interview prep was spot on for what I actually faced.
                 </p>
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-teal-500 rounded-full flex items-center justify-center text-xl font-bold">
@@ -354,9 +337,7 @@ export default function JobAssistingPage() {
                   </div>
                   <div>
                     <div className="font-medium">Ananya S.</div>
-                    <div className="text-indigo-200 text-sm">
-                      SAP Consultant @ Accenture
-                    </div>
+                    <div className="text-indigo-200 text-sm">SAP Consultant @ Accenture</div>
                   </div>
                 </div>
               </CardContent>
@@ -372,9 +353,9 @@ export default function JobAssistingPage() {
                   <Star className="w-5 h-5 fill-current" />
                 </div>
                 <p className="italic text-indigo-100 mb-6">
-                  As a career changer, I was worried about switching to tech.
-                  The program provided step-by-step guidance and I&quot;m now a
-                  cloud engineer earning twice my previous salary.
+                  As a career changer, I was worried about switching to tech. The program provided
+                  step-by-step guidance and I&quot;m now a cloud engineer earning twice my previous
+                  salary.
                 </p>
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center text-xl font-bold">
@@ -382,9 +363,7 @@ export default function JobAssistingPage() {
                   </div>
                   <div>
                     <div className="font-medium">Vivek K.</div>
-                    <div className="text-indigo-200 text-sm">
-                      Cloud Engineer @ Microsoft
-                    </div>
+                    <div className="text-indigo-200 text-sm">Cloud Engineer @ Microsoft</div>
                   </div>
                 </div>
               </CardContent>
@@ -402,9 +381,8 @@ export default function JobAssistingPage() {
                 Ready to Take the Next Step in Your Career?
               </h2>
               <p className="text-slate-600 mb-6">
-                Join thousands of professionals who&apos;ve transformed their
-                careers with our expert-led programs. Schedule a free career
-                consultation today.
+                Join thousands of professionals who&apos;ve transformed their careers with our
+                expert-led programs. Schedule a free career consultation today.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button className="bg-gradient-to-r from-indigo-600 to-purple-700 hover:from-indigo-700 hover:to-purple-800 px-6 py-3 text-white rounded-xl">
@@ -435,10 +413,7 @@ export default function JobAssistingPage() {
         {/* Steps Section */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {steps.map((step, index) => (
-            <div
-              key={index}
-              className={`p-6 rounded-xl shadow-md text-white ${step.color}`}
-            >
+            <div key={index} className={`p-6 rounded-xl shadow-md text-white ${step.color}`}>
               <step.icon className="w-10 h-10 mb-4" />
               <h3 className="text-xl font-semibold">{step.title}</h3>
               <p className="text-sm opacity-90">{step.description}</p>

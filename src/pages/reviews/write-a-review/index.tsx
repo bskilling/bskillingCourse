@@ -65,21 +65,14 @@ export default function Profile() {
         </div>
         <div className="min-h-[60vh]">
           <p className="text-4xl text-center mt-40">
-            <FaLinkedin
-              size={40}
-              className="text-blue-600 text-center m-auto my-5 bg-card"
-            />
+            <FaLinkedin size={40} className="text-blue-600 text-center m-auto my-5 bg-card" />
             Something Went Wrong!!
           </p>
           <div className="flex flex-col justify-center ">
             <p className="text-center my-4">
-              Profile Fetching from linkedin failed. Please try again or contact
-              our team
+              Profile Fetching from linkedin failed. Please try again or contact our team
             </p>
-            <Button
-              onClick={() => router.back()}
-              className="m-auto text-center"
-            >
+            <Button onClick={() => router.back()} className="m-auto text-center">
               Go Back
             </Button>
           </div>

@@ -38,11 +38,7 @@ const CertifiedPartners = () => {
               return (
                 <div key={index}>
                   <div className="h-36   flex justify-center   relative cursor-pointer">
-                    <img
-                      className="w-[80px] object-contain mt-1 "
-                      src={x}
-                      alt=""
-                    />
+                    <img className="w-[80px] object-contain mt-1 " src={x} alt="" />
                   </div>
                 </div>
               );
@@ -50,11 +46,7 @@ const CertifiedPartners = () => {
               return (
                 <div key={index}>
                   <div className="h-36   flex justify-center   relative cursor-pointer">
-                    <img
-                      className="w-[120px] object-contain mt-1 "
-                      src={x}
-                      alt=""
-                    />
+                    <img className="w-[120px] object-contain mt-1 " src={x} alt="" />
                   </div>
                 </div>
               );

@@ -136,8 +136,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 />
               </div>
               <div className="text-sm text-gray-500">
-                <span className="font-semibold text-gray-900">3,500+</span>{' '}
-                students enrolled
+                <span className="font-semibold text-gray-900">3,500+</span> students enrolled
               </div>
             </motion.div>
           </div>
@@ -172,9 +171,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                     <Award className="w-5 h-5 text-blue-600" />
                   </div>
                   <div>
-                    <div className="text-sm font-semibold text-gray-900">
-                      Industry Recognized
-                    </div>
+                    <div className="text-sm font-semibold text-gray-900">Industry Recognized</div>
                     <div className="text-xs text-gray-500">Certificate</div>
                   </div>
                 </motion.div>
@@ -189,12 +186,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                     <Users className="w-5 h-5 text-blue-600" />
                   </div>
                   <div>
-                    <div className="text-sm font-semibold text-gray-900">
-                      Live Classes
-                    </div>
-                    <div className="text-xs text-gray-500">
-                      With Industry Experts
-                    </div>
+                    <div className="text-sm font-semibold text-gray-900">Live Classes</div>
+                    <div className="text-xs text-gray-500">With Industry Experts</div>
                   </div>
                 </motion.div>
               </div>

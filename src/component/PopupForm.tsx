@@ -81,13 +81,10 @@ const PopupForm: React.FC<PopupFormType> = ({ handleClosePopup, title }) => {
 
   return (
     <div>
-      <div
-        className="fixed inset-0 bg-black opacity-50"
-        onClick={handleClosePopup}
-      ></div>
+      <div className="fixed inset-0 bg-black opacity-50" onClick={handleClosePopup}></div>
       <div
         className="fixed inset-0 flex items-center justify-center z-50 "
-        onClick={(e) => e.stopPropagation()}
+        onClick={e => e.stopPropagation()}
       >
         <div className="w-96 relative bg-white p-6 rounded-lg shadow-lg max-w-md mx-4 text-black">
           {/* Close Button */}
@@ -111,11 +108,7 @@ const PopupForm: React.FC<PopupFormType> = ({ handleClosePopup, title }) => {
 
           {/* Logo */}
           <div className="flex justify-center mb-4">
-            <img
-              src="/logo.png"
-              className="w-[100px] h-[30px] object-contain"
-              alt=""
-            />
+            <img src="/logo.png" className="w-[100px] h-[30px] object-contain" alt="" />
           </div>
 
           <h2 className="text-lg text-lightBlue font-semibold text-center mb-4 tracking-widest">
@@ -123,10 +116,7 @@ const PopupForm: React.FC<PopupFormType> = ({ handleClosePopup, title }) => {
           </h2>
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
-              <label
-                className="block text-sm font-medium text-gray-700"
-                htmlFor="name"
-              >
+              <label className="block text-sm font-medium text-gray-700" htmlFor="name">
                 Full Name
               </label>
               <input
@@ -140,10 +130,7 @@ const PopupForm: React.FC<PopupFormType> = ({ handleClosePopup, title }) => {
               />
             </div>
             <div className="mb-4">
-              <label
-                className="block text-sm font-medium text-gray-700"
-                htmlFor="email"
-              >
+              <label className="block text-sm font-medium text-gray-700" htmlFor="email">
                 Official Email-ID
               </label>
               <input
@@ -157,10 +144,7 @@ const PopupForm: React.FC<PopupFormType> = ({ handleClosePopup, title }) => {
               />
             </div>
             <div className="mb-4">
-              <label
-                className="block text-sm font-medium text-gray-700"
-                htmlFor="contact"
-              >
+              <label className="block text-sm font-medium text-gray-700" htmlFor="contact">
                 Contact No
               </label>
               <input

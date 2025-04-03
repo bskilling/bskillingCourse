@@ -46,9 +46,7 @@ const FAQSection: React.FC<FAQProps> = ({ faqs }) => {
               </button>
               <div
                 className={`mt-2 text-gray-700 pl-4 transition-all ${
-                  openIndex === index
-                    ? 'max-h-40 opacity-100'
-                    : 'max-h-0 opacity-0 overflow-hidden'
+                  openIndex === index ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
                 }`}
               >
                 {faq.answer}

@@ -27,19 +27,13 @@ export default function SkillAssistingProgram() {
         <meta charSet="UTF-8" />
 
         {/* Open Graph / Facebook */}
-        <meta
-          property="og:title"
-          content="Skill Assisting Program | Enhance Your Career Skills"
-        />
+        <meta property="og:title" content="Skill Assisting Program | Enhance Your Career Skills" />
         <meta
           property="og:description"
           content="Join our Skill Assisting Program to enhance your career skills with expert guidance. Unlock your potential and achieve your professional goals."
         />
         <meta property="og:type" content="website" />
-        <meta
-          property="og:url"
-          content="https://yourwebsite.com/skill-assisting-program"
-        />
+        <meta property="og:url" content="https://yourwebsite.com/skill-assisting-program" />
         <meta
           property="og:image"
           content="https://yourwebsite.com/images/skill-assisting-banner.jpg"
@@ -47,10 +41,7 @@ export default function SkillAssistingProgram() {
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="Skill Assisting Program | Enhance Your Career Skills"
-        />
+        <meta name="twitter:title" content="Skill Assisting Program | Enhance Your Career Skills" />
         <meta
           name="twitter:description"
           content="Join our Skill Assisting Program to enhance your career skills with expert guidance. Unlock your potential and achieve your professional goals."
@@ -61,11 +52,7 @@ export default function SkillAssistingProgram() {
         />
       </Head>
       <div className="">
-        <img
-          src="/new-image/header1.png"
-          alt=""
-          className="w-full object-cover "
-        />
+        <img src="/new-image/header1.png" alt="" className="w-full object-cover " />
       </div>
       {/* <div className="bg-gradient-to-r from-blue-500 to-blue-700 md:h-[400px] h-[200px]  w-full flex justify-between">
         <div className="w-1/2">
@@ -101,28 +88,23 @@ export default function SkillAssistingProgram() {
               EMPOWERING STUDENTS WITH IN- DEMAND SKILLS FOR A BRIGHTER FUTURE
             </h2>
             <div className="mt-5">
-              The Skill Development Program is specifically designed to bridge
-              the gap between academic learning and industry requirements. It
-              offers comprehensive training in technical and professional
-              skills. The program includes workshops, hands-on projects, and
-              mentorship sessions conducted by industry experts. Students are
-              presented with real-world challenges to enhance their
-              problem-solving and critical-thinking abilities. By the end of the
-              program, participants are well-prepared to excel in internships,
-              placements, and their future careers.
+              The Skill Development Program is specifically designed to bridge the gap between
+              academic learning and industry requirements. It offers comprehensive training in
+              technical and professional skills. The program includes workshops, hands-on projects,
+              and mentorship sessions conducted by industry experts. Students are presented with
+              real-world challenges to enhance their problem-solving and critical-thinking
+              abilities. By the end of the program, participants are well-prepared to excel in
+              internships, placements, and their future careers.
             </div>
             <div className="mt-5">
-              Additionally, the program emphasizes the development of essential
-              soft skills such as communication, teamwork, and adaptability,
-              which are crucial for professional success. Participants benefit
-              from networking opportunities with industry leaders, providing
-              valuable insights into current trends and practices. The
-              curriculum is continuously updated to reflect the latest
-              advancements in technology and industry standards, ensuring that
-              students remain competitive and relevant in the job market. With a
-              holistic approach to skill development, the program aims to not
-              only enhance technical expertise but also foster confidence and a
-              growth mindset among students.
+              Additionally, the program emphasizes the development of essential soft skills such as
+              communication, teamwork, and adaptability, which are crucial for professional success.
+              Participants benefit from networking opportunities with industry leaders, providing
+              valuable insights into current trends and practices. The curriculum is continuously
+              updated to reflect the latest advancements in technology and industry standards,
+              ensuring that students remain competitive and relevant in the job market. With a
+              holistic approach to skill development, the program aims to not only enhance technical
+              expertise but also foster confidence and a growth mindset among students.
             </div>
           </div>
         </div>
@@ -134,11 +116,7 @@ export default function SkillAssistingProgram() {
         </div> */}
         <section className="mt-5 md:mt-10 md:flex md:flex-row-reverse items-center  md:px-5 md:w-[80vw] m-auto">
           <div className="md:w-1/2 bg-green-50 flex justify-end">
-            <img
-              src="/new-image/skill2.jpg"
-              alt="skill222"
-              className="object-cover text-right "
-            />
+            <img src="/new-image/skill2.jpg" alt="skill222" className="object-cover text-right " />
           </div>
           <div className="md:w-1/2 mt-5 md:mt-0">
             <h2 className="text-2xl md:text-3xl font-bold mb-4 text-gray-800">
@@ -146,29 +124,19 @@ export default function SkillAssistingProgram() {
             </h2>
             <ul className="list-disc list-inside text-gray-700 space-y-2">
               <li className="">
-                <span className="text-blue-600 font-semibold">
-                  Bridging the gap
-                </span>{' '}
-                between theoretical academic knowledge and practical industry
-                requirements.
+                <span className="text-blue-600 font-semibold">Bridging the gap</span> between
+                theoretical academic knowledge and practical industry requirements.
               </li>
               <li className="">
-                <span className="text-blue-600 font-semibold">
-                  Empowering students
-                </span>{' '}
-                to confidently apply theoretical knowledge in real-world
-                scenarios.
+                <span className="text-blue-600 font-semibold">Empowering students</span> to
+                confidently apply theoretical knowledge in real-world scenarios.
               </li>
               <li className="">
-                <span className="text-blue-600 font-semibold">
-                  Keeping students updated
-                </span>{' '}
-                with current industry trends, tools, and technologies.
+                <span className="text-blue-600 font-semibold">Keeping students updated</span> with
+                current industry trends, tools, and technologies.
               </li>
               <li className="">
-                <span className="text-blue-600 font-semibold">
-                  Building problem-solving skills
-                </span>{' '}
+                <span className="text-blue-600 font-semibold">Building problem-solving skills</span>{' '}
                 through hands-on experiences.
               </li>
             </ul>
@@ -186,32 +154,20 @@ export default function SkillAssistingProgram() {
             </h2>
             <ul className="list-disc list-inside text-gray-700 space-y-2">
               <li className="">
-                <span className="text-blue-600 font-semibold">
-                  Hands-on Projects:
-                </span>{' '}
-                Real-world projects to help students apply their classroom
-                knowledge in practical scenarios.
+                <span className="text-blue-600 font-semibold">Hands-on Projects:</span> Real-world
+                projects to help students apply their classroom knowledge in practical scenarios.
               </li>
               <li className="">
-                <span className="text-blue-600 font-semibold">
-                  Comprehensive Skill Training:
-                </span>{' '}
-                Covering both technical and soft skills to create well-rounded
-                professionals.
+                <span className="text-blue-600 font-semibold">Comprehensive Skill Training:</span>{' '}
+                Covering both technical and soft skills to create well-rounded professionals.
               </li>
               <li className="">
-                <span className="text-blue-600 font-semibold">
-                  Modern Tools & Technologies:
-                </span>{' '}
-                Exposure to IT systems, data analytics, and emerging
-                technologies.
+                <span className="text-blue-600 font-semibold">Modern Tools & Technologies:</span>{' '}
+                Exposure to IT systems, data analytics, and emerging technologies.
               </li>
               <li className="">
-                <span className="text-blue-600 font-semibold">
-                  Industry-Relevant Curriculum:
-                </span>{' '}
-                A carefully curated curriculum aligned with current market
-                demands and trends.
+                <span className="text-blue-600 font-semibold">Industry-Relevant Curriculum:</span> A
+                carefully curated curriculum aligned with current market demands and trends.
               </li>
             </ul>
           </div>
@@ -247,50 +203,38 @@ export default function SkillAssistingProgram() {
           </div>
         </section>
         <section className="mt-5 md:mt-10 md:text md:w-[80vw] m-auto">
-          <h4 className="text-3xl font-bold mt-5 text-center ">
-            Why Choose us ?
-          </h4>
+          <h4 className="text-3xl font-bold mt-5 text-center ">Why Choose us ?</h4>
 
           <div className="mt-5">
             <div className="">
               <ul className="list-disc list-inside space-y-5">
                 <li>
-                  With over 13+ years of experience in the EdTech industry, b-
-                  Skilling Pvt Ltd stands as a pioneer in enhancing
-                  employability and preparing students for the future workforce.
+                  With over 13+ years of experience in the EdTech industry, b- Skilling Pvt Ltd
+                  stands as a pioneer in enhancing employability and preparing students for the
+                  future workforce.
                 </li>
                 <li>
-                  <span className="text-primary font-semibold">
-                    Collaboration with 350+
-                  </span>{' '}
-                  colleges across India ensures a wide-reaching impact on
-                  student skill development.
+                  <span className="text-primary font-semibold">Collaboration with 350+</span>{' '}
+                  colleges across India ensures a wide-reaching impact on student skill development.
                 </li>
                 <li>
-                  <span className="text-primary font-semibold">
-                    Partnerships with 500+
-                  </span>{' '}
-                  global companies open doors for valuable industry insights and
-                  opportunities.
+                  <span className="text-primary font-semibold">Partnerships with 500+</span> global
+                  companies open doors for valuable industry insights and opportunities.
                 </li>
                 <li>
                   Trusted by reputed organizations like{' '}
                   <span className="text-primary">
-                    Karnataka Skill Development Corporation, Naan Mudhalvan, and
-                    NASSCOM.
+                    Karnataka Skill Development Corporation, Naan Mudhalvan, and NASSCOM.
                   </span>
                 </li>
                 <li>
-                  Our programs are designed to enhance employability, build
-                  confidence, and bridge the gap between academic knowledge and
-                  real-world industry requirements.
+                  Our programs are designed to enhance employability, build confidence, and bridge
+                  the gap between academic knowledge and real-world industry requirements.
                 </li>
               </ul>
             </div>
           </div>
-          <h2 className="text-3xl font-bold mt-10 text-center">
-            Our Wall of Fame
-          </h2>
+          <h2 className="text-3xl font-bold mt-10 text-center">Our Wall of Fame</h2>
           <div className="mt-4 flex flex-wrap justify-center">
             <div className="rounded-full mt-5 bg-gradient-to-br from-[#fdb06c] to-[#f57c13] w-60 h-60 p-3 flex flex-col items-center justify-center m-auto">
               <h4 className="text-3xl font-extrabold animate-pulse">13+</h4>
@@ -306,15 +250,11 @@ export default function SkillAssistingProgram() {
             </div>
             <div className="rounded-full mt-5 bg-[#FF6B6B] w-60 h-60 p-3 flex flex-col items-center justify-center m-auto">
               <h4 className="text-3xl font-extrabold">500+</h4>
-              <p className="text-lg text-center mt-5">
-                Partnerships with 500+ global companies
-              </p>
+              <p className="text-lg text-center mt-5">Partnerships with 500+ global companies</p>
             </div>
             <div className="rounded-full mt-5 bg-[#2e90c9] w-60 h-60 p-3 flex flex-col items-center justify-center m-auto">
               <h4 className="text-3xl font-extrabold">6000+</h4>
-              <p className="text-lg text-center mt-5">
-                Students Trained So far
-              </p>
+              <p className="text-lg text-center mt-5">Students Trained So far</p>
             </div>
           </div>
         </section>

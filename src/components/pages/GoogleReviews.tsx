@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 'use client';
-import { FaStar } from 'react-icons/fa';
+import { FaPinterest, FaStar, FaYoutube } from 'react-icons/fa';
 import { FaRegStarHalfStroke } from 'react-icons/fa6';
 import { FcGoogle } from 'react-icons/fc';
 
@@ -40,7 +40,7 @@ export default function GoogleReviews() {
           Rate Us on Google
         </a>
       </div>
-      <div className="flex gap-4 flex-wrap mt-5">
+      <div className="grid grid-cols-3 gap-3  mt-5">
         {[
           {
             name: 'Instagram',
@@ -63,15 +63,24 @@ export default function GoogleReviews() {
             link: 'https://twitter.com/b_SkillingIndia',
           },
         ].map((social, idx) => (
-          <a
-            key={idx}
-            href={social.link}
-            target="_blank"
-            className="hover:opacity-75 transition"
-          >
+          <a key={idx} href={social.link} target="_blank" className="hover:opacity-75 transition">
             <img src={social.icon} alt={social.name} className="w-7 h-7" />
           </a>
         ))}
+        <a
+          href={'https://www.youtube.com/@bSkillingIndia'}
+          target="_blank"
+          className="hover:opacity-75 transition"
+        >
+          <FaYoutube size={29} className="text-red-600" />
+        </a>
+        <a
+          href={'https://in.pinterest.com/bskillingdigital'}
+          target="_blank"
+          className="hover:opacity-75 transition"
+        >
+          <FaPinterest size={22} className="text-red-600" />
+        </a>
       </div>
 
       {/* Address */}
