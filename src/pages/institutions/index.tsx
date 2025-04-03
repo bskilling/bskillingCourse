@@ -52,6 +52,9 @@ import Link from 'next/link';
 import NavbarSection from '@/component/navbar/NavbarSection';
 import { useRouter } from 'next/navigation';
 import LeadForm from '@/components/pages/institution/LeadForm';
+import { useQuery } from '@tanstack/react-query';
+import { ICourse } from '@/component/types/Course.types';
+import axios from 'axios';
 
 const InstitutionHomepage = () => {
   const [activeTab, setActiveTab] = useState('overview');
@@ -262,6 +265,28 @@ const InstitutionHomepage = () => {
       color: 'from-cyan-500 to-blue-600',
     },
   ];
+
+  const backendUrl =
+    process.env.NEXT_PUBLIC_BACKEND_URL ??
+    'https://backendbskilling-production-20ff.up.railway.app';
+
+  const [isPublished, setIsPublished] = useState<boolean | undefined>(true);
+  const { data, isLoading } = useQuery<{ courses: ICourse[] }>({
+    queryKey: ['courses', isPublished],
+    queryFn: async () => {
+      const res = await axios.get(backendUrl + '/api/courses', {
+        params: {
+          limit: 100,
+          page: 1,
+          category: undefined,
+          isPublished: true,
+          type: undefined,
+        },
+      });
+      return res.data.data;
+    },
+    staleTime: 1000 * 60 * 5,
+  });
 
   const router = useRouter();
 
