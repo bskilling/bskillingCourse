@@ -1,12 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import Image from 'next/image';
-import { Navigation, Pagination, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
-import { EffectFade } from 'swiper';
 interface slider {
   text1: string;
   image: string;

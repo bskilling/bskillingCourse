@@ -4,7 +4,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import { Pagination, Navigation } from 'swiper';
 import { FaQuoteLeft, FaStar } from 'react-icons/fa';
 
 const testimonials = [
@@ -48,7 +47,6 @@ const Testimonial = () => {
         </p>
         <div className="mt-10">
           <Swiper
-            modules={[Pagination, Navigation]}
             spaceBetween={20}
             breakpoints={{
               640: { slidesPerView: 1 },
