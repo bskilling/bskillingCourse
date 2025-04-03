@@ -24,13 +24,10 @@ const Experience = () => {
             alt="Personalised Learning"
             className="w-14 h-14 mb-4 rounded-lg"
           />
-          <h2 className="text-2xl font-bold mb-2 text-gray-900">
-            Personalised Learning
-          </h2>
+          <h2 className="text-2xl font-bold mb-2 text-gray-900">Personalised Learning</h2>
           <p className="text-base text-gray-600 text-center md:text-lg">
-            BSkilling prioritises quality education tailored to meet individual
-            needs. Small batches ensure personalised attention and a more
-            interactive learning experience.
+            BSkilling prioritises quality education tailored to meet individual needs. Small batches
+            ensure personalised attention and a more interactive learning experience.
           </p>
         </div>
 
@@ -41,13 +38,11 @@ const Experience = () => {
             alt="Easily Accessible Courses"
             className="w-14 h-14 mb-4 rounded-lg"
           />
-          <h2 className="text-2xl font-bold mb-2 text-gray-900">
-            Easily Accessible Courses
-          </h2>
+          <h2 className="text-2xl font-bold mb-2 text-gray-900">Easily Accessible Courses</h2>
           <p className="text-base text-gray-600 text-center md:text-lg">
-            Learning should be accessible to everyone. Our online courses
-            provide excellent opportunities for career growth, whether
-            you&apos;re a beginner or an experienced professional.
+            Learning should be accessible to everyone. Our online courses provide excellent
+            opportunities for career growth, whether you&apos;re a beginner or an experienced
+            professional.
           </p>
         </div>
       </div>
@@ -67,8 +62,8 @@ const Experience = () => {
             Convenient Learning with LMS Access
           </h2>
           <p className="text-base text-gray-600 text-center md:text-lg">
-            Our LMS platform allows you to access course materials anytime,
-            anywhere. Integrate your studies into your busy schedule with ease.
+            Our LMS platform allows you to access course materials anytime, anywhere. Integrate your
+            studies into your busy schedule with ease.
           </p>
         </div>
 
@@ -79,13 +74,10 @@ const Experience = () => {
             alt="Mentor Support"
             className="w-14 h-14 mb-4 rounded-lg"
           />
-          <h2 className="text-2xl font-bold mb-2 text-gray-900">
-            Projects and Mentor Support
-          </h2>
+          <h2 className="text-2xl font-bold mb-2 text-gray-900">Projects and Mentor Support</h2>
           <p className="text-base text-gray-600 text-center md:text-lg">
-            Engage in project-based learning with guidance from experienced
-            mentors. Gain real-world experience and apply your skills
-            confidently.
+            Engage in project-based learning with guidance from experienced mentors. Gain real-world
+            experience and apply your skills confidently.
           </p>
         </div>
       </div>
@@ -98,15 +90,9 @@ const Experience = () => {
 
       {isPopupOpen && (
         <>
-          <div
-            className="fixed inset-0 z-40 bg-black opacity-50"
-            onClick={handleClosePopup}
-          ></div>
+          <div className="fixed inset-0 z-40 bg-black opacity-50" onClick={handleClosePopup}></div>
           <div className="fixed inset-0 z-50 flex items-center justify-center">
-            <PopupForm
-              handleClosePopup={handleClosePopup}
-              title="Get In Touch with Bskilling"
-            />
+            <PopupForm handleClosePopup={handleClosePopup} title="Get In Touch with Bskilling" />
           </div>
         </>
       )}

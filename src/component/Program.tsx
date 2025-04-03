@@ -28,14 +28,11 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import CourseCard from './courses/CourseCard';
 const backendUrl =
-  process.env.NEXT_PUBLIC_BACKEND_URL ??
-  'https://backendbskilling-production-20ff.up.railway.app';
+  process.env.NEXT_PUBLIC_BACKEND_URL ?? 'https://backendbskilling-production-20ff.up.railway.app';
 export default function Program() {
   const selectedType = 'b2c';
   const [show, setShow] = useState(false);
-  const [scategory, setScategory] = useState<
-    ICategories['categories'][number] | null
-  >(null);
+  const [scategory, setScategory] = useState<ICategories['categories'][number] | null>(null);
   const categoryQuery = useQuery<ICategories>({
     queryKey: ['categories-b2c'],
     queryFn: async () => {
@@ -73,24 +70,19 @@ export default function Program() {
   return (
     <div className="p-8 w-[80vw] mx-auto">
       {/* Categories */}
-      <h1 className="text-4xl font-bold mb-2 ">
-        Explore Our Course Categories
-      </h1>
-      <p className="text-gray-500 ">
-        Find the perfect learning path tailored to your goals
-      </p>
+      <h1 className="text-4xl font-bold mb-2 ">Explore Our Course Categories</h1>
+      <p className="text-gray-500 ">Find the perfect learning path tailored to your goals</p>
       <div className="flex flex-wrap gap-4 mt-5">
         <div
           className={cn(
             'flex items-center justify-center px-4 hover:cursor-pointer py-3 border border-blue-500 rounded-lg shadow-md bg-white text-blue-700 font-medium transition-all hover:bg-blue-500 hover:text-white hover:shadow-lg hover:-translate-y-1',
-            !scategory?._id &&
-              'bg-blue-600 text-white border-blue-700 shadow-lg scale-[1.02]'
+            !scategory?._id && 'bg-blue-600 text-white border-blue-700 shadow-lg scale-[1.02]'
           )}
           onClick={() => setScategory(null)}
         >
           <p className="text-sm text-center">All</p>
         </div>
-        {categoryQuery?.data?.categories?.map((category) => (
+        {categoryQuery?.data?.categories?.map(category => (
           <div
             key={category.slug}
             className={cn(
@@ -107,9 +99,7 @@ export default function Program() {
 
       {/* Courses */}
       <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 mt-12">
-        {data?.courses.map((course) => (
-          <CourseCard key={course._id} course={course} />
-        ))}
+        {data?.courses.map(course => <CourseCard key={course._id} course={course} />)}
       </div>
     </div>
   );

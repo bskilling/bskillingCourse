@@ -26,12 +26,8 @@ const OtherCourse: React.FC<OtherCourseProps> = ({ courseDetails }) => {
 
       const jsonData = response.data;
       const ListOfCoursesData = Object.values(jsonData.courses) as Course[][];
-      const flattenedData: Course[] = ListOfCoursesData.flatMap(
-        (innerArray) => innerArray
-      );
-      const filteredCourses = flattenedData.filter(
-        (course) => course?.category === Relatedcategory
-      );
+      const flattenedData: Course[] = ListOfCoursesData.flatMap(innerArray => innerArray);
+      const filteredCourses = flattenedData.filter(course => course?.category === Relatedcategory);
       setCourses(filteredCourses);
     } catch (error) {
       console.error('Error fetching API:', error);
@@ -62,7 +58,7 @@ const OtherCourse: React.FC<OtherCourseProps> = ({ courseDetails }) => {
       )}
       {courses.length > 0 ? (
         <div className="flex flex-wrap justify-center gap-6">
-          {courses.slice(0, 5).map((course) => (
+          {courses.slice(0, 5).map(course => (
             <div
               key={course._id}
               className="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 w-[20rem] h-80 flex flex-col"
@@ -90,9 +86,7 @@ const OtherCourse: React.FC<OtherCourseProps> = ({ courseDetails }) => {
           ))}
         </div>
       ) : (
-        <p className="text-center text-gray-500 mt-4">
-          No courses available for this category.
-        </p>
+        <p className="text-center text-gray-500 mt-4">No courses available for this category.</p>
       )}
 
       {courses.length > 0 && (

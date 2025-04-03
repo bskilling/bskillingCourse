@@ -1,5 +1,5 @@
-import React from "react";
-import { FaBullseye, FaRocket } from "react-icons/fa";
+import React from 'react';
+import { FaBullseye, FaRocket } from 'react-icons/fa';
 
 interface OutcomesProps {
   outcomes: string[];
@@ -21,9 +21,7 @@ const Outcomes: React.FC<OutcomesProps> = ({ outcomes }) => {
             className="flex items-center gap-3 p-4 bg-white rounded-xl border border-gray-200 shadow hover:shadow-lg transition-all duration-200 hover:scale-[1.02]"
           >
             <FaBullseye className="text-blue-500 h-5 w-5 drop-shadow-md" />
-            <span className="text-gray-800 text-sm font-medium tracking-tight">
-              {outcome}
-            </span>
+            <span className="text-gray-800 text-sm font-medium tracking-tight">{outcome}</span>
           </div>
         ))}
       </div>

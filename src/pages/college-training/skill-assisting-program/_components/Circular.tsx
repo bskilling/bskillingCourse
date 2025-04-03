@@ -13,7 +13,7 @@ const SVGSpeedometer = ({
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setProgress((prev) => {
+      setProgress(prev => {
         if (prev < targetValue) {
           return prev + 1;
         } else {
@@ -32,14 +32,7 @@ const SVGSpeedometer = ({
 
   return (
     <svg width="200" height="200">
-      <circle
-        cx="100"
-        cy="100"
-        r={radius}
-        fill="transparent"
-        stroke="#e0e0e0"
-        strokeWidth="10"
-      />
+      <circle cx="100" cy="100" r={radius} fill="transparent" stroke="#e0e0e0" strokeWidth="10" />
       <circle
         cx="100"
         cy="100"

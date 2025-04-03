@@ -20,9 +20,7 @@ const leadSchema = z
     name: z.string().min(3, 'Name must be at least 3 characters long'),
     email: z.string().email('Invalid email format'),
     countryCode: z.string().optional(),
-    phoneNumber: z
-      .string()
-      .regex(/^\d{10,15}$/, 'Phone number must be between 10 to 15 digits'),
+    phoneNumber: z.string().regex(/^\d{10,15}$/, 'Phone number must be between 10 to 15 digits'),
     type: z.enum(['b2c', 'b2c', 'b2b', 'b2i', 'general']),
     subcategory: z.enum(['', 'jobs', 'skills']).default('skills').optional(),
     query: z.string().min(10, 'Query must be at least 10 characters long'),
@@ -38,8 +36,7 @@ const leadSchema = z
     if (data.type !== 'b2i' && data.subcategory) {
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
-        message:
-          "Subcategory should only be provided when category is 'institutional'",
+        message: "Subcategory should only be provided when category is 'institutional'",
         path: ['subcategory'],
       });
     }
@@ -88,8 +85,8 @@ const ConsultationForm = () => {
     <div className="max-w-xl mx-auto">
       <form
         onSubmit={handleSubmit(
-          (e) => onSubmit.mutate(e),
-          (err) => console.error(err)
+          e => onSubmit.mutate(e),
+          err => console.error(err)
         )}
         className="space-y-5 p-6 rounded-xl bg-white shadow-lg border border-gray-100"
       >
@@ -111,9 +108,7 @@ const ConsultationForm = () => {
               className="w-full border border-gray-200 rounded-lg px-4 py-2.5 pl-10 focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none"
             />
           </div>
-          {errors.name && (
-            <p className="text-xs text-red-500">{errors.name.message}</p>
-          )}
+          {errors.name && <p className="text-xs text-red-500">{errors.name.message}</p>}
         </div>
 
         {/* Email Field */}
@@ -128,24 +123,19 @@ const ConsultationForm = () => {
               className="w-full border border-gray-200 rounded-lg px-4 py-2.5 pl-10 focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none"
             />
           </div>
-          {errors.email && (
-            <p className="text-xs text-red-500">{errors.email.message}</p>
-          )}
+          {errors.email && <p className="text-xs text-red-500">{errors.email.message}</p>}
         </div>
 
         {/* Phone Number Field */}
         <div className="space-y-1">
           <div className="flex gap-2">
             <div className="w-1/4 relative">
-              <Select
-                defaultValue="+91"
-                onValueChange={(value) => setValue('countryCode', value)}
-              >
+              <Select defaultValue="+91" onValueChange={value => setValue('countryCode', value)}>
                 <SelectTrigger className="border border-gray-200 rounded-lg h-10 focus:ring-1 focus:ring-blue-500 focus:border-blue-500">
                   <SelectValue placeholder="Code" />
                 </SelectTrigger>
                 <SelectContent className="bg-white border border-gray-200">
-                  {countryCodes.map((code) => (
+                  {countryCodes.map(code => (
                     <SelectItem key={code.value} value={code.value}>
                       {code.label}
                     </SelectItem>
@@ -175,9 +165,7 @@ const ConsultationForm = () => {
               <Building className="w-5 h-5 text-blue-500 absolute left-3 top-1/2 transform -translate-y-1/2 z-10" />
               <Select
                 defaultValue=""
-                onValueChange={(value) =>
-                  setValue('subcategory', value as 'jobs' | 'skills')
-                }
+                onValueChange={value => setValue('subcategory', value as 'jobs' | 'skills')}
               >
                 <SelectTrigger className="w-full border border-gray-200 rounded-lg pl-10 h-10 focus:ring-1 focus:ring-blue-500 focus:border-blue-500">
                   <SelectValue placeholder="Select Subcategory" />
@@ -189,9 +177,7 @@ const ConsultationForm = () => {
               </Select>
             </div>
             {errors.subcategory && (
-              <p className="text-xs text-red-500">
-                {errors.subcategory.message}
-              </p>
+              <p className="text-xs text-red-500">{errors.subcategory.message}</p>
             )}
           </div>
         )}
@@ -207,9 +193,7 @@ const ConsultationForm = () => {
               className="w-full border border-gray-200 rounded-lg px-4 py-2.5 pl-10 min-h-24 focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none resize-none"
             />
           </div>
-          {errors.query && (
-            <p className="text-xs text-red-500">{errors.query.message}</p>
-          )}
+          {errors.query && <p className="text-xs text-red-500">{errors.query.message}</p>}
         </div>
 
         {/* Submit Button */}

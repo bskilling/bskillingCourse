@@ -41,8 +41,8 @@ const Footer = () => {
       </div>
 
       {/* Main Footer Content with improved spacing */}
-      <div className="max-w-7xl mx-auto py-14 px-6 sm:px-8 lg:px-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10">
+      <div className="max-w-[85vw] mx-auto py-14 px-6 sm:px-8 lg:px-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-7  gap-10">
           {/* Logo, Reviews and Social Icons with enhanced styling */}
           <div className="lg:col-span-1">
             <Link href={'/'} className="block mb-5">
@@ -61,9 +61,7 @@ const Footer = () => {
 
           {/* Company with enhanced spacing and hover effects */}
           <div className="lg:col-span-1">
-            <h5 className="text-lg font-semibold mb-5 text-gray-800">
-              Company
-            </h5>
+            <h5 className="text-lg font-semibold mb-5 text-gray-800">Company</h5>
             <ul className="space-y-3">
               {[
                 'About Us',
@@ -98,9 +96,7 @@ const Footer = () => {
 
           {/* Collaborate with enhanced styling */}
           <div className="lg:col-span-1">
-            <h5 className="text-lg font-semibold mb-5 text-gray-800">
-              Collaborate
-            </h5>
+            <h5 className="text-lg font-semibold mb-5 text-gray-800">Collaborate</h5>
             <ul className="space-y-3">
               <li
                 onClick={handleOpenPopup}
@@ -114,11 +110,7 @@ const Footer = () => {
                   <PopupForm handleClosePopup={handleClosePopup} title="" />
                 </div>
               )}
-              {[
-                'Corporate Training',
-                'Government Programs',
-                'Institutions',
-              ].map((item, idx) => (
+              {['Corporate Training', 'Government Programs', 'Institutions'].map((item, idx) => (
                 <li key={idx}>
                   <Link
                     href={`/${item.toLowerCase().replace(/\s+/g, '-')}`}
@@ -134,9 +126,7 @@ const Footer = () => {
 
           {/* Programs with enhanced styling */}
           <div className="lg:col-span-1">
-            <h5 className="text-lg font-semibold mb-5 text-gray-800">
-              Programs
-            </h5>
+            <h5 className="text-lg font-semibold mb-5 text-gray-800">Programs</h5>
             <ul className="space-y-3">
               {[
                 { name: 'Gen AI', id: '66b1cb24f86931fdf7712eb0' },
@@ -161,9 +151,7 @@ const Footer = () => {
 
           {/* Support - Contact Information with enhanced styling */}
           <div className="lg:col-span-2">
-            <h5 className="text-lg font-semibold mb-5 text-gray-800">
-              Support
-            </h5>
+            <h5 className="text-lg font-semibold mb-5 text-gray-800">Support</h5>
             <ul className="space-y-3.5">
               <li className="flex items-start gap-3 group">
                 <div className="bg-blue-50 p-2 rounded-full text-blue-600 mt-0.5 flex-shrink-0 group-hover:bg-blue-100  duration-300">
@@ -173,7 +161,7 @@ const Footer = () => {
                   <span className="text-gray-600 text-sm">Email: </span>
                   <a
                     href="mailto:support@bskilling.com"
-                    className="text-blue-600 hover:underline text-sm font-medium"
+                    className="text-blue-600  text-sm font-medium"
                   >
                     support@bskilling.com
                   </a>
@@ -185,10 +173,7 @@ const Footer = () => {
                 </div>
                 <div>
                   <span className="text-gray-600 text-sm">Phone: </span>
-                  <a
-                    href="tel:+919845348601"
-                    className="text-blue-600 hover:underline text-sm font-medium"
-                  >
+                  <a href="tel:+919845348601" className="text-blue-600  text-sm font-medium">
                     +91-98453 48601
                   </a>
                 </div>
@@ -198,12 +183,10 @@ const Footer = () => {
                   <FaEnvelope className="w-3.5 h-3.5" />
                 </div>
                 <div>
-                  <span className="text-gray-600 text-sm">
-                    Grievance Officer:{' '}
-                  </span>
+                  <span className="text-gray-600 text-sm">Grievance Officer: </span>
                   <a
                     href="mailto:grievanceofficer@bskilling.com"
-                    className="text-blue-600 hover:underline text-sm font-medium"
+                    className="text-blue-600  text-sm font-medium"
                   >
                     grievanceofficer@bskilling.com
                   </a>
@@ -215,21 +198,17 @@ const Footer = () => {
                 </div>
                 <div>
                   <span className="text-gray-600 text-sm">Support: </span>
-                  <a
-                    href="tel:+918951923627"
-                    className="text-blue-600 hover:underline text-sm font-medium"
-                  >
+                  <a href="tel:+918951923627" className="text-blue-600  text-sm font-medium">
                     +91 89519 23627
                   </a>
                 </div>
               </li>
             </ul>
-
+          </div>
+          <div>
             {/* Mobile Apps with enhanced styling */}
-            <h5 className="text-lg font-semibold mt-8 mb-5 text-gray-800">
-              Mobile Apps
-            </h5>
-            <div className="flex gap-4">
+            <h5 className="text-lg font-semibold  mb-5 text-gray-800">Mobile Apps</h5>
+            <div className="flex flex-col gap-4">
               <Link
                 href="https://apps.apple.com/eg/app/bskilling/id6445943298"
                 target="_blank"
@@ -259,17 +238,16 @@ const Footer = () => {
         {/* Address and Copyright with enhanced styling */}
         <div className="mt-12 pt-10 border-t border-gray-200">
           <div className="flex flex-col md:flex-row items-center justify-between">
-            <div className="flex items-start mb-5 md:mb-0 group">
+            <div className="flex items-center mb-5 md:mb-0 group">
               <div className="bg-blue-50 p-2 rounded-full text-blue-600 mt-0.5 flex-shrink-0 group-hover:bg-blue-100  duration-300">
                 <FaMapMarkerAlt className="w-4 h-4" />
               </div>
-              <p className="text-sm text-gray-600 ml-3 max-w-xl leading-relaxed">
-                B-Block 4th Floor, COMMERCIAL BUILDING, UMA SREE DREAM WORLD,
-                Unit -2, Hosur Rd, Kudlu Gate, GB Palya, Bengaluru, Karnataka
+              <p className="text-sm text-gray-600 ml-3  leading-relaxed">
+                UMA SREE DREAM WORLD, B-Block 4th Floor, Kudlu Gate, Hosur Rd, Bengaluru, Karnataka
                 560068
               </p>
             </div>
-            <p className="text-sm text-gray-500 font-medium">
+            <p className="text-sm text-gray-500 font-medium max-w-xl flex justify-end">
               &copy; {new Date().getFullYear()} BSkilling. All rights reserved.
             </p>
           </div>

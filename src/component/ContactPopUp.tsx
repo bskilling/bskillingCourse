@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
-import "react-phone-number-input/style.css";
-import PhoneInput from "react-phone-number-input";
+import React, { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { IoIosArrowUp, IoIosArrowDown } from 'react-icons/io';
+import 'react-phone-number-input/style.css';
+import PhoneInput from 'react-phone-number-input';
 interface SubmitData {
   phone: number;
   email: string;
@@ -16,27 +16,23 @@ const ContactPopUp = () => {
     reset,
     watch,
   } = useForm({
-    mode: "onChange",
+    mode: 'onChange',
   });
   const isButtonVisble =
-    watch("message") &&
-    watch("email") &&
-    watch("phone") &&
-    watch("location") &&
-    watch("name");
+    watch('message') && watch('email') && watch('phone') && watch('location') && watch('name');
 
-  const submit = handleSubmit(async (data) => {
+  const submit = handleSubmit(async data => {
     const { email, phone, message, location, name } = data;
 
     try {
       const response = await fetch(
-        "https://54txkspp2molgb6p7mgzad2scu0niflz.lambda-url.ap-south-1.on.aws/",
+        'https://54txkspp2molgb6p7mgzad2scu0niflz.lambda-url.ap-south-1.on.aws/',
 
         {
-          method: "POST",
+          method: 'POST',
           headers: {},
           body: JSON.stringify({
-            type: "contact",
+            type: 'contact',
             message,
             email,
             phone,
@@ -47,19 +43,19 @@ const ContactPopUp = () => {
       );
       if (response.status === 200) {
         reset({
-          message: "",
-          phone: "",
-          email: "",
-          location: "",
-          name: "",
+          message: '',
+          phone: '',
+          email: '',
+          location: '',
+          name: '',
         });
 
         setMessage(true);
       } else {
-        throw Error("Error while sending message");
+        throw Error('Error while sending message');
       }
     } catch (error) {
-      alert("Some thing went wrong");
+      alert('Some thing went wrong');
     }
   });
   useEffect(() => {
@@ -91,7 +87,7 @@ const ContactPopUp = () => {
   }, []);
 
   const contactDetailsVisible = () => {
-    setContactVisible((prev) => !prev);
+    setContactVisible(prev => !prev);
   };
   const clickOnDropaQuery = () => {
     setChatandQMenuVisible(true);
@@ -102,10 +98,10 @@ const ContactPopUp = () => {
       <div
         className={`fixed bottom-0 right-0 transition-transform ease-in-out duration-1000 z-[1000] rounded-xl shadow-lg min-h-[300px] min-w-[300px] bg-white transform ${
           contactVisible
-            ? "translate-y-0"
+            ? 'translate-y-0'
             : chatandQMenuVisible
-            ? "translate-y-[360px] md:translate-y-[395px]"
-            : "translate-y-[330px]"
+              ? 'translate-y-[360px] md:translate-y-[395px]'
+              : 'translate-y-[330px]'
         }`}
       >
         {chatandQMenuVisible === false ? (
@@ -139,24 +135,17 @@ const ContactPopUp = () => {
         {chatandQMenuVisible === false ? (
           <div className="px-5 text-sm py-8 text-center mt-1">
             <p>
-              Hi. How can we help you today? <br /> Please select one of the
-              below options.
+              Hi. How can we help you today? <br /> Please select one of the below options.
             </p>
 
             <div className="flex mb-4 mt-10 justify-center">
-              {" "}
-              <a
-                href="http://chat.bskilling.com/chat"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <button className="w-fit bg-buttonBlue text-white  px-4 py-2">
-                  Chat with us
-                </button>
+              {' '}
+              <a href="http://chat.bskilling.com/chat" target="_blank" rel="noreferrer">
+                <button className="w-fit bg-buttonBlue text-white  px-4 py-2">Chat with us</button>
               </a>
             </div>
             <div className="flex my-4 justify-center">
-              {" "}
+              {' '}
               <button
                 onClick={clickOnDropaQuery}
                 className="w-fit bg-buttonBlue text-white  px-4 py-2"
@@ -165,8 +154,7 @@ const ContactPopUp = () => {
               </button>
             </div>
             <p className="mt-8 text-xs">
-              Note: Chat support is available only between <br /> Monday and
-              Friday, 10 am to 6 pm.
+              Note: Chat support is available only between <br /> Monday and Friday, 10 am to 6 pm.
             </p>
           </div>
         ) : (
@@ -176,18 +164,14 @@ const ContactPopUp = () => {
                 type="text"
                 className=" block text-base  w-full lg:h-[35px] placeholder:text-sm  px-2 border border-buttonBlue    focus:border-green focus:ring focus:ring-green focus:ring-opacity-50"
                 placeholder="Your Name*"
-                {...register("name", {
+                {...register('name', {
                   required: true,
                 })}
               />
               <label
-                className={`text-red-600   text-xs py-1 ${
-                  errors.name ? "visible" : "invisible"
-                }`}
+                className={`text-red-600   text-xs py-1 ${errors.name ? 'visible' : 'invisible'}`}
               >
-                {errors.phone?.type == "required"
-                  ? "This field required"
-                  : "This field required"}
+                {errors.phone?.type == 'required' ? 'This field required' : 'This field required'}
               </label>
             </div>
 
@@ -206,20 +190,18 @@ const ContactPopUp = () => {
                 type="number"
                 className=" block  w-full lg:h-[35px] placeholder:text-sm  px-2 border border-buttonBlue    focus:border-green focus:ring focus:ring-green focus:ring-opacity-50"
                 placeholder="Your Mobile Number*"
-                {...register("phone", {
+                {...register('phone', {
                   required: true,
                   minLength: 10,
                   maxLength: 10,
                 })}
               />
               <label
-                className={`text-red-600   text-xs py-1 ${
-                  errors.phone ? "visible" : "invisible"
-                }`}
+                className={`text-red-600   text-xs py-1 ${errors.phone ? 'visible' : 'invisible'}`}
               >
-                {errors.phone?.type == "required"
-                  ? "This field required"
-                  : "Please enter a valid phone number"}
+                {errors.phone?.type == 'required'
+                  ? 'This field required'
+                  : 'Please enter a valid phone number'}
               </label>
             </div>
 
@@ -229,16 +211,14 @@ const ContactPopUp = () => {
                 type="text"
                 className="block  w-full lg:h-[35px] placeholder:text-sm  px-2 border-buttonBlue  border border-green  focus:border-green focus:ring focus:ring-green focus:ring-opacity-50"
                 placeholder="Your Email*"
-                {...register("email", {
+                {...register('email', {
                   required: true,
                   pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
                 })}
               />
 
               <label
-                className={`text-red-600   text-xs py-1 ${
-                  errors.email ? "visible" : "invisible"
-                }`}
+                className={`text-red-600   text-xs py-1 ${errors.email ? 'visible' : 'invisible'}`}
               >
                 Please enter a valid email address
               </label>
@@ -249,14 +229,14 @@ const ContactPopUp = () => {
                 type="text"
                 className="block  w-full lg:h-[35px] placeholder:text-sm  px-2 border-buttonBlue  border border-green  focus:border-green focus:ring focus:ring-green focus:ring-opacity-50"
                 placeholder="Your Location*"
-                {...register("location", {
+                {...register('location', {
                   required: true,
                 })}
               />
 
               <label
                 className={`text-red-600   text-xs py-1 ${
-                  errors.location ? "visible" : "invisible"
+                  errors.location ? 'visible' : 'invisible'
                 }`}
               >
                 This field is required
@@ -267,14 +247,14 @@ const ContactPopUp = () => {
                 type="text"
                 className="block  w-full lg:h-[80px] placeholder:text-sm  px-2 border border-buttonBlue  focus:border-green focus:ring focus:ring-green focus:ring-opacity-50"
                 placeholder="Type Your Query Here*"
-                {...register("message", {
+                {...register('message', {
                   required: true,
                 })}
               />
 
               <label
                 className={`text-red-600   text-xs py-1 ${
-                  errors.message ? "visible" : "invisible"
+                  errors.message ? 'visible' : 'invisible'
                 }`}
               >
                 This field is required
@@ -282,11 +262,11 @@ const ContactPopUp = () => {
             </div>
 
             <div>
-              <input type="checkbox" />{" "}
+              <input type="checkbox" />{' '}
               <span className="text-xs">
-                I authorise Sandip University and its representatives to Call,
-                SMS, Email or WhatsApp me about its programmes and offers. This
-                consent overrides any registration for DNC / NDNC.
+                I authorise Sandip University and its representatives to Call, SMS, Email or
+                WhatsApp me about its programmes and offers. This consent overrides any registration
+                for DNC / NDNC.
               </span>
             </div>
 
@@ -300,7 +280,7 @@ const ContactPopUp = () => {
                   onClick={submit}
                   disabled={!isButtonVisble}
                   className={`text-white  transition duration-500 hover:scale-105 ease-out  placeholder:text-sm bg-buttonBlue hover:bg-buttonBlue py-2 focus:ring-1 focus:outline-none focus:ring-buttonBlue font-medium  text-sm px-4   ${
-                    isButtonVisble ? "opacity-100" : "opacity-50 "
+                    isButtonVisble ? 'opacity-100' : 'opacity-50 '
                   }`}
                 >
                   Submit Query

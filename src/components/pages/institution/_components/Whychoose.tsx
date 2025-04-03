@@ -22,10 +22,7 @@ const WhyJoinSection = ({ whyJoin }: Props) => {
     return null;
   }
   return (
-    <section
-      id="why-join"
-      className="py-20 px-6 bg-gradient-to-b from-gray-100 to-gray-50"
-    >
+    <section id="why-join" className="py-20 px-6 bg-gradient-to-b from-gray-100 to-gray-50">
       <div className="w-full mx-auto">
         <h2 className="text-4xl font-bold text-center mb-10 text-gray-900">
           🚀 Why Join This Program?

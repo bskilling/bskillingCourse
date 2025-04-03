@@ -124,16 +124,13 @@ const InstitutionSlider = () => {
               </div>
 
               {/* Content */}
-              <LucideGraduationCap
-                size={56}
-                className="mb-4 text-white drop-shadow-lg"
-              />
+              <LucideGraduationCap size={56} className="mb-4 text-white drop-shadow-lg" />
               <h1 className="2xl:text-5xl text-3xl font-extrabold drop-shadow-md">
                 Empowering Institutions
               </h1>
               <p className="md:text-lg text-sm text-white/90 mt-3 max-w-2xl drop-shadow-sm">
-                We help institutions enhance student skills and provide job
-                assistance opportunities.
+                We help institutions enhance student skills and provide job assistance
+                opportunities.
               </p>
             </div>
           </CarouselItem>
@@ -189,16 +186,13 @@ const InstitutionSlider = () => {
               </div>
 
               {/* Content */}
-              <LucideBrainCircuit
-                size={56}
-                className="mb-4 text-white drop-shadow-lg"
-              />
+              <LucideBrainCircuit size={56} className="mb-4 text-white drop-shadow-lg" />
               <h1 className="2xl:text-5xl text-3xl font-extrabold drop-shadow-md">
                 Skill Development Programs
               </h1>
               <p className="2xl:text-lg text-sm text-white/90 mt-3 max-w-2xl drop-shadow-sm">
-                Build industry-ready skills through courses, projects, and
-                mentorship to excel in your career.
+                Build industry-ready skills through courses, projects, and mentorship to excel in
+                your career.
               </p>
             </div>
           </CarouselItem>
@@ -242,8 +236,7 @@ const InstitutionSlider = () => {
                 Career & Jobs Assistance
               </h1>
               <p className="2xl:text-lg text-sm  text-white/90 mt-3 max-w-2xl drop-shadow-sm">
-                Gain access to top recruiters and job opportunities to start
-                your dream career.
+                Gain access to top recruiters and job opportunities to start your dream career.
               </p>
             </div>
           </CarouselItem>

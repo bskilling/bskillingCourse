@@ -1,12 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import {
-  AwardIcon,
-  BriefcaseIcon,
-  CheckCircle,
-  LightbulbIcon,
-  StarIcon,
-} from 'lucide-react';
+import { AwardIcon, BriefcaseIcon, CheckCircle, LightbulbIcon, StarIcon } from 'lucide-react';
 
 interface Tool {
   logo: {
@@ -124,9 +118,7 @@ const CourseResources: React.FC<CourseResourcesProps> = ({ skills, tools }) => {
         <div className="w-full">
           <div className="flex items-center space-x-3 mb-8">
             <div className="w-1.5 h-8 bg-blue-600 rounded-full"></div>
-            <h2 className="text-2xl font-bold text-gray-800">
-              Industry Tools & Technologies
-            </h2>
+            <h2 className="text-2xl font-bold text-gray-800">Industry Tools & Technologies</h2>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5">

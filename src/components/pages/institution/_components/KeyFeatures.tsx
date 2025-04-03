@@ -1,10 +1,5 @@
 import { IoIosCheckmarkCircle } from 'react-icons/io';
-import {
-  FaBookOpen,
-  FaChalkboardTeacher,
-  FaLaptopCode,
-  FaGraduationCap,
-} from 'react-icons/fa';
+import { FaBookOpen, FaChalkboardTeacher, FaLaptopCode, FaGraduationCap } from 'react-icons/fa';
 
 const icons = [FaBookOpen, FaChalkboardTeacher, FaLaptopCode, FaGraduationCap];
 

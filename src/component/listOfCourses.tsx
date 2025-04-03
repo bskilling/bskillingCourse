@@ -101,7 +101,7 @@ const ListOfCourses: React.FC<TabProps> = ({ data, CoursesCategoryData }) => {
     if (value === '') {
       setDropSearchData([]);
     } else {
-      const filteredData = fetchSearchData.filter((course) =>
+      const filteredData = fetchSearchData.filter(course =>
         course.CourseName.toLowerCase().includes(value.toLowerCase())
       );
 
@@ -112,7 +112,7 @@ const ListOfCourses: React.FC<TabProps> = ({ data, CoursesCategoryData }) => {
     if (event.key === 'Enter') {
       setLoadingVisible(true);
       setTimeout(() => {
-        const filteredData = fetchSearchData.filter((course) =>
+        const filteredData = fetchSearchData.filter(course =>
           course.CourseName.toLowerCase().includes(inputValue.toLowerCase())
         );
         setTabVisible(false);
@@ -130,7 +130,7 @@ const ListOfCourses: React.FC<TabProps> = ({ data, CoursesCategoryData }) => {
     } else {
       setLoadingVisible(true);
       setTimeout(() => {
-        const filteredData = fetchSearchData.filter((course) =>
+        const filteredData = fetchSearchData.filter(course =>
           course.CourseName.toLowerCase().includes(inputValue.toLowerCase())
         );
         setTabVisible(false);
@@ -180,14 +180,10 @@ const ListOfCourses: React.FC<TabProps> = ({ data, CoursesCategoryData }) => {
   return (
     <div className="pt-[50px] ">
       <div className="md:justify-center md:mx-auto">
-        <p className="font-bold font-SourceSans text-xl text-center ">
-          Trending Courses
-        </p>
+        <p className="font-bold font-SourceSans text-xl text-center ">Trending Courses</p>
       </div>
       {apiEro === true ? (
-        <div className="text-center mt-12 text-lg font-semibold">
-          {errorMessage}
-        </div>
+        <div className="text-center mt-12 text-lg font-semibold">{errorMessage}</div>
       ) : (
         ''
       )}
@@ -201,7 +197,7 @@ const ListOfCourses: React.FC<TabProps> = ({ data, CoursesCategoryData }) => {
               id="tabs"
               className="block w-full py-2 pl-5 pr-10 text-base leading-6 text-black hover:text-black bg-white border-[1px] border-buttonBlue rounded-md focus:border-buttonBlue focus:ring-buttonBlue sm:text-sm sm:leading-5"
               value={buttonIndex}
-              onChange={(event) => TabButtonClick(parseInt(event.target.value))}
+              onChange={event => TabButtonClick(parseInt(event.target.value))}
             >
               {data.map((categoryName, index) => (
                 <option key={categoryName + index} value={index}>
@@ -238,9 +234,7 @@ const ListOfCourses: React.FC<TabProps> = ({ data, CoursesCategoryData }) => {
                   <button
                     type="button"
                     className="px-4 pb-1 font-semibold"
-                    onClick={() =>
-                      setIsDropdownOpenInListCrs(!isDropdownOpenInListCrs)
-                    }
+                    onClick={() => setIsDropdownOpenInListCrs(!isDropdownOpenInListCrs)}
                     aria-haspopup="true"
                     aria-expanded={isDropdownOpenInListCrs}
                   >
@@ -287,15 +281,13 @@ const ListOfCourses: React.FC<TabProps> = ({ data, CoursesCategoryData }) => {
           className="py-10 md:container  md:mx-auto "
         >
           <div className="grid grid-cols-1  md:p-0 p-5 md:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4   gap-4 w-full">
-            {CoursesCategoryData[buttonIndex]
-              ?.slice(0, 4)
-              .map((data, index) => {
-                return (
-                  <>
-                    <CourseCard key={index} data={data} />
-                  </>
-                );
-              })}
+            {CoursesCategoryData[buttonIndex]?.slice(0, 4).map((data, index) => {
+              return (
+                <>
+                  <CourseCard key={index} data={data} />
+                </>
+              );
+            })}
           </div>
         </section>
       </section>

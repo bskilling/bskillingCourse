@@ -60,8 +60,7 @@ export default function SkillDevelopmentPrograms() {
     {
       icon: <Code className="h-6 w-6" />,
       title: 'Technical Skills',
-      description:
-        'Master programming, data science, and other technical competencies',
+      description: 'Master programming, data science, and other technical competencies',
     },
     {
       icon: <Users className="h-6 w-6" />,
@@ -93,9 +92,7 @@ export default function SkillDevelopmentPrograms() {
   return (
     <>
       <Head>
-        <title>
-          Skill Development Programs | Accelerate Your Career Growth
-        </title>
+        <title>Skill Development Programs | Accelerate Your Career Growth</title>
         <meta
           name="description"
           content="Transform your career with our cutting-edge Skill Development Programs. Build industry-relevant technical skills through expert-led courses, hands-on projects, and personalized mentorship."
@@ -109,10 +106,7 @@ export default function SkillDevelopmentPrograms() {
         <meta charSet="UTF-8" />
 
         {/* Canonical URL */}
-        <link
-          rel="canonical"
-          href="https://yourwebsite.com/skill-development-programs"
-        />
+        <link rel="canonical" href="https://yourwebsite.com/skill-development-programs" />
 
         {/* Open Graph / Facebook */}
         <meta
@@ -124,10 +118,7 @@ export default function SkillDevelopmentPrograms() {
           content="Transform your career with our cutting-edge Skill Development Programs. Build industry-relevant technical skills through expert-led courses, hands-on projects, and personalized mentorship."
         />
         <meta property="og:type" content="website" />
-        <meta
-          property="og:url"
-          content="https://yourwebsite.com/skill-development-programs"
-        />
+        <meta property="og:url" content="https://yourwebsite.com/skill-development-programs" />
         <meta
           property="og:image"
           content="https://yourwebsite.com/images/skill-development-banner.jpg"
@@ -226,9 +217,7 @@ export default function SkillDevelopmentPrograms() {
             >
               <div className="inline-flex items-center px-4 py-2 rounded-full bg-indigo-500/20 border border-indigo-500/30 text-indigo-200 mb-4">
                 <Rocket className="h-4 w-4 mr-2" />
-                <span className="text-sm font-medium">
-                  Future-Ready Education
-                </span>
+                <span className="text-sm font-medium">Future-Ready Education</span>
               </div>
 
               <h1 className="text-4xl lg:text-6xl font-bold text-white tracking-tight leading-tight">
@@ -239,9 +228,8 @@ export default function SkillDevelopmentPrograms() {
               </h1>
 
               <p className="text-lg lg:text-xl text-slate-200 max-w-2xl">
-                Build industry-ready skills through expert-led courses, hands-on
-                projects, and personalized mentorship to excel in today&apos;s
-                competitive job market.
+                Build industry-ready skills through expert-led courses, hands-on projects, and
+                personalized mentorship to excel in today&apos;s competitive job market.
               </p>
             </motion.div>
             <div className=" flex justify-end ">
@@ -270,9 +258,8 @@ export default function SkillDevelopmentPrograms() {
               What Makes Our Program Different
             </h2>
             <p className="text-lg text-slate-600">
-              Our curriculum is continuously updated to reflect the latest
-              industry trends and technologies, ensuring you stay ahead in the
-              rapidly evolving job market.
+              Our curriculum is continuously updated to reflect the latest industry trends and
+              technologies, ensuring you stay ahead in the rapidly evolving job market.
             </p>
           </motion.div>
 
@@ -291,9 +278,7 @@ export default function SkillDevelopmentPrograms() {
                 <div className="w-12 h-12 rounded-lg bg-indigo-100 flex items-center justify-center text-indigo-600 mb-4">
                   {feature.icon}
                 </div>
-                <h3 className="text-xl font-semibold text-slate-900 mb-2">
-                  {feature.title}
-                </h3>
+                <h3 className="text-xl font-semibold text-slate-900 mb-2">{feature.title}</h3>
                 <p className="text-slate-600">{feature.description}</p>
               </motion.div>
             ))}
@@ -364,15 +349,13 @@ export default function SkillDevelopmentPrograms() {
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               <h2 className="text-3xl lg:text-4xl font-bold text-slate-900">
-                Empowering Students with{' '}
-                <span className="text-indigo-600">In-Demand Skills</span>
+                Empowering Students with <span className="text-indigo-600">In-Demand Skills</span>
               </h2>
 
               <p className="text-lg text-slate-700">
-                The Skill Development Program bridges the gap between academic
-                learning and industry requirements. Our comprehensive training
-                combines theoretical knowledge with practical application,
-                preparing you for real-world challenges.
+                The Skill Development Program bridges the gap between academic learning and industry
+                requirements. Our comprehensive training combines theoretical knowledge with
+                practical application, preparing you for real-world challenges.
               </p>
 
               <div className="space-y-4">
@@ -412,9 +395,7 @@ export default function SkillDevelopmentPrograms() {
                       </svg>
                     </div>
                     <div>
-                      <h4 className="font-semibold text-slate-900">
-                        {item.title}
-                      </h4>
+                      <h4 className="font-semibold text-slate-900">{item.title}</h4>
                       <p className="text-slate-600">{item.description}</p>
                     </div>
                   </div>
@@ -440,21 +421,16 @@ export default function SkillDevelopmentPrograms() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl lg:text-4xl font-bold">
-              Ready to Transform Your Career?
-            </h2>
+            <h2 className="text-3xl lg:text-4xl font-bold">Ready to Transform Your Career?</h2>
             <p className="text-lg text-indigo-200">
-              Join thousands of successful professionals who have accelerated
-              their careers through our skill development programs.
+              Join thousands of successful professionals who have accelerated their careers through
+              our skill development programs.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Dialog>
                 <DialogTrigger className="mt-6">
                   {' '}
-                  <Button
-                    size="lg"
-                    className="bg-white text-indigo-900 hover:bg-slate-100"
-                  >
+                  <Button size="lg" className="bg-white text-indigo-900 hover:bg-slate-100">
                     Apply Now
                   </Button>
                 </DialogTrigger>

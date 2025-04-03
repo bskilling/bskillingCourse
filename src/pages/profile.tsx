@@ -49,11 +49,7 @@ export default function Profile() {
     <div className="flex flex-col items-center justify-center min-h-screen">
       {userData ? (
         <div className="p-6 bg-white rounded-lg shadow-md text-center">
-          <img
-            src={userData.picture}
-            alt="Profile"
-            className="w-24 h-24 rounded-full mx-auto"
-          />
+          <img src={userData.picture} alt="Profile" className="w-24 h-24 rounded-full mx-auto" />
           <h2 className="mt-4 text-xl font-semibold">{userData.name}</h2>
         </div>
       ) : (

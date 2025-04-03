@@ -7,16 +7,12 @@ interface CertificationProps {
   };
 }
 
-const CertificationSection: React.FC<CertificationProps> = ({
-  certification,
-}) => {
+const CertificationSection: React.FC<CertificationProps> = ({ certification }) => {
   return (
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       <div className="flex items-center space-x-3 mb-8">
         <div className="w-1.5 h-8 bg-indigo-600 rounded-full"></div>
-        <h2 className="text-2xl font-bold text-gray-800">
-          Industry-Recognized Certification
-        </h2>
+        <h2 className="text-2xl font-bold text-gray-800">Industry-Recognized Certification</h2>
       </div>
 
       <div className="bg-white rounded-xl shadow-lg overflow-hidden">
@@ -51,9 +47,9 @@ const CertificationSection: React.FC<CertificationProps> = ({
             </div>
 
             <p className="text-gray-600 mb-6">
-              Earn a prestigious industry-recognized certification upon
-              completion. This credential validates your expertise and can be
-              shared directly on LinkedIn and other professional platforms.
+              Earn a prestigious industry-recognized certification upon completion. This credential
+              validates your expertise and can be shared directly on LinkedIn and other professional
+              platforms.
             </p>
 
             <div className="space-y-4">
@@ -62,12 +58,8 @@ const CertificationSection: React.FC<CertificationProps> = ({
                   <Check className="h-5 w-5 text-green-500" />
                 </div>
                 <div className="ml-3">
-                  <p className="text-gray-700 font-medium">
-                    Globally Recognized
-                  </p>
-                  <p className="text-sm text-gray-500">
-                    Accepted by leading employers worldwide
-                  </p>
+                  <p className="text-gray-700 font-medium">Globally Recognized</p>
+                  <p className="text-sm text-gray-500">Accepted by leading employers worldwide</p>
                 </div>
               </div>
 
@@ -76,9 +68,7 @@ const CertificationSection: React.FC<CertificationProps> = ({
                   <Check className="h-5 w-5 text-green-500" />
                 </div>
                 <div className="ml-3">
-                  <p className="text-gray-700 font-medium">
-                    Digital Verification
-                  </p>
+                  <p className="text-gray-700 font-medium">Digital Verification</p>
                   <p className="text-sm text-gray-500">
                     Includes QR code and secure verification link
                   </p>
@@ -90,9 +80,7 @@ const CertificationSection: React.FC<CertificationProps> = ({
                   <Check className="h-5 w-5 text-green-500" />
                 </div>
                 <div className="ml-3">
-                  <p className="text-gray-700 font-medium">
-                    Career Advancement
-                  </p>
+                  <p className="text-gray-700 font-medium">Career Advancement</p>
                   <p className="text-sm text-gray-500">
                     Proven to increase job opportunities and salary potential
                   </p>
@@ -104,8 +92,7 @@ const CertificationSection: React.FC<CertificationProps> = ({
               <div className="flex items-center">
                 <BarChart className="h-5 w-5 text-indigo-600 mr-2" />
                 <p className="text-sm font-medium text-indigo-800">
-                  93% of our certified students reported career advancement
-                  within 6 months
+                  93% of our certified students reported career advancement within 6 months
                 </p>
               </div>
             </div>

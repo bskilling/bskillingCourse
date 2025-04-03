@@ -98,11 +98,7 @@ const skillDevelopmentAreas = {
     title: 'Telecommunications',
     icon: 'telecom-icon.svg',
     imageBanner: '/new-image/telecom.webp',
-    subTitles: [
-      'Networking and Infrastructure',
-      'IoT in Telecommunications',
-      '5G Technologies',
-    ],
+    subTitles: ['Networking and Infrastructure', 'IoT in Telecommunications', '5G Technologies'],
   },
   healthcare: {
     title: 'Healthcare',

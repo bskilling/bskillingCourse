@@ -42,9 +42,7 @@ const Testimonial = () => {
   return (
     <div className="py-10 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-        <h2 className="text-4xl font-extrabold text-center text-gray-900">
-          What People Say
-        </h2>
+        <h2 className="text-4xl font-extrabold text-center text-gray-900">What People Say</h2>
         <p className="mt-3 text-lg text-center text-gray-600">
           Our clients vouch for us! Read what they have to say.
         </p>
@@ -71,9 +69,7 @@ const Testimonial = () => {
                       alt={testimonial.name}
                     />
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-800">
-                    {testimonial.name}
-                  </h3>
+                  <h3 className="text-xl font-semibold text-gray-800">{testimonial.name}</h3>
                   <p className="text-sm text-gray-500">{testimonial.role}</p>
                   <div className="flex justify-center gap-1 mt-3 text-yellow-400">
                     {[...Array(5)].map((_, i) => (

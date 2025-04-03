@@ -17,19 +17,16 @@ const usePrograms = () => {
       );
 
       const data = res?.data?.courses as Course[];
-      const groupedItems: { [key: string]: Course[] } = data.reduce(
-        (acc, item) => {
+      const groupedItems: { [key: string]: Course[] } = data.reduce((acc, item) => {
+        // @ts-expect-error error
+        if (!acc[item.category as string]) {
           // @ts-expect-error error
-          if (!acc[item.category as string]) {
-            // @ts-expect-error error
-            acc[item.category as string] = [];
-          }
-          // @ts-expect-error error
-          acc[item.category as string].push(item);
-          return acc;
-        },
-        {}
-      );
+          acc[item.category as string] = [];
+        }
+        // @ts-expect-error error
+        acc[item.category as string].push(item);
+        return acc;
+      }, {});
       return groupedItems as groupedItems;
     },
     staleTime: 1000 * 60 * 5,

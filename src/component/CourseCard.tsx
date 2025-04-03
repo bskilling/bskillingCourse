@@ -61,10 +61,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ data }) => {
         )}&category=${encodeURIComponent(data.category)}`}
       >
         <section className="">
-          <div
-            id="parent"
-            className="flex bg-white flex-col shadow-lg rounded-xl  p-2 "
-          >
+          <div id="parent" className="flex bg-white flex-col shadow-lg rounded-xl  p-2 ">
             <div className="relative">
               <img
                 className="object-cover border-b h-44 w-full border-slate-300"
@@ -76,10 +73,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ data }) => {
                 {data.discount === 0 ? (
                   ''
                 ) : (
-                  <span className="font-bold  text-white">
-                    {' '}
-                    {data.discount}%&nbsp; OFF
-                  </span>
+                  <span className="font-bold  text-white"> {data.discount}%&nbsp; OFF</span>
                 )}
               </div>
               <div className="absolute bottom-0 flex gap-1 rounded-t-md right-0 bg-buttonBlue px-5">
@@ -87,9 +81,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ data }) => {
                   <span className="font-bold text-white">₹ {data.price}</span>
                 ) : (
                   <React.Fragment>
-                    <span className="font-bold text-white">
-                      ₹ {calculateDiscountedPrice()}
-                    </span>
+                    <span className="font-bold text-white">₹ {calculateDiscountedPrice()}</span>
                   </React.Fragment>
                 )}
               </div>
@@ -97,9 +89,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ data }) => {
             <div className="flex flex-col  px-4 mt-2">
               <div className="">
                 <p className="text-lg min-h-[60px] overflow-hidden text-overflow-ellipsis font-semibold   w-full">
-                  {data.name.length > 50
-                    ? `${data.name.substring(0, 50)}...`
-                    : data.name}
+                  {data.name.length > 50 ? `${data.name.substring(0, 50)}...` : data.name}
                 </p>
               </div>
 
@@ -142,11 +132,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ data }) => {
                   </div>
                 </div>
               </div>
-              <div
-                className={`${
-                  data.batches.length > 0 ? 'min-h-[48px]' : 'h-12'
-                }`}
-              >
+              <div className={`${data.batches.length > 0 ? 'min-h-[48px]' : 'h-12'}`}>
                 {' '}
                 <div className="relative flex overflow-x-hidden">
                   {data.batches.length > 0 && (
@@ -156,8 +142,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ data }) => {
                           <span className="ml-5 text-sm " key={index}>
                             Upcoming Batches&nbsp; &nbsp;|&nbsp; &nbsp;
                             {item.name} &nbsp; | &nbsp;{' '}
-                            {moment(item.startDate).format('YYYY-MMM-DD')}{' '}
-                            &nbsp;-&nbsp;
+                            {moment(item.startDate).format('YYYY-MMM-DD')} &nbsp;-&nbsp;
                             {moment(item.endDate).format('YYYY-MMM-DD')}
                           </span>
                         ))}

@@ -10,9 +10,7 @@ const Aboutlanding = () => {
         alt="About Us"
       />
       <div className="relative z-10 text-white text-center">
-        <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-wider mb-4">
-          ABOUT US
-        </h1>
+        <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-wider mb-4">ABOUT US</h1>
       </div>
       <div className="absolute inset-0 bg-gradient-to-r from-[#FF1053] to-[#3452FF] opacity-50"></div>
     </div>

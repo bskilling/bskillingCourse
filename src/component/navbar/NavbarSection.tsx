@@ -18,11 +18,7 @@ import {
   BsPersonWorkspace,
 } from 'react-icons/bs';
 import { RiGovernmentFill, RiHome2Line } from 'react-icons/ri';
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@/components/ui/popover';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 
 import { RxHamburgerMenu } from 'react-icons/rx';
@@ -107,10 +103,7 @@ export default function NavbarSection() {
           <NavigationMenuItem>
             <div className="text-foreground inline-flex gap-x-2">
               {' '}
-              <Link
-                href={'/corporate-training'}
-                className="text-foreground text-sm"
-              >
+              <Link href={'/corporate-training'} className="text-foreground text-sm">
                 Corporate Training
               </Link>
             </div>
@@ -153,10 +146,7 @@ export default function NavbarSection() {
                 <div className="flex flex-col gap-y-3">
                   <p> Options</p>
                   {/* <DropdownMenuSeparator /> */}
-                  <Link
-                    href={'https://sfjbs.talentrecruit.com/career-page'}
-                    target="_blank"
-                  >
+                  <Link href={'https://sfjbs.talentrecruit.com/career-page'} target="_blank">
                     {' '}
                     <div className="text-foreground inline-flex gap-x-2 cursor-pointer items-center">
                       <IoSchool size={20} className="mx-2" />
@@ -183,28 +173,16 @@ export default function NavbarSection() {
           </NavigationMenuItem>
 
           <NavigationMenuItem
-            className={cn(
-              buttonVariants({ variant: 'outline' }),
-              'text-base font-light'
-            )}
+            className={cn(buttonVariants({ variant: 'outline' }), 'text-base font-light')}
           >
-            <Link
-              href={'https://lms.bskilling.com/login/signup.php?'}
-              className="text-sm"
-            >
+            <Link href={'https://lms.bskilling.com/login/signup.php?'} className="text-sm">
               Sign Up
             </Link>
           </NavigationMenuItem>
           <NavigationMenuItem
-            className={cn(
-              buttonVariants({ variant: 'outline' }),
-              'text-base font-light'
-            )}
+            className={cn(buttonVariants({ variant: 'outline' }), 'text-base font-light')}
           >
-            <Link
-              href={'https://lms.bskilling.com/login/index.php'}
-              className="text-sm"
-            >
+            <Link href={'https://lms.bskilling.com/login/index.php'} className="text-sm">
               Login
             </Link>
           </NavigationMenuItem>
@@ -220,7 +198,7 @@ export default function NavbarSection() {
               <span className="text-blue-500">b</span>Skilling
             </h2>
             <nav className="flex flex-col space-y-4">
-              {menus.map((menu) => (
+              {menus.map(menu => (
                 <Link
                   key={menu.name}
                   href={menu.href}

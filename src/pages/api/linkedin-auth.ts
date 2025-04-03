@@ -1,9 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'GET') {
     // LinkedIn's OAuth endpoint
     const { code } = req.query;
@@ -14,24 +11,19 @@ export default async function handler(
 
     // Exchange the authorization code for an access token
     try {
-      const response = await fetch(
-        'https://www.linkedin.com/oauth/v2/accessToken',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-          },
-          body: new URLSearchParams({
-            grant_type: 'authorization_code',
-            code: code as string,
-            redirect_uri: process.env
-              .NEXT_PUBLIC_LINKEDIN_REDIRECT_URL as string,
-            client_id: process.env.NEXT_PUBLIC_LINKEDIN_CLIENT_ID as string,
-            client_secret: process.env
-              .NEXT_PUBLIC_LINKEDIN_CLIENT_SECRET as string,
-          }),
-        }
-      );
+      const response = await fetch('https://www.linkedin.com/oauth/v2/accessToken', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: new URLSearchParams({
+          grant_type: 'authorization_code',
+          code: code as string,
+          redirect_uri: process.env.NEXT_PUBLIC_LINKEDIN_REDIRECT_URL as string,
+          client_id: process.env.NEXT_PUBLIC_LINKEDIN_CLIENT_ID as string,
+          client_secret: process.env.NEXT_PUBLIC_LINKEDIN_CLIENT_SECRET as string,
+        }),
+      });
 
       const data = await response.json();
 

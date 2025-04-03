@@ -5,12 +5,7 @@ import axios from 'axios';
 import Head from 'next/head';
 import { Course } from 'common/util/types';
 import { Button } from '@/components/ui/button';
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-} from '@/components/ui/card';
+import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
 import ShowMoreText from './_components/Text';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -35,15 +30,11 @@ export const getServerSideProps: GetServerSideProps = async () => {
   }
 };
 
-export default function IndividualTraining({
-  training,
-}: IndividualTrainingProps) {
+export default function IndividualTraining({ training }: IndividualTrainingProps) {
   const router = useRouter();
   const { query } = router;
   const { tab } = query;
-  const [activeTab, setActiveTab] = useState(
-    tab ?? (training[0]?.category || '')
-  );
+  const [activeTab, setActiveTab] = useState(tab ?? (training[0]?.category || ''));
 
   useEffect(() => {
     setActiveTab(tab ?? (training[0]?.category || ''));
@@ -51,10 +42,8 @@ export default function IndividualTraining({
 
   if (!training.length) return <div>No courses available.</div>;
   // @ts-ignore
-  const categories = [...new Set(training.map((course) => course.category))];
-  const filteredCourses = training.filter(
-    (course) => course.category === activeTab
-  );
+  const categories = [...new Set(training.map(course => course.category))];
+  const filteredCourses = training.filter(course => course.category === activeTab);
 
   return (
     <>
@@ -69,10 +58,7 @@ export default function IndividualTraining({
             name="keywords"
             content="training, individual training, personal coaching, skill development"
           />
-          <meta
-            property="og:title"
-            content="Individual Training | Your Website Name"
-          />
+          <meta property="og:title" content="Individual Training | Your Website Name" />
           <meta
             property="og:description"
             content="Join our individual training programs tailored to your specific needs. Enhance your skills with personalized coaching."
@@ -81,15 +67,9 @@ export default function IndividualTraining({
             property="og:image"
             content="https://yourwebsite.com/images/individual-training-og-image.jpg"
           />
-          <meta
-            property="og:url"
-            content="https://yourwebsite.com/individual-training"
-          />
+          <meta property="og:url" content="https://yourwebsite.com/individual-training" />
           <meta name="twitter:card" content="summary_large_image" />
-          <meta
-            name="twitter:title"
-            content="Individual Training | Your Website Name"
-          />
+          <meta name="twitter:title" content="Individual Training | Your Website Name" />
           <meta
             name="twitter:description"
             content="Join our individual training programs tailored to your specific needs."
@@ -119,8 +99,8 @@ export default function IndividualTraining({
           <h3 className="text-lg font-semibold mb-3">Course Categories</h3>
           <div className="flex flex-col gap-2">
             {categories
-              ?.filter((category) => category !== 'SAP')
-              .map((category) => (
+              ?.filter(category => category !== 'SAP')
+              .map(category => (
                 <motion.button
                   key={category}
                   className={cn(
@@ -143,12 +123,8 @@ export default function IndividualTraining({
 
         {/* Courses Section */}
         <div className="w-3/4 pr-4 overflow-y-auto h-[75vh]">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">
-            Explore Our Courses
-          </h2>
-          <p className="text-gray-600 mb-6">
-            Find the best courses tailored for you.
-          </p>
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">Explore Our Courses</h2>
+          <p className="text-gray-600 mb-6">Find the best courses tailored for you.</p>
 
           <motion.div
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
@@ -156,11 +132,8 @@ export default function IndividualTraining({
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            {filteredCourses.map((course) => (
-              <Link
-                href={`/courses/course-details/${course.url}`}
-                key={course._id}
-              >
+            {filteredCourses.map(course => (
+              <Link href={`/courses/course-details/${course.url}`} key={course._id}>
                 <Card className="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-transform transform hover:-translate-y-1 ">
                   <CardHeader className="relative md:h-36 h-20  p-0">
                     <img
@@ -177,15 +150,12 @@ export default function IndividualTraining({
                     <p className="md:text-sm text-xs text-gray-500 mt-1">
                       {
                         // @ts-ignore
-                        course?.short_description ||
-                          'Join this course to enhance your skills.'
+                        course?.short_description || 'Join this course to enhance your skills.'
                       }
                     </p>
                   </CardContent>
                   <CardFooter className="flex justify-between items-center p-3 border-t border-gray-200">
-                    <p className="font-semibold text-gray-900">
-                      ₹ {course.price}
-                    </p>
+                    <p className="font-semibold text-gray-900">₹ {course.price}</p>
                     <Button className="bg-gradient-to-r from-blue-500 to-blue-700 text-white text-sm px-4 py-2 rounded-md shadow-md">
                       Enroll Now
                     </Button>

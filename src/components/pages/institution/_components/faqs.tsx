@@ -26,9 +26,7 @@ const FAQSection: React.FC<FAQProps> = ({ faqs }) => {
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16" id="faqs">
       <div className="flex items-center space-x-3 mb-8">
         <div className="w-1.5 h-8 bg-blue-600 rounded-full"></div>
-        <h2 className="text-2xl font-bold text-gray-800">
-          Frequently Asked Questions
-        </h2>
+        <h2 className="text-2xl font-bold text-gray-800">Frequently Asked Questions</h2>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -55,16 +53,10 @@ const FAQSection: React.FC<FAQProps> = ({ faqs }) => {
                     }`}
                   >
                     <HelpCircle
-                      className={`h-5 w-5 ${
-                        isOpen ? 'text-blue-600' : 'text-gray-500'
-                      }`}
+                      className={`h-5 w-5 ${isOpen ? 'text-blue-600' : 'text-gray-500'}`}
                     />
                   </div>
-                  <span
-                    className={`font-medium ${
-                      isOpen ? 'text-blue-700' : 'text-gray-800'
-                    }`}
-                  >
+                  <span className={`font-medium ${isOpen ? 'text-blue-700' : 'text-gray-800'}`}>
                     {faq.question}
                   </span>
                 </div>
@@ -81,9 +73,7 @@ const FAQSection: React.FC<FAQProps> = ({ faqs }) => {
                 }`}
               >
                 <div className="pt-2 border-t border-gray-100">
-                  <p className="text-gray-600 mt-3 text-sm leading-relaxed">
-                    {faq.answer}
-                  </p>
+                  <p className="text-gray-600 mt-3 text-sm leading-relaxed">{faq.answer}</p>
                 </div>
               </div>
             </div>
@@ -96,10 +86,7 @@ const FAQSection: React.FC<FAQProps> = ({ faqs }) => {
           <HelpCircle className="h-5 w-5 text-blue-600 mr-2" />
           <p className="text-sm text-gray-600">
             Still have questions?{' '}
-            <a
-              href="#contact"
-              className="text-blue-600 font-medium hover:underline"
-            >
+            <a href="#contact" className="text-blue-600 font-medium hover:underline">
               Contact our support team
             </a>
           </p>

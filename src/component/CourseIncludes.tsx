@@ -15,53 +15,33 @@ const CourseIncludes: React.FC<CourseIncludesProps> = ({ courseDetails }) => {
         <h3 className="text-2xl font-semibold mb-4 text-left">Includes</h3>
         <div className="space-y-3">
           <div className="flex items-center">
-            <FontAwesomeIcon
-              icon={faCheckCircle}
-              className="text-green-500 mr-2"
-            />
+            <FontAwesomeIcon icon={faCheckCircle} className="text-green-500 mr-2" />
             <p>Live Interactive Classes</p>
           </div>
           <div className="flex items-center">
-            <FontAwesomeIcon
-              icon={faCheckCircle}
-              className="text-green-500 mr-2"
-            />
+            <FontAwesomeIcon icon={faCheckCircle} className="text-green-500 mr-2" />
             <p>1 - 1 Doubt Support</p>
           </div>
           <div className="flex items-center">
-            <FontAwesomeIcon
-              icon={faCheckCircle}
-              className="text-green-500 mr-2"
-            />
+            <FontAwesomeIcon icon={faCheckCircle} className="text-green-500 mr-2" />
             <p>Real-Time Projects</p>
           </div>
           <div className="flex items-center">
-            <FontAwesomeIcon
-              icon={faCheckCircle}
-              className="text-green-500 mr-2"
-            />
+            <FontAwesomeIcon icon={faCheckCircle} className="text-green-500 mr-2" />
             <p>LMS</p>
           </div>
           <div className="flex items-center">
-            <FontAwesomeIcon
-              icon={faCheckCircle}
-              className="text-green-500 mr-2"
-            />
+            <FontAwesomeIcon icon={faCheckCircle} className="text-green-500 mr-2" />
             <p>Certification</p>
           </div>
           <div className="flex items-center">
-            <FontAwesomeIcon
-              icon={faCheckCircle}
-              className="text-green-500 mr-2"
-            />
+            <FontAwesomeIcon icon={faCheckCircle} className="text-green-500 mr-2" />
             <p>Job Readiness</p>
           </div>
         </div>
       </div>
       <div className="bg-white p-6 rounded-lg shadow-lg max-w-md mx-auto mt-10">
-        <h3 className="text-2xl font-semibold mb-4 text-left">
-          Course Features
-        </h3>
+        <h3 className="text-2xl font-semibold mb-4 text-left">Course Features</h3>
         <div className="space-y-3">
           <div className="flex justify-between">
             <p className="font-semibold">Lectures</p>
@@ -85,9 +65,7 @@ const CourseIncludes: React.FC<CourseIncludesProps> = ({ courseDetails }) => {
           </div>
           <div className="flex justify-between">
             <p className="font-semibold">Assessments</p>
-            <p className="text-subText">
-              {courseDetails?.assessment_required ? 'Yes' : 'No'}
-            </p>
+            <p className="text-subText">{courseDetails?.assessment_required ? 'Yes' : 'No'}</p>
           </div>
         </div>
       </div>

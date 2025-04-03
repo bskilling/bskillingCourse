@@ -1,11 +1,5 @@
 import Link from 'next/link';
-import {
-  FaFacebook,
-  FaLinkedin,
-  FaTwitter,
-  FaInstagram,
-  FaArrowRight,
-} from 'react-icons/fa';
+import { FaFacebook, FaLinkedin, FaTwitter, FaInstagram, FaArrowRight } from 'react-icons/fa';
 
 const Footer = () => {
   return (
@@ -15,8 +9,7 @@ const Footer = () => {
         <div>
           <h2 className="text-2xl font-bold tracking-wide">bSkilling</h2>
           <p className="mt-3 text-gray-300">
-            Empowering professionals with cutting-edge knowledge & real-world
-            skills.
+            Empowering professionals with cutting-edge knowledge & real-world skills.
           </p>
         </div>
 
@@ -40,9 +33,7 @@ const Footer = () => {
         {/* Right - Newsletter & Social Media */}
         <div>
           <h3 className="text-lg font-semibold text-gray-100">Stay Updated</h3>
-          <p className="text-gray-300 mt-2">
-            Subscribe to get the latest updates and offers.
-          </p>
+          <p className="text-gray-300 mt-2">Subscribe to get the latest updates and offers.</p>
           <div className="flex mt-4">
             <input
               type="email"
@@ -56,28 +47,16 @@ const Footer = () => {
 
           {/* Social Media Links */}
           <div className="flex gap-4 mt-5">
-            <a
-              href="#"
-              className="text-gray-300 hover:text-[#F8B400] transition"
-            >
+            <a href="#" className="text-gray-300 hover:text-[#F8B400] transition">
               <FaFacebook size={22} />
             </a>
-            <a
-              href="#"
-              className="text-gray-300 hover:text-[#F8B400] transition"
-            >
+            <a href="#" className="text-gray-300 hover:text-[#F8B400] transition">
               <FaTwitter size={22} />
             </a>
-            <a
-              href="#"
-              className="text-gray-300 hover:text-[#F8B400] transition"
-            >
+            <a href="#" className="text-gray-300 hover:text-[#F8B400] transition">
               <FaLinkedin size={22} />
             </a>
-            <a
-              href="#"
-              className="text-gray-300 hover:text-[#F8B400] transition"
-            >
+            <a href="#" className="text-gray-300 hover:text-[#F8B400] transition">
               <FaInstagram size={22} />
             </a>
           </div>

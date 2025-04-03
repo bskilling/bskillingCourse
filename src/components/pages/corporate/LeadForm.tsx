@@ -43,15 +43,8 @@ const leadSchema = z
     name: z.string().min(3, 'Name must be at least 3 characters long'),
     email: z.string().email('Invalid email format'),
     countryCode: z.string().optional(),
-    phoneNumber: z
-      .string()
-      .regex(/^\d{10,15}$/, 'Phone number must be between 10 to 15 digits'),
-    category: z.enum([
-      'individual_course',
-      'corporate_training',
-      'institutional',
-      'government',
-    ]),
+    phoneNumber: z.string().regex(/^\d{10,15}$/, 'Phone number must be between 10 to 15 digits'),
+    category: z.enum(['individual_course', 'corporate_training', 'institutional', 'government']),
     subcategory: z.enum(['', 'jobs', 'skills']).optional(),
     query: z.string().min(10, 'Query must be at least 10 characters long'),
   })
@@ -67,8 +60,7 @@ const leadSchema = z
     if (data.category !== 'institutional' && data.subcategory) {
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
-        message:
-          "Subcategory should only be provided when category is 'institutional'",
+        message: "Subcategory should only be provided when category is 'institutional'",
         path: ['subcategory'],
       });
     }
@@ -148,11 +140,7 @@ const ConsultationForm = ({
   });
 
   const handleCategoryChange = (
-    value:
-      | 'individual_course'
-      | 'corporate_training'
-      | 'institutional'
-      | 'government'
+    value: 'individual_course' | 'corporate_training' | 'institutional' | 'government'
   ) => {
     setValue('category', value);
     if (value !== 'institutional') {
@@ -175,12 +163,10 @@ const ConsultationForm = ({
           {/* Left side banner/image section */}
           <div className="hidden md:flex md:w-2/5 bg-gradient-to-b from-blue-900 to-blue-600 text-white p-8 flex-col justify-between">
             <div>
-              <h2 className="text-3xl font-bold mb-4">
-                Let&apos;s Grow Together
-              </h2>
+              <h2 className="text-3xl font-bold mb-4">Let&apos;s Grow Together</h2>
               <p className="mb-6 opacity-90">
-                Schedule a consultation with our experts and discover how we can
-                help transform your educational journey.
+                Schedule a consultation with our experts and discover how we can help transform your
+                educational journey.
               </p>
 
               <div className="space-y-4 mt-8">
@@ -220,8 +206,7 @@ const ConsultationForm = ({
                 Schedule Consultation
               </DialogTitle>
               <DialogDescription className="text-center text-gray-600">
-                Fill out the form below and our team will get back to you within
-                24 hours.
+                Fill out the form below and our team will get back to you within 24 hours.
               </DialogDescription>
             </DialogHeader>
 
@@ -248,11 +233,7 @@ const ConsultationForm = ({
                   }`}
                   {...register('name')}
                 />
-                {errors.name && (
-                  <p className="text-sm text-red-500 mt-1">
-                    {errors.name.message}
-                  </p>
-                )}
+                {errors.name && <p className="text-sm text-red-500 mt-1">{errors.name.message}</p>}
               </div>
 
               <div>
@@ -273,9 +254,7 @@ const ConsultationForm = ({
                   {...register('email')}
                 />
                 {errors.email && (
-                  <p className="text-sm text-red-500 mt-1">
-                    {errors.email.message}
-                  </p>
+                  <p className="text-sm text-red-500 mt-1">{errors.email.message}</p>
                 )}
               </div>
 
@@ -289,15 +268,12 @@ const ConsultationForm = ({
                 </label>
                 <div className="flex gap-2">
                   <div className="w-1/3">
-                    <Select
-                      defaultValue="+1"
-                      onValueChange={handleCountryCodeChange}
-                    >
+                    <Select defaultValue="+1" onValueChange={handleCountryCodeChange}>
                       <SelectTrigger className="rounded-lg border-gray-300 bg-gray-50 h-12">
                         <SelectValue placeholder="Code" />
                       </SelectTrigger>
                       <SelectContent>
-                        {countryCodes.map((code) => (
+                        {countryCodes.map(code => (
                           <SelectItem key={code.value} value={code.value}>
                             {code.label}
                           </SelectItem>
@@ -317,9 +293,7 @@ const ConsultationForm = ({
                   </div>
                 </div>
                 {errors.phoneNumber && (
-                  <p className="text-sm text-red-500 mt-1">
-                    {errors.phoneNumber.message}
-                  </p>
+                  <p className="text-sm text-red-500 mt-1">{errors.phoneNumber.message}</p>
                 )}
               </div>
               {/* 
@@ -372,10 +346,7 @@ const ConsultationForm = ({
                     <BookOpen size={16} className="mr-2 text-blue-600" />
                     Subcategory
                   </label>
-                  <Select
-                    defaultValue=""
-                    onValueChange={handleSubcategoryChange}
-                  >
+                  <Select defaultValue="" onValueChange={handleSubcategoryChange}>
                     <SelectTrigger className="rounded-lg border-gray-300 bg-gray-50">
                       <SelectValue placeholder="Select a subcategory" />
                     </SelectTrigger>
@@ -399,9 +370,7 @@ const ConsultationForm = ({
                     </SelectContent>
                   </Select>
                   {errors.subcategory && (
-                    <p className="text-sm text-red-500 mt-1">
-                      {errors.subcategory.message}
-                    </p>
+                    <p className="text-sm text-red-500 mt-1">{errors.subcategory.message}</p>
                   )}
                 </div>
               )}
@@ -423,9 +392,7 @@ const ConsultationForm = ({
                   {...register('query')}
                 />
                 {errors.query && (
-                  <p className="text-sm text-red-500 mt-1">
-                    {errors.query.message}
-                  </p>
+                  <p className="text-sm text-red-500 mt-1">{errors.query.message}</p>
                 )}
               </div>
 

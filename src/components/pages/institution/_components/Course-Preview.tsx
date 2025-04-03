@@ -49,7 +49,7 @@ import Modules from './Modules';
 import ConsultationForm from '../../indiviual/LeadForm';
 import Link from 'next/link';
 import CourseResources from './Skills';
-import CertificationSection from './certificate';
+import CertificationSection from './certificate1';
 
 // Adjust this type as needed.
 export interface TDraftCourseForm {
@@ -145,10 +145,8 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
 
   // Use a default banner image if not provided.
   const bannerImage =
-    banner?.viewUrl ||
-    'https://www.svgrepo.com/show/508699/landscape-placeholder.svg';
-  const placeholder =
-    'https://www.svgrepo.com/show/508699/landscape-placeholder.svg';
+    banner?.viewUrl || 'https://www.svgrepo.com/show/508699/landscape-placeholder.svg';
+  const placeholder = 'https://www.svgrepo.com/show/508699/landscape-placeholder.svg';
 
   // Format price (assuming price is in cents)
   const formattedPrice = price ? price?.amount?.toFixed(2) : 'Free';
@@ -166,11 +164,7 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
             {/* Logo */}
             <div className="flex-shrink-0">
               <Link href={'/'} className="flex items-center">
-                <img
-                  src="/logo.png"
-                  className="h-10 w-auto object-contain"
-                  alt="Logo"
-                />
+                <img src="/logo.png" className="h-10 w-auto object-contain" alt="Logo" />
               </Link>
             </div>
 
@@ -620,10 +614,7 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
       <Outcomes outcomes={outcomes || []} />
 
       <CertificationSection certification={certification} />
-      <CourseEnrollment
-        formattedPrice={formattedPrice}
-        durationHours={durationHours}
-      />
+      <CourseEnrollment formattedPrice={formattedPrice} durationHours={durationHours} />
 
       <WhyJoinSection whyJoin={whyJoin} />
       <FAQSection faqs={faqs} />

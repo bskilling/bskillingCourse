@@ -73,10 +73,7 @@ const LinkedInLogin = ({ title, description, image, url }: any) => {
   };
 
   // Check for the authorization code in the URL query params when the page loads
-  if (
-    typeof window !== 'undefined' &&
-    window.location.search.includes('code=')
-  ) {
+  if (typeof window !== 'undefined' && window.location.search.includes('code=')) {
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get('code');
     if (code) {
@@ -113,12 +110,9 @@ const LinkedInLogin = ({ title, description, image, url }: any) => {
       <div className="min-h-screen bg-gray-50">
         {/* Banner Section */}
         <div className="bg-blue-600 text-white py-20 text-center">
-          <h2 className="text-4xl font-semibold">
-            We&apos;d Love Your Feedback!
-          </h2>
+          <h2 className="text-4xl font-semibold">We&apos;d Love Your Feedback!</h2>
           <p className="mt-3 text-lg">
-            Share your experience by writing a review with your LinkedIn
-            profile.
+            Share your experience by writing a review with your LinkedIn profile.
           </p>
           <button
             className="bg-white text-blue-600 flex items-center p-4 rounded-lg text-xl mt-6 hover:bg-gray-200 transition duration-200 mx-auto"
@@ -168,9 +162,7 @@ const LinkedInLogin = ({ title, description, image, url }: any) => {
           </div>
           {reviews?.reviews.length === 0 && (
             <div className="flex justify-center items-center  bg-gray-50">
-              <h2 className="text-3xl font-semibold text-blue-500 mt-20">
-                No Reviews Yet
-              </h2>
+              <h2 className="text-3xl font-semibold text-blue-500 mt-20">No Reviews Yet</h2>
             </div>
           )}
           {/* Load More Button */}
@@ -184,7 +176,7 @@ const LinkedInLogin = ({ title, description, image, url }: any) => {
                 {loading ? 'Loading...' : 'Load More'}
               </button> */}
               <button
-                onClick={() => setPage((prev) => prev + 1)}
+                onClick={() => setPage(prev => prev + 1)}
                 disabled={reviews?.reviews.length === 0}
                 className="bg-blue-600 text-white px-6 py-3 rounded-md mt-6 hover:bg-blue-800"
               >

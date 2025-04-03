@@ -50,21 +50,14 @@ const CourseSlider = () => {
   const router = useRouter();
   const { category, name, id } = router.query;
   const [datas, setDatas] = useState<string[]>([]);
-  const [eachCourceList, SetEachCourceList] = useState<
-    ListOfCoursesDataType[][]
-  >([]);
+  const [eachCourceList, SetEachCourceList] = useState<ListOfCoursesDataType[][]>([]);
 
-  const [randomEightElements, setRandomEightElements] = useState<
-    ListOfCoursesDataType[]
-  >([]);
+  const [randomEightElements, setRandomEightElements] = useState<ListOfCoursesDataType[]>([]);
   const shuffleArray = (array: CourseData[]) => {
     const shuffledArray = [...array];
     for (let i = shuffledArray.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      [shuffledArray[i], shuffledArray[j]] = [
-        shuffledArray[j],
-        shuffledArray[i],
-      ];
+      [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
     }
     return shuffledArray;
   };
@@ -86,9 +79,7 @@ const CourseSlider = () => {
       // const shuffledData = shuffleArray(flattenedData as []);
       // const randomElements = shuffledData.slice(0, 8);
       const categoryIndex = catagoryList.indexOf(category as string);
-      const coursesForCategory = ListOfCourcesData[
-        categoryIndex
-      ] as ListOfCoursesDataType[];
+      const coursesForCategory = ListOfCourcesData[categoryIndex] as ListOfCoursesDataType[];
       const randomElements = coursesForCategory.slice(0, 8);
       // Now, store the flattened data in the state
       setRandomEightElements(randomElements as []);

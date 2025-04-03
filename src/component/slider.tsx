@@ -163,9 +163,7 @@ import Link from 'next/link';
 // };
 
 const Slider = () => {
-  const plugin = React.useRef(
-    Autoplay({ delay: 3000, stopOnInteraction: true })
-  );
+  const plugin = React.useRef(Autoplay({ delay: 3000, stopOnInteraction: true }));
   return (
     <>
       <Carousel
@@ -177,11 +175,7 @@ const Slider = () => {
         <CarouselContent>
           <CarouselItem>
             <Link href="/individual-training">
-              <img
-                src="/new-image/offer.webp"
-                alt=""
-                className=" w-full object-cover "
-              />
+              <img src="/new-image/offer.webp" alt="" className=" w-full object-cover " />
             </Link>
           </CarouselItem>
           <CarouselItem>
@@ -195,20 +189,12 @@ const Slider = () => {
           </CarouselItem>
           <CarouselItem>
             <Link href={'/government-training-program'}>
-              <img
-                src="/new-image/govt-training.webp"
-                alt=""
-                className=" w-full object-cover"
-              />
+              <img src="/new-image/govt-training.webp" alt="" className=" w-full object-cover" />
             </Link>
           </CarouselItem>
           <CarouselItem>
             <Link href={'/corporate-training'}>
-              <img
-                src="/new-image/corporate.webp"
-                alt=""
-                className=" w-full object-cover"
-              />
+              <img src="/new-image/corporate.webp" alt="" className=" w-full object-cover" />
             </Link>
           </CarouselItem>
         </CarouselContent>

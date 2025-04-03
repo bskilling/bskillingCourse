@@ -110,15 +110,9 @@ export default function Privacy() {
         <title>bSkilling Privacy Policy.</title>
         <meta name="bSkilling" content=" Privacy Policy" />
 
-        <meta
-          name="p:domain_verify"
-          content="7bb84546e514612864b5b9d71d1649e4"
-        />
+        <meta name="p:domain_verify" content="7bb84546e514612864b5b9d71d1649e4" />
         <link rel="icon" href="/favicon.png" />
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-3PVZC9K8BH"
-        ></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-3PVZC9K8BH"></script>
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -131,20 +125,15 @@ export default function Privacy() {
         />
       </Head>
       <div className="flex items-center justify-center min-h-screen bg-gray-100">
-        <form
-          onSubmit={handleSubmit}
-          className="bg-white p-6 rounded shadow-md w-full max-w-lg"
-        >
-          <h2 className="text-xl font-bold mb-4 text-center">
-            Submit Your Review
-          </h2>
+        <form onSubmit={handleSubmit} className="bg-white p-6 rounded shadow-md w-full max-w-lg">
+          <h2 className="text-xl font-bold mb-4 text-center">Submit Your Review</h2>
 
           <div className="mb-4">
             <label className="block text-sm font-medium mb-1">Name</label>
             <input
               type="text"
               value={name}
-              onChange={(e) => setName(e.target.value)}
+              onChange={e => setName(e.target.value)}
               className="block w-full border border-gray-300 rounded p-2"
               required
             />
@@ -155,7 +144,7 @@ export default function Privacy() {
             <input
               type="email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={e => setEmail(e.target.value)}
               className="block w-full border border-gray-300 rounded p-2"
               required
             />
@@ -166,7 +155,7 @@ export default function Privacy() {
             <input
               type="tel"
               value={phone}
-              onChange={(e) => setPhone(e.target.value)}
+              onChange={e => setPhone(e.target.value)}
               className="block w-full border border-gray-300 rounded p-2"
               required
             />
@@ -176,13 +165,13 @@ export default function Privacy() {
           <div className="mb-4">
             <label className="block text-sm font-medium mb-1">Rating</label>
             <div className="flex">
-              {[1, 2, 3, 4, 5].map((star) => (
+              {[1, 2, 3, 4, 5].map(star => (
                 <label key={star} className="flex items-center">
                   <input
                     type="radio"
                     value={star}
                     checked={rating === star}
-                    onChange={(e) => setRating(Number(e.target.value))}
+                    onChange={e => setRating(Number(e.target.value))}
                     className="hidden"
                     required
                   />
@@ -203,18 +192,16 @@ export default function Privacy() {
             <input
               type="text"
               value={linkedin}
-              onChange={(e) => setLinkedin(e.target.value)}
+              onChange={e => setLinkedin(e.target.value)}
               className="block w-full border border-gray-300 rounded p-2"
             />
           </div>
 
           <div className="mb-4">
-            <label className="block text-sm font-medium mb-1">
-              Description
-            </label>
+            <label className="block text-sm font-medium mb-1">Description</label>
             <textarea
               value={description}
-              onChange={(e) => setDescription(e.target.value)}
+              onChange={e => setDescription(e.target.value)}
               className="block w-full border border-gray-300 rounded p-2"
               // rows="4"
               // required

@@ -18,8 +18,7 @@ import { handleErrors } from '@/lib/handleError';
 
 // Backend URL
 const backendUrl =
-  process.env.NEXT_PUBLIC_BACKEND_URL ??
-  'https://backendbskilling-production-20ff.up.railway.app';
+  process.env.NEXT_PUBLIC_BACKEND_URL ?? 'https://backendbskilling-production-20ff.up.railway.app';
 
 // Validation Schema
 const leadFormSchema = z.object({
@@ -39,9 +38,7 @@ export default function EnhancedLeadForm() {
     name: z.string().min(3, 'Name must be at least 3 characters'),
     email: z.string().email('Please enter a valid email address'),
     countryCode: z.string().min(1, 'Country code is required'),
-    phoneNumber: z
-      .string()
-      .min(5, 'Phone number must be at least 5 characters'),
+    phoneNumber: z.string().min(5, 'Phone number must be at least 5 characters'),
     query: z.string().min(10, 'Message must be at least 10 characters'),
     subCategory: z.enum(['jobs', 'skills']),
     type: z.enum(['b2i']),
@@ -81,9 +78,7 @@ export default function EnhancedLeadForm() {
       reset(); // Reset form
     } catch (error) {
       console.error('Error submitting lead:', error);
-      toast.error(
-        handleErrors(error as { response: { data: { message: string } } })
-      );
+      toast.error(handleErrors(error as { response: { data: { message: string } } }));
     } finally {
       setIsSubmitting(false);
     }
@@ -101,12 +96,9 @@ export default function EnhancedLeadForm() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.4 }}
               >
-                <h2 className="text-lg font-bold text-white mb-2">
-                  Get Connected
-                </h2>
+                <h2 className="text-lg font-bold text-white mb-2">Get Connected</h2>
                 <p className="text-white text-sm">
-                  Find your next opportunity or upgrade your skillset with
-                  expert assistance.
+                  Find your next opportunity or upgrade your skillset with expert assistance.
                 </p>
               </motion.div>
             </div>
@@ -116,9 +108,7 @@ export default function EnhancedLeadForm() {
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                 {/* Subcategory Selection */}
                 <div>
-                  <Label className="font-medium text-gray-700">
-                    I&apos;m looking for:
-                  </Label>
+                  <Label className="font-medium text-gray-700">I&apos;m looking for:</Label>
                   <div className="flex gap-4 mt-2">
                     <button
                       type="button"
@@ -133,9 +123,7 @@ export default function EnhancedLeadForm() {
                         <Briefcase
                           size={16}
                           className={
-                            watch('subCategory') === 'jobs'
-                              ? 'text-purple-600'
-                              : 'text-gray-500'
+                            watch('subCategory') === 'jobs' ? 'text-purple-600' : 'text-gray-500'
                           }
                         />
                         <span>Jobs</span>
@@ -155,9 +143,7 @@ export default function EnhancedLeadForm() {
                         <BookOpen
                           size={16}
                           className={
-                            watch('subCategory') === 'skills'
-                              ? 'text-purple-600'
-                              : 'text-gray-500'
+                            watch('subCategory') === 'skills' ? 'text-purple-600' : 'text-gray-500'
                           }
                         />
                         <span>Skills</span>
@@ -165,9 +151,7 @@ export default function EnhancedLeadForm() {
                     </button>
                   </div>
                   {errors.subCategory && (
-                    <p className="text-red-500 text-xs mt-1">
-                      {errors.subCategory.message}
-                    </p>
+                    <p className="text-red-500 text-xs mt-1">{errors.subCategory.message}</p>
                   )}
                 </div>
 
@@ -184,12 +168,8 @@ export default function EnhancedLeadForm() {
                     className="border-gray-300"
                   />
                 </div>
-                {errors.name && (
-                  <p className="text-red-500 text-xs">{errors.name.message}</p>
-                )}
-                {errors.email && (
-                  <p className="text-red-500 text-xs">{errors.email.message}</p>
-                )}
+                {errors.name && <p className="text-red-500 text-xs">{errors.name.message}</p>}
+                {errors.email && <p className="text-red-500 text-xs">{errors.email.message}</p>}
 
                 {/* Phone Number */}
                 <div className="grid grid-cols-2 gap-3">
@@ -205,9 +185,7 @@ export default function EnhancedLeadForm() {
                   />
                 </div>
                 {errors.phoneNumber && (
-                  <p className="text-red-500 text-xs">
-                    {errors.phoneNumber.message}
-                  </p>
+                  <p className="text-red-500 text-xs">{errors.phoneNumber.message}</p>
                 )}
 
                 {/* Query */}
@@ -217,9 +195,7 @@ export default function EnhancedLeadForm() {
                   rows={3}
                   className="border-gray-300"
                 />
-                {errors.query && (
-                  <p className="text-red-500 text-xs">{errors.query.message}</p>
-                )}
+                {errors.query && <p className="text-red-500 text-xs">{errors.query.message}</p>}
 
                 {/* Submit Button */}
                 <Button

@@ -20,24 +20,16 @@ const ShowMoreText: React.FC<ShowMoreTextProps> = ({ text }) => {
     <div className="text-gray-800">
       <p
         ref={textRef}
-        className={`${
-          isExpanded ? '' : 'line-clamp-2'
-        } overflow-hidden text-ellipsis`}
+        className={`${isExpanded ? '' : 'line-clamp-2'} overflow-hidden text-ellipsis`}
       >
         {text}
       </p>
       {isTruncated ? (
-        <button
-          onClick={() => setIsExpanded(!isExpanded)}
-          className="text-blue-500 mt-2 "
-        >
+        <button onClick={() => setIsExpanded(!isExpanded)} className="text-blue-500 mt-2 ">
           {isExpanded ? 'Show Less' : 'Show More'}
         </button>
       ) : (
-        <button
-          onClick={() => setIsExpanded(!isExpanded)}
-          className="text-blue-500 mt-2 "
-        ></button>
+        <button onClick={() => setIsExpanded(!isExpanded)} className="text-blue-500 mt-2 "></button>
       )}
     </div>
   );

@@ -23,10 +23,10 @@ const Placement = () => {
             <BadgeCheck /> Corporate Training
           </h2>
           <p className="mt-3 text-gray-700 text-sm">
-            Enhance your team’s skills with BSkilling&apos;s corporate training
-            solutions. Our expert-led programs focus on technical enhancement,
-            leadership growth, and team collaboration. Available online or
-            on-site, with real-world case studies and flexible schedules.
+            Enhance your team’s skills with BSkilling&apos;s corporate training solutions. Our
+            expert-led programs focus on technical enhancement, leadership growth, and team
+            collaboration. Available online or on-site, with real-world case studies and flexible
+            schedules.
           </p>
           <button
             className="mt-4 px-5 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700"
@@ -67,9 +67,8 @@ const Placement = () => {
             <Briefcase /> Placement Support
           </h2>
           <p className="mt-3 text-gray-700 text-sm">
-            We provide dedicated placement support for six months post-course.
-            Get expert resume guidance, mock interviews, and real-world
-            preparation to secure your dream job.
+            We provide dedicated placement support for six months post-course. Get expert resume
+            guidance, mock interviews, and real-world preparation to secure your dream job.
           </p>
           <ul className="mt-3 text-sm text-gray-600 list-disc pl-5">
             <li>Six months of job assistance</li>

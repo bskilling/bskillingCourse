@@ -14,21 +14,13 @@ import {
 import { Button } from '@/components/ui/button';
 import { useMutation } from '@tanstack/react-query';
 import axios from 'axios';
-import {
-  FaUser,
-  FaEnvelope,
-  FaPhone,
-  FaCommentDots,
-  FaPaperPlane,
-} from 'react-icons/fa';
+import { FaUser, FaEnvelope, FaPhone, FaCommentDots, FaPaperPlane } from 'react-icons/fa';
 const leadSchema = z
   .object({
     name: z.string().min(3, 'Name must be at least 3 characters long'),
     email: z.string().email('Invalid email format'),
     countryCode: z.string().optional(),
-    phoneNumber: z
-      .string()
-      .regex(/^\d{10,15}$/, 'Phone number must be between 10 to 15 digits'),
+    phoneNumber: z.string().regex(/^\d{10,15}$/, 'Phone number must be between 10 to 15 digits'),
     type: z.enum(['b2c', 'b2c', 'b2b', 'b2i', 'general']),
     subcategory: z.enum(['', 'jobs', 'skills']).optional(),
     query: z.string().min(10, 'Query must be at least 10 characters long'),
@@ -44,8 +36,7 @@ const leadSchema = z
     if (data.type !== 'b2i' && data.subcategory) {
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
-        message:
-          "Subcategory should only be provided when category is 'institutional'",
+        message: "Subcategory should only be provided when category is 'institutional'",
         path: ['subcategory'],
       });
     }
@@ -93,8 +84,8 @@ const ConsultationForm = () => {
   return (
     <form
       onSubmit={handleSubmit(
-        (e) => onSubmit.mutate(e),
-        (err) => console.error(err)
+        e => onSubmit.mutate(e),
+        err => console.error(err)
       )}
       className="space-y-8 max-w-xl mx-auto p-8 shadow-2xl rounded-2xl bg-white text-black relative"
     >
@@ -119,9 +110,7 @@ const ConsultationForm = () => {
             className="w-full bg-transparent placeholder:text-[#2563EB] outline-none py-2 text-base"
           />
         </div>
-        {errors.name && (
-          <p className="text-xs text-red-500">{errors.name.message}</p>
-        )}
+        {errors.name && <p className="text-xs text-red-500">{errors.name.message}</p>}
       </div>
 
       {/* Email Field */}
@@ -139,35 +128,23 @@ const ConsultationForm = () => {
             className="w-full bg-transparent placeholder:text-[#2563EB] outline-none py-2 text-base"
           />
         </div>
-        {errors.email && (
-          <p className="text-xs text-red-500">{errors.email.message}</p>
-        )}
+        {errors.email && <p className="text-xs text-red-500">{errors.email.message}</p>}
       </div>
 
       {/* Phone Number Field */}
       <div className="space-y-1">
-        <label
-          htmlFor="phoneNumber"
-          className="text-sm font-medium text-gray-700"
-        >
+        <label htmlFor="phoneNumber" className="text-sm font-medium text-gray-700">
           Phone Number
         </label>
         <div className="flex gap-3 items-center border-b border-[#3B82F6] focus-within:border-[#3B82F6] transition">
           <FaPhone className="text-[#3B82F6] mr-3" />
-          <Select
-            defaultValue="+91"
-            onValueChange={(value) => setValue('countryCode', value)}
-          >
+          <Select defaultValue="+91" onValueChange={value => setValue('countryCode', value)}>
             <SelectTrigger className="border-none bg-transparent text-black outline-none w-1/3 text-sm">
               <SelectValue placeholder="Code" />
             </SelectTrigger>
             <SelectContent className="bg-[#3B82F6] text-white border border-[#2563EB]">
-              {countryCodes.map((code) => (
-                <SelectItem
-                  key={code.value}
-                  value={code.value}
-                  className="hover:bg-[#2563EB]"
-                >
+              {countryCodes.map(code => (
+                <SelectItem key={code.value} value={code.value} className="hover:bg-[#2563EB]">
                   {code.label}
                 </SelectItem>
               ))}
@@ -180,25 +157,18 @@ const ConsultationForm = () => {
             className="w-2/3 bg-transparent placeholder:text-[#2563EB] outline-none py-2 text-base"
           />
         </div>
-        {errors.phoneNumber && (
-          <p className="text-xs text-red-500">{errors.phoneNumber.message}</p>
-        )}
+        {errors.phoneNumber && <p className="text-xs text-red-500">{errors.phoneNumber.message}</p>}
       </div>
 
       {/* Subcategory (If applicable) */}
       {showSubcategory && (
         <div className="space-y-1">
-          <label
-            htmlFor="subcategory"
-            className="text-sm font-medium text-gray-700"
-          >
+          <label htmlFor="subcategory" className="text-sm font-medium text-gray-700">
             Subcategory
           </label>
           <Select
             defaultValue=""
-            onValueChange={(value) =>
-              setValue('subcategory', value as 'jobs' | 'skills')
-            }
+            onValueChange={value => setValue('subcategory', value as 'jobs' | 'skills')}
           >
             <SelectTrigger className="border-b border-[#3B82F6] bg-transparent text-black outline-none focus:border-[#3B82F6] py-2 text-base">
               <SelectValue placeholder="Select a subcategory" />
@@ -232,9 +202,7 @@ const ConsultationForm = () => {
             className="w-full bg-transparent placeholder:text-[#2563EB] outline-none py-2 min-h-28 text-base"
           />
         </div>
-        {errors.query && (
-          <p className="text-xs text-red-500">{errors.query.message}</p>
-        )}
+        {errors.query && <p className="text-xs text-red-500">{errors.query.message}</p>}
       </div>
 
       {/* Submit Button */}

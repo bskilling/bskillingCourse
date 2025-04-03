@@ -15,9 +15,7 @@ export default function Login() {
   async function getAuthorization() {
     try {
       const res = axios.post(
-        process.env.NEXT_PUBLIC_TRAINING_BASE_URL +
-          'api/v1/authorisation' +
-          `?token=${query.token}`
+        process.env.NEXT_PUBLIC_TRAINING_BASE_URL + 'api/v1/authorisation' + `?token=${query.token}`
       );
       console.log(res);
     } catch (error) {

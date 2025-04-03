@@ -18,8 +18,7 @@ import { toast } from 'sonner';
 
 // Backend URL
 const backendUrl =
-  process.env.NEXT_PUBLIC_BACKEND_URL ??
-  'https://backendbskilling-production-20ff.up.railway.app';
+  process.env.NEXT_PUBLIC_BACKEND_URL ?? 'https://backendbskilling-production-20ff.up.railway.app';
 
 export default function SkillLeadForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -45,7 +44,7 @@ export default function SkillLeadForm() {
   // Handle input changes
   const handleChange = (e: any) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
+    setFormData(prev => ({
       ...prev,
       [name]: value,
     }));
@@ -127,9 +126,7 @@ export default function SkillLeadForm() {
       });
     } catch (error) {
       console.error('Error submitting lead:', error);
-      toast.error(
-        'There was a problem submitting your request. Please try again.'
-      );
+      toast.error('There was a problem submitting your request. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -164,9 +161,7 @@ export default function SkillLeadForm() {
                   className="bg-white/20 border-white/20 text-white placeholder:text-slate-400"
                   disabled={isSubmitting}
                 />
-                {errors.name && (
-                  <p className="text-red-300 text-xs mt-1">{errors.name}</p>
-                )}
+                {errors.name && <p className="text-red-300 text-xs mt-1">{errors.name}</p>}
               </div>
 
               <div>
@@ -179,9 +174,7 @@ export default function SkillLeadForm() {
                   className="bg-white/20 border-white/20 text-white placeholder:text-slate-400"
                   disabled={isSubmitting}
                 />
-                {errors.email && (
-                  <p className="text-red-300 text-xs mt-1">{errors.email}</p>
-                )}
+                {errors.email && <p className="text-red-300 text-xs mt-1">{errors.email}</p>}
               </div>
 
               <div className="flex gap-2">
@@ -196,9 +189,7 @@ export default function SkillLeadForm() {
                     disabled={isSubmitting}
                   />
                   {errors.countryCode && (
-                    <p className="text-red-300 text-xs mt-1">
-                      {errors.countryCode}
-                    </p>
+                    <p className="text-red-300 text-xs mt-1">{errors.countryCode}</p>
                   )}
                 </div>
 
@@ -213,9 +204,7 @@ export default function SkillLeadForm() {
                     disabled={isSubmitting}
                   />
                   {errors.phoneNumber && (
-                    <p className="text-red-300 text-xs mt-1">
-                      {errors.phoneNumber}
-                    </p>
+                    <p className="text-red-300 text-xs mt-1">{errors.phoneNumber}</p>
                   )}
                 </div>
               </div>
@@ -230,19 +219,13 @@ export default function SkillLeadForm() {
                   rows={3}
                   disabled={isSubmitting}
                 />
-                {errors.query && (
-                  <p className="text-red-300 text-xs mt-1">{errors.query}</p>
-                )}
+                {errors.query && <p className="text-red-300 text-xs mt-1">{errors.query}</p>}
               </div>
 
               {/* Hidden fields for category, type, and subCategory */}
               <input type="hidden" name="category" value={formData.category} />
               <input type="hidden" name="type" value={formData.type} />
-              <input
-                type="hidden"
-                name="subCategory"
-                value={formData.subCategory}
-              />
+              <input type="hidden" name="subCategory" value={formData.subCategory} />
 
               <Button
                 type="submit"
@@ -266,8 +249,7 @@ export default function SkillLeadForm() {
                 animate={{ opacity: 1 }}
                 className="mt-4 p-3 bg-green-500/20 border border-green-500/30 rounded text-green-100 text-sm"
               >
-                Your request has been submitted successfully! Our team will
-                contact you soon.
+                Your request has been submitted successfully! Our team will contact you soon.
               </motion.div>
             )}
           </CardContent>

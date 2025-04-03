@@ -267,15 +267,11 @@ const CourseDetails = ({ courseDetails }: CourseDetailsProps) => {
               </p>
             </div>
             <div className="hidden md:flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4 mt-2">
-              <p>
-                {courseDetails?.enrolledStudents || '57,869 students enrolled'}
-              </p>
+              <p>{courseDetails?.enrolledStudents || '57,869 students enrolled'}</p>
               <p>{courseDetails?.reviews || '25 Reviews'}</p>
               <p>
                 Enrollment End Date:{' '}
-                <span className="font-bold">
-                  {formatDate(batchTime) || '05/2024'}
-                </span>
+                <span className="font-bold">{formatDate(batchTime) || '05/2024'}</span>
               </p>
             </div>
             <div className="relative">

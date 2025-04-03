@@ -11,11 +11,7 @@ import Script from 'next/script';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import '../../style/globals.css';
-import {
-  HydrationBoundary,
-  QueryClient,
-  QueryClientProvider,
-} from '@tanstack/react-query';
+import { HydrationBoundary, QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Toaster } from 'sonner';
 import { SessionProvider } from 'next-auth/react';
 // function MyApp({ Component, pageProps }: AppProps) {

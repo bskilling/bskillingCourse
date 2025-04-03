@@ -47,7 +47,7 @@ const RegistrationForm = () => {
       setFormData({
         ...formData,
         //@ts-ignore
-        [name]: formData[name].filter((item) => item !== value),
+        [name]: formData[name].filter(item => item !== value),
       });
     }
   };
@@ -63,15 +63,9 @@ const RegistrationForm = () => {
         <title>bSkilling Privacy Policy</title>
         <meta name="bSkilling" content=" Privacy Policy" />
 
-        <meta
-          name="p:domain_verify"
-          content="7bb84546e514612864b5b9d71d1649e4"
-        />
+        <meta name="p:domain_verify" content="7bb84546e514612864b5b9d71d1649e4" />
         <link rel="icon" href="/favicon.png" />
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-3PVZC9K8BH"
-        ></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-3PVZC9K8BH"></script>
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -84,16 +78,11 @@ const RegistrationForm = () => {
         />
       </Head>
       <div className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-lg">
-        <h2 className="text-2xl font-semibold text-center mb-6">
-          Registration Form
-        </h2>
+        <h2 className="text-2xl font-semibold text-center mb-6">Registration Form</h2>
         <form onSubmit={handleSubmit}>
           {/* Full Name */}
           <div className="mb-4">
-            <label
-              htmlFor="fullName"
-              className="block text-sm font-medium text-gray-700"
-            >
+            <label htmlFor="fullName" className="block text-sm font-medium text-gray-700">
               Full Name
             </label>
             <input
@@ -109,10 +98,7 @@ const RegistrationForm = () => {
 
           {/* Email */}
           <div className="mb-4">
-            <label
-              htmlFor="email"
-              className="block text-sm font-medium text-gray-700"
-            >
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
               Email
             </label>
             <input
@@ -128,10 +114,7 @@ const RegistrationForm = () => {
 
           {/* Date of Birth */}
           <div className="mb-4">
-            <label
-              htmlFor="dateOfBirth"
-              className="block text-sm font-medium text-gray-700"
-            >
+            <label htmlFor="dateOfBirth" className="block text-sm font-medium text-gray-700">
               Date of Birth
             </label>
             <input
@@ -147,9 +130,7 @@ const RegistrationForm = () => {
 
           {/* Gender */}
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700">
-              Gender
-            </label>
+            <label className="block text-sm font-medium text-gray-700">Gender</label>
             <div className="flex space-x-4">
               <label className="inline-flex items-center">
                 <input
@@ -178,10 +159,7 @@ const RegistrationForm = () => {
 
           {/* Contact Number */}
           <div className="mb-4">
-            <label
-              htmlFor="contactNumber"
-              className="block text-sm font-medium text-gray-700"
-            >
+            <label htmlFor="contactNumber" className="block text-sm font-medium text-gray-700">
               Contact Number
             </label>
             <input
@@ -197,10 +175,7 @@ const RegistrationForm = () => {
 
           {/* Residential Address */}
           <div className="mb-4">
-            <label
-              htmlFor="residentialAddress"
-              className="block text-sm font-medium text-gray-700"
-            >
+            <label htmlFor="residentialAddress" className="block text-sm font-medium text-gray-700">
               Residential Address
             </label>
             <textarea
@@ -215,9 +190,7 @@ const RegistrationForm = () => {
 
           {/* Degree */}
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700">
-              Degree
-            </label>
+            <label className="block text-sm font-medium text-gray-700">Degree</label>
             <div className="flex space-x-4">
               <label className="inline-flex items-center">
                 <input
@@ -268,9 +241,7 @@ const RegistrationForm = () => {
 
           {/* Specialization */}
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700">
-              Specialization
-            </label>
+            <label className="block text-sm font-medium text-gray-700">Specialization</label>
             <div className="flex space-x-4">
               <label className="inline-flex items-center">
                 <input
@@ -332,9 +303,7 @@ const RegistrationForm = () => {
 
           {/* Year of Passing */}
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700">
-              Year of Passing
-            </label>
+            <label className="block text-sm font-medium text-gray-700">Year of Passing</label>
             <select
               name="yearOfPassing"
               value={formData.yearOfPassing}
@@ -351,10 +320,7 @@ const RegistrationForm = () => {
 
           {/* College/University Name */}
           <div className="mb-4">
-            <label
-              htmlFor="collegeName"
-              className="block text-sm font-medium text-gray-700"
-            >
+            <label htmlFor="collegeName" className="block text-sm font-medium text-gray-700">
               College/University Name
             </label>
             <input
@@ -370,9 +336,7 @@ const RegistrationForm = () => {
 
           {/* Category */}
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700">
-              Category
-            </label>
+            <label className="block text-sm font-medium text-gray-700">Category</label>
             <select
               name="category"
               value={formData.category}
@@ -408,9 +372,7 @@ const RegistrationForm = () => {
 
           {/* Upload Certificates */}
           <div className="mb-4 space-y-2">
-            <label className="block text-sm font-medium text-gray-700">
-              Upload Documents
-            </label>
+            <label className="block text-sm font-medium text-gray-700">Upload Documents</label>
             <input
               type="file"
               name="communityCertificate"
@@ -523,20 +485,16 @@ const RegistrationForm = () => {
                 className="form-checkbox"
               />
               <span className="ml-2">
-                By signing below, I confirm that the information provided is
-                accurate. I consent to participate in the 3-month skill
-                development training program and agree to utilize the job
-                assistance provided upon successful completion.
+                By signing below, I confirm that the information provided is accurate. I consent to
+                participate in the 3-month skill development training program and agree to utilize
+                the job assistance provided upon successful completion.
               </span>
             </label>
           </div>
 
           {/* Submit Button */}
           <div className="mb-4">
-            <button
-              type="submit"
-              className="w-full bg-blue-500 text-white p-2 rounded-md"
-            >
+            <button type="submit" className="w-full bg-blue-500 text-white p-2 rounded-md">
               Submit
             </button>
           </div>

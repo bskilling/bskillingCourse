@@ -53,24 +53,16 @@ export default function CourseCard({ course }: CourseCardProps) {
         <div className="flex items-center gap-2 text-sm text-gray-500">
           <span className="font-medium">Price:</span>
           <span
-            className={cn(
-              course.price.amount === 0
-                ? 'text-green-600'
-                : 'text-blue-500 font-bold'
-            )}
+            className={cn(course.price.amount === 0 ? 'text-green-600' : 'text-blue-500 font-bold')}
           >
-            {course.price.amount === 0
-              ? 'Free'
-              : `${course.price.amount} ${course.price.currency}`}
+            {course.price.amount === 0 ? 'Free' : `${course.price.amount} ${course.price.currency}`}
           </span>
         </div>
       </CardContent>
 
       <CardFooter className="p-4 border-t flex justify-between items-center mt-auto">
         <Button asChild variant="outline" className="w-full font-semibold">
-          <Link href={`/course/${course.slug}?id=${course._id.toString()}`}>
-            View Course
-          </Link>
+          <Link href={`/course/${course.slug}?id=${course._id.toString()}`}>View Course</Link>
         </Button>
       </CardFooter>
     </Card>

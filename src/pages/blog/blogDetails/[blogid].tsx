@@ -128,9 +128,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   }
 };
 
-const BlogDetails = ({
-  blog,
-}: InferGetStaticPropsType<typeof getStaticProps>) => {
+const BlogDetails = ({ blog }: InferGetStaticPropsType<typeof getStaticProps>) => {
   if (!blog) {
     return <p>Blog not found.</p>;
   }

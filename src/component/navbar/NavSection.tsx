@@ -18,10 +18,7 @@ export default function NavSection() {
             </span>{' '}
             +91-9845348601
           </p>
-          <Link
-            href="mailto:support@bskilling.com"
-            className="flex items-center text-white"
-          >
+          <Link href="mailto:support@bskilling.com" className="flex items-center text-white">
             <span className="mr-2">📧</span> support@bskilling.com
           </Link>
         </div>

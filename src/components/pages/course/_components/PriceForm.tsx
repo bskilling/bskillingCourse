@@ -1,13 +1,8 @@
-"use client";
-import { Button } from "@/components/ui/button";
-import { CurrencyDollarIcon } from "@heroicons/react/24/outline";
-import {
-  BookOpenIcon,
-  ClockIcon,
-  CreditCardIcon,
-  ShieldCheckIcon,
-} from "lucide-react";
-import React from "react";
+'use client';
+import { Button } from '@/components/ui/button';
+import { CurrencyDollarIcon } from '@heroicons/react/24/outline';
+import { BookOpenIcon, ClockIcon, CreditCardIcon, ShieldCheckIcon } from 'lucide-react';
+import React from 'react';
 
 export default function PriceForm({
   formattedPrice,
@@ -38,21 +33,15 @@ export default function PriceForm({
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
           <div className="flex items-center gap-3 bg-gray-50 p-4 rounded-xl shadow">
             <ClockIcon className="h-6 w-6 text-[#203A43]" />
-            <span className="font-medium text-gray-700">
-              {durationHours} Hours
-            </span>
+            <span className="font-medium text-gray-700">{durationHours} Hours</span>
           </div>
           <div className="flex items-center gap-3 bg-gray-50 p-4 rounded-xl shadow">
             <BookOpenIcon className="h-6 w-6 text-[#203A43]" />
-            <span className="font-medium text-gray-700">
-              Comprehensive Learning
-            </span>
+            <span className="font-medium text-gray-700">Comprehensive Learning</span>
           </div>
           <div className="flex items-center gap-3 bg-gray-50 p-4 rounded-xl shadow">
             <CurrencyDollarIcon className="h-6 w-6 text-[#203A43]" />
-            <span className="font-medium text-gray-700">
-              Flexible Payment Options
-            </span>
+            <span className="font-medium text-gray-700">Flexible Payment Options</span>
           </div>
           <div className="flex items-center gap-3 bg-gray-50 p-4 rounded-xl shadow">
             <ShieldCheckIcon className="h-6 w-6 text-[#203A43]" />

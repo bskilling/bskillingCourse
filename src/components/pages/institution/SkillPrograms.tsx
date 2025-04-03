@@ -4,15 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import {
-  Code,
-  Search,
-  BookOpen,
-  Filter,
-  ArrowRight,
-  Layers,
-  GraduationCap,
-} from 'lucide-react';
+import { Code, Search, BookOpen, Filter, ArrowRight, Layers, GraduationCap } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
 import {
@@ -60,16 +52,13 @@ const item = {
 };
 
 const backendUrl =
-  process.env.NEXT_PUBLIC_BACKEND_URL ??
-  'https://backendbskilling-production-20ff.up.railway.app';
+  process.env.NEXT_PUBLIC_BACKEND_URL ?? 'https://backendbskilling-production-20ff.up.railway.app';
 
 export default function SkillPrograms({ skill }: { skill: boolean }) {
   const selectedType = 'b2i';
   const router = useRouter();
   const [searchTerm, setSearchTerm] = useState('');
-  const [scategory, setScategory] = useState<
-    ICategories['categories'][number] | null
-  >(null);
+  const [scategory, setScategory] = useState<ICategories['categories'][number] | null>(null);
 
   const categoryQuery = useQuery<ICategories>({
     queryKey: ['categories-b2i'],
@@ -105,7 +94,7 @@ export default function SkillPrograms({ skill }: { skill: boolean }) {
     staleTime: 1000 * 60 * 5,
   });
 
-  const filteredCourses = data?.courses.filter((course) =>
+  const filteredCourses = data?.courses.filter(course =>
     course.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
@@ -131,8 +120,8 @@ export default function SkillPrograms({ skill }: { skill: boolean }) {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            Discover specialized training programs designed to enhance your
-            professional capabilities and accelerate your career growth
+            Discover specialized training programs designed to enhance your professional
+            capabilities and accelerate your career growth
           </motion.p>
         </div>
 
@@ -147,7 +136,7 @@ export default function SkillPrograms({ skill }: { skill: boolean }) {
               placeholder="Search for skills, courses, or topics..."
               className="pl-10 bg-white border-slate-200 focus:border-indigo-300 shadow-sm"
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
+              onChange={e => setSearchTerm(e.target.value)}
             />
           </div>
 
@@ -166,12 +155,10 @@ export default function SkillPrograms({ skill }: { skill: boolean }) {
               All Programs
             </Button>
 
-            {categoryQuery?.data?.categories?.map((category) => (
+            {categoryQuery?.data?.categories?.map(category => (
               <Button
                 key={category.slug}
-                variant={
-                  category._id === scategory?._id ? 'default' : 'outline'
-                }
+                variant={category._id === scategory?._id ? 'default' : 'outline'}
                 className={cn(
                   'rounded-full px-4 md:px-6 font-medium text-sm',
                   category._id === scategory?._id
@@ -189,12 +176,8 @@ export default function SkillPrograms({ skill }: { skill: boolean }) {
         {/* Course Listings */}
         <Tabs defaultValue="all" className="w-full">
           <div className="mb-6">
-            <h2 className="text-2xl font-bold text-slate-900">
-              Available Programs
-            </h2>
-            <p className="text-slate-600">
-              Select the right program to enhance your skills
-            </p>
+            <h2 className="text-2xl font-bold text-slate-900">Available Programs</h2>
+            <p className="text-slate-600">Select the right program to enhance your skills</p>
           </div>
 
           <TabsContent value="all" className="mt-0 w-full">
@@ -210,18 +193,10 @@ export default function SkillPrograms({ skill }: { skill: boolean }) {
                 initial="hidden"
                 animate="show"
               >
-                {filteredCourses.map((course) => (
-                  <motion.div
-                    key={course._id}
-                    variants={item}
-                    className="w-full"
-                  >
+                {filteredCourses.map(course => (
+                  <motion.div key={course._id} variants={item} className="w-full">
                     <Card className="relative flex flex-col overflow-hidden rounded-2xl shadow-lg transition-transform hover:scale-105 hover:shadow-2xl bg-white">
-                      <Link
-                        href={`/institutions/${
-                          course.slug
-                        }?id=${course._id.toString()}`}
-                      >
+                      <Link href={`/institutions/${course.slug}?id=${course._id.toString()}`}>
                         <CardHeader className="p-0">
                           {course?.previewImage?.viewUrl ? (
                             <img
@@ -268,9 +243,7 @@ export default function SkillPrograms({ skill }: { skill: boolean }) {
 
                       <CardFooter className="p-4 border-t flex justify-between items-center mt-auto text-center">
                         <Link
-                          href={`/institutions/${
-                            course.slug
-                          }?id=${course._id.toString()}`}
+                          href={`/institutions/${course.slug}?id=${course._id.toString()}`}
                           className="m-auto"
                         >
                           View Course
@@ -285,9 +258,7 @@ export default function SkillPrograms({ skill }: { skill: boolean }) {
                 <div className="w-16 h-16 bg-slate-100 rounded-full mx-auto flex items-center justify-center mb-4">
                   <Search className="w-8 h-8 text-slate-400" />
                 </div>
-                <h3 className="text-xl font-semibold text-slate-900 mb-2">
-                  No programs found
-                </h3>
+                <h3 className="text-xl font-semibold text-slate-900 mb-2">No programs found</h3>
                 <p className="text-slate-600 mb-6">
                   {searchTerm
                     ? `No results match "${searchTerm}". Try different keywords or browse all programs.`
@@ -323,8 +294,8 @@ export default function SkillPrograms({ skill }: { skill: boolean }) {
                   Can&apos;t find what you&apos;re looking for?
                 </h2>
                 <p className="text-indigo-100 max-w-xl">
-                  We can create custom skill development programs tailored to
-                  your specific needs and goals.
+                  We can create custom skill development programs tailored to your specific needs
+                  and goals.
                 </p>
               </div>
               <Dialog>

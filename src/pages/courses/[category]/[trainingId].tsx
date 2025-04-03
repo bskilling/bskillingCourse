@@ -192,20 +192,15 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
   const videoId = youtubeLink?.split('/').pop();
 
   const formattedData =
-    props.trainingMetadata?.curriculum.map(
-      (item: TrainingMetadataShape['curriculum'][0]) => ({
-        question: item.chapter,
-        answer: item.lessons,
-      })
-    ) || [];
+    props.trainingMetadata?.curriculum.map((item: TrainingMetadataShape['curriculum'][0]) => ({
+      question: item.chapter,
+      answer: item.lessons,
+    })) || [];
 
-  const formattedPrice = props.trainingMetadata?.price.toLocaleString(
-    undefined,
-    {
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
-    }
-  );
+  const formattedPrice = props.trainingMetadata?.price.toLocaleString(undefined, {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  });
 
   const calculateDiscountedPrice = () => {
     const formattedPrice = props.trainingMetadata?.price ?? '0';
@@ -253,12 +248,11 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
     <>
       {props.trainingMetadata && (
         <Head>
-          {props.trainingMetadata.name ==
-            'PRINCE2® Foundation and Practitioner ' && (
+          {props.trainingMetadata.name == 'PRINCE2® Foundation and Practitioner ' && (
             <>
               <title>
-                bSkilling | PRINCE2 Foundation & Practitioner Training | Online
-                Course and Certification{' '}
+                bSkilling | PRINCE2 Foundation & Practitioner Training | Online Course and
+                Certification{' '}
               </title>
               <meta
                 name="description"
@@ -275,8 +269,8 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
             'Project Management Professional (PMP)® Certification Prep Course ' && (
             <>
               <title>
-                bSkilling | PMP Certification Training in Bangalore | Project
-                Management Professional Courses{' '}
+                bSkilling | PMP Certification Training in Bangalore | Project Management
+                Professional Courses{' '}
               </title>
               <meta
                 name="description"
@@ -291,9 +285,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
 
           {props.trainingMetadata.name == 'Generative AI' && (
             <>
-              <title>
-                bSkilling | Online Generative AI - Courses and Certification{' '}
-              </title>
+              <title>bSkilling | Online Generative AI - Courses and Certification </title>
               <meta
                 name="description"
                 content="Discover Online courses and certifications in Generative AI with bSkilling. Elevate yours skills with advanced training. Get Certified Now!"
@@ -308,9 +300,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
           {props.trainingMetadata.name ==
             'Cloud Engineering- Azure, AWS, GCP Training Certification' && (
             <>
-              <title>
-                Cloud Engineering Certification: Azure, AWS, GCP Training
-              </title>
+              <title>Cloud Engineering Certification: Azure, AWS, GCP Training</title>
               <meta
                 name="description"
                 content="Find opportunities by obtaining a Cloud Engineering Certification, improve your skills to the next level and reveal your expertise in cloud technologies."
@@ -322,12 +312,10 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
             </>
           )}
 
-          {props.trainingMetadata.name ==
-            'PRINCE2® 7th Edition Foundation Certification' && (
+          {props.trainingMetadata.name == 'PRINCE2® 7th Edition Foundation Certification' && (
             <>
               <title>
-                bSkilling | PRINCE2 Foundation | Online Training Course and
-                Certification
+                bSkilling | PRINCE2 Foundation | Online Training Course and Certification
               </title>
               <meta
                 name="description"
@@ -340,12 +328,9 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
             </>
           )}
 
-          {props.trainingMetadata.name ==
-            'SAP Business Technology Platform (BTP)' && (
+          {props.trainingMetadata.name == 'SAP Business Technology Platform (BTP)' && (
             <>
-              <title>
-                bSkilling | SAP BTP - Online Courses With Certification
-              </title>
+              <title>bSkilling | SAP BTP - Online Courses With Certification</title>
               <meta
                 name="description"
                 content="Explore live, online SAP BTP courses for dynamic learning. Master SAP BTP with bSkilling and get course Certification with Placement."
@@ -357,35 +342,26 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
             </>
           )}
 
-          {props.trainingMetadata.name !==
-            'PRINCE2® Foundation and Practitioner ' &&
+          {props.trainingMetadata.name !== 'PRINCE2® Foundation and Practitioner ' &&
             props.trainingMetadata.name !==
               'Project Management Professional (PMP)® Certification Prep Course ' &&
             props.trainingMetadata.name !== 'Generative AI' &&
             props.trainingMetadata.name !==
               'Cloud Engineering- Azure, AWS, GCP Training Certification' &&
-            props.trainingMetadata.name !==
-              'PRINCE2® 7th Edition Foundation Certification' &&
-            props.trainingMetadata.name !==
-              'SAP Business Technology Platform (BTP)' && (
+            props.trainingMetadata.name !== 'PRINCE2® 7th Edition Foundation Certification' &&
+            props.trainingMetadata.name !== 'SAP Business Technology Platform (BTP)' && (
               <>
                 <title>bSkilling </title>
                 <meta
                   name="bSkilling"
                   content="Learn the skills you need to build and deploy intelligent applications on SAP Business Technology Platform"
                 />
-                <meta
-                  name="p:domain_verify"
-                  content="7bb84546e514612864b5b9d71d1649e4"
-                />
+                <meta name="p:domain_verify" content="7bb84546e514612864b5b9d71d1649e4" />
               </>
             )}
 
           <link rel="icon" href="/favicon.png" />
-          <script
-            async
-            src="https://www.googletagmanager.com/gtag/js?id=G-3PVZC9K8BH"
-          ></script>
+          <script async src="https://www.googletagmanager.com/gtag/js?id=G-3PVZC9K8BH"></script>
           <script
             dangerouslySetInnerHTML={{
               __html: `
@@ -411,8 +387,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                     className="h-full absolute top-0 left-0 w-full"
                     style={{
                       backgroundImage: `url(${
-                        props.trainingMetadata.name ===
-                        'Microsoft Copilot Training Certification'
+                        props.trainingMetadata.name === 'Microsoft Copilot Training Certification'
                           ? '/copilot.png'
                           : '/education6.jpeg'
                       })`,
@@ -446,10 +421,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                                 alt="Description of the image"
                                 className="h-3 w-3 mt-[8px]" // Adjust the size and margin as needed
                               />
-                              <p>
-                                Drive innovation and efficiency in your
-                                organisation
-                              </p>
+                              <p>Drive innovation and efficiency in your organisation</p>
                             </div>
                             <div className="flex gap-3 mb-[10px]">
                               <img
@@ -457,10 +429,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                                 alt="Description of the image"
                                 className="h-3 w-3 mt-[8px]" // Adjust the size and margin as needed
                               />
-                              <p>
-                                Gain mastery of key concepts, tools, and best
-                                practices
-                              </p>
+                              <p>Gain mastery of key concepts, tools, and best practices</p>
                             </div>
 
                             <div className="flex gap-3 mb-[10px]">
@@ -469,10 +438,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                                 alt="Description of the image"
                                 className="h-3 w-3 mt-[8px]" // Adjust the size and margin as needed
                               />
-                              <p>
-                                Advance skill in Microsoft technologies with our
-                                training
-                              </p>
+                              <p>Advance skill in Microsoft technologies with our training</p>
                             </div>
 
                             <div className="flex gap-3 mb-[10px]">
@@ -482,8 +448,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                                 className="h-3 w-3 mt-[8px]" // Adjust the size and margin as needed
                               />
                               <p>
-                                Master implementing, managing, and optimizing
-                                Microsoft solutions
+                                Master implementing, managing, and optimizing Microsoft solutions
                               </p>
                             </div>
                           </div>
@@ -529,11 +494,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                         'Microsoft Copilot Training Certification' ? (
                           <>
                             <div className="flex items-center md:ml-[0px] ml-[23px]">
-                              <img
-                                src="/trainingIcon.png"
-                                className="w-8 h-8"
-                                alt="trainingIcon"
-                              />
+                              <img src="/trainingIcon.png" className="w-8 h-8" alt="trainingIcon" />
                               <div className="bg-green-600 text-white font-semibold text-[14px] px-3 tracking-wide rounded-md ml-2">
                                 <p>Live Training</p>
                               </div>
@@ -546,9 +507,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                                   className="w-6 h-6 sm:ml-3"
                                   alt="Glogo"
                                 />
-                                <span className="ml-1 font-bold">
-                                  {rating}/5
-                                </span>
+                                <span className="ml-1 font-bold">{rating}/5</span>
                                 <div className="flex items-center ml-2">
                                   <StarRating ratings={() => rating} />
                                 </div>
@@ -715,15 +674,12 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                                   </div>
 
                                   {/* Conditionally render RegisterForm or message */}
-                                  {props.trainingMetadata.batches.length ===
-                                  0 ? (
+                                  {props.trainingMetadata.batches.length === 0 ? (
                                     <p>No batch available</p>
                                   ) : (
                                     <RegisterForm
                                       email="jkdiadihsadsaio"
-                                      BatchName={
-                                        props.trainingMetadata.batches || []
-                                      }
+                                      BatchName={props.trainingMetadata.batches || []}
                                       price={props.trainingMetadata.price}
                                       course={props.trainingMetadata.name}
                                       courseName={props.trainingMetadata.name}
@@ -807,32 +763,26 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                         <div id="Overview" className="h-12 "></div>
                         <div className="mt-2 mb-3">
                           <div className="flex justify-between">
-                            <p className=" text-2xl font-bold   mb-4">
-                              Overview
-                            </p>
+                            <p className=" text-2xl font-bold   mb-4">Overview</p>
                           </div>
-                          <p className="   ">
-                            {props.trainingMetadata.overview}
-                          </p>
+                          <p className="   ">{props.trainingMetadata.overview}</p>
                           <div id="Objectives" className="h-12 "></div>
                           <div className=" flex md:flex-row flex-col">
                             <div className="flex-1">
                               <p className="_pt-8 pb-6 text-xl md:text-left font-semibold">
                                 Objectives
                               </p>
-                              {props.trainingMetadata.objectives.map(
-                                (item, index) => (
-                                  <div key={index} className="flex gap-3 ">
-                                    <img
-                                      className="h-3 w-3 mt-[8px]"
-                                      src="/checklist.png"
-                                      alt="Icon"
-                                    />
+                              {props.trainingMetadata.objectives.map((item, index) => (
+                                <div key={index} className="flex gap-3 ">
+                                  <img
+                                    className="h-3 w-3 mt-[8px]"
+                                    src="/checklist.png"
+                                    alt="Icon"
+                                  />
 
-                                    <p>{item}</p>
-                                  </div>
-                                )
-                              )}
+                                  <p>{item}</p>
+                                </div>
+                              ))}
                             </div>
                             <div className="md:w-[500px] justify-end md:pt-0 pt-4 mr-2 _pt-8 items-end  flex flex-row gap-3">
                               <div className="md:w-fit flex-3 w-full  md:pt-0 pt-4 h-[300px]  md:h-fit flex justify-center">
@@ -855,57 +805,47 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                               <p className="pt- pb-7 text-xl md:text-left font-semibold ">
                                 Prerequisites
                               </p>
-                              {props.trainingMetadata.prerequisites.map(
-                                (item, index) => (
-                                  <div key={index} className="flex gap-3">
-                                    <img
-                                      className="h-3 w-3 mt-[8px]"
-                                      src="/checklist.png"
-                                      alt="Icon"
-                                    />
+                              {props.trainingMetadata.prerequisites.map((item, index) => (
+                                <div key={index} className="flex gap-3">
+                                  <img
+                                    className="h-3 w-3 mt-[8px]"
+                                    src="/checklist.png"
+                                    alt="Icon"
+                                  />
 
-                                    <p>{item}</p>
-                                  </div>
-                                )
-                              )}
+                                  <p>{item}</p>
+                                </div>
+                              ))}
 
                               <div id="Audience" className="h-12 "></div>
-                              <p className="_pt-8  text-xl  pb-4 font-semibold">
-                                Audience
-                              </p>
+                              <p className="_pt-8  text-xl  pb-4 font-semibold">Audience</p>
 
-                              {props.trainingMetadata.audience.map(
-                                (item, index) => (
-                                  <div key={index} className="flex gap-3">
-                                    <img
-                                      className="h-3 w-3 mt-[8px]"
-                                      src="/checklist.png"
-                                      alt="Icon"
-                                    />
+                              {props.trainingMetadata.audience.map((item, index) => (
+                                <div key={index} className="flex gap-3">
+                                  <img
+                                    className="h-3 w-3 mt-[8px]"
+                                    src="/checklist.png"
+                                    alt="Icon"
+                                  />
 
-                                    <p>{item}</p>
-                                  </div>
-                                )
-                              )}
+                                  <p>{item}</p>
+                                </div>
+                              ))}
 
                               <div id="KeyFeatures" className="h-12 "></div>
-                              <p className="_pt-8  text-xl  pb-4 font-semibold">
-                                Key Features
-                              </p>
+                              <p className="_pt-8  text-xl  pb-4 font-semibold">Key Features</p>
 
-                              {props.trainingMetadata.keyFeatures.map(
-                                (item, index) => (
-                                  <div key={index} className="flex gap-3">
-                                    <img
-                                      className="h-3 w-3 mt-[8px]"
-                                      src="/checklist.png"
-                                      alt="Icon"
-                                    />
+                              {props.trainingMetadata.keyFeatures.map((item, index) => (
+                                <div key={index} className="flex gap-3">
+                                  <img
+                                    className="h-3 w-3 mt-[8px]"
+                                    src="/checklist.png"
+                                    alt="Icon"
+                                  />
 
-                                    <p>{item}</p>
-                                  </div>
-                                )
-                              )}
+                                  <p>{item}</p>
+                                </div>
+                              ))}
                             </div>
 
                             <div className="flex flex-col md:w-[50%]">
@@ -914,32 +854,28 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                                   Skills Covered
                                 </p>
                                 <div className="flex md:flex flex-wrap justify-left md:justify-end items-end   gap-5">
-                                  {props.trainingMetadata.skillsCovered.map(
-                                    (item, index) => (
-                                      <div
-                                        key={index}
-                                        className="border rounded-md w-fit border-buttonBlue text-center px-2 py-2 text-buttonBlue"
-                                      >
-                                        {item}
-                                      </div>
-                                    )
-                                  )}
+                                  {props.trainingMetadata.skillsCovered.map((item, index) => (
+                                    <div
+                                      key={index}
+                                      className="border rounded-md w-fit border-buttonBlue text-center px-2 py-2 text-buttonBlue"
+                                    >
+                                      {item}
+                                    </div>
+                                  ))}
                                 </div>
                                 <div className="pt-16">
                                   <p className="_pt-8 pb-4 text-xl text-left md:text-right font-semibold">
                                     Resources
                                   </p>
                                   <div className="flex md:flex flex-wrap justify-left md:justify-end items-end   gap-5">
-                                    {props.trainingMetadata.resources.map(
-                                      (item, index) => (
-                                        <div
-                                          key={index}
-                                          className="border rounded-md w-fit border-buttonBlue text-center px-2 py-2 text-buttonBlue"
-                                        >
-                                          {item}
-                                        </div>
-                                      )
-                                    )}
+                                    {props.trainingMetadata.resources.map((item, index) => (
+                                      <div
+                                        key={index}
+                                        className="border rounded-md w-fit border-buttonBlue text-center px-2 py-2 text-buttonBlue"
+                                      >
+                                        {item}
+                                      </div>
+                                    ))}
                                   </div>
                                 </div>
                               </div>
@@ -952,15 +888,10 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                               <div className="flex flex-col w-full md:w-[100%]">
                                 {' '}
                                 {/* Adjusted width */}
-                                <p className="_pt-8 pb-4 text-xl font-semibold">
-                                  Benefits
-                                </p>
+                                <p className="_pt-8 pb-4 text-xl font-semibold">Benefits</p>
                                 <div className="flex flex-wrap">
                                   {benifitData.map((items: any, index: any) => (
-                                    <div
-                                      className="flex mb-[20px] w-full md:w-1/2"
-                                      key={index}
-                                    >
+                                    <div className="flex mb-[20px] w-full md:w-1/2" key={index}>
                                       <div className="flex gap-3">
                                         <img
                                           className="h-12 w-14 mt-[8px] "
@@ -968,12 +899,8 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                                           alt="Copilot Icon"
                                         />
                                         <div className="md:w-[15rem]">
-                                          <p className="font-semibold ">
-                                            {items.title}
-                                          </p>
-                                          <p className="text-[14px]">
-                                            {items.desc}
-                                          </p>
+                                          <p className="font-semibold ">{items.title}</p>
+                                          <p className="text-[14px]">{items.desc}</p>
                                         </div>
                                       </div>
                                     </div>
@@ -984,21 +911,17 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                           ) : (
                             <div className="flex w-full md:flex-row flex-col gap-4 justify-center">
                               <div className="flex flex-col md:w-[50%]">
-                                <p className="_pt-8 pb-4 text-xl font-semibold">
-                                  Benefits
-                                </p>
-                                {props.trainingMetadata.benefites?.map(
-                                  (item: any, index: any) => (
-                                    <div key={index} className="flex gap-3">
-                                      <img
-                                        className="h-3 w-3 mt-[8px]"
-                                        src="/checklist.png"
-                                        alt="Icon"
-                                      />
-                                      <p>{item}</p>
-                                    </div>
-                                  )
-                                )}
+                                <p className="_pt-8 pb-4 text-xl font-semibold">Benefits</p>
+                                {props.trainingMetadata.benefites?.map((item: any, index: any) => (
+                                  <div key={index} className="flex gap-3">
+                                    <img
+                                      className="h-3 w-3 mt-[8px]"
+                                      src="/checklist.png"
+                                      alt="Icon"
+                                    />
+                                    <p>{item}</p>
+                                  </div>
+                                ))}
                               </div>
                               <div className="flex flex-col md:w-[50%]"></div>
                             </div>
@@ -1009,9 +932,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                       <div className="bg-white md:px-12 px-5 w-full pb-8 rounded-xl">
                         <div id="Curriculum" className="h-12"></div>
                         <div className="flex items-center justify-between">
-                          <p className="_mt-9 text-2xl font-bold mb-4">
-                            Curriculum
-                          </p>
+                          <p className="_mt-9 text-2xl font-bold mb-4">Curriculum</p>
                           {props.trainingMetadata.name ===
                             'Microsoft Copilot Training Certification' && (
                             <button
@@ -1051,37 +972,25 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                       <div className="bg-white px-5 md:px-12 w-full   pb-8  rounded-xl">
                         {' '}
                         <div id="OutComes" className="h-12 "></div>
-                        <p className="_mt-9 text-2xl font-bold   mb-4">
-                          OutComes
-                        </p>
+                        <p className="_mt-9 text-2xl font-bold   mb-4">OutComes</p>
                         <div className=" flex  w-full flex-col">
-                          {props.trainingMetadata.outcomes.map(
-                            (item, index) => (
-                              <div key={index} className="flex gap-3">
-                                <img
-                                  className="h-3 w-3 mt-[8px]"
-                                  src="/checklist.png"
-                                  alt="Icon"
-                                />
+                          {props.trainingMetadata.outcomes.map((item, index) => (
+                            <div key={index} className="flex gap-3">
+                              <img className="h-3 w-3 mt-[8px]" src="/checklist.png" alt="Icon" />
 
-                                <p>{item}</p>
-                              </div>
-                            )
-                          )}
+                              <p>{item}</p>
+                            </div>
+                          ))}
                         </div>
                       </div>
                       <div className=" px-5 md:px-12 w-full bg-white  pb-8  rounded-xl">
                         {' '}
                         <div id="Certification" className="h-12 "></div>
-                        <p className="_mt-9 text-2xl font-bold   mb-4">
-                          Certification
-                        </p>
+                        <p className="_mt-9 text-2xl font-bold   mb-4">Certification</p>
                         <div className="md:bg-white   pb-8 w-full  rounded-xl">
                           <div className="flex w-full gap-8   flex-col md:flex-row justify-center">
                             <div className="md:w-[50%]  flex flex-col justify-start  pt-2">
-                              <p className="">
-                                {props.trainingMetadata.certificationText}
-                              </p>
+                              <p className="">{props.trainingMetadata.certificationText}</p>
                             </div>
                             <div className="md:w-[50%] flex items-center justify-center">
                               <img
@@ -1134,8 +1043,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                               <div className="flex gap-2 items-center justify-center w-full relative mb-2">
                                 <span className="font-bold text-blue-600 text-2xl">
                                   {registerVisible ? (
-                                    props.trainingMetadata.batches.length >
-                                    0 ? (
+                                    props.trainingMetadata.batches.length > 0 ? (
                                       'Enroll Now'
                                     ) : (
                                       ''
@@ -1145,9 +1053,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                                       <span className="font-bold text-blue">
                                         ₹ {formattedPrice}
                                       </span>
-                                      <p className="mb-1 text-[16px] font-medium">
-                                        (Incl. taxes)
-                                      </p>
+                                      <p className="mb-1 text-[16px] font-medium">(Incl. taxes)</p>
                                       <p className="text-[16px] font-dark">
                                         Easy EMIs from ₹5333 per month
                                       </p>
@@ -1157,9 +1063,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                                       <span className="font-bold text-blue">
                                         ₹ {calculateDiscountedPrice()}
                                       </span>
-                                      <p className="mb-1 text-[16px] font-medium">
-                                        (Incl. taxes)
-                                      </p>
+                                      <p className="mb-1 text-[16px] font-medium">(Incl. taxes)</p>
                                       <p className="text-[16px] font-dark">
                                         Easy EMIs from ₹5333 per month
                                       </p>
@@ -1181,8 +1085,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                                     ''
                                   ) : (
                                     <div className="text-red-700 text-lg">
-                                      {props.trainingMetadata.discount} %
-                                      &nbsp;OFF
+                                      {props.trainingMetadata.discount} % &nbsp;OFF
                                     </div>
                                   )}
                                 </div>
@@ -1206,10 +1109,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                           {registerVisible ? (
                             ''
                           ) : (
-                            <div
-                              className="pb-7"
-                              onClick={() => clickOnRegister()}
-                            >
+                            <div className="pb-7" onClick={() => clickOnRegister()}>
                               <button className="bg-lightBlue  hover:bg-blue-600 rounded-md text-white px-9 py-2 font-semibold text-xl mt-4">
                                 <span>Enrol Me</span>
                               </button>
@@ -1224,16 +1124,14 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                               (props.trainingMetadata.batches.length === 0 ? (
                                 <div className="py-8 text-center">
                                   <p className="text-buttonBlue text-center  text-md font-semibold mb-4 px-2">
-                                    There are no batches scheduled for this
-                                    course. Please check later.
+                                    There are no batches scheduled for this course.
+                                    Please check later.
                                   </p>
                                 </div>
                               ) : (
                                 <RegisterForm
                                   email="jkdiadihsadsaio"
-                                  BatchName={
-                                    props.trainingMetadata.batches || []
-                                  }
+                                  BatchName={props.trainingMetadata.batches || []}
                                   price={props.trainingMetadata.price}
                                   course={`${props.trainingMetadata.name}`}
                                   courseName={props.trainingMetadata.name}
@@ -1249,24 +1147,17 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                             </p>
 
                             <div className="flex flex-col items-center text-blue-600 text-center gap-3">
-                              {props.trainingMetadata.batches.map(
-                                (item, index) => (
-                                  <div className="text-sm" key={index}>
-                                    <div className="mb-1 font-Mynerve font-bold text-2xl tracking-wide">
-                                      {item.name}
-                                    </div>
-                                    <div className="font-bold">
-                                      {moment(item.startDate).format(
-                                        'YYYY-MMM-DD'
-                                      )}{' '}
-                                      -{' '}
-                                      {moment(item.endDate).format(
-                                        'YYYY-MMM-DD'
-                                      )}
-                                    </div>
+                              {props.trainingMetadata.batches.map((item, index) => (
+                                <div className="text-sm" key={index}>
+                                  <div className="mb-1 font-Mynerve font-bold text-2xl tracking-wide">
+                                    {item.name}
                                   </div>
-                                )
-                              )}
+                                  <div className="font-bold">
+                                    {moment(item.startDate).format('YYYY-MMM-DD')} -{' '}
+                                    {moment(item.endDate).format('YYYY-MMM-DD')}
+                                  </div>
+                                </div>
+                              ))}
                             </div>
                           </div>
                         </div>
@@ -1279,9 +1170,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
 
                             <div className="flex items-center gap-2 justify-center">
                               <div className="text-left text-xl font-semibold">
-                                <span className="tracking-wider">
-                                  +91-9845 348 601
-                                </span>
+                                <span className="tracking-wider">+91-9845 348 601</span>
                               </div>
                               <div className="flex items-center">
                                 <div className="text-blue-600">
@@ -1328,9 +1217,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
                     <div className="w-24 h-24 ">
                       <div className="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-[#3d3c3d] opacity-75 flex flex-col items-center justify-center">
                         <div className="loader ease-linear rounded-full border-8 border-t-4 border-buttonBlue h-16 w-16 mb-4"></div>
-                        <h2 className="text-center text-white text-xl font-semibold">
-                          Loading...
-                        </h2>
+                        <h2 className="text-center text-white text-xl font-semibold">Loading...</h2>
                       </div>
                     </div>
                   </div>
@@ -1353,9 +1240,7 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
 
 export default TrainingMetadata;
 
-export const getServerSideProps: GetServerSideProps<
-  TrainingMetadataProps
-> = async (context) => {
+export const getServerSideProps: GetServerSideProps<TrainingMetadataProps> = async context => {
   const trainingId = context.params?.trainingId as string;
   const category = context.params?.category as string;
   let trainingMetadata: TrainingMetadataShape | null = null;

@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const AccordionFaq = ({
   question,
@@ -31,9 +31,9 @@ const AccordionFaq = ({
           onClick={() => setIsOpen(!isOpen)}
         >
           <motion.div className="text-gray-800 font-bold ml-1">
-            <motion.span animate={{ color: isOpen ? "#125582" : "#0055FF" }}>
-              {isOpen ? "-" : "+"}
-            </motion.span>{" "}
+            <motion.span animate={{ color: isOpen ? '#125582' : '#0055FF' }}>
+              {isOpen ? '-' : '+'}
+            </motion.span>{' '}
             {question}
           </motion.div>
         </motion.div>
@@ -42,16 +42,16 @@ const AccordionFaq = ({
           <motion.div
             key="content"
             initial="collapsed"
-            animate={isOpen ? "open" : "collapsed"}
+            animate={isOpen ? 'open' : 'collapsed'}
             exit="collapsed"
             variants={{
-              open: { y: 0, height: "auto" },
+              open: { y: 0, height: 'auto' },
               collapsed: { y: -8, height: 0 },
             }}
             transition={{
               duration: 0.2,
-              ease: "linear",
-              when: "open",
+              ease: 'linear',
+              when: 'open',
               staggerChildren: 0.1,
               collapse: { duration: 0.1 }, // Set the transition duration for the collapsed state
             }}

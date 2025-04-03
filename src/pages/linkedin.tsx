@@ -32,10 +32,7 @@ const LinkedInLogin = () => {
   };
 
   // Check for the authorization code in the URL query params when the page loads
-  if (
-    typeof window !== 'undefined' &&
-    window.location.search.includes('code=')
-  ) {
+  if (typeof window !== 'undefined' && window.location.search.includes('code=')) {
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get('code');
     if (code) {

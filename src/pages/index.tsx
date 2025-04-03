@@ -51,9 +51,7 @@ interface ListOfCoursesDataType {
 type NestedArrayOfPeople = Array<Array<ListOfCoursesDataType>>;
 const Home: NextPage<NextPage> = ({}) => {
   const [datas, setDatas] = useState<string[]>([]);
-  const [eachCourceList, SetEachCourceList] = useState<
-    ListOfCoursesDataType[][]
-  >([]);
+  const [eachCourceList, SetEachCourceList] = useState<ListOfCoursesDataType[][]>([]);
 
   const fetchApiData = async () => {
     try {
@@ -86,9 +84,7 @@ const Home: NextPage<NextPage> = ({}) => {
   return (
     <>
       <Head>
-        <title>
-          bSkilling | Online Courses - Live Training and Certification Programs
-        </title>
+        <title>bSkilling | Online Courses - Live Training and Certification Programs</title>
         <meta
           name="description"
           content="Unlock success with bSkilling online courses and live training. Get certified in Generative AI, SAP BTP, Cloud Engineering, Prince2, PMP. The best online training experience!"
@@ -99,10 +95,7 @@ const Home: NextPage<NextPage> = ({}) => {
         />
 
         <link rel="icon" href="/favicon.png" />
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-3PVZC9K8BH"
-        ></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-3PVZC9K8BH"></script>
         <script
           dangerouslySetInnerHTML={{
             __html: `

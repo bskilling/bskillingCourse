@@ -4,9 +4,7 @@ interface propFormat {
 const InsideCourse: React.FC<propFormat> = ({ resources }) => {
   return (
     <div className="flex flex-col pt-8 items-end">
-      <p className="_pt-8 pb-3 text-xl md:text-right  text-left font-semibold">
-        Resources
-      </p>
+      <p className="_pt-8 pb-3 text-xl md:text-right  text-left font-semibold">Resources</p>
 
       <div className="flex md:grid grid-cols-1 place-content-end flex-wrap justify-end items-end gap-5">
         {resources.map((item, index) => (
