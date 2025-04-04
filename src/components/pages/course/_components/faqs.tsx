@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/outline';
-import { QuestionMarkCircleIcon } from '@heroicons/react/24/solid';
+import { ChevronDown, ChevronUp, HelpCircle } from 'lucide-react';
 
 interface FAQ {
   question: string;
@@ -14,45 +13,86 @@ interface FAQProps {
 const FAQSection: React.FC<FAQProps> = ({ faqs }) => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
+  // If no FAQs exist, don't render the section
+  if (!faqs || faqs.length === 0) {
+    return null;
+  }
+
   const toggleFAQ = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
   return (
-    <section className="mt-10" id="faqs">
-      <div className="max-w-4xl mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-8 flex items-center justify-center gap-2">
-          <QuestionMarkCircleIcon className="h-8 w-8 text-[#F8B400]" />
-          FAQs
-        </h2>
-        <div className="space-y-4">
-          {faqs.map((faq, index) => (
+    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16" id="faqs">
+      <div className="flex items-center space-x-3 mb-8">
+        <div className="w-1.5 h-8 bg-blue-600 rounded-full"></div>
+        <h2 className="text-2xl font-bold text-gray-800">Frequently Asked Questions</h2>
+      </div>
+
+      <div className="space-y-4">
+        {faqs.map((faq, index) => {
+          const isOpen = openIndex === index;
+
+          return (
             <div
               key={index}
-              className="bg-white p-5 rounded-xl shadow-lg border-l-4 border-[#F8B400] transition-all"
+              className={`bg-white rounded-xl overflow-hidden transition-all duration-200 ${
+                isOpen
+                  ? 'shadow-md border-blue-200 border'
+                  : 'shadow-sm border border-gray-100 hover:border-blue-100'
+              }`}
             >
               <button
-                className="w-full flex justify-between items-center font-semibold text-lg text-gray-800 focus:outline-none"
+                className="w-full text-left p-5 focus:outline-none flex justify-between items-start"
                 onClick={() => toggleFAQ(index)}
+                aria-expanded={isOpen}
+                aria-controls={`faq-answer-${index}`}
               >
-                <span>
-                  Q.{index + 1} {faq.question}
-                </span>
-                {openIndex === index ? (
-                  <ChevronUpIcon className="h-6 w-6 text-[#F8B400]" />
+                <div className="flex items-start">
+                  <div
+                    className={`flex-shrink-0 mt-0.5 mr-4 rounded-full p-1.5 ${
+                      isOpen ? 'bg-blue-100' : 'bg-gray-100'
+                    }`}
+                  >
+                    <HelpCircle
+                      className={`h-5 w-5 ${isOpen ? 'text-blue-600' : 'text-gray-500'}`}
+                    />
+                  </div>
+                  <span className={`font-medium ${isOpen ? 'text-blue-700' : 'text-gray-800'}`}>
+                    {faq.question}
+                  </span>
+                </div>
+                {isOpen ? (
+                  <ChevronUp className="h-5 w-5 text-blue-600 flex-shrink-0 ml-4" />
                 ) : (
-                  <ChevronDownIcon className="h-6 w-6 text-[#F8B400]" />
+                  <ChevronDown className="h-5 w-5 text-gray-400 flex-shrink-0 ml-4" />
                 )}
               </button>
+
               <div
-                className={`mt-2 text-gray-700 pl-4 transition-all ${
-                  openIndex === index ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
+                id={`faq-answer-${index}`}
+                className={`px-5 pb-5 transition-all duration-300 ease-in-out ${
+                  isOpen ? 'block' : 'hidden'
                 }`}
               >
-                {faq.answer}
+                <div className="pt-2 border-t border-gray-100">
+                  <p className="text-gray-600 mt-3 text-sm leading-relaxed">{faq.answer}</p>
+                </div>
               </div>
             </div>
-          ))}
+          );
+        })}
+      </div>
+
+      <div className="mt-10 text-center">
+        <div className="inline-flex items-center p-4 bg-gray-50 rounded-lg border border-gray-200">
+          <HelpCircle className="h-5 w-5 text-blue-600 mr-2" />
+          <p className="text-sm text-gray-600">
+            Still have questions?{' '}
+            <a href="#contact" className="text-blue-600 font-medium hover:underline">
+              Contact our support team
+            </a>
+          </p>
         </div>
       </div>
     </section>

@@ -20,7 +20,7 @@ export default function Modules({ chapters }: ModulesProps) {
   const totalLessons = chapters.reduce((acc, chapter) => acc + chapter.lessons.length, 0);
 
   return (
-    <div className="container mx-auto max-w-7xl py-8 px-8">
+    <div className="container mx-auto max-w-7xl py-8 px-8" id="curriculum">
       {/* Curriculum Header */}
       <div className="flex justify-between items-center mb-6">
         <div>
@@ -97,11 +97,11 @@ export default function Modules({ chapters }: ModulesProps) {
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
-                  {index === 0 && (
+                  {/* {index === 0 && (
                     <span className="text-xs font-medium bg-green-100 text-green-700 py-1 px-2 rounded">
                       Free Preview
                     </span>
-                  )}
+                  )} */}
                   {isOpen ? (
                     <ChevronUp
                       className={`h-5 w-5 ${isOpen ? 'text-blue-600' : 'text-gray-400'}`}
@@ -126,11 +126,12 @@ export default function Modules({ chapters }: ModulesProps) {
                     className="flex items-center justify-between p-4 hover:bg-gray-50 border-b border-gray-100 last:border-b-0"
                   >
                     <div className="flex items-center gap-3 text-gray-700">
-                      {index === 0 && lessonIndex < 2 ? (
+                      {/* {index === 0 && lessonIndex < 2 ? (
                         <PlayCircle className="h-5 w-5 text-blue-600 flex-shrink-0" />
                       ) : (
                         <LockClosedIcon className="h-5 w-5 text-gray-400 flex-shrink-0" />
-                      )}
+                      )} */}
+                      <LockClosedIcon className="h-5 w-5 text-gray-400 flex-shrink-0" />
                       <div>
                         <span className="font-medium">{lesson.title}</span>
                         {lesson.content && (
@@ -139,12 +140,12 @@ export default function Modules({ chapters }: ModulesProps) {
                       </div>
                     </div>
                     <div className="flex items-center gap-2">
-                      {index === 0 && lessonIndex === 0 && (
+                      {/* {index === 0 && lessonIndex === 0 && (
                         <span className="flex items-center text-green-600 text-xs font-medium">
                           <CheckCircle className="h-3.5 w-3.5 mr-1" />
                           Completed
                         </span>
-                      )}
+                      )} */}
                       {/* <span className="text-xs text-gray-500 bg-gray-100 py-1 px-2 rounded-full">
                         {lesson.duration
                           ? `${Math.round(lesson.duration / 60)} min`

@@ -48,6 +48,10 @@ import Footer from './Footer';
 import Modules from './Modules';
 import ConsultationForm from '../../indiviual/LeadForm';
 import Link from 'next/link';
+import CourseResources from './Skills';
+import CertificationSection from './certificate1';
+import CriteriaSection from './Creteria';
+import PopupConsultationForm from './dialogs/Form';
 
 // Adjust this type as needed.
 export interface TDraftCourseForm {
@@ -139,6 +143,7 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
   } = courseData;
 
   const [activeTab, setActiveTab] = useState('home');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // Use a default banner image if not provided.
   const bannerImage =
@@ -152,20 +157,45 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
     day: 'numeric',
     year: 'numeric',
   };
+
+  const [isFormOpen, setIsFormOpen] = useState(false);
+  const [formType, setFormType] = useState<'b2c' | 'b2b' | 'b2i' | 'general'>('b2c');
+  const [formTitle, setFormTitle] = useState('Get in Touch');
+  const [formDescription, setFormDescription] = useState('');
+
+  const openConsultationForm = (
+    type: 'b2c' | 'b2b' | 'b2i' | 'general',
+    title: string,
+    description: string
+  ) => {
+    setFormType(type);
+    setFormTitle(title);
+    setFormDescription(description);
+    setIsFormOpen(true);
+  };
   return (
     <div className="min-h-screen  ">
       {/* Navigation */}
-      <nav className="fixed w-full bg-white shadow-sm z-50 top-0">
-        <div className="w-full 2xl:w-[80vw] md:[90vw]  mx-auto px-4 sm:px-3 lg:px-4">
-          <div className="flex justify-between h-16">
-            <Link href={'/'}>
-              <img
-                src="/logo.png"
-                className="object-contain md:w-[130px] md:h-[50px] w-[120] h-[30px]"
-                alt="Logo"
-              />
-            </Link>
-            <div className="hidden md:flex items-center space-x-8">
+
+      <PopupConsultationForm
+        isOpen={isFormOpen}
+        onClose={() => setIsFormOpen(false)}
+        title={formTitle}
+        description={formDescription}
+        formType={formType}
+      />
+      <nav className="fixed w-full bg-white shadow-md z-50 top-0">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            {/* Logo */}
+            <div className="flex-shrink-0">
+              <Link href={'/'} className="flex items-center">
+                <img src="/logo.png" className="h-10 w-auto object-contain" alt="Logo" />
+              </Link>
+            </div>
+
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center space-x-1">
               <Scroll
                 to="hero"
                 spy={true}
@@ -174,12 +204,15 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
                   setActiveTab('home');
                 }}
                 className={cn(
-                  'cursor-pointer text-gray-600 hover:text-blue-600',
-                  activeTab === 'home' && 'text-blue-500 font-bold border-b border-blue-500'
+                  'px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ease-in-out',
+                  activeTab === 'home'
+                    ? 'text-blue-600 bg-blue-50'
+                    : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50'
                 )}
               >
                 Home
               </Scroll>
+
               <Scroll
                 to="overview"
                 smooth={true}
@@ -187,12 +220,15 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
                   setActiveTab('overview');
                 }}
                 className={cn(
-                  'cursor-pointer text-gray-600 hover:text-blue-600',
-                  activeTab === 'overview' && 'text-blue-600 font-bold'
+                  'px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ease-in-out',
+                  activeTab === 'overview'
+                    ? 'text-blue-600 bg-blue-50'
+                    : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50'
                 )}
               >
                 Overview
               </Scroll>
+
               <Scroll
                 to="curriculum"
                 smooth={true}
@@ -200,19 +236,24 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
                   setActiveTab('curriculum');
                 }}
                 className={cn(
-                  'cursor-pointer text-gray-600 hover:text-blue-600',
-                  activeTab === 'curriculum' && 'text-blue-600 font-bold'
+                  'px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ease-in-out',
+                  activeTab === 'curriculum'
+                    ? 'text-blue-600 bg-blue-50'
+                    : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50'
                 )}
               >
                 Curriculum
               </Scroll>
+
               {skills && skills.length > 0 && (
                 <Scroll
                   to="skills"
                   smooth={true}
                   className={cn(
-                    'cursor-pointer text-gray-600 hover:text-blue-600',
-                    activeTab === 'skills' && 'text-blue-600 font-bold'
+                    'px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ease-in-out',
+                    activeTab === 'skills'
+                      ? 'text-blue-600 bg-blue-50'
+                      : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50'
                   )}
                   onClick={() => {
                     setActiveTab('skills');
@@ -221,33 +262,23 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
                   Skills
                 </Scroll>
               )}
+
               <Scroll
-                to="why-join"
+                to="Criteria"
                 smooth={true}
                 onClick={() => {
-                  setActiveTab('why-join');
+                  setActiveTab('Criteria');
                 }}
                 className={cn(
-                  'cursor-pointer text-gray-600 hover:text-blue-600',
-                  activeTab === 'why-join' && 'text-blue-600 font-bold'
+                  'px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ease-in-out hover:cursor-pointer',
+                  activeTab === 'Criteria'
+                    ? 'text-blue-600 bg-blue-50'
+                    : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50'
                 )}
               >
-                Why Join
+                Criteria
               </Scroll>
-              <Scroll
-                to="faqs"
-                spy={true}
-                onClick={() => {
-                  setActiveTab('faqs');
-                }}
-                smooth={true}
-                className={cn(
-                  'cursor-pointer text-gray-600 hover:text-blue-600',
-                  activeTab === 'faqs' && 'text-blue-600 font-bold'
-                )}
-              >
-                FAQs
-              </Scroll>
+
               <Scroll
                 to="pricing"
                 smooth={true}
@@ -255,13 +286,194 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
                   setActiveTab('pricing');
                 }}
                 className={cn(
-                  'cursor-pointer text-gray-600 hover:text-blue-600',
-                  activeTab === 'pricing' && 'text-blue-600 font-bold'
+                  'px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ease-in-out',
+                  activeTab === 'pricing'
+                    ? 'text-blue-600 bg-blue-50'
+                    : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50'
                 )}
               >
                 Pricing
               </Scroll>
+
+              {/* Apply Button */}
+              <button
+                onClick={() =>
+                  openConsultationForm(
+                    'b2i',
+                    'Apply Now',
+                    'Explore how we can collaborate to enhance educational outcomes for your institution.'
+                  )
+                }
+                className="ml-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 shadow-sm transition-colors duration-200"
+              >
+                Apply Now
+              </button>
             </div>
+
+            {/* Mobile menu button */}
+            <div className="md:hidden flex items-center">
+              <button
+                type="button"
+                className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-blue-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
+                aria-controls="mobile-menu"
+                aria-expanded="false"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              >
+                <span className="sr-only">Open main menu</span>
+                {/* Icon when menu is closed */}
+                <svg
+                  className={`${mobileMenuOpen ? 'hidden' : 'block'} h-6 w-6`}
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                </svg>
+                {/* Icon when menu is open */}
+                <svg
+                  className={`${mobileMenuOpen ? 'block' : 'hidden'} h-6 w-6`}
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile menu, show/hide based on menu state */}
+        <div
+          className={`${
+            mobileMenuOpen ? 'block' : 'hidden'
+          } md:hidden bg-white border-t border-gray-100`}
+          id="mobile-menu"
+        >
+          <div className="px-2 pt-2 pb-3 space-y-1">
+            <Scroll
+              to="hero"
+              spy={true}
+              smooth={true}
+              onClick={() => {
+                setActiveTab('home');
+                setMobileMenuOpen(false);
+              }}
+              className={cn(
+                'block px-3 py-2 rounded-md text-base font-medium',
+                activeTab === 'home'
+                  ? 'text-blue-600 bg-blue-50'
+                  : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50'
+              )}
+            >
+              Home
+            </Scroll>
+
+            <Scroll
+              to="overview"
+              smooth={true}
+              onClick={() => {
+                setActiveTab('overview');
+                setMobileMenuOpen(false);
+              }}
+              className={cn(
+                'block px-3 py-2 rounded-md text-base font-medium',
+                activeTab === 'overview'
+                  ? 'text-blue-600 bg-blue-50'
+                  : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50'
+              )}
+            >
+              Overview
+            </Scroll>
+
+            <Scroll
+              to="curriculum"
+              smooth={true}
+              onClick={() => {
+                setActiveTab('curriculum');
+                setMobileMenuOpen(false);
+              }}
+              className={cn(
+                'block px-3 py-2 rounded-md text-base font-medium',
+                activeTab === 'curriculum'
+                  ? 'text-blue-600 bg-blue-50'
+                  : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50'
+              )}
+            >
+              Curriculum
+            </Scroll>
+
+            {skills && skills.length > 0 && (
+              <Scroll
+                to="skills"
+                smooth={true}
+                className={cn(
+                  'block px-3 py-2 rounded-md text-base font-medium',
+                  activeTab === 'skills'
+                    ? 'text-blue-600 bg-blue-50'
+                    : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50'
+                )}
+                onClick={() => {
+                  setActiveTab('skills');
+                  setMobileMenuOpen(false);
+                }}
+              >
+                Skills
+              </Scroll>
+            )}
+
+            <Scroll
+              to="Criteria"
+              smooth={true}
+              onClick={() => {
+                setActiveTab('Criteria');
+                setMobileMenuOpen(false);
+              }}
+              className={cn(
+                'block px-3 py-2 rounded-md text-base font-medium',
+                activeTab === 'Criteria'
+                  ? 'text-blue-600 bg-blue-50'
+                  : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50'
+              )}
+            >
+              Criteria
+            </Scroll>
+
+            <Scroll
+              to="pricing"
+              smooth={true}
+              onClick={() => {
+                setActiveTab('pricing');
+                setMobileMenuOpen(false);
+              }}
+              className={cn(
+                'block px-3 py-2 rounded-md text-base font-medium',
+                activeTab === 'pricing'
+                  ? 'text-blue-600 bg-blue-50'
+                  : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50'
+              )}
+            >
+              Pricing
+            </Scroll>
+
+            {/* Mobile Apply Button */}
+            <button className="mt-3 w-full flex justify-center items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">
+              Apply Now
+            </button>
           </div>
         </div>
       </nav>
@@ -272,6 +484,8 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
         title={title}
         description={description}
         bannerImage={bannerImage}
+        duration={durationHours}
+        modules={curriculum?.chapters?.length}
       />
 
       <CourseDetails
@@ -283,192 +497,16 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
         trainingMode={'Hybrid'}
         overview={overview}
       />
+      <Modules chapters={curriculum.chapters} />
+      {<CourseResources skills={skills} tools={tools} />}
+      <Outcomes outcomes={outcomes || []} />
 
-      <section id="overview" className="   -mt-56  m-auto flex ">
-        <section className="flex  w-[61vw]  pl-[10vw] pt-60 pb-10">
-          <div className=" w-full">
-            {/* Chapters */}
-            <div className="rounded-xl  mt-10" id="curriculum">
-              <h3 className="text-lg  mb-4 font-medium text-gray-800">Course Ciricullum</h3>
-              <Modules chapters={curriculum.chapters} />
-            </div>
-            <Highlights highlights={highlights || []} />
-            <Outcomes outcomes={outcomes || []} />
-
-            {category?.type !== 'b2i' && (
-              <div className=" rounded-xl  mt-10">
-                {/* <h3 className="text-xl font-bold mb-4">Projects Covered</h3> */}
-                {curriculum.projects?.length >= 1 && (
-                  <div className="text-gray-600">No projects covered</div>
-                )}
-                <div className="space-y-4">
-                  {curriculum.projects?.map(project => (
-                    <div key={project._id} className="border-l-4 border-purple-500 pl-4">
-                      <Accordion type="single" collapsible>
-                        <AccordionItem value="item-1">
-                          <AccordionTrigger>
-                            {' '}
-                            <h4 className="font-semibold capitalize">{project.title}</h4>
-                          </AccordionTrigger>
-                          <AccordionContent>
-                            <div className="mt-2 space-y-2">
-                              {project.content?.map((lesson: string) => (
-                                <div key={lesson} className="flex items-center space-x-2">
-                                  {/* <PlayIcon className="h-4 w-4 text-gray-500" /> */}
-                                  <BsFolderCheck className="h-4 w-4 text-purple-500" />
-                                  <span>{lesson}</span>
-                                </div>
-                              ))}
-                            </div>
-                          </AccordionContent>
-                        </AccordionItem>
-                      </Accordion>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* prerequists */}
-
-            {category?.type !== 'b2i' && (
-              <section className="mt-10">
-                <h3 className="text-xl font-bold mb-4">Creteria</h3>
-                <section className=" flex flex-col gap-y-5  ">
-                  <div className="w-full">
-                    {curriculum.prerequisites && (
-                      <div className="bg-blue-50 p-4 rounded-lg flex flex-col">
-                        <h4 className="font-semibold mb-2">Prerequisites</h4>
-                        {/* <p>{curriculum.prerequisites}</p> */}
-                        {curriculum.prerequisites.map((prerequisite, index) => (
-                          <p key={index} className="mt-5 inline-flex gap-x-4">
-                            {' '}
-                            <IoIosCheckmarkCircle className="w-6 h-6 text-blue-500" />{' '}
-                            <span className="text-sm font-semibold">{prerequisite}</span>
-                          </p>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                  <div className="w-full">
-                    {curriculum.eligibility && (
-                      <div className="bg-purple-50 p-4 rounded-lg">
-                        <h4 className="font-semibold mb-2">Eligibility</h4>
-                        {/* <p>{curriculum.eligibility}</p> */}
-                        <div className="flex flex-col ">
-                          {curriculum.eligibility.map((eligibility, index) => (
-                            <p key={index} className="mt-5 inline-flex gap-x-4 items-center">
-                              <IoIosCheckmarkCircle className="w-6 h-6 text-purple-500" />{' '}
-                              <span className="text-sm font-semibold">{eligibility}</span>
-                            </p>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                </section>
-              </section>
-            )}
-          </div>
-        </section>
-        <section className="bg-card w-[50vw]   pt-60 pb-10 pl-10 flex flex-col">
-          <div className="hidden lg:flex flex-col gap-6 items-start   top-10">
-            {/* Key Highlights */}
-            {/* <div className="bg-gradient-to-b from-purple-600 to-purple-800 text-white shadow-lg rounded-2xl p-6 flex flex-col gap-4">
-              <h3 className="text-xl font-semibold">
-                Why Choose This Program?
-              </h3>
-              <ul className="text-sm space-y-2">
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-400" />
-                  Hands-on projects with real-world applications.
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-400" />
-                  Training in modern tools & emerging technologies.
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-400" />
-                  Industry-relevant curriculum aligned with market trends.
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-400" />
-                  Personalized mentorship and career guidance.
-                </li>
-              </ul>
-            </div> */}
-          </div>
-          <div className="mt-6">
-            <div>
-              <p className="mt-10 text-xl font-semibold">Skills Covered</p>
-              <div className="flex flex-col gap-y-5 mt-5">
-                {skills && skills.length > 0 && (
-                  <>
-                    {skills.map((skill, index) => (
-                      <div key={index} className="flex gap-x-3">
-                        <Image
-                          width={100}
-                          height={100}
-                          src={skill?.logo?.viewUrl}
-                          alt={skill?.title}
-                          className="w-6 h-6 object-cover rounded-full"
-                        />
-                        <p key={index}>{skill?.title}</p>
-                      </div>
-                    ))}
-                  </>
-                )}
-              </div>
-            </div>
-            <div className="mt-5">
-              <p className="mt-10 text-xl font-semibold">Tools Covered</p>
-              <div className="flex flex-col gap-y-5 mt-5">
-                {tools.map((tool, index) => (
-                  <div key={index} className="flex gap-x-3">
-                    <Image
-                      width={100}
-                      height={100}
-                      src={tool?.logo?.viewUrl}
-                      alt={tool?.title}
-                      className="w-6 h-6 object-cover rounded-full"
-                    />
-                    <p key={index}>{tool?.title}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-      </section>
-
-      <div>
-        {/* Certification Section */}
-        <div className="w-full md:w-1/2 flex flex-col items-center text-center">
-          <p className="font-semibold flex items-center gap-x-3 text-lg text-gray-800">
-            <BiSolidCertification className="w-7 h-7 text-red-500" />
-            Certification
-          </p>
-          {certification?.title && (
-            <p className="font-semibold text-lg mt-2 text-gray-700">{certification.title}</p>
-          )}
-          <p className="text-gray-600 text-sm mt-3">
-            Completing this course grants an industry-recognized certification to enhance your
-            professional skills.
-          </p>
-          <img
-            src="/assets/certificate.png"
-            className="w-4/5 max-h-44 object-contain rounded-lg mt-4 shadow-md"
-            alt="Certification"
-          />
-        </div>
-      </div>
+      <CertificationSection certification={certification} />
       <CourseEnrollment formattedPrice={formattedPrice} durationHours={durationHours} />
-
-      {/* Overview Section */}
+      <CriteriaSection curriculum={curriculum} />
       <WhyJoinSection whyJoin={whyJoin} />
       <FAQSection faqs={faqs} />
       <div className="h-20"></div>
-      {/* <Footer /> */}
     </div>
   );
 };

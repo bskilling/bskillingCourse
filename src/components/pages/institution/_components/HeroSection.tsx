@@ -5,12 +5,16 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ICourse } from './types';
 import { BookOpen, Clock, Award, Users, ChevronRight } from 'lucide-react';
+import { useState } from 'react';
+import PopupConsultationForm from './dialogs/Form';
 
 interface HeroSectionProps {
   category?: ICourse['category'];
   title: string;
   description: string;
   bannerImage: string;
+  duration: number;
+  modules: number;
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({
@@ -18,9 +22,33 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   title,
   description,
   bannerImage,
+  duration,
+  modules,
 }) => {
+  const [isFormOpen, setIsFormOpen] = useState(false);
+  const [formType, setFormType] = useState<'b2c' | 'b2b' | 'b2i' | 'general'>('b2i');
+  const [formTitle, setFormTitle] = useState('Get in Touch');
+  const [formDescription, setFormDescription] = useState('');
+
+  const openConsultationForm = (
+    type: 'b2c' | 'b2b' | 'b2i' | 'general',
+    title: string,
+    description: string
+  ) => {
+    setFormType(type);
+    setFormTitle(title);
+    setFormDescription(description);
+    setIsFormOpen(true);
+  };
   return (
-    <section className="w-full bg-white overflow-hidden">
+    <section className="w-full bg-white overflow-hidden" id="hero">
+      <PopupConsultationForm
+        isOpen={isFormOpen}
+        onClose={() => setIsFormOpen(false)}
+        title={formTitle}
+        description={formDescription}
+        formType={formType}
+      />
       {/* Top wave decoration */}
       <div className="bg-gradient-to-r from-blue-50 to-indigo-50 h-16">
         <svg
@@ -80,11 +108,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             >
               <div className="flex items-center space-x-2">
                 <Clock className="w-5 h-5 text-blue-600" />
-                <span className="text-sm text-gray-600">8 Weeks</span>
+                <span className="text-sm text-gray-600"> {duration} Hours </span>
               </div>
               <div className="flex items-center space-x-2">
                 <BookOpen className="w-5 h-5 text-blue-600" />
-                <span className="text-sm text-gray-600">24 Modules</span>
+                <span className="text-sm text-gray-600">{modules} Modules</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Award className="w-5 h-5 text-blue-600" />
@@ -99,10 +127,26 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               transition={{ duration: 0.5, delay: 0.4 }}
               className="flex flex-wrap gap-4 pt-2"
             >
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-5 rounded-lg font-medium text-base">
+              <Button
+                onClick={() =>
+                  openConsultationForm(
+                    'b2i',
+                    'Enroll Now',
+                    'Explore how we can collaborate to enhance educational outcomes for your institution.'
+                  )
+                }
+                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-5 rounded-lg font-medium text-base"
+              >
                 Enroll Now
               </Button>
               <Button
+                onClick={() =>
+                  openConsultationForm(
+                    'b2i',
+                    'Download Complete Syllabus',
+                    'Please fill in your details to receive the comprehensive syllabus directly in your inbox. Our team is available to answer any questions you may have about the course content or structure.'
+                  )
+                }
                 variant="outline"
                 className="border-blue-200 text-blue-600 hover:bg-blue-50 px-6 py-5 rounded-lg font-medium text-base"
               >
@@ -192,6 +236,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 </motion.div>
               </div>
             </motion.div>
+            {/* <img
+              src="/new-image/institutions/aws-microsoft.webp"
+              alt=""
+              className="w-40 object-cover m-auto"
+            /> */}
           </div>
         </div>
       </div>

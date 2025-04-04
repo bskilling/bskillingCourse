@@ -35,6 +35,13 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from '@/components/ui/carousel';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -55,6 +62,7 @@ import LeadForm from '@/components/pages/institution/LeadForm';
 import { useQuery } from '@tanstack/react-query';
 import { ICourse } from '@/component/types/Course.types';
 import axios from 'axios';
+import { cn } from '@/lib/utils';
 
 const InstitutionHomepage = () => {
   const [activeTab, setActiveTab] = useState('overview');
@@ -227,44 +235,13 @@ const InstitutionHomepage = () => {
     },
   ];
 
-  const skillPrograms = [
-    {
-      title: 'Web Development',
-      duration: '24 Weeks',
-      level: 'Beginner to Advanced',
-      featured: true,
-      modules: 'Frontend, Backend, Databases',
-      icon: Code,
-      color: 'from-blue-500 to-indigo-600',
-    },
-    {
-      title: 'Data Science & Analytics',
-      duration: '32 Weeks',
-      level: 'Intermediate',
-      featured: true,
-      modules: 'Python, Statistics, ML, Visualization',
-      icon: LucideBrainCircuit,
-      color: 'from-purple-500 to-violet-600',
-    },
-    {
-      title: 'UI/UX Design',
-      duration: '16 Weeks',
-      level: 'All Levels',
-      featured: false,
-      modules: 'Design Thinking, Wireframing, Prototyping',
-      icon: Paintbrush,
-      color: 'from-amber-500 to-orange-600',
-    },
-    {
-      title: 'Cloud Computing',
-      duration: '20 Weeks',
-      level: 'Intermediate',
-      featured: true,
-      modules: 'AWS, Azure, DevOps',
-      icon: Cpu,
-      color: 'from-cyan-500 to-blue-600',
-    },
+  const cardColors = [
+    'from-blue-500 to-indigo-600', // Color 1
+    'from-green-500 to-emerald-600', // Color 2
+    'from-purple-500 to-violet-600', // Color 3
+    'from-amber-500 to-orange-600', // Color 4
   ];
+  const [searchTerm, setSearchTerm] = useState('');
 
   const backendUrl =
     process.env.NEXT_PUBLIC_BACKEND_URL ??
@@ -280,13 +257,17 @@ const InstitutionHomepage = () => {
           page: 1,
           category: undefined,
           isPublished: true,
-          type: undefined,
+          type: 'b2i',
         },
       });
       return res.data.data;
     },
     staleTime: 1000 * 60 * 5,
   });
+
+  const filteredCourses = data?.courses.filter(course =>
+    course.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   const router = useRouter();
 
@@ -474,35 +455,6 @@ const InstitutionHomepage = () => {
       <section className="max-w-6xl mx-auto mt-20 px-6 md:px-4">
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-3xl font-bold text-slate-800">Featured Programs</h2>
-          {/* <div className="flex gap-2">
-            <Button
-              variant={activeTab === 'overview' ? 'default' : 'outline'}
-              className={
-                activeTab === 'overview' ? 'bg-indigo-600' : 'text-slate-700'
-              }
-              onClick={() => setActiveTab('overview')}
-            >
-              All Programs
-            </Button>
-            <Button
-              variant={activeTab === 'skill' ? 'default' : 'outline'}
-              className={
-                activeTab === 'skill' ? 'bg-indigo-600' : 'text-slate-700'
-              }
-              onClick={() => setActiveTab('skill')}
-            >
-              Skill Development
-            </Button>
-            <Button
-              variant={activeTab === 'job' ? 'default' : 'outline'}
-              className={
-                activeTab === 'job' ? 'bg-indigo-600' : 'text-slate-700'
-              }
-              onClick={() => setActiveTab('job')}
-            >
-              Job Assistance
-            </Button>
-          </div> */}
         </div>
 
         {activeTab === 'overview' || activeTab === 'skill' ? (
@@ -510,53 +462,92 @@ const InstitutionHomepage = () => {
             <h3 className="text-2xl font-semibold text-slate-800 mb-6">
               Skill Development Programs
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {skillPrograms.map((program, index) => (
-                <Card
-                  key={index}
-                  className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
-                >
-                  <div className={`h-2 bg-gradient-to-r ${program.color}`}></div>
-                  <CardContent className="p-6">
-                    <div className="flex justify-between items-start mb-4">
-                      <div
-                        className={`p-3 rounded-lg bg-gradient-to-r ${program.color} text-white`}
+
+            <Carousel>
+              <CarouselContent>
+                {filteredCourses?.map((program, index) => {
+                  const colorIndex = (index + 1) % cardColors.length;
+                  const bgColorClass = cardColors[colorIndex];
+                  if (!program.skills || !Array.isArray(program.skills)) {
+                    return null;
+                  }
+
+                  // Take first 3 skills, extract the part before the dash, and join with commas
+                  const displaySkills = program.skills
+                    .slice(0, 1)
+                    .map(skill => {
+                      // Handle potential undefined values
+                      if (!skill) return '';
+
+                      // Split by dash and take first part
+                      const parts = skill.split('-');
+                      return parts[0] || '';
+                    })
+                    .filter(skill => skill) // Remove any empty strings
+                    .join(', ');
+                  return (
+                    <CarouselItem className="md:basis-1/3 lg:basis-1/4">
+                      <Card
+                        key={index}
+                        onClick={() => {
+                          router.push(`/institutions/${program?.slug}?id=${program?._id}`);
+                        }}
+                        className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow flex flex-col h-[410px]"
                       >
-                        <program.icon className="w-6 h-6" />
-                      </div>
-                      {program.featured && (
-                        <span className="bg-amber-100 text-amber-800 text-xs font-medium px-2 py-1 rounded-full">
-                          Featured
-                        </span>
-                      )}
-                    </div>
-                    <h3 className="text-lg font-semibold text-slate-800 mb-2">{program.title}</h3>
-                    <div className="space-y-2 text-sm text-slate-600 mb-4">
-                      <div className="flex items-center gap-2">
-                        <Calendar className="w-4 h-4 text-slate-400" />
-                        <span>{program.duration}</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Target className="w-4 h-4 text-slate-400" />
-                        <span>{program.level}</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Layers className="w-4 h-4 text-slate-400" />
-                        <span>{program.modules}</span>
-                      </div>
-                    </div>
-                    <Button
-                      onClick={() => {
-                        router.push(`/institutions/skill-development-programs`);
-                      }}
-                      className="w-full bg-white border border-slate-300 text-slate-800 hover:bg-slate-50"
-                    >
-                      View Details
-                    </Button>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+                        <div className={`h-3 bg-gradient-to-r ${bgColorClass}`}></div>
+                        <CardContent className="p-6 flex flex-col flex-grow">
+                          <div className="flex justify-between items-start mb-4">
+                            <img
+                              src={program.previewImage?.viewUrl}
+                              alt=""
+                              className="w-12 h-12 object-cover"
+                            />
+
+                            <span className="bg-amber-100 text-amber-800 text-xs font-medium px-2 py-1 rounded-full">
+                              Featured
+                            </span>
+                          </div>
+                          <h3 className="text-lg font-semibold text-slate-800 mb-2">
+                            {program.title}
+                          </h3>
+                          <div className="space-y-2 text-sm text-slate-600 mb-4">
+                            <div className="flex items-center gap-2">
+                              <Calendar className="w-4 h-4 text-slate-400" />
+                              <span>{program.durationHours} Hours</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <Target className="w-4 h-4 text-slate-400" />
+                              <span>{'Advanced'}</span>
+                            </div>
+                            {displaySkills?.length > 0 && (
+                              <div className="flex gap-2">
+                                <div className="w-5">
+                                  <Layers className="w-4 h-4 text-slate-400" />
+                                </div>
+                                <span>{displaySkills}</span>
+                              </div>
+                            )}
+                          </div>
+                          <div className="mt-auto">
+                            <Button
+                              onClick={() => {
+                                router.push(`/institutions/${program?.slug}?id=${program?._id}`);
+                              }}
+                              className="w-full bg-white border border-slate-300 text-slate-800 hover:bg-slate-50"
+                            >
+                              View Details
+                            </Button>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </CarouselItem>
+                  );
+                })}
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
+
             <div className="text-center mt-8">
               <Button
                 onClick={() => {

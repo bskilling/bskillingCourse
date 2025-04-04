@@ -8,7 +8,16 @@ import { Textarea } from '@/components/ui/textarea';
 import { motion, AnimatePresence } from 'framer-motion';
 import axios from 'axios';
 import { toast } from 'sonner';
-import { User, Mail, Phone, MessageSquare, ChevronDown, Sparkles, Headphones } from 'lucide-react';
+import {
+  User,
+  Mail,
+  Phone,
+  MessageSquare,
+  ChevronDown,
+  Sparkles,
+  Headphones,
+  Send,
+} from 'lucide-react';
 
 const backendUrl =
   process.env.NEXT_PUBLIC_BACKEND_URL ?? 'https://backendbskilling-production-20ff.up.railway.app';
@@ -140,23 +149,6 @@ export default function QueryForm() {
   return (
     <>
       {/* Button to open form - fixed at bottom right */}
-      {/* {!isOpen && (
-        <motion.div
-          className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-40"
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.2 }}
-        >
-          <Button
-            onClick={toggleForm}
-            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-3 rounded-full shadow-lg flex items-center gap-2 font-medium"
-          >
-            <Sparkles size={18} className="animate-pulse" />
-            <span>Get in Touch</span>
-          </Button>
-        </motion.div>
-      )} */}
-
       {!isOpen && (
         <motion.div
           className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-40"
@@ -191,13 +183,13 @@ export default function QueryForm() {
         {isOpen && (
           <motion.div
             id="overlay"
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 flex items-end justify-end"
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 flex items-center justify-center md:items-end md:justify-end"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
             <motion.div
-              className="w-full max-w-md h-auto mr-4 mb-4 md:mr-8 md:mb-8"
+              className="w-full max-w-md mx-4 my-4 md:mr-8 md:mb-8"
               initial={{ y: '100%', x: 0 }}
               animate={{ y: 0, x: 0 }}
               exit={{ y: '100%', x: 0 }}
@@ -220,13 +212,13 @@ export default function QueryForm() {
                   </Button>
                 </div>
 
-                {/* Logo and brand area */}
-                <div className="flex justify-center pt-6 pb-2">
+                {/* Logo and brand area - smaller padding */}
+                <div className="flex justify-center pt-4 pb-1">
                   <div className="flex flex-col items-center">
-                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center mb-2 shadow-lg">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center mb-1 shadow-lg">
                       <svg
-                        width="32"
-                        height="32"
+                        width="24"
+                        height="24"
                         viewBox="0 0 24 24"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
@@ -237,24 +229,24 @@ export default function QueryForm() {
                         />
                       </svg>
                     </div>
-                    <span className="text-sm font-medium text-gray-600">bSkilling</span>
+                    <span className="text-xs font-medium text-gray-600">bSkilling</span>
                   </div>
                 </div>
 
-                <CardHeader className="pb-2 text-center">
-                  <CardTitle className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 text-transparent bg-clip-text">
+                <CardHeader className="pb-1 pt-1 text-center">
+                  <CardTitle className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 text-transparent bg-clip-text">
                     Let&apos;s Connect
                   </CardTitle>
-                  <CardDescription className="text-gray-600">
+                  <CardDescription className="text-gray-600 text-sm">
                     We&apos;re here to help with any questions you may have.
                   </CardDescription>
                 </CardHeader>
 
-                <CardContent>
-                  <form onSubmit={handleSubmit} className="space-y-4">
+                <CardContent className="py-3">
+                  <form onSubmit={handleSubmit} className="space-y-3">
                     <div className="relative">
                       <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-600">
-                        <User size={18} />
+                        <User size={16} />
                       </div>
                       <Input
                         type="text"
@@ -262,15 +254,15 @@ export default function QueryForm() {
                         value={formData.name}
                         onChange={handleChange}
                         placeholder="Your Name"
-                        className="pl-10 border-blue-200 focus:border-blue-400 focus:ring-2 focus:ring-blue-200 transition-all"
+                        className="pl-10 border-blue-200 focus:border-blue-400 focus:ring-2 focus:ring-blue-200 transition-all h-9"
                         disabled={isSubmitting}
                       />
-                      {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
+                      {errors.name && <p className="text-red-500 text-xs mt-0.5">{errors.name}</p>}
                     </div>
 
                     <div className="relative">
                       <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-600">
-                        <Mail size={18} />
+                        <Mail size={16} />
                       </div>
                       <Input
                         type="email"
@@ -278,10 +270,12 @@ export default function QueryForm() {
                         value={formData.email}
                         onChange={handleChange}
                         placeholder="Email Address"
-                        className="pl-10 border-blue-200 focus:border-blue-400 focus:ring-2 focus:ring-blue-200 transition-all"
+                        className="pl-10 border-blue-200 focus:border-blue-400 focus:ring-2 focus:ring-blue-200 transition-all h-9"
                         disabled={isSubmitting}
                       />
-                      {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
+                      {errors.email && (
+                        <p className="text-red-500 text-xs mt-0.5">{errors.email}</p>
+                      )}
                     </div>
 
                     <div className="flex gap-2">
@@ -295,41 +289,45 @@ export default function QueryForm() {
                           value={formData.countryCode}
                           onChange={handleChange}
                           placeholder="+91"
-                          className="pl-10 border-blue-200 focus:border-blue-400 focus:ring-2 focus:ring-blue-200 transition-all"
+                          className="pl-10 border-blue-200 focus:border-blue-400 focus:ring-2 focus:ring-blue-200 transition-all h-9"
                           disabled={isSubmitting}
                         />
                       </div>
 
-                      <div className="flex-1">
+                      <div className="flex-1 relative">
+                        <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-600">
+                          <Phone size={16} />
+                        </div>
                         <Input
                           type="tel"
                           name="phoneNumber"
                           value={formData.phoneNumber}
                           onChange={handleChange}
                           placeholder="Phone Number"
-                          className="border-blue-200 focus:border-blue-400 focus:ring-2 focus:ring-blue-200 transition-all"
+                          className="pl-10 border-blue-200 focus:border-blue-400 focus:ring-2 focus:ring-blue-200 transition-all h-9"
                           disabled={isSubmitting}
                         />
                         {errors.phoneNumber && (
-                          <p className="text-red-500 text-xs mt-1">{errors.phoneNumber}</p>
+                          <p className="text-red-500 text-xs mt-0.5">{errors.phoneNumber}</p>
                         )}
                       </div>
                     </div>
 
                     <div className="relative">
                       <div className="absolute left-3 top-3 text-blue-600">
-                        <MessageSquare size={18} />
+                        <MessageSquare size={16} />
                       </div>
                       <Textarea
                         name="query"
                         value={formData.query}
                         onChange={handleChange}
                         placeholder="How can we help you today?"
-                        className="pl-10 border-blue-200 focus:border-blue-400 focus:ring-2 focus:ring-blue-200 transition-all resize-none"
-                        rows={3}
+                        className="pl-10 border-blue-200 focus:border-blue-400 focus:ring-2 focus:ring-blue-200 transition-all resize-none h-20"
                         disabled={isSubmitting}
                       />
-                      {errors.query && <p className="text-red-500 text-xs mt-1">{errors.query}</p>}
+                      {errors.query && (
+                        <p className="text-red-500 text-xs mt-0.5">{errors.query}</p>
+                      )}
                     </div>
 
                     {/* Hidden field for category */}
@@ -337,7 +335,7 @@ export default function QueryForm() {
 
                     <Button
                       type="submit"
-                      className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-medium py-5 rounded-md shadow-md transition-all hover:shadow-lg"
+                      className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-medium py-2 rounded-md shadow-md transition-all hover:shadow-lg flex items-center justify-center gap-2 h-9"
                       disabled={isSubmitting}
                     >
                       {isSubmitting ? (
@@ -346,7 +344,10 @@ export default function QueryForm() {
                           <span>Processing...</span>
                         </div>
                       ) : (
-                        'Send Message'
+                        <>
+                          <Send size={16} />
+                          <span>Submit Query</span>
+                        </>
                       )}
                     </Button>
                   </form>
@@ -355,10 +356,10 @@ export default function QueryForm() {
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="mt-4 p-4 bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-lg text-green-800 text-sm flex items-center gap-2"
+                      className="mt-3 p-3 bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-lg text-green-800 text-xs flex items-center gap-2"
                     >
                       <svg
-                        className="w-5 h-5 text-green-500"
+                        className="w-4 h-4 text-green-500"
                         fill="currentColor"
                         viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg"
@@ -375,14 +376,14 @@ export default function QueryForm() {
                     </motion.div>
                   )}
 
-                  <div className="mt-6 pt-4 border-t border-blue-100 text-center">
+                  <div className="mt-3 pt-2 border-t border-blue-100 text-center">
                     <p className="text-xs text-gray-500">
                       By submitting this form, you agree to our{' '}
-                      <a href="#" className="text-blue-600 hover:underline">
+                      <a href="#" className="text-blue-600 ">
                         Terms of Service
                       </a>{' '}
                       and{' '}
-                      <a href="#" className="text-blue-600 hover:underline">
+                      <a href="#" className="text-blue-600 ">
                         Privacy Policy
                       </a>
                       .

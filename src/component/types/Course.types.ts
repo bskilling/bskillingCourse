@@ -31,7 +31,7 @@ export interface ICourse {
   __v: number;
   banner: Banner;
   previewImage?: any;
-  skills: Skill[];
+  skills: string[];
   whyJoin: string[];
   durationHours: number;
   videoUrl: string;

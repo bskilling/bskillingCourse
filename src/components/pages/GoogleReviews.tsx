@@ -14,11 +14,11 @@ export default function GoogleReviews() {
       {/* Header */}
       <div className="flex items-center gap-2 mb-2">
         <FcGoogle size={22} />
-        <h2 className="text-sm">Google Reviews</h2>
+        <h2 className="text-sm text-white">Google Reviews</h2>
       </div>
 
       {/* Rating Overview */}
-      <div className="flex items-center text-base font-medium">
+      <div className="flex items-center text-base font-medium text-white">
         <span className="ml-1">{rating.toFixed(1)}</span>
         <div className="flex items-center gap-1 pl-3">
           <FaStar className="text-yellow-400" size={18} />
