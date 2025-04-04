@@ -15,6 +15,7 @@ import { motion } from 'framer-motion';
 import React, { useState } from 'react';
 import axios from 'axios';
 import { toast } from 'sonner';
+import { handleErrors } from '@/lib/handleError';
 
 // Backend URL
 const backendUrl =
@@ -32,6 +33,7 @@ export default function SkillLeadForm() {
     category: 'institutional',
     type: 'b2i',
     subCategory: 'skills',
+    websiteUrl: undefined, // Added websiteUrl field
   });
   const [errors, setErrors] = useState({
     name: '',
@@ -39,6 +41,7 @@ export default function SkillLeadForm() {
     countryCode: '',
     phoneNumber: '',
     query: '',
+    websiteUrl: '',
   });
 
   // Handle input changes
@@ -59,6 +62,7 @@ export default function SkillLeadForm() {
       countryCode: '',
       phoneNumber: '',
       query: '',
+      websiteUrl: '',
     };
 
     // Name validation
@@ -89,6 +93,17 @@ export default function SkillLeadForm() {
     // Query validation
     if (formData.query.length < 10) {
       newErrors.query = 'Message must be at least 10 characters';
+      valid = false;
+    }
+
+    // Website URL validation - optional so no validation required
+    // But we could add URL format validation if needed
+    if (
+      formData.websiteUrl &&
+      // @ts-expect-error
+      !formData?.websiteUrl?.includes('.')
+    ) {
+      newErrors.websiteUrl = 'Please enter a valid website URL';
       valid = false;
     }
 
@@ -123,10 +138,13 @@ export default function SkillLeadForm() {
         category: 'institutional',
         type: 'b2i',
         subCategory: 'skills',
+        websiteUrl: undefined,
       });
     } catch (error) {
       console.error('Error submitting lead:', error);
-      toast.error('There was a problem submitting your request. Please try again.');
+      toast.error(
+        handleErrors(error) || 'There was a problem submitting your request. Please try again.'
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -207,6 +225,22 @@ export default function SkillLeadForm() {
                     <p className="text-red-300 text-xs mt-1">{errors.phoneNumber}</p>
                   )}
                 </div>
+              </div>
+
+              {/* Website URL Field */}
+              <div>
+                <Input
+                  type="url"
+                  name="websiteUrl"
+                  value={formData.websiteUrl}
+                  onChange={handleChange}
+                  placeholder="Institution Website URL (Optional)"
+                  className="bg-white/20 border-white/20 text-white placeholder:text-slate-400"
+                  disabled={isSubmitting}
+                />
+                {errors.websiteUrl && (
+                  <p className="text-red-300 text-xs mt-1">{errors.websiteUrl}</p>
+                )}
               </div>
 
               <div>

@@ -50,6 +50,8 @@ import ConsultationForm from '../../indiviual/LeadForm';
 import Link from 'next/link';
 import CourseResources from './Skills';
 import CertificationSection from './certificate1';
+import CriteriaSection from './Creteria';
+import PopupConsultationForm from './dialogs/Form';
 
 // Adjust this type as needed.
 export interface TDraftCourseForm {
@@ -155,9 +157,33 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
     day: 'numeric',
     year: 'numeric',
   };
+
+  const [isFormOpen, setIsFormOpen] = useState(false);
+  const [formType, setFormType] = useState<'b2c' | 'b2b' | 'b2i' | 'general'>('b2i');
+  const [formTitle, setFormTitle] = useState('Get in Touch');
+  const [formDescription, setFormDescription] = useState('');
+
+  const openConsultationForm = (
+    type: 'b2c' | 'b2b' | 'b2i' | 'general',
+    title: string,
+    description: string
+  ) => {
+    setFormType(type);
+    setFormTitle(title);
+    setFormDescription(description);
+    setIsFormOpen(true);
+  };
   return (
     <div className="min-h-screen  ">
       {/* Navigation */}
+
+      <PopupConsultationForm
+        isOpen={isFormOpen}
+        onClose={() => setIsFormOpen(false)}
+        title={formTitle}
+        description={formDescription}
+        formType={formType}
+      />
       <nav className="fixed w-full bg-white shadow-md z-50 top-0">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
@@ -238,36 +264,19 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
               )}
 
               <Scroll
-                to="why-join"
+                to="Criteria"
                 smooth={true}
                 onClick={() => {
-                  setActiveTab('why-join');
+                  setActiveTab('Criteria');
                 }}
                 className={cn(
-                  'px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ease-in-out',
-                  activeTab === 'why-join'
+                  'px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ease-in-out hover:cursor-pointer',
+                  activeTab === 'Criteria'
                     ? 'text-blue-600 bg-blue-50'
                     : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50'
                 )}
               >
-                Why Join
-              </Scroll>
-
-              <Scroll
-                to="faqs"
-                spy={true}
-                onClick={() => {
-                  setActiveTab('faqs');
-                }}
-                smooth={true}
-                className={cn(
-                  'px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ease-in-out',
-                  activeTab === 'faqs'
-                    ? 'text-blue-600 bg-blue-50'
-                    : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50'
-                )}
-              >
-                FAQs
+                Criteria
               </Scroll>
 
               <Scroll
@@ -287,7 +296,16 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
               </Scroll>
 
               {/* Apply Button */}
-              <button className="ml-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 shadow-sm transition-colors duration-200">
+              <button
+                onClick={() =>
+                  openConsultationForm(
+                    'b2i',
+                    'Apply Now',
+                    'Explore how we can collaborate to enhance educational outcomes for your institution.'
+                  )
+                }
+                className="ml-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 shadow-sm transition-colors duration-200"
+              >
                 Apply Now
               </button>
             </div>
@@ -419,38 +437,20 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
             )}
 
             <Scroll
-              to="why-join"
+              to="Criteria"
               smooth={true}
               onClick={() => {
-                setActiveTab('why-join');
+                setActiveTab('Criteria');
                 setMobileMenuOpen(false);
               }}
               className={cn(
                 'block px-3 py-2 rounded-md text-base font-medium',
-                activeTab === 'why-join'
+                activeTab === 'Criteria'
                   ? 'text-blue-600 bg-blue-50'
                   : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50'
               )}
             >
-              Why Join
-            </Scroll>
-
-            <Scroll
-              to="faqs"
-              spy={true}
-              onClick={() => {
-                setActiveTab('faqs');
-                setMobileMenuOpen(false);
-              }}
-              smooth={true}
-              className={cn(
-                'block px-3 py-2 rounded-md text-base font-medium',
-                activeTab === 'faqs'
-                  ? 'text-blue-600 bg-blue-50'
-                  : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50'
-              )}
-            >
-              FAQs
+              Criteria
             </Scroll>
 
             <Scroll
@@ -477,117 +477,6 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
           </div>
         </div>
       </nav>
-      {/* <nav className="fixed w-full bg-white shadow-sm z-50 top-0">
-        <div className="w-full 2xl:w-[80vw] md:[90vw]  mx-auto px-4 sm:px-3 lg:px-4">
-          <div className="flex justify-between h-16">
-            <Link href={'/'}>
-              <img
-                src="/logo.png"
-                className="object-contain md:w-[130px] md:h-[50px] w-[120] h-[30px]"
-                alt="Logo"
-              />
-            </Link>
-            <div className="hidden md:flex items-center space-x-8">
-              <Scroll
-                to="hero"
-                spy={true}
-                smooth={true}
-                onClick={() => {
-                  setActiveTab('home');
-                }}
-                className={cn(
-                  'cursor-pointer text-gray-600 hover:text-blue-600',
-                  activeTab === 'home' &&
-                    'text-blue-500 font-bold border-b border-blue-500'
-                )}
-              >
-                Home
-              </Scroll>
-              <Scroll
-                to="overview"
-                smooth={true}
-                onClick={() => {
-                  setActiveTab('overview');
-                }}
-                className={cn(
-                  'cursor-pointer text-gray-600 hover:text-blue-600',
-                  activeTab === 'overview' && 'text-blue-600 font-bold'
-                )}
-              >
-                Overview
-              </Scroll>
-              <Scroll
-                to="curriculum"
-                smooth={true}
-                onClick={() => {
-                  setActiveTab('curriculum');
-                }}
-                className={cn(
-                  'cursor-pointer text-gray-600 hover:text-blue-600',
-                  activeTab === 'curriculum' && 'text-blue-600 font-bold'
-                )}
-              >
-                Curriculum
-              </Scroll>
-              {skills && skills.length > 0 && (
-                <Scroll
-                  to="skills"
-                  smooth={true}
-                  className={cn(
-                    'cursor-pointer text-gray-600 hover:text-blue-600',
-                    activeTab === 'skills' && 'text-blue-600 font-bold'
-                  )}
-                  onClick={() => {
-                    setActiveTab('skills');
-                  }}
-                >
-                  Skills
-                </Scroll>
-              )}
-              <Scroll
-                to="why-join"
-                smooth={true}
-                onClick={() => {
-                  setActiveTab('why-join');
-                }}
-                className={cn(
-                  'cursor-pointer text-gray-600 hover:text-blue-600',
-                  activeTab === 'why-join' && 'text-blue-600 font-bold'
-                )}
-              >
-                Why Join
-              </Scroll>
-              <Scroll
-                to="faqs"
-                spy={true}
-                onClick={() => {
-                  setActiveTab('faqs');
-                }}
-                smooth={true}
-                className={cn(
-                  'cursor-pointer text-gray-600 hover:text-blue-600',
-                  activeTab === 'faqs' && 'text-blue-600 font-bold'
-                )}
-              >
-                FAQs
-              </Scroll>
-              <Scroll
-                to="pricing"
-                smooth={true}
-                onClick={() => {
-                  setActiveTab('pricing');
-                }}
-                className={cn(
-                  'cursor-pointer text-gray-600 hover:text-blue-600',
-                  activeTab === 'pricing' && 'text-blue-600 font-bold'
-                )}
-              >
-                Pricing
-              </Scroll>
-            </div>
-          </div>
-        </div>
-      </nav> */}
 
       {/* Hero Section */}
       <HeroSection
@@ -595,6 +484,8 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
         title={title}
         description={description}
         bannerImage={bannerImage}
+        duration={durationHours}
+        modules={curriculum?.chapters?.length}
       />
 
       <CourseDetails
@@ -607,15 +498,12 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
         overview={overview}
       />
       <Modules chapters={curriculum.chapters} />
-      {
-        // @ts-expect-error
-        <CourseResources skills={skills} tools={tools} />
-      }
+      {<CourseResources skills={skills} tools={tools} />}
       <Outcomes outcomes={outcomes || []} />
 
       <CertificationSection certification={certification} />
       <CourseEnrollment formattedPrice={formattedPrice} durationHours={durationHours} />
-
+      <CriteriaSection curriculum={curriculum} />
       <WhyJoinSection whyJoin={whyJoin} />
       <FAQSection faqs={faqs} />
       <div className="h-20"></div>

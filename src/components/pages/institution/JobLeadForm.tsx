@@ -15,7 +15,8 @@ import { motion } from 'framer-motion';
 import React, { useState } from 'react';
 import axios from 'axios';
 import { toast } from 'sonner';
-import { User, Mail, Phone, MessageSquare, Building } from 'lucide-react';
+import { User, Mail, Phone, MessageSquare, Building, Globe } from 'lucide-react';
+import { handleErrors } from '@/lib/handleError';
 
 // Backend URL
 const backendUrl =
@@ -33,6 +34,7 @@ export default function JobAssistForm() {
     category: 'institutional',
     type: 'b2i',
     subCategory: 'jobs',
+    websiteUrl: undefined, // Initialize as undefined rather than empty string
   });
   const [errors, setErrors] = useState({
     name: '',
@@ -40,15 +42,26 @@ export default function JobAssistForm() {
     countryCode: '',
     phoneNumber: '',
     query: '',
+    websiteUrl: '',
   });
 
   // Handle input changes
   const handleChange = (e: any) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value,
-    }));
+
+    // Special handling for websiteUrl
+    if (name === 'websiteUrl') {
+      // If value is empty string, set to undefined
+      setFormData(prev => ({
+        ...prev,
+        [name]: value.trim() === '' ? undefined : value,
+      }));
+    } else {
+      setFormData(prev => ({
+        ...prev,
+        [name]: value,
+      }));
+    }
   };
 
   // Validate form
@@ -60,6 +73,7 @@ export default function JobAssistForm() {
       countryCode: '',
       phoneNumber: '',
       query: '',
+      websiteUrl: '',
     };
 
     // Name validation
@@ -93,6 +107,8 @@ export default function JobAssistForm() {
       valid = false;
     }
 
+    // No validation for websiteUrl as it's optional
+
     setErrors(newErrors);
     return valid;
   };
@@ -108,7 +124,15 @@ export default function JobAssistForm() {
     setIsSubmitting(true);
 
     try {
-      const response = await axios.post(`${backendUrl}/api/lead`, formData);
+      // Create a clean data object for submission
+      const submitData = { ...formData };
+
+      // Only include websiteUrl if it has a value
+      if (submitData.websiteUrl === undefined || submitData.websiteUrl === '') {
+        delete submitData.websiteUrl;
+      }
+
+      const response = await axios.post(`${backendUrl}/api/lead`, submitData);
       setIsSuccess(true);
       toast.success(
         'Your request has been submitted successfully. Our team will contact you soon.'
@@ -124,10 +148,13 @@ export default function JobAssistForm() {
         category: 'institutional',
         type: 'b2i',
         subCategory: 'jobs',
+        websiteUrl: undefined,
       });
     } catch (error) {
       console.error('Error submitting lead:', error);
-      toast.error('There was a problem submitting your request. Please try again.');
+      toast.error(
+        handleErrors(error) || 'There was a problem submitting your request. Please try again.'
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -215,6 +242,25 @@ export default function JobAssistForm() {
                     <p className="text-red-300 text-xs mt-1">{errors.phoneNumber}</p>
                   )}
                 </div>
+              </div>
+
+              {/* Website URL Field */}
+              <div className="relative">
+                <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400">
+                  <Globe size={18} />
+                </div>
+                <Input
+                  type="url"
+                  name="websiteUrl"
+                  value={formData.websiteUrl || ''}
+                  onChange={handleChange}
+                  placeholder="Institution Website URL (Optional)"
+                  className="bg-white/20 border-white/20 text-white placeholder:text-slate-400 pl-10"
+                  disabled={isSubmitting}
+                />
+                {errors.websiteUrl && (
+                  <p className="text-red-300 text-xs mt-1">{errors.websiteUrl}</p>
+                )}
               </div>
 
               <div className="relative">
