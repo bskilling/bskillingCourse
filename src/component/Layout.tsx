@@ -25,7 +25,7 @@ import {
   NavigationMenuTrigger,
   NavigationMenuViewport,
 } from '@/components/ui/navigation-menu';
-import NavbarSection from './navbar/NavbarSection';
+// import NavbarSection from './navbar/NavbarSection';
 import Courses from './courses';
 import NavSection from './navbar/NavSection';
 import { usePathname } from 'next/navigation';
@@ -41,6 +41,8 @@ import {
 } from '@/components/ui/sheet';
 import Cats from './navbar/Cats';
 import QueryForm from '@/components/global/QueryForm';
+import NavbarSection from './new/Navbar';
+import WhatsAppFloatingButton from './new/whatspp';
 
 // import Footer from "./Footer";
 
@@ -213,252 +215,16 @@ const Layout = ({ children, pageTitle = 'bSkilling' }: Props) => {
       <Script id="razorpay-checkout-js" src="https://checkout.razorpay.com/v1/checkout.js" />
 
       <>
-        {/* <NavSection /> */}
-
-        {/* <hr className="border-gray-300" /> */}
-
         {navHide && isVisible && (
           <>
-            <NavSection />
-            {/* <Link href="/linkedin">Go to Linkedin</Link> */}
-            <div className="bg-card  sticky top-0 z-[40]">
-              <nav className="py-2 h-[70px] 2xl:px-14 md:px-5 px-3  w-full m-auto     p-0  flex flex-row items-center justify-between gap-x-5  text-foreground  ">
-                <div className="flex 2xl:gap-x-10 gap-x-5 items-center">
-                  <div className="flex items-center gap-5 ">
-                    <Link href={'/'}>
-                      <img
-                        src="/logo.png"
-                        className="object-contain md:w-[130px] md:h-[50px] w-[120] h-[30px]"
-                        alt="Logo"
-                      />
-                    </Link>
-                  </div>
-                  <Courses />
-                  <div className="relative">
-                    <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
-                      <SheetTrigger className="relative">
-                        <input
-                          type="text"
-                          className="w-[30vw]  text-[14px] h-10 md:w-[15vw]  2xl:w-[20vw]  border rounded-full bg-primary/10   px-5 pl-8 outline-none focus:outline-none"
-                          placeholder="Search for the course or skills"
-                          required
-                          value={inputValue}
-                          onChange={e => {
-                            handleSearch(e);
-                            setShow(true);
-                          }}
-                        />
-                        <BiSearchAlt className=" absolute top-3 left-3 text-primary" />
-                      </SheetTrigger>
-                      <SheetContent side={'top'} className="h-screen overflow-y-auto">
-                        <SheetHeader>
-                          <input
-                            type="text"
-                            className="w-[90vw]  text-[14px] h-10  2xl:w-[90vw]  border rounded-full bg-primary/10   px-5 pl-8 outline-none focus:outline-none"
-                            placeholder="Search for the course or skills"
-                            required
-                            value={inputValue}
-                            onChange={e => {
-                              handleSearch(e);
-                              setShow(true);
-                            }}
-                          />
-                          <Cats />
-                          <SheetTitle></SheetTitle>
-                          <SheetDescription></SheetDescription>{' '}
-                          {dropSearchData.map((course, index) => (
-                            <div
-                              key={index}
-                              onClick={() => {
-                                route.replace(`/courses/course-details/${course?.url}`);
-                              }}
-                              className="p-2 text-black hover:bg-buttonBlue px-5 hover:text-primary cursor-pointer"
-                            >
-                              {course.title}
-                            </div>
-                          ))}
-                        </SheetHeader>
-                      </SheetContent>
-                    </Sheet>
-
-                    {/* <Popover open={show} onOpenChange={setShow}>
-                      <PopoverTrigger className="relative"> </PopoverTrigger>
-                      <PopoverContent className="w-[30vw] max-h-[50vh] overflow-y-auto"></PopoverContent>
-                    </Popover> */}
-                  </div>
-                </div>
-
-                <NavbarSection />
-
-                {isMenuOpen && (
-                  <div
-                    className={`fixed inset-0 bg-white flex flex-col items-center z-50 overflow-y-auto p-6 transition-transform transform ${
-                      isMenuOpen ? 'translate-x-0' : 'translate-x-full'
-                    }`}
-                  >
-                    <div className="flex justify-end w-full mb-6">
-                      <FaTimes
-                        onClick={toggleMenu}
-                        className="text-3xl text-gray-600 cursor-pointer hover:text-black transition-colors"
-                      />
-                    </div>
-
-                    <div className="flex flex-col gap-8 w-full">
-                      <Link
-                        href="/"
-                        className="text-black hover:text-blue-500 text-lg font-medium transition-colors"
-                      >
-                        Home
-                      </Link>
-                      <Link
-                        href="/aboutus"
-                        className="text-black hover:text-blue-500 text-lg font-medium transition-colors"
-                      >
-                        About
-                      </Link>
-                      <Link
-                        href="/blogs"
-                        className="text-black hover:text-blue-500 text-lg font-medium transition-colors"
-                      >
-                        Blogs
-                      </Link>
-                      <Link
-                        href="https://sfjbs.talentrecruit.com/career-page"
-                        className="text-black hover:text-blue-500 text-lg font-medium transition-colors"
-                        target="_blank"
-                      >
-                        Careers
-                      </Link>
-
-                      <div className="relative w-full">
-                        <button
-                          className="w-full bg-customRed text-white px-5 py-3 rounded-md flex items-center justify-between hover:bg-subText transition-colors"
-                          onClick={() => setDropdownOpen(!dropdownOpen)}
-                        >
-                          <span className="text-[18px] font-semibold">Courses</span>
-                          <SlArrowDown className="ml-2 w-4 h-4" />
-                        </button>
-                        {dropdownOpen && (
-                          <div
-                            className="w-full bg-white rounded-lg shadow-lg mt-2 p-4"
-                            style={{ maxHeight: '300px', overflowY: 'auto' }}
-                          >
-                            <div className="mb-4">
-                              <div className="text-lg mb-3 font-bold text-customRed">
-                                Categories
-                              </div>
-                              <ul>
-                                {uniqueCategories.map((category, index) => (
-                                  <li
-                                    key={index}
-                                    className="p-2 hover:bg-customRed hover:text-white cursor-pointer font-semibold rounded-md transition-colors"
-                                    onMouseEnter={() => handleCategoryHover(category)}
-                                  >
-                                    {category}
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                            <div>
-                              <div className="text-lg mb-3 font-bold text-customRed">Courses</div>
-                              <ul>
-                                {filteredCourses.map(course => (
-                                  <Link
-                                    key={course._id}
-                                    href={`/courses/course-details/${course?.url}`}
-                                    style={{ textDecoration: 'none' }}
-                                  >
-                                    <li className="p-2 hover:bg-customRed font-semibold text-gray-800 hover:text-white cursor-pointer rounded-md transition-colors">
-                                      {course.title}
-                                    </li>
-                                  </Link>
-                                ))}
-                              </ul>
-                            </div>
-                          </div>
-                        )}
-                      </div>
-
-                      <div className="flex flex-col gap-4 items-center text-center w-full">
-                        <Link
-                          href="https://lms.bskilling.com/login/index.php"
-                          className="text-white bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-full text-base font-medium transition-colors"
-                        >
-                          Login/Register
-                        </Link>
-
-                        <p
-                          className="text-base text-black cursor-pointer hover:text-blue-500 font-medium transition-colors"
-                          onClick={handleOpenPopup}
-                        >
-                          Become an Instructor
-                        </p>
-                        {isPopupOpen && (
-                          <>
-                            <div
-                              className="fixed inset-0 bg-black opacity-50 z-40"
-                              onClick={handleClosePopup}
-                            ></div>
-                            <div className="fixed inset-0 flex items-center justify-center z-50">
-                              <PopupForm
-                                handleClosePopup={handleClosePopup}
-                                title="Bskilling Enquiry Form"
-                              />
-                            </div>
-                          </>
-                        )}
-                      </div>
-
-                      <div className="flex flex-col items-center gap-2 mt-6">
-                        <p className="flex items-center text-gray-800">
-                          <span className="mr-2">📞</span> +91-9845348601
-                        </p>
-                        <p className="flex items-center text-gray-800">
-                          <span className="mr-2">📧</span> support@bskilling.com
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </nav>
-            </div>
-            <Categories />
+            <NavbarSection />
           </>
         )}
 
         <main className="">{children}</main>
 
         <QueryForm />
-        {/* whatsapp */}
-        {/* <div
-          className="fixed bottom-[2.4rem] right-[6.8rem]"
-          style={{ zIndex: 1000 }}
-        >
-          <a
-            href="https://wa.me/919741104412"
-            target="_blank"
-            rel="noreferrer"
-            className="text-green-500 hover:text-green-700"
-            style={{
-              display: 'inline-block',
-              backgroundColor: 'green',
-              padding: '10px',
-              borderRadius: '50%',
-              boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.7)',
-              transition: 'transform 0.3s ease-in-out',
-            }}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.transform = 'scale(1.1)')
-            }
-            onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
-          >
-            <img
-              src="https://www.freeiconspng.com/thumbs/logo-whatsapp-png/get-logo-whatsapp-png-pictures-1.png"
-              className="w-7 h-7"
-              alt="WhatsApp Logo"
-            />
-          </a>
-        </div> */}
+        <WhatsAppFloatingButton />
         <Footer />
       </>
     </>

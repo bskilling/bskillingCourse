@@ -38,7 +38,6 @@ const WhyJoinSection = ({ whyJoin }: Props) => {
       {/* <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-400 via-indigo-500 to-sky-500"></div> */}
       <div className="absolute top-20 right-20 w-72 h-72 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
       <div className="absolute bottom-20 left-20 w-72 h-72 bg-indigo-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
-
       <div className="container max-w-7xl mx-auto px-6 relative z-10">
         <div className="text-center mb-12">
           <motion.div
@@ -47,7 +46,7 @@ const WhyJoinSection = ({ whyJoin }: Props) => {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-3">Why Join This Program?</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-3">Why Join This Programsssss?</h2>
             <div className="w-20 h-1 bg-gradient-to-r from-blue-400 to-indigo-500 mx-auto rounded-full mb-4"></div>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Discover the unique advantages that make our program the perfect choice for your

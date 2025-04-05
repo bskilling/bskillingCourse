@@ -89,9 +89,7 @@ const FAQSection: React.FC<FAQProps> = ({ faqs }) => {
           <HelpCircle className="h-5 w-5 text-blue-600 mr-2" />
           <p className="text-sm text-gray-600">
             Still have questions?{' '}
-            <a href="#contact" className="text-blue-600 font-medium hover:underline">
-              Contact our support team
-            </a>
+            <p className="text-blue-600 font-medium ">Contact our support team</p>
           </p>
         </div>
       </div>

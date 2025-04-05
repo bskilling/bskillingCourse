@@ -151,7 +151,7 @@ export default function QueryForm() {
       {/* Button to open form - fixed at bottom right */}
       {!isOpen && (
         <motion.div
-          className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-40"
+          className="fixed bottom-16 right-4 md:bottom-24 md:right-2 z-40"
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.2 }}

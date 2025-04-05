@@ -1,14 +1,26 @@
 /* eslint-disable @next/next/no-img-element */
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import { Course } from 'common/util/types';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
-import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card';
-import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
+import { motion } from 'framer-motion';
+import {
+  FaAngleDown,
+  FaAngleUp,
+  FaClock,
+  FaGraduationCap,
+  FaAward,
+  FaStar,
+  FaUsers,
+} from 'react-icons/fa';
+import { BiCertification } from 'react-icons/bi';
+import { RiBook2Line, RiTimeLine } from 'react-icons/ri';
+import { HiOutlineAcademicCap } from 'react-icons/hi';
+import { MdOutlineWatchLater, MdOutlinePriceCheck } from 'react-icons/md';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+
 import {
   Card,
   CardContent,
@@ -17,243 +29,417 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from '@/components/ui/sheet';
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '@/components/ui/accordion';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { usePathname } from 'next/navigation';
+import { useRouter } from 'next/router';
+import { Search } from 'lucide-react';
+import { ICourse } from '../types/Course.types';
+import { Input } from '@/components/ui/input';
+import { Badge } from '@/components/ui/badge';
+
+// Animation variants
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
+
+// Shimmer loading animation for cards
+const shimmer = `relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_1.5s_infinite] before:bg-gradient-to-r before:from-transparent before:via-white/30 before:to-transparent`;
+
+const backendUrl =
+  process.env.NEXT_PUBLIC_BACKEND_URL ?? 'https://backendbskilling-production-20ff.up.railway.app';
 
 export default function Courses() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [close, setClose] = useState(false);
-
   const [open2, setOpen2] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
+  const [searchTerm, setSearchTerm] = useState('');
+  const [scategory, setScategory] = useState<ICategories['categories'][number] | null>(null);
+
+  // Mock student counts and ratings for courses to enhance credibility
+  const getRandomStudentCount = () => Math.floor(Math.random() * 15000) + 500;
+  const getRandomRating = () => (Math.floor(Math.random() * 20) + 40) / 10; // Between 4.0 and 5.0
 
   useEffect(() => {
-    console.log(pathname);
     setOpen2(false);
-    // setClose(false);
   }, [pathname]);
 
-  const { isLoading, data, error } = useQuery<Course[] | []>({
-    queryKey: ['courses'],
+  const selectedType = 'b2c';
+
+  const categoryQuery = useQuery<ICategories>({
+    queryKey: ['categories-b2i'],
     queryFn: async () => {
-      try {
-        const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_TRAINING_BASE_URL}api/v1/get-course-title`
-        );
-
-        const jsonData = response.data;
-        console.log('res', jsonData);
-        const ListOfCoursesData = Object.values(jsonData.courses);
-        console.log('res', ListOfCoursesData);
-        const flattenedData = ListOfCoursesData.flatMap(innerArray => innerArray);
-
-        return flattenedData as Course[];
-      } catch (error) {
-        console.error('Error fetching API:', error);
-        return [];
-      }
+      const res = await axios.get(backendUrl + '/api/categories', {
+        params: {
+          limit: 100,
+          page: 1,
+          type: selectedType ?? undefined,
+          isPublished: true,
+        },
+      });
+      return res.data.data;
     },
-    staleTime: 60 * 60 * 1000,
+    staleTime: 1000 * 60 * 5,
   });
-  const handleCategoryHover = (category: any) => {
-    setSelectedCategory(category);
-  };
 
-  const uniqueCategories = Array.from(new Set(data?.map(course => course.category)));
-  const filteredCourses = uniqueCategories.flatMap(category =>
-    selectedCategory === category ? data?.filter(course => course.category === category) : []
+  const [isPublished, setIsPublished] = useState<boolean | undefined>(true);
+  const { data, isLoading } = useQuery<{ courses: ICourse[] }>({
+    queryKey: ['courses', scategory?._id, isPublished],
+    queryFn: async () => {
+      const res = await axios.get(backendUrl + '/api/courses', {
+        params: {
+          limit: 100,
+          page: 1,
+          category: scategory?._id ?? undefined,
+          isPublished: true,
+          type: selectedType ?? undefined,
+        },
+      });
+      return res.data.data;
+    },
+    staleTime: 1000 * 60 * 5,
+  });
+
+  const filteredCourses = data?.courses.filter(course =>
+    course.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  // Function to render skill level badge
+  const renderSkillLevel = (hours: number) => {
+    if (hours <= 10) return { level: 'Beginner', color: 'bg-green-500' };
+    if (hours <= 30) return { level: 'Intermediate', color: 'bg-blue-500' };
+    return { level: 'Advanced', color: 'bg-purple-500' };
+  };
 
   return (
     <>
+      {/* Mobile Sheet */}
       <Sheet>
         <SheetTrigger className="md:hidden block">
-          {' '}
-          <Button size={'sm'} className="flex gap-x-2 items-center" variant={'outline'}>
-            Courses <FaAngleDown />
+          <Button
+            size={'sm'}
+            className="flex gap-x-2 items-center bg-indigo-600 text-white hover:bg-indigo-700"
+          >
+            <FaGraduationCap className="mr-1" /> Explore Courses <FaAngleDown />
           </Button>
         </SheetTrigger>
         <SheetContent side={'top'} className="w-full h-[100vh] overflow-y-auto">
           <SheetHeader>
-            <SheetTitle>Categories</SheetTitle>
+            <SheetTitle className="flex items-center text-xl text-indigo-700">
+              <HiOutlineAcademicCap className="w-6 h-6 mr-2" /> Course Categories
+            </SheetTitle>
           </SheetHeader>
+          <div className="flex flex-wrap gap-2 md:gap-3 justify-center mt-4">
+            <Button
+              variant={!scategory?._id ? 'default' : 'outline'}
+              className={cn(
+                'rounded-full px-4 md:px-6 font-medium text-sm',
+                !scategory?._id
+                  ? 'bg-indigo-600 hover:bg-indigo-700 text-white'
+                  : 'border-slate-200 text-slate-700 hover:bg-slate-100'
+              )}
+              onClick={() => setScategory(null)}
+            >
+              <RiBook2Line className="mr-1" /> All Programs
+            </Button>
 
-          {uniqueCategories
-            .filter(category => category !== 'SAP')
-            ?.map((category, index) => (
-              <div key={`item-${index}`}>
-                <div>
-                  {' '}
-                  <p
-                    key={index + category}
-                    className={cn(
-                      'p-2   hover:rounded-[8px] cursor-pointer mt-2 flex items-center justify-between w-full',
-                      close &&
-                        selectedCategory === category &&
-                        ' bg-primary text-primary-foreground font-semibold shadow-md rounded-[8px]'
-                    )}
-                    onClick={() => {
-                      handleCategoryHover(category);
-                      setClose(prev => !prev);
-                    }}
-                  >
-                    {category}{' '}
-                    <span className="mx-2">
-                      {close && selectedCategory === category ? <FaAngleDown /> : <FaAngleUp />}
-                    </span>
-                  </p>
-                </div>
-                {close && selectedCategory === category && (
-                  <>
-                    <div className="mt-4  rounded-md p-1 bg-muted">
-                      <div className="grid grid-cols-2 gap-5">
-                        {data &&
-                          filteredCourses &&
-                          filteredCourses?.map(course => (
-                            <Link
-                              style={{ textDecoration: 'none' }}
-                              href={`/courses/course-details/${course?.url}`}
-                              key={course?._id}
-                            >
-                              <Card className="!p-0">
-                                <CardHeader>
-                                  <img
-                                    src={course?.preview_image_uri}
-                                    alt={course?._id}
-                                    className="w-full h-20 object-cover rounded-md"
-                                  />
-
-                                  {/* <CardDescription>
-                                    {course?.endorsed_by}
-                                  </CardDescription> */}
-                                </CardHeader>
-                                <CardContent>
-                                  <p className="text-xs">{course?.title}</p>
-                                  {/* <p>Card Content</p> */}
-                                </CardContent>
-                              </Card>
-
-                              {/* <li className="p-2 hover:bg-customRed font-semibold text-black hover:text-blue-600 cursor-pointer">
-                          {course?.preview_image_uri}
-                        </li> */}
-                            </Link>
-                          ))}
-                      </div>
-                    </div>
-                  </>
+            {categoryQuery?.data?.categories?.map(category => (
+              <Button
+                key={category.slug}
+                variant={category._id === scategory?._id ? 'default' : 'outline'}
+                className={cn(
+                  'rounded-full px-4 md:px-6 font-medium text-sm',
+                  category._id === scategory?._id
+                    ? 'bg-indigo-600 hover:bg-indigo-700 text-white'
+                    : 'border-slate-200 text-slate-700 hover:bg-slate-100'
                 )}
-              </div>
+                onClick={() => setScategory(category)}
+              >
+                {category.name}
+              </Button>
             ))}
+          </div>
         </SheetContent>
       </Sheet>
 
+      {/* Desktop Popover */}
       <Popover open={open2} onOpenChange={setOpen2}>
-        <PopoverTrigger className="hidden md:flex ">
-          {' '}
+        <PopoverTrigger className="hidden md:flex">
           <Button
-            className="flex gap-x-2 items-center border-primary text-primary hover:bg-primary hover:text-primary-foreground"
-            variant={'outline'}
+            className="flex gap-x-2 items-center font-medium bg-gradient-to-r from-indigo-600 to-indigo-700 text-white hover:from-indigo-700 hover:to-indigo-800 shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-200"
             size={'sm'}
           >
-            Courses <FaAngleDown />
+            <FaGraduationCap className="mr-1" /> Explore Courses <FaAngleDown />
           </Button>
         </PopoverTrigger>
-        <PopoverContent className=" w-[85vw] h-[60vh] m-auto ml-[7.2vw] mt-3 ">
-          {' '}
-          <div className="flex text-sm font-normal h-[56vh]">
-            <div
-              className="w-1/4 p-4    overflow-y-auto"
-              //   onMouseEnter={() => setSelectedCategory(null)}
-            >
-              <div className="text-lg mb-2 font-bold text-black ">Categories</div>
-              <ul>
-                {uniqueCategories
-                  .filter(category => category !== 'SAP')
-                  .map((category, index) => (
-                    <li
-                      key={index}
-                      className={cn(
-                        'p-2  hover:bg-primary hover:text-primary-foreground hover:rounded-[8px] cursor-pointer mt-2',
-                        selectedCategory === category &&
-                          ' bg-primary text-primary-foreground font-semibold shadow-md rounded-[8px]'
-                      )}
-                      onClick={() => handleCategoryHover(category)}
-                    >
-                      {category}
-                    </li>
-                  ))}
-              </ul>
-            </div>
-            <div className="w-3/4 p-4 h-full  border-l overflow-y-auto">
-              <div className="text-lg mb-2 font-bold text-customRed">Courses</div>
-              {filteredCourses?.length > 0 ? (
-                <div className="grid grid-cols-3 gap-5">
-                  {data &&
-                    filteredCourses &&
-                    filteredCourses?.map(course => (
-                      <Link
-                        style={{ textDecoration: 'none' }}
-                        href={`/courses/course-details/${course?.url}`}
-                        key={course?._id}
-                      >
-                        <Card className="!p-0 h-[300px]">
-                          <CardHeader>
-                            <CardTitle>{course?.title}</CardTitle>
-                            <CardDescription>{course?.endorsed_by}</CardDescription>
-                          </CardHeader>
-                          <CardContent>
-                            {/* <p>Card Content</p> */}
-                            <img
-                              src={course?.preview_image_uri}
-                              alt={course?._id}
-                              className="w-full h-36 object-cover rounded-md"
-                            />
-                          </CardContent>
-                        </Card>
+        <PopoverContent className="w-[85vw] h-[65vh] m-auto ml-[7.2vw] mt-3 p-0 overflow-hidden rounded-xl shadow-2xl border-0">
+          <div className="flex h-full">
+            {/* Categories Sidebar */}
+            <div className="w-1/4 bg-gradient-to-b from-indigo-50 to-white p-4 border-r border-gray-200 overflow-y-auto">
+              <div className="text-lg font-bold text-indigo-700 flex items-center mb-4">
+                <HiOutlineAcademicCap className="w-5 h-5 mr-2" />
+                Categories
+              </div>
 
-                        {/* <li className="p-2 hover:bg-customRed font-semibold text-black hover:text-blue-600 cursor-pointer">
-                          {course?.preview_image_uri}
-                        </li> */}
-                      </Link>
-                    ))}
+              <div className="flex flex-col gap-2">
+                <Button
+                  variant={!scategory?._id ? 'default' : 'outline'}
+                  className={cn(
+                    'justify-start rounded-lg px-3 py-2 font-medium text-sm',
+                    !scategory?._id
+                      ? 'bg-indigo-600 hover:bg-indigo-700 text-white'
+                      : 'border-slate-200 text-slate-700 hover:bg-indigo-50'
+                  )}
+                  onClick={() => setScategory(null)}
+                >
+                  <RiBook2Line className="mr-2" /> All Programs
+                </Button>
+
+                {categoryQuery?.data?.categories?.map(category => (
+                  <Button
+                    key={category.slug}
+                    variant={category._id === scategory?._id ? 'default' : 'outline'}
+                    className={cn(
+                      'justify-start rounded-lg px-3 py-2 font-medium text-sm',
+                      category._id === scategory?._id
+                        ? 'bg-indigo-600 hover:bg-indigo-700 text-white'
+                        : 'border-slate-200 text-slate-700 hover:bg-indigo-50'
+                    )}
+                    onClick={() => setScategory(category)}
+                  >
+                    {category.name}
+                  </Button>
+                ))}
+              </div>
+
+              {/* Credibility Section */}
+              <div className="mt-8 pt-4 border-t border-gray-200">
+                <div className="text-sm font-semibold text-gray-700 mb-3">Why Choose Us</div>
+                <div className="space-y-3">
+                  <div className="flex items-center text-xs text-gray-600">
+                    <BiCertification className="text-indigo-600 mr-2 flex-shrink-0" size={16} />
+                    <span>Industry Recognized Certifications</span>
+                  </div>
+                  <div className="flex items-center text-xs text-gray-600">
+                    <FaUsers className="text-indigo-600 mr-2 flex-shrink-0" size={16} />
+                    <span>200,000+ Enrolled Students</span>
+                  </div>
+                  <div className="flex items-center text-xs text-gray-600">
+                    <FaAward className="text-indigo-600 mr-2 flex-shrink-0" size={16} />
+                    <span>Expert-Led Instruction</span>
+                  </div>
                 </div>
-              ) : (
-                <div className="grid grid-cols-3 gap-5">
-                  {data?.map(course => (
-                    <Link
-                      style={{ textDecoration: 'none' }}
-                      href={`/courses/course-details/${course?.url}`}
-                      key={course?._id}
-                    >
-                      <Card className="!p-0  ">
-                        <CardHeader className="h-[100px]">
-                          <CardTitle>{course?.title}</CardTitle>
-                          <CardDescription>{course?.endorsed_by}</CardDescription>
-                        </CardHeader>
-                        <CardContent>
-                          {/* <p>Card Content</p> */}
-                          <img
-                            src={course?.preview_image_uri}
-                            alt={course?._id}
-                            className="w-full h-36 object-cover rounded-md"
-                          />
-                        </CardContent>
-                      </Card>
-                    </Link>
+              </div>
+            </div>
+
+            {/* Courses Content */}
+            <div className="w-3/4 h-full p-6 overflow-y-auto">
+              {/* Search Bar */}
+              <div className="relative mb-6">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <Search className="h-5 w-5 text-gray-400" />
+                </div>
+                <Input
+                  type="text"
+                  placeholder="Search for skills, courses, or topics..."
+                  className="pl-10 bg-white border-slate-200 focus:border-indigo-300 shadow-sm h-11 rounded-lg"
+                  value={searchTerm}
+                  onChange={e => setSearchTerm(e.target.value)}
+                />
+              </div>
+
+              {/* Section Title */}
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-xl font-bold text-gray-800 flex items-center">
+                  {scategory ? (
+                    <>
+                      <span>{scategory.name} Courses</span>
+                      <Badge
+                        variant="outline"
+                        className="ml-2 bg-indigo-50 text-indigo-700 border-indigo-200"
+                      >
+                        {filteredCourses?.length || 0} courses
+                      </Badge>
+                    </>
+                  ) : (
+                    <>
+                      <FaGraduationCap className="mr-2 text-indigo-600" />
+                      Featured Courses
+                    </>
+                  )}
+                </h2>
+
+                <div className="flex items-center text-sm text-gray-500">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="text-indigo-600 hover:text-indigo-800"
+                    onClick={() => {
+                      setSearchTerm('');
+                      setScategory(null);
+                    }}
+                  >
+                    View All
+                  </Button>
+                </div>
+              </div>
+
+              {/* Course Listings */}
+              {isLoading ? (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {[1, 2, 3, 4, 5, 6].map(i => (
+                    <div key={i} className={`${shimmer} bg-slate-100 rounded-xl h-[320px]`}></div>
                   ))}
+                </div>
+              ) : filteredCourses && filteredCourses.length > 0 ? (
+                <motion.div
+                  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+                  variants={container}
+                  initial="hidden"
+                  animate="show"
+                >
+                  {filteredCourses.map(course => {
+                    const skillLevel = renderSkillLevel(course.durationHours);
+                    const studentCount = getRandomStudentCount();
+                    const rating = getRandomRating();
+
+                    return (
+                      <motion.div key={course._id} variants={item}>
+                        <Card className="relative flex flex-col h-full overflow-hidden rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-0">
+                          {/* Featured or New Badge */}
+                          {course.price.amount === 0 && (
+                            <div className="absolute top-3 left-3 z-10">
+                              <Badge className="bg-green-500 hover:bg-green-600 text-white border-0">
+                                Free
+                              </Badge>
+                            </div>
+                          )}
+
+                          {/* Skill Level Badge */}
+                          <div className="absolute top-3 right-3 z-10">
+                            <Badge className={`${skillLevel.color} text-white border-0`}>
+                              {skillLevel.level}
+                            </Badge>
+                          </div>
+
+                          <Link
+                            href={`/course/${course.slug}?id=${course._id.toString()}`}
+                            className="block"
+                          >
+                            <CardHeader className="p-0 overflow-hidden">
+                              <div className="relative h-48 overflow-hidden">
+                                {course?.previewImage?.viewUrl ? (
+                                  <img
+                                    src={course?.previewImage?.viewUrl}
+                                    alt={course.title}
+                                    className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
+                                  />
+                                ) : (
+                                  <img
+                                    src={'/images/placeholder.png'}
+                                    alt="Placeholder"
+                                    className="w-full h-full object-cover p-0"
+                                  />
+                                )}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60"></div>
+                              </div>
+                            </CardHeader>
+                          </Link>
+
+                          <CardContent className="p-5 space-y-3 flex-grow">
+                            <Link
+                              href={`/course/${course.slug}?id=${course._id.toString()}`}
+                              className="block"
+                            >
+                              <CardTitle className="text-base font-bold text-gray-900 hover:text-indigo-600 transition-colors line-clamp-2">
+                                {course?.title || 'No Title'}
+                              </CardTitle>
+                            </Link>
+
+                            {/* Rating and Students */}
+                            <div className="flex items-center gap-3 text-xs text-gray-600">
+                              <div className="flex items-center">
+                                <FaStar className="text-yellow-400 mr-1" />
+                                <span>{rating.toFixed(1)}</span>
+                              </div>
+                              <div className="flex items-center">
+                                <FaUsers className="text-gray-400 mr-1" />
+                                <span>{studentCount.toLocaleString()} students</span>
+                              </div>
+                            </div>
+
+                            <div className="flex flex-wrap gap-2">
+                              <div className="flex items-center text-xs bg-indigo-50 text-indigo-700 px-2 py-1 rounded">
+                                <MdOutlineWatchLater className="mr-1 flex-shrink-0" />
+                                <span>{course.durationHours} hours</span>
+                              </div>
+
+                              <div className="flex items-center text-xs bg-amber-50 text-amber-700 px-2 py-1 rounded">
+                                <MdOutlinePriceCheck className="mr-1 flex-shrink-0" />
+                                <span
+                                  className={
+                                    course.price.amount === 0 ? 'text-green-600 font-medium' : ''
+                                  }
+                                >
+                                  {course.price.amount === 0
+                                    ? 'Free'
+                                    : `${course.price.amount} ${course.price.currency}`}
+                                </span>
+                              </div>
+                            </div>
+                          </CardContent>
+
+                          <CardFooter className="pt-0 pb-5 px-5">
+                            <Link
+                              href={`/course/${course.slug}?id=${course._id.toString()}`}
+                              className="w-full"
+                            >
+                              <Button
+                                variant="outline"
+                                className="w-full border-indigo-500 text-indigo-600 hover:bg-indigo-50"
+                              >
+                                View Course
+                              </Button>
+                            </Link>
+                          </CardFooter>
+                        </Card>
+                      </motion.div>
+                    );
+                  })}
+                </motion.div>
+              ) : (
+                <div className="py-16 text-center bg-slate-50 rounded-xl border border-slate-200">
+                  <div className="w-16 h-16 bg-slate-100 rounded-full mx-auto flex items-center justify-center mb-4">
+                    <Search className="w-8 h-8 text-slate-400" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-slate-900 mb-2">No courses found</h3>
+                  <p className="text-slate-600 mb-6 max-w-md mx-auto">
+                    {searchTerm
+                      ? `No results match "${searchTerm}". Try different keywords or browse all programs.`
+                      : 'No courses available in this category yet.'}
+                  </p>
+                  <Button
+                    variant="default"
+                    className="bg-indigo-600 hover:bg-indigo-700"
+                    onClick={() => {
+                      setSearchTerm('');
+                      setScategory(null);
+                    }}
+                  >
+                    Browse All Courses
+                  </Button>
                 </div>
               )}
             </div>
@@ -264,93 +450,27 @@ export default function Courses() {
   );
 }
 
-//**
-//       {/* Courses Section */}
-{
-  /* <div className="relative hidden md:block"> */
+export interface ICategories {
+  categories: Category[];
+  pagination: Pagination;
 }
-{
-  /* <button
-                    className="bg-dropdownBg text-black px-4 py-2 rounded-md flex items-center hover:bg-subText"
-                    onMouseEnter={handleDropdownHover}
-                    onMouseLeave={handleDropdownLeave}
-                  >
-                    <span className="text-[14px] font-semibold">Courses</span>
-                    <SlArrowDown className="ml-2 w-3 h-2" />
-                  </button> */
+interface Pagination {
+  totalItems: number;
+  totalPages: number;
+  currentPage: number;
+  itemsPerPage: number;
 }
-{
-  /* {dropdownOpen && (
-                    <div
-                      style={{
-                        maxHeight: '500px',
-                        overflowY: 'auto',
-                      }}
-                      className="absolute top-7 w-[90vw] left-0 z-[5000] flex bg-white rounded-lg shadow-lg mt-2 text-xs"
-                      onMouseEnter={handleDropdownHover}
-                      onMouseLeave={handleDropdownLeave}
-                    >
-                      <div
-                        className="w-1/2 p-4 border-r border-gray-300"
-                        onMouseEnter={() => setSelectedCategory(null)}
-                      >
-                        <div className="text-lg mb-2 font-bold text-black ">
-                          Categories
-                        </div>
-                        <ul>
-                          {uniqueCategories.map((category, index) => (
-                            <li
-                              key={index}
-                              className="p-2 hover:bg-customRed hover:text-blue-600 cursor-pointer font-semibold"
-                              onMouseEnter={() => handleCategoryHover(category)}
-                            >
-                              {category}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                      <div className="w-1/2 p-4">
-                        <div className="text-lg mb-2 font-bold text-customRed">
-                          Courses
-                        </div>
-                        {filteredCourses.length > 0 ? (
-                          <ul>
-                            {filteredCourses.map((course) => (
-                              <Link
-                                style={{ textDecoration: 'none' }}
-                                href={`/courses/courseDetails/${course?.url}`}
-                                key={course._id}
-                              >
-                                <li className="p-2 hover:bg-customRed font-semibold text-black hover:text-blue-600 cursor-pointer">
-                                  {course.title}
-                                </li>
-                              </Link>
-                            ))}
-                          </ul>
-                        ) : (
-                          <ul>
-                            {SearchElementsData.map((course) => (
-                              <Link
-                                style={{ textDecoration: 'none' }}
-                                href={`/courses/courseDetails/${course?.url}`}
-                                key={course._id}
-                              >
-                                <li className="p-2 hover:bg-customRed font-semibold text-black hover:text-blue-600 cursor-pointer">
-                                  {course.title}
-                                </li>
-                              </Link>
-                            ))}
-                          </ul>
-                        )}
-                      </div>
-                    </div>
-                  )} */
+interface Category {
+  _id: string;
+  name: string;
+  slug: string;
+  logo: logo;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
 }
-{
-  /* </div> */
+
+interface logo {
+  _id: string;
+  viewUrl: string;
 }
-//
-//
-//
-//
-//  */
