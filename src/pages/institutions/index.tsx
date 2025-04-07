@@ -562,7 +562,7 @@ const InstitutionHomepage = () => {
           </div>
         ) : null}
 
-        {activeTab === 'overview' || activeTab === 'job' ? (
+        {/* {activeTab === 'overview' || activeTab === 'job' ? (
           <div>
             <h3 className="text-2xl font-semibold text-slate-800 mb-6">Top Jobs by Category</h3>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -631,7 +631,7 @@ const InstitutionHomepage = () => {
               </Button>
             </div>
           </div>
-        ) : null}
+        ) : null} */}
       </section>
 
       {/* Testimonials */}

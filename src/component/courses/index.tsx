@@ -79,7 +79,7 @@ export default function Courses() {
   const selectedType = 'b2c';
 
   const categoryQuery = useQuery<ICategories>({
-    queryKey: ['categories-b2i'],
+    queryKey: ['categories-b2c'],
     queryFn: async () => {
       const res = await axios.get(backendUrl + '/api/categories', {
         params: {
@@ -305,7 +305,7 @@ export default function Courses() {
                 </div>
               ) : filteredCourses && filteredCourses.length > 0 ? (
                 <motion.div
-                  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+                  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
                   variants={container}
                   initial="hidden"
                   animate="show"
@@ -339,7 +339,7 @@ export default function Courses() {
                             className="block"
                           >
                             <CardHeader className="p-0 overflow-hidden">
-                              <div className="relative h-48 overflow-hidden">
+                              <div className="relative h-32 overflow-hidden">
                                 {course?.previewImage?.viewUrl ? (
                                   <img
                                     src={course?.previewImage?.viewUrl}

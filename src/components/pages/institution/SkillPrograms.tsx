@@ -59,9 +59,19 @@ export default function SkillPrograms({ skill }: { skill: boolean }) {
   const router = useRouter();
   const [searchTerm, setSearchTerm] = useState('');
   const [scategory, setScategory] = useState<ICategories['categories'][number] | null>(null);
+  // const [showMore, setShowMore] = useState(false);
+  const [currentShow, setCurrentShow] = useState(8);
+
+  const handleCurrentShow = () => {
+    setCurrentShow(currentShow + 8);
+  };
+
+  const handleCurrentShow1 = () => {
+    setCurrentShow(currentShow - 8);
+  };
 
   const categoryQuery = useQuery<ICategories>({
-    queryKey: ['categories-b2i'],
+    queryKey: ['categories', selectedType],
     queryFn: async () => {
       const res = await axios.get(backendUrl + '/api/categories', {
         params: {
@@ -78,7 +88,7 @@ export default function SkillPrograms({ skill }: { skill: boolean }) {
 
   const [isPublished, setIsPublished] = useState<boolean | undefined>(true);
   const { data, isLoading } = useQuery<{ courses: ICourse[] }>({
-    queryKey: ['courses', scategory?._id, isPublished],
+    queryKey: ['courses', scategory?._id, isPublished, selectedType],
     queryFn: async () => {
       const res = await axios.get(backendUrl + '/api/courses', {
         params: {
@@ -193,7 +203,7 @@ export default function SkillPrograms({ skill }: { skill: boolean }) {
                 initial="hidden"
                 animate="show"
               >
-                {filteredCourses.map(course => (
+                {filteredCourses.slice(0, currentShow).map(course => (
                   <motion.div key={course._id} variants={item} className="w-full">
                     <Card className="relative flex flex-col overflow-hidden rounded-2xl shadow-lg transition-transform hover:scale-105 hover:shadow-2xl bg-white">
                       <Link href={`/institutions/${course.slug}?id=${course._id.toString()}`}>
@@ -277,6 +287,28 @@ export default function SkillPrograms({ skill }: { skill: boolean }) {
               </div>
             )}
           </TabsContent>
+
+          <div className="w-full flex justify-center gap-x-6 items-center mt-6">
+            {filteredCourses &&
+              filteredCourses?.length > 8 &&
+              !(currentShow > filteredCourses?.length) && (
+                <button
+                  onClick={handleCurrentShow}
+                  className="px-6 py-3 bg-indigo-600 text-white rounded-full font-medium shadow-md"
+                >
+                  Show More
+                </button>
+              )}
+
+            {currentShow > 8 && (
+              <button
+                onClick={handleCurrentShow1}
+                className="px-6 py-3 bg-white text-indigo-600 border-2 border-indigo-600 rounded-full font-medium"
+              >
+                Show Less
+              </button>
+            )}
+          </div>
         </Tabs>
 
         {/* CTA Section */}
@@ -319,6 +351,150 @@ export default function SkillPrograms({ skill }: { skill: boolean }) {
     </div>
   );
 }
+
+// Show More/Less button implementation with beautiful styling
+const PaginationButtons = ({ currentShow, setCurrentShow, totalItems }: any) => {
+  // const [currentShow, setCurrentShow] = useState(8);
+  // const totalItems = 24; // Example total count, replace with your actual value
+
+  const handleCurrentShow = () => {
+    setCurrentShow(Math.min(currentShow + 8, totalItems));
+  };
+
+  const handleCurrentShow1 = () => {
+    setCurrentShow(Math.max(currentShow - 8, 8));
+  };
+
+  return (
+    <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-8 mb-12">
+      {currentShow > 3 && (
+        <button
+          onClick={handleCurrentShow1}
+          className="flex items-center gap-2 px-6 py-3 bg-white text-indigo-600 rounded-full font-medium 
+                   border-2 border-indigo-600 hover:bg-indigo-50 transition-all duration-300 
+                   shadow-sm hover:shadow group"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5 transform group-hover:-translate-y-0.5 transition-transform"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+          </svg>
+          Show Less
+        </button>
+      )}
+
+      {currentShow < totalItems && (
+        <button
+          onClick={handleCurrentShow}
+          className="flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white rounded-full font-medium 
+                   hover:bg-indigo-700 transition-all duration-300 
+                   shadow-md hover:shadow-lg group"
+        >
+          Show More
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5 transform group-hover:translate-y-0.5 transition-transform"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+      )}
+    </div>
+  );
+};
+
+// Alternative version with gradient and glow effect
+const FancyPaginationButtons = () => {
+  const [currentShow, setCurrentShow] = useState(8);
+  const totalItems = 24; // Example total count, replace with your actual value
+
+  const handleCurrentShow = () => {
+    setCurrentShow(Math.min(currentShow + 8, totalItems));
+  };
+
+  const handleCurrentShow1 = () => {
+    setCurrentShow(Math.max(currentShow - 8, 8));
+  };
+
+  return (
+    <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10 mb-14">
+      {currentShow > 8 && (
+        <button
+          onClick={handleCurrentShow1}
+          className="relative overflow-hidden px-7 py-3.5 bg-white text-indigo-600 rounded-full font-medium 
+                   border-2 border-indigo-500 hover:border-indigo-600
+                   transition-all duration-300 shadow-sm hover:shadow
+                   flex items-center gap-2 group"
+        >
+          <span className="relative z-10 flex items-center">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5 mr-1 transform group-hover:-translate-y-0.5 transition-transform duration-300"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M5 15l7-7 7 7"
+              />
+            </svg>
+            Show Less
+          </span>
+          <span
+            className="absolute inset-0 bg-gradient-to-r from-indigo-50 to-blue-50 opacity-0 
+                        group-hover:opacity-100 transition-opacity duration-300"
+          ></span>
+        </button>
+      )}
+
+      {currentShow < totalItems && (
+        <button
+          onClick={handleCurrentShow}
+          className="relative overflow-hidden px-7 py-3.5 text-white rounded-full font-medium 
+                   transition-all duration-300 shadow-md hover:shadow-lg
+                   flex items-center gap-2 group"
+        >
+          <span className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-blue-600"></span>
+          <span
+            className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-blue-700 opacity-0 
+                        group-hover:opacity-100 transition-opacity duration-300"
+          ></span>
+          <span
+            className="absolute -inset-px bg-gradient-to-r from-indigo-300 to-blue-400 opacity-0 blur-lg
+                        group-hover:opacity-30 transition-opacity duration-300"
+          ></span>
+          <span className="relative z-10 flex items-center">
+            Show More
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5 ml-1 transform group-hover:translate-y-0.5 transition-transform duration-300"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </span>
+        </button>
+      )}
+    </div>
+  );
+};
 
 export interface ICategories {
   categories: Category[];

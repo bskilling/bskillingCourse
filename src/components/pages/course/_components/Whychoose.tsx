@@ -46,7 +46,7 @@ const WhyJoinSection = ({ whyJoin }: Props) => {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-3">Why Join This Programsssss?</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-3">Why Join This Programs?</h2>
             <div className="w-20 h-1 bg-gradient-to-r from-blue-400 to-indigo-500 mx-auto rounded-full mb-4"></div>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Discover the unique advantages that make our program the perfect choice for your

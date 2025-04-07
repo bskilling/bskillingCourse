@@ -29,7 +29,7 @@ import {
 import Courses from './courses';
 import NavSection from './navbar/NavSection';
 import { usePathname } from 'next/navigation';
-import Categories from './navbar/Categories';
+// import Categories from './navbar/Categories';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import {
   Sheet,
@@ -39,7 +39,6 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
-import Cats from './navbar/Cats';
 import QueryForm from '@/components/global/QueryForm';
 import NavbarSection from './new/Navbar';
 import WhatsAppFloatingButton from './new/whatspp';

@@ -15,7 +15,7 @@ interface CourseResourcesProps {
 
 const CourseResources: React.FC<CourseResourcesProps> = ({ skills, tools }) => {
   return (
-    <section className="container mx-auto max-w-7xl p-8 pb-0">
+    <section className="container mx-auto max-w-7xl p-8 pb-10">
       {/* Skills Section */}
       {skills && skills.length > 0 && (
         <div className="mb-16 py-10" id="skills">
@@ -123,20 +123,13 @@ const CourseResources: React.FC<CourseResourcesProps> = ({ skills, tools }) => {
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5">
             {tools.map((tool, index) => (
-              <div
-                key={index}
-                className="flex flex-col items-center justify-center p-4 bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition"
-              >
-                <div className="bg-gray-50 p-3 rounded-lg mb-3 w-16 h-16 flex items-center justify-center">
-                  <Image
-                    width={100}
-                    height={100}
-                    src={tool?.logo?.viewUrl}
-                    alt="Tool"
-                    className="w-10 h-10 object-contain"
-                  />
-                </div>
-              </div>
+              <img
+                width={100}
+                height={100}
+                src={tool?.logo?.viewUrl}
+                alt="Tool"
+                className="w-16 object-cover"
+              />
             ))}
           </div>
         </div>

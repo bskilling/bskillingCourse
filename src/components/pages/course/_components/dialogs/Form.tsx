@@ -37,6 +37,7 @@ import {
 import { FaGlobe } from 'react-icons/fa';
 import { toast } from 'sonner';
 import { handleErrors } from '@/lib/handleError';
+import { cn } from '@/lib/utils';
 
 const leadSchema = z
   .object({
@@ -81,7 +82,7 @@ interface PopupFormProps {
   onClose: () => void;
   title?: string;
   description?: string;
-  formType?: 'b2c' | 'b2b' | 'b2i' | 'general';
+  formType?: 'b2c' | 'b2b' | 'b2i' | 'general' | 'b2g';
 }
 
 const PopupConsultationForm: React.FC<PopupFormProps> = ({
@@ -91,6 +92,7 @@ const PopupConsultationForm: React.FC<PopupFormProps> = ({
   description = 'Fill out the form below and our team will get back to you shortly.',
   formType = 'b2i',
 }) => {
+  const [type, setType] = React.useState(formType);
   const {
     register,
     handleSubmit,
@@ -105,9 +107,10 @@ const PopupConsultationForm: React.FC<PopupFormProps> = ({
       email: '',
       countryCode: '+91',
       phoneNumber: '',
-      type: formType,
+      // @ts-expect-error
+      type,
       // @ts-check
-      subCategory: formType === 'b2i' ? 'skills' : '',
+      subCategory: type === 'b2i' ? 'skills' : undefined,
       query: '',
     },
   });
@@ -138,7 +141,7 @@ const PopupConsultationForm: React.FC<PopupFormProps> = ({
 
   // Icons based on the form type
   const getFormIcon = () => {
-    switch (formType) {
+    switch (type) {
       case 'b2c':
         return <GraduationCap className="h-10 w-10 text-blue-600" />;
       case 'b2b':
@@ -305,23 +308,38 @@ const PopupConsultationForm: React.FC<PopupFormProps> = ({
                     )}
                   </div>
                 )}
-                <div className="space-y-1">
-                  <div className="relative">
-                    <FaGlobe className="w-5 h-5 text-blue-500 absolute left-3 top-1/2 transform -translate-y-1/2" />
-                    <input
-                      id="url"
-                      type="url"
-                      placeholder="Website URL"
-                      //   {...register('websiteUrl')}
-                      value={watch('websiteUrl') ?? ''}
-                      onChange={e => setValue('websiteUrl', e.target.value)}
-                      className="w-full border border-gray-200 rounded-lg px-4 py-2.5 pl-10 focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none"
-                    />
+
+                {type !== 'b2i' && type !== 'general' && type !== 'b2g' && (
+                  <div className="flex ">
+                    <div className={cn('flex items-center gap-2', type === 'b2c' && 'bg-blue-100')}>
+                      <p>My Self</p>
+                    </div>
+                    <div className={cn('flex items-center gap-2', type === 'b2b' && 'bg-blue-100')}>
+                      <p>My company</p>
+                    </div>
                   </div>
-                  {errors.email && (
-                    <p className="text-xs text-red-500">{errors?.websiteUrl?.message}</p>
-                  )}
-                </div>
+                )}
+
+                {showSubCategory && (
+                  <div className="space-y-1">
+                    <div className="relative">
+                      <FaGlobe className="w-5 h-5 text-blue-500 absolute left-3 top-1/2 transform -translate-y-1/2" />
+                      <input
+                        id="url"
+                        type="url"
+                        placeholder="Website URL"
+                        //   {...register('websiteUrl')}
+                        value={watch('websiteUrl') ?? ''}
+                        onChange={e => setValue('websiteUrl', e.target.value)}
+                        className="w-full border border-gray-200 rounded-lg px-4 py-2.5 pl-10 focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                      />
+                    </div>
+                    {errors.email && (
+                      <p className="text-xs text-red-500">{errors?.websiteUrl?.message}</p>
+                    )}
+                  </div>
+                )}
+
                 {/* Query Field */}
                 <div className="space-y-1">
                   <div className="relative">
