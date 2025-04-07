@@ -301,7 +301,7 @@ export default function SkillDevelopmentPrograms() {
                 <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-purple-100 rounded-full opacity-70 blur-3xl"></div>
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-200/50">
                   <img
-                    src="/new-image/skill-development1.webp"
+                    src="/new-image/skill-img.avif"
                     alt="Students learning tech skills"
                     className="w-full h-auto object-cover rounded-2xl"
                   />

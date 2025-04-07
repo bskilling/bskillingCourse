@@ -114,27 +114,82 @@ const NavbarSection: React.FC = () => {
     { name: 'Blogs', href: '/blogs' },
   ];
 
+  // Function to close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
+      if (activeDropdown && !target.closest('.dropdown-container')) {
+        setActiveDropdown(null);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [activeDropdown]);
+
   return (
     <>
-      {/* Top info bar - Only visible on larger screens */}
-      <div className="hidden lg:block bg-indigo-600 text-white py-2">
-        <div className="container mx-auto px-4 flex justify-between items-center">
-          <div className="flex items-center space-x-6">
-            <span className="flex items-center text-sm">
-              <IoMdCall className="mr-2" />
-              +91-9845348601
-            </span>
-            <Link
-              href="mailto:support@bskilling.com"
-              className="flex items-center text-sm hover:text-indigo-200 transition"
-            >
-              <span className="mr-2">📧</span>
-              support@bskilling.com
-            </Link>
+      {/* Announcement Banner - Responsive for all devices */}
+      <div className="overflow-hidden relative bg-gradient-to-r from-blue-900 via-blue-900 to-blue-900">
+        {/* Extra glossy shine effect */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-500/20 via-purple-500/10 to-transparent"></div>
+
+        {/* Animated glossy light streak */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="light-streak"></div>
+        </div>
+
+        {/* Content with enhanced typography and effects */}
+        <div className="relative z-20 py-2 md:py-3">
+          {/* Desktop version with full animation */}
+          <div className="hidden md:block">
+            <div className="animate-scroll-rtl flex whitespace-nowrap">
+              {Array(3)
+                .fill(
+                  'LIMITED TIME: All Courses 20% OFF! Elevate Your Skills Today — Enroll Now Before Offer Ends!'
+                )
+                .map((text, index) => (
+                  <span
+                    key={index}
+                    className="mx-4 lg:mx-8 text-xs sm:text-sm font-bold tracking-wide text-gray-100 drop-shadow-lg flex items-center"
+                  >
+                    <span className="text-lg lg:text-xl mr-2 lg:mr-3">👉</span>
+                    <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400 mx-1">
+                      LIMITED TIME:
+                    </span>{' '}
+                    <span className="mx-1">All Courses</span>{' '}
+                    <span className="text-amber-400 font-black text-sm lg:text-base relative inline-block animate-pulse-subtle mx-1.5">
+                      20% OFF!
+                    </span>{' '}
+                    <span className="mx-1 hidden sm:inline">Elevate Your Skills Today</span>{' '}
+                    <span className="mx-1 hidden sm:inline">—</span>{' '}
+                    <span className="border-b-2 border-cyan-400 pb-0.5 hover:border-amber-400 transition-colors mx-1">
+                      Enroll Now
+                    </span>{' '}
+                    <span className="mx-1 hidden sm:inline">Before Offer Ends!</span>
+                    <span className="text-lg lg:text-xl mr-2 lg:mr-3">🎉</span>
+                  </span>
+                ))}
+            </div>
           </div>
-          <button onClick={handleOpenPopup} className="text-sm hover:text-indigo-200 transition">
-            Become an Instructor
-          </button>
+
+          {/* Mobile version with simplified content */}
+          <div className="block md:hidden">
+            <div className="text-center px-3 py-1">
+              <span className="text-xs font-bold tracking-wide text-gray-100 drop-shadow-lg flex items-center justify-center flex-wrap">
+                <span className="text-lg mr-1">🎓</span>
+                <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">
+                  LIMITED TIME:
+                </span>{' '}
+                <span className="text-amber-400 font-black animate-pulse-subtle mx-1">
+                  20% OFF!
+                </span>{' '}
+                <span className="border-b-2 border-cyan-400 pb-0.5 mx-1 whitespace-nowrap">
+                  Enroll Now
+                </span>
+              </span>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -145,10 +200,10 @@ const NavbarSection: React.FC = () => {
         }`}
       >
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="flex items-center justify-between py-4">
+          <div className="flex items-center justify-between py-3 lg:py-4">
             {/* Logo */}
             <Link href="/" className="flex items-center">
-              <div className="relative w-[120px] h-[40px] lg:w-[150px] lg:h-[45px] flex-shrink-0">
+              <div className="relative w-[110px] h-[35px] sm:w-[120px] sm:h-[40px] lg:w-[150px] lg:h-[45px] flex-shrink-0">
                 <img
                   src="/logo.png"
                   alt="bSkilling Logo"
@@ -156,18 +211,19 @@ const NavbarSection: React.FC = () => {
                 />
               </div>
             </Link>
-            <div className="z-50 flex-shrink-0 mx-5">
+
+            {/* Courses component - both mobile and desktop */}
+            <div className="z-50 flex-shrink-0 ml-1 sm:ml-2 lg:ml-5 mr-1 sm:mr-3 lg:mx-5">
               <Courses />
             </div>
+
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center lg:space-x-3 xl:space-x-5 flex-grow justify-end mx-5">
+            <div className="hidden lg:flex items-center lg:space-x-3 xl:space-x-5 flex-grow justify-end">
               {/* Search Bar */}
               <SearchSheetComponent />
 
-              {/* Courses Component */}
-
               {/* Main menu items */}
-              <nav className="flex items-center space-x-4 xl:space-x-5 flex-shrink-0">
+              <nav className="flex items-center space-x-3 xl:space-x-5 flex-shrink-0">
                 {mainMenuItems.map(item => (
                   <Link
                     key={item.name}
@@ -181,7 +237,7 @@ const NavbarSection: React.FC = () => {
                 ))}
 
                 {/* More dropdown */}
-                <div className="relative flex-shrink-0">
+                <div className="relative flex-shrink-0 dropdown-container">
                   <button
                     className="flex items-center text-gray-700 hover:text-indigo-600 font-medium transition whitespace-nowrap text-sm xl:text-base"
                     onClick={() => setActiveDropdown(activeDropdown === 'more' ? null : 'more')}
@@ -202,7 +258,6 @@ const NavbarSection: React.FC = () => {
                         exit={{ opacity: 0, y: 8 }}
                         transition={{ duration: 0.2 }}
                         className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-20"
-                        onMouseLeave={() => setActiveDropdown(null)}
                       >
                         {secondaryMenuItems.map(item => (
                           <Link
@@ -210,6 +265,7 @@ const NavbarSection: React.FC = () => {
                             href={item.href}
                             target={item.external ? '_blank' : '_self'}
                             className="block px-4 py-2 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 transition"
+                            onClick={() => setActiveDropdown(null)}
                           >
                             {item.name}
                           </Link>
@@ -238,9 +294,9 @@ const NavbarSection: React.FC = () => {
             </div>
 
             {/* Mobile Search & Menu Button */}
-            <div className="lg:hidden flex items-center space-x-3">
+            <div className="lg:hidden flex items-center space-x-2 sm:space-x-3">
               <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
-                <SheetTrigger className="p-2 text-gray-700 hover:text-indigo-600 transition">
+                <SheetTrigger className="p-1.5 sm:p-2 text-gray-700 hover:text-indigo-600 transition">
                   <FiSearch className="h-5 w-5" />
                 </SheetTrigger>
                 <SheetContent side={'top'} className="h-screen overflow-y-auto">
@@ -249,7 +305,7 @@ const NavbarSection: React.FC = () => {
                       <div className="relative w-full">
                         <input
                           type="text"
-                          className="w-full text-[14px] h-12 border rounded-full bg-gray-50 px-5 pl-10 outline-none focus:outline-none focus:ring-1 focus:ring-indigo-300 transition"
+                          className="w-full text-[14px] h-10 sm:h-12 border rounded-full bg-gray-50 px-5 pl-10 outline-none focus:outline-none focus:ring-1 focus:ring-indigo-300 transition"
                           placeholder="Search for courses or skills"
                           required
                           value={inputValue}
@@ -258,11 +314,13 @@ const NavbarSection: React.FC = () => {
                             setShow(true);
                           }}
                         />
-                        <BiSearchAlt className="absolute top-4 left-3 text-indigo-600" />
+                        <BiSearchAlt className="absolute top-3 sm:top-4 left-3 text-indigo-600" />
                       </div>
 
-                      <div className="mt-6">
-                        <h3 className="text-lg font-medium mb-4">Popular Categories</h3>
+                      <div className="mt-4 sm:mt-6">
+                        <h3 className="text-base sm:text-lg font-medium mb-3 sm:mb-4">
+                          Popular Categories
+                        </h3>
                         <div className="flex flex-wrap gap-2">
                           {[
                             'Web Development',
@@ -273,7 +331,7 @@ const NavbarSection: React.FC = () => {
                           ].map((cat, idx) => (
                             <button
                               key={idx}
-                              className="px-4 py-2 bg-gray-100 rounded-full text-sm hover:bg-indigo-100 transition"
+                              className="px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 rounded-full text-xs sm:text-sm hover:bg-indigo-100 transition"
                             >
                               {cat}
                             </button>
@@ -281,8 +339,10 @@ const NavbarSection: React.FC = () => {
                         </div>
                       </div>
 
-                      <div className="mt-6">
-                        <h3 className="text-lg font-medium mb-4">Search Results</h3>
+                      <div className="mt-4 sm:mt-6">
+                        <h3 className="text-base sm:text-lg font-medium mb-3 sm:mb-4">
+                          Search Results
+                        </h3>
                         {dropSearchData.length > 0 ? (
                           <div className="divide-y">
                             {dropSearchData.map((course, index) => (
@@ -292,14 +352,14 @@ const NavbarSection: React.FC = () => {
                                   router.push(`/courses/course-details/${course.url}`);
                                   setSheetOpen(false);
                                 }}
-                                className="p-3 hover:bg-gray-50 text-gray-800 hover:text-indigo-600 cursor-pointer transition"
+                                className="p-2.5 sm:p-3 hover:bg-gray-50 text-gray-800 hover:text-indigo-600 cursor-pointer transition"
                               >
                                 {course.title}
                               </div>
                             ))}
                           </div>
                         ) : (
-                          <p className="text-gray-500 italic">
+                          <p className="text-gray-500 italic text-sm sm:text-base">
                             {inputValue.length > 2
                               ? 'No courses found. Try a different search term.'
                               : 'Type at least 3 characters to search'}
@@ -311,18 +371,13 @@ const NavbarSection: React.FC = () => {
                 </SheetContent>
               </Sheet>
 
-              {/* Mobile Courses Component */}
-              <div className="z-50 px-1">
-                <Courses />
-              </div>
-
               <button
-                className="text-gray-700 hover:text-indigo-600 transition"
+                className="p-1.5 sm:p-2 text-gray-700 hover:text-indigo-600 transition"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 type="button"
                 aria-label="Toggle menu"
               >
-                {mobileMenuOpen ? <FiX className="h-6 w-6" /> : <FiMenu className="h-6 w-6" />}
+                {mobileMenuOpen ? <FiX className="h-5 w-5" /> : <FiMenu className="h-5 w-5" />}
               </button>
             </div>
           </div>
@@ -336,11 +391,11 @@ const NavbarSection: React.FC = () => {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="lg:hidden bg-white border-t"
+              className="lg:hidden bg-white border-t shadow-md"
             >
-              <div className="container mx-auto px-4 py-4 space-y-4">
+              <div className="container mx-auto px-4 py-3 sm:py-4 space-y-3 sm:space-y-4">
                 {/* Mobile Main Menu Items */}
-                <nav className="flex flex-col space-y-3">
+                <nav className="flex flex-col space-y-2 sm:space-y-3">
                   {mainMenuItems.map(item => (
                     <Link
                       key={item.name}
@@ -348,9 +403,10 @@ const NavbarSection: React.FC = () => {
                       className={`flex items-center px-3 py-2 rounded-md text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 transition ${
                         router.pathname === item.href ? 'bg-indigo-50 text-indigo-600' : ''
                       }`}
+                      onClick={() => setMobileMenuOpen(false)}
                     >
                       {item.icon}
-                      <span className="ml-3">{item.name}</span>
+                      <span className="ml-3 text-sm sm:text-base">{item.name}</span>
                     </Link>
                   ))}
 
@@ -361,8 +417,9 @@ const NavbarSection: React.FC = () => {
                       href={item.href}
                       target={item.external ? '_blank' : '_self'}
                       className="flex items-center px-3 py-2 rounded-md text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 transition"
+                      onClick={() => setMobileMenuOpen(false)}
                     >
-                      <span className="ml-8">{item.name}</span>
+                      <span className="ml-8 text-sm sm:text-base">{item.name}</span>
                     </Link>
                   ))}
                 </nav>
@@ -371,30 +428,39 @@ const NavbarSection: React.FC = () => {
                 <div className="flex flex-col space-y-2 pt-2 border-t">
                   <Link
                     href="https://lms.bskilling.com/login/signup.php"
-                    className="px-4 py-2 border border-indigo-600 text-indigo-600 rounded-md hover:bg-indigo-50 transition text-center font-medium"
+                    className="px-4 py-2 border border-indigo-600 text-indigo-600 rounded-md hover:bg-indigo-50 transition text-center font-medium text-sm sm:text-base"
+                    onClick={() => setMobileMenuOpen(false)}
                   >
                     Sign Up
                   </Link>
                   <Link
                     href="https://lms.bskilling.com/login/index.php"
-                    className="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition text-center font-medium"
+                    className="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition text-center font-medium text-sm sm:text-base"
+                    onClick={() => setMobileMenuOpen(false)}
                   >
                     Login
                   </Link>
                 </div>
 
                 {/* Mobile Contact Info */}
-                <div className="lg:hidden flex flex-col space-y-2 pt-3 border-t text-sm text-gray-600">
+                <div className="flex flex-col space-y-2 pt-3 border-t text-xs sm:text-sm text-gray-600">
                   <div className="flex items-center">
                     <IoMdCall className="mr-2" />
                     +91-9845348601
                   </div>
-                  <Link href="mailto:support@bskilling.com" className="flex items-center">
+                  <Link
+                    href="mailto:support@bskilling.com"
+                    className="flex items-center"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
                     <span className="mr-2">📧</span>
                     support@bskilling.com
                   </Link>
                   <button
-                    onClick={handleOpenPopup}
+                    onClick={() => {
+                      setMobileMenuOpen(false);
+                      handleOpenPopup();
+                    }}
                     className="text-indigo-600 font-medium"
                     type="button"
                   >
@@ -414,11 +480,72 @@ const NavbarSection: React.FC = () => {
             className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
             onClick={handleClosePopup}
           ></div>
-          <div className="fixed inset-0 flex items-center justify-center z-50">
+          <div className="fixed inset-0 flex items-center justify-center z-50 px-4">
             <PopupForm handleClosePopup={handleClosePopup} title="Become an Instructor" />
           </div>
         </>
       )}
+
+      {/* Enhanced animations */}
+      <style jsx global>{`
+        @keyframes scroll-rtl {
+          0% {
+            transform: translateX(100%);
+          }
+          100% {
+            transform: translateX(-100%);
+          }
+        }
+
+        .animate-scroll-rtl {
+          animation: scroll-rtl 25s linear infinite;
+        }
+
+        @keyframes pulse-subtle {
+          0%,
+          100% {
+            opacity: 1;
+            transform: scale(1);
+          }
+          50% {
+            opacity: 0.9;
+            transform: scale(1.05);
+          }
+        }
+
+        .animate-pulse-subtle {
+          animation: pulse-subtle 2s ease-in-out infinite;
+        }
+
+        /* Animated light streak */
+        @keyframes light-sweep {
+          0% {
+            transform: translateX(-100%) rotate(45deg);
+            opacity: 0;
+          }
+          10% {
+            opacity: 0.3;
+          }
+          90% {
+            opacity: 0.3;
+          }
+          100% {
+            transform: translateX(300%) rotate(45deg);
+            opacity: 0;
+          }
+        }
+
+        .light-streak {
+          position: absolute;
+          top: -100%;
+          left: -100%;
+          width: 150%;
+          height: 300%;
+          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+          transform: rotate(45deg);
+          animation: light-sweep 7s linear infinite;
+        }
+      `}</style>
     </>
   );
 };
