@@ -48,7 +48,7 @@ export interface ICourse {
     title: string;
   };
   logoUrl: Banner;
-  category: CategoryProps['category'];
+  category: string[];
   tools: Skill[];
 }
 interface Faq {
