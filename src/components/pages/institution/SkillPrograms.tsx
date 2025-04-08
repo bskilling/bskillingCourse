@@ -291,7 +291,7 @@ export default function SkillPrograms({ skill }: { skill: boolean }) {
           <div className="w-full flex justify-center gap-x-6 items-center mt-6">
             {filteredCourses &&
               filteredCourses?.length > 8 &&
-              !(currentShow > filteredCourses?.length) && (
+              !(currentShow >= filteredCourses?.length) && (
                 <button
                   onClick={handleCurrentShow}
                   className="px-6 py-3 bg-indigo-600 text-white rounded-full font-medium shadow-md"
@@ -300,7 +300,7 @@ export default function SkillPrograms({ skill }: { skill: boolean }) {
                 </button>
               )}
 
-            {currentShow > 8 && (
+            {currentShow > 8 && filteredCourses && filteredCourses?.length > 8 && (
               <button
                 onClick={handleCurrentShow1}
                 className="px-6 py-3 bg-white text-indigo-600 border-2 border-indigo-600 rounded-full font-medium"

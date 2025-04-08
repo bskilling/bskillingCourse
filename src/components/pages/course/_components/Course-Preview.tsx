@@ -70,7 +70,7 @@ export interface TDraftCourseForm {
   startTime: string;
   endTime?: string;
   faqs?: { question: string; answer: string }[];
-  category?: string;
+  category?: string[];
   highlights?: string[];
   images?: string[];
   certification?: {
@@ -499,6 +499,7 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
       />
       <Modules chapters={curriculum.chapters} />
       {<CourseResources skills={skills} tools={tools} />}
+      <Highlights highlights={highlights || []} />
       <Outcomes outcomes={outcomes || []} />
 
       <CertificationSection certification={certification} />

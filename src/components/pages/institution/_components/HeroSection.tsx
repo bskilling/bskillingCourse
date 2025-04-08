@@ -74,10 +74,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-50 text-blue-800">
+                {/* <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-50 text-blue-800">
                   <span className="mr-1.5 h-2 w-2 rounded-full bg-blue-600"></span>
                   {category.name}
-                </span>
+                </span> */}
               </motion.div>
             )}
 
