@@ -132,12 +132,12 @@ export default function GovernmentTrainingProgram() {
       </Head>
       <main className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
         {/* Navbar */}
-        <div className="sticky top-0 z-50 backdrop-blur-md bg-white/90 shadow-sm">
-          <nav className="text-[#1f1f1f] max-w-7xl mx-auto px-5 md:px-8 w-full flex justify-between items-center text-sm font-medium py-3">
+        <div className="sticky top-0 z-[50] bg-white shadow-sm">
+          <nav className="text-[#1f1f1f] max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center text-sm font-medium py-4">
             <div className="text-3xl font-bold inline-flex items-center">
               <Link href="/">
-                <div className="relative w-[80px] h-[30px] md:w-[150px] md:h-[50px]">
-                  <img src="/logo.png" alt="Logo" className="object-cover w-full h-full" />
+                <div className="relative w-[120px] h-[30px] md:w-[150px] md:h-[50px]">
+                  <img src="/logo.png" alt="Logo" className="object-contain" />
                 </div>
               </Link>
             </div>
@@ -147,38 +147,11 @@ export default function GovernmentTrainingProgram() {
 
         {/* Hero Section */}
         <section className="relative h-[60vh] overflow-hidden">
-          {/* <img
+          <img
             src="/new-image/govt.webp"
             alt="Government Training Programs"
-            className="absolute inset-0 w-full h-full object-cover"
-          /> */}
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/80 to-black/50 flex items-center">
-            <div className="max-w-7xl mx-auto px-6 md:px-8 w-full">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                className="max-w-xl text-white"
-              >
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-                  Government Training Programs
-                </h1>
-                <p className="text-lg md:text-xl opacity-90">
-                  Partner with leading government initiatives to empower the next generation of
-                  skilled professionals.
-                </p>
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.5, duration: 0.5 }}
-                >
-                  <button className="mt-8 bg-white text-primary px-6 py-3 rounded-full font-semibold hover:bg-opacity-90 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                    Explore Programs
-                  </button>
-                </motion.div>
-              </motion.div>
-            </div>
-          </div>
+            className="w-full 2xl:h-[500px] xl:[400px] lg:[300px] object-cover"
+          />
         </section>
 
         {/* Stats Section */}
@@ -374,29 +347,6 @@ export default function GovernmentTrainingProgram() {
                   </p>
                 </div>
               </div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="py-16 bg-primary text-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Ready to Transform Your Institution?
-              </h2>
-              <p className="text-xl opacity-90 max-w-3xl mx-auto mb-8">
-                Join our government training programs and provide your students with
-                industry-recognized certifications and skills.
-              </p>
-              <button className="bg-white text-primary px-8 py-4 rounded-full font-bold text-lg hover:bg-opacity-90 transition-all shadow-lg transform hover:-translate-y-1">
-                Partner With Us
-              </button>
             </motion.div>
           </div>
         </section>

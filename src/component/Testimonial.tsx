@@ -10,21 +10,21 @@ const testimonials = [
   {
     name: 'Pradheep Eswaramoorthi',
     role: 'Software Engineer',
-    image: '/images/profile.jfif',
+    image: '/new-image/home/man.png',
     testimonial:
       'I am Pradheep from a non-IT background. My friend referred me to this institute, and I joined the SAP BTP course. The training went well, and the concepts were clearly delivered with practical examples. Everyday tasks helped me a lot. I got good knowledge, and SAP BTP is easy and interesting. By the end of the course, I was satisfied with the training.',
   },
   {
     name: 'Virender Singh',
     role: 'AWS Certified Trainer',
-    image: '/images/profile.jfif',
+    image: '/new-image/home/man1.png',
     testimonial:
       "Bskilling's learning platform is a game-changer. As a trainer, I appreciate the platform's user-friendly interface and robust features that enhance the training experience. It's a valuable resource for both trainers and learners, making our job easier and more effective. I'm proud to be associated with such an innovative learning solution!",
   },
   {
-    name: 'Amitikumar Mohanty',
+    name: 'Isaivanan T',
     role: 'Systems Engineer',
-    image: '/images/profile.jfif',
+    image: '/new-image/home/isai.jpeg',
     testimonial:
       "I thought prompt engineering was easy and just about asking ChatGPT questions. Oh boy, I was wrong! It's an ocean of knowledge in the field of AI! The trainer helped me understand how to prompt correctly. MidJourney and Bard were something I didn't even know existed! I really appreciate the team's effort in educating us about all of these things in one session!",
   },
@@ -62,7 +62,7 @@ const Testimonial = () => {
                 <div className="bg-white shadow-lg rounded-2xl p-6 text-center border border-gray-200 hover:shadow-xl transition-shadow duration-300">
                   <div className="flex justify-center mb-4">
                     <img
-                      className="w-20 h-20 rounded-full border-4 border-gray-300"
+                      className="w-24 h-24 rounded-full border-4 border-gray-300 object-cover"
                       src={testimonial.image}
                       alt={testimonial.name}
                     />
