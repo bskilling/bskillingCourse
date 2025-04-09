@@ -49,8 +49,7 @@ interface UseCoursesAndCategoriesProps {
 }
 
 // Backend URL
-const backendUrl =
-  process.env.NEXT_PUBLIC_BACKEND_URL ?? 'https://backendbskilling-production-20ff.up.railway.app';
+const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL ?? 'https://backendbskilling.up.railway.app';
 
 /**
  * Custom hook to fetch both categories and courses with proper caching
