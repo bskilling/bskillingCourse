@@ -150,7 +150,7 @@ export default function GovernmentTrainingProgram() {
           <img
             src="/new-image/govt.webp"
             alt="Government Training Programs"
-            className="w-full 2xl:h-[500px] xl:[400px] lg:[300px] object-cover"
+            className="w-full  object-cover"
           />
         </section>
 

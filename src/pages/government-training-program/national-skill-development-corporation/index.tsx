@@ -94,7 +94,7 @@ export default function NSDC() {
           <img
             src="/new-image/nsdc.webp"
             alt="NSDC Skill Development"
-            className="w-full h-[500px] object-cover"
+            className="w-full  object-cover"
           />
         </div>
 
