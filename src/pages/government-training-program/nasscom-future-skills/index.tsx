@@ -138,7 +138,7 @@ export default function Nasscom() {
             <img
               src="/new-image/Nasscom.webp"
               alt="NASSCOM Banner"
-              className="object-cover w-full h-auto md:h-[500px]"
+              className="object-cover w-full h-auto "
             />
             {/* <div className="absolute inset-0 bg-gradient-to-r from-black/30 to-transparent flex items-center">
               <div className="container mx-auto px-4 sm:px-6 md:max-w-3xl lg:max-w-4xl">
@@ -304,10 +304,9 @@ export default function Nasscom() {
             </div>
           )}
         </motion.div>
-        <CourseCategories />
+        {/* <CourseCategories /> */}
         <>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 py-16">
-            {/* Introduction Section */}
             <motion.div
               className="mb-20"
               variants={{
