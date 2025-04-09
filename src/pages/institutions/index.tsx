@@ -244,8 +244,7 @@ const InstitutionHomepage = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const backendUrl =
-    process.env.NEXT_PUBLIC_BACKEND_URL ??
-    'https://backendbskilling-production-20ff.up.railway.app';
+    process.env.NEXT_PUBLIC_BACKEND_URL ?? 'https://backendbskilling.up.railway.app';
 
   const [isPublished, setIsPublished] = useState<boolean | undefined>(true);
   const { data, isLoading } = useQuery<{ courses: ICourse[] }>({

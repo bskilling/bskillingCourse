@@ -17,8 +17,7 @@ import { Mail, Phone, MessageSquare, Briefcase, BookOpen, Globe } from 'lucide-r
 import { handleErrors } from '@/lib/handleError';
 
 // Backend URL
-const backendUrl =
-  process.env.NEXT_PUBLIC_BACKEND_URL ?? 'https://backendbskilling-production-20ff.up.railway.app';
+const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL ?? 'https://backendbskilling.up.railway.app';
 
 export default function EnhancedLeadForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);

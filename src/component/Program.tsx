@@ -13,8 +13,7 @@ import { Button } from '@/components/ui/button';
 import { BookOpen, Search } from 'lucide-react';
 import { useRouter } from 'next/router';
 
-const backendUrl =
-  process.env.NEXT_PUBLIC_BACKEND_URL ?? 'https://backendbskilling-production-20ff.up.railway.app';
+const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL ?? 'https://backendbskilling.up.railway.app';
 
 export default function Program() {
   const selectedType = 'b2c';
