@@ -11,8 +11,8 @@ import Head from 'next/head';
 export async function getServerSideProps() {
   return {
     props: {
-      title: 'Share Your Feedback - BSkilling',
-      description: 'Help us improve by sharing your review on BSkilling!',
+      title: 'Share Your Feedback - bSkilling',
+      description: 'Help us improve by sharing your review on bSkilling!',
       image: '/public/place.png', // Change to actual image URL
       url: 'https://i.postimg.cc/Nfpgwnq0/Teal-And-White-Modern-Client-Testimonial-Instagram-Post.png',
     },

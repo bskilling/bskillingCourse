@@ -23,7 +23,7 @@ const Placement = () => {
             <BadgeCheck /> Corporate Training
           </h2>
           <p className="mt-3 text-gray-700 text-sm">
-            Enhance your team’s skills with BSkilling&apos;s corporate training solutions. Our
+            Enhance your team’s skills with bSkilling&apos;s corporate training solutions. Our
             expert-led programs focus on technical enhancement, leadership growth, and team
             collaboration. Available online or on-site, with real-world case studies and flexible
             schedules.

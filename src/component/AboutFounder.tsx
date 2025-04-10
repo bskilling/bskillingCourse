@@ -22,10 +22,10 @@ const AboutFounder = () => {
             businesses seeking innovative solutions to their staffing and operational needs.
             <br />
             <br />
-            Mr. Sivasarathy’s entrepreneurial spirit led him to establish BSkilling– a subsidiary of
+            Mr. Sivasarathy’s entrepreneurial spirit led him to establish bSkilling– a subsidiary of
             SFJBS dedicated to empowering individuals with the skills and opportunities to excel in
             the IT industry. With over 13 years of experience in the industry and connections to
-            over 500 companies, including industry giants like CISCO, BSkilling has become
+            over 500 companies, including industry giants like CISCO, bSkilling has become
             synonymous with excellence in talent development and placement services.
           </p>
         </div>

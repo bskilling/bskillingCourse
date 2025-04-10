@@ -37,7 +37,7 @@ const Chooseus = () => {
 
       <h1 className="text-3xl md:text-5xl font-extrabold mb-6">WHY CHOOSE US?</h1>
       <p className="text-lg max-w-2xl mb-8 text-gray-200">
-        BSkilling is your go-to destination for comprehensive technical training, development, and
+        bSkilling is your go-to destination for comprehensive technical training, development, and
         placement solutions. Join us to enhance your skills and advance your career with expert
         guidance.
       </p>

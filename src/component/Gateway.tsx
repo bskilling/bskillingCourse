@@ -53,7 +53,7 @@ const Gateway = () => {
         </h1>
         <p className="text-md md:text-lg text-gray-600 max-w-3xl mx-auto">
           With innovative online classes led by seasoned instructors, personalized placement
-          support, and access to expert faculty, BSkilling empowers you to unlock your full
+          support, and access to expert faculty, bSkilling empowers you to unlock your full
           potential and achieve your career goals with confidence.
         </p>
       </div>

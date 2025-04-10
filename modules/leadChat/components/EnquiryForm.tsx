@@ -1,11 +1,11 @@
 // components/EnquiryForm.tsx
 
-import { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import { FaTimes } from "react-icons/fa";
-import { useRouter } from "next/router";
-import "react-phone-number-input/style.css";
-import PhoneInput from "react-phone-number-input";
+import { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { FaTimes } from 'react-icons/fa';
+import { useRouter } from 'next/router';
+import 'react-phone-number-input/style.css';
+import PhoneInput from 'react-phone-number-input';
 
 interface EnquiryFormProps {
   onClose: () => void;
@@ -32,20 +32,16 @@ const EnquiryForm: React.FC<EnquiryFormProps> = ({
     reset,
     watch,
   } = useForm({
-    mode: "onChange",
+    mode: 'onChange',
   });
 
   const isButtonVisible =
-    watch("firstName") &&
-    watch("lastName") &&
-    watch("email") &&
-    !errors.email &&
-    watch("phone");
+    watch('firstName') && watch('lastName') && watch('email') && !errors.email && watch('phone');
 
   const submitForm = async (data: any) => {
     try {
       const requestData = {
-        type: "enquiry",
+        type: 'enquiry',
         courseName: courseName,
         firstName: data.firstName,
         lastName: data.lastName,
@@ -54,25 +50,25 @@ const EnquiryForm: React.FC<EnquiryFormProps> = ({
         experience: data.experience,
       };
 
-      const response = await fetch("/api/send-email", {
-        method: "POST",
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify(requestData),
       });
-      console.log("res", response);
+      console.log('res', response);
       if (response.status === 200) {
         reset({
-          firstName: "",
-          lastName: "",
-          email: "",
-          phone: "",
-          experience: "",
+          firstName: '',
+          lastName: '',
+          email: '',
+          phone: '',
+          experience: '',
         });
 
         setMessage(true);
-        router.push("/thankyou");
+        router.push('/thankyou');
 
         if (onFormSubmit) {
           onFormSubmit();
@@ -82,25 +78,25 @@ const EnquiryForm: React.FC<EnquiryFormProps> = ({
           onPdfDownload();
         }
       } else {
-        throw new Error("Error while sending message");
+        throw new Error('Error while sending message');
       }
     } catch (error) {
-      console.error("Error:", error);
-      alert("Something went wrong");
+      console.error('Error:', error);
+      alert('Something went wrong');
     }
   };
 
   useEffect(() => {
     const handleOutsideClick = (event: any) => {
-      if (event.target.id === "enquiryFormOverlay") {
+      if (event.target.id === 'enquiryFormOverlay') {
         onClose();
       }
     };
 
-    document.addEventListener("click", handleOutsideClick);
+    document.addEventListener('click', handleOutsideClick);
 
     return () => {
-      document.removeEventListener("click", handleOutsideClick);
+      document.removeEventListener('click', handleOutsideClick);
     };
   }, [onClose]);
 
@@ -115,43 +111,37 @@ const EnquiryForm: React.FC<EnquiryFormProps> = ({
             <FaTimes />
           </button>
         </div>
-        <h2 className="text-2xl font-semibold mb-4 text-center">
-          Enquiry Form
-        </h2>
+        <h2 className="text-2xl font-semibold mb-4 text-center">Enquiry Form</h2>
 
         <div className="mb-4">
           <input
             type="text"
             placeholder="First Name*"
-            {...register("firstName", { required: true })}
+            {...register('firstName', { required: true })}
             className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-green-500"
           />
-          {errors.firstName && (
-            <p className="text-red-500 text-xs mt-1">This field is required</p>
-          )}
+          {errors.firstName && <p className="text-red-500 text-xs mt-1">This field is required</p>}
         </div>
 
         <div className="mb-4">
           <input
             type="text"
             placeholder="Last Name*"
-            {...register("lastName", { required: true })}
+            {...register('lastName', { required: true })}
             className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-green-500"
           />
-          {errors.lastName && (
-            <p className="text-red-500 text-xs mt-1">This field is required</p>
-          )}
+          {errors.lastName && <p className="text-red-500 text-xs mt-1">This field is required</p>}
         </div>
 
         <div className="mb-4">
           <div className="flex items-center space-x-4">
             <PhoneInput
-              value={watch("phone") || ""}
+              value={watch('phone') || ''}
               placeholder="Enter Mobile Number*"
               defaultCountry="IN"
               international
               className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-green-500"
-              onChange={(value) => setValue("phone", value || "")}
+              onChange={value => setValue('phone', value || '')}
             />
           </div>
         </div>
@@ -160,16 +150,14 @@ const EnquiryForm: React.FC<EnquiryFormProps> = ({
           <input
             type="email"
             placeholder="Your Email*"
-            {...register("email", {
+            {...register('email', {
               required: true,
               pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
             })}
             className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-green-500"
           />
           {errors.email && (
-            <p className="text-red-500 text-xs mt-1">
-              Please enter a valid email address
-            </p>
+            <p className="text-red-500 text-xs mt-1">Please enter a valid email address</p>
           )}
         </div>
 
@@ -177,14 +165,14 @@ const EnquiryForm: React.FC<EnquiryFormProps> = ({
           <input
             type="text"
             placeholder="Year Of Experience (optional)"
-            {...register("experience")}
+            {...register('experience')}
             className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-green-500"
           />
         </div>
         <div>
-          <input type="checkbox" />{" "}
+          <input type="checkbox" />{' '}
           <span className="text-xs">
-            {`I authorise Bskilling & its representatives to contact me with
+            {`I authorise bSkilling & its representatives to contact me with
             updates and notifications via Email/SMS/What'sApp/Call. This will
             override on DND/NDNC <a href="/privacy">Privacy Policy</a>`}
           </span>
@@ -199,11 +187,11 @@ const EnquiryForm: React.FC<EnquiryFormProps> = ({
             <button
               onClick={() => {
                 const formData = {
-                  firstName: watch("firstName"),
-                  lastName: watch("lastName"),
-                  email: watch("email"),
-                  phone: watch("phone"),
-                  experience: watch("experience"),
+                  firstName: watch('firstName'),
+                  lastName: watch('lastName'),
+                  email: watch('email'),
+                  phone: watch('phone'),
+                  experience: watch('experience'),
                 };
 
                 submitForm(formData);
@@ -211,7 +199,7 @@ const EnquiryForm: React.FC<EnquiryFormProps> = ({
               }}
               disabled={!isButtonVisible}
               className={`bg-blue-500 text-white px-4 py-2 rounded ${
-                isButtonVisible ? "" : "opacity-50 cursor-not-allowed"
+                isButtonVisible ? '' : 'opacity-50 cursor-not-allowed'
               }`}
             >
               Submit Query

@@ -302,7 +302,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
               opacity: '0.8',
             }}
           >
-            <img src="/loader.gif" alt="About BSkilling" className="w-10 h-10" />
+            <img src="/loader.gif" alt="About bSkilling" className="w-10 h-10" />
           </div>
         </div>
       )}
@@ -357,7 +357,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
         <div>
           <input type="checkbox" />{' '}
           <span className="text-xs">
-            {`I authorise Bskilling & its representatives to contact me with
+            {`I authorise bSkilling & its representatives to contact me with
             updates and notifications via Email/SMS/What'sApp/Call. This will
             override on DND/NDNC `}
             <a href="/privacy" target="_blank">

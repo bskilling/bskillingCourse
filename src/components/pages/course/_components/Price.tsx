@@ -6,9 +6,14 @@ import { FaIndianRupeeSign } from 'react-icons/fa6';
 interface CourseEnrollmentProps {
   formattedPrice: string;
   durationHours: number;
+  isPaid: boolean;
 }
 
-const CourseEnrollment: React.FC<CourseEnrollmentProps> = ({ formattedPrice, durationHours }) => {
+const CourseEnrollment: React.FC<CourseEnrollmentProps> = ({
+  formattedPrice,
+  durationHours,
+  isPaid = true,
+}) => {
   return (
     <section id="pricing" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       <div className="flex items-center space-x-3 mb-8">
@@ -20,7 +25,9 @@ const CourseEnrollment: React.FC<CourseEnrollmentProps> = ({ formattedPrice, dur
         {/* Top Banner */}
         <div className="bg-gradient-to-r from-blue-600 to-indigo-700 py-4 px-6">
           <p className="text-white text-center text-sm font-medium">
-            Limited Time Offer - Enrollment closes in 3 days!
+            {isPaid
+              ? 'Limited Time Offer - Enrollment closes in 3 days!'
+              : "Free Course - Enroll now while it's available!"}
           </p>
         </div>
 
@@ -28,18 +35,29 @@ const CourseEnrollment: React.FC<CourseEnrollmentProps> = ({ formattedPrice, dur
           {/* Left Side - Pricing Info */}
           <div className="lg:w-2/5 p-8 lg:border-r border-gray-200 flex flex-col justify-center items-center">
             <div className="text-center">
-              <span className="text-gray-500 line-through text-lg">₹19,999</span>
-              <div className="flex items-center justify-center gap-2 mt-1">
-                <FaIndianRupeeSign className="h-8 w-8 text-blue-600" />
-                <span className="text-4xl font-bold text-gray-900">{formattedPrice}</span>
-              </div>
-              <span className="bg-green-100 text-green-700 text-xs font-medium px-3 py-1 rounded-full mt-2 inline-block">
-                65% OFF
-              </span>
+              {isPaid ? (
+                <>
+                  <span className="text-gray-500 line-through text-lg">₹19,999</span>
+                  <div className="flex items-center justify-center gap-2 mt-1">
+                    <FaIndianRupeeSign className="h-8 w-8 text-blue-600" />
+                    <span className="text-4xl font-bold text-gray-900">{formattedPrice}</span>
+                  </div>
+                  <span className="bg-green-100 text-green-700 text-xs font-medium px-3 py-1 rounded-full mt-2 inline-block">
+                    65% OFF
+                  </span>
+                </>
+              ) : (
+                <div className="mt-1">
+                  <span className="text-4xl font-bold text-green-900">FREE</span>
+                  {/* <span className="bg-blue-100 text-blue-700 text-xs font-medium px-3 py-1 rounded-full mt-2 inline-block ml-2">
+                    No Credit Card Required
+                  </span> */}
+                </div>
+              )}
 
               <div className="mt-8">
                 <button className="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-300 text-base shadow-md">
-                  Enroll Now
+                  {isPaid ? 'Enroll Now' : 'Join For Free'}
                 </button>
                 <button className="w-full mt-3 border border-blue-200 text-blue-600 hover:bg-blue-50 px-6 py-3 rounded-lg font-medium transition-colors duration-300 text-base">
                   Download Syllabus
@@ -47,18 +65,15 @@ const CourseEnrollment: React.FC<CourseEnrollmentProps> = ({ formattedPrice, dur
               </div>
             </div>
 
-            <div className="mt-8 w-full">
-              <div className="flex items-center justify-center gap-2 text-gray-500 text-sm">
-                <FaShieldAlt />
-                <span>100% Secure Payment</span>
+            {isPaid && (
+              <div className="mt-8 w-full">
+                <div className="flex items-center justify-center gap-2 text-gray-500 text-sm">
+                  <FaShieldAlt />
+                  <span>100% Secure Payment</span>
+                </div>
+                {/* Payment icons would go here */}
               </div>
-              {/* <div className="flex justify-center mt-4 space-x-3">
-                <img src="/visa.svg" alt="Visa" className="h-6" />
-                <img src="/mastercard.svg" alt="Mastercard" className="h-6" />
-                <img src="/paypal.svg" alt="PayPal" className="h-6" />
-                <img src="/razorpay.svg" alt="Razorpay" className="h-6" />
-              </div> */}
-            </div>
+            )}
           </div>
 
           {/* Right Side - Course Features */}
@@ -81,8 +96,12 @@ const CourseEnrollment: React.FC<CourseEnrollmentProps> = ({ formattedPrice, dur
                   <Award className="h-4 w-4 text-indigo-600" />
                 </div>
                 <div>
-                  <p className="font-medium text-gray-800">Completion Certificate</p>
-                  <p className="text-sm text-gray-500">Industry recognized</p>
+                  <p className="font-medium text-gray-800">
+                    {isPaid ? 'Completion Certificate' : 'Course Certificate'}
+                  </p>
+                  <p className="text-sm text-gray-500">
+                    {isPaid ? 'Industry recognized' : 'Available after completion'}
+                  </p>
                 </div>
               </div>
 
@@ -91,8 +110,12 @@ const CourseEnrollment: React.FC<CourseEnrollmentProps> = ({ formattedPrice, dur
                   <CheckCircle className="h-4 w-4 text-green-600" />
                 </div>
                 <div>
-                  <p className="font-medium text-gray-800">Lifetime Access</p>
-                  <p className="text-sm text-gray-500">Learn at your own pace</p>
+                  <p className="font-medium text-gray-800">
+                    {isPaid ? 'Lifetime Access' : 'Basic Access'}
+                  </p>
+                  <p className="text-sm text-gray-500">
+                    {isPaid ? 'Learn at your own pace' : '30-day access period'}
+                  </p>
                 </div>
               </div>
 
@@ -102,37 +125,75 @@ const CourseEnrollment: React.FC<CourseEnrollmentProps> = ({ formattedPrice, dur
                 </div>
                 <div>
                   <p className="font-medium text-gray-800">Course Materials</p>
-                  <p className="text-sm text-gray-500">Downloadable resources</p>
+                  <p className="text-sm text-gray-500">
+                    {isPaid ? 'Downloadable resources' : 'Online access only'}
+                  </p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-3">
-                <div className="flex-shrink-0 w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center">
-                  <FaGraduationCap className="h-4 w-4 text-yellow-600" />
-                </div>
-                <div>
-                  <p className="font-medium text-gray-800">Expert Mentor Support</p>
-                  <p className="text-sm text-gray-500">Get your questions answered</p>
-                </div>
-              </div>
+              {isPaid && (
+                <>
+                  <div className="flex items-start gap-3">
+                    <div className="flex-shrink-0 w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center">
+                      <FaGraduationCap className="h-4 w-4 text-yellow-600" />
+                    </div>
+                    <div>
+                      <p className="font-medium text-gray-800">Expert Mentor Support</p>
+                      <p className="text-sm text-gray-500">Get your questions answered</p>
+                    </div>
+                  </div>
 
-              <div className="flex items-start gap-3">
-                <div className="flex-shrink-0 w-8 h-8 bg-red-100 rounded-full flex items-center justify-center">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-4 w-4 text-red-600"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" />
-                    <path d="M14 6a2 2 0 012-2h2a2 2 0 012 2v8a2 2 0 01-2 2h-2a2 2 0 01-2-2V6z" />
-                  </svg>
-                </div>
-                <div>
-                  <p className="font-medium text-gray-800">2 Real-world Projects</p>
-                  <p className="text-sm text-gray-500">Build your portfolio</p>
-                </div>
-              </div>
+                  <div className="flex items-start gap-3">
+                    <div className="flex-shrink-0 w-8 h-8 bg-red-100 rounded-full flex items-center justify-center">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-4 w-4 text-red-600"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" />
+                        <path d="M14 6a2 2 0 012-2h2a2 2 0 012 2v8a2 2 0 01-2 2h-2a2 2 0 01-2-2V6z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="font-medium text-gray-800">2 Real-world Projects</p>
+                      <p className="text-sm text-gray-500">Build your portfolio</p>
+                    </div>
+                  </div>
+                </>
+              )}
+
+              {!isPaid && (
+                <>
+                  <div className="flex items-start gap-3">
+                    <div className="flex-shrink-0 w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center">
+                      <FaGraduationCap className="h-4 w-4 text-yellow-600" />
+                    </div>
+                    <div>
+                      <p className="font-medium text-gray-800">Community Forum</p>
+                      <p className="text-sm text-gray-500">Connect with other learners</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3">
+                    <div className="flex-shrink-0 w-8 h-8 bg-red-100 rounded-full flex items-center justify-center">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-4 w-4 text-red-600"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" />
+                        <path d="M14 6a2 2 0 012-2h2a2 2 0 012 2v8a2 2 0 01-2 2h-2a2 2 0 01-2-2V6z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="font-medium text-gray-800">1 Beginner Project</p>
+                      <p className="text-sm text-gray-500">Get started with basics</p>
+                    </div>
+                  </div>
+                </>
+              )}
             </div>
 
             <div className="mt-8 p-4 bg-blue-50 rounded-lg border border-blue-100">
@@ -153,8 +214,9 @@ const CourseEnrollment: React.FC<CourseEnrollmentProps> = ({ formattedPrice, dur
                 </div>
                 <div className="ml-3">
                   <p className="text-sm text-blue-800">
-                    Not sure if this course is right for you? Try our free introductory module or
-                    schedule a call with our career advisor.
+                    {isPaid
+                      ? 'Not sure if this course is right for you? Try our free introductory module or schedule a call with our career advisor.'
+                      : 'Want to access all features? Upgrade to our premium course for lifetime access and mentor support.'}
                   </p>
                 </div>
               </div>

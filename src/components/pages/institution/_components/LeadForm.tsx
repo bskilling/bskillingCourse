@@ -171,8 +171,8 @@ const ConsultationForm = () => {
                   <SelectValue placeholder="Select Subcategory" />
                 </SelectTrigger>
                 <SelectContent className="bg-white border border-gray-200">
-                  <SelectItem value="jobs">Jobs</SelectItem>
-                  <SelectItem value="skills">Skills</SelectItem>
+                  <SelectItem value="jobs">Jobs Assistance</SelectItem>
+                  <SelectItem value="skills">Skills Assistance</SelectItem>
                 </SelectContent>
               </Select>
             </div>

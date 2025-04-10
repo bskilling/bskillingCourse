@@ -164,18 +164,18 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             >
               <div className="flex -space-x-2">
                 <img
-                  className="inline-block h-8 w-8 rounded-full ring-2 ring-white"
-                  src="https://randomuser.me/api/portraits/women/17.jpg"
+                  className="inline-block h-8 w-8 rounded-full ring-2 ring-white object-cover"
+                  src="/new-image/home/man.png"
                   alt="Student"
                 />
                 <img
-                  className="inline-block h-8 w-8 rounded-full ring-2 ring-white"
-                  src="https://randomuser.me/api/portraits/men/32.jpg"
+                  className="inline-block h-8 w-8 rounded-full ring-2 ring-white object-cover"
+                  src="/new-image/home/women.jpg"
                   alt="Student"
                 />
                 <img
-                  className="inline-block h-8 w-8 rounded-full ring-2 ring-white"
-                  src="https://randomuser.me/api/portraits/women/44.jpg"
+                  className="inline-block h-8 w-8 rounded-full ring-2 ring-white object-cover"
+                  src="/new-image/home/man1.png"
                   alt="Student"
                 />
               </div>
