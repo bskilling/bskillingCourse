@@ -33,7 +33,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const mailOptions = {
     from: 'lmsadmin@bskilling.com',
     to: ['lmsadmin@bskilling.com', 'support@bskilling.com', 'sarangiankit097@gmail.com'],
-    subject: `Website Enquiry from Bskilling`,
+    subject: `Website Enquiry from bSkilling`,
     text: `
             Type: ${type}
             Course Name: ${courseName}

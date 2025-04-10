@@ -120,6 +120,7 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
     description,
     category,
     highlights,
+    isPaid,
     skills,
     curriculum,
     whyJoin,
@@ -297,13 +298,7 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
 
               {/* Apply Button */}
               <button
-                onClick={() =>
-                  openConsultationForm(
-                    'b2i',
-                    'Apply Now',
-                    'Explore how we can collaborate to enhance educational outcomes for your institution.'
-                  )
-                }
+                onClick={() => openConsultationForm('b2c', 'Apply Now', '')}
                 className="ml-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 shadow-sm transition-colors duration-200"
               >
                 Apply Now
@@ -503,7 +498,11 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
       <Outcomes outcomes={outcomes || []} />
 
       <CertificationSection certification={certification} />
-      <CourseEnrollment formattedPrice={formattedPrice} durationHours={durationHours} />
+      <CourseEnrollment
+        formattedPrice={formattedPrice}
+        durationHours={durationHours}
+        isPaid={isPaid}
+      />
       <CriteriaSection curriculum={curriculum} />
       <WhyJoinSection whyJoin={whyJoin} />
       <FAQSection faqs={faqs} />

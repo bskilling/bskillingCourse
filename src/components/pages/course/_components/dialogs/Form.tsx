@@ -155,7 +155,7 @@ const PopupConsultationForm: React.FC<PopupFormProps> = ({
 
   return (
     <Dialog open={isOpen} onOpenChange={open => !open && onClose()}>
-      <DialogContent className="sm:max-w-[900px] p-0 overflow-hidden border-none">
+      <DialogContent className="w-10/12 md:max-w-7xl  max-h-[80vh]  rounded-md  p-0 overflow-y-auto border-none">
         {submitMutation.isSuccess ? (
           <div className="p-8 flex flex-col items-center justify-center">
             <div className="bg-green-100 rounded-full p-3 mb-4">
@@ -175,7 +175,7 @@ const PopupConsultationForm: React.FC<PopupFormProps> = ({
         ) : (
           <div className="flex flex-col md:flex-row">
             {/* Left Section - Info */}
-            <div className="md:w-1/3 bg-gradient-to-br from-blue-700 to-indigo-800 text-white p-8 flex flex-col">
+            <div className="md:w-1/3 bg-gradient-to-br from-blue-700 to-indigo-800 text-white p-8  flex-col hidden md:flex">
               <div className="mb-6 flex items-center gap-3">
                 <div className="bg-white/20 p-3 rounded-full">{getFormIcon()}</div>
                 {/* <h2 className="text-2xl font-bold">{title}</h2> */}
@@ -298,7 +298,7 @@ const PopupConsultationForm: React.FC<PopupFormProps> = ({
                           <SelectValue placeholder="Select Interest" />
                         </SelectTrigger>
                         <SelectContent className="bg-white border border-gray-200">
-                          <SelectItem value="jobs">Career Opportunities</SelectItem>
+                          <SelectItem value="jobs">Job Assistance</SelectItem>
                           <SelectItem value="skills">Skill Development</SelectItem>
                         </SelectContent>
                       </Select>
@@ -308,14 +308,92 @@ const PopupConsultationForm: React.FC<PopupFormProps> = ({
                     )}
                   </div>
                 )}
-
-                {type !== 'b2i' && type !== 'general' && type !== 'b2g' && (
-                  <div className="flex ">
-                    <div className={cn('flex items-center gap-2', type === 'b2c' && 'bg-blue-100')}>
-                      <p>My Self</p>
+                {(type === 'b2c' || type === 'b2b') && (
+                  <div className="flex flex-col sm:flex-row gap-4 my-6">
+                    <div
+                      onClick={() => setType('b2c')}
+                      className={cn(
+                        'flex items-center gap-3 px-6 py-4 rounded-lg border border-gray-200 shadow-sm transition-all duration-300 cursor-pointer hover:shadow-md',
+                        type === 'b2c'
+                          ? 'bg-blue-50 border-blue-300 shadow-blue-100'
+                          : 'hover:bg-gray-50'
+                      )}
+                    >
+                      <div
+                        className={cn(
+                          'flex items-center justify-center w-6 h-6 rounded-full border transition-all duration-300',
+                          type === 'b2c' ? 'border-blue-500 bg-blue-500' : 'border-gray-300'
+                        )}
+                      >
+                        {type === 'b2c' && (
+                          <svg
+                            width="12"
+                            height="12"
+                            viewBox="0 0 12 12"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M10 3L4.5 8.5L2 6"
+                              stroke="white"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                        )}
+                      </div>
+                      <p
+                        className={cn(
+                          'font-medium transition-all duration-300',
+                          type === 'b2c' ? 'text-blue-700' : 'text-gray-700'
+                        )}
+                      >
+                        Myself
+                      </p>
                     </div>
-                    <div className={cn('flex items-center gap-2', type === 'b2b' && 'bg-blue-100')}>
-                      <p>My company</p>
+
+                    <div
+                      onClick={() => setType('b2b')}
+                      className={cn(
+                        'flex items-center gap-3 px-6 py-4 rounded-lg border border-gray-200 shadow-sm transition-all duration-300 cursor-pointer hover:shadow-md',
+                        type === 'b2b'
+                          ? 'bg-blue-50 border-blue-300 shadow-blue-100'
+                          : 'hover:bg-gray-50'
+                      )}
+                    >
+                      <div
+                        className={cn(
+                          'flex items-center justify-center w-6 h-6 rounded-full border transition-all duration-300',
+                          type === 'b2b' ? 'border-blue-500 bg-blue-500' : 'border-gray-300'
+                        )}
+                      >
+                        {type === 'b2b' && (
+                          <svg
+                            width="12"
+                            height="12"
+                            viewBox="0 0 12 12"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M10 3L4.5 8.5L2 6"
+                              stroke="white"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                        )}
+                      </div>
+                      <p
+                        className={cn(
+                          'font-medium transition-all duration-300',
+                          type === 'b2b' ? 'text-blue-700' : 'text-gray-700'
+                        )}
+                      >
+                        My Company
+                      </p>
                     </div>
                   </div>
                 )}

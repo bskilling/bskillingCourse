@@ -19,7 +19,7 @@ const testimonials = [
     role: 'AWS Certified Trainer',
     image: '/new-image/home/man1.png',
     testimonial:
-      "Bskilling's learning platform is a game-changer. As a trainer, I appreciate the platform's user-friendly interface and robust features that enhance the training experience. It's a valuable resource for both trainers and learners, making our job easier and more effective. I'm proud to be associated with such an innovative learning solution!",
+      "bSkilling's learning platform is a game-changer. As a trainer, I appreciate the platform's user-friendly interface and robust features that enhance the training experience. It's a valuable resource for both trainers and learners, making our job easier and more effective. I'm proud to be associated with such an innovative learning solution!",
   },
   {
     name: 'Isaivanan T',

@@ -1,4 +1,4 @@
-import AboutBskilling from '@/component/AboutBskilling';
+// import AboutbSkilling from '@/component/AboutbSkilling';
 import AboutCoreValue from '@/component/AboutCoreValue';
 import AboutFounder from '@/component/AboutFounder';
 // import Aboutlanding from 'component/Aboutlanding';
@@ -16,7 +16,7 @@ const AboutUs = () => {
       <AboutCoreValue />
       <AboutOnlineLearning />
       <AboutFounder />
-      <AboutBskilling />
+      {/* <AboutbSkilling /> */}
       <Testimonial />
       <AboutTrainTeam />
       <NewsLetter />

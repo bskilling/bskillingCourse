@@ -166,7 +166,7 @@ const PopupConsultationForm: React.FC<PopupFormProps> = ({
 
   return (
     <Dialog open={isOpen} onOpenChange={open => !open && onClose()}>
-      <DialogContent className="sm:max-w-[900px] p-0 overflow-hidden border-none">
+      <DialogContent className="w-10/12 md:max-w-7xl  max-h-[80vh]  rounded-md  p-0 overflow-y-auto border-none">
         {submitMutation.isSuccess ? (
           <div className="p-8 flex flex-col items-center justify-center">
             <div className="bg-green-100 rounded-full p-3 mb-4">
@@ -186,7 +186,7 @@ const PopupConsultationForm: React.FC<PopupFormProps> = ({
         ) : (
           <div className="flex flex-col md:flex-row">
             {/* Left Section - Info */}
-            <div className="md:w-1/3 bg-gradient-to-br from-blue-700 to-indigo-800 text-white p-8 flex flex-col">
+            <div className="md:w-1/3 bg-gradient-to-br from-blue-700 to-indigo-800 text-white p-8  flex-col hidden md:flex">
               <div className="mb-6 flex items-center gap-3">
                 <div className="bg-white/20 p-3 rounded-full">{getFormIcon()}</div>
                 {/* <h2 className="text-2xl font-bold">{title}</h2> */}
@@ -309,7 +309,7 @@ const PopupConsultationForm: React.FC<PopupFormProps> = ({
                           <SelectValue placeholder="Select Interest" />
                         </SelectTrigger>
                         <SelectContent className="bg-white border border-gray-200">
-                          <SelectItem value="jobs">Career Opportunities</SelectItem>
+                          <SelectItem value="jobs">Job Assistance</SelectItem>
                           <SelectItem value="skills">Skill Development</SelectItem>
                         </SelectContent>
                       </Select>

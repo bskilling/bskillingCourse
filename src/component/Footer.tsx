@@ -238,7 +238,7 @@ const Footer = () => {
               </p>
             </div>
             <p className="text-sm text-blue-200 font-medium max-w-xl flex justify-end">
-              &copy; {new Date().getFullYear()} BSkilling. All rights reserved.
+              &copy; {new Date().getFullYear()} bSkilling. All rights reserved.
             </p>
           </div>
         </div>

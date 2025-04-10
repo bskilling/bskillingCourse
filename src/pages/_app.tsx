@@ -210,7 +210,7 @@ export default function App({ Component, pageProps }: AppProps) {
             <Layout>
               <div>
                 <Component {...pageProps} />
-                <Toaster />
+                <Toaster richColors position="top-right" />
               </div>
             </Layout>
           </MyProvider>

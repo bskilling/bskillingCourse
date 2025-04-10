@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ChevronDown, ChevronUp, HelpCircle } from 'lucide-react';
+import PopupConsultationForm from './dialogs/Form';
 
 interface FAQ {
   question: string;
@@ -12,7 +13,21 @@ interface FAQProps {
 
 const FAQSection: React.FC<FAQProps> = ({ faqs }) => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [isFormOpen, setIsFormOpen] = useState(false);
+  const [formType, setFormType] = useState<'b2c' | 'b2b' | 'b2i' | 'general'>('b2i');
+  const [formTitle, setFormTitle] = useState('Get in Touch');
+  const [formDescription, setFormDescription] = useState('');
 
+  const openConsultationForm = (
+    type: 'b2c' | 'b2b' | 'b2i' | 'general',
+    title: string,
+    description: string
+  ) => {
+    setFormType(type);
+    setFormTitle(title);
+    setFormDescription(description);
+    setIsFormOpen(true);
+  };
   // If no FAQs exist, don't render the section
   if (!faqs || faqs.length === 0) {
     return null;
@@ -28,7 +43,13 @@ const FAQSection: React.FC<FAQProps> = ({ faqs }) => {
         <div className="w-1.5 h-8 bg-blue-600 rounded-full"></div>
         <h2 className="text-2xl font-bold text-gray-800">Frequently Asked Questions</h2>
       </div>
-
+      <PopupConsultationForm
+        isOpen={isFormOpen}
+        onClose={() => setIsFormOpen(false)}
+        title={formTitle}
+        description={formDescription}
+        formType={formType}
+      />
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {faqs.map((faq, index) => {
           const isOpen = openIndex === index;
@@ -81,7 +102,16 @@ const FAQSection: React.FC<FAQProps> = ({ faqs }) => {
         })}
       </div>
 
-      <div className="mt-10 text-center">
+      <div
+        className="mt-10 text-center"
+        onClick={() =>
+          openConsultationForm(
+            'b2i',
+            'Query',
+            'Submit your query and we will get back to you as soon as possible.'
+          )
+        }
+      >
         <div className="inline-flex items-center p-4 bg-gray-50 rounded-lg border border-gray-200">
           <HelpCircle className="h-5 w-5 text-blue-600 mr-2" />
           <p className="text-sm text-gray-600">

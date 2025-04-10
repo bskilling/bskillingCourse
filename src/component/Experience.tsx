@@ -26,7 +26,7 @@ const Experience = () => {
           />
           <h2 className="text-2xl font-bold mb-2 text-gray-900">Personalised Learning</h2>
           <p className="text-base text-gray-600 text-center md:text-lg">
-            BSkilling prioritises quality education tailored to meet individual needs. Small batches
+            bSkilling prioritises quality education tailored to meet individual needs. Small batches
             ensure personalised attention and a more interactive learning experience.
           </p>
         </div>
@@ -92,7 +92,7 @@ const Experience = () => {
         <>
           <div className="fixed inset-0 z-40 bg-black opacity-50" onClick={handleClosePopup}></div>
           <div className="fixed inset-0 z-50 flex items-center justify-center">
-            <PopupForm handleClosePopup={handleClosePopup} title="Get In Touch with Bskilling" />
+            <PopupForm handleClosePopup={handleClosePopup} title="Get In Touch with bSkilling" />
           </div>
         </>
       )}

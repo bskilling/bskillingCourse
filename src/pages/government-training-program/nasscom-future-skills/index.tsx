@@ -20,6 +20,7 @@ import { Input } from '@/components/ui/input';
 import { Search, GraduationCap } from 'lucide-react';
 import { ICourse } from '@/component/types/Course.types';
 import { cn } from '@/lib/utils';
+import { FaHandPointRight } from 'react-icons/fa';
 
 // Animation variants
 const fadeIn = {
@@ -883,7 +884,17 @@ export default function Nasscom() {
               </div>
             </motion.div>
 
-            <div className="mt-8 flex flex-wrap gap-4 justify-center">
+            <div className="mt-10">
+              <div className="mt-5 flex gap-x-3 items-center justify-center">
+                <FaHandPointRight size={50} className="animate-pulse text-destructive" />
+                Email:
+                <a href="mailto:  contact.nasscom@bskilling.com" className="text-primary ">
+                  contact.nasscom@bskilling.com
+                </a>
+              </div>
+            </div>
+
+            {/* <div className="mt-8 flex flex-wrap gap-4 justify-center">
               <a
                 href="#"
                 className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-800 transition-colors duration-300"
@@ -944,7 +955,7 @@ export default function Nasscom() {
                 </svg>
                 <span>Support</span>
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
       </motion.div>

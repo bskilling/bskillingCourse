@@ -126,6 +126,7 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
     price,
     videoUrl,
     banner,
+    isPaid,
     durationHours,
     startTime,
     endTime,
@@ -502,8 +503,12 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
       <Outcomes outcomes={outcomes || []} />
 
       <CertificationSection certification={certification} />
-      <CourseEnrollment formattedPrice={formattedPrice} durationHours={durationHours} />
-      <CriteriaSection curriculum={curriculum} />
+      <CourseEnrollment
+        formattedPrice={formattedPrice}
+        durationHours={durationHours}
+        isPaid={isPaid}
+      />
+      {/* <CriteriaSection curriculum={curriculum} /> */}
       <WhyJoinSection whyJoin={whyJoin} />
       <FAQSection faqs={faqs} />
       <div className="h-20"></div>

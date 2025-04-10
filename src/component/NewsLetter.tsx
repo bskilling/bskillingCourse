@@ -10,7 +10,7 @@ const NewsLetter: React.FC<NewsLetterProps> = ({ className }) => {
       <div className="py-12 max-w-7xl mx-auto px-6 sm:px-6 lg:px-16">
         <h1 className="text-center mb-4 text-3xl font-extrabold text-gray-900">Get Newsletter</h1>
         <p className="text-center mb-8 text-gray-700">
-          Receive regular updates from BSkilling about our latest offers and courses!
+          Receive regular updates from bSkilling about our latest offers and courses!
         </p>
         <div className="w-full mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
           <input

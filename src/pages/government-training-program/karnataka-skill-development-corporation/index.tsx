@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import Head from 'next/head';
 import NavbarSection from '@/component/navbar/NavbarSection';
 import { FaCircle, FaHandPointRight } from 'react-icons/fa';
@@ -16,6 +16,7 @@ import Autoplay from 'embla-carousel-autoplay';
 
 import {
   Carousel,
+  CarouselApi,
   CarouselContent,
   CarouselItem,
   CarouselNext,
@@ -190,6 +191,63 @@ export default function KSDC() {
           </div>
         </div>
 
+        <div className="mt-20 md:w-[80vw] md:px-0 px-4 m-auto w-full">
+          <h2 className="text-3xl text-[#304443] text-center pl-3">
+            bSkilling Collaboration: Elevating Training Standards
+          </h2>
+          {/* <p className="text-sm  text-[#304443] p-4">
+            To ensure training excellence, Naan Mudhalvan has partnered with
+            bSkilling, a reputed institute known for its innovative workforce
+            development programs. This collaboration provides:
+          </p> */}
+          <div className="w-[80vw] mt-10 grid grid-cols-1 md:grid-cols-2 gap-10 items-center m-auto">
+            <div className="  flex flex-col gap-y-10">
+              <p>
+                <span className="font-bold text-xl">Industry-Aligned Curriculum: </span>
+                Courses are designed to meet the needs of industries like IT, IoT, Industry 4.0,
+                Fintech, and Graphic Design, equipping participants with in-demand skills for
+                technology, manufacturing, finance, and design sectors.
+              </p>
+              <p>
+                <span className="font-bold text-xl"> Advanced Tools and Technologies:</span>{' '}
+                Hands-on training with industry-standard tools prepares participants to excel in the
+                workplace.
+              </p>
+              <p>
+                <span className="font-bold text-xl">Inclusion-Focused Initiatives:</span> Special
+                emphasis on reaching under-privileged students, ensuring equitable access to
+                opportunities.
+              </p>
+              <p>
+                <span className="font-bold text-xl">Global Job Market Preparation:</span> Training
+                that equips Tamil Nadu’s youth to compete on a global scale.
+              </p>
+            </div>
+            <div className="w-full">
+              {/* <iframe
+                width="1264"
+                height="711"
+                src="https://www.youtube.com/embed/7oy_i1f5Jiw"
+                title="Free Job Assistance &amp; Skill Development | KSDC &amp; bSkilling | Hands-on Learning &amp; Practical Training"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              ></iframe> */}
+              <iframe
+                className="h-96 w-full"
+                width="1280"
+                height="720"
+                src="https://www.youtube.com/embed/7oy_i1f5Jiw"
+                title="Free Job Assistance &amp; Skill Development | KSDC &amp; bSkilling | Hands-on Learning &amp; Practical Training"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              ></iframe>
+            </div>
+          </div>
+        </div>
         <div className="md:w-[80vw] md:px-0 px-4 w-full m-auto mt-20">
           <h1 className="text-4xl text-[#020b39] text-center pl-3">KSDC’s Key Initiatives</h1>
           <p className="mt-5">
@@ -315,96 +373,9 @@ export default function KSDC() {
             </Card>
           </div>
         </div>
-        <div className="md:w-[50vw] w-full m-auto mt-20">
-          <h1 className="text-4xl font-bold text-[#304443] text-center">
-            What Makes the Program Unique?
-          </h1>
-          <div className=" p-0    mt-10   md:w-fit m-auto">
-            <Carousel
-              plugins={[plugin.current]}
-              className="w-full m-0 p-0"
-              onMouseEnter={plugin.current.stop}
-              onMouseLeave={plugin.current.reset}
-            >
-              <CarouselContent className="w-full">
-                <CarouselItem className="">
-                  <div className="p-1">
-                    <Card className="">
-                      <CardContent className=" justify-center px-0">
-                        <div className=" justify-center">
-                          <img
-                            src="/new-image/pract.jpg"
-                            alt=""
-                            className="h-96 object-cover w-full"
-                          />
-                          <div className="px-5">
-                            <h1 className="mt-5">
-                              <span className="text-3xl font-semibold text-gray-600">
-                                180 Hours of Practical Training:
-                              </span>
-                            </h1>
-                            <p className="mt-3">
-                              180 Hours of Practical Training: The program includes intensive
-                              hands-on learning, equipping participants with real-world skills.
-                            </p>
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </div>
-                </CarouselItem>
-                <CarouselItem className="">
-                  <div className="p-1">
-                    <Card className="">
-                      <CardContent className="px-0">
-                        <div>
-                          <img
-                            src="/new-image/tech.png"
-                            alt=""
-                            className="max-h-96  pl-5 object-cover rounded-md m-auto"
-                          />
-                          <div className="px-5">
-                            <span className="text-3xl font-semibold text-orange-600">
-                              State-of-the-Art Tools and Technologies:
-                            </span>{' '}
-                            <p className="mt-8 ">
-                              Students work with industry-grade tools, preparing them to meet the
-                              demands of modern workplaces.
-                            </p>
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </div>
-                </CarouselItem>
-                <CarouselItem className="">
-                  <div className="p-1">
-                    <Card>
-                      <CardContent className="px-0">
-                        <img
-                          src="/new-image/focused.jpg"
-                          alt=""
-                          className="h-96 object-cover w-full"
-                        />
-                        <div className="p-5">
-                          <h1 className="text-3xl font-semibold text-blue-600">
-                            Focused Inclusion
-                          </h1>
-                          <p className=" font-semibold mt-5">
-                            The partnership prioritizes SC/ST, OBC, and underserved communities,
-                            ensuring equal access to opportunities
-                          </p>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </div>
-                </CarouselItem>
-              </CarouselContent>
-              <CarouselPrevious className="hidden md:flex" />
-              <CarouselNext className="hidden md:flex" />
-            </Carousel>
-          </div>
-        </div>
+
+        <GalleryCarousel />
+
         <div className="xl:w-[80vw] py-10  px-4 w-full m-auto mt-20 ">
           <h2 className="text-2xl border-l-8 border-[#020b39] pl-4">
             How to Enroll in the Free Job Assistance and Skill Development Program Enrolling in this
@@ -488,3 +459,94 @@ export default function KSDC() {
     </>
   );
 }
+
+const GalleryCarousel = () => {
+  const [api, setApi] = useState<CarouselApi | null>(null);
+
+  // Create autoplay plugin with proper configuration
+  const plugin = useRef(
+    Autoplay({
+      delay: 3000,
+      stopOnInteraction: true,
+      rootNode: emblaRoot => emblaRoot.parentElement,
+    })
+  );
+
+  return (
+    <div className="xl:w-[80vw] md:py-10 py-4 px-4 w-full m-auto md:mt-0 mt-0">
+      <Carousel
+        setApi={setApi}
+        plugins={[plugin.current]}
+        className="w-full m-0 p-0"
+        onMouseEnter={() => api?.plugins()?.autoplay?.stop()}
+        onMouseLeave={() => api?.plugins()?.autoplay?.play()}
+        opts={{
+          loop: true,
+          align: 'start',
+          slidesToScroll: 1,
+        }}
+      >
+        <CarouselContent>
+          <CarouselItem className="md:basis-1/3">
+            <img
+              src="/new-image/ksdc/ksdc1.JPG"
+              alt="KSDC gallery image 1"
+              className="w-full h-auto"
+            />
+          </CarouselItem>
+          <CarouselItem className="md:basis-1/3">
+            <img
+              src="/new-image/ksdc/ksdc2.JPG"
+              alt="KSDC gallery image 2"
+              className="w-full h-auto"
+            />
+          </CarouselItem>
+          <CarouselItem className="md:basis-1/3">
+            <img
+              src="/new-image/ksdc/ksdc3.JPG"
+              alt="KSDC gallery image 3"
+              className="w-full h-auto"
+            />
+          </CarouselItem>
+          <CarouselItem className="md:basis-1/3">
+            <img
+              src="/new-image/ksdc/ksdc4.JPG"
+              alt="KSDC gallery image 4"
+              className="w-full h-auto"
+            />
+          </CarouselItem>
+          <CarouselItem className="md:basis-1/3">
+            <img
+              src="/new-image/ksdc/ksdc5.JPG"
+              alt="KSDC gallery image 5"
+              className="w-full h-auto"
+            />
+          </CarouselItem>
+          <CarouselItem className="md:basis-1/3">
+            <img
+              src="/new-image/ksdc/ksdc6.JPG"
+              alt="KSDC gallery image 6"
+              className="w-full h-auto"
+            />
+          </CarouselItem>
+          <CarouselItem className="md:basis-1/3">
+            <img
+              src="/new-image/ksdc/ksdc7.JPG"
+              alt="KSDC gallery image 7"
+              className="w-full h-auto"
+            />
+          </CarouselItem>
+          <CarouselItem className="md:basis-1/3">
+            <img
+              src="/new-image/ksdc/ksdc8.JPG"
+              alt="KSDC gallery image 8"
+              className="w-full h-auto"
+            />
+          </CarouselItem>
+        </CarouselContent>
+        <CarouselPrevious className="md:flex hidden" />
+        <CarouselNext className="md:flex hidden" />
+      </Carousel>
+    </div>
+  );
+};

@@ -14,6 +14,9 @@ import axios from 'axios';
 
 // Modern UI icons
 import { User, Mail, Phone, MessageSquare, Send, Building } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { toast } from 'sonner';
+import { handleErrors } from '@/lib/handleError';
 
 const leadSchema = z
   .object({
@@ -66,18 +69,29 @@ const ConsultationForm = () => {
       email: '',
       countryCode: '+91',
       phoneNumber: '',
-      type: 'b2i',
+      type: 'b2c',
       subcategory: '',
       query: '',
     },
   });
 
   const selectedCategory = watch('type');
+
+  const [type, setType] = React.useState('b2c');
   const showSubcategory = selectedCategory === 'b2i';
 
   const onSubmit = useMutation({
     mutationFn: async (data: LeadFormData) => {
-      await axios.post('/api/leads', data);
+      await axios.post(process.env.NEXT_PUBLIC_BACKEND_URL + '/api/lead', {
+        ...data,
+        type,
+      });
+    },
+    onSuccess: () => {
+      toast.success('Your query has been submitted successfully. Our team will contact you soon.');
+    },
+    onError: err => {
+      toast.error(handleErrors(err));
     },
   });
 
@@ -157,6 +171,92 @@ const ConsultationForm = () => {
             <p className="text-xs text-red-500">{errors.phoneNumber.message}</p>
           )}
         </div>
+
+        {(type === 'b2c' || type === 'b2b') && (
+          <div className="flex flex-col sm:flex-row gap-4 my-6">
+            <div
+              onClick={() => setType('b2c')}
+              className={cn(
+                'flex items-center gap-3 px-6 py-4 rounded-lg border border-gray-200 shadow-sm transition-all duration-300 cursor-pointer hover:shadow-md',
+                type === 'b2c' ? 'bg-blue-50 border-blue-300 shadow-blue-100' : 'hover:bg-gray-50'
+              )}
+            >
+              <div
+                className={cn(
+                  'flex items-center justify-center w-6 h-6 rounded-full border transition-all duration-300',
+                  type === 'b2c' ? 'border-blue-500 bg-blue-500' : 'border-gray-300'
+                )}
+              >
+                {type === 'b2c' && (
+                  <svg
+                    width="12"
+                    height="12"
+                    viewBox="0 0 12 12"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M10 3L4.5 8.5L2 6"
+                      stroke="white"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                )}
+              </div>
+              <p
+                className={cn(
+                  'font-medium transition-all duration-300',
+                  type === 'b2c' ? 'text-blue-700' : 'text-gray-700'
+                )}
+              >
+                Myself
+              </p>
+            </div>
+
+            <div
+              onClick={() => setType('b2b')}
+              className={cn(
+                'flex items-center gap-3 px-6 py-4 rounded-lg border border-gray-200 shadow-sm transition-all duration-300 cursor-pointer hover:shadow-md',
+                type === 'b2b' ? 'bg-blue-50 border-blue-300 shadow-blue-100' : 'hover:bg-gray-50'
+              )}
+            >
+              <div
+                className={cn(
+                  'flex items-center justify-center w-6 h-6 rounded-full border transition-all duration-300',
+                  type === 'b2b' ? 'border-blue-500 bg-blue-500' : 'border-gray-300'
+                )}
+              >
+                {type === 'b2b' && (
+                  <svg
+                    width="12"
+                    height="12"
+                    viewBox="0 0 12 12"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M10 3L4.5 8.5L2 6"
+                      stroke="white"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                )}
+              </div>
+              <p
+                className={cn(
+                  'font-medium transition-all duration-300',
+                  type === 'b2b' ? 'text-blue-700' : 'text-gray-700'
+                )}
+              >
+                My Company
+              </p>
+            </div>
+          </div>
+        )}
 
         {/* Subcategory (If applicable) */}
         {showSubcategory && (
