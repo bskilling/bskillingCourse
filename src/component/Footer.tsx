@@ -47,24 +47,19 @@ const Footer = () => {
           <div className="lg:col-span-1">
             <h5 className="text-lg font-semibold mb-5 text-blue-300">Company</h5>
             <ul className="space-y-3">
-              {[
-                'About Us',
-                'Blogs',
-                'Reviews',
-                'Terms & Conditions',
-                'Privacy Policy',
-                'Refund Policy',
-              ].map((item, idx) => (
-                <li key={idx}>
-                  <Link
-                    href={`/${item.toLowerCase().replace(/\s+/g, '')}`}
-                    className="text-gray-200 hover:text-blue-200 duration-300 text-sm flex items-center hover:translate-x-1 transform transition-transform"
-                  >
-                    <span className="bg-sky-400 w-1.5 h-1.5 rounded-full mr-2 inline-block"></span>
-                    {item}
-                  </Link>
-                </li>
-              ))}
+              {['About Us', 'Reviews', 'Terms & Conditions', 'Privacy Policy', 'Refund Policy'].map(
+                (item, idx) => (
+                  <li key={idx}>
+                    <Link
+                      href={`/${item.toLowerCase().replace(/\s+/g, '')}`}
+                      className="text-gray-200 hover:text-blue-200 duration-300 text-sm flex items-center hover:translate-x-1 transform transition-transform"
+                    >
+                      <span className="bg-sky-400 w-1.5 h-1.5 rounded-full mr-2 inline-block"></span>
+                      {item}
+                    </Link>
+                  </li>
+                )
+              )}
               <li>
                 <a
                   href="https://sfjbs.talentrecruit.com/career-page"
@@ -94,17 +89,19 @@ const Footer = () => {
                   <PopupForm handleClosePopup={handleClosePopup} title="" />
                 </div>
               )}
-              {['Corporate Training', 'Government Programs', 'Institutions'].map((item, idx) => (
-                <li key={idx}>
-                  <Link
-                    href={`/${item.toLowerCase().replace(/\s+/g, '-')}`}
-                    className="text-gray-200 hover:text-blue-200 duration-300 text-sm flex items-center hover:translate-x-1 transform transition-transform"
-                  >
-                    <span className="bg-sky-400 w-1.5 h-1.5 rounded-full mr-2 inline-block"></span>
-                    {item}
-                  </Link>
-                </li>
-              ))}
+              {['Corporate Training', 'Government Training Program', 'Institutions'].map(
+                (item, idx) => (
+                  <li key={idx}>
+                    <Link
+                      href={`/${item.toLowerCase().replace(/\s+/g, '-')}`}
+                      className="text-gray-200 hover:text-blue-200 duration-300 text-sm flex items-center hover:translate-x-1 transform transition-transform"
+                    >
+                      <span className="bg-sky-400 w-1.5 h-1.5 rounded-full mr-2 inline-block"></span>
+                      {item}
+                    </Link>
+                  </li>
+                )
+              )}
             </ul>
           </div>
 
@@ -113,16 +110,34 @@ const Footer = () => {
             <h5 className="text-lg font-semibold mb-5 text-blue-300">Programs</h5>
             <ul className="space-y-3">
               {[
-                { name: 'Gen AI', id: '66b1cb24f86931fdf7712eb0' },
-                { name: 'Cloud Engineering', id: '66ab29e5637a3684c72041f9' },
-                { name: 'Project Management', id: '66ab4dbff86931fdf76f5a30' },
-                { name: 'Professional (PMP)', id: '66ab4dbff86931fdf76f5a30' },
-                { name: 'Prince2', id: '66c0369af86931fdf791aeb0' },
-                { name: 'SAP BTP', id: '66ab348df86931fdf76f3f80' },
+                {
+                  name: 'Gen AI',
+                  link: 'https://www.bskilling.com/course/become-ai-generative-ai-expert-certification-course?id=67e50a7021a141df13e64ddd',
+                },
+                {
+                  name: 'AWS Certified Associate',
+                  link: 'https://www.bskilling.com/course/developing-on-aws-certified-developer-training?id=67e11f701933422b669d65aa',
+                },
+                {
+                  name: 'Azure AI Solution',
+                  link: 'https://www.bskilling.com/course/ai-102-microsoft-azure-ai-solution-certification-course?id=67e3e6e7a05b32da1807dc2b',
+                },
+                {
+                  name: 'CompTIA Cybersecurity',
+                  link: 'https://www.bskilling.com/course/comptia-cybersecurity-analyst-(cysa+)-certification-training-course?id=67e3eddca05b32da1808253e',
+                },
+                {
+                  name: 'PMP',
+                  link: 'https://www.bskilling.com/course/project-management-professional-pmp-certification-prep-training?id=67e3f0d4a05b32da180871af',
+                },
+                {
+                  name: 'Cloud Architect',
+                  link: 'https://www.bskilling.com/course/google-cloud-professional-cloud-architect-certification-training?id=67e3f06fa05b32da18086def',
+                },
               ].map((program, idx) => (
                 <li key={idx}>
                   <Link
-                    href={`/courses/course-details/${program.id}`}
+                    href={`${program.link}`}
                     className="text-gray-200 hover:text-blue-200 duration-300 text-sm flex items-center hover:translate-x-1 transform transition-transform"
                   >
                     <span className="bg-sky-400 w-1.5 h-1.5 rounded-full mr-2 inline-block"></span>
