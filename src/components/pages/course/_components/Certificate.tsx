@@ -29,6 +29,8 @@ const CourseDetails: React.FC<CourseDetailsProps> = ({
   certification,
   overview,
 }) => {
+  const formattedDescription = overview.description.replace(/\\n/g, '\n');
+
   return (
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16" id="overview">
       {/* Stats Cards */}
@@ -113,7 +115,9 @@ const CourseDetails: React.FC<CourseDetailsProps> = ({
             {overview && (
               <div className="mb-8">
                 <h3 className="text-xl font-semibold text-gray-800 mb-4">{overview.title}</h3>
-                <p className="text-gray-600 leading-relaxed mb-6">{overview.description}</p>
+                <p className="text-gray-600 leading-relaxed mb-6 whitespace-pre-line">
+                  {formattedDescription}
+                </p>
 
                 {/* Certification Info */}
                 {certification && (
@@ -133,7 +137,9 @@ const CourseDetails: React.FC<CourseDetailsProps> = ({
                     {overview.keyFeatures.map((feature, index) => (
                       <div key={index} className="flex items-start space-x-3">
                         <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-600">{feature}</span>
+                        <span className="text-gray-600 whitespace-pre-line">
+                          {feature.replace(/\\n/g, '\n')}
+                        </span>
                       </div>
                     ))}
                   </div>

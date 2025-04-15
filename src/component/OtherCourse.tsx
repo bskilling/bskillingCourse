@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
 import axios from 'axios';
-import { Course, Coursedetailstype } from 'common/util/types';
+import { Course, Coursedetailstype } from '@/component/common/util/types';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import PopupForm from '@/component/PopupForm';

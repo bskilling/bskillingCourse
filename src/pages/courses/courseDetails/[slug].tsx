@@ -1,7 +1,8 @@
 import { GetServerSideProps } from 'next';
 import { ICourse } from '@/component/types/Course.types';
-import CourseLandingPage from '@/components/pages/course/_components/Course-Preview';
 import Link from 'next/link';
+import CourseLandingPage from '@/components/pages/b2g/_components/Course-Preview';
+// import CourseLandingPage from '@/components/pages/course/_components/Course-Preview';
 
 interface CourseDetailsProps {
   course?: {

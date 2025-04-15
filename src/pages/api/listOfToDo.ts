@@ -1,4 +1,4 @@
-import { api } from 'common/util/auth';
+import { api } from '@/component/common/util/auth';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {

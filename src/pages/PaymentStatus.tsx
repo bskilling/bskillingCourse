@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from 'next/link';
 import React, { useEffect, useState, useContext } from 'react';
-import { MyContext } from 'context/PageContext';
+import { MyContext } from '@/component/context/PageContext';
 import { BsCheckLg } from 'react-icons/bs';
 import { IoCloseSharp } from 'react-icons/io5';
 

@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
-import ChatForm from 'modules/leadChat/components/ChatForm';
-import DropAQueryForm from 'modules/leadChat/components/DropAQueryForm';
-import LeadChatBox from 'modules/leadChat/components/LeadChatBox';
-import useChat from 'modules/leadChat/zustand';
+import ChatForm from '@/component/modules/leadChat/components/ChatForm';
+import DropAQueryForm from '@/component/modules/leadChat/components/DropAQueryForm';
+import LeadChatBox from '@/component/modules/leadChat/components/LeadChatBox';
+import useChat from '@/component/modules/leadChat/zustand';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { FaComment, FaElementor, FaTimes } from 'react-icons/fa';

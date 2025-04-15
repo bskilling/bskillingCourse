@@ -230,7 +230,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                     <Users className="w-5 h-5 text-blue-600" />
                   </div>
                   <div>
-                    <div className="text-sm font-semibold text-gray-900">Live Classes</div>
+                    <div className="text-sm font-semibold text-gray-900">Self Paced</div>
                     <div className="text-xs text-gray-500">With Industry Experts</div>
                   </div>
                 </motion.div>

@@ -3,7 +3,7 @@ import Overview from './tabitem/Overview';
 import Curriculum from './tabitem/Curriculum';
 import Certification from './tabitem/Certification';
 import FAQs from './tabitem/FAQs';
-import { Coursedetailstype } from 'common/util/types';
+import { Coursedetailstype } from '@/component/common/util/types';
 
 interface TabDataProps {
   courseDetails: Coursedetailstype | null;

@@ -5,15 +5,15 @@ import Script from 'next/script';
 import { ReactNode, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { BiMenu, BiSearchAlt } from 'react-icons/bi';
 import { SlArrowDown } from 'react-icons/sl';
-import { MyContext } from 'context/PageContext';
-import courseSearchData from 'data/courseSearchData';
+import { MyContext } from '@/component/context/PageContext';
+import courseSearchData from '@/component/data/courseSearchData';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import axios from 'axios';
 import { FaBars, FaTimes, FaWhatsapp } from 'react-icons/fa';
 import Footer from './Footer';
 import LandingFooter from './LandingFooter';
-import { Course } from 'common/util/types';
+import { Course } from '@/component/common/util/types';
 import PopupForm from './PopupForm';
 import {
   NavigationMenu,
@@ -193,7 +193,8 @@ const Layout = ({ children, pageTitle = 'bSkilling' }: Props) => {
         pathname.split('/').includes('reviews') ||
         pathname.split('/').includes('institutions') ||
         pathname.split('/').includes('course') ||
-        pathname.split('/').includes('courseDetails')
+        pathname.split('/').includes('courseDetails') ||
+        pathname.split('/').includes('courses')
       ) {
         return false;
       }
@@ -212,7 +213,8 @@ const Layout = ({ children, pageTitle = 'bSkilling' }: Props) => {
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
         <link rel="manifest" href="/favicon_io/site.webmanifest" />
       </Head>
-      <Script id="razorpay-checkout-js" src="https://checkout.razorpay.com/v1/checkout.js" />
+      {/* <Script id="razorpay-checkout-js" src="https://checkout.razorpay.com/v1/checkout.js" /> */}
+      <script src="https://mercury.phonepe.com/web/bundle/checkout.js"></script>
 
       <>
         {navHide && isVisible && (

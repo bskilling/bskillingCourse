@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable @next/next/no-html-link-for-pages */
-import { MyContext } from 'context/PageContext';
+import { MyContext } from '@/component/context/PageContext';
 import { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import 'react-phone-number-input/style.css';

@@ -29,7 +29,9 @@ const Highlights: React.FC<HighlightsProps> = ({ highlights }) => {
               <div className="w-5">
                 <CheckCircle className="text-green-500 h-5 w-5 drop-shadow-md" />
               </div>
-              <span className="text-gray-900 text-base  tracking-tight">{highlight}</span>
+              <span className="text-gray-900 text-base tracking-tight whitespace-pre-line">
+                {highlight.replace(/\\n/g, '\n')}
+              </span>
             </motion.li>
           ))}
         </AnimatePresence>

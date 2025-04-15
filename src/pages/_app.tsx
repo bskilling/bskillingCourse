@@ -2,9 +2,9 @@
 /* eslint-disable @next/next/next-script-for-ga */
 import FixedFooterBar from '@/component/fixedFooterBar';
 import Layout from '@/component//Layout';
-import { MyProvider } from 'context/PageContext';
+import { MyProvider } from '@/component/context/PageContext';
 import { motion } from 'framer-motion';
-import useChat from 'modules/leadChat/zustand';
+import useChat from '@/component/modules/leadChat/zustand';
 // import { AppProps } from 'next/app';
 import Head from 'next/head';
 import Script from 'next/script';

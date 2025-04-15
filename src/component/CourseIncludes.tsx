@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
-import { Coursedetailstype } from 'common/util/types';
+import { Coursedetailstype } from '@/component/common/util/types';
 import LeadForm from './LeadForm';
 
 interface CourseIncludesProps {

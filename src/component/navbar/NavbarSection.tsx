@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -6,6 +6,7 @@ import {
 } from '@/components/ui/navigation-menu';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
+import Image from 'next/image';
 
 import { IoChevronDownSharp, IoSchool } from 'react-icons/io5';
 import { GrWorkshop } from 'react-icons/gr';
@@ -36,9 +37,12 @@ import {
   IoChatbubbleEllipsesOutline,
   IoStarOutline,
   IoCallOutline,
+  IoLogOutOutline,
 } from 'react-icons/io5';
 import { FaUniversity } from 'react-icons/fa';
 import { FcAbout } from 'react-icons/fc';
+import { usePaymentStore } from '@/lib/zustand/phone.store';
+
 const menus = [
   { name: 'Home', href: '/', icon: <IoHomeOutline size={22} /> },
   {
@@ -61,9 +65,7 @@ const menus = [
     href: '/corporate-training',
     icon: <BsBuilding size={22} />,
   },
-
   { name: 'About Us', href: '/aboutus', icon: <IoPersonOutline size={22} /> },
-
   {
     name: 'Blogs',
     href: '/blogs',
@@ -85,10 +87,20 @@ export default function NavbarSection() {
   const [open2, setOpen2] = useState(false);
   const pathname = usePathname();
 
+  // Get user from payment store
+  const { user, reset } = usePaymentStore();
+
   useEffect(() => {
     console.log(pathname);
     setOpen2(false);
   }, [pathname]);
+
+  const handleLogout = () => {
+    reset(); // Clear user data and other store info
+  };
+
+  console.log('user---------', user);
+
   return (
     <div className="">
       <NavigationMenu className="hidden xl:flex">
@@ -110,7 +122,6 @@ export default function NavbarSection() {
           </NavigationMenuItem>
           <NavigationMenuItem>
             <div className="text-foreground inline-flex gap-x-2">
-              {/* <RiGovernmentFill size={20} className="mx-2" /> */}
               <Link href={'/government-training-program'} className="text-sm">
                 Government Program
               </Link>
@@ -118,23 +129,11 @@ export default function NavbarSection() {
           </NavigationMenuItem>
           <NavigationMenuItem>
             <div className="text-foreground inline-flex gap-x-2">
-              {/* <RiGovernmentFill size={20} className="mx-2" /> */}
               <Link href={'/institutions'} className="text-sm">
                 Institutions
               </Link>
             </div>
           </NavigationMenuItem>
-          {/* <NavigationMenuItem className="">
-            <Link href={'/aboutus'} className="text-sm">
-              About Us
-            </Link>
-          </NavigationMenuItem> */}
-          {/* 
-          <NavigationMenuItem className="">
-            <Link href={'/institutions'} className="text-sm">
-              Institutions
-            </Link>
-          </NavigationMenuItem> */}
 
           <NavigationMenuItem className="">
             <Popover>
@@ -142,10 +141,9 @@ export default function NavbarSection() {
                 {' '}
                 More <IoIosArrowDown />
               </PopoverTrigger>
-              <PopoverContent className=" font-normal">
+              <PopoverContent className="font-normal">
                 <div className="flex flex-col gap-y-3">
-                  <p> Options</p>
-                  {/* <DropdownMenuSeparator /> */}
+                  <p>Options</p>
                   <Link href={'https://sfjbs.talentrecruit.com/career-page'} target="_blank">
                     {' '}
                     <div className="text-foreground inline-flex gap-x-2 cursor-pointer items-center">
@@ -172,32 +170,132 @@ export default function NavbarSection() {
             </Popover>
           </NavigationMenuItem>
 
-          <NavigationMenuItem
-            className={cn(buttonVariants({ variant: 'outline' }), 'text-base font-light')}
-          >
-            <Link href={'https://lms.bskilling.com/login/signup.php?'} className="text-sm">
-              Sign Up
-            </Link>
-          </NavigationMenuItem>
-          <NavigationMenuItem
-            className={cn(buttonVariants({ variant: 'outline' }), 'text-base font-light')}
-          >
-            <Link href={'https://lms.bskilling.com/login/index.php'} className="text-sm">
-              Login
-            </Link>
-          </NavigationMenuItem>
+          {user ? (
+            <NavigationMenuItem>
+              <Popover>
+                <PopoverTrigger className="flex items-center gap-x-2">
+                  <div className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-blue-500 hover:border-blue-600 transition-all">
+                    <Image
+                      src={`https://ui-avatars.com/api/?name=${encodeURIComponent(user.name)}&background=random&color=fff`}
+                      alt={user.name || 'User'}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                </PopoverTrigger>
+                <PopoverContent className="w-56">
+                  <div className="space-y-4">
+                    <div className="flex flex-col items-center pb-4 border-b">
+                      <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-blue-500 mb-2">
+                        <Image
+                          src={`https://ui-avatars.com/api/?name=${encodeURIComponent(user.name)}&background=random&color=fff`}
+                          alt={user.name || 'User'}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                      <h3 className="font-medium">{user.name}</h3>
+                      <p className="text-sm text-gray-500 truncate max-w-full">{user.email}</p>
+                    </div>
+
+                    <div className="space-y-2">
+                      <Link
+                        href="/dashboard"
+                        className="flex items-center gap-x-2 p-2 rounded-md hover:bg-gray-100 transition w-full"
+                      >
+                        <IoPersonOutline size={18} />
+                        <span>Dashboard</span>
+                      </Link>
+
+                      <Link
+                        href="/my-courses"
+                        className="flex items-center gap-x-2 p-2 rounded-md hover:bg-gray-100 transition w-full"
+                      >
+                        <IoSchoolOutline size={18} />
+                        <span>My Courses</span>
+                      </Link>
+
+                      <button
+                        onClick={handleLogout}
+                        className="flex items-center gap-x-2 p-2 rounded-md hover:bg-gray-100 transition w-full text-left text-red-500"
+                      >
+                        <IoLogOutOutline size={18} />
+                        <span>Sign Out</span>
+                      </button>
+                    </div>
+                  </div>
+                </PopoverContent>
+              </Popover>
+            </NavigationMenuItem>
+          ) : (
+            <>
+              <NavigationMenuItem
+                className={cn(buttonVariants({ variant: 'outline' }), 'text-base font-light')}
+              >
+                <Link href={'https://lms.bskilling.com/login/signup.php?'} className="text-sm">
+                  Sign Up
+                </Link>
+              </NavigationMenuItem>
+              <NavigationMenuItem
+                className={cn(buttonVariants({ variant: 'outline' }), 'text-base font-light')}
+              >
+                <Link href={'https://lms.bskilling.com/login/index.php'} className="text-sm">
+                  Login
+                </Link>
+              </NavigationMenuItem>
+            </>
+          )}
         </NavigationMenuList>
       </NavigationMenu>
+
+      {/* Mobile menu */}
       <div>
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger className="xl:hidden p-2">
             <RxHamburgerMenu size={30} />
           </SheetTrigger>
           <SheetContent className="border-none py-5 px-6">
+            {user && (
+              <div className="flex items-center gap-x-3 mb-6 pb-4 border-b">
+                <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-blue-500">
+                  <Image
+                    src={`https://ui-avatars.com/api/?name=${encodeURIComponent(user.name)}&background=random&color=fff`}
+                    alt={user.name || 'User'}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div>
+                  <h3 className="font-medium">{user.name}</h3>
+                  <p className="text-xs text-gray-500 truncate max-w-[180px]">{user.email}</p>
+                </div>
+              </div>
+            )}
+
             <h2 className="text-2xl font-bold text-center mb-6">
               <span className="text-blue-500">b</span>Skilling
             </h2>
             <nav className="flex flex-col space-y-4">
+              {user && (
+                <>
+                  <Link
+                    href="/dashboard"
+                    className="flex items-center gap-x-4 p-3 rounded-lg hover:bg-gray-100 transition"
+                  >
+                    <IoPersonOutline size={22} />
+                    <span className="text-lg">Dashboard</span>
+                  </Link>
+                  <Link
+                    href="/my-courses"
+                    className="flex items-center gap-x-4 p-3 rounded-lg hover:bg-gray-100 transition"
+                  >
+                    <IoSchoolOutline size={22} />
+                    <span className="text-lg">My Courses</span>
+                  </Link>
+                  <div className="border-t my-2"></div>
+                </>
+              )}
+
               {menus.map(menu => (
                 <Link
                   key={menu.name}
@@ -209,21 +307,34 @@ export default function NavbarSection() {
                   <span className="text-lg">{menu.name}</span>
                 </Link>
               ))}
+
+              {user && (
+                <button
+                  onClick={handleLogout}
+                  className="flex items-center gap-x-4 p-3 rounded-lg hover:bg-gray-100 transition text-red-500 mt-4 border-t pt-6"
+                >
+                  <IoLogOutOutline size={22} />
+                  <span className="text-lg">Sign Out</span>
+                </button>
+              )}
             </nav>
-            <div className="mt-6 border-t pt-4">
-              <Link
-                href="https://lms.bskilling.com/login/signup.php"
-                className="block text-center p-3 bg-blue-600 text-white rounded-lg mb-2 hover:bg-blue-700"
-              >
-                Sign Up
-              </Link>
-              <Link
-                href="https://lms.bskilling.com/login/index.php"
-                className="block text-center p-3 border rounded-lg hover:bg-gray-100"
-              >
-                Login
-              </Link>
-            </div>
+
+            {!user && (
+              <div className="mt-6 border-t pt-4">
+                <Link
+                  href="https://lms.bskilling.com/login/signup.php"
+                  className="block text-center p-3 bg-blue-600 text-white rounded-lg mb-2 hover:bg-blue-700"
+                >
+                  Sign Up
+                </Link>
+                <Link
+                  href="https://lms.bskilling.com/login/index.php"
+                  className="block text-center p-3 border rounded-lg hover:bg-gray-100"
+                >
+                  Login
+                </Link>
+              </div>
+            )}
           </SheetContent>
         </Sheet>
       </div>

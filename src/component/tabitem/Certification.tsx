@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react';
-import { Coursedetailstype } from 'common/util/types';
+import { Coursedetailstype } from '@/component/common/util/types';
 
 interface CertificationProps {
   courseDetails: Coursedetailstype | null;

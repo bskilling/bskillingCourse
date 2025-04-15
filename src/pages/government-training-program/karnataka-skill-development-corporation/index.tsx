@@ -117,7 +117,7 @@ export default function KSDC() {
             <div className="border-l-4 border-[#020b39] pl-7 relative mt-10 pb-10 pr-20">
               <FaCircle className="absolute -left-2.5 -top-0 text-[#020b39]" />
               <p className="-mt-5">
-                Empowering over 940,000 individuals: Through comprehensive skill development
+                Empowering over 400,000 individuals: Through comprehensive skill development
                 programs, KSDC has empowered young men and women across the state.
               </p>
             </div>

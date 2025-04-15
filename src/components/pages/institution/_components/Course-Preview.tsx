@@ -196,7 +196,7 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
             </div>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-1">
+            <div className="hidden md:flex items-center space-x-1 cursor-pointer">
               <Scroll
                 to="hero"
                 spy={true}
@@ -264,7 +264,7 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
                 </Scroll>
               )}
 
-              <Scroll
+              {/* <Scroll
                 to="Criteria"
                 smooth={true}
                 onClick={() => {
@@ -278,7 +278,7 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
                 )}
               >
                 Criteria
-              </Scroll>
+              </Scroll> */}
 
               <Scroll
                 to="pricing"
