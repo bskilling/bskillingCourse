@@ -2,7 +2,7 @@
 /* eslint-disable @next/next/next-script-for-ga */
 import axios from 'axios';
 import CourseCard from '@/component/CourseCard';
-import { MyContext } from 'context/PageContext';
+import { MyContext } from '@/component/context/PageContext';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useContext, useEffect, useState } from 'react';

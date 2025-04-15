@@ -72,7 +72,9 @@ const WhyJoinSection = ({ whyJoin }: Props) => {
                 </div>
 
                 <div className="mt-4">
-                  <p className="text-gray-700">{reason}</p>
+                  <p className="text-gray-700 whitespace-pre-line">
+                    {reason.replace(/\\n/g, '\n')}
+                  </p>
                 </div>
 
                 <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-400 to-indigo-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 rounded-b-2xl"></div>

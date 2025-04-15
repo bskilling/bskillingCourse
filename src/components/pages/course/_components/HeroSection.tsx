@@ -7,6 +7,7 @@ import { ICourse } from './types';
 import { BookOpen, Clock, Award, Users, ChevronRight } from 'lucide-react';
 import { useState } from 'react';
 import PopupConsultationForm from './dialogs/Form';
+import PaymentFormDialog from '@/components/global/PaymentRegisterForm';
 
 interface HeroSectionProps {
   category?: ICourse['category'];
@@ -15,6 +16,9 @@ interface HeroSectionProps {
   bannerImage: string;
   duration: number;
   modules: number;
+  courseId: string;
+  amount: number;
+  currency?: string;
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({
@@ -24,6 +28,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   bannerImage,
   duration,
   modules,
+  amount,
+  courseId,
+  currency,
 }) => {
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [formType, setFormType] = useState<'b2c' | 'b2b' | 'b2i' | 'general'>('b2c');
@@ -94,9 +101,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-lg text-gray-600 leading-relaxed"
+              className="text-lg text-gray-600 leading-relaxed "
             >
-              {description}
+              <p className="whitespace-pre-line">{description}</p>
             </motion.p>
 
             {/* Course Stats */}
@@ -121,6 +128,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             </motion.div>
 
             {/* CTA Buttons */}
+            <PaymentFormDialog courseId={courseId} courseName="" amount={amount} currency="INR" />
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}

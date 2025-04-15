@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
 import PopupForm from '@/component/PopupForm';
 import Courses from '@/component/courses';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 
 // Icons
 import { RiGovernmentFill } from 'react-icons/ri';
@@ -12,11 +13,18 @@ import { FiMenu, FiX, FiSearch } from 'react-icons/fi';
 import { BsBuilding } from 'react-icons/bs';
 import { FaUniversity } from 'react-icons/fa';
 import { BiSearchAlt } from 'react-icons/bi';
-import { IoSchool } from 'react-icons/io5';
+import {
+  IoLogOutOutline,
+  IoPersonAddOutline,
+  IoPersonOutline,
+  IoSchool,
+  IoSchoolOutline,
+} from 'react-icons/io5';
 
 // Import UI components
 import { Sheet, SheetContent, SheetHeader, SheetTrigger } from '@/components/ui/sheet';
 import SearchSheetComponent from './SearchSheet';
+import { usePaymentStore } from '@/lib/zustand/phone.store';
 
 // Type definitions
 interface SearchResult {
@@ -45,6 +53,8 @@ const NavbarSection: React.FC = () => {
   const [sheetOpen, setSheetOpen] = useState<boolean>(false);
   const [show, setShow] = useState<boolean>(false);
   const [dropSearchData, setDropSearchData] = useState<SearchResult[]>([]);
+  const { user, reset } = usePaymentStore();
+
   const router = useRouter();
 
   useEffect(() => {
@@ -276,21 +286,78 @@ const NavbarSection: React.FC = () => {
                 </div>
               </nav>
 
+              {user ? (
+                <div>
+                  <Popover>
+                    <PopoverTrigger className="flex items-center gap-x-2">
+                      <div className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-blue-500 hover:border-blue-600 transition-all">
+                        <img
+                          src={`https://avatars.dicebear.com/api/initials/${encodeURIComponent(user.name)}.svg`}
+                          alt={user.name || 'User'}
+                          className="object-cover"
+                        />
+                      </div>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-56">
+                      <div className="space-y-4">
+                        <div className="flex flex-col items-center pb-4 border-b">
+                          <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-blue-500 mb-2">
+                            <img
+                              src={`https://avatars.dicebear.com/api/initials/${encodeURIComponent(user.name)}.svg`}
+                              alt={user.name || 'User'}
+                              className="object-cover"
+                            />
+                          </div>
+                          <h3 className="font-medium">{user.name}</h3>
+                          <p className="text-sm text-gray-500 truncate max-w-full">{user.email}</p>
+                        </div>
+
+                        <div className="space-y-2">
+                          <Link
+                            href="/dashboard"
+                            className="flex items-center gap-x-2 p-2 rounded-md hover:bg-gray-100 transition w-full"
+                          >
+                            <IoPersonOutline size={18} />
+                            <span>Dashboard</span>
+                          </Link>
+
+                          <Link
+                            href="/my-courses"
+                            className="flex items-center gap-x-2 p-2 rounded-md hover:bg-gray-100 transition w-full"
+                          >
+                            <IoSchoolOutline size={18} />
+                            <span>My Courses</span>
+                          </Link>
+
+                          <button
+                            // onClick={handleLogout}
+                            className="flex items-center gap-x-2 p-2 rounded-md hover:bg-gray-100 transition w-full text-left text-red-500"
+                          >
+                            <IoLogOutOutline size={18} />
+                            <span>Sign Out</span>
+                          </button>
+                        </div>
+                      </div>
+                    </PopoverContent>
+                  </Popover>
+                </div>
+              ) : (
+                <div className="flex items-center space-x-3 flex-shrink-0">
+                  <Link
+                    href="https://lms.bskilling.com/login/signup.php"
+                    className="px-3 py-2 border border-indigo-600 text-indigo-600 rounded-md hover:bg-indigo-50 transition font-medium text-sm whitespace-nowrap"
+                  >
+                    Sign Up
+                  </Link>
+                  <Link
+                    href="https://lms.bskilling.com/login/index.php"
+                    className="px-3 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition font-medium text-sm whitespace-nowrap"
+                  >
+                    Login
+                  </Link>
+                </div>
+              )}
               {/* Auth buttons */}
-              <div className="flex items-center space-x-3 flex-shrink-0">
-                <Link
-                  href="https://lms.bskilling.com/login/signup.php"
-                  className="px-3 py-2 border border-indigo-600 text-indigo-600 rounded-md hover:bg-indigo-50 transition font-medium text-sm whitespace-nowrap"
-                >
-                  Sign Up
-                </Link>
-                <Link
-                  href="https://lms.bskilling.com/login/index.php"
-                  className="px-3 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition font-medium text-sm whitespace-nowrap"
-                >
-                  Login
-                </Link>
-              </div>
             </div>
 
             {/* Mobile Search & Menu Button */}

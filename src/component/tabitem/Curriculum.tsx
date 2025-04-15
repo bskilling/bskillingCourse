@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Coursedetailstype } from 'common/util/types';
+import { Coursedetailstype } from '@/component/common/util/types';
 import { FaCheck } from 'react-icons/fa';
 
 interface CurriculumProps {

@@ -1,4 +1,4 @@
-import { MyContext } from 'context/PageContext';
+import { MyContext } from '@/component/context/PageContext';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useContext, useState } from 'react';

@@ -12,11 +12,12 @@ import {
   FaAward,
   FaStar,
   FaUsers,
+  FaCalendarAlt,
 } from 'react-icons/fa';
 import { BiCertification } from 'react-icons/bi';
 import { RiBook2Line, RiTimeLine } from 'react-icons/ri';
 import { HiOutlineAcademicCap } from 'react-icons/hi';
-import { MdOutlineWatchLater, MdOutlinePriceCheck } from 'react-icons/md';
+import { MdOutlineWatchLater, MdOutlinePriceCheck, MdDateRange } from 'react-icons/md';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
@@ -58,6 +59,17 @@ const shimmer = `relative overflow-hidden before:absolute before:inset-0 before:
 
 const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL ?? 'https://backendbskilling.up.railway.app';
 
+// Helper function to format dates
+const formatDate = (dateString: string) => {
+  if (!dateString) return '';
+  const date = new Date(dateString);
+  return new Intl.DateTimeFormat('en-US', {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+  }).format(date);
+};
+
 export default function Courses() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [close, setClose] = useState(false);
@@ -70,6 +82,23 @@ export default function Courses() {
   // Mock student counts and ratings for courses to enhance credibility
   const getRandomStudentCount = () => Math.floor(Math.random() * 15000) + 500;
   const getRandomRating = () => (Math.floor(Math.random() * 20) + 40) / 10; // Between 4.0 and 5.0
+
+  // Mock dates for courses if they don't exist
+  const getRandomStartDate = () => {
+    const today = new Date();
+    const startOffset = Math.floor(Math.random() * 30); // 0-30 days from now
+    const startDate = new Date(today);
+    startDate.setDate(startDate.getDate() + startOffset);
+    return startDate.toISOString();
+  };
+
+  const getRandomEndDate = (startDate: string) => {
+    const start = new Date(startDate);
+    const durationDays = Math.floor(Math.random() * 90) + 30; // 30-120 days course duration
+    const endDate = new Date(start);
+    endDate.setDate(endDate.getDate() + durationDays);
+    return endDate.toISOString();
+  };
 
   useEffect(() => {
     setOpen2(false);
@@ -106,20 +135,61 @@ export default function Courses() {
           type: selectedType ?? undefined,
         },
       });
-      return res.data.data;
+
+      // Add mock dates if they don't exist
+      // @ts-expect-error error
+      const coursesWithDates = res.data.data.courses.map(course => {
+        if (!course.startTime) {
+          const startDate = getRandomStartDate();
+          return {
+            ...course,
+            startDate,
+            endDate: getRandomEndDate(startDate),
+          };
+        }
+        if (course.startTime && !course.endTime) {
+          return {
+            ...course,
+            endDate: getRandomEndDate(course.startTime),
+          };
+        }
+        return course;
+      });
+
+      return {
+        ...res.data.data,
+        courses: coursesWithDates,
+      };
     },
     staleTime: 1000 * 60 * 5,
   });
 
   const filteredCourses = data?.courses.filter(course =>
     course.title.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  ) as ICourse[];
 
   // Function to render skill level badge
   const renderSkillLevel = (hours: number) => {
     if (hours <= 10) return { level: 'Beginner', color: 'bg-green-500' };
     if (hours <= 30) return { level: 'Intermediate', color: 'bg-blue-500' };
     return { level: 'Advanced', color: 'bg-purple-500' };
+  };
+
+  // Function to check if a course is upcoming
+  const isUpcoming = (startDate: string) => {
+    if (!startDate) return false;
+    const today = new Date();
+    const courseStart = new Date(startDate);
+    return courseStart > today;
+  };
+
+  // Function to check if a course is ongoing
+  const isOngoing = (startDate: string, endDate: string) => {
+    if (!startDate || !endDate) return false;
+    const today = new Date();
+    const courseStart = new Date(startDate);
+    const courseEnd = new Date(endDate);
+    return courseStart <= today && today <= courseEnd;
   };
 
   return (
@@ -313,16 +383,43 @@ export default function Courses() {
                     const skillLevel = renderSkillLevel(course.durationHours);
                     const studentCount = getRandomStudentCount();
                     const rating = getRandomRating();
+                    const upcoming = isUpcoming(course.startTime);
+                    const ongoing = isOngoing(course?.startTime, course?.endTime);
 
                     return (
                       <motion.div key={course._id} variants={item}>
                         <Card className="relative flex flex-col h-full overflow-hidden rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-0">
-                          {/* Featured or New Badge */}
+                          {/* Status Badge (Upcoming/Ongoing) */}
+                          {upcoming && (
+                            <div className="absolute top-3 left-3 z-10">
+                              <Badge className="bg-blue-500 hover:bg-blue-600 text-white border-0">
+                                Upcoming
+                              </Badge>
+                            </div>
+                          )}
+                          {ongoing && (
+                            <div className="absolute top-3 left-3 z-10">
+                              <Badge className="bg-green-600 hover:bg-green-700 text-white border-0">
+                                Ongoing
+                              </Badge>
+                            </div>
+                          )}
+
+                          {/* Free Badge */}
                           {course.price.amount === 0 && (
                             <div className="absolute top-3 left-3 z-10">
-                              <Badge className="bg-green-500 hover:bg-green-600 text-white border-0">
-                                Free
-                              </Badge>
+                              {(upcoming || ongoing) && (
+                                <div className="mt-2">
+                                  <Badge className="bg-green-500 hover:bg-green-600 text-white border-0">
+                                    Free
+                                  </Badge>
+                                </div>
+                              )}
+                              {!upcoming && !ongoing && (
+                                <Badge className="bg-green-500 hover:bg-green-600 text-white border-0">
+                                  Free
+                                </Badge>
+                              )}
                             </div>
                           )}
 
@@ -378,6 +475,25 @@ export default function Courses() {
                                 <span>{studentCount.toLocaleString()} students</span>
                               </div>
                             </div>
+
+                            {/* Date Range */}
+                            {(course.startTime || course.endTime) && (
+                              <div className="flex items-center text-xs text-gray-600 bg-orange-50 p-2 rounded-md">
+                                <FaCalendarAlt className="text-orange-500 mr-2 flex-shrink-0" />
+                                <div>
+                                  {course.startTime && (
+                                    <div className="font-medium">
+                                      Start: {formatDate(course.startTime)}
+                                    </div>
+                                  )}
+                                  {course.endTime && (
+                                    <div className="font-medium">
+                                      End: {formatDate(course.endTime)}
+                                    </div>
+                                  )}
+                                </div>
+                              </div>
+                            )}
 
                             <div className="flex flex-wrap gap-2">
                               <div className="flex items-center text-xs bg-indigo-50 text-indigo-700 px-2 py-1 rounded">
@@ -473,3 +589,22 @@ interface logo {
   _id: string;
   viewUrl: string;
 }
+
+// // Update the ICourse interface to include startDate and endDate
+// declare module '../types/Course.types' {
+//   export interface ICourse {
+//     _id: string;
+//     title: string;
+//     slug: string;
+//     durationHours: number;
+//     price: {
+//       amount: number;
+//       currency: string;
+//     };
+//     previewImage?: {
+//       viewUrl: string;
+//     };
+//     startDate: string; // Added field
+//     endDate: string; // Added field
+//   }
+// }

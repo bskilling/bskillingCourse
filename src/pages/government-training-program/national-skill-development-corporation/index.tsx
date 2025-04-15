@@ -272,7 +272,9 @@ export default function NSDC() {
                 <div className="absolute top-0 right-0 bg-yellow-500 text-blue-900 font-bold px-3 py-1 text-sm rounded-bl-lg">
                   Popular
                 </div>
-                <h3 className="text-xl font-bold text-blue-900 mb-3">Generative AI Advanced</h3>
+                <h3 className="text-xl font-bold text-blue-900 mb-3">
+                  Gen AI Advance course 50 hrs{' '}
+                </h3>
                 <p className="text-gray-700 mb-4">45 Hours | Intermediate Level</p>
                 <ul className="space-y-2">
                   <li className="flex items-start">
@@ -294,7 +296,9 @@ export default function NSDC() {
               </div>
 
               <div className="bg-gradient-to-b from-blue-100 to-white p-6 rounded-lg shadow-md border-t-4 border-blue-500">
-                <h3 className="text-xl font-bold text-blue-900 mb-3">Cloud Computing Advanced</h3>
+                <h3 className="text-xl font-bold text-blue-900 mb-3">
+                  Cloud Computing Basic with 12 hrs
+                </h3>
                 <p className="text-gray-700 mb-4">40 Hours | Intermediate Level</p>
                 <ul className="space-y-2">
                   <li className="flex items-start">

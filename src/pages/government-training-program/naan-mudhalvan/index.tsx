@@ -191,7 +191,6 @@ export default function NaanMudhalvan() {
                   'State-of-the-Art Facilities: Advanced training centre’s equipped with the latest technologies for hands-on learning.',
                   'Sector-Specific Training: Programs designed for high-growth industries to maximize employability opportunities.',
                   'Continuous Career Support: Participants receive mentorship and guidance throughout their career journey.',
-                  'Focus on Digital Skills: Preparing students to excel in the rapidly digitizing world of work.',
                 ].map((feature, index) => (
                   <li key={index} className="mt-3 text-lg ">
                     {feature}
@@ -470,7 +469,7 @@ export default function NaanMudhalvan() {
               <h3 className="text-xl font-semibold text-gray-700 mb-4">For Engineering Students</h3>
               <ul className="list-disc list-inside text-gray-600 space-y-2">
                 <li>
-                  So far, 2,000 students have been successfully trained in Industrial IoT and
+                  So far, 3,5000 students have been successfully trained in Industrial IoT and
                   Industry 4.0, equipping them with cutting-edge knowledge and practical skills.
                 </li>
                 <li>Gain hands-on knowledge of Industrial IoT and Industry 4.0 concepts.</li>
@@ -491,10 +490,10 @@ export default function NaanMudhalvan() {
               </h3>
               <ul className="list-disc list-inside text-gray-600 space-y-2">
                 <li>
-                  Currently, 21,000 students are undergoing training in Fintech courses, including
-                  Financial Modelling and Valuation, GST Compliance and Auditing, and Graphic
-                  Design, ensuring they are industry-ready for careers in finance, accounting, and
-                  creative industries.
+                  Over 21,000 students have successfully completed training in Fintech courses,
+                  including Financial Modelling and Valuation, GST Compliance and Auditing, and
+                  Graphic Design—equipping them with industry-ready skills for careers in finance,
+                  accounting, and the creative industries.
                 </li>
                 <li>
                   Acquire in-depth knowledge of Fintech tools like financial modeling, valuation

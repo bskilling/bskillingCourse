@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { MyContext } from 'context/PageContext';
-import CourseDetails from 'data/CoursesData';
-import courseSearchData from 'data/courseSearchData';
+import { MyContext } from '@/component/context/PageContext';
+import CourseDetails from '@/component/data/CoursesData';
+import courseSearchData from '@/component/data/courseSearchData';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useContext, useEffect, useState } from 'react';

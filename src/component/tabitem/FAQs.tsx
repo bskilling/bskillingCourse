@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Coursedetailstype } from 'common/util/types';
+import { Coursedetailstype } from '@/component/common/util/types';
 
 interface FAQsProps {
   courseDetails: Coursedetailstype | null;
