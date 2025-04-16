@@ -135,13 +135,6 @@ export default function KSDC() {
                 SC/ST, OBC, and rural communities, ensuring equitable access to opportunities.
               </p>
             </div>
-            <div className="border-l-4 border-[#020b39] pl-7 relative pb-0  pr-20">
-              <FaCircle className="absolute -left-2.5 top-3 text-[#020b39]" />
-              <p className="-mt-5">
-                Focus on inclusion: Programs are designed to address the unique challenges faced by
-                SC/ST, OBC, and rural communities, ensuring equitable access to opportunities.
-              </p>
-            </div>
           </div>
         </div>
 
