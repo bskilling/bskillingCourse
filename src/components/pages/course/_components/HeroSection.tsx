@@ -128,7 +128,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             </motion.div>
 
             {/* CTA Buttons */}
-            <PaymentFormDialog courseId={courseId} courseName="" amount={amount} currency="INR" />
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -146,9 +145,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 }
                 className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-5 rounded-lg font-medium text-base"
               >
-                Enroll Now
+                Reach Us
               </Button>
-              <Button
+
+              <PaymentFormDialog courseId={courseId} courseName="" amount={amount} currency="INR" />
+
+              {/* <Button
                 onClick={() =>
                   openConsultationForm(
                     'b2i',
@@ -161,7 +163,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               >
                 Download Syllabus
                 <ChevronRight className="ml-1 w-4 h-4" />
-              </Button>
+              </Button> */}
             </motion.div>
 
             {/* Social Proof */}

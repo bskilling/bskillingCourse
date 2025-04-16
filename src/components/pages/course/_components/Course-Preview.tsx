@@ -507,6 +507,7 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
         formattedPrice={formattedPrice}
         durationHours={durationHours}
         isPaid={isPaid}
+        _id={_id}
       />
       <CriteriaSection curriculum={curriculum} />
       <WhyJoinSection whyJoin={whyJoin} />
