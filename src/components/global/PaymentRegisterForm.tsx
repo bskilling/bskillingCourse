@@ -605,9 +605,9 @@ const PaymentFormDialog: React.FC<PaymentFormProps> = ({
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-6 py-2 rounded-lg font-medium">
+        <Button className="bg-gradient-to-r from-green-600 to-green-600 hover:from-blue-700 hover:to-indigo-700 text-white px-6 py-2 rounded-lg font-medium">
           <BookOpen className="mr-2 h-5 w-5" />
-          Enroll Now
+          Buy Now
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[450px]">

@@ -2,17 +2,20 @@ import React from 'react';
 import { FaClock, FaShieldAlt, FaGraduationCap } from 'react-icons/fa';
 import { CheckCircle, Award, BookOpen } from 'lucide-react';
 import { FaIndianRupeeSign } from 'react-icons/fa6';
+import PaymentFormDialog from '@/components/global/PaymentRegisterForm';
 
 interface CourseEnrollmentProps {
   formattedPrice: string;
   durationHours: number;
   isPaid: boolean;
+  _id: string;
 }
 
 const CourseEnrollment: React.FC<CourseEnrollmentProps> = ({
   formattedPrice,
   durationHours,
   isPaid = true,
+  _id: courseId,
 }) => {
   return (
     <section id="pricing" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -62,6 +65,12 @@ const CourseEnrollment: React.FC<CourseEnrollmentProps> = ({
                 <button className="w-full mt-3 border border-blue-200 text-blue-600 hover:bg-blue-50 px-6 py-3 rounded-lg font-medium transition-colors duration-300 text-base">
                   Download Syllabus
                 </button>
+                {/* <PaymentFormDialog
+                  courseId={courseId}
+                  courseName=""
+                  amount={+formattedPrice}
+                  currency="INR"
+                /> */}
               </div>
             </div>
 
