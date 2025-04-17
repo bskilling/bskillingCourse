@@ -33,12 +33,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   currency,
 }) => {
   const [isFormOpen, setIsFormOpen] = useState(false);
-  const [formType, setFormType] = useState<'b2c' | 'b2b' | 'b2i' | 'general'>('b2c');
+  const [formType, setFormType] = useState<'b2c' | 'b2b' | 'b2i' | 'general' | 'b2g'>('b2g');
   const [formTitle, setFormTitle] = useState('Get in Touch');
   const [formDescription, setFormDescription] = useState('');
 
   const openConsultationForm = (
-    type: 'b2c' | 'b2b' | 'b2i' | 'general',
+    type: 'b2c' | 'b2b' | 'b2i' | 'general' | 'b2g',
     title: string,
     description: string
   ) => {
@@ -128,7 +128,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             </motion.div>
 
             {/* CTA Buttons */}
-            <PaymentFormDialog courseId={courseId} courseName="" amount={amount} currency="INR" />
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -139,16 +138,18 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               <Button
                 onClick={() =>
                   openConsultationForm(
-                    'b2i',
+                    'b2g',
                     'Enroll Now',
-                    'Explore how we can collaborate to enhance educational outcomes for your institution.'
+                    'Please fill in your details to receive the comprehensive syllabus directly in your inbox. Our team is available to answer any questions you may have about the course content or structure.'
                   )
                 }
                 className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-5 rounded-lg font-medium text-base"
               >
-                Enroll Now
+                Enquire Now
               </Button>
-              <Button
+              <PaymentFormDialog courseId={courseId} courseName="" amount={amount} currency="INR" />
+
+              {/* <Button
                 onClick={() =>
                   openConsultationForm(
                     'b2i',
@@ -161,7 +162,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               >
                 Download Syllabus
                 <ChevronRight className="ml-1 w-4 h-4" />
-              </Button>
+              </Button> */}
             </motion.div>
 
             {/* Social Proof */}
