@@ -17,6 +17,15 @@ const CourseEnrollment: React.FC<CourseEnrollmentProps> = ({
   isPaid = true,
   _id: courseId,
 }) => {
+  // Calculate the "original" price by increasing the actual price by 20%
+  // Remove commas from formattedPrice and convert to number
+  const actualPrice = parseInt(formattedPrice.replace(/,/g, ''));
+  const increasedPrice = Math.round(actualPrice * 1.2);
+  const displayOriginalPrice = increasedPrice.toLocaleString('en-IN');
+
+  // The discount percentage (hardcoded to 65% as per the design)
+  const discountPercentage = 20;
+
   return (
     <section id="pricing" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       <div className="flex items-center space-x-3 mb-8">
@@ -40,21 +49,20 @@ const CourseEnrollment: React.FC<CourseEnrollmentProps> = ({
             <div className="text-center">
               {isPaid ? (
                 <>
-                  <span className="text-gray-500 line-through text-lg">₹19,999</span>
+                  <span className="text-gray-500 line-through text-lg">
+                    ₹{displayOriginalPrice}
+                  </span>
                   <div className="flex items-center justify-center gap-2 mt-1">
                     <FaIndianRupeeSign className="h-8 w-8 text-blue-600" />
                     <span className="text-4xl font-bold text-gray-900">{formattedPrice}</span>
                   </div>
                   <span className="bg-green-100 text-green-700 text-xs font-medium px-3 py-1 rounded-full mt-2 inline-block">
-                    65% OFF
+                    {discountPercentage}% OFF
                   </span>
                 </>
               ) : (
                 <div className="mt-1">
                   <span className="text-4xl font-bold text-green-900">FREE</span>
-                  {/* <span className="bg-blue-100 text-blue-700 text-xs font-medium px-3 py-1 rounded-full mt-2 inline-block ml-2">
-                    No Credit Card Required
-                  </span> */}
                 </div>
               )}
 
