@@ -508,47 +508,28 @@ const CCAvPaymentForm: React.FC<PaymentFormProps> = ({
             )}
 
             {/* CCAvenue iFrame payment form */}
-            {paymentData && (
+            {paymentData ? (
               <div className="mb-4">
                 {/* Hidden form to submit to CCAvenue */}
-                <form
-                  method="post"
-                  id="ccavenue_payment_form"
-                  name="redirect"
-                  action={paymentData.ccavData.ccavSubmitUrl}
-                  target="ccavenue_iframe"
-                  style={{ display: 'none' }}
-                >
-                  <input type="hidden" name="encRequest" value={paymentData.ccavData.encRequest} />
-                  <input type="hidden" name="access_code" value={paymentData.ccavData.accessCode} />
-                </form>
                 <iframe
                   width="482"
                   height="500"
-                  scrolling="No"
-                  frameBorder="0"
                   id="paymentFrame"
                   src={`https://secure.ccavenue.com/transaction/transaction.do?command=initiateTransaction&encRequest=${encodeURIComponent(paymentData.ccavData.encRequest)}&access_code=${encodeURIComponent(paymentData.ccavData.accessCode)}`}
                 ></iframe>
-                {/* iFrame to load CCAvenue payment page */}
-                {/* <iframe
-                  id="ccavenue_iframe"
-                  name="ccavenue_iframe"
-                  src="about:blank"
-                  height={iframeHeight}
-                  width="100%"
-                  frameBorder="0"
-                  scrolling="no"
-                  style={{ border: '1px solid #ccc', borderRadius: '4px' }}
-                  title="CCAvenue Payment Gateway"
-                  onLoad={() => {
-                    // Auto-submit the form when iframe loads
-                    const form = document.getElementById(
-                      'ccavenue_payment_form'
-                    ) as HTMLFormElement;
-                    if (form) form.submit();
-                  }}
-                /> */}
+              </div>
+            ) : (
+              <div className="p-4 bg-blue-50 border border-blue-100 text-blue-700 rounded-lg">
+                <div className="flex items-start">
+                  <Shield className="h-5 w-5 mr-2 mt-0.5 flex-shrink-0 text-blue-600" />
+                  <div>
+                    <p className="text-sm font-medium mb-1">Secure Payment via CCAvenue</p>
+                    <p className="text-xs">
+                      You'll be presented with multiple payment options to complete your purchase
+                      securely.
+                    </p>
+                  </div>
+                </div>
               </div>
             )}
 
