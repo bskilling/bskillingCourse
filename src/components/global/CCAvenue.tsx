@@ -270,7 +270,11 @@ const CCAvPaymentForm: React.FC<PaymentFormProps> = ({
       setIsLoading(false);
     }
   };
-
+  console.log('Payment Data:', {
+    encRequest: paymentData.ccavData.encRequest,
+    accessCode: paymentData.ccavData.accessCode,
+    ccavSubmitUrl: paymentData.ccavData.ccavSubmitUrl,
+  });
   // Render different content based on the current step
   const renderContent = () => {
     switch (currentStep) {
@@ -510,28 +514,43 @@ const CCAvPaymentForm: React.FC<PaymentFormProps> = ({
             {/* CCAvenue iFrame payment form */}
             {paymentData ? (
               <div className="mb-4">
-                {/* Hidden form to submit to CCAvenue */}
                 <iframe
                   width="482"
                   height="500"
                   id="paymentFrame"
-                  src={`https://secure.ccavenue.com/transaction/transaction.do?command=initiateTransaction&encRequest=${encodeURIComponent(paymentData.ccavData.encRequest)}&access_code=${encodeURIComponent(paymentData.ccavData.accessCode)}`}
-                ></iframe>
+                  name="paymentFrame"
+                  src={`${paymentData.ccavData.ccavSubmitUrl}?command=initiateTransaction&encRequest=${encodeURIComponent(paymentData.ccavData.encRequest)}&access_code=${encodeURIComponent(paymentData.ccavData.accessCode)}`}
+                  onLoad={e => {
+                    console.log('Iframe loaded successfully', e);
+                  }}
+                  onError={e => {
+                    console.error('Iframe load error', e);
+                    toast.error('Failed to load payment gateway');
+                  }}
+                  sandbox="allow-forms allow-scripts allow-same-origin"
+                />
+                {/* Fallback form submission method */}
+                <form
+                  action={paymentData.ccavData.ccavSubmitUrl}
+                  method="post"
+                  name="redirectForm"
+                  style={{ display: 'none' }}
+                >
+                  <input type="hidden" name="encRequest" value={paymentData.ccavData.encRequest} />
+                  <input type="hidden" name="access_code" value={paymentData.ccavData.accessCode} />
+                  <input type="submit" value="Redirect" id="redirectButton" />
+                </form>
+                <script>{`
+      // Automatically submit the form if iframe fails
+      document.addEventListener('DOMContentLoaded', () => {
+        const iframe = document.getElementById('paymentFrame');
+        iframe.addEventListener('error', () => {
+          document.forms['redirectForm'].submit();
+        });
+      });
+    `}</script>
               </div>
-            ) : (
-              <div className="p-4 bg-blue-50 border border-blue-100 text-blue-700 rounded-lg">
-                <div className="flex items-start">
-                  <Shield className="h-5 w-5 mr-2 mt-0.5 flex-shrink-0 text-blue-600" />
-                  <div>
-                    <p className="text-sm font-medium mb-1">Secure Payment via CCAvenue</p>
-                    <p className="text-xs">
-                      You'll be presented with multiple payment options to complete your purchase
-                      securely.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            )}
+            ) : null}
 
             <div className="flex flex-col space-y-3 mt-3">
               <Button
