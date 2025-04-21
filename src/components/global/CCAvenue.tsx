@@ -271,9 +271,9 @@ const CCAvPaymentForm: React.FC<PaymentFormProps> = ({
     }
   };
   console.log('Payment Data:', {
-    encRequest: paymentData.ccavData.encRequest,
-    accessCode: paymentData.ccavData.accessCode,
-    ccavSubmitUrl: paymentData.ccavData.ccavSubmitUrl,
+    encRequest: paymentData?.ccavData.encRequest,
+    accessCode: paymentData?.ccavData.accessCode,
+    ccavSubmitUrl: paymentData?.ccavData.ccavSubmitUrl,
   });
   // Render different content based on the current step
   const renderContent = () => {
@@ -519,7 +519,7 @@ const CCAvPaymentForm: React.FC<PaymentFormProps> = ({
                   height="500"
                   id="paymentFrame"
                   name="paymentFrame"
-                  src={`${paymentData.ccavData.ccavSubmitUrl}?command=initiateTransaction&encRequest=${encodeURIComponent(paymentData.ccavData.encRequest)}&access_code=${encodeURIComponent(paymentData.ccavData.accessCode)}`}
+                  src={`${paymentData.ccavData.ccavSubmitUrl}&encRequest=${encodeURIComponent(paymentData.ccavData.encRequest)}&access_code=${encodeURIComponent(paymentData.ccavData.accessCode)}`}
                   onLoad={e => {
                     console.log('Iframe loaded successfully', e);
                   }}
