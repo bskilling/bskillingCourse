@@ -77,6 +77,54 @@ const CCAvPaymentForm: React.FC<PaymentFormProps> = ({
   const [checkingStatus, setCheckingStatus] = useState(false);
   const [statusCheckInterval, setStatusCheckInterval] = useState<NodeJS.Timeout | null>(null);
 
+  const [apiResponse, setApiResponse] = useState<any>(null);
+  const [apiError, setApiError] = useState<string | null>(null);
+
+  const initiateDirectPayment = async (ccavData: any) => {
+    try {
+      // Prepare the request parameters as per CCAvenue API guide
+      const requestParams = {
+        enc_request: ccavData.encRequest,
+        access_code: ccavData.accessCode,
+        // command: 'initiateTransaction',
+        request_type: 'JSON', // or XML as specified in the API guide
+        version: '1.1',
+      };
+
+      // Make a direct API call
+      const response = await axios.post(ccavData.ccavSubmitUrl, requestParams, {
+        headers: {
+          'Content-Type': 'application/json',
+          // Add any additional headers required by CCAvenue
+        },
+      });
+
+      // Log the complete response for debugging
+      console.log('CCAvenue Direct API Response:', response.data);
+
+      // Handle different response scenarios
+      if (response.data.status === 'success') {
+        setApiResponse(response.data);
+        toast.success('Payment initiated successfully');
+      } else {
+        // Handle API-level errors
+        const errorMessage = response.data.error_desc || 'Payment initiation failed';
+        setApiError(errorMessage);
+        // onError(errorMessage);
+        toast.error(errorMessage);
+      }
+    } catch (error: any) {
+      // Handle network or unexpected errors
+      console.error('CCAvenue API Error:', error);
+      const errorMessage =
+        error.response?.data?.message || error.message || 'Unexpected error during payment';
+
+      setApiError(errorMessage);
+      // onError(errorMessage);
+      toast.error(errorMessage);
+    }
+  };
+
   // Initialize form with React Hook Form
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -188,7 +236,7 @@ const CCAvPaymentForm: React.FC<PaymentFormProps> = ({
 
       // Start checking for payment status
       startStatusCheck(response.data.data.payment.merchantOrderId);
-
+      initiateDirectPayment(response.data.data.ccavData);
       toast.success('Payment Initiated: Complete the payment in the secure payment form.');
     } catch (err: any) {
       const errorMessage = handleErrors(err);
@@ -513,42 +561,9 @@ const CCAvPaymentForm: React.FC<PaymentFormProps> = ({
 
             {/* CCAvenue iFrame payment form */}
             {paymentData ? (
-              <div className="mb-4">
-                <iframe
-                  width="482"
-                  height="500"
-                  id="paymentFrame"
-                  name="paymentFrame"
-                  src={`${paymentData.ccavData.ccavSubmitUrl}&encRequest=${encodeURIComponent(paymentData.ccavData.encRequest)}&access_code=${encodeURIComponent(paymentData.ccavData.accessCode)}`}
-                  onLoad={e => {
-                    console.log('Iframe loaded successfully', e);
-                  }}
-                  onError={e => {
-                    console.error('Iframe load error', e);
-                    toast.error('Failed to load payment gateway');
-                  }}
-                  sandbox="allow-forms allow-scripts allow-same-origin"
-                />
-                {/* Fallback form submission method */}
-                <form
-                  action={paymentData.ccavData.ccavSubmitUrl}
-                  method="post"
-                  name="redirectForm"
-                  style={{ display: 'none' }}
-                >
-                  <input type="hidden" name="encRequest" value={paymentData.ccavData.encRequest} />
-                  <input type="hidden" name="access_code" value={paymentData.ccavData.accessCode} />
-                  <input type="submit" value="Redirect" id="redirectButton" />
-                </form>
-                <script>{`
-      // Automatically submit the form if iframe fails
-      document.addEventListener('DOMContentLoaded', () => {
-        const iframe = document.getElementById('paymentFrame');
-        iframe.addEventListener('error', () => {
-          document.forms['redirectForm'].submit();
-        });
-      });
-    `}</script>
+              <div>
+                <p>Waiting for payment to complete</p>
+                <p>{apiResponse && JSON.stringify(apiResponse)}</p>
               </div>
             ) : null}
 
