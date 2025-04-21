@@ -7,7 +7,8 @@ import { ICourse } from './types';
 import { BookOpen, Clock, Award, Users, ChevronRight } from 'lucide-react';
 import { useState } from 'react';
 import PopupConsultationForm from './dialogs/Form';
-import PaymentFormDialog from '@/components/global/PaymentRegisterForm';
+
+import PaymentGatewaySelector from '@/components/global/PaymentGatewaySelector';
 
 interface HeroSectionProps {
   category?: ICourse['category'];
@@ -147,7 +148,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               >
                 Enquire Now
               </Button>
-              <PaymentFormDialog courseId={courseId} courseName="" amount={amount} currency="INR" />
+              <PaymentGatewaySelector
+                courseId={courseId}
+                courseName=""
+                amount={amount}
+                currency="INR"
+              />
 
               {/* <Button
                 onClick={() =>
