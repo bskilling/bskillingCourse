@@ -17,8 +17,8 @@ const CourseEnrollment: React.FC<CourseEnrollmentProps> = ({
   // Calculate the "original" price by increasing the actual price by 20%
   // Remove commas from formattedPrice and convert to number
   const actualPrice = parseInt(formattedPrice.replace(/,/g, ''));
-  const increasedPrice = Math.round(actualPrice * 1.2);
-  const displayOriginalPrice = increasedPrice.toLocaleString('en-IN');
+  const increasedPrice = actualPrice;
+  const displayOriginalPrice = actualPrice - Math.round(actualPrice * 0.2);
 
   // The discount percentage (hardcoded to 65% as per the design)
   const discountPercentage = 20;
@@ -47,11 +47,13 @@ const CourseEnrollment: React.FC<CourseEnrollmentProps> = ({
               {isPaid ? (
                 <>
                   <span className="text-gray-500 line-through text-lg">
-                    ₹{displayOriginalPrice}
+                    ₹{actualPrice.toLocaleString('en-IN')}
                   </span>
                   <div className="flex items-center justify-center gap-2 mt-1">
                     <FaIndianRupeeSign className="h-8 w-8 text-blue-600" />
-                    <span className="text-4xl font-bold text-gray-900">{formattedPrice}</span>
+                    <span className="text-4xl font-bold text-gray-900">
+                      {displayOriginalPrice.toLocaleString('en-IN')}
+                    </span>
                   </div>
                   <span className="bg-green-100 text-green-700 text-xs font-medium px-3 py-1 rounded-full mt-2 inline-block">
                     {discountPercentage}% OFF

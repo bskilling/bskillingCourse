@@ -9,14 +9,14 @@ export default async function handler(req: any, res: any) {
 
         // Handle Redirect as per Payment Status
         if (data.order_status === 'Success') {
-          res.redirect(302, '/onboard/success');
+          res.redirect(302, '/payment/success');
         } else {
-          res.redirect(302, '/onboard/failed');
+          res.redirect(302, '/payment/failed');
         }
       } catch (error) {
         // Handling Errors if anything Issue/Problem while Payment
         console.error('Error processing CCAvenue request:', error);
-        res.redirect(302, '/onboard/failed');
+        res.redirect(302, '/payment/failed');
       }
       break;
 
