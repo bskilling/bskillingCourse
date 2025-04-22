@@ -11,7 +11,7 @@ const Highlights: React.FC<HighlightsProps> = ({ highlights }) => {
     <div className="mt-8">
       <h2 className="  text-gray-900 mb-5 tracking-wide capitalize">
         <span className="bg-gradient-to-r font-medium from-gray-900 to-gray-700 bg-clip-text text-transparent">
-          Course Highlights
+          Course Highlights aaa
         </span>
       </h2>
 

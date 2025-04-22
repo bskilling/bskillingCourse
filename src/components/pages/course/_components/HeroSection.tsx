@@ -8,6 +8,7 @@ import { BookOpen, Clock, Award, Users, ChevronRight } from 'lucide-react';
 import { useState } from 'react';
 import PopupConsultationForm from './dialogs/Form';
 import PaymentGatewaySelector from '@/components/global/PaymentGatewaySelector';
+import CCAvPaymentForm from '@/components/global/CCAv';
 
 interface HeroSectionProps {
   category?: ICourse['category'];
@@ -145,15 +146,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 }
                 className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-5 rounded-lg font-medium text-base"
               >
-                Reach Us
+                Enquire Us
               </Button>
 
-              <PaymentGatewaySelector
-                courseId={courseId}
-                courseName=""
-                amount={amount}
-                currency="INR"
-              />
+              <CCAvPaymentForm courseId={courseId} courseName="" amount={amount} currency="INR" />
 
               {/* <Button
                 onClick={() =>

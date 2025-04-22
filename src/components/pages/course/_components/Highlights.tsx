@@ -32,7 +32,7 @@ const Highlights: React.FC<HighlightsProps> = ({ highlights, title = 'Course Hig
   };
 
   return (
-    <div className="w-full flex justify-center pb-16 -mt-10">
+    <div className="w-full flex justify-center pb-16 mt-10">
       <motion.div
         className="max-w-7xl w-full px-4 sm:px-6 lg:px-8"
         initial="hidden"

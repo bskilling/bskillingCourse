@@ -637,10 +637,10 @@ const CCAvPaymentForm: React.FC<PaymentFormProps> = ({
       <DialogTrigger asChild>
         <Button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-6 py-2 rounded-lg font-medium">
           <CreditCardIcon className="mr-2 h-5 w-5" />
-          Pay with CCAvenue
+          Buy Now
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[450px]">
+      <DialogContent className="sm:max-w-[450px] 2xl:max-w-[60vw]">
         <div className="relative">
           {/* BSkilling logo/branding at the top */}
           {currentStep !== PaymentStep.CONFIRMATION && currentStep !== PaymentStep.ERROR && (
@@ -650,7 +650,27 @@ const CCAvPaymentForm: React.FC<PaymentFormProps> = ({
               </div>
             </div>
           )}
-
+          <div className="p-4 mb-4 bg-white border border-blue-100 rounded-lg shadow-sm">
+            <h3 className="font-medium text-blue-800 mb-2">CCAvenue Payment</h3>
+            <p className="text-sm text-gray-600 mb-3">
+              Pay using Credit/Debit Card, Net Banking, UPI, or Wallet via CCAvenue's secure
+              gateway.
+            </p>
+            <div className="grid grid-cols-4 gap-2 items-center">
+              <div className="flex justify-center">
+                <img src="/payment-logo/Visa.png" alt="Visa" className="h-6" />
+              </div>
+              <div className="flex justify-center">
+                <img src="/payment-logo/Mastercard.png" alt="Mastercard" className="h-14" />
+              </div>
+              <div className="flex justify-center">
+                <img src="/payment-logo/RuPay.png" alt="RuPay" className="h-6" />
+              </div>
+              <div className="flex justify-center">
+                <img src="/payment-logo/UPI.png" alt="UPI" className="h-6" />
+              </div>
+            </div>
+          </div>
           {renderContent()}
 
           {currentStep !== PaymentStep.CONFIRMATION &&
