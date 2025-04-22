@@ -10,8 +10,8 @@ import {
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { CreditCard, Phone, BookOpen, BadgeCheck, Shield } from 'lucide-react';
-import CCAvPaymentForm from './CCAvenue';
 import PhonePePaymentForm from './PhonePay';
+import CCAvPaymentForm from './CCAv';
 
 interface PaymentProps {
   courseId: string;

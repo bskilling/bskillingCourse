@@ -23,7 +23,6 @@ import {
   ArrowRight,
   CheckCircle2,
   ArrowLeft,
-  ExternalLink,
   Shield,
   Clock,
   BookOpen,
@@ -32,6 +31,8 @@ import {
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { handleErrors } from '@/lib/handleError';
+import { useRouter } from 'next/navigation';
+import CCAvenue from '@/lib/CCAvenue';
 
 // Form schema that matches the backend API exactly
 const formSchema = z.object({
@@ -66,6 +67,8 @@ const CCAvPaymentForm: React.FC<PaymentFormProps> = ({
   courseName,
   currency = 'INR',
 }) => {
+  const host = typeof window !== 'undefined' ? window.location.origin : '';
+  const router = useRouter();
   const [open, setOpen] = useState(false);
   const [currentStep, setCurrentStep] = useState<PaymentStep>(PaymentStep.FORM);
   const [user, setUser] = useState<any>(null);
@@ -73,60 +76,8 @@ const CCAvPaymentForm: React.FC<PaymentFormProps> = ({
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [paymentData, setPaymentData] = useState<any>(null);
-  const [iframeHeight, setIframeHeight] = useState(700);
-  const [checkingStatus, setCheckingStatus] = useState(false);
   const [statusCheckInterval, setStatusCheckInterval] = useState<NodeJS.Timeout | null>(null);
-
-  const [apiResponse, setApiResponse] = useState<any>(null);
-  const [apiError, setApiError] = useState<string | null>(null);
-
-  const initiateDirectPayment = async (ccavData: any) => {
-    try {
-      // Prepare the request parameters as per CCAvenue API guide
-      const requestParams = {
-        enc_request: ccavData.encRequest,
-        access_code: ccavData.accessCode,
-        // command: 'initiateTransaction',
-        request_type: 'JSON', // or XML as specified in the API guide
-        version: '1.1',
-      };
-
-      // Make a direct API call
-      const response = await axios.post('https://secure.ccavenue.com', null, {
-        headers: {
-          'Content-Type': 'application/json',
-          // Add any additional headers required by CCAvenue
-        },
-        params: {
-          ...requestParams,
-        },
-      });
-
-      // Log the complete response for debugging
-      console.log('CCAvenue Direct API Response:', response.data);
-
-      // Handle different response scenarios
-      if (response.data.status === 'success') {
-        setApiResponse(response.data);
-        toast.success('Payment initiated successfully');
-      } else {
-        // Handle API-level errors
-        const errorMessage = response.data.error_desc || 'Payment initiation failed';
-        setApiError(errorMessage);
-        // onError(errorMessage);
-        toast.error(errorMessage);
-      }
-    } catch (error: any) {
-      // Handle network or unexpected errors
-      console.error('CCAvenue API Error:', error);
-      const errorMessage =
-        error.response?.data?.message || error.message || 'Unexpected error during payment';
-
-      setApiError(errorMessage);
-      // onError(errorMessage);
-      toast.error(errorMessage);
-    }
-  };
+  const [checkingStatus, setCheckingStatus] = useState(false);
 
   // Initialize form with React Hook Form
   const form = useForm<FormValues>({
@@ -203,46 +154,55 @@ const CCAvPaymentForm: React.FC<PaymentFormProps> = ({
     setError(null);
 
     try {
-      if (!user || !accessToken) {
-        throw new Error('Missing user or token information');
+      if (!user) {
+        throw new Error('Missing user information');
       }
 
-      // Call initiate-payment endpoint
-      const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/ccavenue/initiate-payment`,
-        {
-          userId: user._id,
-          courseId: courseId,
-          amount: amount * 100, // Convert to paisa
-          ipAddress: '',
-          userAgent: navigator.userAgent,
+      // Prepare CCAvenue payment data
+      let paymentData = {
+        merchant_id: '2492757', // Merchant ID (Required)
+        order_id: `ORD_${Date.now()}`, // Generate unique Order ID
+        amount: amount.toString(), // Payment Amount (Required)
+        currency: currency, // Payment Currency Type (Required)
+        billing_email: user.email, // Billing Email
+        billing_name: user.name, // Billing Name
+        billing_tel: user.phone, // Billing Mobile Number
+        redirect_url: `${host}/api/ccavenue-handle`, // Success URL (Required)
+        cancel_url: `${host}/api/ccavenue-handle`, // Failed/Cancel Payment URL (Required)
+        language: 'EN', // Language (Default English)
+        merchant_param1: courseId, // Course ID as parameter
+      };
+
+      // Get encrypted order data from CCAvenue utility
+      let encReq = CCAvenue.getEncryptedOrder(paymentData);
+      let accessCode = 'AVHG70KE18CC51GHCC';
+      let URL = `https://secure.ccavenue.com/transaction/transaction.do?command=initiateTransaction&merchant_id=${paymentData.merchant_id}&encRequest=${encReq}&access_code=${accessCode}`;
+
+      // Store payment data for reference
+      setPaymentData({
+        payment: {
+          merchantOrderId: paymentData.order_id,
         },
-        {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        }
-      );
-
-      if (!response.data.success) {
-        throw new Error(response.data.message || 'Failed to initiate payment');
-      }
-
-      // Store payment data
-
-      console.log('Payment Data:12131231232131231233212', response.data.data);
-
-      setPaymentData(response.data.data);
+        ccavData: {
+          encRequest: encReq,
+          accessCode: accessCode,
+          ccavSubmitUrl: URL,
+        },
+      });
 
       // Move to processing step
       setCurrentStep(PaymentStep.PROCESSING);
 
       // Start checking for payment status
-      startStatusCheck(response.data.data.payment.merchantOrderId);
-      initiateDirectPayment(response.data.data.ccavData);
+      startStatusCheck(paymentData.order_id);
+
+      // Redirect to CCAvenue payment gateway
+      router.push(URL);
+
       toast.success('Payment Initiated: Complete the payment in the secure payment form.');
     } catch (err: any) {
-      const errorMessage = handleErrors(err);
+      const errorMessage =
+        typeof err === 'string' ? err : err.message || 'Failed to initiate payment';
       setError(errorMessage);
       setCurrentStep(PaymentStep.ERROR);
       toast.error(errorMessage);
@@ -321,11 +281,7 @@ const CCAvPaymentForm: React.FC<PaymentFormProps> = ({
       setIsLoading(false);
     }
   };
-  console.log('Payment Data:', {
-    encRequest: paymentData?.ccavData.encRequest,
-    accessCode: paymentData?.ccavData.accessCode,
-    ccavSubmitUrl: paymentData?.ccavData.ccavSubmitUrl,
-  });
+
   // Render different content based on the current step
   const renderContent = () => {
     switch (currentStep) {
@@ -499,8 +455,7 @@ const CCAvPaymentForm: React.FC<PaymentFormProps> = ({
                   <div>
                     <p className="text-sm font-medium mb-1">Secure Payment via CCAvenue</p>
                     <p className="text-xs">
-                      You'll be presented with multiple payment options to complete your purchase
-                      securely.
+                      You'll be redirected to CCAvenue to complete your purchase securely.
                     </p>
                   </div>
                 </div>
@@ -551,7 +506,8 @@ const CCAvPaymentForm: React.FC<PaymentFormProps> = ({
 
             <div className="my-3 text-center">
               <p className="text-gray-600 mb-4">
-                Please complete your payment below. Do not refresh this page.
+                You are being redirected to CCAvenue payment gateway. Please do not refresh this
+                page.
               </p>
             </div>
 
@@ -561,14 +517,6 @@ const CCAvPaymentForm: React.FC<PaymentFormProps> = ({
                 <span className="text-sm">{error}</span>
               </div>
             )}
-
-            {/* CCAvenue iFrame payment form */}
-            {paymentData ? (
-              <div>
-                <p>Waiting for payment to complete</p>
-                <p>{apiResponse && JSON.stringify(apiResponse)}</p>
-              </div>
-            ) : null}
 
             <div className="flex flex-col space-y-3 mt-3">
               <Button
