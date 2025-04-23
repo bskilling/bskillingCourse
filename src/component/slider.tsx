@@ -19,7 +19,7 @@ const Slider = () => {
   // Create a stable reference to the autoplay plugin
   const plugin = React.useRef(
     Autoplay({
-      delay: 2000,
+      delay: 4500,
       stopOnInteraction: true,
       // @ts-expect-error - type error
       rootMargin: '0px', // Helps with visibility detection
@@ -50,7 +50,7 @@ const Slider = () => {
             </Link>
           </CarouselItem>
           <CarouselItem>
-            <Link href="/college-training/skill-assisting-program">
+            <Link href="/institutions/skill-development-programs">
               <img
                 src="/new-image/skill-development.webp"
                 alt="Skill development program"

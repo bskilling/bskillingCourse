@@ -17,17 +17,18 @@ const CourseEnrollment: React.FC<CourseEnrollmentProps> = ({
   // Calculate the "original" price by increasing the actual price by 20%
   // Remove commas from formattedPrice and convert to number
   const actualPrice = parseInt(formattedPrice.replace(/,/g, ''));
-  const increasedPrice = actualPrice;
+  const discountPercentage = 20;
   const displayOriginalPrice = actualPrice - Math.round(actualPrice * 0.2);
 
+  // const increasedPrice = actualPrice;
+
   // The discount percentage (hardcoded to 65% as per the design)
-  const discountPercentage = 20;
 
   return (
     <section id="pricing" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       <div className="flex items-center space-x-3 mb-8">
         <div className="w-1.5 h-8 bg-blue-600 rounded-full"></div>
-        <h2 className="text-2xl font-bold text-gray-800">Enrollment Details</h2>
+        <h2 className="text-2xl font-bold text-gray-800">Enrollment Details asasasas</h2>
       </div>
 
       <div className="bg-white rounded-xl shadow-lg overflow-hidden">

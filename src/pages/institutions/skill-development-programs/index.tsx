@@ -39,6 +39,100 @@ import SkillLeadForm from '@/components/pages/institution/SkillLeadForm';
 import SkillPrograms from '@/components/pages/institution/SkillPrograms';
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 
+// SkillOffering Component
+function SkillOffering() {
+  return (
+    <div className="">
+      <h4 className="text-3xl font-bold text-center mt-5 md:mt-0">
+        Bridging Skills Across Multiple Industries
+      </h4>
+      <div className="grid md:grid-cols-3 grid-cols-2 gap-5  lg:grid-cols-5  m-auto mt-10 px-1 md:px-5 ">
+        {Object.entries(skillDevelopmentAreas).map(([key, value]) => (
+          <Card key={key} className="w-full">
+            <CardHeader className="p-0">
+              <img
+                src={value.imageBanner}
+                alt={'Image-banner'}
+                className="object-cover h-[200px]"
+              />
+
+              <CardTitle className="p-2">{value.title}</CardTitle>
+            </CardHeader>
+            <CardContent className="p-2 text-sm">
+              <div className="space-y-2 text-xs">
+                {value.subTitles.map((subTitle, index) => (
+                  <div key={index} className="flex items-center text-sm">
+                    <div className="w-[10%]">
+                      <div className=" h-2 w-2 bg-blue-500 rounded-full"></div>
+                    </div>
+                    <div className="w-5/6">
+                      <p className="text-xs">{subTitle}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+            <CardFooter>{/* <p>Card Footer</p> */}</CardFooter>
+          </Card>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+const skillDevelopmentAreas = {
+  informationTechnology: {
+    title: 'Information Technology (IT)',
+    icon: 'it-icon.svg', // Optional icon
+    imageBanner: '/new-image/institutions/hhhh.avif', // Optional image banner
+    subTitles: [
+      'Software Development',
+      'Cloud Computing',
+      'Cybersecurity',
+      'Artificial Intelligence (AI) & Machine Learning (ML)',
+      'Data Science and Analytics',
+    ],
+  },
+  businessManagement: {
+    title: 'Business and Management',
+    icon: 'business-icon.svg',
+    imageBanner: '/new-image/bussiness.webp',
+    subTitles: [
+      'Product Management',
+      'Project Management (PMP, Agile, Scrum)',
+      'Digital Marketing',
+      'Human Resource Management',
+    ],
+  },
+  retailEcommerce: {
+    title: 'Retail and E-commerce',
+    icon: 'retail-icon.svg',
+    imageBanner: '/new-image/ecom.webp',
+    subTitles: [
+      'Digital Transformation in Retail',
+      'Customer Relationship Management (CRM)',
+      'Data-Driven Marketing',
+    ],
+  },
+  telecommunications: {
+    title: 'Telecommunications',
+    icon: 'telecom-icon.svg',
+    imageBanner: '/new-image/telecom.webp',
+    subTitles: ['Networking and Infrastructure', 'IoT in Telecommunications', '5G Technologies'],
+  },
+  healthcare: {
+    title: 'Healthcare',
+    icon: 'healthcare-icon.svg',
+    imageBanner: '/new-image/doctor.webp',
+    subTitles: [
+      'Medical Coding and Billing',
+      'Pharmacovigilance',
+      'Clinical Data Management',
+      'Healthcare IT',
+    ],
+  },
+};
+
 export default function SkillDevelopmentPrograms() {
   // Animation variants
   const fadeIn = {
@@ -228,8 +322,9 @@ export default function SkillDevelopmentPrograms() {
               </h1>
 
               <p className="text-lg lg:text-xl text-slate-200 max-w-2xl">
-                Build industry-ready skills through expert-led courses, hands-on projects, and
-                personalized mentorship to excel in today&apos;s competitive job market.
+                EMPOWERING STUDENTS WITH IN-DEMAND SKILLS FOR A BRIGHTER FUTURE. Designed to bridge
+                the gap between academic learning and industry requirements with comprehensive
+                training in technical and professional skills.
               </p>
             </motion.div>
             <div className=" flex justify-end ">
@@ -242,47 +337,90 @@ export default function SkillDevelopmentPrograms() {
       </section>
       <SkillPrograms skill />
 
-      {/* Program Features Section */}
-      <section className="py-20 bg-slate-50">
-        <div className="container mx-auto px-6">
-          <motion.div
-            className="max-w-3xl mx-auto text-center mb-16"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            <div className="inline-flex items-center justify-center mb-4">
-              <LucideBrainCircuit className="h-10 w-10 text-indigo-600" />
-            </div>
-            <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
-              What Makes Our Program Different
-            </h2>
-            <p className="text-lg text-slate-600">
-              Our curriculum is continuously updated to reflect the latest industry trends and
-              technologies, ensuring you stay ahead in the rapidly evolving job market.
-            </p>
-          </motion.div>
+      {/* Program Features Section with content from first snippet */}
+      <ProgramFocusSection />
 
-          <motion.div
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-            variants={staggerContainer}
-            initial="hidden"
-            animate="visible"
-          >
-            {programFeatures.map((feature, index) => (
-              <motion.div
-                key={index}
-                variants={fadeIn}
-                className="bg-white rounded-xl p-6 shadow-sm border border-slate-200 hover:shadow-md transition-shadow"
-              >
-                <div className="w-12 h-12 rounded-lg bg-indigo-100 flex items-center justify-center text-indigo-600 mb-4">
-                  {feature.icon}
-                </div>
-                <h3 className="text-xl font-semibold text-slate-900 mb-2">{feature.title}</h3>
-                <p className="text-slate-600">{feature.description}</p>
-              </motion.div>
-            ))}
-          </motion.div>
+      {/* Key Highlights Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="max-w-3xl mx-auto text-center mb-12">
+            <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
+              Key Highlights of the Program
+            </h2>
+          </div>
+
+          <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
+            <div className="bg-gradient-to-br from-indigo-50 to-blue-50 p-6 rounded-xl">
+              <h3 className="text-xl font-semibold text-indigo-800 mb-3">
+                <span className="text-indigo-600 font-semibold">Hands-on Projects:</span>
+              </h3>
+              <p className="text-slate-700">
+                Real-world projects to help students apply their classroom knowledge in practical
+                scenarios.
+              </p>
+            </div>
+
+            <div className="bg-gradient-to-br from-indigo-50 to-blue-50 p-6 rounded-xl">
+              <h3 className="text-xl font-semibold text-indigo-800 mb-3">
+                <span className="text-indigo-600 font-semibold">Comprehensive Skill Training:</span>
+              </h3>
+              <p className="text-slate-700">
+                Covering both technical and soft skills to create well-rounded professionals.
+              </p>
+            </div>
+
+            <div className="bg-gradient-to-br from-indigo-50 to-blue-50 p-6 rounded-xl">
+              <h3 className="text-xl font-semibold text-indigo-800 mb-3">
+                <span className="text-indigo-600 font-semibold">Modern Tools & Technologies:</span>
+              </h3>
+              <p className="text-slate-700">
+                Exposure to IT systems, data analytics, and emerging technologies.
+              </p>
+            </div>
+
+            <div className="bg-gradient-to-br from-indigo-50 to-blue-50 p-6 rounded-xl">
+              <h3 className="text-xl font-semibold text-indigo-800 mb-3">
+                <span className="text-indigo-600 font-semibold">Industry-Relevant Curriculum:</span>
+              </h3>
+              <p className="text-slate-700">
+                A carefully curated curriculum aligned with current market demands and trends.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SkillOffering Section */}
+      <section className="py-16 bg-slate-50">
+        <div className="container mx-auto px-6">
+          <SkillOffering />
+        </div>
+      </section>
+
+      {/* How It Works Section */}
+      <section className="py-16 bg-gradient-to-br from-blue-300 to-blue-700 text-white">
+        <div className="container mx-auto px-6">
+          <h4 className="text-3xl font-bold text-center mb-10">How It Works?</h4>
+          <div className="flex flex-col md:flex-row items-center justify-center gap-6">
+            <div className="bg-white text-indigo-900 w-full md:w-1/3 p-6 rounded-xl shadow-xl text-center">
+              <h3 className="font-bold text-xl mb-2">Enroll in Course</h3>
+              <p>Begin your journey to skill enhancement</p>
+            </div>
+
+            <ArrowRight className="hidden md:block h-10 w-10" />
+
+            <div className="bg-white text-indigo-900 w-full md:w-1/3 p-6 rounded-xl shadow-xl text-center">
+              <h3 className="font-bold text-xl mb-2">Get Training</h3>
+              <p>Online/offline comprehensive learning</p>
+            </div>
+
+            <ArrowRight className="hidden md:block h-10 w-10" />
+
+            <div className="bg-white text-indigo-900 w-full md:w-1/3 p-6 rounded-xl shadow-xl text-center">
+              <h3 className="font-bold text-xl mb-2">Get Certification</h3>
+              <p>Earn industry-recognized credentials</p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -305,39 +443,6 @@ export default function SkillDevelopmentPrograms() {
                     alt="Students learning tech skills"
                     className="w-full h-auto object-cover rounded-2xl"
                   />
-                  {/* <div className="absolute inset-0 bg-gradient-to-t from-indigo-900/40 to-transparent"></div>
-                  <div className="absolute -bottom-10 left-0 right-0 p-8">
-                    <div className="bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg">
-                      <div className="flex items-center space-x-4 mb-4">
-                        <BadgeCheck className="h-8 w-8 text-indigo-600" />
-                        <div>
-                          <h4 className="text-lg font-semibold text-slate-900">
-                            Industry Recognized
-                          </h4>
-                          <p className="text-slate-600">
-                            Our certifications are valued by top employers
-                          </p>
-                        </div>
-                      </div>
-                      <div className="flex items-center justify-between">
-                        <div className="flex space-x-1">
-                          {[1, 2, 3, 4, 5].map((star) => (
-                            <svg
-                              key={star}
-                              className="w-5 h-5 text-yellow-400"
-                              fill="currentColor"
-                              viewBox="0 0 20 20"
-                            >
-                              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                            </svg>
-                          ))}
-                        </div>
-                        <span className="text-slate-700 font-medium">
-                          4.9/5 (500+ reviews)
-                        </span>
-                      </div>
-                    </div>
-                  </div> */}
                 </div>
               </div>
             </motion.div>
@@ -349,57 +454,122 @@ export default function SkillDevelopmentPrograms() {
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               <h2 className="text-3xl lg:text-4xl font-bold text-slate-900">
-                Empowering Students with <span className="text-indigo-600">In-Demand Skills</span>
+                Why Choose <span className="text-indigo-600">Us?</span>
               </h2>
 
               <p className="text-lg text-slate-700">
-                The Skill Development Program bridges the gap between academic learning and industry
-                requirements. Our comprehensive training combines theoretical knowledge with
-                practical application, preparing you for real-world challenges.
+                With over 13+ years of experience in the EdTech industry, we stand as a pioneer in
+                enhancing employability and preparing students for the future workforce.
               </p>
 
               <div className="space-y-4">
-                {[
-                  {
-                    title: 'Cutting-Edge Curriculum',
-                    description:
-                      'Regularly updated to reflect the latest industry trends and technologies',
-                  },
-                  {
-                    title: 'Learn by Doing',
-                    description:
-                      'Project-based learning with real-world applications and challenges',
-                  },
-                  {
-                    title: 'Personalized Support',
-                    description:
-                      'One-on-one mentorship from industry experts to guide your learning journey',
-                  },
-                ].map((item, index) => (
-                  <div key={index} className="flex space-x-4">
-                    <div className="flex-shrink-0 h-6 w-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center">
-                      <svg
-                        width="12"
-                        height="12"
-                        viewBox="0 0 12 12"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M10 3L4.5 8.5L2 6"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-slate-900">{item.title}</h4>
-                      <p className="text-slate-600">{item.description}</p>
-                    </div>
+                <div className="flex space-x-4">
+                  <div className="flex-shrink-0 h-6 w-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center">
+                    <svg
+                      width="12"
+                      height="12"
+                      viewBox="0 0 12 12"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M10 3L4.5 8.5L2 6"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
                   </div>
-                ))}
+                  <div>
+                    <h4 className="font-semibold text-slate-900">
+                      Collaboration with 350+ colleges
+                    </h4>
+                    <p className="text-slate-600">
+                      across India ensures a wide-reaching impact on student skill development.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex space-x-4">
+                  <div className="flex-shrink-0 h-6 w-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center">
+                    <svg
+                      width="12"
+                      height="12"
+                      viewBox="0 0 12 12"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M10 3L4.5 8.5L2 6"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-slate-900">
+                      Partnerships with 500+ global companies
+                    </h4>
+                    <p className="text-slate-600">
+                      open doors for valuable industry insights and opportunities.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex space-x-4">
+                  <div className="flex-shrink-0 h-6 w-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center">
+                    <svg
+                      width="12"
+                      height="12"
+                      viewBox="0 0 12 12"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M10 3L4.5 8.5L2 6"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-slate-900">
+                      Trusted by reputed organizations
+                    </h4>
+                    <p className="text-slate-600">
+                      like Karnataka Skill Development Corporation, Naan Mudhalvan, and NASSCOM.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex space-x-4">
+                  <div className="flex-shrink-0 h-6 w-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center">
+                    <svg
+                      width="12"
+                      height="12"
+                      viewBox="0 0 12 12"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M10 3L4.5 8.5L2 6"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-slate-900">6000+ Students Trained</h4>
+                    <p className="text-slate-600">with proven success in career advancement.</p>
+                  </div>
+                </div>
               </div>
 
               <div className="pt-4">
@@ -445,3 +615,88 @@ export default function SkillDevelopmentPrograms() {
     </>
   );
 }
+
+import React from 'react';
+import {
+  LucideCode,
+  LucideUsers,
+  LucideTrophy,
+  LucideGraduationCap,
+  LucideLightbulb,
+} from 'lucide-react';
+
+const ProgramFocusSection = () => {
+  const programFeatures = [
+    {
+      icon: <LucideCode />,
+      title: 'Bridging the Gap',
+      description:
+        'Connecting theoretical academic knowledge with practical industry requirements through real-world applications.',
+    },
+    {
+      icon: <LucideUsers />,
+      title: 'Empowering Students',
+      description:
+        'Building confidence in students to apply theoretical knowledge effectively in real-world scenarios.',
+    },
+    {
+      icon: <LucideGraduationCap />,
+      title: 'Industry Relevance',
+      description:
+        'Keeping students updated with current industry trends, tools, and cutting-edge technologies.',
+    },
+    {
+      icon: <LucideLightbulb />,
+      title: 'Problem-Solving Skills',
+      description:
+        'Developing critical thinking abilities through hands-on experiences and challenging projects.',
+    },
+    {
+      icon: <LucideTrophy />,
+      title: 'Expert Mentorship',
+      description:
+        'Learning directly from industry experts through workshops and personalized mentorship sessions.',
+    },
+    {
+      icon: <LucideBrainCircuit />,
+      title: 'Real-World Challenges',
+      description:
+        'Tackling authentic challenges that prepare students for the demands of professional environments.',
+    },
+  ];
+
+  return (
+    <section className="py-20 bg-slate-50">
+      <div className="container mx-auto px-6">
+        <div className="max-w-3xl mx-auto text-center mb-16">
+          <div className="inline-flex items-center justify-center mb-4">
+            <LucideBrainCircuit className="h-10 w-10 text-indigo-600" />
+          </div>
+          <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
+            Program Focus Areas
+          </h2>
+          <p className="text-lg text-slate-600">
+            The program includes workshops, hands-on projects, and mentorship sessions conducted by
+            industry experts. Students are presented with real-world challenges to enhance their
+            problem-solving and critical-thinking abilities.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {programFeatures.map((feature, index) => (
+            <div
+              key={index}
+              className="bg-white rounded-xl p-6 shadow-sm border border-slate-200 hover:shadow-md transition-shadow"
+            >
+              <div className="w-12 h-12 rounded-lg bg-indigo-100 flex items-center justify-center text-indigo-600 mb-4">
+                {feature.icon}
+              </div>
+              <h3 className="text-xl font-semibold text-slate-900 mb-2">{feature.title}</h3>
+              <p className="text-slate-600">{feature.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};

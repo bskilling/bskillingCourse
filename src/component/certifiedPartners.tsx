@@ -22,6 +22,8 @@ const CertifiedPartners = () => {
     '/edu&car/1.png',
     '/edu&car/4.png',
     '/edu&car/3.png',
+    '/new-image/partners/PeopleCert.png',
+    '/new-image/partners/PMI.png',
   ];
   return (
     <>

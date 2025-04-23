@@ -466,14 +466,14 @@ export default function Courses() {
 
                             {/* Rating and Students */}
                             <div className="flex items-center gap-3 text-xs text-gray-600">
-                              <div className="flex items-center">
+                              {/* <div className="flex items-center">
                                 <FaStar className="text-yellow-400 mr-1" />
                                 <span>{rating.toFixed(1)}</span>
-                              </div>
-                              <div className="flex items-center">
+                              </div> */}
+                              {/* <div className="flex items-center">
                                 <FaUsers className="text-gray-400 mr-1" />
                                 <span>{studentCount.toLocaleString()} students</span>
-                              </div>
+                              </div> */}
                             </div>
 
                             {/* Date Range */}
