@@ -9,6 +9,7 @@ import { useState } from 'react';
 import PopupConsultationForm from './dialogs/Form';
 
 import PaymentGatewaySelector from '@/components/global/PaymentGatewaySelector';
+import CCAvPaymentForm from '@/components/global/CCAv';
 
 interface HeroSectionProps {
   category?: ICourse['category'];
@@ -20,6 +21,7 @@ interface HeroSectionProps {
   courseId: string;
   amount: number;
   currency?: string;
+  isPaid: boolean;
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({
@@ -32,6 +34,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   amount,
   courseId,
   currency,
+  isPaid,
 }) => {
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [formType, setFormType] = useState<'b2c' | 'b2b' | 'b2i' | 'general' | 'b2g'>('b2g');
@@ -148,27 +151,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               >
                 Enquire Now
               </Button>
-              <PaymentGatewaySelector
-                courseId={courseId}
-                courseName=""
-                amount={amount}
-                currency="INR"
-              />
-
-              {/* <Button
-                onClick={() =>
-                  openConsultationForm(
-                    'b2i',
-                    'Download Complete Syllabus',
-                    'Please fill in your details to receive the comprehensive syllabus directly in your inbox. Our team is available to answer any questions you may have about the course content or structure.'
-                  )
-                }
-                variant="outline"
-                className="border-blue-200 text-blue-600 hover:bg-blue-50 px-6 py-5 rounded-lg font-medium text-base"
-              >
-                Download Syllabus
-                <ChevronRight className="ml-1 w-4 h-4" />
-              </Button> */}
+              {isPaid && (
+                <CCAvPaymentForm courseId={courseId} courseName="" amount={amount} currency="INR" />
+              )}
             </motion.div>
 
             {/* Social Proof */}

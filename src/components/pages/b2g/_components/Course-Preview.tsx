@@ -53,6 +53,7 @@ import CertificationSection from './certificate1';
 import CriteriaSection from './Creteria';
 import PopupConsultationForm from './dialogs/Form';
 import PaymentForm from '@/component/modules/leadChat/components/PaymentForm';
+import FreeCourseEnrollment from './FreeCourse';
 
 // Adjust this type as needed.
 export interface TDraftCourseForm {
@@ -486,6 +487,7 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
         amount={price.amount}
         currency={price.currency}
         courseId={_id}
+        isPaid={isPaid}
       />
       {/* <PaymentForm courseDetails={courseData} /> */}
       <CourseDetails
@@ -503,11 +505,17 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
       <Outcomes outcomes={outcomes || []} />
 
       <CertificationSection certification={certification} />
-      <CourseEnrollment
-        formattedPrice={formattedPrice}
-        durationHours={durationHours}
-        isPaid={isPaid}
-      />
+
+      {isPaid ? (
+        <CourseEnrollment
+          formattedPrice={formattedPrice}
+          durationHours={durationHours}
+          isPaid={isPaid}
+        />
+      ) : (
+        <FreeCourseEnrollment durationHours={durationHours} _id={_id} courseName={title} />
+      )}
+
       <CriteriaSection curriculum={curriculum} />
       <WhyJoinSection whyJoin={whyJoin} />
       <FAQSection faqs={faqs} />

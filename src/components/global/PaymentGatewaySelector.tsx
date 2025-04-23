@@ -81,6 +81,12 @@ const PaymentGatewaySelector: React.FC<PaymentProps> = ({
             </TabsList>
 
             <TabsContent value="ccavenue" className="mt-0">
+              <CCAvPaymentForm
+                courseId={courseId}
+                amount={amount}
+                courseName={courseName}
+                currency={currency}
+              />
               <div className="p-4 mb-4 bg-white border border-blue-100 rounded-lg shadow-sm">
                 <h3 className="font-medium text-blue-800 mb-2">CCAvenue Payment</h3>
                 <p className="text-sm text-gray-600 mb-3">
@@ -105,12 +111,6 @@ const PaymentGatewaySelector: React.FC<PaymentProps> = ({
                   </div>
                 </div>
               </div>
-              <CCAvPaymentForm
-                courseId={courseId}
-                amount={amount}
-                courseName={courseName}
-                currency={currency}
-              />
             </TabsContent>
 
             <TabsContent value="phonepe" className="mt-0">

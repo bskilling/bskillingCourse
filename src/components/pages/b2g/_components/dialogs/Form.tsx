@@ -155,7 +155,7 @@ const PopupConsultationForm: React.FC<PopupFormProps> = ({
 
   return (
     <Dialog open={isOpen} onOpenChange={open => !open && onClose()}>
-      <DialogContent className="w-10/12 md:max-w-7xl  max-h-[80vh]  rounded-md  p-0 overflow-y-auto border-none">
+      <DialogContent className="w-10/12 md:max-w-[60vw]  max-h-[80vh]  rounded-md  p-0 overflow-y-auto border-none">
         {submitMutation.isSuccess ? (
           <div className="p-8 flex flex-col items-center justify-center">
             <div className="bg-green-100 rounded-full p-3 mb-4">
