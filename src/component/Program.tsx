@@ -12,9 +12,19 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { BookOpen, Search } from 'lucide-react';
 import { useRouter } from 'next/router';
+import { FaCalendarAlt } from 'react-icons/fa';
 
 const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL ?? 'https://backendbskilling.up.railway.app';
 
+const formatDate = (dateString: string) => {
+  if (!dateString) return '';
+  const date = new Date(dateString);
+  return new Intl.DateTimeFormat('en-US', {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+  }).format(date);
+};
 export default function Program() {
   const selectedType = 'b2c';
   const [show, setShow] = useState(false);
@@ -328,6 +338,20 @@ const EnhancedCourseCard = ({ course }: { course: ICourse }) => {
             </div>
           </div>
 
+          {/* Date Range */}
+          {(course.startTime || course.endTime) && (
+            <div className="flex items-center text-xs text-gray-600 bg-blue-50 p-2 rounded-md">
+              <FaCalendarAlt className="text-blue-500 mr-2 flex-shrink-0" />
+              <div>
+                {course.startTime && (
+                  <div className="font-medium">Start: {formatDate(course.startTime)}</div>
+                )}
+                {course.endTime && (
+                  <div className="font-medium">End: {formatDate(course.endTime)}</div>
+                )}
+              </div>
+            </div>
+          )}
           <div className="flex justify-between items-center">
             <div>
               {!course.isPaid ? (

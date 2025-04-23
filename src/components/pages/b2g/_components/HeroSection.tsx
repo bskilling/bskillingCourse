@@ -10,6 +10,7 @@ import PopupConsultationForm from './dialogs/Form';
 
 import PaymentGatewaySelector from '@/components/global/PaymentGatewaySelector';
 import CCAvPaymentForm from '@/components/global/CCAv';
+import SsoRegistrationForm from '@/components/global/EnrollForm';
 
 interface HeroSectionProps {
   category?: ICourse['category'];
@@ -139,18 +140,25 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               transition={{ duration: 0.5, delay: 0.4 }}
               className="flex flex-wrap gap-4 pt-2"
             >
-              <Button
-                onClick={() =>
-                  openConsultationForm(
-                    'b2g',
-                    'Enroll Now',
-                    'Please fill in your details to receive the comprehensive syllabus directly in your inbox. Our team is available to answer any questions you may have about the course content or structure.'
-                  )
-                }
-                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-5 rounded-lg font-medium text-base"
-              >
-                Enquire Now
-              </Button>
+              {isPaid ? (
+                <>
+                  <Button
+                    onClick={() =>
+                      openConsultationForm(
+                        'b2g',
+                        'Enroll Now',
+                        'Please fill in your details to receive the comprehensive syllabus directly in your inbox. Our team is available to answer any questions you may have about the course content or structure.'
+                      )
+                    }
+                    className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-5 rounded-lg font-medium text-base"
+                  >
+                    Enquire Now
+                  </Button>{' '}
+                </>
+              ) : (
+                <SsoRegistrationForm buttonText="Sign In / Register" courseId={courseId} />
+              )}
+
               {isPaid && (
                 <CCAvPaymentForm courseId={courseId} courseName="" amount={amount} currency="INR" />
               )}

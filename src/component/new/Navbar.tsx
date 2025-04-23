@@ -565,7 +565,7 @@ const NavbarSection: React.FC = () => {
         }
 
         .animate-scroll-rtl {
-          animation: scroll-rtl 25s linear infinite;
+          animation: scroll-rtl 45s linear infinite;
         }
 
         @keyframes pulse-subtle {

@@ -65,6 +65,18 @@ const CertifiedPartnersSlider = () => {
       logo: '/edu&car/3.png',
       size: { width: 110, height: 55 }, // Reduced size
     },
+    {
+      id: 9,
+      name: 'Partner 9',
+      logo: '/new-image/partners/PeopleCert.png',
+      size: { width: 110, height: 55 }, // Reduced size
+    },
+    {
+      id: 10,
+      name: 'Partner 10',
+      logo: '/new-image/partners/PMI.png',
+      size: { width: 110, height: 55 }, // Reduced size
+    },
   ];
 
   return (
