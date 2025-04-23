@@ -49,6 +49,8 @@ interface PaymentFormProps {
   amount: number;
   courseName: string;
   currency?: string;
+  open?: boolean;
+  setOpenProp?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 // Payment flow steps
@@ -66,10 +68,12 @@ const CCAvPaymentForm: React.FC<PaymentFormProps> = ({
   amount,
   courseName,
   currency = 'INR',
+  open: openProp,
+  setOpenProp,
 }) => {
   const host = typeof window !== 'undefined' ? window.location.origin : '';
   const router = useRouter();
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(openProp ?? false);
   const [currentStep, setCurrentStep] = useState<PaymentStep>(PaymentStep.FORM);
   const [user, setUser] = useState<any>(null);
   const [accessToken, setAccessToken] = useState<string | null>(null);
@@ -635,21 +639,24 @@ const CCAvPaymentForm: React.FC<PaymentFormProps> = ({
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-6 py-2 rounded-lg font-medium">
-          <CreditCardIcon className="mr-2 h-5 w-5" />
-          Buy Now
-        </Button>
+        {!openProp && (
+          <Button className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-6 py-5 rounded-lg font-medium">
+            <CreditCardIcon className="mr-2 h-5 w-5" />
+            Buy Now
+          </Button>
+        )}
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[450px] 2xl:max-w-[60vw]">
+      <DialogContent className="sm:max-w-[450px] 2xl:max-w-[60vw] h-[80vh] overflow-y-auto">
         <div className="relative">
           {/* BSkilling logo/branding at the top */}
-          {currentStep !== PaymentStep.CONFIRMATION && currentStep !== PaymentStep.ERROR && (
+          {/* {currentStep !== PaymentStep.CONFIRMATION && currentStep !== PaymentStep.ERROR && (
             <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-white rounded-full p-2 shadow-md">
               <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white h-12 w-12 rounded-full flex items-center justify-center font-bold text-lg">
                 BS
               </div>
             </div>
-          )}
+          )} */}
+          {renderContent()}
           <div className="p-4 mb-4 bg-white border border-blue-100 rounded-lg shadow-sm">
             <h3 className="font-medium text-blue-800 mb-2">CCAvenue Payment</h3>
             <p className="text-sm text-gray-600 mb-3">
@@ -671,8 +678,6 @@ const CCAvPaymentForm: React.FC<PaymentFormProps> = ({
               </div>
             </div>
           </div>
-          {renderContent()}
-
           {currentStep !== PaymentStep.CONFIRMATION &&
             currentStep !== PaymentStep.ERROR &&
             currentStep !== PaymentStep.PROCESSING && (

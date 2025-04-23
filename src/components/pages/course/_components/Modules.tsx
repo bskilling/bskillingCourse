@@ -89,10 +89,6 @@ export default function Modules({ chapters }: ModulesProps) {
                         <PlayCircle className="h-3.5 w-3.5 mr-1" />
                         {chapter.lessons.length} lessons
                       </span>
-                      <span className="flex items-center">
-                        <Clock className="h-3.5 w-3.5 mr-1" />
-                        {Math.round(8000 / 60)} min
-                      </span>
                     </div>
                   </div>
                 </div>

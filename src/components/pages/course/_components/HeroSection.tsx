@@ -9,6 +9,7 @@ import { useState } from 'react';
 import PopupConsultationForm from './dialogs/Form';
 import PaymentGatewaySelector from '@/components/global/PaymentGatewaySelector';
 import CCAvPaymentForm from '@/components/global/CCAv';
+import { FaHeadset } from 'react-icons/fa';
 
 interface HeroSectionProps {
   category?: ICourse['category'];
@@ -20,6 +21,7 @@ interface HeroSectionProps {
   courseId: string;
   amount: number;
   currency?: string;
+  isPaid: boolean;
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({
@@ -32,6 +34,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   amount,
   courseId,
   currency,
+  isPaid,
 }) => {
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [formType, setFormType] = useState<'b2c' | 'b2b' | 'b2i' | 'general'>('b2c');
@@ -146,10 +149,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 }
                 className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-5 rounded-lg font-medium text-base"
               >
-                Enquire Us
+                <FaHeadset className="mr-2 w-4 h-4" /> Enquire Us
               </Button>
 
-              <CCAvPaymentForm courseId={courseId} courseName="" amount={amount} currency="INR" />
+              {isPaid && (
+                <CCAvPaymentForm courseId={courseId} courseName="" amount={amount} currency="INR" />
+              )}
 
               {/* <Button
                 onClick={() =>
