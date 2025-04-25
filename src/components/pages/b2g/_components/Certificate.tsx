@@ -18,6 +18,7 @@ interface CourseDetailsProps {
     description: string;
     keyFeatures: string[];
   };
+  isPaid: boolean;
 }
 
 const CourseDetails: React.FC<CourseDetailsProps> = ({
@@ -28,6 +29,7 @@ const CourseDetails: React.FC<CourseDetailsProps> = ({
   enrollmentEnd,
   certification,
   overview,
+  isPaid,
 }) => {
   const formattedDescription = overview.description.replace(/\\n/g, '\n');
 
@@ -78,7 +80,9 @@ const CourseDetails: React.FC<CourseDetailsProps> = ({
               </div>
               <div className="ml-4">
                 <h3 className="text-lg font-medium text-gray-800">Mode</h3>
-                <div className="mt-1 text-2xl font-semibold text-green-600">{'Self Paced'}</div>
+                <div className="mt-1 text-xl font-semibold text-green-600">
+                  {isPaid ? 'Virtual Training' : 'Self-Paced'}
+                </div>
               </div>
             </div>
           </div>

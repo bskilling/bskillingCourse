@@ -226,7 +226,7 @@ const SearchSheetComponent = () => {
 
   // Navigate to course
   const handleCourseClick = (course: Course) => {
-    router.push(`/course/${course.slug}?id=${course._id}`);
+    router.push(`/course/${course.slug}`);
     setSheetOpen(false);
   };
 

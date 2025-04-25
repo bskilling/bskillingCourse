@@ -6,20 +6,21 @@ import PopupForm from '@/component/PopupForm';
 import Courses from '@/component/courses';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 
-// Icons
-import { RiGovernmentFill } from 'react-icons/ri';
-import { IoMdCall, IoIosArrowDown } from 'react-icons/io';
-import { FiMenu, FiX, FiSearch } from 'react-icons/fi';
-import { BsBuilding } from 'react-icons/bs';
-import { FaUniversity } from 'react-icons/fa';
-import { BiSearchAlt } from 'react-icons/bi';
+// Lucide Icons - replacing multiple icon libraries with just Lucide for consistency
 import {
-  IoLogOutOutline,
-  IoPersonAddOutline,
-  IoPersonOutline,
-  IoSchool,
-  IoSchoolOutline,
-} from 'react-icons/io5';
+  Menu,
+  X,
+  Search,
+  ChevronDown,
+  Phone,
+  Mail,
+  LogOut,
+  UserPlus,
+  User,
+  School,
+  Building,
+  Landmark,
+} from 'lucide-react';
 
 // Import UI components
 import { Sheet, SheetContent, SheetHeader, SheetTrigger } from '@/components/ui/sheet';
@@ -98,22 +99,22 @@ const NavbarSection: React.FC = () => {
     {
       name: 'All Courses',
       href: '/individual-training',
-      icon: <IoSchool className="w-5 h-5" />,
+      icon: <School className="w-5 h-5" />,
     },
     {
       name: 'Corporate',
       href: '/corporate-training',
-      icon: <BsBuilding className="w-5 h-5" />,
+      icon: <Building className="w-5 h-5" />,
     },
     {
       name: 'Government',
       href: '/government-training-program',
-      icon: <RiGovernmentFill className="w-5 h-5" />,
+      icon: <Landmark className="w-5 h-5" />,
     },
     {
       name: 'Institutions',
       href: '/institutions',
-      icon: <FaUniversity className="w-5 h-5" />,
+      icon: <School className="w-5 h-5 transform rotate-12" />,
     },
   ];
 
@@ -210,10 +211,11 @@ const NavbarSection: React.FC = () => {
         }`}
       >
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="flex items-center justify-between py-3 lg:py-4">
+          {/* Mobile Top Bar - Logo and Search */}
+          <div className="lg:hidden flex items-center justify-between py-3">
             {/* Logo */}
             <Link href="/" className="flex items-center">
-              <div className="relative w-[110px] h-[35px] sm:w-[120px] sm:h-[40px] lg:w-[150px] lg:h-[45px] flex-shrink-0">
+              <div className="relative w-[110px] h-[35px] sm:w-[120px] sm:h-[40px] flex-shrink-0">
                 <img
                   src="/logo.png"
                   alt="bSkilling Logo"
@@ -222,13 +224,141 @@ const NavbarSection: React.FC = () => {
               </div>
             </Link>
 
-            {/* Courses component - both mobile and desktop */}
-            <div className="z-50 flex-shrink-0 ml-1 sm:ml-2 lg:ml-5 mr-1 sm:mr-3 lg:mx-5">
+            {/* Mobile Search */}
+            <div className="flex items-center">
+              <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
+                <SheetTrigger className="relative p-2 mr-2 text-gray-700 hover:text-indigo-600 transition bg-gray-100 rounded-full">
+                  <Search className="h-5 w-5" />
+                  <span className="sr-only">Search</span>
+                  <span className="absolute -top-1 -right-1 flex h-3 w-3">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-3 w-3 bg-indigo-500"></span>
+                  </span>
+                </SheetTrigger>
+                <SheetContent side={'top'} className="h-screen overflow-y-auto">
+                  <SheetHeader>
+                    <div className="flex flex-col space-y-4 w-full pt-4">
+                      <div className="relative w-full">
+                        <input
+                          type="text"
+                          className="w-full text-[14px] h-12 border rounded-full bg-gray-50 px-5 pl-10 outline-none focus:outline-none focus:ring-2 focus:ring-indigo-300 transition"
+                          placeholder="Search for courses or skills"
+                          required
+                          value={inputValue}
+                          onChange={e => {
+                            handleSearch(e);
+                            setShow(true);
+                          }}
+                        />
+                        <Search className="absolute top-4 left-3 text-indigo-600 h-5 w-5" />
+                      </div>
+
+                      <div className="mt-6">
+                        <h3 className="text-lg font-medium mb-4">Popular Categories</h3>
+                        <div className="flex flex-wrap gap-2">
+                          {[
+                            'Web Development',
+                            'Data Science',
+                            'UI/UX Design',
+                            'Machine Learning',
+                            'Cloud Computing',
+                          ].map((cat, idx) => (
+                            <button
+                              key={idx}
+                              className="px-4 py-2 bg-gray-100 rounded-full text-sm hover:bg-indigo-100 transition"
+                            >
+                              {cat}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="mt-6">
+                        <h3 className="text-lg font-medium mb-4">Search Results</h3>
+                        {dropSearchData.length > 0 ? (
+                          <div className="divide-y">
+                            {dropSearchData.map((course, index) => (
+                              <div
+                                key={index}
+                                onClick={() => {
+                                  router.push(`/courses/course-details/${course.url}`);
+                                  setSheetOpen(false);
+                                }}
+                                className="p-3 hover:bg-gray-50 text-gray-800 hover:text-indigo-600 cursor-pointer transition flex items-center"
+                              >
+                                <School className="h-4 w-4 mr-2 text-indigo-500" />
+                                {course.title}
+                              </div>
+                            ))}
+                          </div>
+                        ) : (
+                          <p className="text-gray-500 italic text-base">
+                            {inputValue.length > 2
+                              ? 'No courses found. Try a different search term.'
+                              : 'Type at least 3 characters to search'}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  </SheetHeader>
+                </SheetContent>
+              </Sheet>
+
+              {/* Mobile Menu Toggle */}
+              <button
+                className="p-2 text-gray-700 hover:text-indigo-600 transition bg-gray-100 rounded-full"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                type="button"
+                aria-label="Toggle menu"
+              >
+                {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              </button>
+            </div>
+          </div>
+
+          {/* Mobile Navigation Bottom Bar */}
+          <div className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-white shadow-lg border-t border-gray-200">
+            <div className="grid grid-cols-4 py-2">
+              {mainMenuItems.slice(0, 4).map((item, index) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className={`flex flex-col items-center justify-center py-1 ${
+                    router.pathname === item.href ? 'text-indigo-600' : 'text-gray-600'
+                  }`}
+                >
+                  <div
+                    className={`p-1 rounded-full ${
+                      router.pathname === item.href ? 'bg-indigo-100' : ''
+                    }`}
+                  >
+                    {item.icon}
+                  </div>
+                  <span className="text-xs mt-1">{item.name}</span>
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center justify-between py-4">
+            {/* Logo */}
+            <Link href="/" className="flex items-center">
+              <div className="relative w-[150px] h-[45px] flex-shrink-0">
+                <img
+                  src="/logo.png"
+                  alt="bSkilling Logo"
+                  className="object-contain w-full h-full"
+                />
+              </div>
+            </Link>
+
+            {/* Courses component - desktop */}
+            <div className="z-50 flex-shrink-0 ml-5 mr-5">
               <Courses />
             </div>
 
-            {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center lg:space-x-3 xl:space-x-5 flex-grow justify-end">
+            <div className="flex items-center lg:space-x-3 xl:space-x-5 flex-grow justify-end">
               {/* Search Bar */}
               <SearchSheetComponent />
 
@@ -254,8 +384,8 @@ const NavbarSection: React.FC = () => {
                     type="button"
                   >
                     More
-                    <IoIosArrowDown
-                      className={`ml-1 transform transition-transform ${activeDropdown === 'more' ? 'rotate-180' : ''}`}
+                    <ChevronDown
+                      className={`ml-1 h-4 w-4 transform transition-transform ${activeDropdown === 'more' ? 'rotate-180' : ''}`}
                     />
                   </button>
 
@@ -286,6 +416,7 @@ const NavbarSection: React.FC = () => {
                 </div>
               </nav>
 
+              {/* User Profile or Auth Buttons */}
               {user ? (
                 <div>
                   <Popover>
@@ -317,7 +448,7 @@ const NavbarSection: React.FC = () => {
                             href="/dashboard"
                             className="flex items-center gap-x-2 p-2 rounded-md hover:bg-gray-100 transition w-full"
                           >
-                            <IoPersonOutline size={18} />
+                            <User size={18} />
                             <span>Dashboard</span>
                           </Link>
 
@@ -325,7 +456,7 @@ const NavbarSection: React.FC = () => {
                             href="/my-courses"
                             className="flex items-center gap-x-2 p-2 rounded-md hover:bg-gray-100 transition w-full"
                           >
-                            <IoSchoolOutline size={18} />
+                            <School size={18} />
                             <span>My Courses</span>
                           </Link>
 
@@ -333,7 +464,7 @@ const NavbarSection: React.FC = () => {
                             // onClick={handleLogout}
                             className="flex items-center gap-x-2 p-2 rounded-md hover:bg-gray-100 transition w-full text-left text-red-500"
                           >
-                            <IoLogOutOutline size={18} />
+                            <LogOut size={18} />
                             <span>Sign Out</span>
                           </button>
                         </div>
@@ -357,180 +488,117 @@ const NavbarSection: React.FC = () => {
                   </Link>
                 </div>
               )}
-              {/* Auth buttons */}
-            </div>
-
-            {/* Mobile Search & Menu Button */}
-            <div className="lg:hidden flex items-center space-x-2 sm:space-x-3">
-              <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
-                <SheetTrigger className="p-1.5 sm:p-2 text-gray-700 hover:text-indigo-600 transition">
-                  <FiSearch className="h-5 w-5" />
-                </SheetTrigger>
-                <SheetContent side={'top'} className="h-screen overflow-y-auto">
-                  <SheetHeader>
-                    <div className="flex flex-col space-y-4 w-full pt-4">
-                      <div className="relative w-full">
-                        <input
-                          type="text"
-                          className="w-full text-[14px] h-10 sm:h-12 border rounded-full bg-gray-50 px-5 pl-10 outline-none focus:outline-none focus:ring-1 focus:ring-indigo-300 transition"
-                          placeholder="Search for courses or skills"
-                          required
-                          value={inputValue}
-                          onChange={e => {
-                            handleSearch(e);
-                            setShow(true);
-                          }}
-                        />
-                        <BiSearchAlt className="absolute top-3 sm:top-4 left-3 text-indigo-600" />
-                      </div>
-
-                      <div className="mt-4 sm:mt-6">
-                        <h3 className="text-base sm:text-lg font-medium mb-3 sm:mb-4">
-                          Popular Categories
-                        </h3>
-                        <div className="flex flex-wrap gap-2">
-                          {[
-                            'Web Development',
-                            'Data Science',
-                            'UI/UX Design',
-                            'Machine Learning',
-                            'Cloud Computing',
-                          ].map((cat, idx) => (
-                            <button
-                              key={idx}
-                              className="px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 rounded-full text-xs sm:text-sm hover:bg-indigo-100 transition"
-                            >
-                              {cat}
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-
-                      <div className="mt-4 sm:mt-6">
-                        <h3 className="text-base sm:text-lg font-medium mb-3 sm:mb-4">
-                          Search Results
-                        </h3>
-                        {dropSearchData.length > 0 ? (
-                          <div className="divide-y">
-                            {dropSearchData.map((course, index) => (
-                              <div
-                                key={index}
-                                onClick={() => {
-                                  router.push(`/courses/course-details/${course.url}`);
-                                  setSheetOpen(false);
-                                }}
-                                className="p-2.5 sm:p-3 hover:bg-gray-50 text-gray-800 hover:text-indigo-600 cursor-pointer transition"
-                              >
-                                {course.title}
-                              </div>
-                            ))}
-                          </div>
-                        ) : (
-                          <p className="text-gray-500 italic text-sm sm:text-base">
-                            {inputValue.length > 2
-                              ? 'No courses found. Try a different search term.'
-                              : 'Type at least 3 characters to search'}
-                          </p>
-                        )}
-                      </div>
-                    </div>
-                  </SheetHeader>
-                </SheetContent>
-              </Sheet>
-
-              <button
-                className="p-1.5 sm:p-2 text-gray-700 hover:text-indigo-600 transition"
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                type="button"
-                aria-label="Toggle menu"
-              >
-                {mobileMenuOpen ? <FiX className="h-5 w-5" /> : <FiMenu className="h-5 w-5" />}
-              </button>
             </div>
           </div>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu Overlay */}
         <AnimatePresence>
           {mobileMenuOpen && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
-              className="lg:hidden bg-white border-t shadow-md"
+              transition={{ duration: 0.3, ease: 'easeInOut' }}
+              className="lg:hidden bg-white border-t shadow-lg fixed left-0 right-0 top-[51px] sm:top-[53px] z-30 overflow-y-auto max-h-[calc(100vh-160px)]"
             >
-              <div className="container mx-auto px-4 py-3 sm:py-4 space-y-3 sm:space-y-4">
-                {/* Mobile Main Menu Items */}
-                <nav className="flex flex-col space-y-2 sm:space-y-3">
-                  {mainMenuItems.map(item => (
-                    <Link
-                      key={item.name}
-                      href={item.href}
-                      className={`flex items-center px-3 py-2 rounded-md text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 transition ${
-                        router.pathname === item.href ? 'bg-indigo-50 text-indigo-600' : ''
-                      }`}
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      {item.icon}
-                      <span className="ml-3 text-sm sm:text-base">{item.name}</span>
-                    </Link>
-                  ))}
+              <div className="container mx-auto px-4 py-4 space-y-4">
+                {/* Mobile Menu Items */}
+                <nav className="flex flex-col space-y-1">
+                  <div className="mb-2">
+                    <h3 className="text-xs uppercase tracking-wider text-gray-500 mb-1 px-1">
+                      Main Menu
+                    </h3>
+                    {mainMenuItems.map(item => (
+                      <Link
+                        key={item.name}
+                        href={item.href}
+                        className={`flex items-center px-3 py-2.5 rounded-lg text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 transition ${
+                          router.pathname === item.href ? 'bg-indigo-50 text-indigo-600' : ''
+                        }`}
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        <div className="rounded-md bg-indigo-100 p-1.5 mr-3">{item.icon}</div>
+                        <span className="text-sm font-medium">{item.name}</span>
+                      </Link>
+                    ))}
+                  </div>
 
-                  {/* Mobile Secondary Menu Items */}
-                  {secondaryMenuItems.map(item => (
-                    <Link
-                      key={item.name}
-                      href={item.href}
-                      target={item.external ? '_blank' : '_self'}
-                      className="flex items-center px-3 py-2 rounded-md text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 transition"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      <span className="ml-8 text-sm sm:text-base">{item.name}</span>
-                    </Link>
-                  ))}
+                  <div className="mb-2 pt-2 border-t border-gray-100">
+                    <h3 className="text-xs uppercase tracking-wider text-gray-500 mb-1 px-1">
+                      Explore
+                    </h3>
+                    {secondaryMenuItems.map(item => (
+                      <Link
+                        key={item.name}
+                        href={item.href}
+                        target={item.external ? '_blank' : '_self'}
+                        className="flex items-center px-3 py-2.5 rounded-lg text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 transition"
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        <span className="text-sm font-medium ml-8">{item.name}</span>
+                      </Link>
+                    ))}
+                  </div>
                 </nav>
 
-                {/* Mobile Auth Buttons */}
-                <div className="flex flex-col space-y-2 pt-2 border-t">
-                  <Link
-                    href="https://lms.bskilling.com/login/signup.php"
-                    className="px-4 py-2 border border-indigo-600 text-indigo-600 rounded-md hover:bg-indigo-50 transition text-center font-medium text-sm sm:text-base"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    Sign Up
-                  </Link>
-                  <Link
-                    href="https://lms.bskilling.com/login/index.php"
-                    className="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition text-center font-medium text-sm sm:text-base"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    Login
-                  </Link>
-                </div>
+                {/* Mobile Auth Section */}
+                {!user && (
+                  <div className="flex flex-col space-y-2 pt-2 border-t border-gray-100">
+                    <h3 className="text-xs uppercase tracking-wider text-gray-500 mb-1 px-1">
+                      Account
+                    </h3>
+                    <div className="flex items-center space-x-3">
+                      <Link
+                        href="https://lms.bskilling.com/login/signup.php"
+                        className="flex-1 px-4 py-2.5 border border-indigo-600 text-center text-indigo-600 rounded-lg hover:bg-indigo-50 transition font-medium text-sm"
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        <span className="flex items-center justify-center">
+                          <UserPlus className="h-4 w-4 mr-2" />
+                          Sign Up
+                        </span>
+                      </Link>
+                      <Link
+                        href="https://lms.bskilling.com/login/index.php"
+                        className="flex-1 px-4 py-2.5 bg-indigo-600 text-center text-white rounded-lg hover:bg-indigo-700 transition font-medium text-sm"
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        <span className="flex items-center justify-center">
+                          <LogOut className="h-4 w-4 mr-2" />
+                          Login
+                        </span>
+                      </Link>
+                    </div>
+                  </div>
+                )}
 
                 {/* Mobile Contact Info */}
-                <div className="flex flex-col space-y-2 pt-3 border-t text-xs sm:text-sm text-gray-600">
-                  <div className="flex items-center">
-                    <IoMdCall className="mr-2" />
-                    +91-9845348601
+                <div className="flex flex-col space-y-3 pt-3 border-t border-gray-100">
+                  <h3 className="text-xs uppercase tracking-wider text-gray-500 mb-1 px-1">
+                    Contact
+                  </h3>
+                  <div className="flex items-center text-gray-600">
+                    <Phone className="h-4 w-4 mr-3 text-indigo-500" />
+                    <span className="text-sm">+91-9845348601</span>
                   </div>
                   <Link
                     href="mailto:support@bskilling.com"
-                    className="flex items-center"
+                    className="flex items-center text-gray-600"
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    <span className="mr-2">📧</span>
-                    support@bskilling.com
+                    <Mail className="h-4 w-4 mr-3 text-indigo-500" />
+                    <span className="text-sm">support@bskilling.com</span>
                   </Link>
                   <button
                     onClick={() => {
                       setMobileMenuOpen(false);
                       handleOpenPopup();
                     }}
-                    className="text-indigo-600 font-medium"
+                    className="mt-2 inline-flex items-center px-4 py-2 bg-indigo-100 text-indigo-600 rounded-lg font-medium text-sm hover:bg-indigo-200 transition"
                     type="button"
                   >
+                    <UserPlus className="h-4 w-4 mr-2" />
                     Become an Instructor
                   </button>
                 </div>

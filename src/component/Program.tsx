@@ -263,10 +263,7 @@ const EnhancedCourseCard = ({ course }: { course: ICourse }) => {
       whileHover={{ y: -5 }}
       className="bg-white rounded-xl hover:cursor-pointer overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 h-full flex flex-col"
     >
-      <div
-        className="relative"
-        onClick={() => router.push(`/course/${course.slug}?id=${course._id}`)}
-      >
+      <div className="relative" onClick={() => router.push(`/course/${course.slug}`)}>
         <img
           src={course.previewImage?.viewUrl || 'https://via.placeholder.com/400x225'}
           alt={course.title}
@@ -389,7 +386,7 @@ const EnhancedCourseCard = ({ course }: { course: ICourse }) => {
                 </div>
               )}
             </div>
-            <Link href={`/course/${course.slug}?id=${course._id}`}>
+            <Link href={`/course/${course.slug}`}>
               <Button className="text-white bg-blue-600 hover:bg-blue-700 rounded-full px-5 py-2 text-sm font-medium">
                 View
               </Button>

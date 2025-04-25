@@ -86,15 +86,15 @@ const SsoRegistrationForm = ({
 
       // Get the redirect URL from URL parameters
       const urlParams = new URLSearchParams(window.location.search);
-      // const redirectUrl = 'https://bskilling.edmingle.com';
+      const redirectUrl = 'https://bskilling.edmingle.com';
 
-      const redirectUrl =
-        'https://bskilling.edmingle.com/myaccount/?edauthtoken=<TOKEN>#/course/148510';
+      // const redirectUrl =
+      //   'https://bskilling.edmingle.com/myaccount/?edauthtoken=<TOKEN>#/course/148510';
 
       if (redirectUrl) {
         // Redirect to the specified URL with JWT token
-        // window.location.href = `${redirectUrl}?jwt=${tokenResponse.data.token}`;
-        window.location.href = `https://bskilling.edmingle.com/myaccount/?edauthtoken=${tokenResponse.data.token}#/course/148510`;
+        window.location.href = `${redirectUrl}?jwt=${tokenResponse.data.token}`;
+        // window.location.href = `https://bskilling.edmingle.com/myaccount/?edauthtoken=${tokenResponse.data.token}#/course/148510`;
       } else {
         // No redirect URL provided, show success message
         toast.success('Registration successful!');

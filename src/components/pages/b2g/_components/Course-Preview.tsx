@@ -491,6 +491,7 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
       />
       {/* <PaymentForm courseDetails={courseData} /> */}
       <CourseDetails
+        isPaid={isPaid}
         durationHours={durationHours}
         enrolledStudents={1000}
         certification={certification}

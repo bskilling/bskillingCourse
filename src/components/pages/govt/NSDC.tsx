@@ -110,23 +110,21 @@ export default function NsdcCourses() {
             filteredCourses.slice(0, currentShow).map(course => (
               <motion.div key={course._id} variants={cardAnimation} className="w-full">
                 <Card className="h-full overflow-hidden rounded-xl shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl bg-white">
-                  <Link href={`/courses/courseDetails/${course.slug}`}>
-                    <CardHeader className="p-0">
-                      {course?.previewImage?.viewUrl ? (
-                        <img
-                          src={course?.previewImage?.viewUrl}
-                          alt={course.title}
-                          className="w-full h-52 object-cover"
-                        />
-                      ) : (
-                        <img
-                          src={'/images/placeholder.png'}
-                          alt="Placeholder"
-                          className="w-full h-52 object-cover p-3"
-                        />
-                      )}
-                    </CardHeader>
-                  </Link>
+                  <CardHeader className="p-0">
+                    {course?.previewImage?.viewUrl ? (
+                      <img
+                        src={course?.previewImage?.viewUrl}
+                        alt={course.title}
+                        className="w-full h-52 object-cover"
+                      />
+                    ) : (
+                      <img
+                        src={'/images/placeholder.png'}
+                        alt="Placeholder"
+                        className="w-full h-52 object-cover p-3"
+                      />
+                    )}
+                  </CardHeader>
 
                   <CardContent className="p-5 space-y-3">
                     <CardTitle className="text-xl font-semibold text-blue-600 line-clamp-1">
@@ -139,27 +137,7 @@ export default function NsdcCourses() {
                       <span className="font-medium">Duration:</span>
                       <span>{course.durationHours} hours</span>
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-gray-500">
-                      <span className="font-medium">Price:</span>
-                      <span
-                        className={cn(
-                          course.price.amount === 0
-                            ? 'text-green-600 font-semibold'
-                            : 'text-blue-600 font-bold'
-                        )}
-                      >
-                        {course.price.amount === 0
-                          ? 'Free'
-                          : `${course.price.amount} ${course.price.currency}`}
-                      </span>
-                    </div>
                   </CardContent>
-
-                  <CardFooter className="p-5 border-t bg-slate-50">
-                    <Link href={`/courses/courseDetails/${course.slug}`} className="w-full">
-                      <Button className="w-full bg-blue-600 hover:bg-blue-700">View Course</Button>
-                    </Link>
-                  </CardFooter>
                 </Card>
               </motion.div>
             ))
