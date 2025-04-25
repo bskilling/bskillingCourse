@@ -203,7 +203,9 @@ export default function Nasscom() {
                 filteredCourses.slice(0, currentShow).map(course => (
                   <motion.div key={course._id} variants={cardAnimation} className="w-full">
                     <Card className="h-full overflow-hidden rounded-xl shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl bg-white">
-                      <Link href={`/courses/courseDetails/${course.slug}`}>
+                      <Link
+                        href={`/government-training-program/nasscom-future-skills/${course.slug}`}
+                      >
                         <CardHeader className="p-0">
                           {course?.previewImage?.viewUrl ? (
                             <img
@@ -249,7 +251,10 @@ export default function Nasscom() {
                       </CardContent>
 
                       <CardFooter className="p-5 border-t bg-slate-50">
-                        <Link href={`/courses/courseDetails/${course.slug}`} className="w-full">
+                        <Link
+                          href={`/government-training-program/nasscom-future-skills/${course.slug}`}
+                          className="w-full"
+                        >
                           <Button className="w-full bg-[#8f0808] hover:bg-[#700606]">
                             View Course
                           </Button>

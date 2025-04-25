@@ -120,7 +120,7 @@ const FAQSection: React.FC<FAQProps> = ({ faqs }) => {
           <HelpCircle className="h-5 w-5 text-blue-600 mr-2" />
           <p className="text-sm text-gray-600">
             Still have questions?{' '}
-            <p className="text-blue-600 font-medium ">Contact our support team</p>
+            <span className="text-blue-600 font-medium ">Contact our support team</span>
           </p>
         </div>
       </div>
