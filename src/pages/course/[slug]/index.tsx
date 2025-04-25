@@ -219,8 +219,10 @@ const CourseDetails: React.FC<CourseDetailsProps> = ({ course }) => {
 
 export const getServerSideProps: GetServerSideProps = async context => {
   try {
-    const id = context.query.id;
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/courses/${id}`);
+    // @ts-expect-error error
+    const { slug } = context.params; // Get slug from params instead of query
+
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/courses/slug/${slug}`);
 
     if (!res.ok) {
       return {

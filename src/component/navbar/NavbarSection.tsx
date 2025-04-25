@@ -233,7 +233,7 @@ export default function NavbarSection() {
                 className={cn(buttonVariants({ variant: 'outline' }), 'text-base font-light')}
               >
                 <Link href={'https://lms.bskilling.com/login/signup.php?'} className="text-sm">
-                  Sign Up
+                  Sign Up a
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem

@@ -21,7 +21,7 @@ interface CourseCardProps {
 export default function CourseCard({ course }: CourseCardProps) {
   return (
     <Card className="relative flex flex-col overflow-hidden rounded-2xl shadow-lg transition-transform hover:scale-105 hover:shadow-2xl bg-white">
-      <Link href={`/course/${course.slug}?id=${course._id.toString()}`}>
+      <Link href={`/course/${course.slug}`}>
         <CardHeader className="p-0">
           {course?.previewImage?.viewUrl ? (
             <img
@@ -62,7 +62,7 @@ export default function CourseCard({ course }: CourseCardProps) {
 
       <CardFooter className="p-4 border-t flex justify-between items-center mt-auto">
         <Button asChild variant="outline" className="w-full font-semibold">
-          <Link href={`/course/${course.slug}?id=${course._id.toString()}`}>View Course</Link>
+          <Link href={`/course/${course.slug}`}>View Course</Link>
         </Button>
       </CardFooter>
     </Card>

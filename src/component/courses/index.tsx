@@ -430,10 +430,7 @@ export default function Courses() {
                             </Badge>
                           </div>
 
-                          <Link
-                            href={`/course/${course.slug}?id=${course._id.toString()}`}
-                            className="block"
-                          >
+                          <Link href={`/course/${course.slug}`} className="block">
                             <CardHeader className="p-0 overflow-hidden">
                               <div className="relative h-32 overflow-hidden">
                                 {course?.previewImage?.viewUrl ? (
@@ -455,10 +452,7 @@ export default function Courses() {
                           </Link>
 
                           <CardContent className="p-5 space-y-3 flex-grow">
-                            <Link
-                              href={`/course/${course.slug}?id=${course._id.toString()}`}
-                              className="block"
-                            >
+                            <Link href={`/course/${course.slug}`} className="block">
                               <CardTitle className="text-base font-bold text-gray-900 hover:text-indigo-600 transition-colors line-clamp-2">
                                 {course?.title || 'No Title'}
                               </CardTitle>
@@ -517,10 +511,7 @@ export default function Courses() {
                           </CardContent>
 
                           <CardFooter className="pt-0 pb-5 px-5">
-                            <Link
-                              href={`/course/${course.slug}?id=${course._id.toString()}`}
-                              className="w-full"
-                            >
+                            <Link href={`/course/${course.slug}`} className="w-full">
                               <Button
                                 variant="outline"
                                 className="w-full border-indigo-500 text-indigo-600 hover:bg-indigo-50"
