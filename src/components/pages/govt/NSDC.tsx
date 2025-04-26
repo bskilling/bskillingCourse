@@ -110,22 +110,23 @@ export default function NsdcCourses() {
             filteredCourses.slice(0, currentShow).map(course => (
               <motion.div key={course._id} variants={cardAnimation} className="w-full">
                 <Card className="h-full overflow-hidden rounded-xl shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl bg-white">
-                  <CardHeader className="p-0">
-                    {course?.previewImage?.viewUrl ? (
-                      <img
-                        src={course?.previewImage?.viewUrl}
-                        alt={course.title}
-                        className="w-full h-52 object-cover"
-                      />
-                    ) : (
-                      <img
-                        src={'/images/placeholder.png'}
-                        alt="Placeholder"
-                        className="w-full h-52 object-cover p-3"
-                      />
-                    )}
-                  </CardHeader>
-
+                  <Link href={`/course/${course.slug}`}>
+                    <CardHeader className="p-0">
+                      {course?.previewImage?.viewUrl ? (
+                        <img
+                          src={course?.previewImage?.viewUrl}
+                          alt={course.title}
+                          className="w-full h-52 object-cover"
+                        />
+                      ) : (
+                        <img
+                          src={'/images/placeholder.png'}
+                          alt="Placeholder"
+                          className="w-full h-52 object-cover p-3"
+                        />
+                      )}
+                    </CardHeader>
+                  </Link>
                   <CardContent className="p-5 space-y-3">
                     <CardTitle className="text-xl font-semibold text-blue-600 line-clamp-1">
                       {course?.title || 'No Title'}
@@ -137,6 +138,10 @@ export default function NsdcCourses() {
                       <span className="font-medium">Duration:</span>
                       <span>{course.durationHours} hours</span>
                     </div>
+
+                    <Link href={`/course/${course.slug}`}>
+                      <Button className="w-full mt-4">View Course</Button>
+                    </Link>
                   </CardContent>
                 </Card>
               </motion.div>

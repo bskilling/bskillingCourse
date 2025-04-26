@@ -83,6 +83,9 @@ const CCAvPaymentForm: React.FC<PaymentFormProps> = ({
   const [statusCheckInterval, setStatusCheckInterval] = useState<NodeJS.Timeout | null>(null);
   const [checkingStatus, setCheckingStatus] = useState(false);
 
+  const OfferAmount = amount - amount * 0.2;
+  const finalAmount = OfferAmount + OfferAmount * 0.18;
+
   // Initialize form with React Hook Form
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -166,7 +169,7 @@ const CCAvPaymentForm: React.FC<PaymentFormProps> = ({
       let paymentData = {
         merchant_id: '2492757', // Merchant ID (Required)
         order_id: `ORD_${Date.now()}`, // Generate unique Order ID
-        amount: amount.toString(), // Payment Amount (Required)
+        amount: finalAmount.toString(), // Payment Amount (Required)
         currency: currency, // Payment Currency Type (Required)
         billing_email: user.email, // Billing Email
         billing_name: user.name, // Billing Name
@@ -305,7 +308,7 @@ const CCAvPaymentForm: React.FC<PaymentFormProps> = ({
                 <span className="text-gray-700">Course Fee</span>
               </div>
               <span className="font-bold text-lg text-blue-700">
-                {currency} {amount.toFixed(2)}
+                {currency} {finalAmount.toFixed(2)} (Inclusive of 18% GST)
               </span>
             </div>
 
@@ -437,12 +440,25 @@ const CCAvPaymentForm: React.FC<PaymentFormProps> = ({
                   </span>
                 </div>
                 <div className="flex justify-between items-center py-2 border-b border-blue-100">
+                  <span className="text-gray-600">Offer</span>
+                  <span className="font-medium text-red-700">-20%</span>
+                </div>
+                <div className="flex justify-between items-center py-2 border-b border-blue-100">
+                  <span className="text-gray-600">GST</span>
+                  <span className="font-medium text-green-700">+18%</span>
+                </div>
+                <div className="flex justify-between items-center py-2 border-b border-blue-100">
                   <span className="text-gray-600">Name</span>
                   <span className="font-medium">{user?.name}</span>
                 </div>
                 <div className="flex justify-between items-center py-2">
                   <span className="text-gray-600">Email</span>
                   <span className="font-medium">{user?.email}</span>
+                </div>
+
+                <div className="flex justify-between items-center py-2 border-b border-blue-100">
+                  <span className="text-gray-600">Final Amount</span>
+                  <span className="font-medium text-blue-700">INR {finalAmount.toFixed(2)} </span>
                 </div>
               </div>
 
