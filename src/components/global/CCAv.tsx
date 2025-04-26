@@ -180,6 +180,9 @@ const CCAvPaymentForm: React.FC<PaymentFormProps> = ({
         merchant_param1: courseId, // Course ID as parameter
       };
 
+      paymentData.redirect_url = `${host}/api/ccavenue-handle?paymentId=${paymentData.order_id}&courseId=${paymentData.merchant_param1}&userId=${user._id}&amount=${paymentData.amount}`;
+      paymentData.cancel_url = `${host}/api/ccavenue-handle`;
+
       // Get encrypted order data from CCAvenue utility
       let encReq = CCAvenue.getEncryptedOrder(paymentData);
       let accessCode = 'AVHG70KE18CC51GHCC';
