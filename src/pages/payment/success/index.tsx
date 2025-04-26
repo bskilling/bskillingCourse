@@ -1,67 +1,37 @@
 import { useRouter } from 'next/router';
-import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 
 interface PaymentDetails {
-  paymentId: string;
-  courseId: string;
-  userId: string;
-  amount: string;
-  timestamp?: string;
+  paymentId: string | null;
+  courseId: string | null;
+  userId: string | null;
+  amount: string | null;
+  timestamp: string;
 }
 
 export default function PaymentSuccess() {
   const router = useRouter();
-  const [paymentDetails, setPaymentDetails] = useState<PaymentDetails | null>(null);
-  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    // Wait for router to be ready with query parameters
-    if (!router.isReady) return;
+  // Get query parameters directly - this works with SSR and client-side
+  const { paymentId, courseId, userId, amount } = router.query;
 
-    // Extract payment details from query parameters
-    const { paymentId, courseId, userId, amount } = router.query;
+  // Create payment details object with null fallbacks for missing values
+  const paymentDetails: PaymentDetails = {
+    paymentId: (paymentId as string) || null,
+    courseId: (courseId as string) || null,
+    userId: (userId as string) || null,
+    amount: (amount as string) || null,
+    timestamp: new Date().toLocaleString(),
+  };
 
-    if (paymentId && courseId && userId && amount) {
-      // Set payment details
-      setPaymentDetails({
-        paymentId: paymentId as string,
-        courseId: courseId as string,
-        userId: userId as string,
-        amount: amount as string,
-        timestamp: new Date().toLocaleString(),
-      });
-    } else {
-      // If no valid parameters, redirect to home
-      console.error('Missing payment details in URL');
-      router.push('/');
-    }
-
-    setLoading(false);
-  }, [router.isReady, router.query]);
-
-  if (loading) {
+  // Show loading state while router is not ready
+  if (!router.isReady) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-green-500 mx-auto"></div>
           <p className="mt-4 text-gray-600">Loading payment details...</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (!paymentDetails) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="text-center">
-          <p className="text-red-500">No payment details found.</p>
-          <Link href="/">
-            <button className="mt-4 inline-block text-blue-500 hover:underline">
-              Return to Home
-            </button>
-          </Link>
         </div>
       </div>
     );
@@ -99,26 +69,38 @@ export default function PaymentSuccess() {
             Payment Successful
           </h2>
 
-          <p className="mt-2 text-center text-sm text-gray-600">
-            Thank you for your payment of{' '}
-            <span className="font-medium text-green-600">₹{paymentDetails.amount}</span> (Inclusive
-            of 18% GST)
-          </p>
+          {paymentDetails.amount ? (
+            <p className="mt-2 text-center text-sm text-gray-600">
+              Thank you for your payment of{' '}
+              <span className="font-medium text-green-600">₹{paymentDetails.amount}</span>{' '}
+              (Inclusive of 18% GST)
+            </p>
+          ) : (
+            <p className="mt-2 text-center text-sm text-gray-600">Thank you for your payment</p>
+          )}
 
           <div className="mt-6 bg-gray-50 p-4 rounded-lg border border-gray-200">
             <div className="flex justify-between text-sm py-2">
               <span className="text-gray-500">Payment ID</span>
-              <span className="font-medium">{paymentDetails.paymentId}</span>
+              <span className="font-medium">{paymentDetails.paymentId || 'Not available'}</span>
             </div>
             <div className="flex justify-between text-sm py-2 border-t border-gray-200">
               <span className="text-gray-500">Course ID</span>
-              <span className="font-medium">{paymentDetails.courseId}</span>
+              <span className="font-medium">{paymentDetails.courseId || 'Not available'}</span>
             </div>
             <div className="flex justify-between text-sm py-2 border-t border-gray-200">
               <span className="text-gray-500">Date & Time</span>
               <span className="font-medium">{paymentDetails.timestamp}</span>
             </div>
           </div>
+
+          {!paymentDetails.paymentId && !paymentDetails.courseId && !paymentDetails.amount && (
+            <div className="mt-4 p-3 bg-yellow-50 rounded-md border border-yellow-200">
+              <p className="text-yellow-700 text-sm">
+                Payment query details not found. This may be due to an incomplete payment process.
+              </p>
+            </div>
+          )}
 
           <div className="mt-6 space-y-3">
             <Link href="/dashboard">
