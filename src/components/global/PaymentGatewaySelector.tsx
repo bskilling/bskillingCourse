@@ -86,6 +86,8 @@ const PaymentGatewaySelector: React.FC<PaymentProps> = ({
                 amount={amount}
                 courseName={courseName}
                 currency={currency}
+                open={open}
+                setOpenProp={setOpen}
               />
               <div className="p-4 mb-4 bg-white border border-blue-100 rounded-lg shadow-sm">
                 <h3 className="font-medium text-blue-800 mb-2">CCAvenue Payment</h3>

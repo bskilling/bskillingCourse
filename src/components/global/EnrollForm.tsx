@@ -1,208 +1,179 @@
+'use client';
+
 import { useState } from 'react';
-import { z } from 'zod';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import axios from 'axios';
+import { useRouter } from 'next/navigation';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Loader2 } from 'lucide-react';
 import { toast } from 'sonner';
 
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from '@/components/ui/dialog';
-import { Button } from '@/components/ui/button';
-import { User as UserIcon, Mail, Phone, Loader2 } from 'lucide-react';
-
-// Form schema for validation
-const formSchema = z.object({
-  name: z.string().min(2, 'Name is required'),
-  email: z.string().email('Please enter a valid email address'),
-  phone: z.string().min(10, 'Valid phone number is required'),
-  courseId: z.string(),
-});
-
-type FormValues = z.infer<typeof formSchema>;
-
-interface SsoRegistrationFormProps {
-  open?: boolean;
-  setOpen?: React.Dispatch<React.SetStateAction<boolean>>;
-  buttonText?: string;
+interface EnrollmentFormProps {
   courseId: string;
+  buttonText?: string;
+  buttonClassName?: string;
+  redirectUrl?: string;
 }
 
-const SsoRegistrationForm = ({
-  open,
-  setOpen,
-  buttonText = 'Sign In / Register',
+const EnrollmentForm: React.FC<EnrollmentFormProps> = ({
   courseId,
-}: SsoRegistrationFormProps) => {
-  const [isOpen, setIsOpen] = useState(open || false);
+  buttonText = 'Enroll Now',
+  buttonClassName = 'bg-blue-600 hover:bg-blue-700 text-white px-6 py-5 rounded-lg font-medium text-base',
+  redirectUrl,
+}) => {
+  const router = useRouter();
+  const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
-  // Form initialization with validation
-  const form = useForm<FormValues>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      name: '',
-      email: '',
-      phone: '',
-      courseId,
-    },
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    contactNumber: '',
   });
 
-  // Update local state when prop changes
-  const handleOpenChange = (open: boolean) => {
-    setIsOpen(open);
-    if (setOpen) setOpen(open);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  // Handle registration
-  const handleRegistration = async (data: FormValues) => {
-    setIsLoading(true);
-    setError(null);
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!formData.name || !formData.email || !formData.contactNumber) {
+      toast.error('Please fill out all required fields.');
+      return;
+    }
 
     try {
-      // Register the user
-      const userResponse = await axios.post(
-        process.env.NEXT_PUBLIC_BACKEND_URL + '/api/ccavenue/register-user',
-        data
-      );
+      setIsLoading(true);
 
-      if (!userResponse.data.success) {
-        throw new Error(userResponse.data.message || 'Registration failed');
-      }
-
-      // Get JWT token for SSO
-      const tokenResponse = await axios.post('/api/sso/generate-token', {
-        user: data,
+      const response = await fetch(process.env.NEXT_PUBLIC_BACKEND_URL + '/api/edmingle', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          courseId,
+          redirectUrl,
+        }),
       });
 
-      if (!tokenResponse.data.success || !tokenResponse.data.token) {
-        throw new Error(tokenResponse.data.message || 'Failed to generate token');
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Failed to enroll in course');
       }
 
-      // Get the redirect URL from URL parameters
-      const urlParams = new URLSearchParams(window.location.search);
-      const redirectUrl = 'https://bskilling.edmingle.com';
+      toast.success(data.message || 'You have been successfully enrolled.');
 
-      // const redirectUrl =
-      //   'https://bskilling.edmingle.com/myaccount/?edauthtoken=<TOKEN>#/course/148510';
-
-      if (redirectUrl) {
-        // Redirect to the specified URL with JWT token
-        window.location.href = `${redirectUrl}?jwt=${tokenResponse.data.token}`;
-        // window.location.href = `https://bskilling.edmingle.com/myaccount/?edauthtoken=${tokenResponse.data.token}#/course/148510`;
+      if (data.data.redirectUrl && data.data.token) {
+        // Redirect with token
+        const redirectWithToken = new URL(data.data.redirectUrl);
+        redirectWithToken.searchParams.append('token', data.data.token);
+        window.location.href = redirectWithToken.toString();
       } else {
-        // No redirect URL provided, show success message
-        toast.success('Registration successful!');
-        handleOpenChange(false);
+        // Close the form
+        setIsOpen(false);
       }
-    } catch (err: any) {
-      const errorMessage = err.response?.data?.message || err.message || 'Registration failed';
-      setError(errorMessage);
-      toast.error(errorMessage);
+    } catch (error: any) {
+      toast.error(error.message || 'Something went wrong. Please try again.');
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <Dialog open={isOpen} onOpenChange={handleOpenChange}>
-      <DialogTrigger asChild>
-        <Button>{buttonText}</Button>
-      </DialogTrigger>
-      <DialogContent className="sm:max-w-md">
-        <DialogHeader>
-          <DialogTitle className="text-xl font-semibold text-center">
-            Sign in / Register
-          </DialogTitle>
-        </DialogHeader>
+    <>
+      <Button onClick={() => setIsOpen(true)} className={buttonClassName}>
+        {buttonText}
+      </Button>
 
-        {error && (
-          <div className="p-4 bg-red-50 border border-red-200 text-red-600 rounded-lg mb-4">
-            <p className="text-sm">{error}</p>
-          </div>
-        )}
+      {isOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-lg shadow-xl max-w-md w-full p-6 relative">
+            <button
+              onClick={() => setIsOpen(false)}
+              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
 
-        <form onSubmit={form.handleSubmit(handleRegistration)} className="space-y-4">
-          <div className="space-y-2">
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700">
-              Full Name
-            </label>
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <UserIcon className="h-5 w-5 text-gray-400" />
+            <h2 className="text-2xl font-bold mb-4">Enroll Now</h2>
+            <p className="text-gray-600 mb-6">
+              Complete this form to enroll in the course. You'll receive access after submitting.
+            </p>
+
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <Label htmlFor="name">Full Name</Label>
+                <Input
+                  id="name"
+                  name="name"
+                  placeholder="Enter your full name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                />
               </div>
-              <input
-                {...form.register('name')}
-                id="name"
-                className="w-full pl-10 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                placeholder="Enter your full name"
-              />
-            </div>
-            {form.formState.errors.name && (
-              <p className="text-sm text-red-500 mt-1">{form.formState.errors.name.message}</p>
-            )}
-          </div>
 
-          <div className="space-y-2">
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-              Email Address
-            </label>
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <Mail className="h-5 w-5 text-gray-400" />
+              <div>
+                <Label htmlFor="email">Email Address</Label>
+                <Input
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="Enter your email address"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
               </div>
-              <input
-                {...form.register('email')}
-                id="email"
-                type="email"
-                className="w-full pl-10 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                placeholder="your.email@example.com"
-              />
-            </div>
-            {form.formState.errors.email && (
-              <p className="text-sm text-red-500 mt-1">{form.formState.errors.email.message}</p>
-            )}
-          </div>
 
-          <div className="space-y-2">
-            <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
-              Phone Number
-            </label>
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <Phone className="h-5 w-5 text-gray-400" />
+              <div>
+                <Label htmlFor="contactNumber">Contact Number</Label>
+                <Input
+                  id="contactNumber"
+                  name="contactNumber"
+                  placeholder="Enter your phone number"
+                  value={formData.contactNumber}
+                  onChange={handleChange}
+                  required
+                />
               </div>
-              <input
-                {...form.register('phone')}
-                id="phone"
-                className="w-full pl-10 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                placeholder="Your phone number"
-              />
-            </div>
-            {form.formState.errors.phone && (
-              <p className="text-sm text-red-500 mt-1">{form.formState.errors.phone.message}</p>
-            )}
-          </div>
 
-          <Button type="submit" className="w-full" disabled={isLoading}>
-            {isLoading ? (
-              <>
-                <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                Processing...
-              </>
-            ) : (
-              'Register & Continue'
-            )}
-          </Button>
-        </form>
-      </DialogContent>
-    </Dialog>
+              <Button
+                type="submit"
+                disabled={isLoading}
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-medium"
+              >
+                {isLoading ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Processing...
+                  </>
+                ) : (
+                  'Submit & Enroll'
+                )}
+              </Button>
+            </form>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 
-export default SsoRegistrationForm;
+export default EnrollmentForm;

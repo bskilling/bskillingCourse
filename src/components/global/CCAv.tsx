@@ -49,8 +49,9 @@ interface PaymentFormProps {
   amount: number;
   courseName: string;
   currency?: string;
-  open?: boolean;
-  setOpenProp?: React.Dispatch<React.SetStateAction<boolean>>;
+  open: boolean;
+  setOpenProp: React.Dispatch<React.SetStateAction<boolean>>;
+  Btn?: React.ReactNode;
 }
 
 // Payment flow steps
@@ -68,12 +69,13 @@ const CCAvPaymentForm: React.FC<PaymentFormProps> = ({
   amount,
   courseName,
   currency = 'INR',
-  open: openProp,
-  setOpenProp,
+  open,
+  setOpenProp: setOpen,
+  Btn,
 }) => {
   const host = typeof window !== 'undefined' ? window.location.origin : '';
   const router = useRouter();
-  const [open, setOpen] = useState(openProp ?? false);
+  // const [open, setOpen] = useState(openProp ?? false);
   const [currentStep, setCurrentStep] = useState<PaymentStep>(PaymentStep.FORM);
   const [user, setUser] = useState<any>(null);
   const [accessToken, setAccessToken] = useState<string | null>(null);
@@ -657,12 +659,14 @@ const CCAvPaymentForm: React.FC<PaymentFormProps> = ({
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>
-        {!openProp && (
+      <DialogTrigger asChild className="">
+        {!Btn ? (
           <Button className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-6 py-5 rounded-lg font-medium">
             <CreditCardIcon className="mr-2 h-5 w-5" />
             Buy Now
           </Button>
+        ) : (
+          Btn
         )}
       </DialogTrigger>
       <DialogContent className="sm:max-w-[450px] 2xl:max-w-[60vw] h-[80vh] overflow-y-auto">
