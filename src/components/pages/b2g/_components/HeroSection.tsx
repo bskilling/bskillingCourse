@@ -41,6 +41,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   const [formType, setFormType] = useState<'b2c' | 'b2b' | 'b2i' | 'general' | 'b2g'>('b2g');
   const [formTitle, setFormTitle] = useState('Get in Touch');
   const [formDescription, setFormDescription] = useState('');
+  const [open, setOpen] = useState(false);
 
   const openConsultationForm = (
     type: 'b2c' | 'b2b' | 'b2i' | 'general' | 'b2g',
@@ -160,7 +161,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               )}
 
               {isPaid && (
-                <CCAvPaymentForm courseId={courseId} courseName="" amount={amount} currency="INR" />
+                <CCAvPaymentForm
+                  open={open}
+                  setOpenProp={setOpen}
+                  courseId={courseId}
+                  courseName=""
+                  amount={amount}
+                  currency="INR"
+                />
               )}
             </motion.div>
 

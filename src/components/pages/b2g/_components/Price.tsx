@@ -1,24 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaClock, FaShieldAlt, FaGraduationCap } from 'react-icons/fa';
 import { CheckCircle, Award, BookOpen } from 'lucide-react';
 import { FaIndianRupeeSign } from 'react-icons/fa6';
+import CCAvPaymentForm from '@/components/global/CCAv';
 
 interface CourseEnrollmentProps {
   formattedPrice: string;
   durationHours: number;
   isPaid: boolean;
+  courseId: string;
 }
 
 const CourseEnrollment: React.FC<CourseEnrollmentProps> = ({
   formattedPrice,
   durationHours,
   isPaid = true,
+  courseId,
 }) => {
   // Calculate the "original" price by increasing the actual price by 20%
   // Remove commas from formattedPrice and convert to number
   const actualPrice = parseInt(formattedPrice.replace(/,/g, ''));
   const discountPercentage = 20;
   const displayOriginalPrice = actualPrice - Math.round(actualPrice * 0.2);
+  const [open, setOpen] = useState(false);
 
   // const increasedPrice = actualPrice;
 
@@ -70,9 +74,22 @@ const CourseEnrollment: React.FC<CourseEnrollmentProps> = ({
               )}
 
               <div className="mt-8">
-                <button className="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-300 text-base shadow-md">
-                  {isPaid ? 'Enroll Now' : 'Join For Free'}
-                </button>
+                {isPaid && (
+                  <CCAvPaymentForm
+                    open={open}
+                    setOpenProp={setOpen}
+                    courseId={courseId}
+                    courseName=""
+                    amount={actualPrice}
+                    currency="INR"
+                    Btn={
+                      <button className="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-300 text-base shadow-md">
+                        {isPaid ? 'Enroll Now' : 'Join For Free'}
+                      </button>
+                    }
+                  />
+                )}
+
                 <button className="w-full mt-3 border border-blue-200 text-blue-600 hover:bg-blue-50 px-6 py-3 rounded-lg font-medium transition-colors duration-300 text-base">
                   Download Syllabus
                 </button>

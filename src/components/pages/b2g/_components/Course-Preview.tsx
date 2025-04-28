@@ -512,6 +512,7 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
           formattedPrice={formattedPrice}
           durationHours={durationHours}
           isPaid={isPaid}
+          courseId={_id}
         />
       ) : (
         <FreeCourseEnrollment durationHours={durationHours} _id={_id} courseName={title} />

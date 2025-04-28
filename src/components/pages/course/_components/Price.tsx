@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaClock, FaShieldAlt, FaGraduationCap } from 'react-icons/fa';
 import { CheckCircle, Award, BookOpen } from 'lucide-react';
 import { FaIndianRupeeSign } from 'react-icons/fa6';
 import PaymentFormDialog from '@/components/global/PaymentRegisterForm';
 import EMIOptions from './EmiOptions';
+import CCAvPaymentForm from '@/components/global/CCAv';
 
 interface CourseEnrollmentProps {
   formattedPrice: string;
@@ -26,6 +27,7 @@ const CourseEnrollment: React.FC<CourseEnrollmentProps> = ({
 
   // The discount percentage (hardcoded to 65% as per the design)
   const discountPercentage = 20;
+  const [open, setOpen] = useState(false);
 
   return (
     <section id="pricing" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -68,9 +70,22 @@ const CourseEnrollment: React.FC<CourseEnrollmentProps> = ({
               )}
 
               <div className="mt-8">
-                <button className="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-300 text-base shadow-md">
-                  {isPaid ? 'Enroll Now' : 'Join For Free'}
-                </button>
+                {isPaid && (
+                  <CCAvPaymentForm
+                    open={open}
+                    setOpenProp={setOpen}
+                    courseId={courseId}
+                    courseName=""
+                    amount={actualPrice}
+                    currency="INR"
+                    Btn={
+                      <button className="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-300 text-base shadow-md">
+                        {isPaid ? 'Enroll Now' : 'Join For Free'}
+                      </button>
+                    }
+                  />
+                )}
+
                 <button className="w-full mt-3 border border-blue-200 text-blue-600 hover:bg-blue-50 px-6 py-3 rounded-lg font-medium transition-colors duration-300 text-base">
                   Download Syllabus
                 </button>
