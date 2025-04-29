@@ -66,11 +66,10 @@ const EnrollmentForm: React.FC<EnrollmentFormProps> = ({
 
       toast.success(data.message || 'You have been successfully enrolled.');
 
-      if (data.data.redirectUrl && data.data.token) {
+      if (data.data.redirectUrl) {
         // Redirect with token
-        const redirectWithToken = new URL(data.data.redirectUrl);
-        redirectWithToken.searchParams.append('token', data.data.token);
-        window.location.href = redirectWithToken.toString();
+        const redirectUrl = data.data.redirectUrl;
+        window.location.href = redirectUrl;
       } else {
         // Close the form
         setIsOpen(false);
