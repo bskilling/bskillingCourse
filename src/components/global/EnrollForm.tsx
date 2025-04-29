@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -14,6 +14,8 @@ interface EnrollmentFormProps {
   buttonClassName?: string;
   redirectUrl?: string;
 }
+
+const STORAGE_KEY = 'enrollment_form_data';
 
 const EnrollmentForm: React.FC<EnrollmentFormProps> = ({
   courseId,
@@ -29,6 +31,24 @@ const EnrollmentForm: React.FC<EnrollmentFormProps> = ({
     email: '',
     contactNumber: '',
   });
+
+  // Load saved form data from localStorage when component mounts
+  useEffect(() => {
+    const savedData = localStorage.getItem(STORAGE_KEY);
+    if (savedData) {
+      try {
+        const parsedData = JSON.parse(savedData);
+        setFormData(parsedData);
+      } catch (error) {
+        console.error('Error parsing saved form data:', error);
+      }
+    }
+  }, []);
+
+  // Save form data to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
+  }, [formData]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -81,10 +101,14 @@ const EnrollmentForm: React.FC<EnrollmentFormProps> = ({
     }
   };
 
+  const handleOpenModal = () => {
+    setIsOpen(true);
+  };
+
   return (
     <>
-      <Button onClick={() => setIsOpen(true)} className={buttonClassName}>
-        {buttonText}
+      <Button onClick={handleOpenModal} className={buttonClassName}>
+        {formData?.name.length > 0 ? 'Continue' : buttonText}
       </Button>
 
       {isOpen && (
