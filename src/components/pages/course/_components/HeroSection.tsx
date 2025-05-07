@@ -60,6 +60,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         title={formTitle}
         description={formDescription}
         formType={formType}
+        course={courseId}
       />
       {/* Top wave decoration */}
       <div className="bg-gradient-to-r from-blue-50 to-indigo-50 h-16">

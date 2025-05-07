@@ -187,6 +187,7 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
         title={formTitle}
         description={formDescription}
         formType={formType}
+        course={_id}
       />
       <nav className="fixed w-full bg-white shadow-md z-50 top-0">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -478,6 +479,7 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
 
       {/* Hero Section */}
       <HeroSection
+        _id={_id}
         category={category}
         title={title}
         description={description}
@@ -518,9 +520,9 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
         <FreeCourseEnrollment durationHours={durationHours} _id={_id} courseName={title} />
       )}
 
-      <CriteriaSection curriculum={curriculum} />
+      <CriteriaSection curriculum={curriculum} _id={_id} />
       <WhyJoinSection whyJoin={whyJoin} />
-      <FAQSection faqs={faqs} />
+      <FAQSection faqs={faqs} _id={_id} />
       <div className="h-20"></div>
     </div>
   );

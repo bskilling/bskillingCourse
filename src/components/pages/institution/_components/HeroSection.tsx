@@ -15,6 +15,7 @@ interface HeroSectionProps {
   bannerImage: string;
   duration: number;
   modules: number;
+  _id: string;
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({
@@ -24,6 +25,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   bannerImage,
   duration,
   modules,
+  _id,
 }) => {
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [formType, setFormType] = useState<'b2c' | 'b2b' | 'b2i' | 'general'>('b2i');
@@ -48,6 +50,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         title={formTitle}
         description={formDescription}
         formType={formType}
+        course={_id}
       />
       {/* Top wave decoration */}
       <div className="bg-gradient-to-r from-blue-50 to-indigo-50 h-16">
