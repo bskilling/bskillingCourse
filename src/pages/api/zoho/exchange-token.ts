@@ -8,7 +8,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const { code } = req.body;
 
   if (!code) return res.status(400).json({ error: 'Code is required' });
-
+  const url = process.env.ZOHO_URL ?? 'https://accounts.zoho.in';
   try {
     const params = new URLSearchParams();
     params.append('grant_type', 'authorization_code');
@@ -20,7 +20,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     params.append('redirect_uri', 'https://www.bskilling.com/auth');
     params.append('code', code);
 
-    const tokenRes = await axios.post(`${process.env.ZOHO_URL}/oauth/v2/token`, params, {
+    const tokenRes = await axios.post(`${url}/oauth/v2/token`, params, {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     });
 
@@ -36,7 +36,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       expires_in: data.expires_in,
     });
   } catch (error: any) {
+    console.log('Exchange token error', error);
     console.error('Error exchanging token:', error?.response?.data || error.message);
-    res.status(500).json({ error: 'Failed to exchange token' });
+    res.status(500).json({ error: error });
   }
 }
