@@ -20,9 +20,19 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     params.append('redirect_uri', 'https://www.bskilling.com/auth');
     params.append('code', code);
 
-    const tokenRes = await axios.post(`${url}/oauth/v2/token`, params, {
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    });
+    console.log('Exchange token params:', params);
+
+    const tokenRes = await axios.post(
+      `${url}/oauth/v2/token?client_id=${process.env.ZOHO_CLIENT_ID ?? '1000.6Y9JQK3G0T1EG4I3SKYI7N2IW7RMJW'}
+&client_secret=${process.env.ZOHO_CLIENT_SECRET ?? '7f462caa6919876cad2756f81c33c691ee50ee5c38'}
+&grant_type=authorization_code
+&redirect_uri=https://www.bskilling.com/auth
+&code=${code}`,
+      null,
+      {
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      }
+    );
 
     const data = tokenRes.data;
 
@@ -32,6 +42,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     // For now just respond (you'll replace this with saving logic)
     res.status(200).json({
       data,
+      params,
     });
   } catch (error: any) {
     console.log('Exchange token error', error);
