@@ -14,7 +14,7 @@ const AuthPage = () => {
 
       try {
         const res = await axios.post('/api/zoho/exchange-token', { code });
-        console.log('✅ Tokens fetched:', res.data);
+        console.log('✅ Tokens fetched:', res);
 
         // Redirect or notify
         // router.push('/dashboard'); // or wherever you want

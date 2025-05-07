@@ -31,9 +31,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     // TODO: 🔒 Save `data.access_token` and `data.refresh_token` securely
     // For now just respond (you'll replace this with saving logic)
     res.status(200).json({
-      access_token: data.access_token,
-      refresh_token: data.refresh_token,
-      expires_in: data.expires_in,
+      data,
     });
   } catch (error: any) {
     console.log('Exchange token error', error);
