@@ -49,6 +49,7 @@ const leadSchema = z
     subCategory: z.enum(['', 'jobs', 'skills']).default('skills').optional(),
     query: z.string().min(10, 'Query must be at least 10 characters long'),
     websiteUrl: z.string().min(3, 'Website URL must be at least 3 characters long').optional(),
+    course: z.string().length(24, 'Course Id is required'),
   })
   .superRefine((data, ctx) => {
     if (data.type === 'b2i' && !data.subCategory) {
@@ -83,6 +84,7 @@ interface PopupFormProps {
   title?: string;
   description?: string;
   formType?: 'b2c' | 'b2b' | 'b2i' | 'general' | 'b2g';
+  course: string;
 }
 
 const PopupConsultationForm: React.FC<PopupFormProps> = ({
@@ -91,6 +93,7 @@ const PopupConsultationForm: React.FC<PopupFormProps> = ({
   title = 'Get in Touch',
   description = 'Fill out the form below and our team will get back to you shortly.',
   formType = 'b2i',
+  course,
 }) => {
   const [type, setType] = React.useState(formType);
   const {
@@ -107,6 +110,7 @@ const PopupConsultationForm: React.FC<PopupFormProps> = ({
       email: '',
       countryCode: '+91',
       phoneNumber: '',
+      course,
       // @ts-expect-error
       type,
       // @ts-check
@@ -120,7 +124,10 @@ const PopupConsultationForm: React.FC<PopupFormProps> = ({
 
   const submitMutation = useMutation({
     mutationFn: async (data: LeadFormData) => {
-      await axios.post(process.env.NEXT_PUBLIC_BACKEND_URL + '/api/lead', data);
+      await axios.post(process.env.NEXT_PUBLIC_BACKEND_URL + '/api/lead', {
+        ...data,
+        course,
+      });
     },
     onSuccess: () => {
       // Show success message

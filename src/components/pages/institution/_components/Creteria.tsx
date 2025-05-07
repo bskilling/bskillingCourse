@@ -6,7 +6,13 @@ import { ICourse } from './types';
 import { useState } from 'react';
 import PopupConsultationForm from './dialogs/Form';
 
-const CriteriaSection = ({ curriculum }: { curriculum: ICourse['curriculum'] }) => {
+const CriteriaSection = ({
+  curriculum,
+  _id,
+}: {
+  curriculum: ICourse['curriculum'];
+  _id: string;
+}) => {
   // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -53,6 +59,7 @@ const CriteriaSection = ({ curriculum }: { curriculum: ICourse['curriculum'] }) 
         title={formTitle}
         description={formDescription}
         formType={formType}
+        course={_id}
       />
       <div className="relative mb-10">
         <div className="absolute -top-6 left-0 w-20 h-1.5 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full"></div>

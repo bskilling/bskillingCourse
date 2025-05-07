@@ -139,6 +139,7 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
     partnerShip,
     certification,
     outcomes,
+    _id,
     variant,
     // logoUrl, previewImage, slug not used in this single-page layout
   } = courseData;
@@ -184,6 +185,7 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
         title={formTitle}
         description={formDescription}
         formType={formType}
+        course={_id}
       />
       <nav className="fixed w-full bg-white shadow-md z-50 top-0">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -487,6 +489,7 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
         bannerImage={bannerImage}
         duration={durationHours}
         modules={curriculum?.chapters?.length}
+        _id={_id}
       />
 
       <CourseDetails
@@ -510,7 +513,7 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
       />
       {/* <CriteriaSection curriculum={curriculum} /> */}
       <WhyJoinSection whyJoin={whyJoin} />
-      <FAQSection faqs={faqs} />
+      <FAQSection faqs={faqs} _id={_id} />
       <div className="h-20"></div>
     </div>
   );

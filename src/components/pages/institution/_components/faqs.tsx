@@ -9,9 +9,10 @@ interface FAQ {
 
 interface FAQProps {
   faqs: FAQ[];
+  _id: string;
 }
 
-const FAQSection: React.FC<FAQProps> = ({ faqs }) => {
+const FAQSection: React.FC<FAQProps> = ({ faqs, _id }) => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [formType, setFormType] = useState<'b2c' | 'b2b' | 'b2i' | 'general'>('b2i');
@@ -49,6 +50,7 @@ const FAQSection: React.FC<FAQProps> = ({ faqs }) => {
         title={formTitle}
         description={formDescription}
         formType={formType}
+        course={_id}
       />
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {faqs.map((faq, index) => {
