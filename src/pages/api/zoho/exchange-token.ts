@@ -12,8 +12,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   try {
     const params = new URLSearchParams();
     params.append('grant_type', 'authorization_code');
-    params.append('client_id', process.env.ZOHO_CLIENT_ID!);
-    params.append('client_secret', process.env.ZOHO_CLIENT_SECRET!);
+    params.append('client_id', process.env.ZOHO_CLIENT_ID ?? '1000.6Y9JQK3G0T1EG4I3SKYI7N2IW7RMJW');
+    params.append(
+      'client_secret',
+      process.env.ZOHO_CLIENT_SECRET ?? '7f462caa6919876cad2756f81c33c691ee50ee5c38'
+    );
     params.append('redirect_uri', 'https://www.bskilling.com/auth');
     params.append('code', code);
 
