@@ -17,7 +17,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     if (!accessToken) {
       try {
         const res1 = await axios.post(
-          'http://localhost:3000' + '/api/zoho/refresh-token',
+          process?.env?.API_URL + '/api/zoho/refresh-token',
           {
             refreshToken,
           },
