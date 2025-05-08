@@ -7,6 +7,9 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Loader2 } from 'lucide-react';
 import { toast } from 'sonner';
+import { useMutation } from '@tanstack/react-query';
+import axios from 'axios';
+import { handleErrors } from '@/lib/handleError';
 
 interface EnrollmentFormProps {
   courseId: string;
@@ -86,20 +89,46 @@ const EnrollmentForm: React.FC<EnrollmentFormProps> = ({
 
       toast.success(data.message || 'You have been successfully enrolled.');
 
-      if (data.data.redirectUrl) {
+      if (data.data.isNewUser && data.data.redirectUrl) {
         // Redirect with token
-        const redirectUrl = data.data.redirectUrl;
-        window.location.href = redirectUrl;
-      } else {
-        // Close the form
-        setIsOpen(false);
+        const payload = {
+          email: data.data.user.email,
+          name: data.data.user.name,
+          course: data.data.user.course,
+          phoneNumber: data?.data?.user?.contactNumber,
+          category: data.data.user.category,
+          type: data.data.user.type, // 'b2b', 'b2c', 'b2i'
+        };
+        await zohoLead.mutateAsync(payload);
       }
+      if (data.data.redirectUrl) {
+        const redirectUrl = data.data.redirectUrl;
+        console.log('Data checking', data?.data);
+        window.location.href = redirectUrl;
+      }
+      // window.location.href = redirectUrl;
     } catch (error: any) {
       toast.error(error.message || 'Something went wrong. Please try again.');
     } finally {
       setIsLoading(false);
     }
   };
+
+  const zohoLead = useMutation({
+    mutationFn: async (data: any) => {
+      await axios.post('/api/zoho/lead', data, {
+        withCredentials: true, // Important to send cookies
+      });
+    },
+    onSuccess: () => {
+      // Show success message
+      // toast.success('Your query has been submitted successfully. Our team will contact you soon.');
+    },
+    onError: err => {
+      console.error(err);
+      // toast.error(handleErrors(err as any) ?? 'Something went wrong. Please try again.');
+    },
+  });
 
   const handleOpenModal = () => {
     setIsOpen(true);

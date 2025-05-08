@@ -125,14 +125,43 @@ const PopupConsultationForm: React.FC<PopupFormProps> = ({
 
   const submitMutation = useMutation({
     mutationFn: async (data: LeadFormData) => {
-      await axios.post(process.env.NEXT_PUBLIC_BACKEND_URL + '/api/lead', {
+      const res = await axios.post(process.env.NEXT_PUBLIC_BACKEND_URL + '/api/lead', {
         ...data,
         type,
         course,
       });
+      return res.data.data;
+    },
+    onSuccess: (data: any) => {
+      // Show success message
+      console.log(data, 'data zho lead');
+      // if (process.env.NODE_ENV === 'development') {
+      //   toast.success(
+      //     'Your query has been submitted successfully. Our team will contact you soon.'
+      //   );
+      //   return;
+      // }
+      zohoLead.mutate(data);
+      setTimeout(() => {
+        reset(); // Reset form
+        onClose(); // Close dialog
+      }, 2000);
+    },
+    onError: err => {
+      console.error(err);
+      toast.error(handleErrors(err as any) ?? 'Something went wrong. Please try again.');
+    },
+  });
+
+  const zohoLead = useMutation({
+    mutationFn: async (data: LeadFormData) => {
+      await axios.post('/api/zoho/lead', data, {
+        withCredentials: true, // Important to send cookies
+      });
     },
     onSuccess: () => {
       // Show success message
+      toast.success('Your query has been submitted successfully. Our team will contact you soon.');
       setTimeout(() => {
         reset(); // Reset form
         onClose(); // Close dialog
