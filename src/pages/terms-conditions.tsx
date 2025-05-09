@@ -1,8 +1,4 @@
-/* eslint-disable @next/next/no-img-element */
-/* eslint-disable @next/next/next-script-for-ga */
 import React from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
 import Head from 'next/head';
 
 export default function TermOfUse() {
