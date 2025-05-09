@@ -13,7 +13,7 @@
     "check-format": "prettier --check 'src/**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc.json",
     "check-lint": "eslint 'src/**/*.{js,jsx,ts,tsx}' --quiet",
     "check-types": "tsc --noEmit",
-    "prepare": "if [ \"$CI\" != \"true\" ]; then husky install; fi"
+    "prepare": "husky install"
   },
   "dependencies": {
     "@aws-sdk/client-ses": "^3.614.0",
