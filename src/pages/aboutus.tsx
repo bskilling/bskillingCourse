@@ -17,7 +17,7 @@ const AboutUs = () => {
       <AboutOnlineLearning />
       <AboutFounder />
       {/* <AboutbSkilling /> */}
-      <Testimonial />
+      {/* <Testimonial /> */}
       <AboutTrainTeam />
       <NewsLetter />
     </div>
