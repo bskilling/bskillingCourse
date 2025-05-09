@@ -1,7 +1,7 @@
 // /pages/api/zoho/lead.ts
 import { NextApiRequest, NextApiResponse } from 'next';
 import axios from 'axios';
-// import { parse, serialize } from 'cookie';
+import { parse, serialize } from 'cookie';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
@@ -9,10 +9,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   try {
-    // const cookies = parse(req.headers.cookie || '');
+    const cookies = parse(req.headers.cookie || '');
 
-    let accessToken = '';
-    const refreshToken = '';
+    let accessToken = cookies?.accessToken;
+    const refreshToken = process.env.ZOHO_REFRESH_TOKEN;
     console.log(accessToken, 'accessToken');
     if (!accessToken) {
       try {
