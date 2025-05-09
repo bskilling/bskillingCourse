@@ -96,7 +96,7 @@ const Home: NextPage<NextPage> = ({}) => {
         />
 
         <link rel="icon" href="/favicon.png" />
-        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-3PVZC9K8BH"></Script>
+        {/* <Script async src="https://www.googletagmanager.com/gtag/js?id=G-3PVZC9K8BH"></Script>
         <Script
           dangerouslySetInnerHTML={{
             __html: `
@@ -106,7 +106,7 @@ const Home: NextPage<NextPage> = ({}) => {
               gtag('config', 'G-3PVZC9K8BH');
             `,
           }}
-        />
+        /> */}
       </Head>
 
       <section onClick={clickOnMain} className="w-full ">
