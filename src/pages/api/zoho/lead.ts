@@ -92,7 +92,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       email,
       phoneNumber,
       countryCode,
-      type, // 'b2b', 'b2c', 'b2i'
+      type, // 'b2b', 'b2c'
       query,
       websiteUrl,
       course, // full populated course object
