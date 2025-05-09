@@ -31,7 +31,7 @@ import {
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { handleErrors } from '@/lib/handleError';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/compat/router';
 import CCAvenue from '@/lib/CCAvenue';
 
 // Form schema that matches the backend API exactly
@@ -209,7 +209,7 @@ const CCAvPaymentForm: React.FC<PaymentFormProps> = ({
       startStatusCheck(paymentData.order_id);
 
       // Redirect to CCAvenue payment gateway
-      router.push(URL);
+      router?.push(URL);
 
       toast.success('Payment Initiated: Complete the payment in the secure payment form.');
     } catch (err: any) {
@@ -293,7 +293,7 @@ const CCAvPaymentForm: React.FC<PaymentFormProps> = ({
       setIsLoading(false);
     }
   };
-  if (!router.isReady) return null;
+  if (!router?.isReady) return null;
   // Render different content based on the current step
   const renderContent = () => {
     switch (currentStep) {

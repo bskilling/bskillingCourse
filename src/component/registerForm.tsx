@@ -5,7 +5,7 @@ import { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import 'react-phone-number-input/style.css';
 import { encrypt } from 'util/ccavenue.utils';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/compat/router';
 const { v4: uuidv4 } = require('uuid');
 interface FormValues {
   name: string;
@@ -120,7 +120,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
             });
             const res = await result.json();
             if (res.isOk) {
-              router.push({
+              router?.push({
                 pathname: '/payment-status',
                 query: {
                   payment_status: 'success',
@@ -132,7 +132,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
               });
               // setisLoader(false);
             } else {
-              router.push({
+              router?.push({
                 pathname: '/payment-status',
                 query: {
                   payment_status: 'error',
@@ -268,7 +268,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
     }
   }, [messageSent]);
 
-  if (!router.isReady) return null;
+  if (!router?.isReady) return null;
   return (
     <>
       {isLoader && (

@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useState } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/compat/router';
 interface PopupFormType {
   handleClosePopup: () => void;
   title: string;
@@ -59,7 +59,7 @@ const PopupForm: React.FC<PopupFormType> = ({ handleClosePopup, title }) => {
       // });
 
       if (response.ok) {
-        router.push('/thank-you');
+        router?.push('/thank-you');
         // alert("Form submitted successfully!");
         // setSuccess(
         //   "We have received your information successfully. Our team will review your details and get in touch with you shortly."
@@ -78,7 +78,7 @@ const PopupForm: React.FC<PopupFormType> = ({ handleClosePopup, title }) => {
       setLoading(false);
     }
   };
-  if (!router.isReady) return null;
+  if (!router?.isReady) return null;
   return (
     <div>
       <div className="fixed inset-0 bg-black opacity-50" onClick={handleClosePopup}></div>

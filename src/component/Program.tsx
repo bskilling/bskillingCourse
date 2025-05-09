@@ -11,7 +11,7 @@ import { ICourse } from './types/Course.types';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { BookOpen, Search } from 'lucide-react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/compat/router';
 import { FaCalendarAlt } from 'react-icons/fa';
 
 const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL ?? 'https://backendbskilling.up.railway.app';
@@ -93,7 +93,7 @@ export default function Program() {
   const filteredCourses = data?.courses.filter(course =>
     course.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
-  if (!router.isReady) return null;
+  if (!router?.isReady) return null;
   return (
     <div className="p-8 w-[90vw] md:w-[85vw] lg:w-[80vw] mx-auto">
       {/* Categories */}
@@ -245,7 +245,7 @@ export default function Program() {
         <button
           className="mt-6 border-blue-500 p-2 border m-auto text-blue-500 "
           onClick={() => {
-            router.push(`/individual-training`);
+            router?.push(`/individual-training`);
           }}
         >
           View All Courses
@@ -258,13 +258,13 @@ export default function Program() {
 // Enhanced Course Card Component
 const EnhancedCourseCard = ({ course }: { course: ICourse }) => {
   const router = useRouter();
-  if (!router.isReady) return null;
+  if (!router?.isReady) return null;
   return (
     <motion.div
       whileHover={{ y: -5 }}
       className="bg-white rounded-xl hover:cursor-pointer overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 h-full flex flex-col"
     >
-      <div className="relative" onClick={() => router.push(`/course/${course.slug}`)}>
+      <div className="relative" onClick={() => router?.push(`/course/${course.slug}`)}>
         <img
           src={course.previewImage?.viewUrl || 'https://via.placeholder.com/400x225'}
           alt={course.title}

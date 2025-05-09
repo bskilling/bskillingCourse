@@ -2,7 +2,7 @@
 import axios from 'axios';
 import moment from 'moment';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/compat/router';
 import { useEffect, useState } from 'react';
 import Marquee from 'react-fast-marquee';
 import { BiTimeFive } from 'react-icons/bi';
@@ -48,7 +48,8 @@ interface CourseData {
 
 const CourseSlider = () => {
   const router = useRouter();
-  const { category, name, id } = router.query;
+  // @ts-expect-error
+  const { category, name, id } = router?.query;
   const [datas, setDatas] = useState<string[]>([]);
   const [eachCourceList, SetEachCourceList] = useState<ListOfCoursesDataType[][]>([]);
 
@@ -93,7 +94,7 @@ const CourseSlider = () => {
   useEffect(() => {
     fetchApiData();
   }, [category]);
-  if (!router.isReady) return null;
+  if (!router?.isReady) return null;
   return (
     <>
       <div>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/compat/router';
 
 const LeadForm = () => {
   const router = useRouter();
@@ -64,7 +64,7 @@ const LeadForm = () => {
         // setSuccess(
         //   "We have received your information successfully. Our team will review your details and get in touch with you shortly."
         // );
-        router.push('/thank-you');
+        router?.push('/thank-you');
 
         // setTimeout(() => {
         //   setSuccess("");
@@ -80,7 +80,7 @@ const LeadForm = () => {
       setLoading(false);
     }
   };
-  if (!router.isReady) return null;
+  if (!router?.isReady) return null;
   return (
     <div>
       {/* <div

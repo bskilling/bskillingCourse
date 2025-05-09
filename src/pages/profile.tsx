@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/compat/router';
 import axios from 'axios';
 interface RootObject {
   name: string;
@@ -34,13 +34,13 @@ export default function Profile() {
       }
     };
 
-    const code = router.query.code as string;
+    const code = router?.query.code as string;
     if (code) {
       fetchLinkedInData(code);
     } else {
       setLoading(false);
     }
-  }, [router.query.code]);
+  }, [router?.query.code]);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;

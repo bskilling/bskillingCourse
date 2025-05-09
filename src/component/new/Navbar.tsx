@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/compat/router';
 import { motion, AnimatePresence } from 'framer-motion';
 import PopupForm from '@/component/PopupForm';
 import Courses from '@/component/courses';
@@ -70,7 +70,7 @@ const NavbarSection: React.FC = () => {
   useEffect(() => {
     setMobileMenuOpen(false);
     setSheetOpen(false);
-  }, [router.pathname]);
+  }, [router?.pathname]);
 
   const handleOpenPopup = (): void => setPopupOpen(true);
   const handleClosePopup = (): void => setPopupOpen(false);
@@ -137,7 +137,7 @@ const NavbarSection: React.FC = () => {
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [activeDropdown]);
-  if (!router.isReady) return null;
+  if (!router?.isReady) return null;
   return (
     <>
       {/* Announcement Banner - Responsive for all devices */}
@@ -281,7 +281,7 @@ const NavbarSection: React.FC = () => {
                               <div
                                 key={index}
                                 onClick={() => {
-                                  router.push(`/courses/course-details/${course.url}`);
+                                  router?.push(`/courses/course-details/${course.url}`);
                                   setSheetOpen(false);
                                 }}
                                 className="p-3 hover:bg-gray-50 text-gray-800 hover:text-indigo-600 cursor-pointer transition flex items-center"
@@ -324,12 +324,12 @@ const NavbarSection: React.FC = () => {
                   key={item.name}
                   href={item.href}
                   className={`flex flex-col items-center justify-center py-1 ${
-                    router.pathname === item.href ? 'text-indigo-600' : 'text-gray-600'
+                    router?.pathname === item.href ? 'text-indigo-600' : 'text-gray-600'
                   }`}
                 >
                   <div
                     className={`p-1 rounded-full ${
-                      router.pathname === item.href ? 'bg-indigo-100' : ''
+                      router?.pathname === item.href ? 'bg-indigo-100' : ''
                     }`}
                   >
                     {item.icon}
@@ -369,7 +369,7 @@ const NavbarSection: React.FC = () => {
                     key={item.name}
                     href={item.href}
                     className={`flex items-center text-gray-700 hover:text-indigo-600 font-medium transition whitespace-nowrap text-sm xl:text-base ${
-                      router.pathname === item.href ? 'text-indigo-600' : ''
+                      router?.pathname === item.href ? 'text-indigo-600' : ''
                     }`}
                   >
                     {item.name}
@@ -514,7 +514,7 @@ const NavbarSection: React.FC = () => {
                         key={item.name}
                         href={item.href}
                         className={`flex items-center px-3 py-2.5 rounded-lg text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 transition ${
-                          router.pathname === item.href ? 'bg-indigo-50 text-indigo-600' : ''
+                          router?.pathname === item.href ? 'bg-indigo-50 text-indigo-600' : ''
                         }`}
                         onClick={() => setMobileMenuOpen(false)}
                       >

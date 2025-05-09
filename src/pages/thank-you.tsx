@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useEffect } from 'react';
 
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/compat/router';
 import { url } from 'inspector';
 
 const ThankYou = () => {
@@ -10,7 +10,7 @@ const ThankYou = () => {
 
   useEffect(() => {
     // setTimeout(function () {
-    //   router.push({
+    //   router?.push({
     //     pathname: "/",
     //   });
     // }, 5000);

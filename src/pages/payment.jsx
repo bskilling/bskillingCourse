@@ -1,5 +1,5 @@
 import CCAvenue from '../../util/ccavenue';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/compat/router';
 
 export default function Payment() {
   const host = 'https://www.bskilling.com/';
@@ -31,7 +31,7 @@ export default function Payment() {
     let encReq = CCAvenue.getEncryptedOrder(paymentData);
     let accessCode = 'AVHG70KE18CC51GHCC';
     let URL = `https://secure.ccavenue.com/transaction/transaction.do?command=initiateTransaction&merchant_id=${paymentData.merchant_id}&encRequest=${encReq}&access_code=${accessCode}`;
-    router.push(URL);
+    router?.push(URL);
 
     var form = document.createElement('form');
     // var element1 = document.createElement("input");
@@ -57,7 +57,7 @@ export default function Payment() {
 
     // window.location.assign(window.location.href);
     // setTimeout(() => {
-    //   router.reload();
+    //   router?.reload();
     // }, 2000);
   };
 

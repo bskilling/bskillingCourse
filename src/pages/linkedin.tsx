@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { useState } from 'react';
 import axios from 'axios';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/compat/router';
 
 const LinkedInLogin = () => {
   const [userData, setUserData] = useState<any>(null);

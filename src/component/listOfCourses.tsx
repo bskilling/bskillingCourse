@@ -3,7 +3,7 @@ import { MyContext } from '@/component/context/PageContext';
 import CourseDetails from '@/component/data/CoursesData';
 import courseSearchData from '@/component/data/courseSearchData';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/compat/router';
 import { useContext, useEffect, useState } from 'react';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { useMediaQuery } from 'react-responsive';
@@ -176,7 +176,7 @@ const ListOfCourses: React.FC<TabProps> = ({ data, CoursesCategoryData }) => {
     }, 1000);
   };
   const isSmallScreen = useMediaQuery({ maxWidth: 1020 });
-  if (!router.isReady) return null;
+  if (!router?.isReady) return null;
   return (
     <div className="pt-[50px] ">
       <div className="md:justify-center md:mx-auto">

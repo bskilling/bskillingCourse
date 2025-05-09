@@ -4,7 +4,7 @@ import ChatForm from '@/component/modules/leadChat/components/ChatForm';
 import DropAQueryForm from '@/component/modules/leadChat/components/DropAQueryForm';
 import LeadChatBox from '@/component/modules/leadChat/components/LeadChatBox';
 import useChat from '@/component/modules/leadChat/zustand';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/compat/router';
 import React, { useEffect, useState } from 'react';
 import { FaComment, FaElementor, FaTimes } from 'react-icons/fa';
 import { FiPhoneCall } from 'react-icons/fi';
@@ -26,7 +26,7 @@ export default function FixedFooterBar() {
   //   }, 4000);
 
   //   return () => clearTimeout(timer);
-  // }, [route.pathname]);
+  // }, [route?.pathname]);
   const [isExpanded, setIsExpanded] = useState(false);
   const [isDropQueryVisible, setIsDropQueryVisible] = useState(false);
   useEffect(() => {

@@ -1,4 +1,4 @@
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/compat/router';
 import { useEffect, useState } from 'react';
 import { FaComment, FaElementor, FaTimes } from 'react-icons/fa';
 import useChat from '../zustand';
@@ -40,7 +40,7 @@ const FloatWindow = () => {
     }, 4000);
 
     return () => clearTimeout(timer);
-  }, [route.pathname]);
+  }, [route?.pathname]);
   useEffect(() => {
     if (isExpanded) {
       setupSocket();

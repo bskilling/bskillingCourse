@@ -8,7 +8,7 @@ import { SlArrowDown } from 'react-icons/sl';
 import { MyContext } from '@/component/context/PageContext';
 import courseSearchData from '@/component/data/courseSearchData';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/compat/router';
 import axios from 'axios';
 import { FaBars, FaTimes, FaWhatsapp } from 'react-icons/fa';
 import Footer from './Footer';
@@ -76,13 +76,14 @@ const Layout = ({ children, pageTitle = 'bSkilling' }: Props) => {
   const [isOtherMenuOpen, setisOtherMenuOpen] = useState(false);
 
   const router = useRouter();
-  const pathName = router.pathname;
+
+  const pathName = router?.pathname;
   const [sheetOpen, setSheetOpen] = useState(false);
 
   const handleOpenPopup = () => setPopupOpen(true);
   const handleClosePopup = () => setPopupOpen(false);
 
-  const homePage = route.pathname === '/';
+  const homePage = route?.pathname === '/';
 
   useEffect(() => {
     console.log('pathName', pathName);
@@ -112,13 +113,13 @@ const Layout = ({ children, pageTitle = 'bSkilling' }: Props) => {
   }, []);
 
   useEffect(() => {
-    if (route.pathname === '/about') {
+    if (route?.pathname === '/about') {
       setNavHide(true);
       setAboutUnderline(true);
       setBlogUnderline(false);
-    } else if (route.pathname === '/PaymentStatus') {
+    } else if (route?.pathname === '/PaymentStatus') {
       setNavHide(false);
-    } else if (route.pathname === '/blogs') {
+    } else if (route?.pathname === '/blogs') {
       setBlogUnderline(true);
       setAboutUnderline(false);
     } else {
@@ -126,7 +127,7 @@ const Layout = ({ children, pageTitle = 'bSkilling' }: Props) => {
       setAboutUnderline(false);
       setBlogUnderline(false);
     }
-  }, [route.pathname]);
+  }, [route?.pathname]);
 
   useEffect(() => {
     setFetchSearchData(courseSearchData);
@@ -183,7 +184,7 @@ const Layout = ({ children, pageTitle = 'bSkilling' }: Props) => {
       ? SearchElementsData.filter(course => course.category === category)
       : []
   );
-  const pathname = router.pathname;
+  const pathname = router?.pathname;
   const isVisible = useMemo(() => {
     let exist = true;
     if (pathname) {

@@ -57,7 +57,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import Link from 'next/link';
 import NavbarSection from '@/component/navbar/NavbarSection';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/compat/router';
 import LeadForm from '@/components/pages/institution/LeadForm';
 import { useQuery } from '@tanstack/react-query';
 import { ICourse } from '@/component/types/Course.types';
@@ -376,7 +376,7 @@ const InstitutionHomepage = () => {
                 </span>
               </div>
               <Button
-                onClick={() => router.push('/institutions/skill-development-programs')}
+                onClick={() => router?.push('/institutions/skill-development-programs')}
                 className="w-full bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 text-white flex items-center justify-center gap-2 py-6 rounded-xl shadow-md"
               >
                 Explore Skill Programs <ChevronRight className="w-5 h-5" />
@@ -412,7 +412,7 @@ const InstitutionHomepage = () => {
                 </span>
               </div>
               <Button
-                onClick={() => router.push('/institutions/job-assisting-programs')}
+                onClick={() => router?.push('/institutions/job-assisting-programs')}
                 className="w-full bg-gradient-to-r from-purple-600 to-violet-700 hover:from-purple-700 hover:to-violet-800 text-white flex items-center justify-center gap-2 py-6 rounded-xl shadow-md"
               >
                 Discover Job Assistance <ChevronRight className="w-5 h-5" />
@@ -489,7 +489,7 @@ const InstitutionHomepage = () => {
                       <Card
                         key={index}
                         onClick={() => {
-                          router.push(`/institutions/${program?.slug}?id=${program?._id}`);
+                          router?.push(`/institutions/${program?.slug}?id=${program?._id}`);
                         }}
                         className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow flex flex-col h-[410px]"
                       >
@@ -530,7 +530,7 @@ const InstitutionHomepage = () => {
                           <div className="mt-auto">
                             <Button
                               onClick={() => {
-                                router.push(`/institutions/${program?.slug}?id=${program?._id}`);
+                                router?.push(`/institutions/${program?.slug}?id=${program?._id}`);
                               }}
                               className="w-full bg-white border border-slate-300 text-slate-800 hover:bg-slate-50"
                             >
@@ -550,7 +550,7 @@ const InstitutionHomepage = () => {
             <div className="text-center mt-8">
               <Button
                 onClick={() => {
-                  router.push(`/institutions/skill-development-programs`);
+                  router?.push(`/institutions/skill-development-programs`);
                 }}
                 variant="outline"
                 className="border-indigo-600 text-indigo-600 hover:bg-indigo-50"
@@ -607,7 +607,7 @@ const InstitutionHomepage = () => {
                   <CardFooter>
                     <Button
                       onClick={() => {
-                        router.push(`/institutions/job-assisting-programs`);
+                        router?.push(`/institutions/job-assisting-programs`);
                       }}
                       variant="outline"
                       className="w-full"
@@ -621,7 +621,7 @@ const InstitutionHomepage = () => {
             <div className="text-center mt-8">
               <Button
                 onClick={() => {
-                  router.push(`/institutions/job-assisting-programs`);
+                  router?.push(`/institutions/job-assisting-programs`);
                 }}
                 variant="outline"
                 className="border-indigo-600 text-indigo-600 hover:bg-indigo-50"

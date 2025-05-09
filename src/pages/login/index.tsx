@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/compat/router';
 import { env } from 'process';
 import React, { Suspense, useEffect, useMemo } from 'react';
 

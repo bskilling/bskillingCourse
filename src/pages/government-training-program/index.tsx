@@ -5,7 +5,7 @@ import React, { useEffect } from 'react';
 import Head from 'next/head';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { BsCircleFill } from 'react-icons/bs';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/compat/router';
 import Link from 'next/link';
 import NavbarSection from '@/component/navbar/NavbarSection';
 import { motion } from 'framer-motion';
@@ -240,7 +240,7 @@ export default function GovernmentTrainingProgram() {
                 >
                   <div
                     className="h-full overflow-hidden group cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-2 bg-white border-0 relative rounded-xl"
-                    onClick={() => router.push(tie.link)}
+                    onClick={() => router?.push(tie.link)}
                   >
                     <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-bl-full z-0"></div>
 

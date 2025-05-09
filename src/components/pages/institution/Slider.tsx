@@ -43,7 +43,7 @@ import {
 } from 'lucide-react';
 import { Code, Cpu, Layers, ShieldCheck, Terminal } from 'lucide-react';
 import { Briefcase, Building, BadgeCheck, TrendingUp } from 'lucide-react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/compat/router';
 const InstitutionSlider = () => {
   const plugin = React.useRef(Autoplay({ delay: 2000 }));
   const router = useRouter();

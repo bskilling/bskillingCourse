@@ -1,11 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/compat/router';
 
 export default function ThankYou() {
   const router = useRouter();
 
   const handleGoBack = () => {
-    router.back();
+    router?.back();
   };
 
   return (

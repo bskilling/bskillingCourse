@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FaTimes } from 'react-icons/fa';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/compat/router';
 import 'react-phone-number-input/style.css';
 import PhoneInput from 'react-phone-number-input';
 
@@ -68,7 +68,7 @@ const EnquiryForm: React.FC<EnquiryFormProps> = ({
         });
 
         setMessage(true);
-        router.push('/thankyou');
+        router?.push('/thankyou');
 
         if (onFormSubmit) {
           onFormSubmit();
@@ -99,7 +99,7 @@ const EnquiryForm: React.FC<EnquiryFormProps> = ({
       document.removeEventListener('click', handleOutsideClick);
     };
   }, [onClose]);
-  if (!router.isReady) return null;
+  if (!router?.isReady) return null;
   return (
     <div
       id="enquiryFormOverlay"

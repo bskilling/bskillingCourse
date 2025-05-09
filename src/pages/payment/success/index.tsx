@@ -1,4 +1,4 @@
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/compat/router';
 import Head from 'next/head';
 import Link from 'next/link';
 
@@ -14,7 +14,9 @@ export default function PaymentSuccess() {
   const router = useRouter();
 
   // Get query parameters directly - this works with SSR and client-side
-  const { paymentId, courseId, userId, amount } = router.query;
+  // @ts-expect-error
+
+  const { paymentId, courseId, userId, amount } = router?.query;
 
   // Create payment details object with null fallbacks for missing values
   const paymentDetails: PaymentDetails = {
@@ -26,7 +28,7 @@ export default function PaymentSuccess() {
   };
 
   // Show loading state while router is not ready
-  if (!router.isReady) {
+  if (!router?.isReady) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="text-center">

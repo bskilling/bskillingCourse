@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { FaLinkedin, FaStar } from 'react-icons/fa'; // Import icons
 import axios from 'axios';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/compat/router';
 import { useQuery } from '@tanstack/react-query';
 import Link from 'next/link';
 import NavbarSection from '@/component/navbar/NavbarSection';

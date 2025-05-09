@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/compat/router';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -133,7 +133,7 @@ const EnrollmentForm: React.FC<EnrollmentFormProps> = ({
   const handleOpenModal = () => {
     setIsOpen(true);
   };
-  if (!router.isReady) return null;
+  if (!router?.isReady) return null;
   return (
     <>
       <Button onClick={handleOpenModal} className={buttonClassName}>

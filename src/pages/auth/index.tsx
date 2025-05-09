@@ -1,6 +1,6 @@
 // pages/auth.tsx
 import { useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/compat/router';
 import axios from 'axios';
 
 const AuthPage = () => {
@@ -8,7 +8,7 @@ const AuthPage = () => {
 
   useEffect(() => {
     const fetchTokens = async () => {
-      const code = router.query.code as string;
+      const code = router?.query.code as string;
 
       if (!code) return;
 
@@ -17,16 +17,16 @@ const AuthPage = () => {
         console.log('✅ Tokens fetched:', res);
 
         // Redirect or notify
-        // router.push('/dashboard'); // or wherever you want
+        // router?.push('/dashboard'); // or wherever you want
       } catch (error: any) {
         console.error('❌ Failed to fetch tokens', error.response?.data || error.message);
       }
     };
 
-    if (router.isReady) {
+    if (router?.isReady) {
       fetchTokens();
     }
-  }, [router.isReady, router.query.code]);
+  }, [router?.isReady, router?.query.code]);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">

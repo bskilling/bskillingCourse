@@ -1,6 +1,6 @@
 import { MyContext } from '@/component/context/PageContext';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/compat/router';
 import { useContext, useState } from 'react';
 import { AiFillCaretDown, AiOutlineMenu } from 'react-icons/ai';
 import { useMediaQuery } from 'react-responsive';
@@ -33,7 +33,7 @@ const Tabs: React.FC<TabProps> = ({ data }) => {
     // const url = "/allCourses?buttonIndexs=" + x;
     setTimeout(() => {
       setLoadingVisible(false);
-      // router.push("/allCourses")
+      // router?.push("/allCourses")
       // window.open(url, "_blank");
     }, 1000);
   };
@@ -44,7 +44,7 @@ const Tabs: React.FC<TabProps> = ({ data }) => {
     // const url = "/allCourses?buttonIndexs=" + x;
     setTimeout(() => {
       setLoadingVisible(false);
-      router.push('/allCourses');
+      router?.push('/allCourses');
       // window.open(url, "_blank");
     }, 1000);
   };
@@ -61,12 +61,12 @@ const Tabs: React.FC<TabProps> = ({ data }) => {
     setTimeout(() => {
       setLoadingVisible(false);
       setCategoryVisible(false);
-      router.push('/allCourses');
+      router?.push('/allCourses');
       // window.open(url, "_blank");
     }, 1000);
   };
   const isSmallScreen = useMediaQuery({ maxWidth: 1020 });
-  if (!router.isReady) return null;
+  if (!router?.isReady) return null;
   return (
     <div className="flex w-full">
       <div className="flex w-full gap-8 ">

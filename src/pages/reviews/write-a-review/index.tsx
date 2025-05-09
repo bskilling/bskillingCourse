@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/compat/router';
 import axios from 'axios';
 import ReviewForm from '@/components/global/ReviewForm';
 import Link from 'next/link';
@@ -39,13 +39,13 @@ export default function Profile() {
       }
     };
 
-    const code = router.query.code as string;
+    const code = router?.query.code as string;
     if (code) {
       fetchLinkedInData(code);
     } else {
       setLoading(false);
     }
-  }, [router.query.code]);
+  }, [router?.query.code]);
 
   if (loading) return <p>Loading...</p>;
   if (error)
@@ -72,7 +72,7 @@ export default function Profile() {
             <p className="text-center my-4">
               Profile Fetching from linkedin failed. Please try again or contact our team
             </p>
-            <Button onClick={() => router.back()} className="m-auto text-center">
+            <Button onClick={() => router?.back()} className="m-auto text-center">
               Go Back
             </Button>
           </div>
@@ -136,7 +136,7 @@ export default function Profile() {
                     contact our team
                   </p>
                   <Button
-                    onClick={() => router.back()}
+                    onClick={() => router?.back()}
                     className="m-auto text-center"
                   >
                     Go Back

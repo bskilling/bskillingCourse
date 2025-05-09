@@ -1,4 +1,4 @@
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/compat/router';
 import Head from 'next/head';
 import Link from 'next/link';
 
@@ -15,7 +15,9 @@ export default function PaymentFailed() {
   const router = useRouter();
 
   // Get query parameters directly
-  const { paymentId, courseId, userId, amount, reason } = router.query;
+  // @ts-expect-error
+
+  const { paymentId, courseId, userId, amount, reason } = router?.query;
 
   // Create payment details object with null fallbacks for missing values
   const paymentDetails: FailedPaymentDetails = {
@@ -28,7 +30,7 @@ export default function PaymentFailed() {
   };
 
   // Show loading state while router is not ready
-  if (!router.isReady) {
+  if (!router?.isReady) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="text-center">

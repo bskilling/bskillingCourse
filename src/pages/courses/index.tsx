@@ -5,7 +5,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Search, GraduationCap } from 'lucide-react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/compat/router';
 import Link from 'next/link';
 
 import { cn } from '@/lib/utils';
@@ -46,7 +46,8 @@ const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL ?? 'https://backendbskill
 export default function SkillPrograms() {
   const selectedType = 'b2c';
   const router = useRouter();
-  const { tab: categorySlug } = router.query;
+  // @ts-expect-error
+  const { tab: categorySlug } = router?.query;
   const [searchTerm, setSearchTerm] = useState('');
   const [scategory, setScategory] = useState<ICategories['categories'][number] | null>(null);
 
@@ -82,16 +83,16 @@ export default function SkillPrograms() {
     setScategory(category);
 
     // Update URL with the selected category
-    const query = { ...router.query };
+    const query = { ...router?.query };
     if (category) {
       query.tab = category.name;
     } else {
       delete query.category;
     }
 
-    router.push(
+    router?.push(
       {
-        pathname: router.pathname,
+        pathname: router?.pathname,
         query,
       },
       undefined,

@@ -32,7 +32,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ICourse } from '@/component/types/Course.types';
 import CourseCard from '@/component/courses/CourseCard';
 import SkillLeadForm from './SkillLeadForm';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/compat/router';
 import Link from 'next/link';
 
 // Animation variants

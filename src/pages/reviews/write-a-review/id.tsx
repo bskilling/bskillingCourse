@@ -1,12 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
 import { useSession, signIn } from 'next-auth/react';
 import { useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/compat/router';
 
 const GiveAReviewPage = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
-  const { id } = router.query; // Accessing the dynamic `id` parameter from the URL
+  // @ts-expect-error
+
+  const { id } = router?.query; // Accessing the dynamic `id` parameter from the URL
 
   useEffect(() => {
     if (status === 'unauthenticated') {

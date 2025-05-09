@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/compat/router';
 import {
   Search,
   X,
@@ -226,13 +226,13 @@ const SearchSheetComponent = () => {
 
   // Navigate to course
   const handleCourseClick = (course: Course) => {
-    router.push(`/course/${course.slug}`);
+    router?.push(`/course/${course.slug}`);
     setSheetOpen(false);
   };
 
   // Navigate to category
   const handleCategoryClick = (category: Category) => {
-    router.push(`/individual-training?tab=${category.name}`);
+    router?.push(`/individual-training?tab=${category.name}`);
     setSheetOpen(false);
   };
 
@@ -261,7 +261,7 @@ const SearchSheetComponent = () => {
   const Skeleton = ({ className }: { className: string }) => (
     <div className={`animate-pulse rounded ${className}`}></div>
   );
-  if (!router.isReady) return null;
+  if (!router?.isReady) return null;
   return (
     <div className="relative flex-grow max-w-md mr-4">
       <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>

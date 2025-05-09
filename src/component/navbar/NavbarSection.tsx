@@ -41,7 +41,7 @@ import {
 import { FaUniversity } from 'react-icons/fa';
 import { FcAbout } from 'react-icons/fc';
 import { usePaymentStore } from '@/lib/zustand/phone.store';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/compat/router';
 
 const menus = [
   { name: 'Home', href: '/', icon: <IoHomeOutline size={22} /> },
@@ -86,7 +86,7 @@ export default function NavbarSection() {
   const [open, setOpen] = useState(false);
   const [open2, setOpen2] = useState(false);
   const router = useRouter();
-  const pathname = router.pathname;
+  const pathname = router?.pathname;
 
   // Get user from payment store
   const { user, reset } = usePaymentStore();

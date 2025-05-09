@@ -4,7 +4,7 @@ import axios from 'axios';
 import CourseCard from '@/component/CourseCard';
 import { MyContext } from '@/component/context/PageContext';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/compat/router';
 import { useContext, useEffect, useState } from 'react';
 import { AiFillCaretDown, AiOutlineMenu } from 'react-icons/ai';
 import { useMediaQuery } from 'react-responsive';
@@ -41,13 +41,15 @@ const AllCourses = () => {
   const [eachCourceList, SetEachCourceList] = useState<ListOfCoursesDataType[][]>([]);
   const router = useRouter();
   useEffect(() => {
-    const { buttonIndexs } = router.query;
+    // @ts-expect-error
+
+    const { buttonIndexs } = router?.query;
     if (buttonIndexs) {
       const index = parseInt(buttonIndexs as string);
       setAllCourseButtonIndex(index);
-      router.push('/allCourses');
+      router?.push('/allCourses');
     }
-  }, [router.query]);
+  }, [router?.query]);
 
   const fetchApiData = async () => {
     try {
@@ -87,13 +89,13 @@ const AllCourses = () => {
     setLoadingVisible(true);
     setTimeout(() => {
       setLoadingVisible(false);
-      router.back();
+      router?.back();
     }, 700);
   }
 
   const TabButtonClick = (x: number) => {
     setLoadingVisible(true);
-    router.push('/allCourses');
+    router?.push('/allCourses');
     setAllCourseButtonIndex(x);
     setTimeout(() => {
       setLoadingVisible(false);
