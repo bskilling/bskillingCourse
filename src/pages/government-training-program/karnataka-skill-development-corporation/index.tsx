@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+'use client';
 import React, { useRef, useState } from 'react';
 import Head from 'next/head';
 import NavbarSection from '@/component/navbar/NavbarSection';

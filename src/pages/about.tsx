@@ -1,5 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable @next/next/next-script-for-ga */
+'use client';
+
 import Head from 'next/head';
 import React, { useState } from 'react';
 import Image from 'next/image';

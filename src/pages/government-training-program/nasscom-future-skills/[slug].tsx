@@ -1,3 +1,4 @@
+'use client';
 import { GetServerSideProps } from 'next';
 import { ICourse } from '@/component/types/Course.types';
 import Link from 'next/link';
