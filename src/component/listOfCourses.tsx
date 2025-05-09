@@ -172,7 +172,7 @@ const ListOfCourses: React.FC<TabProps> = ({ data, CoursesCategoryData }) => {
     setAllCourseButtonIndex(0);
     setTimeout(() => {
       setLoadingVisible(false);
-      window.open('/allCourses', '_blank');
+      // window.open('/allCourses', '_blank');
     }, 1000);
   };
   const isSmallScreen = useMediaQuery({ maxWidth: 1020 });
