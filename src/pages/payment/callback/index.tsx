@@ -2,7 +2,6 @@
 'use client';
 
 import { useEffect, useState, useRef } from 'react';
-import { useSearchParams } from 'next/router';
 import axios from 'axios';
 import { toast } from 'sonner';
 import { handleErrors } from '@/lib/handleError';
@@ -10,7 +9,6 @@ import { usePaymentStore } from '@/lib/zustand/phone.store';
 import { useQuery } from '@tanstack/react-query';
 
 export default function PaymentCallback() {
-  // const searchParams = useSearchParams();
   const [status, setStatus] = useState('loading');
   const [checkedOnce, setCheckedOnce] = useState(false);
 

@@ -1,14 +1,17 @@
 import axios from 'axios';
-import { useSearchParams } from 'next/router';
+import { useRouter } from 'next/router';
 import { env } from 'process';
 import React, { Suspense, useEffect, useMemo } from 'react';
 
 export default function Login() {
-  const searchParams = useSearchParams();
+  const router = useRouter();
+  const searchParams = router;
+  // const { query } = router;
 
   const query = useMemo(() => {
     return {
-      token: searchParams.get('token'),
+      // @ts-expect-error
+      token: searchParams.token,
     };
   }, [searchParams]);
 
