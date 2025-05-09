@@ -28,7 +28,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Separator } from '@/components/ui/separator';
-import SkillOffering from '@/pages/college-training/skill-assisting-program/_components/SkillOffering';
+import SkillOffering from '@/components/_components/SkillOffering';
 
 // Animation variants
 const fadeIn = {
