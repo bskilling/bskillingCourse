@@ -4,7 +4,9 @@ import { useRouter } from 'next/compat/router';
 export default function Payment() {
   const host = 'https://www.bskilling.com/';
   const router = useRouter();
-
+  if (router?.isFallback) {
+    return <div>Loading...</div>;
+  }
   const paymentCCAvenue = () => {
     let paymentData = {
       merchant_id: '2492757', // Merchant ID (Required)

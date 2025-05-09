@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/next-script-for-ga */
 /* eslint-disable @next/next/no-img-element */
-import PdfFile from '@/pages/Pdffile';
+// import PdfFile from '@/pages/Pdffile';
 import { PDFDownloadLink } from '@react-pdf/renderer';
 import axios from 'axios';
 import ContactPopUp from '@/component/ContactPopUp';

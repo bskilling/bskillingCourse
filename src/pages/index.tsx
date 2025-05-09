@@ -10,7 +10,7 @@ import { NextPage } from 'next';
 import Head from 'next/head';
 import { useContext, useEffect, useState } from 'react';
 import { PDFDownloadLink } from '@react-pdf/renderer';
-import PdfFile from '../pages/Pdffile';
+// import PdfFile from '../pages/Pdffile';
 import axios from 'axios';
 import LeadForm from '@/component/modules/leadChat/components/LeadForm';
 import Gateway from '@/component/Gateway';
