@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import Script from 'next/script';
 
 interface BlogType {
   _id: string;
@@ -135,8 +136,8 @@ export default function Blogs() {
         <meta name="p:domain_verify" content="7bb84546e514612864b5b9d71d1649e4" />
 
         <link rel="icon" href="/favicon.png" />
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-3PVZC9K8BH"></script>
-        <script
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-3PVZC9K8BH"></Script>
+        <Script
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];

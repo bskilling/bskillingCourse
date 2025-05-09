@@ -19,6 +19,7 @@ import Experience from '@/component/Experience';
 import Testimonial from '@/component/Testimonial';
 import Placement from '@/component/Placement';
 import Program from '@/component/Program';
+import Script from 'next/script';
 
 interface UpcomingBatch {
   capacity: string;
@@ -95,8 +96,8 @@ const Home: NextPage<NextPage> = ({}) => {
         />
 
         <link rel="icon" href="/favicon.png" />
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-3PVZC9K8BH"></script>
-        <script
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-3PVZC9K8BH"></Script>
+        <Script
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];

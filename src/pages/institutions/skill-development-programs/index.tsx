@@ -238,7 +238,7 @@ export default function SkillDevelopmentPrograms() {
         <meta name="twitter:image:alt" content="Skill Development Programs" />
 
         {/* Structured Data / JSON-LD */}
-        <script
+        <Script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({

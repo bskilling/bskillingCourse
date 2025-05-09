@@ -28,6 +28,7 @@ import StarRating from '@/component/StarRating';
 import LearningForm from '@/component/modules/leadChat/components/LearningForm';
 import BreadCrumbs from '@/component/Breadcrumbs';
 import BenefitData from '@/component/data/BenefitData';
+import Script from 'next/script';
 type Batch = {
   id: string;
   name: string;
@@ -361,8 +362,8 @@ const TrainingMetadata = (props: TrainingMetadataProps) => {
             )}
 
           <link rel="icon" href="/favicon.png" />
-          <script async src="https://www.googletagmanager.com/gtag/js?id=G-3PVZC9K8BH"></script>
-          <script
+          <Script async src="https://www.googletagmanager.com/gtag/js?id=G-3PVZC9K8BH"></Script>
+          <Script
             dangerouslySetInnerHTML={{
               __html: `
         window.dataLayer = window.dataLayer || [];

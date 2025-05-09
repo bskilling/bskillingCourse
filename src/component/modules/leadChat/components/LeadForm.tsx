@@ -215,7 +215,7 @@ const zohoWebForm = `<div class="fixed inset-0 flex items-center justify-center 
                     <div class='zcwf_col_fld'> <button type='submit' id='formsubmit' class='bg-blue-500 text-white text-sm px-4 py-2 rounded-md mr-2 hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300' title='Submit'> Submit </button> <button type='reset' class='bg-gray text-gray-700 px-4 py-2 text-sm rounded-md hover:bg-gray-400 focus:outline-none focus:ring focus:border-gray-300' name='reset' title='Reset'> Reset </button> </div>
                 </div>
                 
-                <script>
+                <Script>
                     function tooltipShow2662866000048987061(el){
                     	var tooltip = el.nextElementSibling;
                     	var tooltipDisplay = tooltip.style.display;
@@ -230,11 +230,11 @@ const zohoWebForm = `<div class="fixed inset-0 flex items-center justify-center 
                     	}
                     }
                     
-                </script>
-                <script type='text/javascript' id='VisitorTracking'>
+                </Script>
+                <Script type='text/javascript' id='VisitorTracking'>
                     var $zoho= $zoho || {};$zoho.salesiq = $zoho.salesiq || {widgetcode:'siq808c9f0aec2179e3f6906ceb24906ee03d4fd55ab3a9515426e3ab8d00e568a0a8dd3011def5604c4779c2e3a5c0effa', values:{},ready:function(){}};var d=document;s=d.createElement('script');s.type='text/javascript';s.id='zsiqscript';s.defer=true;s.src='https://salesiq.zoho.com/widget';t=d.getElementsByTagName('script')[0];t.parentNode.insertBefore(s,t);function trackVisitor(){try{if($zoho){var LDTuvidObj = document.forms['WebToLeads2662866000048987061']['LDTuvid'];if(LDTuvidObj){LDTuvidObj.value = $zoho.salesiq.visitor.uniqueid();}var firstnameObj = document.forms['WebToLeads2662866000048987061']['First Name'];if(firstnameObj){name = firstnameObj.value +' '+name;}$zoho.salesiq.visitor.name(name);var emailObj = document.forms['WebToLeads2662866000048987061']['Email'];if(emailObj){email = emailObj.value;$zoho.salesiq.visitor.email(email);}}} catch(e){}}
-                </script> <!-- Do not remove this --- Analytics Tracking code starts -->
-                <script id='wf_anal' src='https://crm.zohopublic.com/crm/WebFormAnalyticsServeServlet?rid=9268a182bbac587f29873950d578694e10598aefcaa03557eff8aa5292da5065f693253b6add5dcdd96e15337349e1d1gid5853fbaf3bcb8db501579f4548a2e9b0abccc381c80c9aecb01e430d624f06d9gid7746176a2e7d6c9248d47a7ef170397d19ae3c7444028d11261643c9702e50f3gid9f534c252c80ff9f6e28f32aa9b5a0d68959094a4e8a0ef84173b43bbcc61bd2&tw=757643bf2bf975c37ff8e960f1922ff1e4234a6798529a163148528b7093f0f5'></script><!-- Do not remove this --- Analytics Tracking code ends. -->
+                </Script> <!-- Do not remove this --- Analytics Tracking code starts -->
+                <Script id='wf_anal' src='https://crm.zohopublic.com/crm/WebFormAnalyticsServeServlet?rid=9268a182bbac587f29873950d578694e10598aefcaa03557eff8aa5292da5065f693253b6add5dcdd96e15337349e1d1gid5853fbaf3bcb8db501579f4548a2e9b0abccc381c80c9aecb01e430d624f06d9gid7746176a2e7d6c9248d47a7ef170397d19ae3c7444028d11261643c9702e50f3gid9f534c252c80ff9f6e28f32aa9b5a0d68959094a4e8a0ef84173b43bbcc61bd2&tw=757643bf2bf975c37ff8e960f1922ff1e4234a6798529a163148528b7093f0f5'></Script><!-- Do not remove this --- Analytics Tracking code ends. -->
             </form>
         </div>
     </div>

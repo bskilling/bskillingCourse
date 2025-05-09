@@ -216,7 +216,7 @@ const Layout = ({ children, pageTitle = 'bSkilling' }: Props) => {
         <link rel="manifest" href="/favicon_io/site.webmanifest" />
       </Head>
       {/* <Script id="razorpay-checkout-js" src="https://checkout.razorpay.com/v1/checkout.js" /> */}
-      <script src="https://mercury.phonepe.com/web/bundle/checkout.js"></script>
+      <Script src="https://mercury.phonepe.com/web/bundle/checkout.js"></Script>
 
       <>
         {navHide && isVisible && (

@@ -38,6 +38,7 @@ import ProgramSections from '@/components/pages/institution/ProgramSection';
 import SkillLeadForm from '@/components/pages/institution/SkillLeadForm';
 import SkillPrograms from '@/components/pages/institution/SkillPrograms';
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
+import Script from 'next/script';
 
 // SkillOffering Component
 function SkillOffering() {
@@ -238,7 +239,7 @@ export default function SkillDevelopmentPrograms() {
         <meta name="twitter:image:alt" content="Skill Development Programs" />
 
         {/* Structured Data / JSON-LD */}
-        <script
+        <Script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({

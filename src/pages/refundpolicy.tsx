@@ -1,9 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable @next/next/next-script-for-ga */
 import React from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
 import Head from 'next/head';
+import Script from 'next/script';
 
 export default function RefundPolicy() {
   return (
@@ -11,21 +10,25 @@ export default function RefundPolicy() {
       <Head>
         <title>bSkilling Cancellation &amp; Refund Policy</title>
         <meta name="bSkilling" content=" Refund Policy" />
-
         <meta name="p:domain_verify" content="7bb84546e514612864b5b9d71d1649e4" />
         <link rel="icon" href="/favicon.png" />
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-3PVZC9K8BH"></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-3PVZC9K8BH');
-            `,
-          }}
-        />
       </Head>
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-3PVZC9K8BH"
+        strategy="afterInteractive"
+      />
+      <Script
+        id="google-analytics"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-3PVZC9K8BH');
+    `,
+        }}
+      />
       <section className="bg-gray">
         <section className="md:container pt-10 h-fit  mx-auto">
           <div className="w-full h-72  relative ">
