@@ -624,6 +624,7 @@ import {
   LucideGraduationCap,
   LucideLightbulb,
 } from 'lucide-react';
+import Script from 'next/script';
 
 const ProgramFocusSection = () => {
   const programFeatures = [
