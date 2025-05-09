@@ -31,7 +31,7 @@ import {
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { handleErrors } from '@/lib/handleError';
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/router';
 import CCAvenue from '@/lib/CCAvenue';
 
 // Form schema that matches the backend API exactly
@@ -293,7 +293,7 @@ const CCAvPaymentForm: React.FC<PaymentFormProps> = ({
       setIsLoading(false);
     }
   };
-
+  if (!router.isReady) return null;
   // Render different content based on the current step
   const renderContent = () => {
     switch (currentStep) {

@@ -31,7 +31,6 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
-import { usePathname } from 'next/navigation';
 import { useRouter } from 'next/router';
 import { Search } from 'lucide-react';
 import { ICourse } from '../types/Course.types';
@@ -74,8 +73,9 @@ export default function Courses() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [close, setClose] = useState(false);
   const [open2, setOpen2] = useState(false);
-  const pathname = usePathname();
+  // const pathname = usePathname();
   const router = useRouter();
+  const pathname = router.pathname;
   const [searchTerm, setSearchTerm] = useState('');
   const [scategory, setScategory] = useState<ICategories['categories'][number] | null>(null);
 
@@ -191,7 +191,7 @@ export default function Courses() {
     const courseEnd = new Date(endDate);
     return courseStart <= today && today <= courseEnd;
   };
-
+  if (!router.isReady) return null;
   return (
     <>
       {/* Mobile Sheet */}

@@ -99,7 +99,7 @@ const EnquiryForm: React.FC<EnquiryFormProps> = ({
       document.removeEventListener('click', handleOutsideClick);
     };
   }, [onClose]);
-
+  if (!router.isReady) return null;
   return (
     <div
       id="enquiryFormOverlay"

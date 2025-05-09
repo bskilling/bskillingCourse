@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/router';
 import {
   Search,
   X,
@@ -261,7 +261,7 @@ const SearchSheetComponent = () => {
   const Skeleton = ({ className }: { className: string }) => (
     <div className={`animate-pulse rounded ${className}`}></div>
   );
-
+  if (!router.isReady) return null;
   return (
     <div className="relative flex-grow max-w-md mr-4">
       <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>

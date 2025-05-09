@@ -176,7 +176,7 @@ const ListOfCourses: React.FC<TabProps> = ({ data, CoursesCategoryData }) => {
     }, 1000);
   };
   const isSmallScreen = useMediaQuery({ maxWidth: 1020 });
-
+  if (!router.isReady) return null;
   return (
     <div className="pt-[50px] ">
       <div className="md:justify-center md:mx-auto">

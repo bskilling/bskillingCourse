@@ -267,6 +267,8 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
       return () => clearTimeout(timer);
     }
   }, [messageSent]);
+
+  if (!router.isReady) return null;
   return (
     <>
       {isLoader && (

@@ -28,7 +28,6 @@ import {
 // import NavbarSection from './navbar/NavbarSection';
 import Courses from './courses';
 import NavSection from './navbar/NavSection';
-import { usePathname } from 'next/navigation';
 // import Categories from './navbar/Categories';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import {
@@ -75,7 +74,9 @@ const Layout = ({ children, pageTitle = 'bSkilling' }: Props) => {
   const [isPopupOpen, setPopupOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isOtherMenuOpen, setisOtherMenuOpen] = useState(false);
-  const pathName = usePathname();
+
+  const router = useRouter();
+  const pathName = router.pathname;
   const [sheetOpen, setSheetOpen] = useState(false);
 
   const handleOpenPopup = () => setPopupOpen(true);
@@ -182,7 +183,7 @@ const Layout = ({ children, pageTitle = 'bSkilling' }: Props) => {
       ? SearchElementsData.filter(course => course.category === category)
       : []
   );
-  const pathname = usePathname();
+  const pathname = router.pathname;
   const isVisible = useMemo(() => {
     let exist = true;
     if (pathname) {

@@ -57,7 +57,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import Link from 'next/link';
 import NavbarSection from '@/component/navbar/NavbarSection';
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/router';
 import LeadForm from '@/components/pages/institution/LeadForm';
 import { useQuery } from '@tanstack/react-query';
 import { ICourse } from '@/component/types/Course.types';

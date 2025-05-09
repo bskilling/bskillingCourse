@@ -80,7 +80,7 @@ const LeadForm = () => {
       setLoading(false);
     }
   };
-
+  if (!router.isReady) return null;
   return (
     <div>
       {/* <div

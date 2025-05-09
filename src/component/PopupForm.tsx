@@ -78,7 +78,7 @@ const PopupForm: React.FC<PopupFormType> = ({ handleClosePopup, title }) => {
       setLoading(false);
     }
   };
-
+  if (!router.isReady) return null;
   return (
     <div>
       <div className="fixed inset-0 bg-black opacity-50" onClick={handleClosePopup}></div>

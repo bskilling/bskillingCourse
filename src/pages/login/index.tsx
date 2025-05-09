@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/router';
 import { env } from 'process';
 import React, { Suspense, useEffect, useMemo } from 'react';
 

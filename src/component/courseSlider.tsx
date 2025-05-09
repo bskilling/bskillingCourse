@@ -93,7 +93,7 @@ const CourseSlider = () => {
   useEffect(() => {
     fetchApiData();
   }, [category]);
-
+  if (!router.isReady) return null;
   return (
     <>
       <div>

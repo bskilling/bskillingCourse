@@ -93,7 +93,7 @@ export default function Program() {
   const filteredCourses = data?.courses.filter(course =>
     course.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
-
+  if (!router.isReady) return null;
   return (
     <div className="p-8 w-[90vw] md:w-[85vw] lg:w-[80vw] mx-auto">
       {/* Categories */}
@@ -258,6 +258,7 @@ export default function Program() {
 // Enhanced Course Card Component
 const EnhancedCourseCard = ({ course }: { course: ICourse }) => {
   const router = useRouter();
+  if (!router.isReady) return null;
   return (
     <motion.div
       whileHover={{ y: -5 }}

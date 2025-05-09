@@ -66,7 +66,7 @@ const Tabs: React.FC<TabProps> = ({ data }) => {
     }, 1000);
   };
   const isSmallScreen = useMediaQuery({ maxWidth: 1020 });
-
+  if (!router.isReady) return null;
   return (
     <div className="flex w-full">
       <div className="flex w-full gap-8 ">

@@ -24,7 +24,6 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { IoIosArrowDown, IoIosCall } from 'react-icons/io';
-import { usePathname } from 'next/navigation';
 import { FiFileText } from 'react-icons/fi';
 import { GoPerson } from 'react-icons/go';
 import { buttonVariants } from '@/components/ui/button';
@@ -42,6 +41,7 @@ import {
 import { FaUniversity } from 'react-icons/fa';
 import { FcAbout } from 'react-icons/fc';
 import { usePaymentStore } from '@/lib/zustand/phone.store';
+import { useRouter } from 'next/router';
 
 const menus = [
   { name: 'Home', href: '/', icon: <IoHomeOutline size={22} /> },
@@ -85,7 +85,8 @@ export default function NavbarSection() {
   const [close, setClose] = useState(false);
   const [open, setOpen] = useState(false);
   const [open2, setOpen2] = useState(false);
-  const pathname = usePathname();
+  const router = useRouter();
+  const pathname = router.pathname;
 
   // Get user from payment store
   const { user, reset } = usePaymentStore();

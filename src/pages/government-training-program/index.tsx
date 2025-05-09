@@ -5,7 +5,7 @@ import React, { useEffect } from 'react';
 import Head from 'next/head';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { BsCircleFill } from 'react-icons/bs';
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import NavbarSection from '@/component/navbar/NavbarSection';
 import { motion } from 'framer-motion';

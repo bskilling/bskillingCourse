@@ -77,7 +77,7 @@ const ReviewForm = ({ user }: { user: { name: string; profilePic: string } }) =>
       setLoading(false);
     }
   };
-
+  if (!router.isReady) return null;
   return (
     <div className="flex justify-center items-center min-h-screen w-[100vw] bg-gray-50">
       <div className="bg-white shadow-lg rounded-md  w-[90%] max-w-2xl">

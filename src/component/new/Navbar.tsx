@@ -137,7 +137,7 @@ const NavbarSection: React.FC = () => {
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [activeDropdown]);
-
+  if (!router.isReady) return null;
   return (
     <>
       {/* Announcement Banner - Responsive for all devices */}
