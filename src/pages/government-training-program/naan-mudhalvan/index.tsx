@@ -120,7 +120,8 @@ export default function NaanMudhalvan() {
                 <p>
                   Creating opportunities for all, including underserved communities in rural areas.
                 </p>
-                <p>Apgning training modules with emerging industry demands.</p>
+                <p>Aligning training modules with emerging industry demands.</p>
+
                 <p>
                   Empowering the next generation to thrive in high-demand skills in various
                   industries.
@@ -471,7 +472,7 @@ export default function NaanMudhalvan() {
               <h3 className="text-xl font-semibold text-gray-700 mb-4">For Engineering Students</h3>
               <ul className="list-disc list-inside text-gray-600 space-y-2">
                 <li>
-                  So far, 3,5000 students have been successfully trained in Industrial IoT and
+                  So far, 3,50,000 students have been successfully trained in Industrial IoT and
                   Industry 4.0, equipping them with cutting-edge knowledge and practical skills.
                 </li>
                 <li>Gain hands-on knowledge of Industrial IoT and Industry 4.0 concepts.</li>
