@@ -1,6 +1,7 @@
+/* eslint-disable @next/next/no-img-element */
 import { useState } from 'react';
 import axios from 'axios';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/compat/router';
 
 const LinkedInLogin = () => {
   const [userData, setUserData] = useState<any>(null);
@@ -31,10 +32,7 @@ const LinkedInLogin = () => {
   };
 
   // Check for the authorization code in the URL query params when the page loads
-  if (
-    typeof window !== 'undefined' &&
-    window.location.search.includes('code=')
-  ) {
+  if (typeof window !== 'undefined' && window.location.search.includes('code=')) {
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get('code');
     if (code) {

@@ -11,12 +11,7 @@ export const leadSchema = z
     name: z.string().min(3, 'Name must be at least 3 characters long'),
     email: z.string().email('Invalid email format'),
     phoneNumber: z.string().regex(/^[0-9]{10,15}$/, 'Invalid phone number'),
-    category: z.enum([
-      'individual_course',
-      'corporate_training',
-      'institutional',
-      'government',
-    ]),
+    category: z.enum(['individual_course', 'corporate_training', 'institutional', 'government']),
     subcategory: z.enum(['jobs', 'skills']).optional(),
     query: z.string().min(10, 'Query must be at least 10 characters long'),
   })
@@ -76,12 +71,10 @@ const LeadForm = () => {
         />
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">
-            Category
-          </label>
+          <label className="block text-sm font-medium text-gray-700">Category</label>
           <select
             {...register('category')}
-            onChange={(e) => setSelectedCategory(e.target.value)}
+            onChange={e => setSelectedCategory(e.target.value)}
             className="w-full border p-3 rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             <option value="individual_course">Individual Course</option>
@@ -93,9 +86,7 @@ const LeadForm = () => {
 
         {selectedCategory === 'institutional' && (
           <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Subcategory
-            </label>
+            <label className="block text-sm font-medium text-gray-700">Subcategory</label>
             <select
               {...register('subcategory')}
               className="w-full border p-3 rounded-lg bg-gray-50"
@@ -104,9 +95,7 @@ const LeadForm = () => {
               <option value="skills">Skills</option>
             </select>
             {errors.subcategory && (
-              <p className="text-red-500 text-sm">
-                {errors.subcategory.message}
-              </p>
+              <p className="text-red-500 text-sm">{errors.subcategory.message}</p>
             )}
           </div>
         )}

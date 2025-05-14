@@ -1,11 +1,14 @@
-import axios from "axios";
-import CourseCard from "components/CourseCard";
-import { MyContext } from "context/PageContext";
-import Head from "next/head";
-import { useRouter } from "next/router";
-import { useContext, useEffect, useState } from "react";
-import { AiFillCaretDown, AiOutlineMenu } from "react-icons/ai";
-import { useMediaQuery } from "react-responsive";
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @next/next/next-script-for-ga */
+import axios from 'axios';
+import CourseCard from '@/component/CourseCard';
+import { MyContext } from '@/component/context/PageContext';
+import Head from 'next/head';
+import { useRouter } from 'next/compat/router';
+import { useContext, useEffect, useState } from 'react';
+import { AiFillCaretDown, AiOutlineMenu } from 'react-icons/ai';
+import { useMediaQuery } from 'react-responsive';
+import Script from 'next/script';
 interface UpcomingBatch {
   capacity: string;
   description: string;
@@ -36,18 +39,18 @@ interface ListOfCoursesDataType {
 }
 const AllCourses = () => {
   const [datas, setDatas] = useState<string[]>([]);
-  const [eachCourceList, SetEachCourceList] = useState<
-    ListOfCoursesDataType[][]
-  >([]);
+  const [eachCourceList, SetEachCourceList] = useState<ListOfCoursesDataType[][]>([]);
   const router = useRouter();
   useEffect(() => {
-    const { buttonIndexs } = router.query;
+    // @ts-expect-error
+
+    const { buttonIndexs } = router?.query;
     if (buttonIndexs) {
       const index = parseInt(buttonIndexs as string);
       setAllCourseButtonIndex(index);
-      router.push("/allCourses");
+      router?.push('/allCourses');
     }
-  }, [router.query]);
+  }, [router?.query]);
 
   const fetchApiData = async () => {
     try {
@@ -65,39 +68,35 @@ const AllCourses = () => {
       setApierror(false);
     } catch (error) {
       setApierror(true);
-      console.error("Error fetching API:", error);
+      console.error('Error fetching API:', error);
     }
   };
   // datas.sort((a, b) => b.localeCompare(a));
   useEffect(() => {}, []);
   const [apiEro, setApierror] = useState(false);
   const [errorMessage, setErrormessage] = useState(
-    "We are in the process of updating our course offerings. Please check in some time."
+    'We are in the process of updating our course offerings. Please check in some time.'
   );
   useEffect(() => {
     fetchApiData();
   }, []);
 
   const isSmallScreen = useMediaQuery({ maxWidth: 1020 });
-  const {
-    loadingVisible,
-    setLoadingVisible,
-    AllCourseButtonIndex,
-    setAllCourseButtonIndex,
-  } = useContext(MyContext);
+  const { loadingVisible, setLoadingVisible, AllCourseButtonIndex, setAllCourseButtonIndex } =
+    useContext(MyContext);
   const [categoryVisible, setCategoryVisible] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   function handleBack() {
     setLoadingVisible(true);
     setTimeout(() => {
       setLoadingVisible(false);
-      router.back();
+      router?.back();
     }, 700);
   }
 
   const TabButtonClick = (x: number) => {
     setLoadingVisible(true);
-    router.push("/allCourses");
+    router?.push('/allCourses');
     setAllCourseButtonIndex(x);
     setTimeout(() => {
       setLoadingVisible(false);
@@ -105,7 +104,7 @@ const AllCourses = () => {
     }, 400);
   };
   const clickOnCategory = (x: number) => {
-    setCategoryVisible((pre) => !pre);
+    setCategoryVisible(pre => !pre);
     setLoadingVisible(true);
     setTimeout(() => {
       setLoadingVisible(false);
@@ -122,17 +121,11 @@ const AllCourses = () => {
           name="bSkilling"
           content="Unlock Your Potential with the Trending Online Courses of Today | Expand Your Knowledge and Skills"
         />
-        <meta
-          name="p:domain_verify"
-          content="7bb84546e514612864b5b9d71d1649e4"
-        />
+        <meta name="p:domain_verify" content="7bb84546e514612864b5b9d71d1649e4" />
 
         <link rel="icon" href="/favicon.png" />
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-3PVZC9K8BH"
-        ></script>
-        <script
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-3PVZC9K8BH"></Script>
+        <Script
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
@@ -150,15 +143,12 @@ const AllCourses = () => {
               <div className="flex items-center  mb-5 md:mb-2 gap-">
                 <button
                   className="text-left md:gap-0 gap-1 md:mt-0 mt-4 block  "
-                  onClick={() => setCategoryVisible((pre) => !pre)}
+                  onClick={() => setCategoryVisible(pre => !pre)}
                 >
                   <p className="md:text-sm">Browse</p>
                   <p>Categories</p>
                 </button>
-                <div
-                  onClick={() => setCategoryVisible((pre) => !pre)}
-                  className="mb-1"
-                >
+                <div onClick={() => setCategoryVisible(pre => !pre)} className="mb-1">
                   <AiFillCaretDown />
                 </div>
               </div>
@@ -175,26 +165,23 @@ const AllCourses = () => {
                   ))}
                 </div>
               ) : (
-                ""
+                ''
               )}
             </div>
 
             {isSmallScreen ? (
-              ""
+              ''
             ) : (
               <div className="hidden md:block pt-5  mb-5 w-full">
-                <div
-                  className="-mb-0.5 flex justify-start sm:block"
-                  aria-label="Tabs"
-                >
+                <div className="-mb-0.5 flex justify-start sm:block" aria-label="Tabs">
                   <ul className="flex md:flex-row flex-col items-center md:justify-start space-x-5">
                     {datas.slice(0, 11).map((categoryName, index) => (
                       <li
                         key={categoryName + index}
                         className={`font-semibold ${
                           index === AllCourseButtonIndex
-                            ? "text-black border-b-4  border-buttonBlue "
-                            : "text-black hover:text-black "
+                            ? 'text-black border-b-4  border-buttonBlue '
+                            : 'text-black hover:text-black '
                         }`}
                       >
                         <button
@@ -257,7 +244,7 @@ const AllCourses = () => {
                 {errorMessage}
               </div>
             ) : (
-              ""
+              ''
             )}
           </section>
         </div>
@@ -272,15 +259,13 @@ const AllCourses = () => {
             <div className="w-24 h-24 ">
               <div className="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-[#3d3c3d] opacity-75 flex flex-col items-center justify-center">
                 <div className="loader ease-linear rounded-full border-8 border-t-4 border-buttonBlue h-16 w-16 mb-4"></div>
-                <h2 className="text-center text-white text-xl font-semibold">
-                  Loading...
-                </h2>
+                <h2 className="text-center text-white text-xl font-semibold">Loading...</h2>
               </div>
             </div>
           </div>
         </div>
       ) : (
-        ""
+        ''
       )}
     </>
   );

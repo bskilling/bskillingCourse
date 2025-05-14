@@ -1,5 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/compat/router';
 import axios from 'axios';
 interface RootObject {
   name: string;
@@ -33,13 +34,13 @@ export default function Profile() {
       }
     };
 
-    const code = router.query.code as string;
+    const code = router?.query.code as string;
     if (code) {
       fetchLinkedInData(code);
     } else {
       setLoading(false);
     }
-  }, [router.query.code]);
+  }, [router?.query.code]);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
@@ -48,11 +49,7 @@ export default function Profile() {
     <div className="flex flex-col items-center justify-center min-h-screen">
       {userData ? (
         <div className="p-6 bg-white rounded-lg shadow-md text-center">
-          <img
-            src={userData.picture}
-            alt="Profile"
-            className="w-24 h-24 rounded-full mx-auto"
-          />
+          <img src={userData.picture} alt="Profile" className="w-24 h-24 rounded-full mx-auto" />
           <h2 className="mt-4 text-xl font-semibold">{userData.name}</h2>
         </div>
       ) : (

@@ -1,24 +1,25 @@
 /* eslint-disable @next/next/next-script-for-ga */
-import Blogs from 'components/blognew';
-import CertifiedPartners from 'components/certfiedPratnersSilder';
-import ListOfCourses from 'components/listOfCourses';
-import Slider from 'components/slider';
-import Tabs from 'components/tabs';
-import Testimonials from 'components/testimonials';
-import { MyContext } from 'context/PageContext';
+import Blogs from '@/component/blognew';
+import CertifiedPartners from '@/component/certfiedPratnersSilder';
+import ListOfCourses from '@/component/listOfCourses';
+import Slider from '@/component/slider';
+import Tabs from '@/component/tabs';
+import Testimonials from '@/component/testimonials';
+import { MyContext } from '@/component/context/PageContext';
 import { NextPage } from 'next';
 import Head from 'next/head';
 import { useContext, useEffect, useState } from 'react';
 import { PDFDownloadLink } from '@react-pdf/renderer';
-import PdfFile from '../pages/Pdffile';
+// import PdfFile from '../pages/Pdffile';
 import axios from 'axios';
-import LeadForm from 'modules/leadChat/components/LeadForm';
-import Gateway from 'components/Gateway';
-import Chooseus from 'components/Chooseus';
-import Experience from 'components/Experience';
-import Testimonial from 'components/Testimonial';
-import Placement from 'components/Placement';
-import Program from 'components/Program';
+import LeadForm from '@/component/modules/leadChat/components/LeadForm';
+import Gateway from '@/component/Gateway';
+import Chooseus from '@/component/Chooseus';
+import Experience from '@/component/Experience';
+import Testimonial from '@/component/Testimonial';
+import Placement from '@/component/Placement';
+import Program from '@/component/Program';
+import Script from 'next/script';
 
 interface UpcomingBatch {
   capacity: string;
@@ -51,9 +52,7 @@ interface ListOfCoursesDataType {
 type NestedArrayOfPeople = Array<Array<ListOfCoursesDataType>>;
 const Home: NextPage<NextPage> = ({}) => {
   const [datas, setDatas] = useState<string[]>([]);
-  const [eachCourceList, SetEachCourceList] = useState<
-    ListOfCoursesDataType[][]
-  >([]);
+  const [eachCourceList, SetEachCourceList] = useState<ListOfCoursesDataType[][]>([]);
 
   const fetchApiData = async () => {
     try {
@@ -87,39 +86,22 @@ const Home: NextPage<NextPage> = ({}) => {
     <>
       <Head>
         <title>
-          bSkilling | Online Courses - Live Training and Certification Programs
+          bSkilling | Online Tech Courses & Training with Job Assistance & Certification
         </title>
         <meta
           name="description"
-          content="Unlock success with bSkilling online courses and live training. Get certified in Generative AI, SAP BTP, Cloud Engineering, Prince2, PMP. The best online training experience!"
+          content="Gain in-demand tech skills with expert-led online courses and training. Get certified, receive job assistance, and advance your career with BSkilling."
         />
         <meta
           name="keywords"
-          content="bskilling, generative ai, generative ai online certification, gen ai,sap btp course, sap btp online,prince2 certification, prince2 examination, pmp online certification, pmp online course, cloud engineering course, cloud engineering training,Online course , Online course with placement, online training course, online certification with placement, training certification with placement"
+          content="Online tech courses, Tech training with certification, Instructor-led online courses,Job assistance training programs, Career-focused tech courses, Certification courses online, Online IT training, Tech skills for professionals,
+Tech upskilling platform"
         />
 
         <link rel="icon" href="/favicon.png" />
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-3PVZC9K8BH"
-        ></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-3PVZC9K8BH');
-            `,
-          }}
-        />
       </Head>
-      {/* <section className="bg-buttonBlue px-8 text-white">
-        <Tabs data={datas} />
-      </section> */}
-      <section onClick={clickOnMain} className="w-full ">
-        {/* <ContactPopUp /> */}
 
+      <section onClick={clickOnMain} className="w-full ">
         <section className="relative w-full">
           <Slider />
         </section>
@@ -142,97 +124,11 @@ const Home: NextPage<NextPage> = ({}) => {
         <section>
           <Testimonial />
         </section>
-        {/* <section className="bg-gray">
-          <ListOfCourses data={datas} CoursesCategoryData={eachCourceList} />
-        </section> */}
 
         <section>
           <Placement />
         </section>
-        {/* <section className="">
-          <Testimonials />
-        </section> */}
-        {/* <section>
-          <Playstore />
-        </section> */}
-        {/* <section className="bg-gray">
-          <Blogs />
-        </section> */}
-        {/* <section className="bg-gray-200">
-          
-          <div className="md:hidden flex ">
-            <div>
-              <p className="font-bold font-SourceSans text-xl text-center pt-12 py-2 ">
-                Learn On The App
-              </p>
-              <p className="text-base text-justify font-SourceSans py-2 px-2">
-                Download the lessons and learn anytime, anywhere from the
-                courses available on our app.
-              </p>
-
-              <div className="flex flex-col hover:cursor-pointer py-14 px-1 gap-2 justify-center">
-                <div className="flex p-2 gap-1 text-white px-2 py-1  rounded-md">
-                  <div className="flex justify-center items-center w-full">
-                    <a
-                      target="_blank"
-                      rel="noreferrer"
-                      className="underline-0 flex justify-center"
-                      href="https://play.google.com/store/apps/details?id=com.melimu.app.bskilling&hl=en_IN&gl=US"
-                    >
-                      <img
-                        src="/gp.png"
-                        className="w-[50%] object-contain h-auto"
-                        alt=""
-                      />
-                    </a>
-                  </div>
-                </div>
-                <div className="flex flex-row gap-1 text-white px-2 py-1  rounded-md">
-                  <div className="flex justify-center items-center w-full">
-                    <a
-                      target="_blank"
-                      rel="noreferrer"
-                      className="underline-0 flex justify-center"
-                      href="https://apps.apple.com/eg/app/bskilling/id6445943298"
-                    >
-                      <img
-                        src="/as.png"
-                        className="w-[50%] object-contain h-auto"
-                        alt=""
-                      />
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="md:flex hidden">
-            <div className="relative ">
-              <div className="absolute md:mt-16 w-[100%] flex  ">
-                <div className=" w-[50%]  pl-24 text-white md:mt-9 justify-center">
-                  <p className="font-bold font-SourceSans text- text-xl  py-2 ">
-                    Learn On The App
-                  </p>
-                  <p className="text-lg pt-12 text-white text-opacity-100 font-semibold font-SourceSans  py-2 px-1">
-                    Download the lessons and learn anytime, <br /> anywhere from
-                    the courses available on our app.
-                  </p>
-                </div>
-              </div>
-
-              <img
-                src="qebg2.png"
-                alt="QR Code"
-                className="w-full  object-contain h-auto"
-              />
-            </div>
-          </div>
-         
-        </section> */}
       </section>
-      {/* <PDFDownloadLink document={<PdfFile />}>
-        <button>Download</button>
-      </PDFDownloadLink> */}
     </>
   );
 };

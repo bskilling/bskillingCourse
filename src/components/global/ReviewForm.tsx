@@ -4,7 +4,7 @@ import { FaLinkedin, FaStar } from 'react-icons/fa';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import { Input } from '../ui/input';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/compat/router';
 import { z } from 'zod';
 
 interface ReviewFormData {
@@ -27,11 +27,7 @@ const validater = z.object({
 
 type ValidationError = z.infer<typeof validater>;
 
-const ReviewForm = ({
-  user,
-}: {
-  user: { name: string; profilePic: string };
-}) => {
+const ReviewForm = ({ user }: { user: { name: string; profilePic: string } }) => {
   const {
     register,
     handleSubmit,
@@ -45,9 +41,7 @@ const ReviewForm = ({
   const router = useRouter();
 
   const validateLinkedIn = (url: string) => {
-    return /^(https?:\/\/)?(www\.)?linkedin\.com\/in\/[A-Za-z0-9-]+\/?$/.test(
-      url
-    );
+    return /^(https?:\/\/)?(www\.)?linkedin\.com\/in\/[A-Za-z0-9-]+\/?$/.test(url);
   };
 
   const onSubmit = async (data: ValidationError) => {
@@ -73,7 +67,7 @@ const ReviewForm = ({
 
       if (response.status === 201) {
         // alert('Review submitted successfully!');
-        router.replace('/');
+        router?.replace('/');
       } else {
         setError('Something went wrong.');
       }
@@ -83,7 +77,7 @@ const ReviewForm = ({
       setLoading(false);
     }
   };
-
+  if (!router?.isReady) return null;
   return (
     <div className="flex justify-center items-center min-h-screen w-[100vw] bg-gray-50">
       <div className="bg-white shadow-lg rounded-md  w-[90%] max-w-2xl">
@@ -94,21 +88,11 @@ const ReviewForm = ({
             alt={user.name}
             className="w-20 h-20 object-cover rounded-full m-auto"
           />
-          <FaLinkedin
-            size={40}
-            className="text-blue-600 text-center m-auto -mt-1 bg-card"
-          />
-          <p className="font-bold text-xl text-center text-blue-900">
-            {user.name}
-          </p>
+          <FaLinkedin size={40} className="text-blue-600 text-center m-auto -mt-1 bg-card" />
+          <p className="font-bold text-xl text-center text-blue-900">{user.name}</p>
         </div>
-        <h2 className="text-2xl font-semibold mb-4 text-center mt-8">
-          {/* Leave a Review */}
-        </h2>
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className="flex flex-col gap-y-4 p-6 px-14 pt-0"
-        >
+        <h2 className="text-2xl font-semibold mb-4 text-center mt-8">{/* Leave a Review */}</h2>
+        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-y-4 p-6 px-14 pt-0">
           {/* LinkedIn Profile Input */}
 
           <div>
@@ -119,11 +103,10 @@ const ReviewForm = ({
               how would you rate the course?
             </p> */}
             <p className="font-medium mt-5">
-              <span className="text-red-500">*</span> How would you rate the
-              course?
+              <span className="text-red-500">*</span> How would you rate the course?
             </p>
             <div className="flex my-5 justify-between mt-2">
-              {[1, 2, 3, 4, 5].map((star) => (
+              {[1, 2, 3, 4, 5].map(star => (
                 <FaStar
                   key={star}
                   size={50}
@@ -158,9 +141,7 @@ const ReviewForm = ({
                 validate: validateLinkedIn,
               })}
             />
-            {errors.linkedinProfile && (
-              <p className="text-red-500">Invalid LinkedIn URL</p>
-            )}
+            {errors.linkedinProfile && <p className="text-red-500">Invalid LinkedIn URL</p>}
           </div>
 
           {/* Star Rating */}
@@ -187,9 +168,7 @@ const ReviewForm = ({
               placeholder="Write your review here..."
               {...register('comment', { required: true })}
             ></textarea>
-            {errors.comment && (
-              <p className="text-red-500">Comment is required</p>
-            )}
+            {errors.comment && <p className="text-red-500">Comment is required</p>}
           </div>
 
           {/* Submit Button */}
