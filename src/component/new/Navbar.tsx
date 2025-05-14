@@ -98,7 +98,7 @@ const NavbarSection: React.FC = () => {
   const mainMenuItems: MenuItem[] = [
     {
       name: 'All Courses',
-      href: '/individual-training',
+      href: '/courses',
       icon: <School className="w-5 h-5" />,
     },
     {

@@ -27,6 +27,7 @@ export interface ICourse {
   highlights: string[];
   images: any[];
   isPublished: boolean;
+  broucher: string;
   __v: number;
   banner: Banner;
   previewImage?: any;

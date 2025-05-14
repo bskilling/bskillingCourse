@@ -22,6 +22,7 @@ interface HeroSectionProps {
   amount: number;
   currency?: string;
   isPaid: boolean;
+  broucher: string;
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({
@@ -33,8 +34,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   modules,
   amount,
   courseId,
-  currency,
   isPaid,
+  broucher,
 }) => {
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [formType, setFormType] = useState<'b2c' | 'b2b' | 'b2i' | 'general'>('b2c');
@@ -61,6 +62,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         description={formDescription}
         formType={formType}
         course={courseId}
+        broucher={broucher}
       />
       {/* Top wave decoration */}
       <div className="bg-gradient-to-r from-blue-50 to-indigo-50 h-16">
@@ -144,14 +146,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               <Button
                 onClick={() =>
                   openConsultationForm(
-                    'b2i',
-                    'Enroll Now',
+                    'b2c',
+                    'Download Syllabus',
                     'Explore how we can collaborate to enhance educational outcomes for your institution.'
                   )
                 }
                 className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-5 rounded-lg font-medium text-base"
               >
-                <FaHeadset className="mr-2 w-4 h-4" /> Enquire Us
+                {/* <FaHeadset className="mr-2 w-4 h-4" /> Download Syllabus */}
+                Download Syllabus
               </Button>
 
               {isPaid && (

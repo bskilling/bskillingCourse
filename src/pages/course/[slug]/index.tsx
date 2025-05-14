@@ -211,7 +211,10 @@ const CourseDetails: React.FC<CourseDetailsProps> = ({ course }) => {
       )}
 
       <div>
-        <CourseLandingPage courseData={courseData} />
+        <CourseLandingPage
+          // @ts-expect-error error
+          courseData={courseData}
+        />
       </div>
     </>
   );

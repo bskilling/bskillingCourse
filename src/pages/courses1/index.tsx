@@ -47,7 +47,6 @@ export default function SkillPrograms() {
   const selectedType = 'b2c';
   const router = useRouter();
   // @ts-expect-error
-
   const { tab: categorySlug } = router?.query;
   const [searchTerm, setSearchTerm] = useState('');
   const [scategory, setScategory] = useState<ICategories['categories'][number] | null>(null);

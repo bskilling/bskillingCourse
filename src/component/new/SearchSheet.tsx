@@ -232,7 +232,7 @@ const SearchSheetComponent = () => {
 
   // Navigate to category
   const handleCategoryClick = (category: Category) => {
-    router?.push(`/individual-training?tab=${category.name}`);
+    router?.push(`/courses?tab=${category.name}`);
     setSheetOpen(false);
   };
 
@@ -527,7 +527,7 @@ const SearchSheetComponent = () => {
                           ))}
 
                       <div className="mt-6">
-                        <Link href="/individual-training" className="text-blue-500 ">
+                        <Link href="/courses" className="text-blue-500 ">
                           View All Courses
                         </Link>
                       </div>

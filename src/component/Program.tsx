@@ -245,7 +245,7 @@ export default function Program() {
         <button
           className="mt-6 border-blue-500 p-2 border m-auto text-blue-500 "
           onClick={() => {
-            router?.push(`/individual-training`);
+            router?.push(`/courses`);
           }}
         >
           View All Courses

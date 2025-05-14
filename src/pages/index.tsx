@@ -85,28 +85,20 @@ const Home: NextPage<NextPage> = ({}) => {
   return (
     <>
       <Head>
-        <title>bSkilling | Online Courses - Live Training and Certification Programs</title>
+        <title>
+          bSkilling | Online Tech Courses & Training with Job Assistance & Certification
+        </title>
         <meta
           name="description"
-          content="Unlock success with bSkilling online courses and live training. Get certified in Generative AI, SAP BTP, Cloud Engineering, Prince2, PMP. The best online training experience!"
+          content="Gain in-demand tech skills with expert-led online courses and training. Get certified, receive job assistance, and advance your career with BSkilling."
         />
         <meta
           name="keywords"
-          content="bskilling, generative ai, generative ai online certification, gen ai,sap btp course, sap btp online,prince2 certification, prince2 examination, pmp online certification, pmp online course, cloud engineering course, cloud engineering training,Online course , Online course with placement, online training course, online certification with placement, training certification with placement"
+          content="Online tech courses, Tech training with certification, Instructor-led online courses,Job assistance training programs, Career-focused tech courses, Certification courses online, Online IT training, Tech skills for professionals,
+Tech upskilling platform"
         />
 
         <link rel="icon" href="/favicon.png" />
-        {/* <Script async src="https://www.googletagmanager.com/gtag/js?id=G-3PVZC9K8BH"></Script>
-        <Script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-3PVZC9K8BH');
-            `,
-          }}
-        /> */}
       </Head>
 
       <section onClick={clickOnMain} className="w-full ">

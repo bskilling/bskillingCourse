@@ -47,7 +47,7 @@ const menus = [
   { name: 'Home', href: '/', icon: <IoHomeOutline size={22} /> },
   {
     name: 'All Courses',
-    href: '/individual-training',
+    href: '/courses',
     icon: <IoSchoolOutline size={22} />,
   },
   {
@@ -107,7 +107,7 @@ export default function NavbarSection() {
       <NavigationMenu className="hidden xl:flex">
         <NavigationMenuList className="space-x-5">
           <NavigationMenuItem>
-            <Link href={'/individual-training'} className="text-foreground">
+            <Link href={'/courses'} className="text-foreground">
               <div className="text-foreground inline-flex gap-x-2 cursor-pointer items-center text-sm">
                 <p>All Courses</p>
               </div>
@@ -234,7 +234,7 @@ export default function NavbarSection() {
                 className={cn(buttonVariants({ variant: 'outline' }), 'text-base font-light')}
               >
                 <Link href={'https://lms.bskilling.com/login/signup.php?'} className="text-sm">
-                  Sign Up a
+                  Sign Up
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem

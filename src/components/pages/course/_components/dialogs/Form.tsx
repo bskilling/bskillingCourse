@@ -38,6 +38,7 @@ import { FaGlobe } from 'react-icons/fa';
 import { toast } from 'sonner';
 import { handleErrors } from '@/lib/handleError';
 import { cn } from '@/lib/utils';
+import DownloadAndRedirect from '../Broucher';
 
 const leadSchema = z
   .object({
@@ -85,9 +86,11 @@ interface PopupFormProps {
   description?: string;
   formType?: 'b2c' | 'b2b' | 'b2i' | 'general' | 'b2g';
   course: string;
+  broucher?: string;
 }
 
 const PopupConsultationForm: React.FC<PopupFormProps> = ({
+  broucher,
   isOpen,
   onClose,
   title = 'Get in Touch',
@@ -96,6 +99,7 @@ const PopupConsultationForm: React.FC<PopupFormProps> = ({
   course,
 }) => {
   const [type, setType] = React.useState(formType);
+  const [fileUrl, setFileUrl] = React.useState(null);
   const {
     register,
     handleSubmit,
@@ -103,7 +107,7 @@ const PopupConsultationForm: React.FC<PopupFormProps> = ({
     setValue,
     reset,
     getValues,
-    formState: { errors, isSubmitting, isSubmitSuccessful },
+    formState: { errors, isSubmitting },
   } = useForm({
     resolver: zodResolver(leadSchema),
     defaultValues: {
@@ -119,6 +123,28 @@ const PopupConsultationForm: React.FC<PopupFormProps> = ({
       query: '',
     },
   });
+
+  async function downloadBroucher() {
+    try {
+      const fileRes = await axios.get(
+        process.env.NEXT_PUBLIC_BACKEND_URL + `/api/files/${broucher}`
+      );
+
+      setFileUrl(fileRes.data?.data?.viewUrl);
+
+      // 3. Create a blob link to trigger download
+      // const url = window.URL.createObjectURL(new Blob([fileRes.data]));
+      // const link = document.createElement('a');
+      // link.href = url;
+      // link.setAttribute('download', `voucher-${broucher}.pdf`);
+      // document.body.appendChild(link);
+      // link.click();
+      // link.remove();
+    } catch (error) {
+      console.error(error);
+      toast.error('Something went wrong. Please try again.');
+    }
+  }
 
   const selectedCategory = watch('type');
   const showSubCategory = selectedCategory === 'b2i';
@@ -142,6 +168,7 @@ const PopupConsultationForm: React.FC<PopupFormProps> = ({
       //   return;
       // }
       zohoLead.mutate(data);
+      // downloadBroucher();
       setTimeout(() => {
         reset(); // Reset form
         onClose(); // Close dialog
@@ -194,6 +221,12 @@ const PopupConsultationForm: React.FC<PopupFormProps> = ({
   return (
     <Dialog open={isOpen} onOpenChange={open => !open && onClose()}>
       <DialogContent className="w-10/12 md:max-w-7xl  max-h-[80vh]  rounded-md  p-0 overflow-y-auto border-none">
+        <DownloadAndRedirect
+          // @ts-expect-error
+          fileUrl={fileUrl}
+          fileName="Broucher.pdf"
+        />
+
         {submitMutation.isSuccess ? (
           <div className="p-8 flex flex-col items-center justify-center">
             <div className="bg-green-100 rounded-full p-3 mb-4">

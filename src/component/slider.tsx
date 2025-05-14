@@ -41,7 +41,7 @@ const Slider = () => {
       >
         <CarouselContent>
           <CarouselItem>
-            <Link href="/individual-training">
+            <Link href="/courses">
               <img
                 src="/new-image/offer.webp"
                 alt="Individual training offer"
