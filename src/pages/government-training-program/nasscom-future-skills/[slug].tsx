@@ -170,6 +170,10 @@ const CourseDetails: React.FC<CourseDetailsProps> = ({ course }) => {
     <>
       <Head>
         <title>{title}</title>
+        <link
+          rel="canonical"
+          href={`${process.env.NEXT_PUBLIC_WEBSITE_URL}/government-training-program/nasscom-future-skills/${courseData?.slug}`}
+        />
         <meta name="description" content={description} />
         {keywords && <meta name="keywords" content={keywords} />}
         <meta name="robots" content={robotsContent} />
