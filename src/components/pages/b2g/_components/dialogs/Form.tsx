@@ -45,7 +45,7 @@ const leadSchema = z
     email: z.string().email('Invalid email format'),
     countryCode: z.string().optional(),
     phoneNumber: z.string().regex(/^\d{10,15}$/, 'Phone number must be between 10 to 15 digits'),
-    type: z.enum(['b2c', 'b2b', 'b2i', 'general']),
+    type: z.enum(['b2c', 'b2b', 'b2i', 'general', 'b2g']),
     subCategory: z.enum(['', 'jobs', 'skills']).default('skills').optional(),
     query: z.string().min(10, 'Query must be at least 10 characters long'),
     websiteUrl: z.string().min(3, 'Website URL must be at least 3 characters long').optional(),
@@ -102,6 +102,7 @@ const PopupConsultationForm: React.FC<PopupFormProps> = ({
     watch,
     setValue,
     reset,
+    getValues,
     formState: { errors, isSubmitting, isSubmitSuccessful },
   } = useForm({
     resolver: zodResolver(leadSchema),
@@ -111,7 +112,6 @@ const PopupConsultationForm: React.FC<PopupFormProps> = ({
       countryCode: '+91',
       phoneNumber: '',
       course,
-      // @ts-expect-error
       type,
       // @ts-check
       subCategory: type === 'b2i' ? 'skills' : undefined,
@@ -221,6 +221,9 @@ const PopupConsultationForm: React.FC<PopupFormProps> = ({
               <h2 className="text-2xl font-bold mb-5">{title}</h2>
               <form
                 onSubmit={e => {
+                  e.preventDefault();
+                  const err = leadSchema.safeParse(getValues())?.error?.errors?.[0]?.message;
+                  if (err) return toast.error(err);
                   handleSubmit(onSubmit, err => {
                     console.log(err);
                   })(e);

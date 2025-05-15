@@ -19,6 +19,7 @@ interface CourseDetailsProps {
     keyFeatures: string[];
   };
   isPaid: boolean;
+  courseId: string;
 }
 
 const CourseDetails: React.FC<CourseDetailsProps> = ({
@@ -30,6 +31,7 @@ const CourseDetails: React.FC<CourseDetailsProps> = ({
   certification,
   overview,
   isPaid,
+  courseId,
 }) => {
   const formattedDescription = overview.description.replace(/\\n/g, '\n');
 
@@ -156,7 +158,7 @@ const CourseDetails: React.FC<CourseDetailsProps> = ({
         {/* Right Side: Consultation Form */}
         <div className="w-full lg:w-2/5">
           <div className="sticky top-24">
-            <ConsultationForm />
+            <ConsultationForm type1="b2g" courseId={courseId} />
           </div>
         </div>
       </div>
