@@ -105,7 +105,7 @@ const EnrollmentForm: React.FC<EnrollmentFormProps> = ({
         const redirectUrl = data.data.redirectUrl;
         console.log('Data checking', data?.data);
         // window.location.href = redirectUrl;
-        // window.open(redirectUrl, '_blank');
+        window.open(redirectUrl, '_blank');
       }
       // window.location.href = redirectUrl;
     } catch (error: any) {
