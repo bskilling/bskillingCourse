@@ -168,6 +168,10 @@ const CourseDetails: React.FC<CourseDetailsProps> = ({ course }) => {
       <Head>
         <title>{title}</title>
         <meta name="description" content={description} />
+        <link
+          rel="canonical"
+          href={`${process.env.NEXT_PUBLIC_WEBSITE_URL}/institutions/${courseData?.slug}`}
+        />
         {keywords && <meta name="keywords" content={keywords} />}
         <meta name="robots" content={robotsContent} />
 

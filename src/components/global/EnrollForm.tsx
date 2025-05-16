@@ -88,7 +88,7 @@ const EnrollmentForm: React.FC<EnrollmentFormProps> = ({
       }
 
       toast.success(data.message || 'You have been successfully enrolled.');
-
+      console.log('Data checking', data?.data);
       if (data.data.isNewUser && data.data.redirectUrl) {
         // Redirect with token
         const payload = {
@@ -104,7 +104,8 @@ const EnrollmentForm: React.FC<EnrollmentFormProps> = ({
       if (data.data.redirectUrl) {
         const redirectUrl = data.data.redirectUrl;
         console.log('Data checking', data?.data);
-        window.location.href = redirectUrl;
+        // window.location.href = redirectUrl;
+        // window.open(redirectUrl, '_blank');
       }
       // window.location.href = redirectUrl;
     } catch (error: any) {

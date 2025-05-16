@@ -40,6 +40,7 @@ const formSchema = z.object({
   email: z.string().email('Please enter a valid email address'),
   phone: z.string().min(10, 'Valid phone number is required'),
   courseId: z.string().length(24, 'Invalid course ID'),
+  coupon: z.string().optional(),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -310,7 +311,7 @@ const CCAvPaymentForm: React.FC<PaymentFormProps> = ({
             <div className="flex items-center justify-between my-4 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg shadow-sm border border-blue-100">
               <div className="flex items-center">
                 <CreditCard className="h-5 w-5 text-blue-600 mr-2" />
-                <span className="text-gray-700">Course Fee</span>
+                <span className="text-gray-700">Course Fee a</span>
               </div>
               <span className="font-bold text-lg text-blue-700">
                 {currency} {finalAmount.toFixed(2)} (Inclusive of 18% GST)

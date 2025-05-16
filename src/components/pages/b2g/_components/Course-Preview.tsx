@@ -163,12 +163,12 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
   };
 
   const [isFormOpen, setIsFormOpen] = useState(false);
-  const [formType, setFormType] = useState<'b2c' | 'b2b' | 'b2i' | 'general'>('b2c');
+  const [formType, setFormType] = useState<'b2c' | 'b2b' | 'b2i' | 'general' | 'b2g'>('b2g');
   const [formTitle, setFormTitle] = useState('Get in Touch');
   const [formDescription, setFormDescription] = useState('');
 
   const openConsultationForm = (
-    type: 'b2c' | 'b2b' | 'b2i' | 'general',
+    type: 'b2c' | 'b2b' | 'b2i' | 'general' | 'b2g',
     title: string,
     description: string
   ) => {
@@ -302,7 +302,7 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
 
               {/* Apply Button */}
               <button
-                onClick={() => openConsultationForm('b2c', 'Apply Now', '')}
+                onClick={() => openConsultationForm('b2g', 'Apply Now', '')}
                 className="ml-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 shadow-sm transition-colors duration-200"
               >
                 Apply Now
@@ -501,6 +501,7 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
         enrollmentStart={startTime}
         trainingMode={'Hybrid'}
         overview={overview}
+        courseId={_id}
       />
       <Modules chapters={curriculum.chapters} />
       {<CourseResources skills={skills} tools={tools} />}

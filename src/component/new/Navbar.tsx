@@ -166,7 +166,7 @@ const NavbarSection: React.FC = () => {
                   >
                     <span className="text-lg lg:text-xl mr-2 lg:mr-3">👉</span>
                     <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400 mx-1">
-                      LIMITED TIME 1:
+                      LIMITED TIME:
                     </span>{' '}
                     <span className="mx-1">All Courses</span>{' '}
                     <span className="text-amber-400 font-black text-sm lg:text-base relative inline-block animate-pulse-subtle mx-1.5">

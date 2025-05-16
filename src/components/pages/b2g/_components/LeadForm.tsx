@@ -24,9 +24,10 @@ const leadSchema = z
     email: z.string().email('Invalid email format'),
     countryCode: z.string().optional(),
     phoneNumber: z.string().regex(/^\d{10,15}$/, 'Phone number must be between 10 to 15 digits'),
-    type: z.enum(['b2c', 'b2c', 'b2b', 'b2i', 'general']),
+    type: z.enum(['b2c', 'b2g', 'b2b', 'b2i', 'general']),
     subcategory: z.enum(['', 'jobs', 'skills']).default('skills').optional(),
     query: z.string().min(10, 'Query must be at least 10 characters long'),
+    course: z.string().length(24, 'Course Id is required'),
   })
   .superRefine((data, ctx) => {
     if (data.type === 'b2i' && !data.subcategory) {
@@ -55,7 +56,13 @@ const countryCodes = [
 
 type LeadFormData = z.infer<typeof leadSchema>;
 
-const ConsultationForm = () => {
+const ConsultationForm = ({
+  type1,
+  courseId,
+}: {
+  type1: 'b2c' | 'b2b' | 'b2i' | 'general' | 'b2g';
+  courseId: string;
+}) => {
   const {
     register,
     handleSubmit,
@@ -69,15 +76,16 @@ const ConsultationForm = () => {
       email: '',
       countryCode: '+91',
       phoneNumber: '',
-      type: 'b2c',
+      type: type1,
       subcategory: '',
       query: '',
+      course: courseId,
     },
   });
 
   const selectedCategory = watch('type');
 
-  const [type, setType] = React.useState('b2c');
+  const [type, setType] = React.useState(type1);
   const showSubcategory = selectedCategory === 'b2i';
 
   const onSubmit = useMutation({
