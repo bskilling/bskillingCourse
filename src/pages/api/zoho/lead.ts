@@ -53,9 +53,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     console.log(category);
     if (category === 'nasscom') {
       const body = req.body;
+      console.log('body', body);
       const name = body?.name;
-      const firstName = name.split(' ')[0];
-      const lastName = name.split(' ')[1] || name;
+      const firstName = name?.split(' ')?.[0];
+      const lastName = name?.split(' ')?.[1] || name;
       const skillTitle =
         body?.course?._id === '67f4f46a0547cfbc81cebceb' ? 'Generative AI' : 'Cloud Computing';
       const payload = {
@@ -98,8 +99,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       course, // full populated course object
     } = req.body;
 
-    const firstName = name.split(' ')[0];
-    const lastName = name.split(' ')[1] || name;
+    console.log(req.body, 'req.body');
+
+    const firstName = name?.split(' ')[0];
+    const lastName = name?.split(' ')[1] || name;
     const fullPhone = `${countryCode || '+91'}${phoneNumber}`;
 
     // 🔍 Find category where category.type === main type

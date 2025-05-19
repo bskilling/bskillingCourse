@@ -167,11 +167,11 @@ const CCAvPaymentForm: React.FC<PaymentFormProps> = ({
       if (!user) {
         throw new Error('Missing user information');
       }
-
+      const orderId = `ORD_${Date.now()}`;
       // Prepare CCAvenue payment data
       let paymentData = {
         merchant_id: '2492757', // Merchant ID (Required)
-        order_id: `ORD_${Date.now()}`, // Generate unique Order ID
+        order_id: orderId, // Generate unique Order ID
         amount: finalAmount.toString(), // Payment Amount (Required)
         currency: currency, // Payment Currency Type (Required)
         billing_email: user.email, // Billing Email
@@ -185,7 +185,21 @@ const CCAvPaymentForm: React.FC<PaymentFormProps> = ({
 
       paymentData.redirect_url = `${host}/api/ccavenue-handle?paymentId=${paymentData.order_id}&courseId=${paymentData.merchant_param1}&userId=${user._id}&amount=${paymentData.amount}`;
       paymentData.cancel_url = `${host}/api/ccavenue-handle?paymentId=${paymentData.order_id}&courseId=${paymentData.merchant_param1}&userId=${user._id}&amount=${paymentData.amount}`;
-
+      // try {
+      //   await axios.post(process.env.NEXT_PUBLIC_BACKEND_URL + '/api/purchase-details', {
+      //     userId: user._id,
+      //     courseId,
+      //     orderId,
+      //     amount: finalAmount.toString(),
+      //     currency,
+      //     rawResponse: paymentData,
+      //     status: 'PENDING',
+      //   });
+      // } catch (err) {
+      //   console.error('Error sending payment data:', err);
+      //   toast.error('Error sending payment data. Please try again.');
+      //   return;
+      // }
       // Get encrypted order data from CCAvenue utility
       let encReq = CCAvenue.getEncryptedOrder(paymentData);
       let accessCode = 'AVHG70KE18CC51GHCC';

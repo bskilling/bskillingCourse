@@ -503,6 +503,7 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
         enrollmentStart={startTime}
         trainingMode={'Hybrid'}
         overview={overview}
+        _id={_id}
       />
       <Modules chapters={curriculum.chapters} />
       {<CourseResources skills={skills} tools={tools} />}
