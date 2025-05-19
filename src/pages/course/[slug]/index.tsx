@@ -170,7 +170,10 @@ const CourseDetails: React.FC<CourseDetailsProps> = ({ course }) => {
     <>
       <Head>
         <title>{title}</title>
-        <link rel="canonical" href={`${process.env.NEXT_PUBLIC_WEBSITE_URL}`} />
+        <link
+          rel="canonical"
+          href={`https://www.bskilling.com/course/${courseData?.slug || courseData?._id}`}
+        />
         <meta name="description" content={description} />
         {keywords && <meta name="keywords" content={keywords} />}
         <meta name="robots" content={robotsContent} />
@@ -187,7 +190,7 @@ const CourseDetails: React.FC<CourseDetailsProps> = ({ course }) => {
         {ogImage && <meta property="og:image" content={ogImage} />}
         <meta
           property="og:url"
-          content={`${process.env.NEXT_PUBLIC_WEBSITE_URL}/course/${courseData?.slug || courseData?._id}`}
+          content={`https://www.bskilling.com/course/${courseData?.slug || courseData?._id}`}
         />
 
         {/* Twitter card tags */}
