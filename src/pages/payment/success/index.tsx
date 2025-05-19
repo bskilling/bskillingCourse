@@ -1,6 +1,9 @@
+import axios from 'axios';
 import { useRouter } from 'next/compat/router';
 import Head from 'next/head';
 import Link from 'next/link';
+import { useEffect } from 'react';
+import { toast } from 'sonner';
 
 interface PaymentDetails {
   paymentId: string | null;
@@ -26,6 +29,29 @@ export default function PaymentSuccess() {
     amount: (amount as string) || null,
     timestamp: new Date().toLocaleString(),
   };
+
+  useEffect(() => {
+    if (!router?.isReady) return;
+
+    const updatePaymentStatus = async () => {
+      try {
+        if (!paymentDetails.paymentId) {
+          throw new Error('Missing paymentId');
+        }
+
+        await axios.put(
+          process.env.NEXT_PUBLIC_BACKEND_URL + `/api/purchase/${paymentDetails.paymentId}`
+        );
+
+        toast.success('Payment confirmed and recorded successfully.');
+      } catch (error: any) {
+        console.error('Failed to update payment status:', error);
+        toast.error('Error updating payment status.');
+      }
+    };
+
+    updatePaymentStatus();
+  }, [router?.isReady]);
 
   // Show loading state while router is not ready
   if (!router?.isReady) {

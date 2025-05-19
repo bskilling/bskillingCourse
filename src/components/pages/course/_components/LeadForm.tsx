@@ -27,6 +27,7 @@ const leadSchema = z
     type: z.enum(['b2c', 'b2c', 'b2b', 'b2i', 'general']),
     subcategory: z.enum(['', 'jobs', 'skills']).default('skills').optional(),
     query: z.string().min(10, 'Query must be at least 10 characters long'),
+    course: z.string().length(24, 'Course Id is required'),
   })
   .superRefine((data, ctx) => {
     if (data.type === 'b2i' && !data.subcategory) {
@@ -55,7 +56,7 @@ const countryCodes = [
 
 type LeadFormData = z.infer<typeof leadSchema>;
 
-const ConsultationForm = () => {
+const ConsultationForm = ({ course }: { course: string }) => {
   const {
     register,
     handleSubmit,
@@ -72,6 +73,7 @@ const ConsultationForm = () => {
       type: 'b2c',
       subcategory: '',
       query: '',
+      course,
     },
   });
 
@@ -82,16 +84,42 @@ const ConsultationForm = () => {
 
   const onSubmit = useMutation({
     mutationFn: async (data: LeadFormData) => {
-      await axios.post(process.env.NEXT_PUBLIC_BACKEND_URL + '/api/lead', {
+      const res = await axios.post(process.env.NEXT_PUBLIC_BACKEND_URL + '/api/lead', {
         ...data,
         type,
       });
+      return res.data;
     },
-    onSuccess: () => {
+    onSuccess: async data => {
       toast.success('Your query has been submitted successfully. Our team will contact you soon.');
+      const payload = {
+        email: data.data.email,
+        name: data.data.name,
+        course: data.data.course,
+        phoneNumber: data?.data?.contactNumber,
+        category: data.data.category,
+        type: data.data.type, // 'b2b', 'b2c', 'b2i'
+      };
+      await zohoLead.mutateAsync(payload);
     },
     onError: err => {
       toast.error(handleErrors(err));
+    },
+  });
+
+  const zohoLead = useMutation({
+    mutationFn: async (data: any) => {
+      await axios.post('/api/zoho/lead', data, {
+        withCredentials: true, // Important to send cookies
+      });
+    },
+    onSuccess: () => {
+      // Show success message
+      // toast.success('Your query has been submitted successfully. Our team will contact you soon.');
+    },
+    onError: err => {
+      console.error(err);
+      // toast.error(handleErrors(err as any) ?? 'Something went wrong. Please try again.');
     },
   });
 
