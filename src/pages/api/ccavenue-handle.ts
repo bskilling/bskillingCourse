@@ -1,5 +1,7 @@
 import CCAvenue from '@/lib/CCAvenue';
+import axios from 'axios';
 import { NextApiRequest, NextApiResponse } from 'next';
+import { toast } from 'sonner';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   switch (req.method) {
@@ -21,6 +23,22 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
         // Handle Redirect as per Payment Status
         if (data.order_status === 'Success') {
+          const updatePaymentStatus = async () => {
+            try {
+              const response = await axios.put(
+                `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/purchase-details/${paymentId}`,
+                {
+                  status: 'SUCCESS',
+                }
+              );
+
+              // toast.success('Payment confirmed and updated.');
+            } catch (error: any) {
+              console.error('Error updating purchase:', error);
+              // toast.error('Failed to update payment status.');
+            }
+          };
+          await updatePaymentStatus();
           // If payment is successful, update the database here if needed
           // Example: await updatePaymentInDatabase(data.order_id, 'success', data);
 
@@ -30,6 +48,22 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           // If payment failed, you might want to log the reason
           console.error('Payment failed:', data.order_status, data.failure_message);
 
+          const updatePaymentStatus = async () => {
+            try {
+              const response = await axios.put(
+                `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/purchase-details/${paymentId}`,
+                {
+                  status: 'FAILED',
+                }
+              );
+
+              // toast.success('Payment confirmed and updated.');
+            } catch (error: any) {
+              console.error('Error updating purchase:', error);
+              // toast.error('Failed to update payment status.');
+            }
+          };
+          await updatePaymentStatus();
           // Redirect to failure page with parameters
           res.redirect(
             302,
