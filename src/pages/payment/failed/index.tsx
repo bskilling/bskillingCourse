@@ -1,6 +1,8 @@
-import { useRouter } from 'next/compat/router';
+import axios from 'axios';
+import { useRouter } from 'next/router';
 import Head from 'next/head';
-import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import { toast } from 'sonner';
 
 interface FailedPaymentDetails {
   paymentId: string | null;
@@ -11,15 +13,24 @@ interface FailedPaymentDetails {
   timestamp: string;
 }
 
+interface UpdatedPurchase {
+  _id: string;
+  userId: string;
+  courseId: string;
+  orderId: string;
+  amount: string;
+  currency: string;
+  status: 'SUCCESS' | 'PENDING' | 'FAILED';
+  createdAt: string;
+  updatedAt: string;
+}
+
 export default function PaymentFailed() {
   const router = useRouter();
+  const { paymentId, courseId, userId, amount, reason } = router.query;
 
-  // Get query parameters directly
-  // @ts-expect-error
+  const [purchaseData, setPurchaseData] = useState<UpdatedPurchase | null>(null);
 
-  const { paymentId, courseId, userId, amount, reason } = router?.query;
-
-  // Create payment details object with null fallbacks for missing values
   const paymentDetails: FailedPaymentDetails = {
     paymentId: (paymentId as string) || null,
     courseId: (courseId as string) || null,
@@ -29,8 +40,27 @@ export default function PaymentFailed() {
     timestamp: new Date().toLocaleString(),
   };
 
-  // Show loading state while router is not ready
-  if (!router?.isReady) {
+  useEffect(() => {
+    if (!router.isReady || !paymentDetails.paymentId) return;
+
+    const updateFailedStatus = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/purchase-details/${paymentDetails.paymentId}`
+        );
+
+        toast.error('Payment failed and status updated.');
+        setPurchaseData(response.data?.data);
+      } catch (error: any) {
+        console.error('Error updating failed payment:', error);
+        toast.error('Failed to update failed payment status.');
+      }
+    };
+
+    updateFailedStatus();
+  }, [router.isReady]);
+
+  if (!router.isReady) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="text-center">
@@ -64,7 +94,7 @@ export default function PaymentFailed() {
                   strokeLinejoin="round"
                   strokeWidth="2"
                   d="M6 18L18 6M6 6l12 12"
-                ></path>
+                />
               </svg>
             </div>
           </div>
@@ -98,34 +128,52 @@ export default function PaymentFailed() {
             </div>
           </div>
 
-          {!paymentDetails.paymentId && !paymentDetails.courseId && !paymentDetails.reason && (
-            <div className="mt-4 p-3 bg-yellow-50 rounded-md border border-yellow-200">
-              <p className="text-yellow-700 text-sm">
-                Payment query details not found. This may be due to an incomplete payment process.
-              </p>
-            </div>
+          {purchaseData && (
+            <>
+              <div className="flex justify-between border-t border-gray-200 pt-2 mt-4">
+                <span className="text-gray-500">Status</span>
+                <span className="font-semibold text-red-600">{purchaseData.status}</span>
+              </div>
+              <div className="flex justify-between border-t border-gray-200 pt-2">
+                <span className="text-gray-500">Currency</span>
+                <span className="font-medium">{purchaseData.currency}</span>
+              </div>
+              <div className="flex justify-between border-t border-gray-200 pt-2">
+                <span className="text-gray-500">Order ID</span>
+                <span className="font-medium">{purchaseData.orderId}</span>
+              </div>
+              <div className="flex justify-between border-t border-gray-200 pt-2">
+                <span className="text-gray-500">Updated At</span>
+                <span className="font-medium">
+                  {new Date(purchaseData.updatedAt).toLocaleString()}
+                </span>
+              </div>
+            </>
           )}
 
           <div className="mt-6 space-y-3">
             {paymentDetails.courseId ? (
-              <Link href={`/course/${paymentDetails.courseId}`}>
-                <button className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
-                  Try Again
-                </button>
-              </Link>
+              <button
+                className="w-full py-2 px-4 bg-red-600 text-white rounded-md shadow hover:bg-red-700"
+                onClick={() => router.push(`/course/${paymentDetails.courseId}`)}
+              >
+                Try Again
+              </button>
             ) : (
-              <Link href="/courses">
-                <button className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
-                  Browse Courses
-                </button>
-              </Link>
+              <button
+                className="w-full py-2 px-4 bg-red-600 text-white rounded-md shadow hover:bg-red-700"
+                onClick={() => router.push('/courses')}
+              >
+                Browse Courses
+              </button>
             )}
 
-            <Link href="/support">
-              <button className="w-full flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                Contact Support
-              </button>
-            </Link>
+            <button
+              className="w-full py-2 px-4 bg-white text-gray-700 border border-gray-300 rounded-md shadow hover:bg-gray-50"
+              onClick={() => router.push('/support')}
+            >
+              Contact Support
+            </button>
           </div>
         </div>
       </section>

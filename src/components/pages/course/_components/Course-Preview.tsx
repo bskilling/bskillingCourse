@@ -190,7 +190,6 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
         description={formDescription}
         formType={formType}
         course={_id}
-        broucher={broucher}
       />
       <nav className="fixed w-full bg-white shadow-md z-50 top-0">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -1,8 +1,7 @@
 import axios from 'axios';
-import { useRouter } from 'next/compat/router';
+import { useRouter } from 'next/router';
 import Head from 'next/head';
-import Link from 'next/link';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { toast } from 'sonner';
 
 interface PaymentDetails {
@@ -13,48 +12,56 @@ interface PaymentDetails {
   timestamp: string;
 }
 
+interface UpdatedPurchase {
+  _id: string;
+  userId: string;
+  courseId: string;
+  orderId: string;
+  amount: string;
+  currency: string;
+  status: 'SUCCESS' | 'PENDING' | 'FAILED';
+  createdAt: string;
+  updatedAt: string;
+  coupon: {
+    _id: string;
+    code: string;
+    type: 'percentage' | 'fixed';
+    discount: number;
+    expiresAt: string;
+    isActive: boolean;
+    usageLimit?: number;
+    usedCount: number;
+    minPurchaseAmount?: number;
+  };
+}
+
 export default function PaymentSuccess() {
   const router = useRouter();
+  const { paymentId } = router.query;
 
-  // Get query parameters directly - this works with SSR and client-side
-  // @ts-expect-error
-
-  const { paymentId, courseId, userId, amount } = router?.query;
-
-  // Create payment details object with null fallbacks for missing values
-  const paymentDetails: PaymentDetails = {
-    paymentId: (paymentId as string) || null,
-    courseId: (courseId as string) || null,
-    userId: (userId as string) || null,
-    amount: (amount as string) || null,
-    timestamp: new Date().toLocaleString(),
-  };
+  const [purchaseData, setPurchaseData] = useState<UpdatedPurchase | null>(null);
 
   useEffect(() => {
-    if (!router?.isReady) return;
+    if (!router.isReady || !paymentId) return;
 
     const updatePaymentStatus = async () => {
       try {
-        if (!paymentDetails.paymentId) {
-          throw new Error('Missing paymentId');
-        }
-
-        await axios.put(
-          process.env.NEXT_PUBLIC_BACKEND_URL + `/api/purchase/${paymentDetails.paymentId}`
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/purchase-details/${paymentId}`
         );
 
-        toast.success('Payment confirmed and recorded successfully.');
+        toast.success('Payment confirmed and updated.');
+        setPurchaseData(response.data?.data); // Assume backend sends { data: updatedPurchase }
       } catch (error: any) {
-        console.error('Failed to update payment status:', error);
-        toast.error('Error updating payment status.');
+        console.error('Error updating purchase:', error);
+        toast.error('Failed to update payment status.');
       }
     };
 
     updatePaymentStatus();
-  }, [router?.isReady]);
+  }, [router.isReady]);
 
-  // Show loading state while router is not ready
-  if (!router?.isReady) {
+  if (!router.isReady) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="text-center">
@@ -69,7 +76,7 @@ export default function PaymentSuccess() {
     <>
       <Head>
         <title>Payment Successful | Your Course Platform</title>
-        <meta name="description" content="Payment successful confirmation page" />
+        <meta name="description" content="Payment success confirmation" />
       </Head>
 
       <section className="flex items-center justify-center min-h-screen bg-gray-50">
@@ -88,7 +95,7 @@ export default function PaymentSuccess() {
                   strokeLinejoin="round"
                   strokeWidth="2"
                   d="M5 13l4 4L19 7"
-                ></path>
+                />
               </svg>
             </div>
           </div>
@@ -96,51 +103,78 @@ export default function PaymentSuccess() {
           <h2 className="mt-6 text-center text-2xl font-extrabold text-gray-900">
             Payment Successful
           </h2>
-
-          {paymentDetails.amount ? (
-            <p className="mt-2 text-center text-sm text-gray-600">
-              Thank you for your payment of{' '}
-              <span className="font-medium text-green-600">₹{paymentDetails.amount}</span>{' '}
-              (Inclusive of 18% GST)
-            </p>
-          ) : (
-            <p className="mt-2 text-center text-sm text-gray-600">Thank you for your payment</p>
+          {purchaseData && (
+            <>
+              <div className="flex justify-between border-t border-gray-200 pt-2">
+                <span className="text-gray-500">Status</span>
+                <span className="font-semibold text-green-600">{purchaseData.status}</span>
+              </div>
+              <div className="flex justify-between border-t border-gray-200 pt-2">
+                <span className="text-gray-500">Currency</span>
+                <span className="font-medium">{purchaseData.currency}</span>
+              </div>
+              <div className="flex justify-between border-t border-gray-200 pt-2">
+                <span className="text-gray-500">Amount</span>
+                <span className="font-medium">{purchaseData.amount}</span>
+              </div>
+              <div className="flex justify-between border-t border-gray-200 pt-2">
+                <span className="text-gray-500">Order ID</span>
+                <span className="font-medium">{purchaseData.orderId}</span>
+              </div>
+              <div className="flex justify-between border-t border-gray-200 pt-2">
+                <span className="text-gray-500">Updated At</span>
+                <span className="font-medium">
+                  {new Date(purchaseData.updatedAt).toLocaleString()}
+                </span>
+              </div>
+            </>
           )}
 
-          <div className="mt-6 bg-gray-50 p-4 rounded-lg border border-gray-200">
-            <div className="flex justify-between text-sm py-2">
-              <span className="text-gray-500">Payment ID</span>
-              <span className="font-medium">{paymentDetails.paymentId || 'Not available'}</span>
-            </div>
-            <div className="flex justify-between text-sm py-2 border-t border-gray-200">
-              <span className="text-gray-500">Course ID</span>
-              <span className="font-medium">{paymentDetails.courseId || 'Not available'}</span>
-            </div>
-            <div className="flex justify-between text-sm py-2 border-t border-gray-200">
-              <span className="text-gray-500">Date & Time</span>
-              <span className="font-medium">{paymentDetails.timestamp}</span>
-            </div>
-          </div>
+          {purchaseData?.coupon && (
+            <>
+              <div className="mt-4 text-blue-700 font-semibold">Coupon Applied</div>
 
-          {!paymentDetails.paymentId && !paymentDetails.courseId && !paymentDetails.amount && (
-            <div className="mt-4 p-3 bg-yellow-50 rounded-md border border-yellow-200">
-              <p className="text-yellow-700 text-sm">
-                Payment query details not found. This may be due to an incomplete payment process.
-              </p>
-            </div>
+              <div className="flex justify-between border-t border-gray-200 pt-2">
+                <span className="text-gray-500">Code</span>
+                <span className="font-medium uppercase">{purchaseData.coupon.code}</span>
+              </div>
+
+              <div className="flex justify-between border-t border-gray-200 pt-2">
+                <span className="text-gray-500">Discount</span>
+                <span className="font-medium text-red-600">
+                  {purchaseData.coupon.type === 'percentage'
+                    ? `${purchaseData.coupon.discount}%`
+                    : `₹${purchaseData.coupon.discount}`}
+                </span>
+              </div>
+
+              <div className="flex justify-between border-t border-gray-200 pt-2">
+                <span className="text-gray-500">Used Count</span>
+                <span className="font-medium">{purchaseData.coupon.usedCount}</span>
+              </div>
+
+              <div className="flex justify-between border-t border-gray-200 pt-2">
+                <span className="text-gray-500">Expires At</span>
+                <span className="font-medium">
+                  {new Date(purchaseData.coupon.expiresAt).toLocaleDateString()}
+                </span>
+              </div>
+            </>
           )}
 
           <div className="mt-6 space-y-3">
-            <Link href="/dashboard">
-              <button className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
-                Go to Dashboard
-              </button>
-            </Link>
-            <Link href="/courses">
-              <button className="w-full flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                Browse More Courses
-              </button>
-            </Link>
+            <button
+              className="w-full py-2 px-4 bg-green-600 text-white rounded-md shadow hover:bg-green-700"
+              onClick={() => window.open('/', '_blank')}
+            >
+              Go to Dashboard
+            </button>
+            <button
+              className="w-full py-2 px-4 bg-white text-gray-700 border border-gray-300 rounded-md shadow hover:bg-gray-50"
+              onClick={() => window.open('/courses', '_blank')}
+            >
+              Browse More Courses
+            </button>
           </div>
         </div>
       </section>

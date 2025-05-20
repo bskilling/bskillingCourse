@@ -33,6 +33,7 @@ import { toast } from 'sonner';
 import { handleErrors } from '@/lib/handleError';
 import { useRouter } from 'next/compat/router';
 import CCAvenue from '@/lib/CCAvenue';
+import CouponInput from './CouponInput';
 
 // Form schema that matches the backend API exactly
 const formSchema = z.object({
@@ -84,10 +85,35 @@ const CCAvPaymentForm: React.FC<PaymentFormProps> = ({
   const [error, setError] = useState<string | null>(null);
   const [paymentData, setPaymentData] = useState<any>(null);
   const [statusCheckInterval, setStatusCheckInterval] = useState<NodeJS.Timeout | null>(null);
-  const [checkingStatus, setCheckingStatus] = useState(false);
+  const [couponId, setCouponId] = useState<string | undefined>();
+  const [couponDetails, setCouponDetails] = useState<any | null | undefined>(null);
+
+  const handleCouponApply = (id: string | undefined, coupon: any) => {
+    setCouponId(id);
+    setCouponDetails(coupon);
+  };
 
   const OfferAmount = amount - amount * 0.2;
-  const finalAmount = OfferAmount + OfferAmount * 0.18;
+  const baseAmount = amount;
+  let discount = 0;
+  let gst = 0;
+  let flatOff = 0;
+  let finalAmount = baseAmount;
+
+  flatOff = 0.2 * finalAmount;
+  finalAmount -= flatOff;
+  if (couponDetails) {
+    if (couponDetails.type === 'percentage') {
+      discount = (couponDetails.discount / 100) * baseAmount;
+    } else if (couponDetails.type === 'fixed') {
+      discount = couponDetails.discount;
+    }
+
+    finalAmount -= discount;
+  }
+
+  gst = 0.18 * finalAmount;
+  finalAmount += gst;
 
   // Initialize form with React Hook Form
   const form = useForm<FormValues>({
@@ -97,6 +123,7 @@ const CCAvPaymentForm: React.FC<PaymentFormProps> = ({
       email: '',
       phone: '',
       courseId: courseId,
+      coupon: couponId,
     },
   });
 
@@ -169,6 +196,7 @@ const CCAvPaymentForm: React.FC<PaymentFormProps> = ({
       }
       const orderId = `ORD_${Date.now()}`;
       // Prepare CCAvenue payment data
+
       let paymentData = {
         merchant_id: '2492757', // Merchant ID (Required)
         order_id: orderId, // Generate unique Order ID
@@ -183,23 +211,27 @@ const CCAvPaymentForm: React.FC<PaymentFormProps> = ({
         merchant_param1: courseId, // Course ID as parameter
       };
 
-      paymentData.redirect_url = `${host}/api/ccavenue-handle?paymentId=${paymentData.order_id}&courseId=${paymentData.merchant_param1}&userId=${user._id}&amount=${paymentData.amount}`;
-      paymentData.cancel_url = `${host}/api/ccavenue-handle?paymentId=${paymentData.order_id}&courseId=${paymentData.merchant_param1}&userId=${user._id}&amount=${paymentData.amount}`;
-      // try {
-      //   await axios.post(process.env.NEXT_PUBLIC_BACKEND_URL + '/api/purchase-details', {
-      //     userId: user._id,
-      //     courseId,
-      //     orderId,
-      //     amount: finalAmount.toString(),
-      //     currency,
-      //     rawResponse: paymentData,
-      //     status: 'PENDING',
-      //   });
-      // } catch (err) {
-      //   console.error('Error sending payment data:', err);
-      //   toast.error('Error sending payment data. Please try again.');
-      //   return;
-      // }
+      try {
+        const res = await axios.post(
+          process.env.NEXT_PUBLIC_BACKEND_URL + '/api/purchase-details',
+          {
+            userId: user._id,
+            courseId,
+            orderId,
+            amount: finalAmount.toString(),
+            currency,
+            rawResponse: paymentData,
+            status: 'PENDING',
+            coupon: couponId,
+          }
+        );
+        paymentData.redirect_url = `${host}/api/ccavenue-handle?paymentId=${res.data.data?._id}`;
+        paymentData.cancel_url = `${host}/api/ccavenue-handle?paymentId=${res.data.data?._id}`;
+      } catch (err) {
+        console.error('Error sending payment data:', err);
+        toast.error('Error sending payment data. Please try again.');
+        return;
+      }
       // Get encrypted order data from CCAvenue utility
       let encReq = CCAvenue.getEncryptedOrder(paymentData);
       let accessCode = 'AVHG70KE18CC51GHCC';
@@ -221,10 +253,10 @@ const CCAvPaymentForm: React.FC<PaymentFormProps> = ({
       setCurrentStep(PaymentStep.PROCESSING);
 
       // Start checking for payment status
-      startStatusCheck(paymentData.order_id);
+      // startStatusCheck(paymentData.order_id);
 
       // Redirect to CCAvenue payment gateway
-      router?.push(URL);
+      window.open(URL, '_blank', 'noopener,noreferrer');
 
       toast.success('Payment Initiated: Complete the payment in the secure payment form.');
     } catch (err: any) {
@@ -238,76 +270,6 @@ const CCAvPaymentForm: React.FC<PaymentFormProps> = ({
     }
   };
 
-  // Periodically check payment status
-  const startStatusCheck = (merchantOrderId: string) => {
-    // Clear any existing interval
-    if (statusCheckInterval) {
-      clearInterval(statusCheckInterval);
-    }
-
-    // Set up new interval (every 5 seconds)
-    const interval = setInterval(() => {
-      checkPaymentStatus(merchantOrderId);
-    }, 5000);
-
-    setStatusCheckInterval(interval);
-  };
-
-  // Check payment status function
-  const checkPaymentStatus = async (merchantOrderId: string) => {
-    if (checkingStatus) return; // Prevent multiple simultaneous checks
-
-    try {
-      setCheckingStatus(true);
-
-      const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/ccavenue/check-status/${merchantOrderId}`
-      );
-
-      if (response.data.success) {
-        const { status } = response.data.data;
-
-        // If payment is complete or failed, update UI
-        if (status === 'SUCCESS') {
-          if (statusCheckInterval) {
-            clearInterval(statusCheckInterval);
-            setStatusCheckInterval(null);
-          }
-          setCurrentStep(PaymentStep.CONFIRMATION);
-          toast.success('Payment Successful: Your enrollment has been confirmed!');
-        } else if (status === 'FAILED' || status === 'CANCELLED') {
-          if (statusCheckInterval) {
-            clearInterval(statusCheckInterval);
-            setStatusCheckInterval(null);
-          }
-          setError(`Payment ${status.toLowerCase()}. Please try again.`);
-          setCurrentStep(PaymentStep.ERROR);
-          toast.error(`Payment ${status.toLowerCase()}. Please try again.`);
-        }
-      }
-    } catch (error) {
-      console.error('Error checking payment status:', error);
-      // Don't update UI on error, just keep checking
-    } finally {
-      setCheckingStatus(false);
-    }
-  };
-
-  // Manual check for payment status (for user button)
-  const handleManualStatusCheck = async () => {
-    if (!paymentData?.payment?.merchantOrderId) return;
-
-    setIsLoading(true);
-
-    try {
-      await checkPaymentStatus(paymentData.payment.merchantOrderId);
-
-      // If we reach here and status hasn't changed, let the user know
-      toast.info('Your payment is still being processed. Please wait a moment.');
-    } finally {
-      setIsLoading(false);
-    }
-  };
   if (!router?.isReady) return null;
   // Render different content based on the current step
   const renderContent = () => {
@@ -411,7 +373,11 @@ const CCAvPaymentForm: React.FC<PaymentFormProps> = ({
                   <p className="text-sm text-red-500 mt-1">{form.formState.errors.phone.message}</p>
                 )}
               </div>
-
+              <CouponInput
+                currentAmount={finalAmount}
+                // @ts-ignore
+                onCouponApply={handleCouponApply}
+              />
               <Button
                 type="submit"
                 className="w-full p-6 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700"
@@ -449,24 +415,33 @@ const CCAvPaymentForm: React.FC<PaymentFormProps> = ({
                   <BookOpen className="h-5 w-5 mr-2" />
                   Order Summary
                 </h3>
-                <div className="flex justify-between items-center py-2 border-b border-blue-100">
-                  <span className="text-gray-600">Course</span>
-                  <span className="font-medium">{courseName}</span>
+
+                <div className="space-y-2 border p-4 rounded-xl bg-blue-50">
+                  <div className="flex justify-between items-center border-b pb-2">
+                    <span className="text-gray-600">Base Amount</span>
+                    <span className="text-gray-800 font-medium">₹{baseAmount.toFixed(2)}</span>
+                  </div>
+                  <div className="flex justify-between items-center py-2 border-b border-blue-100">
+                    <span className="text-gray-600">Offer</span>
+                    <span className="font-medium text-red-700">-20%</span>
+                  </div>
+                  {couponDetails && (
+                    <div className="flex justify-between items-center border-b py-2">
+                      <span className="text-gray-600">Coupon Offer</span>
+                      <span className="font-medium text-red-700">
+                        {couponDetails.type === 'percentage'
+                          ? `-${couponDetails.discount}%`
+                          : `-₹${couponDetails.discount}`}
+                      </span>
+                    </div>
+                  )}
+
+                  <div className="flex justify-between items-center border-b py-2">
+                    <span className="text-gray-600">GST</span>
+                    <span className="font-medium text-green-700">+18%</span>
+                  </div>
                 </div>
-                <div className="flex justify-between items-center py-2 border-b border-blue-100">
-                  <span className="text-gray-600">Amount</span>
-                  <span className="font-medium text-blue-700">
-                    {currency} {amount.toFixed(2)}
-                  </span>
-                </div>
-                <div className="flex justify-between items-center py-2 border-b border-blue-100">
-                  <span className="text-gray-600">Offer</span>
-                  <span className="font-medium text-red-700">-20%</span>
-                </div>
-                <div className="flex justify-between items-center py-2 border-b border-blue-100">
-                  <span className="text-gray-600">GST</span>
-                  <span className="font-medium text-green-700">+18%</span>
-                </div>
+
                 <div className="flex justify-between items-center py-2 border-b border-blue-100">
                   <span className="text-gray-600">Name</span>
                   <span className="font-medium">{user?.name}</span>
@@ -475,10 +450,9 @@ const CCAvPaymentForm: React.FC<PaymentFormProps> = ({
                   <span className="text-gray-600">Email</span>
                   <span className="font-medium">{user?.email}</span>
                 </div>
-
-                <div className="flex justify-between items-center py-2 border-b border-blue-100">
-                  <span className="text-gray-600">Final Amount</span>
-                  <span className="font-medium text-blue-700">INR {finalAmount.toFixed(2)} </span>
+                <div className="flex justify-between items-center pt-2 text-lg font-bold text-blue-800">
+                  <span>Total Payable</span>
+                  <span>₹{finalAmount.toFixed(2)}</span>
                 </div>
               </div>
 
@@ -559,9 +533,9 @@ const CCAvPaymentForm: React.FC<PaymentFormProps> = ({
             )}
 
             <div className="flex flex-col space-y-3 mt-3">
-              <Button
+              {/* <Button
                 variant="outline"
-                onClick={handleManualStatusCheck}
+                onClick={() => setCurrentStep(PaymentStep.FORM)}
                 className="w-full"
                 disabled={isLoading}
               >
@@ -571,7 +545,7 @@ const CCAvPaymentForm: React.FC<PaymentFormProps> = ({
                   <CheckCircle2 className="mr-2 h-4 w-4" />
                 )}
                 I've Completed Payment
-              </Button>
+              </Button> */}
 
               <div className="text-center text-xs text-gray-500 mt-2">
                 <p>Secured by CCAvenue Payment Gateway</p>
