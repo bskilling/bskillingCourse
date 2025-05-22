@@ -47,23 +47,19 @@ const Footer = () => {
           <div className="lg:col-span-1">
             <h5 className="text-lg font-semibold mb-5 text-blue-300">Company</h5>
             <ul className="space-y-3">
-              {[
-                'About Us',
-                'Reviews',
-                'Terms & Conditions',
-                'Privacy - Policy',
-                'Refund Policy',
-              ].map((item, idx) => (
-                <li key={idx}>
-                  <Link
-                    href={`/${item.toLowerCase().replace(/\s+/g, '')}`}
-                    className="text-gray-200 hover:text-blue-200 duration-300 text-sm flex items-center hover:translate-x-1 transform transition-transform"
-                  >
-                    <span className="bg-sky-400 w-1.5 h-1.5 rounded-full mr-2 inline-block"></span>
-                    {item}
-                  </Link>
-                </li>
-              ))}
+              {['About Us', 'Reviews', 'Terms-Conditions', 'Privacy-Policy', 'Refund Policy'].map(
+                (item, idx) => (
+                  <li key={idx}>
+                    <Link
+                      href={`/${item.toLowerCase().replace(/\s+/g, '')}`}
+                      className="text-gray-200 hover:text-blue-200 duration-300 text-sm flex items-center hover:translate-x-1 transform transition-transform"
+                    >
+                      <span className="bg-sky-400 w-1.5 h-1.5 rounded-full mr-2 inline-block"></span>
+                      {item}
+                    </Link>
+                  </li>
+                )
+              )}
               <li>
                 <a
                   href="https://sfjbs.talentrecruit.com/career-page"

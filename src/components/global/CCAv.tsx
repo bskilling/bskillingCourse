@@ -104,7 +104,7 @@ const CCAvPaymentForm: React.FC<PaymentFormProps> = ({
   finalAmount -= flatOff;
   if (couponDetails) {
     if (couponDetails.type === 'percentage') {
-      discount = (couponDetails.discount / 100) * baseAmount;
+      discount = (couponDetails.discount / 100) * finalAmount;
     } else if (couponDetails.type === 'fixed') {
       discount = couponDetails.discount;
     }
