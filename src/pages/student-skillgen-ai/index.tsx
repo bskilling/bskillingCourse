@@ -71,7 +71,19 @@ export default function SkillgenAILanding() {
                 safely and ethically.
               </p>
 
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <button className="bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors inline-flex items-center space-x-2">
+                <span>Enroll Now</span>
+                <ArrowRight className="w-5 h-5" />
+              </button>
+            </div>
+            <div className="">
+              <img
+                src="students/student-gen-ai.jpeg"
+                alt="Hero Image"
+                className="w-full h-auto object-cover rounded-lg  border-4"
+              />
+
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-5">
                 <div className="text-center bg-white rounded-lg p-4 shadow-sm border">
                   <Users className="w-8 h-8 text-blue-600 mx-auto mb-2" />
                   <div className="font-semibold text-gray-900">Students</div>
@@ -91,23 +103,6 @@ export default function SkillgenAILanding() {
                   <BookOpen className="w-8 h-8 text-blue-600 mx-auto mb-2" />
                   <div className="font-semibold text-gray-900">4 Days</div>
                   <div className="text-sm text-gray-600">Duration</div>
-                </div>
-              </div>
-
-              <button className="bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors inline-flex items-center space-x-2">
-                <span>Enroll Now</span>
-                <ArrowRight className="w-5 h-5" />
-              </button>
-            </div>
-
-            <div className="lg:order-first">
-              <div className="bg-white rounded-2xl shadow-lg p-8 border">
-                <div className="aspect-video bg-gradient-to-br from-blue-100 to-indigo-100 rounded-xl flex items-center justify-center">
-                  <div className="text-center">
-                    <Brain className="w-24 h-24 text-blue-600 mx-auto mb-4" />
-                    <h3 className="text-xl font-semibold text-gray-800">Interactive AI Learning</h3>
-                    <p className="text-gray-600 mt-2">Students engaging with real AI tools</p>
-                  </div>
                 </div>
               </div>
             </div>

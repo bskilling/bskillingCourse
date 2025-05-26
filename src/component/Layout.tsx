@@ -197,7 +197,7 @@ const Layout = ({ children, pageTitle = 'bSkilling' }: Props) => {
         pathname.split('/').includes('course') ||
         pathname.split('/').includes('courseDetails') ||
         pathname.split('/').includes('courses') ||
-        pathname.split('/').includes('student')
+        pathname.split('/').includes('student-skillgen-ai')
       ) {
         return false;
       }
