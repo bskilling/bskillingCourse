@@ -134,6 +134,10 @@ const Footer = () => {
                   name: 'Cloud Architect',
                   link: 'https://www.bskilling.com/course/google-cloud-professional-cloud-architect-certification-training?id=67e3f06fa05b32da18086def',
                 },
+                {
+                  name: 'Gen AI for Students',
+                  link: 'https://www.bskilling.com/student-skillgen-ai',
+                },
               ].map((program, idx) => (
                 <li key={idx}>
                   <Link
