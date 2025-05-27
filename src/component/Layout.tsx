@@ -208,7 +208,7 @@ const Layout = ({ children, pageTitle = 'bSkilling' }: Props) => {
   const [show, setShow] = useState(false);
   return (
     <>
-      <Head>
+      {/* <Head>
         <title>{pageTitle}</title>
         <meta name="bSkilling" content="bSkilling" />
         <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
@@ -216,8 +216,7 @@ const Layout = ({ children, pageTitle = 'bSkilling' }: Props) => {
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
         <link rel="manifest" href="/favicon_io/site.webmanifest" />
       </Head>
-      {/* <Script id="razorpay-checkout-js" src="https://checkout.razorpay.com/v1/checkout.js" /> */}
-      <Script src="https://mercury.phonepe.com/web/bundle/checkout.js"></Script>
+      <Script src="https://mercury.phonepe.com/web/bundle/checkout.js"></Script> */}
 
       <>
         {navHide && isVisible && (
