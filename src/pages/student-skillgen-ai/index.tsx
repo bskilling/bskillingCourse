@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 import NavbarSection from '@/component/navbar/NavbarSection';
+import EnrollmentForm from '@/components/enrollMentForm';
 
 export default function SkillgenAILanding() {
   const aiToolsData = {
@@ -70,11 +71,12 @@ export default function SkillgenAILanding() {
                 projects, students learn how to create text, images, quizzes, and videos using AI —
                 safely and ethically.
               </p>
-
+              {/* 
               <button className="bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors inline-flex items-center space-x-2">
                 <span>Enroll Now</span>
                 <ArrowRight className="w-5 h-5" />
-              </button>
+              </button> */}
+              <EnrollmentForm />
             </div>
             <div className="">
               <img
