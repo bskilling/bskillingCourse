@@ -16,6 +16,7 @@ import {
 import Link from 'next/link';
 import NavbarSection from '@/component/navbar/NavbarSection';
 import EnrollmentForm from '@/components/enrollMentForm';
+import Head from 'next/head';
 
 export default function SkillgenAILanding() {
   const aiToolsData = {
@@ -43,6 +44,129 @@ export default function SkillgenAILanding() {
   }));
   return (
     <div className="min-h-screen bg-white">
+      <Head>
+        {/* Primary Meta Tags */}
+        <title>
+          Generative AI Masterclass for Students | Learn AI Skills Online with BSkilling
+        </title>
+        <meta
+          name="description"
+          content="Join the Student SkillGen AI Program by BSkilling – a comprehensive Generative AI course tailored for students. Learn ChatGPT, AI tools, and future-ready skills online. Enroll now and get certified!"
+        />
+        <meta
+          name="keywords"
+          content="Generative AI for Students, AI Course Online, Learn ChatGPT, AI Tools for Students, Student AI Masterclass, Future Skills, BSkilling AI Program, AI Certification for Students, Free AI Workshop, SkillGen AI"
+        />
+        <meta name="author" content="SkillgenAI" />
+        <meta name="robots" content="index, follow" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="canonical" href="https://www.bskilling.com/student-skillgen-ai" />
+
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.bskilling.com/student-skillgen-ai" />
+        <meta
+          property="og:title"
+          content="SkillgenAI for Students | 4-Day AI Course | ChatGPT, DALL-E & More"
+        />
+        <meta
+          property="og:description"
+          content="Transform your child's future with hands-on AI education. 4-day course covering ChatGPT, DALL-E, Pictory & 12+ tools. Safe, ethical, and fun learning experience!"
+        />
+        <meta
+          property="og:image"
+          content="https://www.bskilling.com/students/student-gen-ai.jpeg"
+        />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Students learning AI tools in SkillgenAI workshop" />
+        <meta property="og:site_name" content="SkillgenAI" />
+        <meta property="og:locale" content="en_US" />
+
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://www.bskilling.com/student-skillgen-ai" />
+        <meta
+          property="twitter:title"
+          content="SkillgenAI for Students | 4-Day AI Course | ChatGPT, DALL-E & More"
+        />
+        <meta
+          property="twitter:description"
+          content="Make your child future-ready with SkillgenAI! 4-day hands-on AI course. Learn ChatGPT, DALL-E & 12+ AI tools. No coding required. Get certified!"
+        />
+        <meta
+          property="twitter:image"
+          content="https://www.bskilling.com/students/student-gen-ai.jpeg"
+        />
+        <meta
+          property="twitter:image:alt"
+          content="Students learning AI tools in SkillgenAI workshop"
+        />
+        <meta property="twitter:creator" content="@SkillgenAI" />
+
+        {/* Additional Meta Tags */}
+        <meta name="theme-color" content="#2563eb" />
+        <meta name="application-name" content="SkillgenAI" />
+        <meta name="apple-mobile-web-app-title" content="SkillgenAI" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+
+        {/* Geographic targeting - if serving specific regions */}
+        <meta name="geo.region" content="IN" />
+        <meta name="geo.placename" content="India" />
+
+        {/* Course/Education specific */}
+        <meta name="course-type" content="AI Education" />
+        <meta name="target-audience" content="Students, School Children, Parents" />
+        <meta name="duration" content="4 Days" />
+        <meta name="format" content="Hands-on Workshop" />
+
+        {/* JSON-LD Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Course',
+              name: 'SkillgenAI for Students',
+              description:
+                'A 4-day hands-on program designed to introduce school students to Generative AI through practical activities with real tools like ChatGPT, DALL-E, and Pictory.',
+              provider: {
+                '@type': 'Organization',
+                name: 'SkillgenAI',
+                url: 'https://www.bskilling.com',
+              },
+              hasCourseInstance: {
+                '@type': 'CourseInstance',
+                courseMode: 'In-person workshop',
+                duration: 'P4D',
+                timeRequired: 'PT16H',
+                instructor: {
+                  '@type': 'Organization',
+                  name: 'SkillgenAI',
+                },
+              },
+              teaches: [
+                'Generative AI fundamentals',
+                'ChatGPT text generation',
+                'DALL-E image creation',
+                'AI video creation with Pictory',
+                'AI ethics and safety',
+                'Digital literacy skills',
+              ],
+              audience: {
+                '@type': 'EducationalAudience',
+                educationalRole: 'student',
+                audienceType: 'School Students',
+              },
+              coursePrerequisites: 'No coding experience required',
+              educationalCredentialAwarded: 'Certificate of Completion',
+              image: 'https://www.bskilling.com/students/student-gen-ai.jpeg',
+              url: 'https://www.bskilling.com/student-skillgen-ai',
+            }),
+          }}
+        />
+      </Head>
       {/* Hero Section */}
       <div className="sticky top-0 z-[50] bg-white/80 backdrop-blur-md shadow-sm border-b border-slate-200/50">
         <nav className="container mx-auto flex justify-between items-center py-3 px-4 lg:px-8">
@@ -78,13 +202,12 @@ export default function SkillgenAILanding() {
               </button> */}
               <EnrollmentForm />
             </div>
-            <div className="">
+            <div className="flex flex-col gap-5">
               <img
                 src="students/student-gen-ai.jpeg"
                 alt="Hero Image"
                 className="w-full h-auto object-cover rounded-lg  border-4"
               />
-
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-5">
                 <div className="text-center bg-white rounded-lg p-4 shadow-sm border">
                   <Users className="w-8 h-8 text-blue-600 mx-auto mb-2" />
