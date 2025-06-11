@@ -287,7 +287,7 @@ const CCAvPaymentForm: React.FC<PaymentFormProps> = ({
             <div className="flex items-center justify-between my-4 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg shadow-sm border border-blue-100">
               <div className="flex items-center">
                 <CreditCard className="h-5 w-5 text-blue-600 mr-2" />
-                <span className="text-gray-700">Course Fee a</span>
+                <span className="text-gray-700">Course Fee</span>
               </div>
               <span className="font-bold text-lg text-blue-700">
                 {currency} {finalAmount.toFixed(2)} (Inclusive of 18% GST)
