@@ -90,6 +90,7 @@ const EnrollmentForm: React.FC<EnrollmentFormProps> = ({
       toast.success(data.message || 'You have been successfully enrolled.');
       console.log('Data checking', data?.data);
       if (data.data.isNewUser && data.data.redirectUrl) {
+        window.open(data.data.redirectUrl, '_blank');
         // Redirect with token
         const payload = {
           email: data.data.user.email,
@@ -99,6 +100,7 @@ const EnrollmentForm: React.FC<EnrollmentFormProps> = ({
           category: data.data.user.category,
           type: data.data.user.type, // 'b2b', 'b2c', 'b2i'
         };
+
         await zohoLead.mutateAsync(payload);
       }
       if (data.data.redirectUrl) {

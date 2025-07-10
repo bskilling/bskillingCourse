@@ -112,7 +112,7 @@ const Footer = () => {
               {[
                 {
                   name: 'Gen AI',
-                  link: 'https://www.bskilling.com/course/become-ai-generative-ai-expert-certification-course?id=67e50a7021a141df13e64ddd',
+                  link: 'https://www.bskilling.com/course/become-generative-ai-ml-expert-certification-course',
                 },
                 {
                   name: 'AWS Certified Associate',
