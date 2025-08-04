@@ -65,7 +65,7 @@ const menus = [
     href: '/corporate-training',
     icon: <BsBuilding size={22} />,
   },
-  { name: 'About Us', href: '/aboutus', icon: <IoPersonOutline size={22} /> },
+  // { name: 'About Us', href: '/aboutus', icon: <IoPersonOutline size={22} /> },
   {
     name: 'Blogs',
     href: '/blogs',
@@ -137,38 +137,13 @@ export default function NavbarSection() {
           </NavigationMenuItem>
 
           <NavigationMenuItem className="">
-            <Popover>
-              <PopoverTrigger className="flex gap-x-3 items-center text-sm">
-                {' '}
-                More <IoIosArrowDown />
-              </PopoverTrigger>
-              <PopoverContent className="font-normal">
-                <div className="flex flex-col gap-y-3">
-                  <p>Options</p>
-                  <Link href={'https://sfjbs.talentrecruit.com/career-page'} target="_blank">
-                    {' '}
-                    <div className="text-foreground inline-flex gap-x-2 cursor-pointer items-center">
-                      <IoSchool size={20} className="mx-2" />
-                      <p>Career</p>
-                    </div>
-                  </Link>
-                  <Link href={'/reviews'}>
-                    {' '}
-                    <div className="text-foreground inline-flex gap-x-2 cursor-pointer items-center">
-                      <FaStar className="mx-2" size={20} />
-                      <p>Review</p>
-                    </div>{' '}
-                  </Link>
-
-                  <Link href={'/aboutus'}>
-                    <div className="text-foreground inline-flex gap-x-2 cursor-pointer items-center">
-                      <FcAbout className="mx-2" size={20} />
-                      <p>About Us</p>
-                    </div>{' '}
-                  </Link>
-                </div>
-              </PopoverContent>
-            </Popover>
+            <Link href={'https://www.sfjbs.com/careers'} target="_blank">
+              {' '}
+              <div className="text-foreground inline-flex gap-x-2 cursor-pointer items-center">
+                {/* <IoSchool size={20} className="mx-2" /> */}
+                <p>Career</p>
+              </div>
+            </Link>
           </NavigationMenuItem>
 
           {user ? (

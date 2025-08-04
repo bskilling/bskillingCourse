@@ -120,8 +120,8 @@ const NavbarSection: React.FC = () => {
 
   const secondaryMenuItems: SecondaryMenuItem[] = [
     { name: 'Career', href: 'https://sfjbs.talentrecruit.com/career-page', external: true },
-    { name: 'Review', href: '/reviews' },
-    { name: 'About Us', href: '/aboutus' },
+    // { name: 'Review', href: '/reviews' },
+    // { name: 'About Us', href: '/aboutus' },
     { name: 'Blogs', href: '/blogs' },
   ];
 

@@ -47,7 +47,7 @@ const Footer = () => {
           <div className="lg:col-span-1">
             <h5 className="text-lg font-semibold mb-5 text-blue-300">Company</h5>
             <ul className="space-y-3">
-              {['About Us', 'Reviews', 'Terms-Conditions', 'Privacy-Policy', 'Refund Policy'].map(
+              {['Reviews', 'Terms-Conditions', 'Privacy-Policy', 'Refund Policy'].map(
                 (item, idx) => (
                   <li key={idx}>
                     <Link
@@ -62,7 +62,7 @@ const Footer = () => {
               )}
               <li>
                 <a
-                  href="https://sfjbs.talentrecruit.com/career-page"
+                  href="https://www.sfjbs.com/careers"
                   target="_blank"
                   className="text-gray-200 hover:text-blue-200 duration-300 text-sm flex items-center hover:translate-x-1 transform transition-transform"
                 >
