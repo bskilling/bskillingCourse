@@ -90,7 +90,7 @@ const CourseDetails: React.FC<CourseDetailsProps> = ({
                 <Calendar className="w-6 h-6 text-amber-600" />
               </div>
               <div className="ml-4">
-                <h3 className="text-lg font-medium text-gray-800">Enrollment</h3>
+                <h3 className="text-lg font-medium text-gray-800">Start Date - End Date</h3>
                 <div className="mt-1 text-sm font-medium text-amber-600">
                   {format(new Date(enrollmentStart), 'MMM d')} -{' '}
                   {format(new Date(enrollmentEnd), 'MMM d, yyyy')}

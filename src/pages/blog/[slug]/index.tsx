@@ -10,6 +10,7 @@ import NavbarSection from '@/component/navbar/NavbarSection';
 interface BlogType {
   _id: string;
   title: string;
+  content: string;
   slug: string;
   summary: string;
   status: string;
@@ -304,35 +305,7 @@ export default function SingleBlogPage() {
 
               {/* Content Blocks */}
               <div className="prose prose-lg max-w-none">
-                {blog.contentBlocks && blog.contentBlocks.length > 0 ? (
-                  blog.contentBlocks.map((block, index) => (
-                    <div key={index} className="mb-6">
-                      {/* Render content blocks based on type */}
-                      {block.type === 'paragraph' && (
-                        <p className="text-gray-700 leading-relaxed mb-4">{block.content}</p>
-                      )}
-                      {block.type === 'heading' && (
-                        <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">
-                          {block.content}
-                        </h2>
-                      )}
-                      {block.type === 'image' && (
-                        <img
-                          src={block.url}
-                          alt={block.alt || ''}
-                          className="w-full rounded-lg my-6"
-                        />
-                      )}
-                      {/* Add more content block types as needed */}
-                    </div>
-                  ))
-                ) : (
-                  <div className="text-center py-8">
-                    <p className="text-gray-500">
-                      Content is being updated. Please check back later.
-                    </p>
-                  </div>
-                )}
+                <div dangerouslySetInnerHTML={{ __html: blog.content }} />
               </div>
 
               {/* Tags */}
