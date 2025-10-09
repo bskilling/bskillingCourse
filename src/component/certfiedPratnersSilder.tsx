@@ -47,24 +47,24 @@ const CertifiedPartnersSlider = () => {
       logo: '/edu&car/6.png',
       size: { width: 100, height: 60 }, // Reduced size
     },
-    {
-      id: 6,
-      name: 'Partner 6',
-      logo: '/edu&car/1.png',
-      size: { width: 110, height: 55 }, // Reduced size
-    },
-    {
-      id: 7,
-      name: 'Partner 7',
-      logo: '/edu&car/4.png',
-      size: { width: 100, height: 65 }, // Reduced size
-    },
-    {
-      id: 8,
-      name: 'Partner 8',
-      logo: '/edu&car/3.png',
-      size: { width: 110, height: 55 }, // Reduced size
-    },
+    // {
+    //   id: 6,
+    //   name: 'Partner 6',
+    //   logo: '/edu&car/1.png',
+    //   size: { width: 110, height: 55 }, // Reduced size
+    // },
+    // {
+    //   id: 7,
+    //   name: 'Partner 7',
+    //   logo: '/edu&car/4.png',
+    //   size: { width: 100, height: 65 }, // Reduced size
+    // },
+    // {
+    //   id: 8,
+    //   name: 'Partner 8',
+    //   logo: '/edu&car/3.png',
+    //   size: { width: 110, height: 55 }, // Reduced size
+    // },
     {
       id: 9,
       name: 'Partner 9',

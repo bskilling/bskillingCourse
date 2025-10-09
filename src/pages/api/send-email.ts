@@ -26,9 +26,12 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   // Configure the Nodemailer transporter using SES
-  const transporter = nodemailer.createTransport({
-    SES: { ses: sesClient, aws: require('@aws-sdk/client-ses') },
-  });
+  const transporter = nodemailer.createTransport(
+    // cast to any because @types/nodemailer does not include the SES transport option
+    {
+      SES: { ses: sesClient, aws: require('@aws-sdk/client-ses') },
+    } as unknown as any
+  );
 
   const mailOptions = {
     from: 'lmsadmin@bskilling.com',
