@@ -1,32 +1,39 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/compat/router';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Loader2 } from 'lucide-react';
 import { toast } from 'sonner';
-import { useMutation } from '@tanstack/react-query';
 import axios from 'axios';
-import { handleErrors } from '@/lib/handleError';
 
-interface EnrollmentFormProps {
+interface NASSCOMEnrollmentFormProps {
   courseId: string;
   buttonText?: string;
   buttonClassName?: string;
-  redirectUrl?: string;
 }
 
-const STORAGE_KEY = 'enrollment_form_data';
+const STORAGE_KEY = 'nasscom_enrollment_form_data';
 
-const EnrollmentForm: React.FC<EnrollmentFormProps> = ({
+// NASSCOM Config - Same as backend but for NASSCOM
+const NASSCOM_CONFIG = {
+  BASE_URL: process.env.NEXT_PUBLIC_LMS_BASE_URL || 'https://app.bskillingnxtgen.com',
+  USER_SERVICE_URL: process.env.NEXT_PUBLIC_LMS_USER_URL || 'https://bskillingnxtgen.com/auth',
+  COURSE_SERVICE_URL:
+    process.env.NEXT_PUBLIC_LMS_COURSE_URL || 'https://api.bskillingnxtgen.com/api/courses',
+  DEFAULT_PASSWORD: 'nasscom123',
+  AUTH_PROVIDER: 'NASSCOM',
+  TIMEOUT: 45000,
+  SOURCE_TYPE: 'B2C',
+  SOURCE_SUB_TYPE: 'NASSCOM',
+};
+
+const NASSCOMEnrollmentForm: React.FC<NASSCOMEnrollmentFormProps> = ({
   courseId,
   buttonText = 'Enroll Now',
   buttonClassName = 'bg-blue-600 hover:bg-blue-700 text-white px-6 py-5 rounded-lg font-medium text-base',
-  redirectUrl,
 }) => {
-  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
@@ -35,20 +42,17 @@ const EnrollmentForm: React.FC<EnrollmentFormProps> = ({
     contactNumber: '',
   });
 
-  // Load saved form data from localStorage when component mounts
   useEffect(() => {
     const savedData = localStorage.getItem(STORAGE_KEY);
     if (savedData) {
       try {
-        const parsedData = JSON.parse(savedData);
-        setFormData(parsedData);
+        setFormData(JSON.parse(savedData));
       } catch (error) {
         console.error('Error parsing saved form data:', error);
       }
     }
   }, []);
 
-  // Save form data to localStorage whenever it changes
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
   }, [formData]);
@@ -56,6 +60,117 @@ const EnrollmentForm: React.FC<EnrollmentFormProps> = ({
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  // Step 1: Check if user exists
+  const checkUserExists = async (email: string, providerId: string) => {
+    try {
+      const response = await axios.get(`${NASSCOM_CONFIG.USER_SERVICE_URL}/check-user`, {
+        params: {
+          email: email,
+          providerId: providerId,
+          authProvider: NASSCOM_CONFIG.AUTH_PROVIDER,
+        },
+        timeout: NASSCOM_CONFIG.TIMEOUT,
+      });
+
+      if (response.data.success && response.data.data.user) {
+        return response.data.data.user;
+      }
+      return null;
+    } catch (error: any) {
+      if (error.response?.status === 404) {
+        return null;
+      }
+      throw error;
+    }
+  };
+
+  // Step 2a: Create new user
+  const createUser = async (providerId: string) => {
+    const signupPayload = {
+      name: formData.name,
+      email: formData.email,
+      phone: formData.contactNumber,
+      authProvider: NASSCOM_CONFIG.AUTH_PROVIDER,
+      providerId: providerId,
+      role: 'LEARNER',
+      sourceType: NASSCOM_CONFIG.SOURCE_TYPE,
+      sourceSubType: NASSCOM_CONFIG.SOURCE_SUB_TYPE,
+      bio: 'User created via NASSCOM integration',
+      metadata: JSON.stringify({
+        nasscomIntegration: true,
+        courseId: courseId,
+      }),
+      password: NASSCOM_CONFIG.DEFAULT_PASSWORD,
+    };
+
+    const response = await axios.post(
+      `${NASSCOM_CONFIG.USER_SERVICE_URL}/sso-signup`,
+      signupPayload,
+      {
+        headers: { 'Content-Type': 'application/json' },
+        timeout: NASSCOM_CONFIG.TIMEOUT,
+      }
+    );
+
+    if (response.data.success) {
+      return response.data.data;
+    }
+    throw new Error('Failed to create user');
+  };
+
+  // Step 2b: Signin existing user
+  const signinUser = async (providerId: string) => {
+    const signinPayload = {
+      authProvider: NASSCOM_CONFIG.AUTH_PROVIDER,
+      providerId: providerId,
+      email: formData.email,
+      name: formData.name,
+      password: NASSCOM_CONFIG.DEFAULT_PASSWORD,
+    };
+
+    const response = await axios.post(
+      `${NASSCOM_CONFIG.USER_SERVICE_URL}/sso-signin`,
+      signinPayload,
+      {
+        headers: { 'Content-Type': 'application/json' },
+        timeout: NASSCOM_CONFIG.TIMEOUT,
+      }
+    );
+
+    if (response.data.success) {
+      return response.data.data;
+    }
+    throw new Error('Failed to signin user');
+  };
+
+  // Step 3: Enroll user in course
+  const enrollUserInCourse = async (accessToken: string) => {
+    const enrollmentPayload = {
+      id: courseId,
+      externalCourseId: courseId,
+      sourceType: NASSCOM_CONFIG.SOURCE_SUB_TYPE,
+      enrollmentFee: 0,
+      currency: 'INR',
+    };
+
+    const response = await axios.post(
+      `${NASSCOM_CONFIG.COURSE_SERVICE_URL}/enrollments/sso`,
+      enrollmentPayload,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${accessToken}`,
+        },
+        timeout: NASSCOM_CONFIG.TIMEOUT,
+      }
+    );
+
+    if (response.data.success) {
+      return response.data.data.enrollment;
+    }
+    throw new Error('Failed to enroll user');
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -69,77 +184,58 @@ const EnrollmentForm: React.FC<EnrollmentFormProps> = ({
     try {
       setIsLoading(true);
 
-      const response = await fetch(process.env.NEXT_PUBLIC_BACKEND_URL + '/api/edmingle', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...formData,
-          courseId,
-          redirectUrl,
-        }),
-      });
+      // Generate unique provider ID
+      const providerId = `NASSCOM_${Date.now()}_${formData.email.split('@')[0]}`;
 
-      const data = await response.json();
+      console.log('🎯 [NASSCOM] Starting enrollment flow');
 
-      if (!response.ok) {
-        throw new Error(data.message || 'Failed to enroll in course');
+      // Step 1: Check if user exists
+      console.log('🔍 [NASSCOM] Checking if user exists');
+      const existingUser = await checkUserExists(formData.email, providerId);
+
+      let userResult;
+      let isNewUser = false;
+
+      if (existingUser) {
+        // Step 2a: User exists, sign them in
+        console.log('🔐 [NASSCOM] User exists - signing in');
+        userResult = await signinUser(providerId);
+      } else {
+        // Step 2b: User doesn't exist, create them
+        console.log('👤 [NASSCOM] User does not exist - creating new user');
+        userResult = await createUser(providerId);
+        isNewUser = true;
       }
 
-      toast.success(data.message || 'You have been successfully enrolled.');
-      console.log('Data checking', data?.data);
-      if (data.data.isNewUser && data.data.redirectUrl) {
-        window.open(data.data.redirectUrl, '_blank');
-        // Redirect with token
-        const payload = {
-          email: data.data.user.email,
-          name: data.data.user.name,
-          course: data.data.user.course,
-          phoneNumber: data?.data?.user?.contactNumber,
-          category: data.data.user.category,
-          type: data.data.user.type, // 'b2b', 'b2c', 'b2i'
-        };
+      // Step 3: Enroll user in course
+      console.log('📚 [NASSCOM] Enrolling user in course');
+      const enrollment = await enrollUserInCourse(userResult.accessToken);
 
-        await zohoLead.mutateAsync(payload);
-      }
-      if (data.data.redirectUrl) {
-        const redirectUrl = data.data.redirectUrl;
-        console.log('Data checking', data?.data);
-        // window.location.href = redirectUrl;
-        window.open(redirectUrl, '_blank');
-      }
-      // window.location.href = redirectUrl;
+      console.log('✅ [NASSCOM] Integration completed successfully');
+
+      // Step 4: Construct redirect URL
+      const redirectUrl = `${NASSCOM_CONFIG.BASE_URL}/new-sso?refreshToken=${userResult.refreshToken}&courseId=${enrollment.id}`;
+
+      toast.success(
+        isNewUser ? 'You have been successfully enrolled!' : 'Welcome back! Enrollment successful.'
+      );
+
+      // Open in new tab
+      window.open(redirectUrl, '_blank');
+      setIsOpen(false);
     } catch (error: any) {
-      toast.error(error.message || 'Something went wrong. Please try again.');
+      console.error('❌ [NASSCOM] Enrollment failed:', error);
+      toast.error(
+        error.response?.data?.message || error.message || 'Something went wrong. Please try again.'
+      );
     } finally {
       setIsLoading(false);
     }
   };
 
-  const zohoLead = useMutation({
-    mutationFn: async (data: any) => {
-      await axios.post('/api/zoho/lead', data, {
-        withCredentials: true, // Important to send cookies
-      });
-    },
-    onSuccess: () => {
-      // Show success message
-      // toast.success('Your query has been submitted successfully. Our team will contact you soon.');
-    },
-    onError: err => {
-      console.error(err);
-      // toast.error(handleErrors(err as any) ?? 'Something went wrong. Please try again.');
-    },
-  });
-
-  const handleOpenModal = () => {
-    setIsOpen(true);
-  };
-  if (!router?.isReady) return null;
   return (
     <>
-      <Button onClick={handleOpenModal} className={buttonClassName}>
+      <Button onClick={() => setIsOpen(true)} className={buttonClassName}>
         {formData?.name.length > 0 ? 'Continue' : buttonText}
       </Button>
 
@@ -158,8 +254,6 @@ const EnrollmentForm: React.FC<EnrollmentFormProps> = ({
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
               >
                 <line x1="18" y1="6" x2="6" y2="18"></line>
                 <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -231,4 +325,4 @@ const EnrollmentForm: React.FC<EnrollmentFormProps> = ({
   );
 };
 
-export default EnrollmentForm;
+export default NASSCOMEnrollmentForm;
