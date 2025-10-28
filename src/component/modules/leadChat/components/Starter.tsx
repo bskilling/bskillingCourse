@@ -12,7 +12,7 @@ const Starter = (props: IStarterProps) => {
 
       <div className="flex mb-4 mt-10 justify-center">
         <button className="w-fit bg-buttonBlue text-white  px-4 py-2" onClick={props.onChatClick}>
-          Chat with us
+          Chat with usa
         </button>
       </div>
       <div className="flex my-4 justify-center">

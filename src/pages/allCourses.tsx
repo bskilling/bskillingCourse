@@ -109,7 +109,7 @@ const AllCourses = () => {
     setTimeout(() => {
       setLoadingVisible(false);
       setCategoryVisible(false);
-      (setAllCourseButtonIndex(x), setCategoryVisible(false));
+      setAllCourseButtonIndex(x), setCategoryVisible(false);
     }, 700);
   };
 

@@ -4,7 +4,7 @@ import Head from 'next/head';
 import Script from 'next/script';
 
 export default function Privacy() {
-  console.log('hellow world');
+  console.log('hellow');
   const [name, setName] = useState('');
   const [linkedin, setLinkedin] = useState('');
   const [email, setEmail] = useState('');
