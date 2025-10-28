@@ -60,7 +60,7 @@ export default function Program() {
     queryFn: async () => {
       const res = await axios.get(backendUrl + '/api/categories', {
         params: {
-          limit: 8,
+          limit: 100,
           page: 1,
           type: selectedType ?? undefined,
           isPublished: true,
