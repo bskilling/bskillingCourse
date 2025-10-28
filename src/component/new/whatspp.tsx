@@ -115,7 +115,7 @@ export default function WhatsAppFloatingButton() {
     }
   };
 
-  // Don't render anything during SSR
+  // Don't render anythng during SSR
   if (!position) return null;
 
   return (
