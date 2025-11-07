@@ -475,13 +475,13 @@ const NavbarSection: React.FC = () => {
               ) : (
                 <div className="flex items-center space-x-3 flex-shrink-0">
                   <Link
-                    href="https://lms.bskilling.com/login/signup.php"
+                    href="/signup"
                     className="px-3 py-2 border border-indigo-600 text-indigo-600 rounded-md hover:bg-indigo-50 transition font-medium text-sm whitespace-nowrap"
                   >
                     Sign Up
                   </Link>
                   <Link
-                    href="https://lms.bskilling.com/login/index.php"
+                    href="/login"
                     className="px-3 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition font-medium text-sm whitespace-nowrap"
                   >
                     Login

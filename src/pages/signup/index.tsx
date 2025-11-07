@@ -1,9 +1,9 @@
-import LoginForm from '@/components/Auth/LoginForm';
+import SignupForm from '@/components/Auth/SignupForm';
 import React from 'react';
 import Link from 'next/link';
-import { FaCheckCircle, FaLaptopCode, FaCertificate, FaChartLine, FaStar } from 'react-icons/fa';
+import { FaCheckCircle, FaStar } from 'react-icons/fa';
 
-export default function Login() {
+export default function Signup() {
   return (
     <div className="min-h-screen flex">
       {/* Left Side - Branding & Benefits */}
@@ -26,11 +26,11 @@ export default function Login() {
         <div className="relative z-10 space-y-8">
           <div>
             <h2 className="text-4xl font-bold text-white mb-4 leading-tight">
-              Welcome Back to Your Learning Journey
+              Transform Your Career with Expert-Led Training
             </h2>
             <p className="text-blue-100 text-lg">
-              Continue building your skills with expert-led training and get certified in the latest
-              technologies
+              Join 50,000+ students who have upskilled with bSkilling's industry-recognized
+              certification programs
             </p>
           </div>
 
@@ -38,47 +38,47 @@ export default function Login() {
           <div className="space-y-4">
             <div className="flex items-start space-x-3">
               <div className="flex-shrink-0 w-6 h-6 rounded-full bg-green-400 flex items-center justify-center mt-1">
-                <FaLaptopCode className="text-white text-xs" />
+                <FaCheckCircle className="text-white text-sm" />
               </div>
               <div>
-                <h3 className="text-white font-semibold text-lg">Access Your Courses Anytime</h3>
-                <p className="text-blue-100 text-sm">Resume your learning with 24/7 LMS access</p>
-              </div>
-            </div>
-
-            <div className="flex items-start space-x-3">
-              <div className="flex-shrink-0 w-6 h-6 rounded-full bg-green-400 flex items-center justify-center mt-1">
-                <FaCertificate className="text-white text-xs" />
-              </div>
-              <div>
-                <h3 className="text-white font-semibold text-lg">Track Your Progress</h3>
+                <h3 className="text-white font-semibold text-lg">100+ Industry-Relevant Courses</h3>
                 <p className="text-blue-100 text-sm">
-                  Monitor your certifications and course completions
+                  Master AI, Cloud, Data Science, SAP BTP & more
                 </p>
               </div>
             </div>
 
             <div className="flex items-start space-x-3">
               <div className="flex-shrink-0 w-6 h-6 rounded-full bg-green-400 flex items-center justify-center mt-1">
-                <FaChartLine className="text-white text-xs" />
+                <FaCheckCircle className="text-white text-sm" />
               </div>
               <div>
-                <h3 className="text-white font-semibold text-lg">Personalized Learning Path</h3>
+                <h3 className="text-white font-semibold text-lg">Live Interactive Classes</h3>
                 <p className="text-blue-100 text-sm">
-                  Continue where you left off with saved progress
+                  Learn from 50+ expert trainers with real-world experience
                 </p>
               </div>
             </div>
 
             <div className="flex items-start space-x-3">
               <div className="flex-shrink-0 w-6 h-6 rounded-full bg-green-400 flex items-center justify-center mt-1">
-                <FaCheckCircle className="text-white text-xs" />
+                <FaCheckCircle className="text-white text-sm" />
               </div>
               <div>
-                <h3 className="text-white font-semibold text-lg">Career Support</h3>
+                <h3 className="text-white font-semibold text-lg">Guaranteed Placement Support</h3>
                 <p className="text-blue-100 text-sm">
-                  Access placement assistance and mentor guidance
+                  6 months job assistance with resume building & mock interviews
                 </p>
+              </div>
+            </div>
+
+            <div className="flex items-start space-x-3">
+              <div className="flex-shrink-0 w-6 h-6 rounded-full bg-green-400 flex items-center justify-center mt-1">
+                <FaCheckCircle className="text-white text-sm" />
+              </div>
+              <div>
+                <h3 className="text-white font-semibold text-lg">Flexible Learning Options</h3>
+                <p className="text-blue-100 text-sm">Study at your own pace with 24/7 LMS access</p>
               </div>
             </div>
           </div>
@@ -100,26 +100,27 @@ export default function Login() {
           </div>
         </div>
 
-        {/* Footer - Testimonial */}
+        {/* Footer */}
         <div className="relative z-10">
-          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
-            <div className="flex items-center space-x-1 mb-2">
+          <div className="flex items-center space-x-2 text-blue-100">
+            <div className="flex -space-x-2">
+              <div className="w-8 h-8 rounded-full bg-blue-300 border-2 border-white"></div>
+              <div className="w-8 h-8 rounded-full bg-blue-400 border-2 border-white"></div>
+              <div className="w-8 h-8 rounded-full bg-blue-500 border-2 border-white"></div>
+            </div>
+            <div className="flex items-center space-x-1">
               <FaStar className="text-yellow-400 text-sm" />
               <FaStar className="text-yellow-400 text-sm" />
               <FaStar className="text-yellow-400 text-sm" />
               <FaStar className="text-yellow-400 text-sm" />
               <FaStar className="text-yellow-400 text-sm" />
             </div>
-            <p className="text-white text-sm italic mb-2">
-              "The training went well and the concepts were clearly delivered with practical
-              examples. I'm satisfied with the training!"
-            </p>
-            <p className="text-blue-100 text-xs font-medium">- Pradheep, SAP BTP Student</p>
+            <span className="text-sm font-medium">Trusted by thousands of professionals</span>
           </div>
         </div>
       </div>
 
-      {/* Right Side - Login Form */}
+      {/* Right Side - Signup Form */}
       <div className="w-full lg:w-1/2 flex items-center justify-center p-8 bg-gray-50">
         <div className="w-full max-w-md">
           {/* Mobile Logo */}
@@ -133,47 +134,21 @@ export default function Login() {
           {/* Form Container */}
           <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
             <div className="mb-8">
-              <h2 className="text-3xl font-bold text-gray-900 mb-2">Welcome Back!</h2>
-              <p className="text-gray-600">Sign in to continue your learning journey</p>
+              <h2 className="text-3xl font-bold text-gray-900 mb-2">Create Your Account</h2>
+              <p className="text-gray-600">Start your learning journey with bSkilling today</p>
             </div>
 
-            {/* Login Form Component */}
-            <LoginForm />
+            {/* Signup Form Component */}
+            <SignupForm />
 
-            {/* Divider */}
-            <div className="relative my-6">
-              <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-gray-200"></div>
-              </div>
-              <div className="relative flex justify-center text-sm">
-                <span className="px-4 bg-white text-gray-500">Or</span>
-              </div>
-            </div>
-
-            {/* Sign up link */}
-            <div className="text-center">
+            {/* Already have account */}
+            <div className="mt-6 text-center">
               <p className="text-gray-600 text-sm">
-                Don't have an account?{' '}
-                <Link href="/signup" className="text-blue-600 hover:text-blue-700 font-semibold">
-                  Sign Up Free
+                Already have an account?{' '}
+                <Link href="/login" className="text-blue-600 hover:text-blue-700 font-semibold">
+                  Sign In
                 </Link>
               </p>
-            </div>
-          </div>
-
-          {/* Additional Links */}
-          <div className="mt-6 text-center space-y-3">
-            <div className="flex items-center justify-center space-x-4 text-sm">
-              <Link
-                href="/forgot-password"
-                className="text-gray-600 hover:text-blue-600 transition-colors"
-              >
-                Forgot Password?
-              </Link>
-              <span className="text-gray-300">|</span>
-              <Link href="/help" className="text-gray-600 hover:text-blue-600 transition-colors">
-                Need Help?
-              </Link>
             </div>
           </div>
 

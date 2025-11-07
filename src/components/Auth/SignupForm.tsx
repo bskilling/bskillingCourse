@@ -1,6 +1,7 @@
+'use client';
 // frontend/components/Auth/SignupForm.tsx
 
-('use client');
+// ('use client');
 
 import React, { useState } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
@@ -44,6 +45,7 @@ export default function SignupForm() {
           <input
             type="text"
             value={name}
+            placeholder="Enter your name"
             onChange={e => setName(e.target.value)}
             className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2"
             required
@@ -74,11 +76,12 @@ export default function SignupForm() {
         </div>
 
         <div className="mb-6">
-          <label className="block text-sm font-medium mb-2">Phone (Optional)</label>
+          <label className="block text-sm font-medium mb-2">Phone</label>
           <input
             type="tel"
             value={phone}
             onChange={e => setPhone(e.target.value)}
+            placeholder="Enter your phone number"
             className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2"
           />
         </div>

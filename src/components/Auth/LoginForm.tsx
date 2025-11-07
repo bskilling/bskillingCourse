@@ -1,6 +1,5 @@
-// frontend/components/Auth/LoginForm.tsx
-
 'use client';
+// frontend/components/Auth/LoginForm.tsx
 
 import React, { useState } from 'react';
 import { useAuth } from '@/contexts/AuthContext';

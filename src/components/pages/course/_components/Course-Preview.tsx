@@ -1,42 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 'use client';
-import { format } from 'date-fns';
 import { Link as Scroll } from 'react-scroll';
-import {
-  PlayIcon,
-  CheckIcon,
-  BookOpenIcon,
-  AcademicCapIcon,
-  CurrencyDollarIcon,
-} from '@heroicons/react/24/outline';
-import {
-  Calendar,
-  CheckCircle,
-  Clock,
-  DollarSign,
-  ShieldCheckIcon,
-  UserPlus,
-  Users,
-} from 'lucide-react';
-import { IoIosCheckbox, IoIosCheckmarkCircle } from 'react-icons/io';
+
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
 import { ICourse } from './types';
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '@/components/ui/accordion';
-import { BsFillBookmarkCheckFill, BsFolderCheck } from 'react-icons/bs';
-import { CreditCardIcon, ClockIcon } from '@heroicons/react/24/solid';
-import Image from 'next/image';
-import { LuRadioTower } from 'react-icons/lu';
-import { Button } from '@/components/ui/button';
-import { BiSolidCertification } from 'react-icons/bi';
-// import ContactForm from "./ContactForm";
-// @ts-ignore
-import { heroVariants } from '../[id]/_components/HeroSection';
+
 import { HeroSection } from './HeroSection';
 import CourseDetails from './Certificate';
 import Highlights from './Highlights';
@@ -44,15 +13,12 @@ import Outcomes from './Outcomes';
 import CourseEnrollment from './Price';
 import FAQSection from './faqs';
 import WhyJoinSection from './Whychoose';
-import Footer from './Footer';
 import Modules from './Modules';
-import ConsultationForm from '../../indiviual/LeadForm';
 import Link from 'next/link';
 import CourseResources from './Skills';
 import CertificationSection from './certificate1';
 import CriteriaSection from './Creteria';
 import PopupConsultationForm from './dialogs/Form';
-import PaymentForm from '@/component/modules/leadChat/components/PaymentForm';
 import FreeCourseEnrollment from './FreeCourse';
 
 // Adjust this type as needed.
