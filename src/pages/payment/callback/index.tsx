@@ -46,9 +46,9 @@ function PaymentCallbackContent() {
               localStorage.removeItem('pendingPayment');
             }
             // Redirect to enrolled courses after 3 seconds
-            setTimeout(() => {
-              router.push('/my-courses');
-            }, 3000);
+            // setTimeout(() => {
+            //   router.push('/my-courses');
+            // }, 3000);
           } else if (data.data.status === 'FAILED' || data.data.status === 'CANCELLED') {
             setStatus('failed');
           } else {
