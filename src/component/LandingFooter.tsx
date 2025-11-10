@@ -21,9 +21,9 @@ const LandingFooter = () => {
             <div className="w-full sm:w-1/2 md:w-1/2 lg:w-1/5 mb-6">
               <h5 className="text-lg font-semibold mb-4">COMPANY</h5>
               <ul className="text-sm space-y-2">
-                <Link href="/about">
+                {/* <Link href="/about">
                   <li className="text-white mb-2">About Us</li>
-                </Link>
+                </Link> */}
                 <Link href="/blogs">
                   <li className="text-white mb-2">Blog</li>
                 </Link>

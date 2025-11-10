@@ -39,6 +39,7 @@ import { toast } from 'sonner';
 import { handleErrors } from '@/lib/handleError';
 import { cn } from '@/lib/utils';
 import DownloadAndRedirect from '../Broucher';
+import { ICourse } from '@/component/types/Course.types';
 
 const leadSchema = z
   .object({
@@ -55,7 +56,6 @@ const leadSchema = z
   })
   .superRefine((data, ctx) => {
     if (data.broucher) {
-      // When broucher is true, other fields must be optional — skip strict checks
       return;
     }
 
@@ -106,6 +106,9 @@ const PopupConsultationForm: React.FC<PopupFormProps> = ({
 }) => {
   const [type, setType] = React.useState(formType);
   const [fileUrl, setFileUrl] = React.useState(null);
+  const [courseData, setCourseData] = React.useState<ICourse | null>(null);
+  const [isFetchingCourse, setIsFetchingCourse] = React.useState(false);
+
   const {
     register,
     handleSubmit,
@@ -132,27 +135,116 @@ const PopupConsultationForm: React.FC<PopupFormProps> = ({
     },
   });
 
+  // Fetch course details when modal opens
+  React.useEffect(() => {
+    if (isOpen && course && !courseData) {
+      fetchCourseDetails();
+    }
+  }, [isOpen, course]);
+
+  const fetchCourseDetails = async () => {
+    try {
+      setIsFetchingCourse(true);
+      const res = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/courses/${course}`);
+      setCourseData(res.data?.data.course);
+    } catch (error) {
+      console.error('Error fetching course details:', error);
+      // Don't show error to user, just log it
+    } finally {
+      setIsFetchingCourse(false);
+    }
+  };
+
   async function downloadBroucher() {
     try {
       const fileRes = await axios.get(
         process.env.NEXT_PUBLIC_BACKEND_URL + `/api/files/${broucher}`
       );
-
       setFileUrl(fileRes.data?.data?.viewUrl);
-
-      // 3. Create a blob link to trigger download
-      // const url = window.URL.createObjectURL(new Blob([fileRes.data]));
-      // const link = document.createElement('a');
-      // link.href = url;
-      // link.setAttribute('download', `voucher-${broucher}.pdf`);
-      // document.body.appendChild(link);
-      // link.click();
-      // link.remove();
     } catch (error) {
       console.error(error);
       toast.error('Something went wrong. Please try again.');
     }
   }
+
+  // CRITICAL: Cirrus API mutation - this MUST always be called
+  const cirrusApiMutation = useMutation({
+    mutationFn: async (data: LeadFormData) => {
+      console.log('Calling Cirrus API...', data);
+      console.log('Course data:', courseData);
+
+      if (!courseData) {
+        console.error('Course data not available for Cirrus API');
+        return;
+      }
+
+      const currentDate = new Date().toISOString().split('T')[0];
+
+      // Calculate dates
+      const startDate = courseData.startTime
+        ? new Date(courseData.startTime).toISOString().split('T')[0]
+        : currentDate;
+
+      const endDate = courseData.endTime
+        ? new Date(courseData.endTime).toISOString().split('T')[0]
+        : new Date(Date.now() + (courseData.durationHours || 30) * 24 * 60 * 60 * 1000)
+            .toISOString()
+            .split('T')[0];
+
+      const courseAmount = courseData.price?.amount || 0;
+      const gstAmount = Math.round(courseAmount * 1.18);
+
+      const payload = {
+        trtype: 'Online',
+        trmode: 'Zoom',
+        name: data.name,
+        mobile: data.countryCode + data.phoneNumber,
+        email: data.email,
+        cost: courseAmount.toString(),
+        course: courseData.title,
+        startdate: startDate,
+        enddate: endDate,
+        duration: `${courseData.durationHours || 0} hours`,
+        pterm: 'Full',
+        added_date: currentDate,
+        addedby: 'Website',
+        batch_id: courseData._id.substring(0, 8).toUpperCase(),
+        course_c: courseData.slug || courseData._id,
+        alt_email: data.email,
+        pmode: 'Online',
+        a_amount: courseAmount.toString(),
+        p_amount: '0',
+        b_amount: courseAmount.toString(),
+        p_rec_date: currentDate,
+        lead_rec_name: 'Web Team',
+        lead_rec_date: currentDate,
+        gst: '18%',
+        tot_sale_gst: gstAmount.toString(),
+        portal_details: 'Website',
+        // pay_done_by: data.name,
+        gst_status: 'Pending',
+        bonus_amount: '0',
+        learner_status: 'Lead',
+        address: '',
+        state: '',
+        pincode: '',
+      };
+
+      console.log('Sending to Cirrus API:', payload);
+
+      const res = await axios.post('https://cirrus1.co/caspa/insert_training_b2c_api.php', payload);
+
+      return res.data;
+    },
+    onSuccess: data => {
+      console.log('✅ Cirrus API Success:', data);
+    },
+    onError: err => {
+      console.error('❌ Cirrus API Error:', err);
+      // Don't show error to user, just log it
+      // You'll build logging system later for this
+    },
+  });
 
   const selectedCategory = watch('type');
   const showSubCategory = selectedCategory === 'b2i';
@@ -167,45 +259,41 @@ const PopupConsultationForm: React.FC<PopupFormProps> = ({
       return res.data.data;
     },
     onSuccess: (data: any) => {
-      // Show success message
-      console.log(data, 'data zho lead');
-      // if (process.env.NODE_ENV === 'development') {
-      //   toast.success(
-      //     'Your query has been submitted successfully. Our team will contact you soon.'
-      //   );
-      //   return;
-      // }
+      console.log('✅ Lead API Success:', data);
       downloadBroucher();
+
+      // Call Zoho API
       zohoLead.mutate(data);
 
+      // CRITICAL: Always call Cirrus API regardless of other API status
+      cirrusApiMutation.mutate(getValues());
+
       setTimeout(() => {
-        reset(); // Reset form
-        onClose(); // Close dialog
+        reset();
+        onClose();
       }, 2000);
     },
     onError: err => {
-      console.error(err);
+      console.error('❌ Lead API Error:', err);
       toast.error(handleErrors(err as any) ?? 'Something went wrong. Please try again.');
+
+      // CRITICAL: Even if main API fails, still call Cirrus API
+      cirrusApiMutation.mutate(getValues());
     },
   });
 
   const zohoLead = useMutation({
     mutationFn: async (data: LeadFormData) => {
       await axios.post('/api/zoho/lead', data, {
-        withCredentials: true, // Important to send cookies
+        withCredentials: true,
       });
     },
     onSuccess: () => {
-      // Show success message
-      // toast.success('Your query has been submitted successfully. Our team will contact you soon.');
-      setTimeout(() => {
-        reset(); // Reset form
-        onClose(); // Close dialog
-      }, 2000);
+      console.log('✅ Zoho API Success');
     },
     onError: err => {
-      console.error(err);
-      // toast.error(handleErrors(err as any) ?? 'Something went wrong. Please try again.');
+      console.error('❌ Zoho API Error:', err);
+      // Don't show error, don't block flow
     },
   });
 
@@ -373,7 +461,6 @@ const PopupConsultationForm: React.FC<PopupFormProps> = ({
                   <div className="md:w-1/3 bg-gradient-to-br from-blue-700 to-indigo-800 text-white p-8  flex-col hidden md:flex">
                     <div className="mb-6 flex items-center gap-3">
                       <div className="bg-white/20 p-3 rounded-full">{getFormIcon()}</div>
-                      {/* <h2 className="text-2xl font-bold">{title}</h2> */}
                     </div>
 
                     <p className="text-blue-100 mb-8">{description}</p>
@@ -613,7 +700,6 @@ const PopupConsultationForm: React.FC<PopupFormProps> = ({
                               id="url"
                               type="url"
                               placeholder="Website URL"
-                              //   {...register('websiteUrl')}
                               value={watch('websiteUrl') ?? ''}
                               onChange={e => setValue('websiteUrl', e.target.value)}
                               className="w-full border border-gray-200 rounded-lg px-4 py-2.5 pl-10 focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none"

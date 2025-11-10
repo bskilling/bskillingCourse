@@ -193,8 +193,8 @@ export default function TermOfUse() {
               <p className="text-xl font-semibold">Governing Law and Jurisdiction</p>
               <p className="mt-2 md:ml-6">
                 For users residing in India, these Terms shall be governed by the laws of India, and
-                disputes shall be subject to the jurisdiction of courts in Bangalore, India. For
-                users outside India, applicable local laws will govern these Terms.
+                disputes shall be subject to the jurisdiction of courts in chennai Tamil Nadu,
+                India. For users outside India, applicable local laws will govern these Terms.
               </p>
             </div>
 

@@ -10,6 +10,7 @@ import PopupConsultationForm from './dialogs/Form';
 import PaymentGatewaySelector from '@/components/global/PaymentGatewaySelector';
 import CCAvPaymentForm from '@/components/global/CCAv';
 import { FaHeadset } from 'react-icons/fa';
+import PhonePeEnrollButton from '@/components/Payment/PhonePeEnrollButton';
 
 interface HeroSectionProps {
   category?: ICourse['category'];
@@ -157,7 +158,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 Download Syllabus
               </Button>
 
-              {isPaid && (
+              {/* {isPaid && (
                 <CCAvPaymentForm
                   open={open}
                   setOpenProp={setOpen}
@@ -166,8 +167,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   amount={amount}
                   currency="INR"
                 />
+              )} */}
+              {isPaid && (
+                <PhonePeEnrollButton
+                  courseId={courseId}
+                  courseName={title}
+                  amount={amount}
+                  currency="INR"
+                />
               )}
-
               {/* <Button
                 onClick={() =>
                   openConsultationForm(

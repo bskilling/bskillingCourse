@@ -70,7 +70,7 @@ const Slider = () => {
           <CarouselItem>
             <Link href="/corporate-training">
               <img
-                src="/new-image/corporate.webp"
+                src="/new-image/corporatee_training.webp"
                 alt="Corporate training"
                 className="w-full object-cover"
               />

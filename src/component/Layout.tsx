@@ -197,13 +197,25 @@ const Layout = ({ children, pageTitle = 'bSkilling' }: Props) => {
         pathname.split('/').includes('course') ||
         pathname.split('/').includes('courseDetails') ||
         pathname.split('/').includes('courses') ||
-        pathname.split('/').includes('student-skillgen-ai')
+        pathname.split('/').includes('student-skillgen-ai') ||
+        pathname.split('/').includes('blog') ||
+        pathname.split('/').includes('login') ||
+        pathname.split('/').includes('signup')
       ) {
         return false;
       }
     }
 
     return exist;
+  }, [pathname]);
+
+  const shouldHideFooter = useMemo(() => {
+    if (pathname) {
+      if (pathname.split('/').includes('login') || pathname.split('/').includes('signup')) {
+        return true;
+      }
+    }
+    return false;
   }, [pathname]);
   const [show, setShow] = useState(false);
   return (
@@ -229,7 +241,8 @@ const Layout = ({ children, pageTitle = 'bSkilling' }: Props) => {
 
         <QueryForm />
         <WhatsAppFloatingButton />
-        <Footer />
+        {!shouldHideFooter && <Footer />}
+        {/* <Footer /> */}
       </>
     </>
   );

@@ -17,6 +17,7 @@ import { SessionProvider } from 'next-auth/react';
 
 import { AppProps } from 'next/app';
 import React, { Component } from 'react';
+import { AuthProvider } from '@/contexts/AuthContext';
 
 export default function App({ Component, pageProps }: AppProps) {
   const [queryClient] = React.useState(() => new QueryClient());
@@ -24,14 +25,16 @@ export default function App({ Component, pageProps }: AppProps) {
     <SessionProvider session={pageProps.session}>
       <QueryClientProvider client={queryClient}>
         <HydrationBoundary state={pageProps.dehydratedState}>
-          <MyProvider>
-            <Layout>
-              <div>
-                <Component {...pageProps} />
-                <Toaster richColors position="top-right" />
-              </div>
-            </Layout>
-          </MyProvider>
+          <AuthProvider>
+            <MyProvider>
+              <Layout>
+                <div>
+                  <Component {...pageProps} />
+                  <Toaster richColors position="top-right" />
+                </div>
+              </Layout>
+            </MyProvider>
+          </AuthProvider>
         </HydrationBoundary>
       </QueryClientProvider>
     </SessionProvider>

@@ -16,9 +16,9 @@ const Footer = () => {
         {/* Center - Quick Links */}
         <div className="flex flex-col space-y-3">
           <h3 className="text-lg font-semibold text-gray-100">Quick Links</h3>
-          <Link href="/about" className="hover:text-[#F8B400] transition">
+          {/* <Link href="/about" className="hover:text-[#F8B400] transition">
             About Us
-          </Link>
+          </Link> */}
           <Link href="/courses" className="hover:text-[#F8B400] transition">
             Courses
           </Link>

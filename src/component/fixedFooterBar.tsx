@@ -136,13 +136,6 @@ export default function FixedFooterBar() {
               </div>
             )}
 
-            {/* <button
-              className=" items-center justify-center z-[6000] bg-buttonBlue gap-3 text-white text-3xl  flex h-[20px] rounded-full"
-              onClick={() => setFloatWindowMode("chat")}
-            >
-              <FaComment size={30} /> <p className="text-sm">Chat with us</p>
-            </button> */}
-
             <div>
               {/* <button
                 className="items-center justify-center z-[6000] text-white text-3xl flex h-[20px] gap-3 rounded-full"
