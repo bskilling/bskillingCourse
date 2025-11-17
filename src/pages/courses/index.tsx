@@ -323,7 +323,7 @@ export default function SkillPrograms() {
                         </Link>
 
                         <CardContent className="p-4 space-y-2">
-                          <CardTitle className="text-lg font-semibold text-gray-900 truncate">
+                          <CardTitle className="text-lg font-semibold text-gray-900 ">
                             {course?.title || 'No Title'}
                           </CardTitle>
                           <CardDescription className="text-sm text-gray-600 line-clamp-2">
@@ -422,7 +422,7 @@ export default function SkillPrograms() {
                           </Link>
 
                           <CardContent className="p-4 space-y-2">
-                            <CardTitle className="text-lg font-semibold text-gray-900 truncate">
+                            <CardTitle className="text-lg font-semibold text-gray-900">
                               {course?.title || 'No Title'}
                             </CardTitle>
                             <CardDescription className="text-sm text-gray-600 line-clamp-2">
