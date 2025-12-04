@@ -12,19 +12,19 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: '/courses/course-details/prince2%C2%AE-7th-edition-foundation-certification',
+        source: '/courses/course-details/prince2®-7th-edition-foundation-certification',
         destination: '/government-training-program/nasscom-future-skills/prince2-foundation',
         permanent: true,
       },
       {
         source:
-          '/courses/course-details/project-management-professional-(pmp)%C2%AE-certification-course',
+          '/courses/course-details/project-management-professional-(pmp)®-certification-course',
         destination:
           '/government-training-program/nasscom-future-skills/project-management-professional-course',
         permanent: true,
       },
       {
-        source: '/courses/course-details/itil%C2%AE-v4-foundation-certification',
+        source: '/courses/course-details/itil®-v4-foundation-certification',
         destination:
           '/government-training-program/nasscom-future-skills/itil-4-foundation-certification-training',
         permanent: true,
