@@ -26,6 +26,7 @@ import {
 import { Sheet, SheetContent, SheetHeader, SheetTrigger } from '@/components/ui/sheet';
 import SearchSheetComponent from './SearchSheet';
 import { usePaymentStore } from '@/lib/zustand/phone.store';
+import { Button } from '@/components/ui/button';
 
 // Type definitions
 interface SearchResult {
@@ -55,6 +56,11 @@ const NavbarSection: React.FC = () => {
   const [show, setShow] = useState<boolean>(false);
   const [dropSearchData, setDropSearchData] = useState<SearchResult[]>([]);
   const { user, reset } = usePaymentStore();
+
+  const isAuthenticated = typeof window !== 'undefined' && !!localStorage.getItem('token');
+  const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
+  const users = typeof window !== 'undefined' ? localStorage.getItem('user') : null;
+  const userData = users ? JSON.parse(users) : null;
 
   const router = useRouter();
 
@@ -138,6 +144,15 @@ const NavbarSection: React.FC = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [activeDropdown]);
   if (!router?.isReady) return null;
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+
+    reset();
+
+    window.location.reload();
+  };
   return (
     <>
       {/* Announcement Banner - Responsive for all devices */}
@@ -417,14 +432,14 @@ const NavbarSection: React.FC = () => {
               </nav>
 
               {/* User Profile or Auth Buttons */}
-              {user ? (
+              {users ? (
                 <div>
                   <Popover>
                     <PopoverTrigger className="flex items-center gap-x-2">
                       <div className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-blue-500 hover:border-blue-600 transition-all">
                         <img
-                          src={`https://avatars.dicebear.com/api/initials/${encodeURIComponent(user.name)}.svg`}
-                          alt={user.name || 'User'}
+                          src={`https://avatars.dicebear.com/api/initials/${encodeURIComponent(userData.name)}.svg`}
+                          alt={userData.name || 'User'}
                           className="object-cover"
                         />
                       </div>
@@ -434,34 +449,36 @@ const NavbarSection: React.FC = () => {
                         <div className="flex flex-col items-center pb-4 border-b">
                           <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-blue-500 mb-2">
                             <img
-                              src={`https://avatars.dicebear.com/api/initials/${encodeURIComponent(user.name)}.svg`}
-                              alt={user.name || 'User'}
+                              src={`https://avatars.dicebear.com/api/initials/${encodeURIComponent(userData.name)}.svg`}
+                              alt={userData.name || 'User'}
                               className="object-cover"
                             />
                           </div>
-                          <h3 className="font-medium">{user.name}</h3>
-                          <p className="text-sm text-gray-500 truncate max-w-full">{user.email}</p>
+                          <h3 className="font-medium">{userData.name}</h3>
+                          <p className="text-sm text-gray-500 truncate max-w-full">
+                            {userData.email}
+                          </p>
                         </div>
 
                         <div className="space-y-2">
-                          <Link
+                          {/* <Link
                             href="/dashboard"
                             className="flex items-center gap-x-2 p-2 rounded-md hover:bg-gray-100 transition w-full"
                           >
                             <User size={18} />
                             <span>Dashboard</span>
-                          </Link>
+                          </Link> */}
 
-                          <Link
+                          {/* <Link
                             href="/my-courses"
                             className="flex items-center gap-x-2 p-2 rounded-md hover:bg-gray-100 transition w-full"
                           >
                             <School size={18} />
                             <span>My Courses</span>
-                          </Link>
+                          </Link> */}
 
                           <button
-                            // onClick={handleLogout}
+                            onClick={handleLogout}
                             className="flex items-center gap-x-2 p-2 rounded-md hover:bg-gray-100 transition w-full text-left text-red-500"
                           >
                             <LogOut size={18} />
@@ -486,6 +503,7 @@ const NavbarSection: React.FC = () => {
                   >
                     Login
                   </Link>
+                  {/* <Button onClick={() => setLoginOpen(true)}>Login</Button> */}
                 </div>
               )}
             </div>
