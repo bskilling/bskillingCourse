@@ -27,7 +27,7 @@ export default function LoginFormModal({ onSuccess }: LoginFormModalProps) {
       await login(email, password);
       onSuccess();
     } catch (err: any) {
-      setError(err.message || 'Login failed');
+      setError(err.message || 'Login failed!!!');
     } finally {
       setIsLoading(false);
     }
