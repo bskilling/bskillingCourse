@@ -118,22 +118,12 @@ const Footer = () => {
                   name: 'AWS Certified Associate',
                   link: 'https://www.bskilling.com/course/developing-on-aws-certified-developer-training?id=67e11f701933422b669d65aa',
                 },
-                {
-                  name: 'Azure AI Solution',
-                  link: 'https://www.bskilling.com/course/ai-102-microsoft-azure-ai-solution-certification-course?id=67e3e6e7a05b32da1807dc2b',
-                },
-                {
-                  name: 'CompTIA Cybersecurity',
-                  link: 'https://www.bskilling.com/course/comptia-cybersecurity-analyst-(cysa+)-certification-training-course?id=67e3eddca05b32da1808253e',
-                },
+
                 {
                   name: 'PMP',
                   link: 'https://www.bskilling.com/course/project-management-professional-pmp-certification-prep-training?id=67e3f0d4a05b32da180871af',
                 },
-                {
-                  name: 'Cloud Architect',
-                  link: 'https://www.bskilling.com/course/google-cloud-professional-cloud-architect-certification-training?id=67e3f06fa05b32da18086def',
-                },
+
                 {
                   name: 'Gen AI for Students',
                   link: 'https://www.bskilling.com/student-skillgen-ai',
