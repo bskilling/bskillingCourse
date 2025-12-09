@@ -26,7 +26,7 @@ import { RxHamburgerMenu } from 'react-icons/rx';
 import { IoIosArrowDown, IoIosCall } from 'react-icons/io';
 import { FiFileText } from 'react-icons/fi';
 import { GoPerson } from 'react-icons/go';
-import { buttonVariants } from '@/components/ui/button';
+import { Button, buttonVariants } from '@/components/ui/button';
 import { FaStar } from 'react-icons/fa';
 import {
   IoHomeOutline,
@@ -42,6 +42,8 @@ import { FaUniversity } from 'react-icons/fa';
 import { FcAbout } from 'react-icons/fc';
 import { usePaymentStore } from '@/lib/zustand/phone.store';
 import { useRouter } from 'next/compat/router';
+import LoginModal from '@/components/Auth/loginModal';
+import { User } from 'lucide-react';
 
 const menus = [
   { name: 'Home', href: '/', icon: <IoHomeOutline size={22} /> },
@@ -91,13 +93,24 @@ export default function NavbarSection() {
   // Get user from payment store
   const { user, reset } = usePaymentStore();
 
+  const isAuthenticated = typeof window !== 'undefined' && !!localStorage.getItem('token');
+  const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
+  const users = typeof window !== 'undefined' ? localStorage.getItem('user') : null;
+  const userData = users ? JSON.parse(users) : null;
+
   useEffect(() => {
     console.log(pathname);
+    console.log(user);
     setOpen2(false);
   }, [pathname]);
 
   const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+
     reset(); // Clear user data and other store info
+
+    window.location.reload();
   };
 
   console.log('user---------', user);
@@ -146,50 +159,52 @@ export default function NavbarSection() {
             </Link>
           </NavigationMenuItem>
 
-          {user ? (
+          {users ? (
             <NavigationMenuItem>
               <Popover>
                 <PopoverTrigger className="flex items-center gap-x-2">
                   <div className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-blue-500 hover:border-blue-600 transition-all">
-                    <Image
-                      src={`https://ui-avatars.com/api/?name=${encodeURIComponent(user.name)}&background=random&color=fff`}
-                      alt={user.name || 'User'}
+                    {/* <Image
+                      src={`https://ui-avatars.com/api/?name=${encodeURIComponent(userData.name)}&background=random&color=fff`}
+                      alt={userData.name || 'User'}
                       fill
                       className="object-cover"
-                    />
+                    /> */}
+                    <User size={36} className="bg-gray-300" />
                   </div>
                 </PopoverTrigger>
                 <PopoverContent className="w-56">
                   <div className="space-y-4">
                     <div className="flex flex-col items-center pb-4 border-b">
                       <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-blue-500 mb-2">
-                        <Image
-                          src={`https://ui-avatars.com/api/?name=${encodeURIComponent(user.name)}&background=random&color=fff`}
-                          alt={user.name || 'User'}
+                        {/* <Image
+                          src={`https://ui-avatars.com/api/?name=${encodeURIComponent(userData.name)}&background=random&color=fff`}
+                          alt={userData.name || 'User'}
                           fill
                           className="object-cover"
-                        />
+                        /> */}
+                        <User size={64} className="bg-gray-300" />
                       </div>
-                      <h3 className="font-medium">{user.name}</h3>
-                      <p className="text-sm text-gray-500 truncate max-w-full">{user.email}</p>
+                      <h3 className="font-medium">{userData.name}</h3>
+                      <p className="text-sm text-gray-500 truncate max-w-full">{userData.email}</p>
                     </div>
 
                     <div className="space-y-2">
-                      <Link
+                      {/* <Link
                         href="/dashboard"
                         className="flex items-center gap-x-2 p-2 rounded-md hover:bg-gray-100 transition w-full"
                       >
                         <IoPersonOutline size={18} />
                         <span>Dashboard</span>
-                      </Link>
+                      </Link> */}
 
-                      <Link
+                      {/* <Link
                         href="/my-courses"
                         className="flex items-center gap-x-2 p-2 rounded-md hover:bg-gray-100 transition w-full"
                       >
                         <IoSchoolOutline size={18} />
                         <span>My Courses</span>
-                      </Link>
+                      </Link> */}
 
                       <button
                         onClick={handleLogout}

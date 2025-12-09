@@ -24,6 +24,7 @@ import {
 } from 'lucide-react';
 import { toast } from 'sonner';
 import CouponInput from '../global/CouponInput';
+import LoginModal from '../Auth/loginModal';
 // import CouponInput from './CouponInput';
 
 interface PhonePeEnrollButtonProps {
@@ -46,6 +47,7 @@ const PhonePeEnrollButton: React.FC<PhonePeEnrollButtonProps> = ({
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [couponId, setCouponId] = useState<string | undefined>();
+  const [openLogin, setOpenLogin] = useState(false);
   const [couponDetails, setCouponDetails] = useState<any | null | undefined>(null);
 
   // Check if user is logged in
@@ -84,15 +86,22 @@ const PhonePeEnrollButton: React.FC<PhonePeEnrollButtonProps> = ({
   gst = 0.18 * finalAmount;
   finalAmount += gst;
 
+  // const handleEnrollClick = () => {
+  //   // If not authenticated, redirect to login with return URL
+  //   if (!isAuthenticated) {
+  //     const returnUrl = `/course/${courseId}`;
+  //     router.push(`/login?redirect=${encodeURIComponent(returnUrl)}`);
+  //     return;
+  //   }
+
+  //   // If authenticated, open payment dialog
+  //   setOpen(true);
+  // };
   const handleEnrollClick = () => {
-    // If not authenticated, redirect to login with return URL
     if (!isAuthenticated) {
-      const returnUrl = `/course/${courseId}`;
-      router.push(`/login?redirect=${encodeURIComponent(returnUrl)}`);
+      setOpenLogin(true);
       return;
     }
-
-    // If authenticated, open payment dialog
     setOpen(true);
   };
 
@@ -115,6 +124,17 @@ const PhonePeEnrollButton: React.FC<PhonePeEnrollButtonProps> = ({
           couponCode: couponId,
         }),
       });
+
+      if (response.status === 401) {
+        // clear auth
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+
+        setOpen(false); // close payment dialog
+        setOpenLogin(true); // 🔥 open login modal
+        toast.error('Session expired. Please login again.');
+        return;
+      }
 
       const data = await response.json();
 
@@ -318,6 +338,8 @@ const PhonePeEnrollButton: React.FC<PhonePeEnrollButtonProps> = ({
           </DialogContent>
         </Dialog>
       )}
+      {/* Login Modal */}
+      {openLogin && <LoginModal open={openLogin} onOpenChange={setOpenLogin} />}
     </>
   );
 };

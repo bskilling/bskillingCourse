@@ -5,7 +5,11 @@ import React, { useState } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import { useRouter } from 'next/navigation';
 
-export default function LoginForm() {
+interface LoginFormModalProps {
+  onSuccess: () => void;
+}
+
+export default function LoginFormModal({ onSuccess }: LoginFormModalProps) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -21,9 +25,9 @@ export default function LoginForm() {
 
     try {
       await login(email, password);
-      router.push('/courses');
+      onSuccess();
     } catch (err: any) {
-      setError(err.message || 'Login failed');
+      setError(err.message || 'Login failed!!!');
     } finally {
       setIsLoading(false);
     }
