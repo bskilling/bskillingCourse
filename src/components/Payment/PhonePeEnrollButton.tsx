@@ -106,6 +106,10 @@ const PhonePeEnrollButton: React.FC<PhonePeEnrollButtonProps> = ({
   };
 
   const initiatePayment = async () => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('paymentReturnUrl', window.location.href);
+    }
+    console.log(window.location.href);
     setIsLoading(true);
     setError(null);
 

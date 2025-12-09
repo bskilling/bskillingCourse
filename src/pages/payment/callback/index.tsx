@@ -126,8 +126,18 @@ function PaymentCallbackContent() {
               </div>
             )}
 
-            <Button
+            {/* <Button
               onClick={() => router.push('/my-courses')}
+              className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700"
+            >
+              View My Courses....
+            </Button> */}
+            <Button
+              onClick={() => {
+                const redirectUrl = localStorage.getItem('paymentReturnUrl') || '/my-courses';
+                console.log('Redirecting to:', redirectUrl);
+                router.push(redirectUrl);
+              }}
               className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700"
             >
               View My Courses
@@ -185,7 +195,7 @@ function PaymentCallbackContent() {
             </div>
             <h2 className="text-2xl font-bold text-red-600 mb-2">Payment Failed</h2>
             <p className="text-gray-600 mb-6">
-              Your payment could not be processed. Please try again or contact support if the issue
+              Your payment could not be processed.. Please try again or contact support if the issue
               persists.
             </p>
 
