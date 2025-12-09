@@ -126,8 +126,18 @@ function PaymentCallbackContent() {
               </div>
             )}
 
-            <Button
+            {/* <Button
               onClick={() => router.push('/my-courses')}
+              className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700"
+            >
+              View My Courses
+            </Button> */}
+            <Button
+              onClick={() => {
+                const redirectUrl = localStorage.getItem('paymentReturnUrl') || '/my-courses';
+                console.log('Redirecting to:', redirectUrl);
+                router.push(redirectUrl);
+              }}
               className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700"
             >
               View My Courses
