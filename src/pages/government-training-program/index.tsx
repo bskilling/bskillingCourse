@@ -41,7 +41,7 @@ const ties = [
     name: 'NSDC',
     description:
       'The National Skill Development Corporation focuses on empowering India&#39;s workforce through skill development initiatives, industry partnerships, and training programs to enhance employability.',
-    img: '/new-image/nsdc.png',
+    img: '/new-image/nsdc1.webp',
     link: `/government-training-program/national-skill-development-corporation`,
   },
 ];
