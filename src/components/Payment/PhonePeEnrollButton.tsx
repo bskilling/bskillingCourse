@@ -2,7 +2,7 @@
 
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import {
@@ -56,6 +56,8 @@ const PhonePeEnrollButton: React.FC<PhonePeEnrollButtonProps> = ({
   const user = typeof window !== 'undefined' ? localStorage.getItem('user') : null;
   const userData = user ? JSON.parse(user) : null;
 
+  const [isPaid, setIsPaid] = useState(false);
+
   const handleCouponApply = (id: string | undefined, coupon: any) => {
     setCouponId(id);
     setCouponDetails(coupon);
@@ -97,6 +99,14 @@ const PhonePeEnrollButton: React.FC<PhonePeEnrollButtonProps> = ({
   //   // If authenticated, open payment dialog
   //   setOpen(true);
   // };
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const paidCourses = JSON.parse(localStorage.getItem('paidCourses') || '[]');
+      setIsPaid(paidCourses.includes(courseId));
+    }
+  }, [courseId]);
+
   const handleEnrollClick = () => {
     if (!isAuthenticated) {
       setOpenLogin(true);
@@ -174,7 +184,7 @@ const PhonePeEnrollButton: React.FC<PhonePeEnrollButtonProps> = ({
 
   return (
     <>
-      {!isAuthenticated ? (
+      {/* {!isAuthenticated ? (
         // Show simple button when not logged in
         Btn ? (
           <div onClick={handleEnrollClick}>{Btn}</div>
@@ -195,6 +205,40 @@ const PhonePeEnrollButton: React.FC<PhonePeEnrollButtonProps> = ({
               Btn
             ) : (
               <Button className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-6 py-5 rounded-lg font-medium">
+                <CreditCard className="mr-2 h-5 w-5" />
+                Buy Now
+              </Button>
+            )}
+          </DialogTrigger> */}
+
+      {!isAuthenticated ? (
+        Btn ? (
+          <div onClick={handleEnrollClick}>{Btn}</div>
+        ) : (
+          <Button
+            onClick={handleEnrollClick}
+            className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-6 py-5 rounded-lg font-medium"
+          >
+            <CreditCard className="mr-2 h-5 w-5" />
+            Buy Now – Login Required
+          </Button>
+        )
+      ) : isPaid ? (
+        /* CASE 2: AUTHENTICATED + ALREADY PAID ✅ */
+        <Button
+          disabled
+          className="bg-green-600 text-white px-6 py-5 rounded-lg font-medium cursor-not-allowed"
+        >
+          Enrolled
+        </Button>
+      ) : (
+        /* CASE 3: AUTHENTICATED + NOT PAID */
+        <Dialog open={open} onOpenChange={setOpen}>
+          <DialogTrigger asChild>
+            {Btn ? (
+              Btn
+            ) : (
+              <Button className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-6 py-5 rounded-lg font-medium">
                 <CreditCard className="mr-2 h-5 w-5" />
                 Buy Now
               </Button>
