@@ -45,8 +45,14 @@ function PaymentCallbackContent() {
             if (typeof window !== 'undefined') {
               localStorage.removeItem('pendingPayment');
             }
+            // setTimeout(() => {
+            //   router.push('/my-courses');
+            // }, 3000);
             setTimeout(() => {
-              router.push('/my-courses');
+              const redirectUrl = localStorage.getItem('paymentReturnUrl') || '/my-courses';
+
+              localStorage.removeItem('paymentReturnUrl');
+              router.replace(redirectUrl);
             }, 3000);
           } else if (data.data.status === 'CANCELLED') {
             setStatus('cancelled');
