@@ -16,13 +16,15 @@ function PaymentCallbackContent() {
   const [paymentDetails, setPaymentDetails] = useState<any>(null);
 
   useEffect(() => {
+    if (!searchParams) return;
     const merchantOrderId = searchParams.get('merchantOrderId');
+    if (merchantOrderId === null) return;
     const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
 
-    if (!merchantOrderId) {
-      setStatus('error');
-      return;
-    }
+    // if (!merchantOrderId) {
+    //   setStatus('error');
+    //   return;
+    // }
 
     const checkPaymentStatus = async () => {
       try {
