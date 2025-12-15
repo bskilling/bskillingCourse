@@ -2,7 +2,10 @@
 
 'use client';
 
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useContext, useEffect } from 'react';
+import axios from 'axios';
+
+const API_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:3001/api';
 
 interface User {
   id: string;
@@ -18,19 +21,22 @@ interface AuthContextType {
   login: (email: string, password: string) => Promise<void>;
   signup: (name: string, email: string, password: string, phone?: string) => Promise<void>;
   logout: () => void;
+  forgotPassword: (email: string) => Promise<void>;
+  resetPassword: (token: string, newPassword: string) => Promise<void>;
+  changePassword: (currentPassword: string, newPassword: string) => Promise<void>;
   isLoading: boolean;
   isAuthenticated: boolean;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [token, setToken] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Load user from localStorage on mount
   useEffect(() => {
+    // Load user from localStorage on mount
     const storedToken = localStorage.getItem('token');
     const storedUser = localStorage.getItem('user');
 
@@ -43,61 +49,82 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const signup = async (name: string, email: string, password: string, phone?: string) => {
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/signup`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ name, email, password, phone }),
+      const response = await axios.post(`${API_URL}/auth/signup`, {
+        name,
+        email,
+        password,
+        phone,
       });
 
-      const data = await response.json();
+      const { token, user } = response.data.data;
 
-      if (!data.success) {
-        throw new Error(data.error || 'Signup failed');
-      }
+      localStorage.setItem('token', token);
+      localStorage.setItem('user', JSON.stringify(user));
 
-      // Save to state and localStorage
-      setToken(data.data.token);
-      setUser(data.data.user);
-      localStorage.setItem('token', data.data.token);
-      localStorage.setItem('user', JSON.stringify(data.data.user));
+      setToken(token);
+      setUser(user);
     } catch (error: any) {
-      throw new Error(error.message || 'Signup failed');
+      throw new Error(error.response?.data?.error || 'Signup failed');
     }
   };
 
   const login = async (email: string, password: string) => {
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/login`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
+      const response = await axios.post(`${API_URL}/auth/login`, {
+        email,
+        password,
       });
 
-      const data = await response.json();
+      const { token, user } = response.data.data;
 
-      if (!data.success) {
-        throw new Error(data.error || 'Login failed');
-      }
+      localStorage.setItem('token', token);
+      localStorage.setItem('user', JSON.stringify(user));
 
-      // Save to state and localStorage
-      setToken(data.data.token);
-      setUser(data.data.user);
-      localStorage.setItem('token', data.data.token);
-      localStorage.setItem('user', JSON.stringify(data.data.user));
+      setToken(token);
+      setUser(user);
     } catch (error: any) {
-      throw new Error(error.message || 'Login failed');
+      throw new Error(error.response?.data?.error || 'Login failed');
+    }
+  };
+
+  const forgotPassword = async (email: string) => {
+    try {
+      await axios.post(`${API_URL}/auth/forgot-password`, { email });
+    } catch (error: any) {
+      throw new Error(error.response?.data?.error || 'Failed to send reset email');
+    }
+  };
+
+  const resetPassword = async (token: string, newPassword: string) => {
+    try {
+      await axios.post(`${API_URL}/auth/reset-password`, {
+        token,
+        newPassword,
+      });
+    } catch (error: any) {
+      throw new Error(error.response?.data?.error || 'Failed to reset password');
+    }
+  };
+
+  const changePassword = async (currentPassword: string, newPassword: string) => {
+    try {
+      await axios.post(
+        `${API_URL}/auth/change-password`,
+        { currentPassword, newPassword },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+    } catch (error: any) {
+      throw new Error(error.response?.data?.error || 'Failed to change password');
     }
   };
 
   const logout = () => {
-    setUser(null);
-    setToken(null);
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    setToken(null);
+    setUser(null);
   };
 
   return (
@@ -108,6 +135,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         login,
         signup,
         logout,
+        forgotPassword,
+        resetPassword,
+        changePassword,
         isLoading,
         isAuthenticated: !!user && !!token,
       }}
@@ -115,12 +145,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       {children}
     </AuthContext.Provider>
   );
-};
+}
 
-export const useAuth = () => {
+export function useAuth() {
   const context = useContext(AuthContext);
   if (context === undefined) {
     throw new Error('useAuth must be used within an AuthProvider');
   }
   return context;
-};
+}

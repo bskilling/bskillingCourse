@@ -18,10 +18,13 @@ const STORAGE_KEY = 'nasscom_enrollment_form_data';
 
 // NASSCOM Config - Same as backend but for NASSCOM
 const NASSCOM_CONFIG = {
-  BASE_URL: process.env.NEXT_PUBLIC_LMS_BASE_URL || 'https://app.bskillingnxtgen.com',
-  USER_SERVICE_URL: process.env.NEXT_PUBLIC_LMS_USER_URL || 'https://bskillingnxtgen.com/auth',
+  BASE_URL: process.env.NEXT_PUBLIC_LMS_BASE_URL || 'https://learn.bskilling.com',
+  USER_SERVICE_URL:
+    process.env.NEXT_PUBLIC_LMS_USER_URL ||
+    'https://api-gateway-173405861722.asia-south1.run.app/user/auth',
   COURSE_SERVICE_URL:
-    process.env.NEXT_PUBLIC_LMS_COURSE_URL || 'https://api.bskillingnxtgen.com/api/courses',
+    process.env.NEXT_PUBLIC_LMS_COURSE_URL ||
+    'https://api-gateway-173405861722.asia-south1.run.app/course/api/courses',
   DEFAULT_PASSWORD: 'nasscom123',
   AUTH_PROVIDER: 'NASSCOM',
   TIMEOUT: 45000,

@@ -211,7 +211,7 @@ export default function NavbarSection() {
                         className="flex items-center gap-x-2 p-2 rounded-md hover:bg-gray-100 transition w-full text-left text-red-500"
                       >
                         <IoLogOutOutline size={18} />
-                        <span>Sign Out</span>
+                        <span>Sign Out s</span>
                       </button>
                     </div>
                   </div>
