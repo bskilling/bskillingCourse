@@ -610,7 +610,7 @@ export default function NSDC() {
                 <span className="text-lg">Email us at:</span>
                 <a
                   href="mailto:contact.nsdc@bskilling.com"
-                  className="text-yellow-400 ml-2 text-lg font-medium hover:underline"
+                  className="text-yellow-400 ml-2 text-lg font-medium "
                 >
                   contact.nsdc@bskilling.com
                 </a>
@@ -619,10 +619,7 @@ export default function NSDC() {
               <div className="flex items-center">
                 <FaHandPointRight className="text-yellow-400 mr-3 text-2xl animate-pulse" />
                 <span className="text-lg">Call us:</span>
-                <a
-                  href="tel:+18001234567"
-                  className="text-yellow-400 ml-2 text-lg font-medium hover:underline"
-                >
+                <a href="tel:+18001234567" className="text-yellow-400 ml-2 text-lg font-medium ">
                   1800-123-4567
                 </a>
               </div>

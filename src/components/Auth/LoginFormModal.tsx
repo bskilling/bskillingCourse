@@ -73,7 +73,7 @@ export default function LoginFormModal({ onSuccess }: LoginFormModalProps) {
 
       <p className="mt-4 text-center text-sm">
         Don't have an account?{' '}
-        <a href="/signup" className="text-blue-600 hover:underline">
+        <a href="/signup" className="text-blue-600 ">
           Sign up
         </a>
       </p>
