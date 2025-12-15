@@ -2,7 +2,7 @@
 'use client';
 import { Link as Scroll } from 'react-scroll';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
 import { ICourse } from './types';
 
@@ -110,7 +110,8 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
     outcomes,
     variant,
     broucher,
-
+    // @ts-expect-error err
+    slug,
     // logoUrl, previewImage, slug not used in this single-page layout
   } = courseData;
 
@@ -145,6 +146,11 @@ const CourseLandingPage = ({ courseData }: { courseData: ICourse }) => {
     setFormDescription(description);
     setIsFormOpen(true);
   };
+
+  useEffect(() => {
+    localStorage.setItem('course_slug', slug);
+  }, []);
+
   return (
     <div className="min-h-screen  ">
       {/* Navigation */}
