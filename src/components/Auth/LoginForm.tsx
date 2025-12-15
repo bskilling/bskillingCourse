@@ -1,7 +1,7 @@
 'use client';
 // components/Auth/LoginForm.tsx - WITH PASSWORD TOGGLE
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
@@ -12,9 +12,16 @@ export default function LoginForm() {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false); // ✅ NEW
+  const [slug, setSlug] = useState(undefined);
 
   const { login } = useAuth();
   const router = useRouter();
+
+  useEffect(() => {
+    const slug = localStorage.getItem('course_slug');
+    // @ts-expect-errore
+    setSlug(slug);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -23,6 +30,10 @@ export default function LoginForm() {
 
     try {
       await login(email, password);
+      if (slug) {
+        // localStorage.setItem('course_slug', slug);
+        router.push(`/course/${slug}`);
+      }
       router.push('/courses');
     } catch (err: any) {
       setError(err.message || 'Login failed');
