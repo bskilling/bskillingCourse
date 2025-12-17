@@ -1,7 +1,22 @@
 /* eslint-disable @next/next/no-img-element */
-'use client';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+
 export default function Custom404() {
+  const router = useRouter();
+
+  useEffect(() => {
+    if (
+      router.asPath ===
+        '/courses/course-details/project-management-professional-(pmp)%C2%AE-certification-course' ||
+      router.asPath ===
+        '/courses/course-details/project-management-professional-(pmp)®-certification-course'
+    ) {
+      router.replace('/course/project-management-professional-course');
+    }
+  }, [router]);
+
   return (
     <div className="w-full h-screen flex flex-col items-center justify-center">
       <img src="/404.jpg" className="h-[60%]" alt="" />
@@ -11,10 +26,9 @@ export default function Custom404() {
         <p className="md:text-lg lg:text-xl text-gray-600 mt-8">
           Sorry, the page you are looking for could not be found.
         </p>
-        <div className="flex items-center text-white space-x-2 bg-buttonBlue  text- px-4 py-2 mt-12  transition duration-150">
+        <div className="flex items-center text-white space-x-2 bg-buttonBlue px-4 py-2 mt-12 transition duration-150">
           <Link style={{ textDecoration: 'none' }} href={'/'}>
             <span style={{ textDecoration: 'none' }} className="text-white">
-              {' '}
               Home
             </span>
           </Link>
