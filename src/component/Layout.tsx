@@ -93,7 +93,7 @@ const Layout = ({ children, pageTitle = 'bSkilling' }: Props) => {
   const fetchApiData = async () => {
     try {
       const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_TRAINING_BASE_URL}api/v1/get-course-title`
+        `${process.env.NEXT_PUBLIC_TRAINING_BASE_URL}/api/v1/get-course-title`
       );
 
       const jsonData = response.data;
