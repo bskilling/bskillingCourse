@@ -128,7 +128,7 @@ const NavbarSection: React.FC = () => {
     { name: 'Career', href: 'https://sfjbs.talentrecruit.com/career-page', external: true },
     // { name: 'Review', href: '/reviews' },
     // { name: 'About Us', href: '/aboutus' },
-    { name: 'Blogs', href: '/blogs' },
+    { name: 'Blogs', href: '/blog' },
   ];
 
   // Function to close dropdown when clicking outside

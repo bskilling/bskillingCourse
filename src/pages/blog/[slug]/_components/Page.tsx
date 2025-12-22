@@ -10,6 +10,7 @@ import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { toast } from 'sonner';
 import { useQuery } from '@tanstack/react-query';
+import DOMPurify from 'dompurify';
 
 interface ContentBlock {
   type:
@@ -165,29 +166,29 @@ const fetchSeriesRelatedBlogs = async (
 
 // Add this function at the top of your component (after the imports)
 
-const cleanupHTMLContent = (htmlContent: string): string => {
-  if (!htmlContent) return '';
+// const cleanupHTMLContent = (htmlContent: string): string => {
+//   if (!htmlContent) return '';
 
-  // Remove empty list items and clean up whitespace
-  return (
-    htmlContent
-      // Remove completely empty <li> tags
-      .replace(/<li>\s*<\/li>/gi, '')
-      // Remove <li> tags that only contain whitespace, &nbsp;, or empty <p> tags
-      .replace(/<li>\s*(<p>\s*<\/p>)?\s*<\/li>/gi, '')
-      // Remove <li> tags with only non-breaking spaces
-      .replace(/<li>(\s|&nbsp;)*<\/li>/gi, '')
-      // Remove empty <ul> or <ol> tags that might be left behind
-      .replace(/<ul>\s*<\/ul>/gi, '')
-      .replace(/<ol>\s*<\/ol>/gi, '')
-      // Clean up multiple consecutive line breaks
-      .replace(/(<br\s*\/?>){3,}/gi, '<br><br>')
-      // Remove empty paragraphs
-      .replace(/<p>\s*<\/p>/gi, '')
-      // Clean up whitespace around tags
-      .replace(/>\s+</g, '><')
-  );
-};
+//   // Remove empty list items and clean up whitespace
+//   return (
+//     htmlContent
+//       // Remove completely empty <li> tags
+//       .replace(/<li>\s*<\/li>/gi, '')
+//       // Remove <li> tags that only contain whitespace, &nbsp;, or empty <p> tags
+//       .replace(/<li>\s*(<p>\s*<\/p>)?\s*<\/li>/gi, '')
+//       // Remove <li> tags with only non-breaking spaces
+//       .replace(/<li>(\s|&nbsp;)*<\/li>/gi, '')
+//       // Remove empty <ul> or <ol> tags that might be left behind
+//       .replace(/<ul>\s*<\/ul>/gi, '')
+//       .replace(/<ol>\s*<\/ol>/gi, '')
+//       // Clean up multiple consecutive line breaks
+//       .replace(/(<br\s*\/?>){3,}/gi, '<br><br>')
+//       // Remove empty paragraphs
+//       .replace(/<p>\s*<\/p>/gi, '')
+//       // Clean up whitespace around tags
+//       .replace(/>\s+</g, '><')
+//   );
+// };
 
 // Then update your content rendering section to use this function:
 
@@ -507,6 +508,71 @@ export default function SingleBlogPage() {
     }
   };
 
+  // function cleanupHTMLContent(html: string): string {
+  //   if (!html) return '';
+
+  //   return DOMPurify.sanitize(html, {
+  //     ALLOWED_TAGS: [
+  //       'p',
+  //       'br',
+  //       'strong',
+  //       'em',
+  //       'u',
+  //       'h1',
+  //       'h2',
+  //       'h3',
+  //       'h4',
+  //       'h5',
+  //       'h6',
+  //       'ul',
+  //       'ol',
+  //       'li',
+  //       'a',
+  //       'img',
+  //       'blockquote',
+  //       'code',
+  //       'pre',
+  //       'table',
+  //       'thead',
+  //       'tbody',
+  //       'tr',
+  //       'th',
+  //       'td',
+  //       'hr',
+  //       'div',
+  //       'span',
+  //     ],
+  //     ALLOWED_ATTR: ['href', 'src', 'alt', 'title', 'class'],
+  //     FORBID_ATTR: ['style'], // Remove all inline styles
+  //     FORBID_TAGS: ['script', 'iframe', 'object', 'embed'],
+  //   });
+  // }
+  function cleanupHTMLContent(html: string): string {
+    if (!html) return '';
+
+    let cleaned = html
+      // Remove Table of Contents section (common patterns)
+      .replace(/<div[^>]*class="[^"]*table-of-contents[^"]*"[^>]*>[\s\S]*?<\/div>/gi, '')
+      .replace(/<nav[^>]*>[\s\S]*?<\/nav>/gi, '')
+      .replace(/<div[^>]*id="toc"[^>]*>[\s\S]*?<\/div>/gi, '')
+      .replace(/<aside[^>]*>[\s\S]*?<\/aside>/gi, '')
+      // Remove any section that starts with "Table of Contents"
+      .replace(/<h[1-6][^>]*>Table of Contents<\/h[1-6]>[\s\S]*?(?=<h[1-6]|$)/gi, '')
+      // Remove jump links (# anchors at the start)
+      .replace(/<a\s+href="#[^"]*"[^>]*>.*?<\/a>/gi, '')
+      // Clean up scripts and styles
+      .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+      .replace(/<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>/gi, '')
+      // Remove inline position/float styles
+      .replace(/style\s*=\s*["'][^"']*position\s*:\s*(absolute|fixed)[^"']*["']/gi, '')
+      .replace(/style\s*=\s*["'][^"']*float\s*:\s*(left|right)[^"']*["']/gi, '')
+      // Clean up
+      .replace(/\s+/g, ' ')
+      .replace(/<(\w+)[^>]*>\s*<\/\1>/g, '')
+      .trim();
+
+    return cleaned;
+  }
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50">
@@ -636,14 +702,12 @@ export default function SingleBlogPage() {
                 <img src={heroImage} alt={blog.title} className="w-full h-full object-cover" />
               </div>
             )}
-
             {/* Summary */}
             {blog.summary && (
               <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg">
                 <p className="text-lg text-gray-800 leading-relaxed font-medium">{blog.summary}</p>
               </div>
             )}
-
             {/* Table of Contents */}
             {blog.tableOfContents && blog.tableOfContents.length > 0 && (
               <div className="bg-white border border-gray-200 rounded-lg p-6">
@@ -676,8 +740,40 @@ export default function SingleBlogPage() {
               </div>
             )}
             {/* // Replace this section in your code (around line 580-590): */}
-
             {/* Content */}
+            <article className="bg-white border border-gray-200 rounded-lg p-8">
+              <div className="prose max-w-none">
+                {blog.contentBlocks && blog.contentBlocks.length > 0 ? (
+                  blog.contentBlocks.sort((a, b) => a.order - b.order).map(renderContentBlock)
+                ) : (
+                  <div
+                    className="prose prose-lg max-w-none 
+          prose-headings:font-bold prose-headings:text-gray-900
+          prose-h1:text-3xl prose-h1:my-6 prose-h1:first:mt-0
+          prose-h2:text-2xl prose-h2:my-6 prose-h2:first:mt-0
+          prose-h3:text-xl prose-h3:my-6 prose-h3:first:mt-0
+          prose-h4:text-lg prose-h4:my-4
+          prose-p:mb-4 prose-p:leading-relaxed prose-p:text-gray-700
+          prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline
+          prose-strong:font-semibold prose-strong:text-gray-900
+          prose-ul:list-disc prose-ul:pl-6 prose-ul:mb-6 prose-ul:space-y-2
+          prose-ol:list-decimal prose-ol:pl-6 prose-ol:mb-6 prose-ol:space-y-2
+          prose-li:text-gray-700 prose-li:leading-relaxed
+          prose-blockquote:border-l-4 prose-blockquote:border-blue-500 prose-blockquote:pl-4 prose-blockquote:bg-blue-50 prose-blockquote:p-4 prose-blockquote:my-6
+          prose-img:rounded-lg prose-img:shadow-sm prose-img:my-6
+          prose-pre:bg-gray-900 prose-pre:rounded-lg prose-pre:p-4 prose-pre:my-6
+          prose-code:text-green-400 prose-code:font-mono prose-code:text-sm
+          prose-table:w-full prose-table:border-collapse prose-table:my-6
+          prose-th:border prose-th:border-gray-200 prose-th:bg-gray-50 prose-th:p-3 prose-th:text-left
+          prose-td:border prose-td:border-gray-200 prose-td:p-3
+          [&_*]:relative [&_*]:z-auto"
+                    dangerouslySetInnerHTML={{
+                      __html: cleanupHTMLContent(blog.content),
+                    }}
+                  />
+                )}
+              </div>
+            </article>{' '}
             <article className="bg-white border border-gray-200 rounded-lg p-8">
               <div className="prose max-w-none">
                 {blog.contentBlocks && blog.contentBlocks.length > 0 ? (
@@ -741,7 +837,6 @@ export default function SingleBlogPage() {
                 )}
               </div>
             </article> */}
-
             {/* Tags */}
             {blog.tags.length > 0 && (
               <div className="bg-white border border-gray-200 rounded-lg p-6">
@@ -783,15 +878,13 @@ export default function SingleBlogPage() {
           <div className="space-y-6 self-start sticky top-24 ">
             <div className="pl-8">
               <iframe
-                src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fsfjbsofficial&tabs=timeline&width=320&height=400&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
-                width="400"
+                src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fbskillingindia%2F&tabs=timeline&width=320&height=400&small_header=false&adapt_container_width=false&hide_cover=false&show_facepile=true"
+                width="320"
                 height="400"
                 style={{ border: 'none', overflow: 'hidden' }}
                 scrolling="no"
-                // frameborder="0"
-                // allowfullscreen="true"
                 allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-              ></iframe>
+              />
             </div>
             {/* Current Series */}
             {blog.series && currentSeries.length > 0 && (

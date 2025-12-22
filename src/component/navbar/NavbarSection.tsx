@@ -69,7 +69,7 @@ const menus = [
   },
   // { name: 'About Us', href: '/aboutus', icon: <IoPersonOutline size={22} /> },
   {
-    name: 'Blogs',
+    name: 'Blogs s',
     href: '/blogs',
     icon: <IoChatbubbleEllipsesOutline size={22} />,
   },

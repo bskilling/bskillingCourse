@@ -440,7 +440,7 @@ export default function BlogLandingPage() {
                 <div className="p-5">
                   {/* Title */}
                   <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2 group-hover:text-blue-600 transition-colors duration-200 leading-snug">
-                    <Link href={`/blog/${blog.slug}`} className="hover:underline">
+                    <Link href={`/blog/${blog.slug}`} className="">
                       {blog.title}
                     </Link>
                   </h3>
