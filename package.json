@@ -59,6 +59,7 @@
     "embla-carousel-react": "^8.5.1",
     "express": "^4.18.2",
     "framer-motion": "^10.12.16",
+    "html-react-parser": "^5.2.11",
     "jsonwebtoken": "^9.0.2",
     "lucide-react": "^0.469.0",
     "moment": "^2.29.4",

@@ -31,10 +31,11 @@ body {
   outline: 0;
 } */
 
-/* a {
-  color: #0070f3;
+Link {
+  color: inherit;
   text-decoration: none;
-} */
+}
+
 .lavishly-yours-regular {
   font-family: 'Lavishly Yours', cursive;
   font-weight: 400;
