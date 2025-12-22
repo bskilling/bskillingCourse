@@ -127,9 +127,7 @@ interface Category {
 }
 
 const fetchCategories = async (): Promise<Category[]> => {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_FRONTEND_URL}/api/admin/blogs/categories`
-  );
+  const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/admin/blogs/categories`);
 
   if (!response.ok) {
     throw new Error('Failed to fetch categories');
@@ -151,7 +149,7 @@ const fetchSeriesRelatedBlogs = async (
   });
 
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_FRONTEND_URL}/api/admin/blogs?${queryParams}`
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/admin/blogs?${queryParams}`
   );
 
   if (!response.ok) {
@@ -229,7 +227,7 @@ export default function SingleBlogPage() {
       setError(null);
 
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_FRONTEND_URL}/api/admin/blogs/slug/${slug}`
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/admin/blogs/slug/${slug}`
       );
 
       if (!response.ok) {
@@ -253,9 +251,7 @@ export default function SingleBlogPage() {
   const fetchSeries = async () => {
     try {
       setSeriesLoading(true);
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_FRONTEND_URL}/api/admin/blogs/series`
-      );
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/admin/blogs/series`);
       if (response.ok) {
         const data = await response.json();
         setAllSeries(data.data || data);
@@ -270,7 +266,7 @@ export default function SingleBlogPage() {
   const fetchCurrentSeries = async (seriesId: string) => {
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_FRONTEND_URL}/api/admin/blogs/series/${seriesId}`
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/admin/blogs/series/${seriesId}`
       );
       if (response.ok) {
         const data = await response.json();
@@ -354,7 +350,7 @@ export default function SingleBlogPage() {
   const handleLike = async () => {
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_FRONTEND_URL}/api/blogs/${slug}/like`,
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blogs/${slug}/like`,
         { method: 'POST' }
       );
 
