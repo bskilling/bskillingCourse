@@ -125,9 +125,11 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
     const courseSlugs = courseJson.data?.slugs || [];
 
     // Fetch Blog Slugs
-    const blogRes = await fetch(`${backendUrl}/api/blogs/slugs/all?status=published`);
-    const blogJson: SlugResponse = await blogRes.json();
-    const blogSlugs = blogJson.data?.slugs || [];
+    const blogRes = await fetch(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/admin/blogs?status=published`
+    );
+    const blogJson = await blogRes.json();
+    const blogSlugs = blogJson.data?.map((blog: { slug: any }) => blog.slug) || [];
 
     console.log(`✅ Sitemap generated: ${courseSlugs.length} courses, ${blogSlugs.length} blogs`);
 
