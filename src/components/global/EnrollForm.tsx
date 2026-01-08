@@ -219,6 +219,8 @@ const NASSCOMEnrollmentForm: React.FC<NASSCOMEnrollmentFormProps> = ({
       // Step 4: Construct redirect URL
       const redirectUrl = `${NASSCOM_CONFIG.BASE_URL}/new-sso?refreshToken=${userResult.refreshToken}&enrollmentId=${enrollment.id}&courseId=${enrollment.courseId}`;
 
+      console.log('🚀 [NASSCOM] Redirecting to:', redirectUrl);
+
       toast.success(
         isNewUser ? 'You have been successfully enrolled!' : 'Welcome back! Enrollment successful.'
       );
