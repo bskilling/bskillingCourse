@@ -225,8 +225,13 @@ const NASSCOMEnrollmentForm: React.FC<NASSCOMEnrollmentFormProps> = ({
         isNewUser ? 'You have been successfully enrolled!' : 'Welcome back! Enrollment successful.'
       );
 
-      // Open in new tab
-      window.open(redirectUrl, '_blank');
+      setTimeout(() => {
+        console.log('🚀 [NASSCOM] Redirecting to:', redirectUrl);
+
+        console.log('🔄 [NASSCOM] Opening redirect URL');
+        window.open(redirectUrl, '_blank');
+        setIsOpen(false);
+      }, 2000);
       setIsOpen(false);
     } catch (error: any) {
       console.error('❌ [NASSCOM] Enrollment failed:', error);
