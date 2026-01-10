@@ -10,7 +10,6 @@ import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { toast } from 'sonner';
 import { useQuery } from '@tanstack/react-query';
-import DOMPurify from 'dompurify';
 import { useRouter } from 'next/router';
 
 interface ContentBlock {
@@ -161,7 +160,7 @@ const fetchSeriesRelatedBlogs = async (
   const data = await response.json();
   const blogs = data.data || data;
 
-  // Filter out the current blog
+  // Filter out the current blog.....
   return blogs.filter((blog: SeriesRelatedBlog) => blog._id !== currentBlogId);
 };
 
