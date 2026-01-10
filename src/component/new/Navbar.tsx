@@ -125,7 +125,7 @@ const NavbarSection: React.FC = () => {
   ];
 
   const secondaryMenuItems: SecondaryMenuItem[] = [
-    { name: 'Career', href: 'https://sfjbs.talentrecruit.com/career-page', external: true },
+    // { name: 'Career', href: 'https://sfjbs.talentrecruit.com/career-page', external: true },
     // { name: 'Review', href: '/reviews' },
     // { name: 'About Us', href: '/aboutus' },
     { name: 'Blogs', href: '/blog' },
@@ -393,7 +393,7 @@ const NavbarSection: React.FC = () => {
 
                 {/* More dropdown */}
                 <div className="relative flex-shrink-0 dropdown-container">
-                  <button
+                  {/* <button
                     className="flex items-center text-gray-700 hover:text-indigo-600 font-medium transition whitespace-nowrap text-sm xl:text-base"
                     onClick={() => setActiveDropdown(activeDropdown === 'more' ? null : 'more')}
                     type="button"
@@ -402,6 +402,13 @@ const NavbarSection: React.FC = () => {
                     <ChevronDown
                       className={`ml-1 h-4 w-4 transform transition-transform ${activeDropdown === 'more' ? 'rotate-180' : ''}`}
                     />
+                  </button> */}
+                  <button
+                    className="flex items-center text-gray-700 hover:text-indigo-600 font-medium transition whitespace-nowrap text-sm xl:text-base"
+                    onClick={() => router?.push('/blog')}
+                    type="button"
+                  >
+                    Blogs
                   </button>
 
                   {/* Dropdown menu */}
