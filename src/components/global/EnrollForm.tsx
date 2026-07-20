@@ -41,6 +41,7 @@ const NASSCOMEnrollmentForm: React.FC<NASSCOMEnrollmentFormProps> = ({
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
+    gender: '',
     email: '',
     contactNumber: '',
   });
@@ -60,7 +61,7 @@ const NASSCOMEnrollmentForm: React.FC<NASSCOMEnrollmentFormProps> = ({
     localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
   }, [formData]);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
@@ -93,6 +94,7 @@ const NASSCOMEnrollmentForm: React.FC<NASSCOMEnrollmentFormProps> = ({
   const createUser = async (providerId: string) => {
     const signupPayload = {
       name: formData.name,
+      gender: formData.gender,
       email: formData.email,
       phone: formData.contactNumber,
       authProvider: NASSCOM_CONFIG.AUTH_PROVIDER,
@@ -179,7 +181,7 @@ const NASSCOMEnrollmentForm: React.FC<NASSCOMEnrollmentFormProps> = ({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!formData.name || !formData.email || !formData.contactNumber) {
+    if (!formData.name || !formData.email || !formData.gender || !formData.contactNumber) {
       toast.error('Please fill out all required fields.');
       return;
     }
@@ -286,6 +288,25 @@ const NASSCOMEnrollmentForm: React.FC<NASSCOMEnrollmentFormProps> = ({
                   onChange={handleChange}
                   required
                 />
+              </div>
+
+              <div>
+                <Label htmlFor="gender">Gender</Label>
+                <select
+                  id="gender"
+                  name="gender"
+                  value={formData.gender}
+                  onChange={handleChange}
+                  required
+                  className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                >
+                  <option value="" disabled>
+                    Select your gender
+                  </option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
+                </select>
               </div>
 
               <div>
