@@ -164,7 +164,7 @@ export default function Courses() {
     staleTime: 1000 * 60 * 5,
   });
 
-  const filteredCourses = data?.courses.filter(course =>
+  const filteredCourses = data?.courses.filter((course: { title: string; }) =>
     course.title.toLowerCase().includes(searchTerm.toLowerCase())
   ) as ICourse[];
 
@@ -224,7 +224,7 @@ export default function Courses() {
               <RiBook2Line className="mr-1" /> All Programs
             </Button>
 
-            {categoryQuery?.data?.categories?.map(category => (
+            {categoryQuery?.data?.categories?.map((category: React.SetStateAction<Category | null>) => (
               <Button
                 key={category.slug}
                 variant={category._id === scategory?._id ? 'default' : 'outline'}
@@ -276,7 +276,7 @@ export default function Courses() {
                   <RiBook2Line className="mr-2" /> All Programs
                 </Button>
 
-                {categoryQuery?.data?.categories?.map(category => (
+                {categoryQuery?.data?.categories?.map((category: React.SetStateAction<Category | null>) => (
                   <Button
                     key={category.slug}
                     variant={category._id === scategory?._id ? 'default' : 'outline'}

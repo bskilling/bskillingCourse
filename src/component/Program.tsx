@@ -90,7 +90,7 @@ export default function Program() {
   });
 
   // Filter courses based on search query
-  const filteredCourses = data?.courses.filter(course =>
+  const filteredCourses = data?.courses.filter((course: any) =>
     course.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
   if (!router?.isReady) return null;
@@ -129,7 +129,7 @@ export default function Program() {
                     className="h-12 w-32 bg-gray-200 animate-pulse rounded-lg"
                   />
                 ))
-            : categoryQuery?.data?.categories?.map(category => (
+            : categoryQuery?.data?.categories?.map((category: any) => (
                 <motion.div
                   key={category.slug}
                   whileHover={{ scale: 1.05 }}
@@ -232,7 +232,7 @@ export default function Program() {
               </Button>
             </div>
           ) : (
-            filteredCourses?.map(course => (
+            filteredCourses?.map((course: any) => (
               <motion.div key={course._id} variants={itemVariants}>
                 <EnhancedCourseCard course={course} />
               </motion.div>
