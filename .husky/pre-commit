@@ -1,26 +1,35 @@
 #!/usr/bin/env bash
 
-# . "$(dirname -- "$0")/_/husky.sh"
-
 echo "🔍 Checking code formatting with Prettier..."
-npm run check-format
-if [ $? -ne 0 ]; then
-  echo "❌ Prettier check failed. Run 'npm run format' to fix formatting issues."
+if ! npm run check-format; then
+  echo ""
+  echo "❌ Oops! Your code formatting is messy."
+  echo "💡 Run this to fix it:"
+  echo "   👉 npm run format"
+  echo ""
   exit 1
 fi
 
-# echo "🔍 Checking code quality with ESLint..."
-# npm run lint
-# if [ $? -ne 0 ]; then
-#   echo "❌ ESLint check failed. Run 'npm run lint:fix' to fix linting issues."
-#   exit 1
-# fi
+echo "🔍 Checking code quality with ESLint..."
+if ! npm run lint; then
+  echo ""
+  echo "❌ ESLint is not happy with your code."
+  echo "💡 Run this to fix lint issues:"
+  echo "   👉 npm run lint:fix"
+  echo ""
+  exit 1
+fi
 
 echo "🔍 Checking if build succeeds..."
-npm run build
-if [ $? -ne 0 ]; then
-  echo "❌ Build failed! Fix the build errors before committing."
+if ! npm run build; then
+  echo ""
+  echo "❌ Build failed! The app said 'Nope 👎'."
+  echo "💡 Fix the errors shown above and try again."
+  echo ""
   exit 1
 fi
 
-echo "✅ All checks passed! Committing changes..."
+echo ""
+echo "🎉 All checks passed!"
+echo "🚀 Your code is clean, powerful, and commit-worthy."
+echo ""
