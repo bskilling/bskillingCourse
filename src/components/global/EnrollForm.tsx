@@ -1,3 +1,6 @@
+// File: NASSCOMEnrollmentForm.tsx
+// Path: src/components/enrollment/NASSCOMEnrollmentForm.tsx
+
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -14,9 +17,17 @@ interface NASSCOMEnrollmentFormProps {
   buttonClassName?: string;
 }
 
+type FormData = {
+  name: string;
+  gender: string;
+  email: string;
+  contactNumber: string;
+};
+
+type FormErrors = Partial<Record<keyof FormData, string>>;
+
 const STORAGE_KEY = 'nasscom_enrollment_form_data';
 
-// NASSCOM Config - Same as backend but for NASSCOM
 const NASSCOM_CONFIG = {
   BASE_URL: process.env.NEXT_PUBLIC_LMS_BASE_URL || 'https://learn.bskilling.com',
   USER_SERVICE_URL:
@@ -32,6 +43,13 @@ const NASSCOM_CONFIG = {
   SOURCE_SUB_TYPE: 'NASSCOM',
 };
 
+const EMPTY_FORM: FormData = {
+  name: '',
+  gender: '',
+  email: '',
+  contactNumber: '',
+};
+
 const NASSCOMEnrollmentForm: React.FC<NASSCOMEnrollmentFormProps> = ({
   courseId,
   buttonText = 'Enroll Now',
@@ -39,18 +57,15 @@ const NASSCOMEnrollmentForm: React.FC<NASSCOMEnrollmentFormProps> = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [formData, setFormData] = useState({
-    name: '',
-    gender: '',
-    email: '',
-    contactNumber: '',
-  });
+  const [formData, setFormData] = useState<FormData>(EMPTY_FORM);
+  const [errors, setErrors] = useState<FormErrors>({});
 
   useEffect(() => {
     const savedData = localStorage.getItem(STORAGE_KEY);
     if (savedData) {
       try {
-        setFormData(JSON.parse(savedData));
+        // Merge over EMPTY_FORM so a partial/corrupt payload never leaves a field undefined
+        setFormData({ ...EMPTY_FORM, ...JSON.parse(savedData) });
       } catch (error) {
         console.error('Error parsing saved form data:', error);
       }
@@ -64,6 +79,37 @@ const NASSCOMEnrollmentForm: React.FC<NASSCOMEnrollmentFormProps> = ({
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
+    // Clear the error for this field as soon as the user edits it
+    setErrors(prev => (prev[name as keyof FormData] ? { ...prev, [name]: undefined } : prev));
+  };
+
+  // Single source of truth for required-field validation (dropdown included)
+  const validate = (data: FormData): FormErrors => {
+    const next: FormErrors = {};
+
+    if (!data.name.trim()) {
+      next.name = 'Full name is required.';
+    }
+
+    // Dropdown: empty string means nothing was selected
+    if (!data.gender) {
+      next.gender = 'Please select your gender.';
+    }
+
+    if (!data.email.trim()) {
+      next.email = 'Email address is required.';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email.trim())) {
+      next.email = 'Enter a valid email address.';
+    }
+
+    const digits = data.contactNumber.replace(/\D/g, '');
+    if (!digits) {
+      next.contactNumber = 'Contact number is required.';
+    } else if (digits.length < 10) {
+      next.contactNumber = 'Enter a valid contact number.';
+    }
+
+    return next;
   };
 
   // Step 1: Check if user exists
@@ -71,8 +117,8 @@ const NASSCOMEnrollmentForm: React.FC<NASSCOMEnrollmentFormProps> = ({
     try {
       const response = await axios.get(`${NASSCOM_CONFIG.USER_SERVICE_URL}/check-user`, {
         params: {
-          email: email,
-          providerId: providerId,
+          email,
+          providerId,
           authProvider: NASSCOM_CONFIG.AUTH_PROVIDER,
         },
         timeout: NASSCOM_CONFIG.TIMEOUT,
@@ -98,14 +144,14 @@ const NASSCOMEnrollmentForm: React.FC<NASSCOMEnrollmentFormProps> = ({
       email: formData.email,
       phone: formData.contactNumber,
       authProvider: NASSCOM_CONFIG.AUTH_PROVIDER,
-      providerId: providerId,
+      providerId,
       role: 'LEARNER',
       sourceType: NASSCOM_CONFIG.SOURCE_TYPE,
       sourceSubType: NASSCOM_CONFIG.SOURCE_SUB_TYPE,
       bio: 'User created via NASSCOM integration',
       metadata: JSON.stringify({
         nasscomIntegration: true,
-        courseId: courseId,
+        courseId,
       }),
       password: NASSCOM_CONFIG.DEFAULT_PASSWORD,
     };
@@ -129,7 +175,7 @@ const NASSCOMEnrollmentForm: React.FC<NASSCOMEnrollmentFormProps> = ({
   const signinUser = async (providerId: string) => {
     const signinPayload = {
       authProvider: NASSCOM_CONFIG.AUTH_PROVIDER,
-      providerId: providerId,
+      providerId,
       email: formData.email,
       name: formData.name,
       password: NASSCOM_CONFIG.DEFAULT_PASSWORD,
@@ -181,60 +227,43 @@ const NASSCOMEnrollmentForm: React.FC<NASSCOMEnrollmentFormProps> = ({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!formData.name || !formData.email || !formData.gender || !formData.contactNumber) {
+    const validationErrors = validate(formData);
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
       toast.error('Please fill out all required fields.');
       return;
     }
+    setErrors({});
 
     try {
       setIsLoading(true);
 
-      // Generate unique provider ID
       const providerId = `NASSCOM_${Date.now()}_${formData.email.split('@')[0]}`;
 
-      console.log('🎯 [NASSCOM] Starting enrollment flow');
-
-      // Step 1: Check if user exists
-      console.log('🔍 [NASSCOM] Checking if user exists');
       const existingUser = await checkUserExists(formData.email, providerId);
 
       let userResult;
       let isNewUser = false;
 
       if (existingUser) {
-        // Step 2a: User exists, sign them in
-        console.log('🔐 [NASSCOM] User exists - signing in');
         userResult = await signinUser(providerId);
       } else {
-        // Step 2b: User doesn't exist, create them
-        console.log('👤 [NASSCOM] User does not exist - creating new user');
         userResult = await createUser(providerId);
         isNewUser = true;
       }
 
-      // Step 3: Enroll user in course
-      console.log('📚 [NASSCOM] Enrolling user in course');
       const enrollment = await enrollUserInCourse(userResult.accessToken);
 
-      console.log('✅ [NASSCOM] Integration completed successfully');
-
-      // Step 4: Construct redirect URL
       const redirectUrl = `${NASSCOM_CONFIG.BASE_URL}/new-sso?refreshToken=${userResult.refreshToken}&enrollmentId=${enrollment.id}&courseId=${enrollment.courseId}`;
-
-      console.log('🚀 [NASSCOM] Redirecting to:', redirectUrl);
 
       toast.success(
         isNewUser ? 'You have been successfully enrolled!' : 'Welcome back! Enrollment successful.'
       );
 
       setTimeout(() => {
-        console.log('🚀 [NASSCOM] Redirecting to:', redirectUrl);
-
-        console.log('🔄 [NASSCOM] Opening redirect URL');
         window.open(redirectUrl, '_blank');
         setIsOpen(false);
       }, 2000);
-      setIsOpen(false);
     } catch (error: any) {
       console.error('❌ [NASSCOM] Enrollment failed:', error);
       toast.error(
@@ -248,7 +277,7 @@ const NASSCOMEnrollmentForm: React.FC<NASSCOMEnrollmentFormProps> = ({
   return (
     <>
       <Button onClick={() => setIsOpen(true)} className={buttonClassName}>
-        {formData?.name.length > 0 ? 'Continue' : buttonText}
+        {formData?.name?.length > 0 ? 'Continue' : buttonText}
       </Button>
 
       {isOpen && (
@@ -277,7 +306,8 @@ const NASSCOMEnrollmentForm: React.FC<NASSCOMEnrollmentFormProps> = ({
               Complete this form to enroll in the course. You'll receive access after submitting.
             </p>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
+            {/* noValidate: turn off native browser validation so our checks run instead */}
+            <form onSubmit={handleSubmit} className="space-y-4" noValidate>
               <div>
                 <Label htmlFor="name">Full Name</Label>
                 <Input
@@ -286,8 +316,9 @@ const NASSCOMEnrollmentForm: React.FC<NASSCOMEnrollmentFormProps> = ({
                   placeholder="Enter your full name"
                   value={formData.name}
                   onChange={handleChange}
-                  required
+                  aria-invalid={!!errors.name}
                 />
+                {errors.name && <p className="mt-1 text-sm text-red-600">{errors.name}</p>}
               </div>
 
               <div>
@@ -297,7 +328,7 @@ const NASSCOMEnrollmentForm: React.FC<NASSCOMEnrollmentFormProps> = ({
                   name="gender"
                   value={formData.gender}
                   onChange={handleChange}
-                  required
+                  aria-invalid={!!errors.gender}
                   className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
                 >
                   <option value="" disabled>
@@ -307,6 +338,7 @@ const NASSCOMEnrollmentForm: React.FC<NASSCOMEnrollmentFormProps> = ({
                   <option value="Female">Female</option>
                   <option value="Other">Other</option>
                 </select>
+                {errors.gender && <p className="mt-1 text-sm text-red-600">{errors.gender}</p>}
               </div>
 
               <div>
@@ -318,8 +350,9 @@ const NASSCOMEnrollmentForm: React.FC<NASSCOMEnrollmentFormProps> = ({
                   placeholder="Enter your email address"
                   value={formData.email}
                   onChange={handleChange}
-                  required
+                  aria-invalid={!!errors.email}
                 />
+                {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email}</p>}
               </div>
 
               <div>
@@ -330,8 +363,11 @@ const NASSCOMEnrollmentForm: React.FC<NASSCOMEnrollmentFormProps> = ({
                   placeholder="Enter your phone number"
                   value={formData.contactNumber}
                   onChange={handleChange}
-                  required
+                  aria-invalid={!!errors.contactNumber}
                 />
+                {errors.contactNumber && (
+                  <p className="mt-1 text-sm text-red-600">{errors.contactNumber}</p>
+                )}
               </div>
 
               <Button
