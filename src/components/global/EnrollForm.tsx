@@ -22,6 +22,17 @@ type FormData = {
   gender: string;
   email: string;
   contactNumber: string;
+  collegeName: string; // ← new
+  pincode: string; // ← new
+};
+
+const EMPTY_FORM: FormData = {
+  name: '',
+  gender: '',
+  email: '',
+  contactNumber: '',
+  collegeName: '',
+  pincode: '',
 };
 
 type FormErrors = Partial<Record<keyof FormData, string>>;
@@ -43,12 +54,12 @@ const NASSCOM_CONFIG = {
   SOURCE_SUB_TYPE: 'NASSCOM',
 };
 
-const EMPTY_FORM: FormData = {
-  name: '',
-  gender: '',
-  email: '',
-  contactNumber: '',
-};
+// const EMPTY_FORM: FormData = {
+//   name: '',
+//   gender: '',
+//   email: '',
+//   contactNumber: '',
+// };
 
 const NASSCOMEnrollmentForm: React.FC<NASSCOMEnrollmentFormProps> = ({
   courseId,
@@ -91,7 +102,6 @@ const NASSCOMEnrollmentForm: React.FC<NASSCOMEnrollmentFormProps> = ({
       next.name = 'Full name is required.';
     }
 
-    // Dropdown: empty string means nothing was selected
     if (!data.gender) {
       next.gender = 'Please select your gender.';
     }
@@ -108,6 +118,19 @@ const NASSCOMEnrollmentForm: React.FC<NASSCOMEnrollmentFormProps> = ({
     } else if (digits.length < 10) {
       next.contactNumber = 'Enter a valid contact number.';
     }
+
+    // ↓↓↓ add here ↓↓↓
+    if (!data.collegeName.trim()) {
+      next.collegeName = 'College name is required.';
+    }
+
+    const pin = data.pincode.trim();
+    if (!pin) {
+      next.pincode = 'College PIN code is required.';
+    } else if (!/^[1-9]\d{5}$/.test(pin)) {
+      next.pincode = 'Enter a valid 6-digit PIN code.';
+    }
+    // ↑↑↑ add here ↑↑↑
 
     return next;
   };
@@ -152,6 +175,8 @@ const NASSCOMEnrollmentForm: React.FC<NASSCOMEnrollmentFormProps> = ({
       metadata: JSON.stringify({
         nasscomIntegration: true,
         courseId,
+        collegeName: formData.collegeName.trim(),
+        pincode: formData.pincode.trim(),
       }),
       password: NASSCOM_CONFIG.DEFAULT_PASSWORD,
     };
@@ -368,6 +393,36 @@ const NASSCOMEnrollmentForm: React.FC<NASSCOMEnrollmentFormProps> = ({
                 {errors.contactNumber && (
                   <p className="mt-1 text-sm text-red-600">{errors.contactNumber}</p>
                 )}
+              </div>
+
+              <div>
+                <Label htmlFor="collegeName">College Name</Label>
+                <Input
+                  id="collegeName"
+                  name="collegeName"
+                  placeholder="Enter your college name"
+                  value={formData.collegeName}
+                  onChange={handleChange}
+                  aria-invalid={!!errors.collegeName}
+                />
+                {errors.collegeName && (
+                  <p className="mt-1 text-sm text-red-600">{errors.collegeName}</p>
+                )}
+              </div>
+
+              <div>
+                <Label htmlFor="pincode">College PIN Code</Label>
+                <Input
+                  id="pincode"
+                  name="pincode"
+                  inputMode="numeric"
+                  maxLength={6}
+                  placeholder="e.g. 560001"
+                  value={formData.pincode}
+                  onChange={handleChange}
+                  aria-invalid={!!errors.pincode}
+                />
+                {errors.pincode && <p className="mt-1 text-sm text-red-600">{errors.pincode}</p>}
               </div>
 
               <Button
