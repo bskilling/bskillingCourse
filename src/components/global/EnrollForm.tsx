@@ -160,12 +160,15 @@ const NASSCOMEnrollmentForm: React.FC<NASSCOMEnrollmentFormProps> = ({
   };
 
   // Step 2a: Create new user
+  // Step 2a: Create new user
   const createUser = async (providerId: string) => {
     const signupPayload = {
       name: formData.name,
       gender: formData.gender,
       email: formData.email,
       phone: formData.contactNumber,
+      collegeName: formData.collegeName.trim(), // ← top-level now
+      pincode: formData.pincode.trim(), // ← top-level now
       authProvider: NASSCOM_CONFIG.AUTH_PROVIDER,
       providerId,
       role: 'LEARNER',
@@ -175,8 +178,6 @@ const NASSCOMEnrollmentForm: React.FC<NASSCOMEnrollmentFormProps> = ({
       metadata: JSON.stringify({
         nasscomIntegration: true,
         courseId,
-        collegeName: formData.collegeName.trim(),
-        pincode: formData.pincode.trim(),
       }),
       password: NASSCOM_CONFIG.DEFAULT_PASSWORD,
     };
